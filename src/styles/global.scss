@@ -41,9 +41,6 @@ h1 {
 
 h2 {
   @apply text-3xl font-bold leading-[1.1] pb-4;
-// text-headline-sm md:text-headline-md lg:text-headline-md title text-violet-lightest text-shades-paragraphs font-geomanist-book section-title opacity-0;
-
-
 }
 
 h3 {
@@ -55,7 +52,7 @@ h4 {
 }
 
 h5 {
-  @apply text-lg text-center pb-2;
+  @apply text-lg text-center pb-0;
 }
 
 h6 {
@@ -262,4 +259,8 @@ body {
 .policy-section h2,
 .policy-section h3 {
     padding-top: 2rem;
+}
+
+.text-curstom-gradient-violet {
+  @apply bg-gradient-to-br from-[#f1f1f1] to-[#c3ace7] bg-clip-text text-transparent;
 }

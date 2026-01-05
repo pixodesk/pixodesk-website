@@ -2,20 +2,24 @@ title: "Welcome to Pixodesk Website"
 
 sections:
   section_00:
-    title: "# Create, Animate and Export:<br/><span class='text-violet-lightest'>SVG and Lottie Design</span> Made Simple!"
+    title: "# Create and Animate <span class='text-curstom-gradient-violet'>SVG and Lottie</span>"
     items:
-      - content: "##### Vector graphic design for websites, web apps, and native apps."
-      - content: "##### Create logos, icons, vector illustrations, portfolios, backgrounds, and more."
+      - content: "##### For Web and Native Apps"
+      # - content: "##### Vector graphic design for websites, web apps, and native apps."
+      - content: "##### Create animated logos, icons, vector illustrations, portfolios, backgrounds, and more."
     
   section_01:
-    title: "## Bespoke High-Performance Applications for Your Project!"
+    # title: "## Bespoke High-Performance Applications for Your Project!"
     items: 
       - content: "###### Try out our applications online on their own webpages."
 
   section_02:  
     title: SVG Editor
     icon: true
-    content: Create scalable vector graphics for the web, social media, and web-based apps.
+    items:
+      - content: <span class='text-xl'>Best for static content</span>
+      - content: <span class='text-xs text-gray-400'>Creates static vector graphics</span>
+      - content: .SVG file format <br/><span class='text-xs text-gray-400'>Or export to other formats</span>
     button: 
       title: Read More
       link: "./svg-editor"
@@ -23,18 +27,26 @@ sections:
   section_03:
     title: 2D Animator
     icon: true
-    content: Create Lottie animations for the web and native devices.
+    items:
+      - content: <span class='text-xl'>Best for native devices</span>
+      - content: <span class='text-xs text-gray-400'>Creates Lottie animations</span>
+      - content: .JSON (Lottie) file format <br/><span class='text-xs text-gray-400'>Or export to other dynamic or static formats</span>
     button: 
       title: Read More
-      link:  "./2d-animator"
- 
+      link: "./2d-animator"
+  
   section_04:
     title: SVG Animator
     icon: true
-    content: Create, animate, and export SVG for the web, social media, and web-based apps.
+    items:
+      - content: <span class='text-xl'>Best for the web</span>
+      - content: <span class='text-xs text-gray-400'>Creates SVG animations (CSS or JS)</span>
+      - content: .SVG file format <br/><span class='text-xs text-gray-400'>Or export to other dynamic or static formats</span>
     button: 
       title: Read More
-      link:  "./svg-animator"
+      link: "./svg-animator"
+
+
 
   section_041:
     # title: "## Pixodesk's desktop applications for every platform"

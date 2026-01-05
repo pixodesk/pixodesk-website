@@ -5,6 +5,8 @@ import type {
   CapabilityPoints, 
   SplitSection,
   TitledSplitSection,
+  Button,
+  AppDescription,
  } from '../../types/types';
 import _content from "./index-text-content.yaml";
 
@@ -14,12 +16,14 @@ export interface TextContent {
   sections: Sections;
 }
 
+
+
 export interface Sections {
   section_00: SectionHero;
   section_01: AppIntro;
-  section_02: Item;
-  section_03: Item;
-  section_04: Item;
+  section_02: AppDescription;
+  section_03: AppDescription;
+  section_04: AppDescription;
   section_041: TitledSplitSection;
   section_05: CapabilityPoints;
   section_06: TitledSplitSection;

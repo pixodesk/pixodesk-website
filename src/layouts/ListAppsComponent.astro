@@ -1,16 +1,17 @@
 ---
 import { marked } from "marked";
 import arrowRight from "../../public/assets/index/sections/arrow-right-24x24.svg?raw";
-import type { Item } from "../types/types";
+import type { AppDescription } from "../types/types";
 
 interface Props {
-  section: Item;
+  section: AppDescription;
   bgClass?: string;
   iconBg?: string;
   iconFill?: string;
 }
 
 const { section, iconBg, iconFill, bgClass } = Astro.props;
+console.log("section", section.items)
 ---
 
 {section.button && (
@@ -24,25 +25,34 @@ const { section, iconBg, iconFill, bgClass } = Astro.props;
       hover:scale-105 ${bgClass}`}
       href={section.button?.link ?? ""}
   >
-    
       <div
         class="list-apps py-8 px-8 flex flex-col justify-between items-center h-full"
       >
-        <div class="flex flex-col items-center">
-          <div
-            class=`w-[64px] h-[64px] ${iconFill} mb-4 border border-[#ffffff11] bg-[#ffffff11] p-3 rounded-lg`
-          >
-            <slot />
-          </div>
+        <div class="flex flex-col items-center mb-4">
+          
+          <div class="flex items-center">
+            <div
+              class=`w-[64px] h-[64px] ${iconFill} mb-6 mr-4 border border-[#ffffff11] bg-[#ffffff11] p-3 rounded-lg`
+            >
+              <slot />
+            </div>
 
-          <div
-            class="uppercase font-bold text-lg mb-6"
-            set:html={marked.parseInline(section.title ?? "")}
-          />
-          <div
-            class="text-center pb-8 px-0 leading-6 text-base"
-            set:html={marked.parseInline(section.content ?? "")}
-          />
+            <div
+              class="uppercase font-bold text-lg mb-6"
+              set:html={marked.parseInline(section.title ?? "")}
+            />
+          </div>
+          {section.items && section.items.map((item) => {
+            
+            return (
+            <div
+              class="text-center pb-4 px-0 leading-5 text-base"
+              set:html={marked.parseInline(item.content ?? "")}
+            />
+            )
+          }
+          )}
+          
         </div>
 
         <div class="card-button flex flex-col items-center">

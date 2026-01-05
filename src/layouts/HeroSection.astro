@@ -18,14 +18,14 @@ const { content, className, bgColor, color, svg = "" } = Astro.props;
 ---
 
 <div
-  class={`${className ? className : ""} flex flex-col items-center pt-pyPage w-full relative`}
+  class={`${className ? className : ""} flex flex-col items-center pt-pyPage w-full relative z-0`}
 >
 
   <div class="relative text-center px-pxPage" set:html={marked(content.title ?? "")} />
 
   {
     content.items && (
-      <div class="relative mb-8 px-pxPage">
+      <div class={`relative px-pxPage ${className === 'pixodesk' ? 'mb-0' : 'mb-8'}`}>
         {content.items.map((item) => (
           <div class="" set:html={marked(item.content ?? "")} />
         ))}
@@ -35,7 +35,7 @@ const { content, className, bgColor, color, svg = "" } = Astro.props;
 
   {content.storeButtons && <StoreButtons storeButtons={content.storeButtons} />}
 
-  <div class="relative my-4 w-full mx-auto">
+  <div class="relative my-0 w-full mx-auto">
     <slot />
   </div>
 </div>

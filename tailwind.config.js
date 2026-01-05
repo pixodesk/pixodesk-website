@@ -147,6 +147,8 @@ module.exports = {
     'py-pyPage', 'pt-pyPage', 'pb-pyPage',
     'py-pySection', 'pt-pySection', 'pb-pySection',
     
+    'text-sm', 'text-xs', 'text-lg', 'text-xl', 'text-gray-400',
+    
   ],
   plugins: [
     require('@tailwindcss/typography'),

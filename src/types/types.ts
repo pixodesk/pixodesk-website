@@ -166,3 +166,14 @@ export interface CapabilityPoints {
   item_05?: Item;
   item_06?: Item;
 }
+
+export interface Content {
+  content: string;
+}
+
+export interface AppDescription {
+  title: string;
+  icon: boolean;
+  items: Content[];
+  button: Button;
+}
