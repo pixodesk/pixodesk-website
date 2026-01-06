@@ -8,13 +8,13 @@ import { marked } from "marked";
 import BaseLayout from "../layouts/BaseLayout.astro";
 import HeroSection from "../layouts/HeroSection.astro";
 import Section from "../layouts/Section.astro";
-import ListAppsComponent from "../layouts/ListAppsComponent.astro";
+import ListApp from "../layouts/ListApp.astro";
 import CapabilityPoint from "../layouts/CapabilityPoint.astro";
 
 // Logos
-import LogoSVG from "../layouts/LogoSvg.astro";
-import Logo2D from "../layouts/Logo2D.astro";
-import LogoSvga from "../layouts/LogoSvga.astro";
+import LogoSVGFill from "../layouts/LogoSvgFill.astro";
+import Logo2DFill from "../layouts/Logo2DFill.astro";
+import LogoSvgaFill from "../layouts/LogoSvgaFill.astro";
 
 // Icons
 import ComputerIcon from "../components/svg/ComputerIcon.astro";
@@ -70,29 +70,32 @@ const cntnt = content.sections;
       } -->
 
       <div class="app-desc flex flex-col items-center justify-center mb-16">
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 max-w-custom-standard">
-          <ListAppsComponent
-            bgClass="bg-custom-gradient-diagonal-navy"
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-custom-standard">
+          <ListApp
+            bgClass="text-cyan-400"
             iconFill="text-white"
-            section={cntnt.section_02}
+            card={cntnt.section_02}
+            iconBg="border-cyan-500/20 text-cyan-400 bg-cyan-500/5 group-hover:border-cyan-400 group-hover:shadow-[0_0_20px_rgba(34,211,238,0.2)]"
           >
-            <LogoSVG />
-          </ListAppsComponent>
+            <LogoSVGFill />
+          </ListApp>
 
-          <ListAppsComponent
-            bgClass="bg-custom-gradient-diagonal-indigo"
+          <ListApp
+            bgClass="text-indigo-400"
             iconFill="text-white"
-            section={cntnt.section_03}
+            card={cntnt.section_03}
+            iconBg="border-indigo-500/20 text-indigo-400 bg-indigo-500/5 group-hover:border-indigo-400 group-hover:shadow-[0_0_20px_rgba(129,140,248,0.2)]"
           >
-            <Logo2D />
-          </ListAppsComponent>
-          <ListAppsComponent
-            bgClass="bg-custom-gradient-diagonal-violet"
+            <Logo2DFill />
+          </ListApp>
+          <ListApp
+            bgClass="text-purple-400"
             iconFill="text-white"
-            section={cntnt.section_04}
+            card={cntnt.section_04}
+            iconBg="border-purple-500/20 text-purple-400 bg-purple-500/5 group-hover:border-purple-400 group-hover:shadow-[0_0_20px_rgba(168,85,247,0.2)]"
           >
-            <LogoSvga />
-          </ListAppsComponent>
+            <LogoSvgaFill />
+          </ListApp>
         </div>
       </div>
     </div>

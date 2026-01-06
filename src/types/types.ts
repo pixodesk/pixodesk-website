@@ -167,13 +167,15 @@ export interface CapabilityPoints {
   item_06?: Item;
 }
 
-export interface Content {
-  content: string;
-}
+
 
 export interface AppDescription {
-  title: string;
   icon: boolean;
-  items: Content[];
+  title: string;
+  subtitle: string;
+  description: string;
+  status: string;
+  format: string;
+  export: string;
   button: Button;
 }

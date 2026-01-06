@@ -43,7 +43,7 @@ const {
 // Define default menus (used if not passed as prop)
 const menus: MenuItem[] = passedMenus ?? [
   // {
-  //   label: "Main",
+  //   label: "Pixodesk",
   //   href: "/",
   //   subMenu: [],
   //   image: "../../public/assets/common/logos/logo-pixodesk.svg",
@@ -112,7 +112,7 @@ const activeMenu = menus.find((menu) => isActiveParent(menu));
     <div class={`flex justify-between items-center w-full px-4 md:px-8 relative ${textSize}`}>
       <a 
         href="/" 
-        class=`uppercase ${hoverText} font-montserrat`> Pixodesk </a>
+        class=`uppercase ${pathname === '/' ? "text-white" : color} ${hoverText} } ${hoverText} font-montserrat`> Pixodesk </a>
 
       <ul class="hidden md:flex items-center space-x-4 h-full">
         {
