@@ -1,0 +1,99 @@
+---
+import { marked } from "marked";
+import arrowRight from "../../public/assets/index/sections/arrow-right-24x24.svg?raw";
+import arrowUpRight from "../../public/assets/common/icons/arrow-up-right-24x24.svg?raw";
+import type { AppDescription } from "../types/types";
+
+interface Props {
+    card: AppDescription;
+    bgClass?: string;
+    iconBg?: string;
+    iconFill?: string;
+}
+
+const { card, iconBg, iconFill, bgClass } = Astro.props;
+---
+
+{
+    card.button && (
+        
+        <a
+            class={`
+            studio-card
+            p-8
+            rounded-3xl 
+            hover:-translate-y-1 
+            group cursor-pointer relative
+            hover:scale-105 `}
+            href={card.button?.link ?? ""}
+        >
+            <div class="border-beam" />
+
+            {/* Header */}
+            <div class="flex justify-between items-start mb-12">
+                <div
+                    class={`p-3 rounded-lg border transition-all duration-500 ${iconBg}`}
+                >
+                    <div class={`w-[24px] h-[24px]`}>
+                        <slot />
+                    </div>
+                </div>
+                <div
+                    class="w-5 h-5 text-slate-700 group-hover:text-white transition-colors duration-300"
+                    set:html={arrowUpRight}
+                />
+            </div>
+
+            {/* Body */}
+            <div class="mb-8">
+                <div
+                    class="font-mono text-base uppercase tracking-widest text-slate-500 group-hover:text-slate-300 mb-6 transition-colors"
+                    set:html={marked.parseInline(card.subtitle ?? "")}
+                />
+                <div
+                    class="text-2xl font-bold text-white mb-4 tracking-tight uppercase"
+                    set:html={marked.parseInline(card.title ?? "")}
+                />
+                <div
+                    class="text-slate-400 text-sm leading-relaxed group-hover:text-slate-300 transition-colors"
+                    set:html={marked.parseInline(card.description ?? "")}
+                />
+            </div>
+
+            {/* Technical Footer */}
+
+            <div class="pt-6 border-t border-white/5 space-y-2">
+                <div class="flex justify-between items-center">
+                    <span class="font-mono text-[10px] text-slate-600 uppercase">
+                        Format
+                    </span>
+                    <span
+                        class="font-mono text-[10px] text-slate-300 uppercase"
+                        set:html={marked.parseInline(card.format ?? "")}
+                    />
+                </div>
+
+                <div class="flex justify-between items-center opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                    <span class="font-mono text-[10px] text-slate-600 uppercase">
+                        Status
+                    </span>
+                    <span
+                        class={`font-mono text-[10px] ${bgClass}`}
+                        set:html={marked.parseInline(card.status ?? "")}
+                    />
+                </div>
+
+                <div class="flex justify-between items-start">
+                    <span class="font-mono text-[10px] text-slate-600 uppercase">
+                        Export
+                    </span>
+                    <span
+                        class="font-mono text-[10px] text-slate-500 uppercase text-right"
+                        set:html={marked.parseInline(card.export ?? "")}
+                    />
+                </div>
+            </div>
+        </a>
+        
+    )
+}

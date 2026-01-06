@@ -2,7 +2,7 @@ title: "Welcome to Pixodesk Website"
 
 sections:
   section_00:
-    title: "# Create and Animate <span class='text-curstom-gradient-violet'>SVG and Lottie</span>"
+    title: "# Create and Animate <span class='text-curstom-gradient-orange'>SVG and Lottie</span>"
     items:
       - content: "##### For Web and Native Apps"
       # - content: "##### Vector graphic design for websites, web apps, and native apps."
@@ -13,35 +13,38 @@ sections:
     items: 
       - content: "###### Try out our applications online on their own webpages."
 
-  section_02:  
-    title: SVG Editor
+  section_02:
     icon: true
-    items:
-      - content: <span class='text-xl'>Best for static content</span>
-      - content: <span class='text-xs text-gray-400'>Creates static vector graphics</span>
-      - content: .SVG file format <br/><span class='text-xs text-gray-400'>Or export to other formats</span>
+    title: SVG Editor
+    subtitle: Best for static content
+    description: Creates static vector graphics
+    status: Ready
+    format: ".SVG"
+    export: ".png, .jpeg, .webp, .gif"
     button: 
       title: Read More
       link: "./svg-editor"
 
   section_03:
-    title: 2D Animator
     icon: true
-    items:
-      - content: <span class='text-xl'>Best for native devices</span>
-      - content: <span class='text-xs text-gray-400'>Creates Lottie animations</span>
-      - content: .JSON (Lottie) file format <br/><span class='text-xs text-gray-400'>Or export to other dynamic or static formats</span>
+    title: 2D Animator
+    subtitle: Best for native devices
+    description: Creates Lottie animations
+    status: Ready
+    format: ".JSON (Lottie)"
+    export: "animated .svg, .gif, .webm, .mp4 <br/> static .png, .jpeg, .webp, .gif"
     button: 
       title: Read More
       link: "./2d-animator"
   
   section_04:
-    title: SVG Animator
     icon: true
-    items:
-      - content: <span class='text-xl'>Best for the web</span>
-      - content: <span class='text-xs text-gray-400'>Creates SVG animations (CSS or JS)</span>
-      - content: .SVG file format <br/><span class='text-xs text-gray-400'>Or export to other dynamic or static formats</span>
+    title: SVG Animator
+    subtitle: Best for the web
+    description: Creates SVG animations (CSS or JS)
+    format: .SVG
+    status: Coming Soon
+    export: "animated .gif, .webm, .mp4 <br/> static .png, .jpeg, .webp, .gif"
     button: 
       title: Read More
       link: "./svg-animator"
@@ -75,7 +78,7 @@ sections:
       
     item_02:
       icon:
-      title: Ultra-Small File Sizes
+      title: Ultra-Small SVG and Lottie File Sizes
       content: SVG and Lottie animations have ultra-lightweight file sizes, helping your application run efficiently and smoothly.
 
     item_03:

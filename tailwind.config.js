@@ -93,11 +93,13 @@ module.exports = {
       
       fontFamily: {
         // Default sans font for body text
-        sans: ['Montserrat', ...defaultTheme.fontFamily.sans],
+        sans: ['Inter', ...defaultTheme.fontFamily.sans],
 
         // New custom font
         montserrat: ['Montserrat', ...defaultTheme.fontFamily.sans],
         caveat: ["Caveat", ...defaultTheme.fontFamily.sans],
+        inter: ["Inter", ...defaultTheme.fontFamily.sans],
+        mono: ["Mono", ...defaultTheme.fontFamily.sans],
       },
 
     },
