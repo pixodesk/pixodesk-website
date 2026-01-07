@@ -36,9 +36,7 @@ div, p {
 }
 
 
-
 // Font family Montserrat
-
 @font-face {
   font-family: 'Montserrat';
   src: url('/assets/fonts/Montserrat-Black.ttf') format('truetype');
@@ -66,7 +64,6 @@ div, p {
   font-weight: 600;
   font-style: normal;
 }
-
 
 @font-face {
   font-family: 'Montserrat';
@@ -112,8 +109,6 @@ div, p {
 
 
 // Font family Caveat
-
-
 @font-face {
   font-family: 'Caveat';
   src: url('/assets/fonts/Caveat-Bold.ttf') format('truetype');
@@ -144,8 +139,6 @@ div, p {
 
 
 // Font family Inter
-
-
 @font-face {
   font-family: 'Inter';
   src: url('/assets/fonts/Inter_18pt-Black.ttf') format('truetype');
@@ -290,7 +283,6 @@ body {
   // min-height: calc(100vh - 2.5rem - 2.5rem);
 }
 
-
 .list {    
     a {
         color: var(--c-indigo-lighter);
@@ -320,3 +312,58 @@ body {
 .text-curstom-gradient-violet {
   @apply bg-gradient-to-br from-[#f1f1f1] to-[#c3ace7] bg-clip-text text-transparent;
 }
+
+
+// Animated gradient - shift colors
+.text-gradient-animated-orange-blue {
+  background: linear-gradient(90deg, #eb8e3c, #ff167f, #24e8ee, #006eff, #eb8e3c, #ff167f,);
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: gradientShift 10s ease-in-out infinite;
+}
+
+@keyframes gradientShift {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 50% 100%; }
+  100% { background-position: 0% 50%;}
+  
+}
+
+
+// Animated gradient morph
+.text-gradient-morph {
+  position: relative;
+  display: inline-block;
+  font-weight: bold;
+  background: linear-gradient(90deg, #eb8e3c, #ff167f);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.text-gradient-morph::after {
+  content: attr(data-text);
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: linear-gradient(90deg, #24e8ee, #006eff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  pointer-events: none;
+  animation: fadeBlue 10s ease-in-out infinite;
+  white-space: nowrap;
+}
+
+@keyframes fadeBlue {
+  0% { opacity: 0; }
+  45% { opacity: 0; }
+  50% { opacity: 1; }
+  95% { opacity: 1; }
+  100% { opacity: 0; }
+}
+

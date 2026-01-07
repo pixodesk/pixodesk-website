@@ -2,7 +2,7 @@ title: "Welcome to Pixodesk Website"
 
 sections:
   section_00:
-    title: "# Create and Animate <span class='text-curstom-gradient-orange'>SVG and Lottie</span>"
+    title: "# Create and Animate <span class='text-gradient-morph' data-text='SVG and Lottie'>SVG and Lottie</span>"
     items:
       - content: "##### For Web and Native Apps"
       # - content: "##### Vector graphic design for websites, web apps, and native apps."
