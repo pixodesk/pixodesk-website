@@ -9,6 +9,7 @@ module.exports = {
   theme: {
     extend: {
       maxWidth: {
+        'custom-narrowest': '31rem',
         'custom-narrower': '46rem',
         'custom-narrow': '56rem',
         'custom-standard': '76rem',
