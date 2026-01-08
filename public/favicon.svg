@@ -1,9 +1,16 @@
-<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 128 128">
-    <path d="M50.4 78.5a75.1 75.1 0 0 0-28.5 6.9l24.2-65.7c.7-2 1.9-3.2 3.4-3.2h29c1.5 0 2.7 1.2 3.4 3.2l24.2 65.7s-11.6-7-28.5-7L67 45.5c-.4-1.7-1.6-2.8-2.9-2.8-1.3 0-2.5 1.1-2.9 2.7L50.4 78.5Zm-1.1 28.2Zm-4.2-20.2c-2 6.6-.6 15.8 4.2 20.2a17.5 17.5 0 0 1 .2-.7 5.5 5.5 0 0 1 5.7-4.5c2.8.1 4.3 1.5 4.7 4.7.2 1.1.2 2.3.2 3.5v.4c0 2.7.7 5.2 2.2 7.4a13 13 0 0 0 5.7 4.9v-.3l-.2-.3c-1.8-5.6-.5-9.5 4.4-12.8l1.5-1a73 73 0 0 0 3.2-2.2 16 16 0 0 0 6.8-11.4c.3-2 .1-4-.6-6l-.8.6-1.6 1a37 37 0 0 1-22.4 2.7c-5-.7-9.7-2-13.2-6.2Z" />
-    <style>
-        path { fill: #000; }
-        @media (prefers-color-scheme: dark) {
-            path { fill: #FFF; }
-        }
-    </style>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Pixodesk SVG (https://pixodesk.com) -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" text-rendering="geometricPrecision" shape-rendering="geometricPrecision" fill="#ffffff38" data-px-attrs="animation:{duration:1000;inThreshold:0.5}">
+  <defs>
+    <linearGradient id="_px_2opll5bd" x1="6.227" y1="31.227" x2="56.227" y2="31.227" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="rgb(0,164,253)"/>
+      <stop offset="100%" stop-color="rgb(0,100,153)"/>
+    </linearGradient>
+  </defs>
+  <g transform="translate(32,32)scale(1.0455,1.0455)translate(-80.2555,-59.6665)">
+    <g transform="translate(80.2555,59.6665)scale(0.8385,0.8385)translate(-31.9999,-31.9999)">
+      <rect fill="#ffffff" stroke="none" transform="translate(31.9999,20.8416)rotate(45)translate(-23.3368,-23.3368)" rx="12" ry="12" x="2.0836" y="2.0836" width="58.2867" height="58.2867"/>
+      <rect fill="url(#_px_2opll5bd)" stroke="none" transform="translate(32,20.8415)rotate(45)translate(-23.3368,-23.3368)" rx="10" ry="10" x="5.7995" y="5.7995" width="50.855" height="50.855"/>
+    </g>
+  </g>
 </svg>
