@@ -2,22 +2,27 @@
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 import DownloadComponent from "../../../layouts/DownloadComponent.astro";
 import Section from "../../../layouts/Section.astro";
-import StoreButtons from '../../../layouts/StoreButtons.astro';
+import StoreButtons from "../../../layouts/StoreButtons.astro";
 import content from "../svg-pages-text-content";
 ---
 
 <BaseLayout title="SVG Download">
-  <section class="svg-download pt-navDouble flex flex-1">
-    <Section
-      bgColor="bg-custom-gradient-indigo"
-      color="text-base-bright"
-      page
-    >
-      <DownloadComponent page={content.pages.page_03} >
-        {content.pages.page_03?.parts?.[0]?.storeButtons ? (
-          <StoreButtons storeButtons={content.pages.page_03.parts[0].storeButtons ?? ""} />
-        ) : null}
-      </DownloadComponent>
-    </Section>
-  </section>
+    <section class="svg-download pt-navDouble flex flex-1">
+        <Section
+            bgColor="bg-custom-gradient-indigo"
+            color="text-base-bright"
+            page
+        >
+            <DownloadComponent page={content.pages.page_03}>
+                {
+                    content.pages.page_03?.parts?.[0]?.storeButtons ? (
+                        <StoreButtons 
+                            storeButtons={content.pages.page_03.parts[0].storeButtons ?? ""}
+                            leftAlign={true}
+                        />
+                    ) : null
+                }
+            </DownloadComponent>
+        </Section>
+    </section>
 </BaseLayout>
