@@ -2,33 +2,42 @@
 import type { Button } from "../types/types";
 
 interface Props {
-  storeButtons: Button[];
-  bgColorWindows?: string;
-  bgColorHoverWindows?: string;
-  bgColorMac?: string;
-  bgColorHoverMac?: string;
+    storeButtons: Button[];
+    bgColorWindows?: string;
+    bgColorHoverWindows?: string;
+    bgColorMac?: string;
+    bgColorHoverMac?: string;
+    leftAlign: boolean;
 }
 
-const { 
-  storeButtons, 
-  bgColorWindows = 'bg-indigo-lighter', 
-  bgColorHoverWindows = 'hover:bg-indigo-light',
-  bgColorMac = 'bg-violet-lighter', 
-  bgColorHoverMac = 'hover:bg-violet-light'  
+const {
+    storeButtons,
+    bgColorWindows = "bg-indigo-lighter",
+    bgColorHoverWindows = "hover:bg-indigo-light",
+    bgColorMac = "bg-violet-lighter",
+    bgColorHoverMac = "hover:bg-violet-light",
+    leftAlign = false,
 } = Astro.props;
 
 import windows from "../../public/assets/common/logos/windows.svg?raw";
 import apple from "../../public/assets/common/logos/apple.svg?raw";
 ---
+
 <!-- ${index === 0 ? "bg-base-red" : "bg-base-yellow"}
 ${index === 0 ? "hover:bg-base-red-darker" : "hover:bg-base-yellow-darker"} -->
-<div class="flex flex-col justify-center sm:flex-row sm:space-x-4 space-y-2 sm:space-y-0">
-  {
-    storeButtons?.map((button, index) => (
-      <a
-        href={button.link}
-        target="_blank"
-        class={`
+<div
+    class=
+        {`flex flex-col 
+        ${leftAlign ? 'justify-start' : 'justify-center'} 
+        sm:flex-row sm:space-x-4 
+        space-y-2 sm:space-y-0`}
+>
+    {
+        storeButtons?.map((button, index) => (
+            <a
+                href={button.link}
+                target="_blank"
+                class={`
           flex 
           items-center 
           justify-center 
@@ -43,25 +52,25 @@ ${index === 0 ? "hover:bg-base-red-darker" : "hover:bg-base-yellow-darker"} -->
           duration-300
           ease-in-out
           `}
-      >
-        {/* Optional icon SVG */}
-        {button.svg && (
-         <div class="
+            >
+                {/* Optional icon SVG */}
+                {button.svg && (
+                    <div
+                        class="
             w-[24px] 
             h-[24px]
             text-white
-            ">
-            <div
-              class="[&_svg]:w-full [&_svg]:h-full [&_svg]:block"
-              set:html={index === 0 ? windows : apple }
-            />
-         </div>
-         
-          
-        )}
+            "
+                    >
+                        <div
+                            class="[&_svg]:w-full [&_svg]:h-full [&_svg]:block"
+                            set:html={index === 0 ? windows : apple}
+                        />
+                    </div>
+                )}
 
-        <span class="text-white">{button.title}</span>
-      </a>
-    ))
-  }
+                <span class="text-white">{button.title}</span>
+            </a>
+        ))
+    }
 </div>

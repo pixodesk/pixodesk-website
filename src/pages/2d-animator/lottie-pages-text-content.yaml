@@ -159,13 +159,13 @@ pages:
       - title: "#### Version 1.3 <span class='_date'>- November 2023</span>"
         items:
           - content: "Added align and distribute bezier points (Node tools)"
-            image: http://127.0.0.1:4000/image/release-notes/node-tool--align.png
+            # image: http://127.0.0.1:4000/image/release-notes/node-tool--align.png
           
           - content: "Make shape symmetric around two selected points (Node tools)"
             images: ''
 
           - content: "Replace corners with arcs (Node tools)"
-            image: http://127.0.0.1:4000/image/release-notes/node-tool--misc.png
+            # image: http://127.0.0.1:4000/image/release-notes/node-tool--misc.png
 
           - content: "Bug fixes"
 

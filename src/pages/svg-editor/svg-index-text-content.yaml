@@ -124,10 +124,8 @@ sections:
     subTitle: "### Neat, compact and efficient"
     subSections:
       - header: How your SVG looks </br>in the Pixodesk SVG Editor
-        image: http://127.0.0.1:4000/image/svgEditApp-text-0.png
         footer: ""
         
       - header: How your SVG file's code looks </br>in code editor
-        image: http://127.0.0.1:4000/image/svgEditApp-text-0.png
         footer: Small file size of the SVG.
     
