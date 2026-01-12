@@ -143,6 +143,7 @@ module.exports = {
 
     //Max Width Pages
     'max-w-custom-narrow', 'max-w-custom-standard',
+    'max-w-custom-narrowest',
     
     // Spacing
     'px-pxPage', 'pl-pxPage', 'pr-pxPage',
