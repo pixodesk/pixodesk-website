@@ -6,10 +6,6 @@ sections:
       - content: "##### Turn your vector designs into dynamic SVG animations."
       - content: "##### Export them for websites, landing pages, social content, web-based apps, and more."
     
-    images:
-      background: ""
-      front: http://127.0.0.1:4000/image/svgAnimApp-astronaut-3-test.png
-  # video: http://127.0.0.1:4000/image/svgAnimApp-astronaut-pageLook-6.mp4
     
     svg: 
       src: "../assets/svga/hero/astronaut.svg"
@@ -75,8 +71,6 @@ sections:
   section_03:  
     subSections:
       - title: "### Create"
-        image: http://127.0.0.1:4000/image/svgAnimApp-bird-1.png
-        video: http://127.0.0.1:4000/image/svgAnimApp-bird-twitting-1.mp4
         items: 
           - title: Create or import vector drawings.
             content: Create your own SVG or import existing vector drawings.
@@ -88,8 +82,6 @@ sections:
             content: Use animation blocks to create detailed animated scenes.
 
       - title: "### Animate"
-        image: http://127.0.0.1:4000/image/svgAnimApp-jar-2.png
-        video: http://127.0.0.1:4000/image/svgAnimApp-jar-with-hearts-1-bg-222.mp4
         items: 
           - title: Classic and auto-animation options.
             content: Use the Pin button to set the object's state on the canvas at one or more time points.
@@ -101,8 +93,6 @@ sections:
             content: These charts help you see how the changes happen over time.
 
       - title: "### Export"
-        image: http://127.0.0.1:4000/image/svgAnimApp-bird.png
-        video: http://127.0.0.1:4000/image/svgAnimApp-envelope-open-1-bg222.mp4
         items: 
           - title: Save as SVG file.
             content: Export your vector file and add it to a portfolio, webpage, or social media platforms.
@@ -117,7 +107,6 @@ sections:
   section_030: 
     title: "## Shape Builder Tool: From Simple to Sophisticated."
     subTitle: Merge, subtract, and manipulate shapes to create anything from icons to intricate illustrations.
-    image: http://127.0.0.1:4000/image/svgEditApp-shapeBuilder-bird-4.png
     items:
       - content: Turn simple shapes into complex designs.
       - content: Build, merge, and adjust with ease.
@@ -191,10 +180,8 @@ sections:
     subTitle: "### Neat, compact and efficient"
     subSections:
       - header: How your SVG looks </br>in the Pixodesk SVG Editor
-        image: http://127.0.0.1:4000/image/svgEditApp-text-0.png
         footer: ""
         
       - header: How your SVG file's code looks </br>in code editor
-        image: http://127.0.0.1:4000/image/svgEditApp-text-0.png
         footer: Small size of the SVG file
       

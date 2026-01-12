@@ -98,7 +98,6 @@ sections:
     svg: 
       src: "../assets/index/sections/px-shape-builder.svg"
       alt: "Made with Shape Builder tool"
-    # image: http://127.0.0.1:4000/image/svgEditApp-shapeBuilder-bird-4.png
     items:
       - content: Combine, subtract, and manipulate shapes intuitively.
       - content: Create complex designs from simple shapes.

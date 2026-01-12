@@ -161,7 +161,6 @@ sections:
   section_08: 
     title: "## Make It Once - Works Everywhere"
     subTitle: Pixodesk Animator is your all-in-one animation tool.<br/> Perfect for React Native, iOS, Android, Windows, and the web.
-    image: http://127.0.0.1:4000/image/devices.png
-    video: http://127.0.0.1:4000/image/devices.mp4
+
 
 
