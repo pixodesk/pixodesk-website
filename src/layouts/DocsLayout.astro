@@ -1,153 +1,54 @@
 ---
-// src/layouts/DocsLayout.astro
-import { getCollection, type CollectionEntry } from 'astro:content';
+import Footer from "./Footer.astro";
+import Menu from "./Menu.astro";
+import DocsContainer from "./DocsContainer.astro";
 
-const allDocs = await getCollection('docs');
-
-// Group docs by category
-type GroupedDocs = Record<string, CollectionEntry<'docs'>[]>;
-
-const groupedDocs = allDocs.reduce((acc: GroupedDocs, doc: CollectionEntry<'docs'>) => {
-  const category = doc.data.category;
-  if (!acc[category]) acc[category] = [];
-  acc[category].push(doc);
-  return acc;
-}, {} as GroupedDocs);
-
-// Sort each group by order
-Object.keys(groupedDocs).forEach((category: string) => {
-  groupedDocs[category].sort((a: CollectionEntry<'docs'>, b: CollectionEntry<'docs'>) => a.data.order - b.data.order);
-});
-
-// Pre-process categories to find category docs
-type CategoryInfo = {
-  category: string;
-  categoryDoc: CollectionEntry<'docs'> | undefined;
-  docs: CollectionEntry<'docs'>[];
-};
-
-const categoriesWithDocs: CategoryInfo[] = Object.entries(groupedDocs).map(([category, docs]) => ({
-  category,
-  categoryDoc: docs.find(doc => doc.data.isCategory),
-  docs: docs.filter(doc => !doc.data.isCategory),
-}));
+import "../styles/tailwind.css";
+import "../styles/global.scss";
 
 type Props = {
-  currentSlug: string;
+    currentSlug: string;
+    title?: string;
+    color?: string;
+    bgColor?: string;
+    hoverText?: string;
 };
 
-const { currentSlug } = Astro.props;
+const { currentSlug, title, color, bgColor, hoverText } = Astro.props;
 ---
 
-<div class="docs-container">
-  <aside class="sidebar">
-    <nav>
-      {categoriesWithDocs.map(({ category, categoryDoc, docs }) => (
-        <div class="category-group">
-          {categoryDoc ? (
-            <a 
-              href={`/docs/${categoryDoc.data.slug || categoryDoc.slug}`}
-              class:list={['category-title', 'category-link', { active: currentSlug === (categoryDoc.data.slug || categoryDoc.slug) }]}
-            >
-              {category}
-            </a>
-          ) : (
-            <h3 class="category-title">{category}</h3>
-          )}
-          <ul>
-            {docs.map((doc) => {
-              const docSlug = doc.data.slug || doc.slug;
-              return (
-                <li>
-                  <a 
-                    href={`/docs/${docSlug}`}
-                    class:list={['doc-link', { active: currentSlug === docSlug }]}
-                  >
-                    {doc.data.title}
-                  </a>
-                </li>
-              );
-            })}
-          </ul>
+<html lang="en">
+    <head>
+        <title>
+            {
+                title
+                    ? `${title} - Pixodesk`
+                    : "Pixodesk - SVG & Lottie Animations"
+            }
+        </title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="icon" href="/favicon.png" />
+    </head>
+    <body class="font-sans min-h-screen flex flex-col bg-white">
+        <script
+            async
+            src="https://analytics.umami.is/script.js"
+            data-website-id="33c2779d-0e25-4964-90c1-11ce29d69fd6"></script>
+
+        <Menu
+            color={color}
+            bgColor="bg-[#00010e]"
+            bgSubColor="bg-[#00010e]"
+            hoverText={hoverText}
+        />
+        <div class="flex flex-col flex-1  px-pxPage">
+            <DocsContainer currentSlug={currentSlug}>
+                <slot />
+            </DocsContainer>
         </div>
-      ))}
-    </nav>
-  </aside>
 
-  <main class="content">
-    <slot />
-  </main>
-</div>
-
-<style>
-  .docs-container {
-    display: grid;
-    grid-template-columns: 250px 1fr;
-    gap: 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 2rem;
-  }
-
-  .sidebar {
-    position: sticky;
-    top: 2rem;
-    height: fit-content;
-  }
-
-  .category-group {
-    margin-bottom: 2rem;
-  }
-
-  .category-title {
-    font-size: 0.875rem;
-    font-weight: 600;
-    text-transform: uppercase;
-    color: #666;
-    margin-bottom: 0.5rem;
-    display: block;
-  }
-
-  .category-link {
-    text-decoration: none;
-    padding: 0.25rem 0;
-    transition: color 0.2s;
-  }
-
-  .category-link:hover {
-    color: #4338ca;
-  }
-
-  .category-link.active {
-    color: #4338ca;
-  }
-
-  .sidebar ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
-
-  .doc-link {
-    display: block;
-    padding: 0.5rem 0.75rem;
-    color: #333;
-    text-decoration: none;
-    border-radius: 4px;
-    transition: background 0.2s;
-  }
-
-  .doc-link:hover {
-    background: #f0f0f0;
-  }
-
-  .doc-link.active {
-    background: #e0e7ff;
-    color: #4338ca;
-    font-weight: 500;
-  }
-
-  .content {
-    min-width: 0;
-  }
-</style>
+        <Footer />
+    </body>
+</html>

@@ -141,7 +141,10 @@ module.exports = {
     "bg-navy-lightest", "bg-navy-lighter", "bg-navy-light", "bg-navy-base", "bg-navy-dark",
 
 
-    //Max Width Pages
+    //Width Pages
+    'w-custom-narrow', 'w-custom-standard',
+    'w-custom-narrowest',
+
     'max-w-custom-narrow', 'max-w-custom-standard',
     'max-w-custom-narrowest',
     

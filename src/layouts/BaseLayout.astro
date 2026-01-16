@@ -6,37 +6,45 @@ import "../styles/tailwind.css";
 import "../styles/global.scss";
 
 interface Props {
-  title?: string;
-  color?: string;
-  bgColor?: string;
-  hoverText?: string;
+    title?: string;
+    color?: string;
+    bgColor?: string;
+    hoverText?: string;
 }
 
-const {title, color, bgColor, hoverText} = Astro.props;
+const { title, color, bgColor, hoverText } = Astro.props;
 ---
 
 <html lang="en">
-  <head>
-    <title>{title ? `${title} - Pixodesk` : "Pixodesk - SVG & Lottie Animations"}</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
-    <link rel="icon" href="/favicon.png" />
-  </head>
-  <body class="font-sans min-h-screen flex flex-col bg-black">
-    <script async src="https://analytics.umami.is/script.js" data-website-id="33c2779d-0e25-4964-90c1-11ce29d69fd6"></script>
-  <!-- <body class="font-sans"> -->
-    
-    <Menu 
-      color={color} 
-      bgColor="bg-[#00010e]"
-      bgSubColor="bg-[#00010e]" 
-      hoverText={hoverText} />
-    <main class="flex flex-col flex-1">
-    <!-- <main class="relative"> -->
-      <slot />
-    </main>
-    <Footer />
-    
-  </body>
+    <head>
+        <title>
+            {
+                title
+                    ? `${title} - Pixodesk`
+                    : "Pixodesk - SVG & Lottie Animations"
+            }
+        </title>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="icon" href="/favicon.png" />
+    </head>
+    <body class="font-sans min-h-screen flex flex-col bg-black">
+        <script
+            async
+            src="https://analytics.umami.is/script.js"
+            data-website-id="33c2779d-0e25-4964-90c1-11ce29d69fd6"></script>
+
+        <Menu
+            color={color}
+            bgColor="bg-[#00010e]"
+            bgSubColor="bg-[#00010e]"
+            hoverText={hoverText}
+        />
+        <main class="flex flex-col flex-1">
+            <!-- <main class="relative"> -->
+            <slot />
+        </main>
+        <Footer />
+    </body>
 </html>
