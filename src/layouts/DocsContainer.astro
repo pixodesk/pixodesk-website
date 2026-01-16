@@ -3,6 +3,26 @@ import { getCollection, type CollectionEntry } from "astro:content";
 
 const allDocs = await getCollection("docs");
 
+// Define custom category order
+const categoryOrder: Record<string, number> = {
+    'vue': 1,
+    'react': 2,
+    'react-native': 3,
+};
+
+// Sort all docs by custom category order, then by order within category
+const sortedDocs = allDocs.sort((a, b) => {
+    const categoryA = categoryOrder[a.data.category] || 999;
+    const categoryB = categoryOrder[b.data.category] || 999;
+    
+    // First, compare by custom category order
+    if (categoryA !== categoryB) {
+        return categoryA - categoryB;
+    }
+    // If same category, sort by order number
+    return a.data.order - b.data.order;
+});
+
 // Group docs by category
 type GroupedDocs = Record<string, CollectionEntry<"docs">[]>;
 
@@ -24,24 +44,33 @@ Object.keys(groupedDocs).forEach((category: string) => {
     );
 });
 
-// Pre-process categories
+// Pre-process categories with custom order
 type CategoryInfo = {
     category: string;
     docs: CollectionEntry<"docs">[];
 };
 
-const categoriesWithDocs: CategoryInfo[] = Object.entries(groupedDocs).map(
-    ([category, docs]) => ({
+const categoriesWithDocs: CategoryInfo[] = Object.entries(groupedDocs)
+    .map(([category, docs]) => ({
         category,
         docs,
-    }),
-);
+        sortOrder: categoryOrder[category] || 999,
+    }))
+    .sort((a, b) => a.sortOrder - b.sortOrder)
+    .map(({ category, docs }) => ({ category, docs }));
 
 type Props = {
     currentSlug: string;
 };
 
 const { currentSlug } = Astro.props;
+
+// Find current doc index for prev/next navigation
+const currentIndex = sortedDocs.findIndex(
+    (doc) => (doc.data.slug || doc.slug) === currentSlug
+);
+const prevDoc = currentIndex > 0 ? sortedDocs[currentIndex - 1] : null;
+const nextDoc = currentIndex < sortedDocs.length - 1 ? sortedDocs[currentIndex + 1] : null;
 ---
 
 <div class="docs-container pt-navDouble">
@@ -54,7 +83,7 @@ const { currentSlug } = Astro.props;
                             class="category-header"
                             data-category-toggle={category}
                         >
-                            <h3 class="category-title ">{category}</h3>
+                            <h3 class="category-title">{category}</h3>
                             <svg
                                 class="chevron"
                                 width="16"
@@ -106,6 +135,36 @@ const { currentSlug } = Astro.props;
 
     <main class="content">
         <slot />
+        
+        <!-- Navigation arrows -->
+        <nav class="doc-navigation">
+            <div class="nav-link-container">
+                {prevDoc && (
+                    <a href={`/docs/${prevDoc.data.slug || prevDoc.slug}`} class="nav-link prev-link">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M12.5 15L7.5 10L12.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                        <div class="nav-link-text">
+                            <span class="nav-label">Previous</span>
+                            <span class="nav-title">{prevDoc.data.title}</span>
+                        </div>
+                    </a>
+                )}
+            </div>
+            <div class="nav-link-container">
+                {nextDoc && (
+                    <a href={`/docs/${nextDoc.data.slug || nextDoc.slug}`} class="nav-link next-link">
+                        <div class="nav-link-text">
+                            <span class="nav-label">Next</span>
+                            <span class="nav-title">{nextDoc.data.title}</span>
+                        </div>
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                            <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </a>
+                )}
+            </div>
+        </nav>
     </main>
 </div>
 
