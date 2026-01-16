@@ -1,0 +1,33 @@
+.docs {
+    pre {
+        background-color: #1e1e1e;
+        padding: 1rem;
+        border-radius: 8px;
+        border: 1px solid #333;
+    }
+
+    /* Targets the text inside */
+    pre code {
+        // font-family: 'Courier New', monospace;
+        color: #18181b;
+    }
+
+    pre a {
+        color: #4ade80;
+        /* Terminal green color */
+        text-decoration: none;
+        font-family: monospace;
+    }
+
+    .terminal-box a:hover {
+        text-decoration: none;
+    }
+
+    hr {
+        border-color: #444;
+        margin-top: 3rem;
+        margin-bottom: 3rem;
+    }
+
+    
+}

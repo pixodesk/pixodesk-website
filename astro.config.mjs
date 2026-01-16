@@ -4,6 +4,9 @@ import { defineConfig } from "astro/config";
 import yaml from "@modyfi/vite-plugin-yaml";
 
 
+import mdx from '@astrojs/mdx';
+
+
 export default defineConfig({
     vite: {
         
@@ -30,10 +33,7 @@ export default defineConfig({
             allowedHosts: ['pixodesk.com'], // Domain
         }
     },
-    integrations: [
-        react(),
-        tailwind({
-            config: { applyBaseStyles: true },
-        })
-    ],
+    integrations: [react(), tailwind({
+        config: { applyBaseStyles: true },
+    }), mdx()],
 });
