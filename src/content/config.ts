@@ -5,7 +5,7 @@ const docsCollection = defineCollection({
   schema: z.object({
     title: z.string(),
     description: z.string().optional(),
-    category: z.enum(['vue', 'react', 'react-native']),
+    category: z.enum(['Lottie for Web', 'Lottie for Mobile']),
     order: z.number().default(999),
     slug: z.string().optional(),
   }),

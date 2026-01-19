@@ -1,0 +1,148 @@
+---
+title: "Jekyll"
+description: "Lottie animations for Jekyll"
+category: "Lottie for Web"
+order: 40
+slug: "jekyll-lottie"
+---
+
+# Add Lottie Animation to Jekyll Project
+
+You can add Lottie animations to a Jekyll site using the `lottie-web` JavaScript library via CDN.
+
+---
+
+## Create Jekyll Project
+
+Open terminal and navigate to your projects folder:
+
+```bash
+cd path/to/your/projects
+```
+
+Create a new Jekyll site:
+
+```bash
+gem install jekyll bundler
+jekyll new my-animation-site
+cd my-animation-site
+```
+
+Start the development server:
+
+```bash
+bundle exec jekyll serve
+```
+
+You should see: `Server address: http://127.0.0.1:4000/`
+
+---
+
+## Get Your Lottie Animation
+
+**Option 1:** Create animation in 2D Animator
+- <a href="https://pixodesk.com/2d-animator" target="_blank">https://pixodesk.com/2d-animator</a>
+
+**Option 2:** Download from LottieFiles
+- <a href="https://lottiefiles.com" target="_blank">https://lottiefiles.com</a>
+
+Create an assets folder and add your animation:
+
+```bash
+assets/animations/animation.json
+```
+
+---
+
+## Add Lottie Library to Layout
+
+**_layouts/default.html**
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page.title }}</title>
+    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+</head>
+<body>
+    {{ content }}
+    
+    <!-- Lottie Web Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+</body>
+</html>
+```
+
+---
+
+## Use Lottie in Your Page
+
+**index.html** (or any page/post)
+
+```html
+---
+layout: default
+title: Home
+---
+
+<div class="container">
+    <h1>My Lottie Animation</h1>
+    <div id="lottie-animation"></div>
+</div>
+
+<script>
+    var animation = lottie.loadAnimation({
+        container: document.getElementById('lottie-animation'),
+        renderer: 'svg',
+        loop: true,
+        autoplay: true,
+        path: '{{ "/assets/animations/animation.json" | relative_url }}'
+    });
+</script>
+
+<style>
+    #lottie-animation {
+        width: 300px;
+        height: 300px;
+        margin: 0 auto;
+    }
+</style>
+```
+
+---
+
+## Additional Options (Optional)
+
+```javascript
+lottie.loadAnimation({
+    container: document.getElementById('lottie-animation'),
+    renderer: 'svg',           // 'svg', 'canvas', or 'html'
+    loop: true,                // true, false, or number of loops
+    autoplay: true,
+    path: '/assets/animations/animation.json'
+});
+```
+
+---
+
+## Troubleshooting
+
+**Animation not loading:**
+
+- Check that the path to your JSON file is correct
+- Use `{{ "/assets/animations/animation.json" | relative_url }}` for proper path resolution
+- Verify the Lottie CDN script is loaded before your animation script
+
+**Animation not visible:**
+
+- Ensure the container has width and height
+- Check that the JSON file is valid
+
+---
+
+## Done! 🎉
+
+Your Lottie animation should now work in your Jekyll site.

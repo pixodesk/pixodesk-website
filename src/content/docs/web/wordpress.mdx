@@ -1,0 +1,184 @@
+---
+title: "WordPress"
+description: "Lottie animations for WordPress"
+category: "Lottie for Web"
+order: 60
+slug: "wordpress-lottie"
+---
+
+
+# Add Lottie Animation to WordPress Site
+
+You can add Lottie animations to a WordPress site using a Custom HTML block and the Lottie Web library via CDN.
+
+---
+
+## Create or Open WordPress Site
+
+**Option A: Local Development (Recommended for testing)**
+
+1. Download <a href="https://localwp.com" target="_blank">Local (LocalWP)</a>
+2. Install and open Local
+3. Click **+ Create a new site**
+4. Follow the setup wizard
+5. Click **WP Admin** to access your site
+
+**Option B: Existing WordPress Site**
+
+1. Log in to your WordPress admin dashboard (usually `yoursite.com/wp-admin`)
+2. Make sure you have editing permissions
+
+---
+
+## Get Your Lottie Animation
+
+**Option 1:** Create animation in 2D Animator
+- <a href="https://pixodesk.com/2d-animator" target="_blank">https://pixodesk.com/2d-animator</a>
+
+**Option 2:** Download from LottieFiles
+- <a href="https://lottiefiles.com" target="_blank">https://lottiefiles.com</a>
+
+Save the `.json` file to your computer.
+
+---
+
+## Upload Animation to WordPress
+
+1. In your WordPress admin, go to **Media** → **Add New**
+2. Click **Select Files** or drag and drop your `.json` file
+3. After upload, click on the file
+4. Copy the **File URL** (e.g., `https://yoursite.com/wp-content/uploads/2024/01/animation.json`)
+
+**Note:** WordPress allows JSON file uploads by default. If you get an error, your hosting provider may have disabled it (see Troubleshooting section).
+
+---
+
+## Add Lottie Animation to Page/Post
+
+1. Edit the page or post where you want the animation
+2. Click **+** to add a new block
+3. Search for **Custom HTML** and select it
+4. Paste this code:
+
+```html
+<div id="lottie-animation" style="width: 300px; height: 300px; margin: 0 auto;"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+<script>
+    var animation = lottie.loadAnimation({
+        container: document.getElementById('lottie-animation'),
+        renderer: 'svg',
+        loop: true,
+        autoplay: true,
+        path: 'YOUR_FILE_URL_HERE'
+    });
+</script>
+```
+
+5. Replace `YOUR_FILE_URL_HERE` with the File URL you copied earlier
+6. Click **Update** or **Publish**
+
+---
+
+## Using in Theme Files (Advanced)
+
+If you want to add animation directly to your theme:
+
+**wp-content/themes/your-theme/header.php** (or any template file)
+
+```php
+<div id="lottie-animation" style="width: 300px; height: 300px;"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+<script>
+    var animation = lottie.loadAnimation({
+        container: document.getElementById('lottie-animation'),
+        renderer: 'svg',
+        loop: true,
+        autoplay: true,
+        path: '<?php echo get_template_directory_uri(); ?>/assets/animation.json'
+    });
+</script>
+```
+
+Place your `animation.json` file in: `wp-content/themes/your-theme/assets/`
+
+---
+
+## Adjust Animation Size
+
+Change the width and height in the style attribute:
+
+```html
+<div id="lottie-animation" style="width: 400px; height: 400px; margin: 0 auto;"></div>
+```
+
+---
+
+## Additional Options (Optional)
+
+Customize animation behavior:
+
+```javascript
+lottie.loadAnimation({
+    container: document.getElementById('lottie-animation'),
+    renderer: 'svg',      // 'svg', 'canvas', or 'html'
+    loop: true,           // true, false, or number of loops
+    autoplay: true,       // Start automatically
+    path: 'YOUR_FILE_URL_HERE'
+});
+```
+
+---
+
+## Troubleshooting
+
+**Can't upload JSON files:**
+
+WordPress may block JSON uploads for security. Add this to your theme's `functions.php`:
+
+```php
+function allow_json_upload($mimes) {
+    $mimes['json'] = 'application/json';
+    return $mimes;
+}
+add_filter('upload_mimes', 'allow_json_upload');
+```
+
+Or use an external URL from LottieFiles or GitHub instead.
+
+**Animation not showing:**
+
+- Check that the File URL is correct
+- Make sure Custom HTML block is being used (not Code block)
+- Verify the animation file was uploaded successfully
+- Check browser console for errors (F12 → Console tab)
+
+**Script conflicts:**
+
+- If using multiple animations, give each a unique ID (e.g., `lottie-animation-1`, `lottie-animation-2`)
+- Some page builders may strip scripts - try using a plugin like "Insert Headers and Footers"
+
+**Local to Live migration:**
+
+- When moving from LocalWP to live site, re-upload the JSON file to the live site's Media Library
+- Update the path in your code with the new File URL
+
+---
+
+## Using a Plugin (Alternative Method)
+
+If you prefer not to use custom code, you can use a WordPress plugin:
+
+1. Go to **Plugins** → **Add New**
+2. Search for "Lottie" or "Lottie Animation"
+3. Install and activate a Lottie plugin (e.g., "LottieFiles" plugin)
+4. Follow the plugin's instructions
+
+**Note:** The custom HTML method above gives you more control and doesn't require additional plugins.
+
+---
+
+## Done! 🎉
+
+Your Lottie animation should now work on your WordPress site. If you're using LocalWP, the same code will work on your live site once you upload the animation file there.

@@ -1,0 +1,172 @@
+---
+title: "Vue"
+description: "Lottie animations for Vue"
+category: "Lottie for Web"
+order: 45
+slug: "vue-lottie"
+---
+
+# Add Lottie Animation to Vue Project
+
+You can add Lottie animations to a Vue app easily using the `@lottiefiles/vue-lottie-player` package.
+
+---
+
+## Create Vue Project
+
+Open terminal and navigate to your projects folder:
+
+```bash
+cd path/to/your/projects
+```
+
+Create a new Vue 3 project with TypeScript:
+
+```bash
+npm create vue@latest my-animation-app
+```
+
+During setup, choose:
+- TypeScript: **Yes**
+- Other options as needed
+
+Navigate into the project:
+
+```bash
+cd my-animation-app
+```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Start the development server:
+
+```bash
+npm run dev
+```
+
+You should see: `Local: http://localhost:5173`
+
+---
+
+## Install Lottie for Vue
+
+```bash
+npm install @lottiefiles/vue-lottie-player
+```
+
+---
+
+## Get Your Lottie Animation
+
+**Option 1:** Create animation in 2D Animator
+- <a href="https://pixodesk.com/2d-animator" target="_blank">https://pixodesk.com/2d-animator</a>
+
+**Option 2:** Download from LottieFiles
+- <a href="https://lottiefiles.com" target="_blank">https://lottiefiles.com</a>
+
+Create an assets folder and add your animation:
+
+```bash
+src/assets/animation.json
+```
+
+---
+
+## Use Lottie in Your Component
+
+**src/components/LottieAnimation.vue**
+
+```vue
+<template>
+  <div class="lottie-container">
+    <Vue3Lottie 
+      :animationData="animationData"
+      :height="300"
+      :width="300"
+      :loop="true"
+      :autoPlay="true"
+    />
+  </div>
+</template>
+
+<script setup lang="ts">
+import { Vue3Lottie } from '@lottiefiles/vue-lottie-player';
+import animationData from '../assets/animation.json';
+</script>
+
+<style scoped>
+.lottie-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+</style>
+```
+
+**src/App.vue**
+
+```vue
+<template>
+  <div id="app">
+    <h1>My Lottie Animation</h1>
+    <LottieAnimation />
+  </div>
+</template>
+
+<script setup lang="ts">
+import LottieAnimation from './components/LottieAnimation.vue';
+</script>
+
+<style scoped>
+#app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+</style>
+```
+
+---
+
+## Additional Props (Optional)
+
+```vue
+<Vue3Lottie 
+  :animationData="animationData"
+  :height="300"
+  :width="300"
+  :loop="false"
+  :autoPlay="true"
+  :speed="1.5"              <!-- Animation speed -->
+  :direction="1"            <!-- 1 = forward, -1 = reverse -->
+  @onComplete="handleComplete"
+/>
+```
+
+---
+
+## Troubleshooting
+
+**TypeScript errors with JSON imports:**
+
+Ensure `tsconfig.json` includes:
+
+```json
+{
+  "compilerOptions": {
+    "resolveJsonModule": true
+  }
+}
+```
+
+---
+
+## Done! 🎉
+
+Your Lottie animation should now work in your Vue project.

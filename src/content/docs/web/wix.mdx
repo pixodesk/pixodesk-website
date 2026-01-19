@@ -1,0 +1,189 @@
+---
+title: "Wix"
+description: "Lottie animation for Wix"
+category: "Lottie for Web"
+order: 70
+slug: "wix-lottie"
+---
+
+# Add Lottie Animation to Wix Site
+
+You can add Lottie animations to a Wix site using the HTML iframe element and the Lottie Web library via CDN.
+
+---
+
+## Create or Open Wix Site
+
+1. Go to <a href="https://www.wix.com" target="_blank">https://www.wix.com</a>
+2. Sign in to your account
+3. Open your site in the Wix Editor or create a new site
+
+---
+
+## Get Your Lottie Animation
+
+**Option 1:** Create animation in 2D Animator
+- <a href="https://pixodesk.com/2d-animator" target="_blank">https://pixodesk.com/2d-animator</a>
+
+**Option 2:** Download from LottieFiles
+- <a href="https://lottiefiles.com" target="_blank">https://lottiefiles.com</a>
+
+Save the `.json` file to your computer.
+
+---
+
+## Host Your Animation File
+
+**Important:** Wix does not support uploading JSON files directly. You must host your animation file on an external service.
+
+**Recommended hosting options:**
+- **LottieFiles** - Use the direct JSON URL from LottieFiles
+- **GitHub** - Upload to a repository and use the raw file URL
+- **Dropbox** - Upload and generate a public sharing link
+- **Google Drive** - Upload and make it publicly accessible
+
+---
+
+## Add HTML Embed Element
+
+1. In the Wix Editor, click **Add** (+) on the left panel
+2. Go to **Embed** → **HTML iframe**
+3. Drag and drop the HTML iframe element to your page
+4. Resize it to your desired dimensions (e.g., 300x300 pixels)
+
+---
+
+## Add Lottie Code to HTML Element
+
+Click on the HTML iframe element, then click **Enter Code**.
+
+Paste this code:
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        #lottie-animation {
+            width: 300px;
+            height: 300px;
+        }
+    </style>
+</head>
+<body>
+    <div id="lottie-animation"></div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lottie-web/5.12.2/lottie.min.js"></script>
+    <script>
+        var animation = lottie.loadAnimation({
+            container: document.getElementById('lottie-animation'),
+            renderer: 'svg',
+            loop: true,
+            autoplay: true,
+            path: 'YOUR_ANIMATION_URL_HERE.json'
+        });
+    </script>
+</body>
+</html>
+```
+
+**Important:** Replace `YOUR_ANIMATION_URL_HERE.json` with the actual URL of your animation file.
+
+---
+
+## Getting Your Animation URL
+
+Since Wix doesn't support JSON file uploads, you need to host your file externally. Here are your options:
+
+### Option A: Use LottieFiles URL (Easiest)
+
+1. Go to <a href="https://lottiefiles.com" target="_blank">LottieFiles.com</a>
+2. Find or upload your animation
+3. Click on the animation to open it
+4. Click **Lottie JSON** or **Download** → **Lottie JSON**
+5. Right-click the download link and select **Copy Link Address**
+6. Use this URL in your code (e.g., `https://assets5.lottiefiles.com/packages/lf20_xxxxx.json`)
+
+### Option B: Use GitHub
+
+1. Create a GitHub account if you don't have one
+2. Create a new repository (can be public)
+3. Upload your `.json` file to the repository
+4. Click on the file in GitHub
+5. Click the **Raw** button
+6. Copy the URL (e.g., `https://raw.githubusercontent.com/username/repo/main/animation.json`)
+7. Use this URL in your code
+
+### Option C: Use Dropbox
+
+1. Upload your `.json` file to Dropbox
+2. Right-click the file → **Share** → **Create Link**
+3. Copy the link
+4. Change the end of the URL from `?dl=0` to `?dl=1` (this makes it a direct download link)
+5. Use this URL in your code
+
+---
+
+## Adjust Animation Size
+
+To change the animation size, modify the width and height in the CSS:
+
+```css
+#lottie-animation {
+    width: 400px;   /* Change width */
+    height: 400px;  /* Change height */
+}
+```
+
+---
+
+## Additional Options (Optional)
+
+You can customize the animation behavior:
+
+```javascript
+lottie.loadAnimation({
+    container: document.getElementById('lottie-animation'),
+    renderer: 'svg',      // 'svg', 'canvas', or 'html'
+    loop: true,           // true, false, or number of loops
+    autoplay: true,       // Start automatically
+    path: 'YOUR_ANIMATION_URL_HERE.json'
+});
+```
+
+---
+
+## Troubleshooting
+
+**Animation not showing:**
+
+- Check that the JSON file URL is correct and accessible
+- Make sure the URL starts with `https://`
+- Verify the HTML iframe element has proper dimensions
+- Check browser console for errors (right-click → Inspect → Console)
+
+**Animation not loading:**
+
+- Ensure the Lottie CDN script is loaded before your animation code
+- Try using a different CDN if the current one is blocked
+- Check if the JSON file is valid
+
+**CORS errors:**
+
+- If using external URLs, make sure the server allows cross-origin requests
+- LottieFiles URLs should work without CORS issues
+- GitHub raw URLs should also work
+
+---
+
+## Done! 🎉
+
+Your Lottie animation should now work on your Wix site. Click **Update** or **Publish** to see it live!

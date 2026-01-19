@@ -13,6 +13,7 @@ module.exports = {
         'custom-narrower': '46rem',
         'custom-narrow': '56rem',
         'custom-standard': '76rem',
+        'custom-wide': '90rem',
       },
       fontSize: {
         'fs-xs': '0.75rem',  // 14px
@@ -143,10 +144,10 @@ module.exports = {
 
     //Width Pages
     'w-custom-narrow', 'w-custom-standard',
-    'w-custom-narrowest',
+    'w-custom-narrowest', 'w-custom-wide',
 
     'max-w-custom-narrow', 'max-w-custom-standard',
-    'max-w-custom-narrowest',
+    'max-w-custom-narrowest', 'max-w-custom-wide',
     
     // Spacing
     'px-pxPage', 'pl-pxPage', 'pr-pxPage',

@@ -5,9 +5,8 @@ const allDocs = await getCollection("docs");
 
 // Define custom category order
 const categoryOrder: Record<string, number> = {
-    'vue': 1,
-    'react': 2,
-    'react-native': 3,
+    'Lottie for Web': 1,
+    'Lottie for Mobile': 2,
 };
 
 // Sort all docs by custom category order, then by order within category
@@ -73,7 +72,7 @@ const prevDoc = currentIndex > 0 ? sortedDocs[currentIndex - 1] : null;
 const nextDoc = currentIndex < sortedDocs.length - 1 ? sortedDocs[currentIndex + 1] : null;
 ---
 
-<div class="docs-container pt-navDouble">
+<div class="docs-container w-full m-auto">
     <aside class="sidebar">
         <nav>
             {

@@ -1,0 +1,150 @@
+---
+title: "React"
+description: "Lottie animations for React"
+category: "Lottie for Web"
+order: 10
+slug: "react-lottie"
+---
+
+
+# Add Lottie Animation to React App
+
+You can add Lottie animations to a React app very easily. The most common and recommended way is to use the lottie-react package.
+
+This is clean, modern way step by step.
+
+---
+
+## Create React project
+
+```bash
+cd path/to/your/projects
+```
+Then:
+
+```bash
+npm create vite@latest my-animation-app -- --template react-ts
+```
+
+This creates a React + TypeScript project called my-animation-app
+
+Now go into it:
+```bash
+cd my-animation-app
+```
+Install dependencies:
+
+```bash
+npm install
+```
+
+Start dev server:
+```bash
+npm run dev
+```
+
+You should see:
+```bash
+Local: http://localhost:5173
+```
+
+---
+
+## Install Lottie for React
+
+In your React project folder, run:
+
+```bash
+npm install lottie-react
+```
+
+---
+
+## Make or take existing Lottie animation file
+
+**Option 1:** Create animation in 2D Animator
+
+<pre><span class='url-link'><a href="https://pixodesk.com/2d-animator" target="blank">https://pixodesk.com/2d-animator</a></span></pre>
+
+**Option 2:** Download from LottieFiles
+
+<pre><span class='url-link'><a href="https://lottiefiles.com" target="blank">https://lottiefiles.com</a></span></pre>
+
+
+Create an assets folder and add your animation:
+
+```bash
+src/assets/animation.json
+```
+
+---
+
+## Use Lottie in your React Component
+
+```tsx
+import Lottie from "lottie-react";
+import animationData from "../assets/animation.json";
+
+
+function App() {
+    return (
+        <div>
+            <Lottie 
+                animationData={animationData}
+                loop={true}
+                autoplay={true}
+                style={{ width: 300, height: 300 }}
+            />
+        </div>
+    );
+}
+
+export default App;
+
+```
+
+---
+
+## Additional Props (Optional)
+```tsx
+<Lottie 
+    animationData={animationData}
+    loop={false}
+    autoplay={true}
+    speed={1.5}              // Animation speed
+    direction={1}            // 1 = forward, -1 = reverse
+    onComplete={() => {}}    // Callback when animation completes
+    style={{ width: 300, height: 300 }}
+/>
+```
+
+
+---
+
+
+## Performance Optimization 
+Large animations should be lazy-loaded:
+```tsx 
+import { lazy } from 'react';
+const animationData = lazy(() => import('./assets/animation.json'));
+```
+
+---
+
+
+## Troubleshooting
+
+If you get TypeScript import errors, ensure `tsconfig.json` includes:
+```json
+{
+  "compilerOptions": {
+    "resolveJsonModule": true
+  }
+}
+```
+
+---
+
+## Done! 🎉
+
+Your Lottie animation should now work in your React project.
