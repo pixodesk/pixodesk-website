@@ -2,7 +2,7 @@
 title: "Vue"
 description: "Lottie animations for Vue"
 category: "Lottie for Web"
-order: 45
+order: 40
 slug: "vue-lottie"
 ---
 
@@ -55,9 +55,8 @@ You should see: `Local: http://localhost:5173`
 ## Install Lottie for Vue
 
 ```bash
-npm install @lottiefiles/vue-lottie-player
+npm install @lottiefiles/dotlottie-vue
 ```
-
 ---
 
 ## Get Your Lottie Animation
@@ -82,27 +81,27 @@ src/assets/animation.json
 
 ```vue
 <template>
-  <div class="lottie-container">
-    <Vue3Lottie 
-      :animationData="animationData"
-      :height="300"
-      :width="300"
-      :loop="true"
-      :autoPlay="true"
-    />
-  </div>
+    <div class="lottie-container">
+        <DotLottieVue
+        src="/src/assets/animation.json"
+        :loop="true"
+        :autoplay="true"
+        style="height: 300px; width: 300px;"
+        />
+    </div>
 </template>
 
 <script setup lang="ts">
-import { Vue3Lottie } from '@lottiefiles/vue-lottie-player';
-import animationData from '../assets/animation.json';
+
+import { DotLottieVue } from '@lottiefiles/dotlottie-vue';
+
 </script>
 
 <style scoped>
 .lottie-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 </style>
 ```
@@ -110,14 +109,16 @@ import animationData from '../assets/animation.json';
 **src/App.vue**
 
 ```vue
+
 <template>
   <div id="app">
     <h1>My Lottie Animation</h1>
     <LottieAnimation />
+    <!-- The rest of your content goes here -->
   </div>
 </template>
 
-<script setup lang="ts">
+<script setup>
 import LottieAnimation from './components/LottieAnimation.vue';
 </script>
 
@@ -127,45 +128,17 @@ import LottieAnimation from './components/LottieAnimation.vue';
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
+  margin: 0;
 }
+
+/* Your other style goes here */
 </style>
+
+
 ```
 
 ---
 
-## Additional Props (Optional)
-
-```vue
-<Vue3Lottie 
-  :animationData="animationData"
-  :height="300"
-  :width="300"
-  :loop="false"
-  :autoPlay="true"
-  :speed="1.5"              <!-- Animation speed -->
-  :direction="1"            <!-- 1 = forward, -1 = reverse -->
-  @onComplete="handleComplete"
-/>
-```
-
----
-
-## Troubleshooting
-
-**TypeScript errors with JSON imports:**
-
-Ensure `tsconfig.json` includes:
-
-```json
-{
-  "compilerOptions": {
-    "resolveJsonModule": true
-  }
-}
-```
-
----
 
 ## Done! 🎉
 
