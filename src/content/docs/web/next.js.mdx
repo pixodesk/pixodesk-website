@@ -1,18 +1,18 @@
 ---
-title: "Astro"
-description: "Lottie animations for Astro"
+title: "Next.js"
+description: "Lottie animations for Next.js"
 category: "Lottie for Web"
-order: 20
-slug: "astro-lottie"
+order: 30
+slug: "nextjs-lottie"
 ---
 
-# Add Lottie Animation to Astro Project
+# Add Lottie Animation to Next.js Project
 
-You can add Lottie animations to an Astro project easily using the `lottie-react` package with React integration.
+You can add Lottie animations to a Next.js app easily using the `lottie-react` package.
 
 ---
 
-## Create Astro Project
+## Create Next.js Project
 
 Open terminal and navigate to your projects folder:
 
@@ -20,17 +20,29 @@ Open terminal and navigate to your projects folder:
 cd path/to/your/projects
 ```
 
-Create a new Astro project:
+Create a new Next.js project with TypeScript:
 
 ```bash
-npm create astro@latest my-animation-app
-cd my-animation-app
+npx create-next-app@latest my-animation-app --typescript
 ```
 
+
 During setup, choose:
-- Template: **Empty** (or any template you prefer)
-- Install dependencies: **Yes**
-- TypeScript: **Yes, strict**
+- Which linter would you like to use?: **ESLint**
+- Would you like to use React Compiler?: **No**
+- Would you like to use Tailwind CSS?: **Yes or No (depends on your preferences)** 
+- Would you like your code inside a src/ directory?: **Yes or No (depends on your preferences)** 
+- Would you like to use App Router?: (recommended): **Yes** 
+- Would you like to customize the import alias (@/* by default)?: (recommended): **No** 
+
+
+
+
+Enter your project directory:
+
+```bash
+cd my-animation-app
+```
 
 Start the development server:
 
@@ -38,18 +50,15 @@ Start the development server:
 npm run dev
 ```
 
-You should see: `Local: http://localhost:4321`
+You should see: `Local: http://localhost:3000`
 
 ---
 
-## Install React and Lottie
+## Install Lottie for Next.js
 
 ```bash
-npx astro add react
 npm install lottie-react
 ```
-
-This automatically configures React integration in your Astro project.
 
 ---
 
@@ -64,16 +73,20 @@ This automatically configures React integration in your Astro project.
 Create an animations folder and add your animation:
 
 ```bash
-src/animations/animation.json
+app/animations/animation.json
 ```
 
 ---
 
-## Create React Component for Lottie
+## Create Lottie Component
 
-**src/components/LottieAnimation.tsx**
+Create a client component since Lottie needs browser APIs:
+
+**app/components/LottieAnimation.tsx**
 
 ```tsx
+"use client";
+
 import Lottie from "lottie-react";
 import animationData from "../animations/animation.json";
 
@@ -91,86 +104,32 @@ export default function LottieAnimation() {
 }
 ```
 
----
 
-## Use in Astro Page
+**"use client" directive:**
 
-**src/pages/index.astro**
-
-```astro
----
-import LottieAnimation from '../components/LottieAnimation';
----
-
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width" />
-        <title>Lottie Animation</title>
-    </head>
-    <body>
-        <main>
-            <h1>My Lottie Animation</h1>
-            <LottieAnimation client:load />
-        </main>
-    </body>
-</html>
-```
-
-**Important:** Use `client:load` directive to make the component interactive.
+Remember to add `"use client"` at the top of components using Lottie, as it requires browser APIs.
 
 ---
 
-## Client Directives (Optional)
+## Use in Your Page
 
-Astro provides different options for when to load components:
-
-```astro
-<LottieAnimation client:load />      <!-- Load immediately -->
-<LottieAnimation client:idle />      <!-- Load when browser is idle -->
-<LottieAnimation client:visible />   <!-- Load when visible in viewport -->
-```
-
-For animations, `client:load` or `client:visible` work best.
-
----
-
-## Additional Props (Optional)
+**app/page.tsx**
 
 ```tsx
-<Lottie 
-    animationData={animationData}
-    loop={false}
-    autoplay={true}
-    speed={1.5}              // Animation speed
-    direction={1}            // 1 = forward, -1 = reverse
-    style={{ width: 300, height: 300 }}
-/>
-```
+import LottieAnimation from "./components/LottieAnimation";
 
----
-
-## Troubleshooting
-
-**TypeScript errors with JSON imports:**
-
-Ensure `tsconfig.json` includes:
-
-```json
-{
-  "compilerOptions": {
-    "resolveJsonModule": true
-  }
+export default function Home() {
+    return (
+        <main className="flex min-h-screen items-center justify-center">
+            <LottieAnimation />
+            {/* The rest of your code */}
+        </main>
+    );
 }
 ```
-
-**Animation not showing:**
-
-- Check that you're using the correct client directive (`client:load`)
-- Verify the path to your JSON file is correct
 
 ---
 
 ## Done! 🎉
 
-Your Lottie animation should now work in your Astro project.
+Your Lottie animation should now work in your Next.js project.
