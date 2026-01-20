@@ -26,7 +26,7 @@ Then:
 npm create vite@latest my-animation-app -- --template react-ts
 ```
 
-This creates a React + TypeScript project called my-animation-app
+This creates a React + TypeScript project called my-animation-app.
 
 Now go into it:
 ```bash
@@ -71,7 +71,7 @@ npm install lottie-react
 <pre><span class='url-link'><a href="https://lottiefiles.com" target="blank">https://lottiefiles.com</a></span></pre>
 
 
-Create an assets folder and add your animation:
+Create an assets folder (if does not exist) and add your animation:
 
 ```bash
 src/assets/animation.json
@@ -83,19 +83,25 @@ src/assets/animation.json
 
 ```tsx
 import Lottie from "lottie-react";
-import animationData from "../assets/animation.json";
+import animationData from "./assets/animation.json";
 
 
 function App() {
     return (
-        <div>
-            <Lottie 
-                animationData={animationData}
-                loop={true}
-                autoplay={true}
-                style={{ width: 300, height: 300 }}
-            />
-        </div>
+        <html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width" />
+        <title>Lottie Animation in Astro</title>
+    </head>
+    <body>
+        <main>
+            <h1>My Lottie Animation</h1>
+            <LottieAnimation client:only="react" />
+            {/* ... The rest of your code */}
+        </main>
+    </body>
+</html>
     );
 }
 
@@ -105,45 +111,6 @@ export default App;
 
 ---
 
-## Additional Props (Optional)
-```tsx
-<Lottie 
-    animationData={animationData}
-    loop={false}
-    autoplay={true}
-    speed={1.5}              // Animation speed
-    direction={1}            // 1 = forward, -1 = reverse
-    onComplete={() => {}}    // Callback when animation completes
-    style={{ width: 300, height: 300 }}
-/>
-```
-
-
----
-
-
-## Performance Optimization 
-Large animations should be lazy-loaded:
-```tsx 
-import { lazy } from 'react';
-const animationData = lazy(() => import('./assets/animation.json'));
-```
-
----
-
-
-## Troubleshooting
-
-If you get TypeScript import errors, ensure `tsconfig.json` includes:
-```json
-{
-  "compilerOptions": {
-    "resolveJsonModule": true
-  }
-}
-```
-
----
 
 ## Done! 🎉
 

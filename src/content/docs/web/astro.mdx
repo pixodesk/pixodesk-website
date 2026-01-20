@@ -2,7 +2,7 @@
 title: "Astro"
 description: "Lottie animations for Astro"
 category: "Lottie for Web"
-order: 30
+order: 20
 slug: "astro-lottie"
 ---
 
@@ -24,13 +24,18 @@ Create a new Astro project:
 
 ```bash
 npm create astro@latest my-animation-app
-cd my-animation-app
 ```
 
 During setup, choose:
-- Template: **Empty** (or any template you prefer)
+- How would you like to start your new project?: **A basic, helpful starter project (recommended)**
 - Install dependencies: **Yes**
-- TypeScript: **Yes, strict**
+- Initialize a new git repository? (optional): **Yes or No (depends on your preferences)** 
+
+Enter your project directory: 
+
+```bash
+cd my-animation-app
+```
 
 Start the development server:
 
@@ -48,8 +53,6 @@ You should see: `Local: http://localhost:4321`
 npx astro add react
 npm install lottie-react
 ```
-
-This automatically configures React integration in your Astro project.
 
 ---
 
@@ -74,6 +77,7 @@ src/animations/animation.json
 **src/components/LottieAnimation.tsx**
 
 ```tsx
+import React from "react";
 import Lottie from "lottie-react";
 import animationData from "../animations/animation.json";
 
@@ -83,7 +87,7 @@ export default function LottieAnimation() {
             <Lottie 
                 animationData={animationData}
                 loop={true}
-                autoplay={true}
+                autoPlay={true}
                 style={{ width: 300, height: 300 }}
             />
         </div>
@@ -106,68 +110,20 @@ import LottieAnimation from '../components/LottieAnimation';
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width" />
-        <title>Lottie Animation</title>
+        <title>Lottie Animation in Astro</title>
     </head>
     <body>
         <main>
             <h1>My Lottie Animation</h1>
-            <LottieAnimation client:load />
+            <LottieAnimation client:only="react" />
+            {/* ... The rest of your code */}
         </main>
     </body>
 </html>
 ```
 
-**Important:** Use `client:load` directive to make the component interactive.
 
----
-
-## Client Directives (Optional)
-
-Astro provides different options for when to load components:
-
-```astro
-<LottieAnimation client:load />      <!-- Load immediately -->
-<LottieAnimation client:idle />      <!-- Load when browser is idle -->
-<LottieAnimation client:visible />   <!-- Load when visible in viewport -->
-```
-
-For animations, `client:load` or `client:visible` work best.
-
----
-
-## Additional Props (Optional)
-
-```tsx
-<Lottie 
-    animationData={animationData}
-    loop={false}
-    autoplay={true}
-    speed={1.5}              // Animation speed
-    direction={1}            // 1 = forward, -1 = reverse
-    style={{ width: 300, height: 300 }}
-/>
-```
-
----
-
-## Troubleshooting
-
-**TypeScript errors with JSON imports:**
-
-Ensure `tsconfig.json` includes:
-
-```json
-{
-  "compilerOptions": {
-    "resolveJsonModule": true
-  }
-}
-```
-
-**Animation not showing:**
-
-- Check that you're using the correct client directive (`client:load`)
-- Verify the path to your JSON file is correct
+**Important:** Use `client:only="react"` directive to make the component interactive.
 
 ---
 
