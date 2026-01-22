@@ -1,9 +1,8 @@
 ---
-title: "React"
+title: "Spare"
 description: "Lottie animations for React"
-category: "Lottie for Web"
-order: 10
-slug: "react-lottie"
+sidebar:
+  order: 100
 ---
 
 
@@ -17,6 +16,8 @@ This is clean, modern way step by step.
 
 ## Create React project
 
+Open terminal and go to the folder where you want your project:
+
 ```bash
 cd path/to/your/projects
 ```
@@ -26,7 +27,7 @@ Then:
 npm create vite@latest my-animation-app -- --template react-ts
 ```
 
-This creates a React + TypeScript project called my-animation-app.
+This creates a React + TypeScript project called my-animation-app
 
 Now go into it:
 ```bash
@@ -57,21 +58,31 @@ In your React project folder, run:
 ```bash
 npm install lottie-react
 ```
+or
+```bash
+yarn add lottie-react
+```
 
 ---
 
 ## Make or take existing Lottie animation file
 
-**Option 1:** Create animation in 2D Animator
+- Make .json animation in 2D-animator
 
-<pre><span class='url-link'><a href="https://pixodesk.com/2d-animator" target="blank">https://pixodesk.com/2d-animator</a></span></pre>
+    <pre><a href="https://pixodesk.com/2d-animator" target="blank">https://pixodesk.com/2d-animator</a></pre>
 
-**Option 2:** Download from LottieFiles
+- or download from:
 
-<pre><span class='url-link'><a href="https://lottiefiles.com" target="blank">https://lottiefiles.com</a></span></pre>
+    <pre><a href="https://lottiefiles.com" target="blank">https://lottiefiles.com</a></pre>
 
 
-Create an assets folder (if does not exist) and add your animation:
+Create folder:
+
+```bash
+src/assets
+```
+
+Put your animation file there, for example:
 
 ```bash
 src/assets/animation.json
@@ -79,23 +90,21 @@ src/assets/animation.json
 
 ---
 
-## Use Lottie in your React Component
+## Use Lottie in your React component
 
 ```tsx
 import Lottie from "lottie-react";
-import animationData from "./assets/animation.json";
+import animationData from "../assets/animation.json";
 
 
 function App() {
     return (
-        <div>
+        <div style={{ width: 300, height: 300 }}>
             <Lottie 
                 animationData={animationData}
                 loop={true}
                 autoplay={true}
-                style={{ width: 300, height: 300 }}
             />
-            {/* ... The rest of your code */}
         </div>
     );
 }
@@ -106,7 +115,15 @@ export default App;
 
 ---
 
+## Now it works in your project
 
-## Done! 🎉
+## With Tailwind (nice for portfolio)
 
-Your Lottie animation should now work in your React project.
+```astro
+<div className="w-64 h-64 mx-auto hover:scale-105 transition-transform">
+    <Lottie animationData={animationData} />
+</div>
+```
+This gives you a smooth hover effect + animation.
+
+

@@ -1,0 +1,154 @@
+---
+title: "React Native"
+description: "Lottie for React Native Expo"
+---
+
+# Add Lottie Animation to React Native Expo App
+
+You can add Lottie animations to an React Native Expo app easily using the `lottie-react-native` package. Expo works on both iOS and Android.
+
+---
+
+## Create Expo Project
+
+Open terminal and navigate to your projects folder:
+
+```bash
+cd path/to/your/projects
+```
+
+Create a new Expo project:
+
+```bash
+npx create-expo-app@latest my-animation-app
+cd my-animation-app
+```
+
+---
+
+## Install Lottie for Expo
+
+```bash
+npx expo install lottie-react-native
+```
+
+**Note:** Use `npx expo install` instead of `npm install` to ensure compatibility with your Expo SDK version.
+
+---
+
+## Get Your Lottie Animation
+
+**Option 1:** Create animation in 2D Animator
+- <a href="https://pixodesk.com/2d-animator" target="_blank">https://pixodesk.com/2d-animator</a>
+
+**Option 2:** Download from LottieFiles
+- <a href="https://lottiefiles.com" target="_blank">https://lottiefiles.com</a>
+
+Create an assets folder and add your animation:
+
+```bash
+assets/animation.json
+```
+
+---
+
+## Use Lottie in Your Component
+
+**App.tsx** (or App.js)
+
+```tsx
+import React from 'react';
+import { View, StyleSheet } from 'react-native';
+import LottieView from 'lottie-react-native';
+
+export default function App() {
+  return (
+    <View style={styles.container}>
+      <LottieView
+        source={require('./assets/animation.json')}
+        autoPlay
+        loop
+        style={styles.animation}
+      />
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#fff',
+  },
+  animation: {
+    width: 300,
+    height: 300,
+  },
+});
+```
+
+---
+
+## Run Your App
+
+Start the development server:
+
+```bash
+npx expo start
+```
+
+Then you can run on:
+- **iOS Simulator** - Press `i`
+- **Android Emulator** - Press `a`
+- **Physical Device** - Scan QR code with Expo Go app
+
+---
+
+## Additional Props (Optional)
+
+```tsx
+<LottieView
+  source={require('./assets/animation.json')}
+  autoPlay
+  loop
+  speed={1.5}              // Animation speed
+  style={styles.animation}
+  onAnimationFinish={() => console.log('Animation finished')}
+/>
+```
+
+---
+
+## Loading from URL
+
+```tsx
+<LottieView
+  source={{ uri: 'https://assets5.lottiefiles.com/packages/lf20_example.json' }}
+  autoPlay
+  loop
+  style={styles.animation}
+/>
+```
+
+---
+
+## Troubleshooting
+
+**Animation not showing:**
+
+- Check that the path to your JSON file is correct
+- Verify the JSON file is valid
+- Make sure the animation has width and height in styles
+- Try clearing cache: `npx expo start -c`
+
+**Compatibility issues:**
+
+- Always use `npx expo install` instead of `npm install` for Expo packages
+- This ensures the package version matches your Expo SDK
+
+---
+
+## Done! 🎉
+
+Your Lottie animation should now work in your Expo app on both iOS and Android devices.
