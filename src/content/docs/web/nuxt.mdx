@@ -1,18 +1,18 @@
 ---
-title: "Astro"
-description: "Lottie animations for Astro"
+title: "Nuxt"
+description: "Lottie animations for Nuxt"
 category: "Lottie for Web"
 order: 50
-slug: "astro-lottie"
+slug: "nuxt-lottie"
 ---
 
-# Add Lottie Animation to Astro Project
+# Add Lottie Animation to Nuxt Project
 
-You can add Lottie animations to an Astro project easily using the `lottie-react` package with React integration.
+You can add Lottie animations to a Nuxt app easily using the `@lottiefiles/vue-lottie-player` package.
 
 ---
 
-## Create Astro Project
+## Create Nuxt Project
 
 Open terminal and navigate to your projects folder:
 
@@ -20,17 +20,21 @@ Open terminal and navigate to your projects folder:
 cd path/to/your/projects
 ```
 
-Create a new Astro project:
+Create a new Nuxt project with TypeScript:
 
 ```bash
-npm create astro@latest my-animation-app
+npx nuxi@latest init my-animation-app
+```
+Enter your project directory:
+```bash
 cd my-animation-app
 ```
 
-During setup, choose:
-- Template: **Empty** (or any template you prefer)
-- Install dependencies: **Yes**
-- TypeScript: **Yes, strict**
+Install dependencies:
+
+```bash
+npm install
+```
 
 Start the development server:
 
@@ -38,19 +42,15 @@ Start the development server:
 npm run dev
 ```
 
-You should see: `Local: http://localhost:4321`
+You should see: `Local: http://localhost:3000`
 
 ---
 
-## Install React and Lottie
+## Install Lottie Package
 
 ```bash
-npx astro add react
-npm install lottie-react
+npm install @lottiefiles/dotlottie-vue
 ```
-
-This automatically configures React integration in your Astro project.
-
 ---
 
 ## Get Your Lottie Animation
@@ -61,116 +61,80 @@ This automatically configures React integration in your Astro project.
 **Option 2:** Download from LottieFiles
 - <a href="https://lottiefiles.com" target="_blank">https://lottiefiles.com</a>
 
-Create an animations folder and add your animation:
+In public folder create an animations folder and add your animation:
 
 ```bash
-src/animations/animation.json
+public/animations/animation.json
 ```
 
 ---
 
-## Create React Component for Lottie
+## Create a Component
 
-**src/components/LottieAnimation.tsx**
+Next to app.vue file create a components folder and add there LottieAnimation.vue. 
 
-```tsx
-import Lottie from "lottie-react";
-import animationData from "../animations/animation.json";
+**components/LottieAnimation.vue**
 
-export default function LottieAnimation() {
-    return (
-        <div>
-            <Lottie 
-                animationData={animationData}
-                loop={true}
-                autoplay={true}
-                style={{ width: 300, height: 300 }}
-            />
-        </div>
-    );
+```vue
+<template>
+    <div class="lottie-container">
+        <DotLottieVue
+        src="/animations/animation.json"
+        :loop="true"
+        :autoplay="true"
+        style="height: 300px; width: 300px;"
+        />
+    </div>
+</template>
+
+<script setup lang="ts">
+import { DotLottieVue } from '@lottiefiles/dotlottie-vue';
+</script>
+
+<style scoped>
+.lottie-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 }
+</style>
 ```
 
 ---
 
-## Use in Astro Page
+## Use in Nuxt App
 
-**src/pages/index.astro**
+**app.vue**
 
-```astro
----
-import LottieAnimation from '../components/LottieAnimation';
----
+```vue
+<template>
+  <div>
+    <div class="animation">
+      <LottieAnimation />
+    </div>
+    <!-- Your other components go here... -->
+    
+  </div>
+</template>
 
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width" />
-        <title>Lottie Animation</title>
-    </head>
-    <body>
-        <main>
-            <h1>My Lottie Animation</h1>
-            <LottieAnimation client:load />
-        </main>
-    </body>
-</html>
-```
+<script setup>
+import LottieAnimation from './components/LottieAnimation.vue';
+</script>
 
-**Important:** Use `client:load` directive to make the component interactive.
-
----
-
-## Client Directives (Optional)
-
-Astro provides different options for when to load components:
-
-```astro
-<LottieAnimation client:load />      <!-- Load immediately -->
-<LottieAnimation client:idle />      <!-- Load when browser is idle -->
-<LottieAnimation client:visible />   <!-- Load when visible in viewport -->
-```
-
-For animations, `client:load` or `client:visible` work best.
-
----
-
-## Additional Props (Optional)
-
-```tsx
-<Lottie 
-    animationData={animationData}
-    loop={false}
-    autoplay={true}
-    speed={1.5}              // Animation speed
-    direction={1}            // 1 = forward, -1 = reverse
-    style={{ width: 300, height: 300 }}
-/>
-```
-
----
-
-## Troubleshooting
-
-**TypeScript errors with JSON imports:**
-
-Ensure `tsconfig.json` includes:
-
-```json
-{
-  "compilerOptions": {
-    "resolveJsonModule": true
-  }
+<style scoped>
+.animation {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
+</style>
 ```
 
-**Animation not showing:**
-
-- Check that you're using the correct client directive (`client:load`)
-- Verify the path to your JSON file is correct
-
 ---
+
 
 ## Done! 🎉
 
-Your Lottie animation should now work in your Astro project.
+Your Lottie animation should now work in your Nuxt project.
