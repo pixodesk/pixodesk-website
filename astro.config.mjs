@@ -25,15 +25,36 @@ export default defineConfig({
         }
     },
     integrations: [
-        react(), 
+        react(),
         tailwind({
             config: { applyBaseStyles: true },
-        }), 
+        }),
         starlight({
             title: "Pixodesk Docs",
             disable404Route: true,
-            // customCss: ['./src/styles/starlight-custom.css'], // Custom css
+            expressiveCode: {
+                themes: ['github-light', 'github-dark'],  // Use light syntax theme, github-light, min-light, slack-ochin, solarized-light, vitesse-light
+
+                frames: {
+                    terminalTitlebarDotsOpacity: '0',      // Hide the dots
+                    terminalTitlebarBorderBottomColor: 'transparent',
+                    editorTabBarBorderBottomColor: 'transparent',
+                },
+
+                styleOverrides: {
+                    frames: {
+                        showCopyToClipboardButton: true,  // keep copy button
+                        frameBoxShadowCssValue: 'none',
+                    },
+                },
+
+            },
+            customCss: ['./src/styles/starlight-custom.css'], // Custom css
             tableOfContents: { minHeadingLevel: 2, maxHeadingLevel: 3 },
+            components: {
+                // Header: './src/components/starlight/Header.astro',
+                // Footer: './src/components/starlight/Footer.astro',
+            },
             sidebar: [
                 {
                     label: 'Getting Started',
@@ -52,6 +73,6 @@ export default defineConfig({
             ],
         }),
         mdx(),
-        
+
     ],
 });
