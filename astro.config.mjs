@@ -32,6 +32,14 @@ export default defineConfig({
         starlight({
             title: "Pixodesk Docs",
             disable404Route: true,
+            pagefind: false,
+            locales: {
+                root: {
+                    label: 'English',
+                    lang: 'en',
+                },
+            },
+            defaultLocale: 'root',
             expressiveCode: {
                 themes: ['github-light', 'github-dark'],  // Use light syntax theme, github-light, min-light, slack-ochin, solarized-light, vitesse-light
 
