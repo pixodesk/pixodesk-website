@@ -2,17 +2,19 @@
 title: "Next.js"
 description: "Lottie animations for Next.js"
 sidebar:
-  order: 30
+  order: 20
 ---
+import SpacerBottom from '../../../../layouts/SpacerBottom.astro';
+import { Badge } from '@astrojs/starlight/components';
 
 # Add Lottie Animation to Next.js Project
-
+<SpacerBottom />
 You can add Lottie animations to a Next.js app easily using the `lottie-react` package.
-
+<SpacerBottom />
 ---
 
 ## Create Next.js Project
-
+<SpacerBottom />
 Open terminal and navigate to your projects folder:
 
 ```bash
@@ -36,7 +38,7 @@ During setup, choose:
 
 
 
-
+<SpacerBottom />
 Enter your project directory:
 
 ```bash
@@ -49,12 +51,14 @@ Start the development server:
 npm run dev
 ```
 
-You should see: `Local: http://localhost:3000`
+You should see: 
+```bash
+Local: http://localhost:3000
+```
 
 ---
 
 ## Install Lottie for Next.js
-
 ```bash
 npm install lottie-react
 ```
@@ -62,11 +66,11 @@ npm install lottie-react
 ---
 
 ## Get Your Lottie Animation
+<SpacerBottom size='1rem' />
+### Create an animation in 2D Animator
+- <a href="https://pixodesk.com/2d-animator" target="_blank">https://pixodesk.com/2d-animator</a><Badge text="Tool" variant="note" />
 
-**Option 1:** Create animation in 2D Animator
-- <a href="https://pixodesk.com/2d-animator" target="_blank">https://pixodesk.com/2d-animator</a>
-
-**Option 2:** Download from LottieFiles
+### Download from LottieFiles
 - <a href="https://lottiefiles.com" target="_blank">https://lottiefiles.com</a>
 
 Create an animations folder and add your animation:
@@ -78,9 +82,9 @@ app/animations/animation.json
 ---
 
 ## Create Lottie Component
-
+<SpacerBottom />
 Create a client component since Lottie needs browser APIs:
-
+<SpacerBottom size='1rem' />
 **app/components/LottieAnimation.tsx**
 
 ```tsx
@@ -104,14 +108,12 @@ export default function LottieAnimation() {
 ```
 
 
-**"use client" directive:**
-
-Remember to add `"use client"` at the top of components using Lottie, as it requires browser APIs.
-
+Remember to add **"use client"** at the top of components using Lottie, as it requires browser APIs.
+<SpacerBottom />
 ---
 
 ## Use in Your Page
-
+<SpacerBottom size='1rem' />
 **app/page.tsx**
 
 ```tsx
@@ -130,5 +132,5 @@ export default function Home() {
 ---
 
 ## Done! 🎉
-
+<SpacerBottom />
 Your Lottie animation should now work in your Next.js project.

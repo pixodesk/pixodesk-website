@@ -5,14 +5,17 @@ sidebar:
   order: 40
 ---
 
+import SpacerBottom from '../../../../layouts/SpacerBottom.astro';
+import { Badge } from '@astrojs/starlight/components';
+
 # Add Lottie Animation to Vue Project
-
+<SpacerBottom />
 You can add Lottie animations to a Vue app easily using the `@lottiefiles/vue-lottie-player` package.
-
+<SpacerBottom />
 ---
 
 ## Create Vue Project
-
+<SpacerBottom />
 Open terminal and navigate to your projects folder:
 
 ```bash
@@ -28,7 +31,7 @@ npm create vue@latest my-animation-app
 During setup, choose:
 - TypeScript: **Yes**
 - Other options as needed
-
+<SpacerBottom />
 Navigate into the project:
 
 ```bash
@@ -47,7 +50,10 @@ Start the development server:
 npm run dev
 ```
 
-You should see: `Local: http://localhost:5173`
+You should see: 
+```bash
+Local: http://localhost:5173
+```
 
 ---
 
@@ -59,11 +65,11 @@ npm install @lottiefiles/dotlottie-vue
 ---
 
 ## Get Your Lottie Animation
+<SpacerBottom size='1rem' />
+### Create an animation in 2D Animator
+- <a href="https://pixodesk.com/2d-animator" target="_blank">https://pixodesk.com/2d-animator</a><Badge text="Tool" variant="note" />
 
-**Option 1:** Create animation in 2D Animator
-- <a href="https://pixodesk.com/2d-animator" target="_blank">https://pixodesk.com/2d-animator</a>
-
-**Option 2:** Download from LottieFiles
+### Download from LottieFiles
 - <a href="https://lottiefiles.com" target="_blank">https://lottiefiles.com</a>
 
 Create an assets folder and add your animation:
@@ -75,7 +81,7 @@ src/assets/animation.json
 ---
 
 ## Use Lottie in Your Component
-
+<SpacerBottom size='1rem' />
 **src/components/LottieAnimation.vue**
 
 ```vue
@@ -140,5 +146,5 @@ import LottieAnimation from './components/LottieAnimation.vue';
 
 
 ## Done! 🎉
-
+<SpacerBottom />
 Your Lottie animation should now work in your Vue project.

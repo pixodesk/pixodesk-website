@@ -2,18 +2,19 @@
 title: "Astro"
 description: "Lottie animations for Astro"
 sidebar:
-  order: 20
+  order: 30
 ---
-
+import SpacerBottom from '../../../../layouts/SpacerBottom.astro';
+import { Badge } from '@astrojs/starlight/components';
 
 # Add Lottie Animation to Astro Project
-
+<SpacerBottom />
 You can add Lottie animations to an Astro project easily using the `lottie-react` package with React integration.
-
+<SpacerBottom />
 ---
 
 ## Create Astro Project
-
+<SpacerBottom />
 Open terminal and navigate to your projects folder:
 
 ```bash
@@ -43,8 +44,13 @@ Start the development server:
 npm run dev
 ```
 
-You should see: `Local: http://localhost:4321`
+You should see: 
 
+```bash
+Local: http://localhost:4321
+```
+
+<SpacerBottom />
 ---
 
 ## Install React and Lottie
@@ -57,11 +63,11 @@ npm install lottie-react
 ---
 
 ## Get Your Lottie Animation
+<SpacerBottom size='1rem' />
+### Create an animation in 2D Animator
+- <a href="https://pixodesk.com/2d-animator" target="_blank">https://pixodesk.com/2d-animator</a><Badge text="Tool" variant="note" />
 
-**Option 1:** Create animation in 2D Animator
-- <a href="https://pixodesk.com/2d-animator" target="_blank">https://pixodesk.com/2d-animator</a>
-
-**Option 2:** Download from LottieFiles
+### Download from LottieFiles
 - <a href="https://lottiefiles.com" target="_blank">https://lottiefiles.com</a>
 
 Create an animations folder and add your animation:
@@ -73,7 +79,7 @@ src/animations/animation.json
 ---
 
 ## Create React Component for Lottie
-
+<SpacerBottom size='1rem' />
 **src/components/LottieAnimation.tsx**
 
 ```tsx
@@ -98,7 +104,7 @@ export default function LottieAnimation() {
 ---
 
 ## Use in Astro Page
-
+<SpacerBottom size='1rem' />
 **src/pages/index.astro**
 
 ```astro
@@ -124,9 +130,9 @@ import LottieAnimation from '../components/LottieAnimation';
 
 
 **Important:** Use `client:only="react"` directive to make the component interactive.
-
+<SpacerBottom />
 ---
 
 ## Done! 🎉
-
+<SpacerBottom />
 Your Lottie animation should now work in your Astro project.
