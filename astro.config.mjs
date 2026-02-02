@@ -57,7 +57,8 @@ export default defineConfig({
                 },
 
             },
-            customCss: ['./src/styles/starlight-custom.css'], // Custom css
+            // customCss: ['./src/styles/starlight-custom.css'], // Custom css
+            customCss: ['./src/styles/starlight-custom-style.css'], 
             tableOfContents: { minHeadingLevel: 2, maxHeadingLevel: 3 },
             components: {
                 // Header: './src/components/starlight/Header.astro',

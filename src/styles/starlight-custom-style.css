@@ -1,0 +1,65 @@
+:root {
+    /* Accent color */
+    --sl-color-accent-low: #f0aa8a;
+    --sl-color-accent: #aed2fc;
+    --sl-color-accent-high: #0761d1;
+
+}
+:root[data-theme='dark'] {
+    /* Accent color */
+    /* --sl-color-accent-low: #0d2847; */
+    /* --sl-color-accent: #3291ff; */
+    --sl-color-accent-high: #16457b;
+}
+
+/* Details summery  */
+.top-level>li>details>summary::marker {
+    content: '';
+}
+
+.top-level>li>details>summary,
+.top-level>li>details>summary>svg {
+    display: flex;
+}
+
+/* Right side panel */
+.right-sidebar-panel {
+    h2#starlight__on-this-page {
+        margin-bottom: 0.5rem;
+    }
+
+    nav>ul>li {
+        border-left: 1px solid var(--sl-color-gray-5);
+    }
+}
+
+/* Expressive Code */
+.expressive-code {
+    margin: 1.5rem 0;
+}
+
+.expressive-code .frame {
+    border: 0.5px solid var(--sl-color-hairline);
+    border-radius: 0.5rem;
+    overflow: hidden;
+}
+
+.expressive-code .header {
+    display: none !important;
+}
+
+.expressive-code .copy {
+    position: absolute !important;
+    top: 0.5rem !important;
+    right: 0.5rem !important;
+}
+
+
+/* Theme selector */
+starlight-theme-select label select {
+    padding-left: 1.5rem;
+}
+
+starlight-theme-select label select:focus {
+    outline: none;
+}

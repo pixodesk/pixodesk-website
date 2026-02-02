@@ -157,7 +157,7 @@ nav.sidebar a[aria-current='page'] {
     height: 0;
 }
 
-.right-sidebar-panel nav ul li:first-child {
+.right-sidebar-panel ul[style*="--depth: 0"] > li:first-child a span {
     font-weight: 600;
 }
 
@@ -170,21 +170,23 @@ nav.sidebar a[aria-current='page'] {
 
 /* Hide the scroll-to-top anchor heading */
 .content-panel > .sl-container > h1#_top,
-.content-panel .sl-container > h1#_top {
-    /* height: 0 !important; */
+.content-panel .sl-container > h1#_top,
+.content-panel:has(.sl-container h1#_top)
+{
+    height: 0 !important;
+    padding-top: 0 !important;
+    padding: 0 !important;
+    margin-top: 0 !important;
 }
 
-/* Hide the empty content-panel (right sidebar "On this page" header) */
-.content-panel:has(> .sl-container > h1#_top):not(:has(.sl-markdown-content)) {
-    display: none !important;
-    /* height: 0 !important; */
-;
-}
 
 /* Hide right sidebar (table of contents) on mobile */
 @media (max-width: 72rem) {
     .right-sidebar-container {
         display: none;
+    }
+    .content-panel {
+        padding-top: 0 !important;
     }
 }
 
