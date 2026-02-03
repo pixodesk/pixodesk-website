@@ -45,7 +45,7 @@ const {
 <div class={`${maxWidth ? `max-w-${maxWidth}` : ""} mx-auto `}>
   <div class="title-field max-w-custom-standard mx-auto mb-titleField">
     <div class="_title text-center" set:html={marked(title ?? "")} />
-    <div class={`_subTitle text-center text-custom-grey-400`} set:html={marked(subTitle ?? "")} />
+    <div class={`_subTitle text-center ${subTitleColor ? subTitleColor : 'text-custom-grey-400'}`} set:html={marked(subTitle ?? "")} />
   </div>
 
   {
@@ -58,6 +58,7 @@ const {
 
           <div class={`${textClass}`}>
             <TextListCheckCenter
+              subTitleColor={subTitleColor}
               items={items || []}
             />
           </div>
@@ -71,6 +72,7 @@ const {
 
         <div class={`${textClass}`}>
           <TextListCheckCenter
+            subTitleColor={subTitleColor}
             items={items || []}
           />
         </div>

@@ -7,13 +7,15 @@ interface Props {
   title: string;
   items?: Item[];
   bgImage?: boolean;
+
+  subTitleColor?: string;
 }
 
 import { marked } from "marked";
 import "./text-image-card.scss";
 import BgForImage from './BgForImage.astro';
 
-const { title, items, bgImage } = Astro.props;
+const { title, items, bgImage, subTitleColor } = Astro.props;
 ---
 
 <div>
@@ -48,5 +50,8 @@ const { title, items, bgImage } = Astro.props;
             />
           )}
         </div> -->
-  <TextList items={items || []} />
+  <TextList 
+    items={items || []} 
+    subTitleColor={subTitleColor}
+    />
 </div>

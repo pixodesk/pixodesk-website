@@ -4,6 +4,8 @@ import { marked } from "marked";
 import type { Item } from "../types/types";
 
 interface Props {
+  subTitleColor?: string;
+
   items: Item[];
   shadowColor?: string;
   icon?: string;
@@ -11,6 +13,7 @@ interface Props {
 }
 
 const {
+  subTitleColor,
   items,
   shadowColor = "0,0,0,0.5",
   icon,
@@ -26,7 +29,7 @@ const {
           {item.title && (
               <div class="mb-2 text-white" set:html={marked(item.title)} />
           )}
-          {item.content && <div class="mb-4 text-custom-grey-400" set:html={marked(item.content)} />}
+          {item.content && <div class={`mb-4 ${subTitleColor ? subTitleColor : 'text-custom-grey-400'}`}  set:html={marked(item.content)} />}
         </li>
       ))
     }

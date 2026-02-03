@@ -8,6 +8,7 @@ import UpdateIcon from "../components/svg/UpdateIcon.astro";
 import LanguageIcon from "../components/svg/LanguageIcon.astro";
 
 interface Props {
+  subTitleColor?: string;
   items: Item[];
   shadowColor?: string;
   icon?: string;
@@ -15,7 +16,7 @@ interface Props {
   checkIcon?: boolean;
 }
 
-const { items } = Astro.props;
+const { items, subTitleColor } = Astro.props;
 ---
 
 <div class="list">
@@ -39,7 +40,7 @@ const { items } = Astro.props;
           </div>
           {item.content && (
             <div
-                class="text-center mb-10 text-custom-grey-400"
+                class={`text-center mb-10 ${subTitleColor ? subTitleColor : 'text-custom-grey-400'}`}
                 set:html={marked.parseInline(item.content ?? "")}
               />
           )}
