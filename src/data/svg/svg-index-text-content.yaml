@@ -70,20 +70,19 @@ sections:
     title: "## Color Control Made Easy"
     subTitle: Change one shared color and see it update everywhere - perfect for testing themes and creating quick variations.
     items:
-      - title: Change colors in many elements at the same time.
-      - title: Keep your design consistent by updating shared colors.
-
-      - title: Try out new looks in seconds.
-      - title: Use a single color adjustment to create multiple design variations.
+      - content: Change colors in many elements at the same time.
+      - content: Keep your design consistent by updating shared colors.
+      - content: Try out new looks in seconds.
+      - content: Use a single color adjustment to create multiple design variations.
 
   section_04: 
     title: "## Gradient and Opacity Tool"
     subTitle: Create depth, shading, and layered effects with adjustable color blending and precise opacity settings.
     items:
-      - title: Give your shapes depth and dimension.
-      - title: Create natural light and shadow with smooth gradients.
-      - title: Use opacity to control subtle or strong visual effects.
-      - title: Ideal for creating layered and complex compositions.
+      - content: Give your shapes depth and dimension.
+      - content: Create natural light and shadow with smooth gradients.
+      - content: Use opacity to control subtle or strong visual effects.
+      - content: Ideal for creating layered and complex compositions.
       
 
   section_05: 
@@ -101,23 +100,23 @@ sections:
     title: "## Pattern, Markers & Spray: Add Detail to Your Designs"
     subTitle: Quickly add repeating elements and decorative effects with patterns, markers, and spray tools.
     items:
-    - title: Add depth to your design with Patterns.
-    - title: Create your own vector patterns or adjust the colors, sizes, and shapes of pre-defined ones.
+    - content: Add depth to your design with Patterns.
+    - content: Create your own vector patterns or adjust the colors, sizes, and shapes of pre-defined ones.
 
-    - title: Transform any shape into a Marker.
-    - title: Add multiple copies with a single click to quickly fill your artwork with details.
+    - content: Transform any shape into a Marker.
+    - content: Add multiple copies with a single click to quickly fill your artwork with details.
 
-    - title: Create eye-catching effects with the Spray tool.
-    - title: Generate vector copies with adjustable options - perfect for bubbles, stars, snowflakes, and unique backgrounds.
+    - content: Create eye-catching effects with the Spray tool.
+    - content: Generate vector copies with adjustable options - perfect for bubbles, stars, snowflakes, and unique backgrounds.
 
   section_07: 
     title: "## Clone, Repeat, and Arrange: Perfect Symmetry Every Time"
     subTitle: Quickly duplicate, arrange, and customize elements to create complex patterns and symmetrical designs using the Repeater / Clone tool.
     items:
-      - title: Quickly duplicate and arrange elements in a pattern. 
-      - title: Create symmetrical and evenly spaced vector designs.
-      - title: Achieve in seconds what would be challenging to do manually.
-      - title: Customize the spacing, rotation, and arrangement of clones.
+      - content: Quickly duplicate and arrange elements in a pattern. 
+      - content: Create symmetrical and evenly spaced vector designs.
+      - content: Achieve in seconds what would be challenging to do manually.
+      - content: Customize the spacing, rotation, and arrangement of clones.
 
   section_08: 
     title: "## Only Your SVG Tags in Your SVG File"

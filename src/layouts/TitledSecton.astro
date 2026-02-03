@@ -9,6 +9,7 @@ import TextListCheckCenter from './TextListCheckCenter.astro';
 interface Props {
   title?: string;
   subTitle?: string;
+  subTitleColor?: string;
   items?: Item[];
 
   imageClass: string;
@@ -26,6 +27,7 @@ interface Props {
 const {
   title,
   subTitle,
+  subTitleColor,
   items,
 
   imageClass,
@@ -43,7 +45,7 @@ const {
 <div class={`${maxWidth ? `max-w-${maxWidth}` : ""} mx-auto `}>
   <div class="title-field max-w-custom-standard mx-auto mb-titleField">
     <div class="_title text-center" set:html={marked(title ?? "")} />
-    <div class="_subTitle text-center" set:html={marked(subTitle ?? "")} />
+    <div class={`_subTitle text-center text-custom-grey-400`} set:html={marked(subTitle ?? "")} />
   </div>
 
   {

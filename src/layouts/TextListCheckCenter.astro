@@ -39,7 +39,7 @@ const { items } = Astro.props;
           </div>
           {item.content && (
             <div
-                class="text-center mb-10"
+                class="text-center mb-10 text-custom-grey-400"
                 set:html={marked.parseInline(item.content ?? "")}
               />
           )}

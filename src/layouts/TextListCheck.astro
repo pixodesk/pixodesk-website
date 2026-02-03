@@ -5,6 +5,8 @@ import type { Item } from "../types/types";
 import check from "../../public/assets/common/icons/check-circle.svg?raw";
 
 interface Props {
+  titleColor?: string;
+  subTitleColor?: string;
   items: Item[];
   shadowColor?: string;
   icon?: string;
@@ -13,6 +15,9 @@ interface Props {
 }
 
 const {
+  titleColor,
+  subTitleColor,
+
   items,
   shadowColor = "0,0,0,0.5",
   icon,
@@ -36,9 +41,9 @@ const {
           
           <div>
             {item.title && (
-              <div class="list-header" set:html={marked(item.title)} />
+              <div class={`list-header ${titleColor ? titleColor : ''}`} set:html={marked(item.title)} />
             )}
-            {item.content && <div set:html={marked(item.content)} />}
+            {item.content && <div class={`${subTitleColor ? subTitleColor : "text-custom-grey-400"}`} set:html={marked(item.content)} />}
           </div>
           
         </li>

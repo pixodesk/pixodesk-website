@@ -24,9 +24,9 @@ const {
       items?.map((item) => (
         <li class="mb-6 w-full flex flex-col items-start">
           {item.title && (
-              <div class="mb-2 text-violet-lightest" set:html={marked(item.title)} />
+              <div class="mb-2 text-white" set:html={marked(item.title)} />
           )}
-          {item.content && <div class="mb-4" set:html={marked(item.content)} />}
+          {item.content && <div class="mb-4 text-custom-grey-400" set:html={marked(item.content)} />}
         </li>
       ))
     }

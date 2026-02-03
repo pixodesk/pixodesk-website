@@ -17,6 +17,7 @@ import CapabilityPoint from "../layouts/CapabilityPoint.astro";
 import HeroSection from "../layouts/HeroSection.astro";
 import Section from "../layouts/Section.astro";
 import TitledSplitSecton from "../layouts/TitledSplitSecton.astro";
+import IframeTitle from "../layouts/IframeTitle.astro";
 
 import cityOutline from "../../public/assets/lottie/hero/city-outline.svg?raw";
 import planeAndBanner from "../../public/assets/lottie/hero/plane-and-banner-only.svg?raw";
@@ -34,275 +35,321 @@ import Border from "../layouts/Border.astro";
 ---
 
 <BaseLayout title="2D Animator (Lottie)">
-  <section
-    class="hero-section
+    <section
+        class="hero-section
     relative
     bg-custom-gradient-violet
     text-base-bright
     pt-navDouble"
-  >
-    <HeroSection content={content.sections.section_00}>
-      {
-        planeAndBanner ? (
-          <div class="relative w-full overflow-hidden">
-            <div
-              class="relative max-w-custom-narrow mx-auto"
-              set:html={planeAndBanner}
-            />
+    >
+        <HeroSection content={content.sections.section_00}>
+            {
+                planeAndBanner ? (
+                    <div class="relative w-full overflow-hidden">
+                        <div
+                            class="relative max-w-custom-narrow mx-auto"
+                            set:html={planeAndBanner}
+                        />
 
-            {planeAndBannerWind ? (
-              <div class="absolute inset-0 z-0 opacity-20">
-                <div class="" set:html={planeAndBannerWind} />
-              </div>
-            ) : null}
+                        {planeAndBannerWind ? (
+                            <div class="absolute inset-0 z-0 opacity-20">
+                                <div class="" set:html={planeAndBannerWind} />
+                            </div>
+                        ) : null}
 
-            {cityOutline ? (
-              <div class="absolute inset-x-0 bottom-0 z-0">
-                <div class="" set:html={cityOutline} />
-              </div>
-            ) : null}
-          </div>
-        ) : null
-      }
-    </HeroSection>
-  </section>
+                        {cityOutline ? (
+                            <div class="absolute inset-x-0 bottom-0 z-0">
+                                <div class="" set:html={cityOutline} />
+                            </div>
+                        ) : null}
+                    </div>
+                ) : null
+            }
+        </HeroSection>
+    </section>
 
-  <section
-    class="app-iframe hidden px-pxPage md:block md:2d-animator-app md:bg-custom-gradient-navy md:text-white"
-  >
-    <div
-      class="text-center"
-      set:html={marked(content.sections.section_001.title ?? "")}
-    />
-    {
-      content.sections.section_001.items &&
-        content.sections.section_001.items.map((item) => (
-          <div class="text-center" set:html={marked(item.content ?? "")} />
-        ))
-    }
-
-    <div class="pb-[150px] pt-4">
-      <iframe
-        src="/app/demo/index.html#2da"
-        class="w-[90vw] h-[90vh] mx-auto rounded-md"></iframe>
-    </div>
-  </section>
-
-  <section class="svg-animator-capabilities">
-    <Section bgColor="bg-base-bright" color="text-base-dark-blue" standard>
-      <div class="flex flex-col items-center">
-        <div
-          class="text-center mb-6"
-          set:html={marked(content.sections.section_01.title ?? "")}
+    <section
+        class="app-iframe hidden px-pxPage md:block md:2d-animator-app md:bg-custom-gradient-navy"
+    >
+        <IframeTitle
+            title={content.sections.section_001.title}
+            items={content.sections.section_001.items}
         />
 
-        <div class="capability-points flex items-center">
-          <div class="grid grid-cols-1 md:grid-cols-3 max-w-[68rem] gap-6">
-            {
-              content.sections.section_01.item_01 && (
-                <CapabilityPoint section={content.sections.section_01.item_01}>
-                  <ComputerIcon />
-                </CapabilityPoint>
-              )
-            }
-            {
-              content.sections.section_01.item_02 && (
-                <CapabilityPoint section={content.sections.section_01.item_02}>
-                  <SmallSizeIcon />
-                </CapabilityPoint>
-              )
-            }
-
-            {
-              content.sections.section_01.item_03 && (
-                <CapabilityPoint section={content.sections.section_01.item_03}>
-                  <RocketIcon />
-                </CapabilityPoint>
-              )
-            }
-
-            {
-              content.sections.section_01.item_04 && (
-                <CapabilityPoint section={content.sections.section_01.item_04}>
-                  <AllInclusiveIcon />
-                </CapabilityPoint>
-              )
-            }
-            {
-              content.sections.section_01.item_05 && (
-                <CapabilityPoint section={content.sections.section_01.item_05}>
-                  <FileDescriptionIcon />
-                </CapabilityPoint>
-              )
-            }
-
-            {
-              content.sections.section_01.item_06 && (
-                <CapabilityPoint section={content.sections.section_01.item_06}>
-                  <ExportIcon />
-                </CapabilityPoint>
-              )
-            }
-          </div>
+        <div class="pb-[150px] pt-4">
+            <iframe
+                src="/app/demo/index.html#2da"
+                class="w-[90vw] h-[90vh] mx-auto rounded-md"></iframe>
         </div>
-      </div>
-    </Section>
-  </section>
+    </section>
 
-  <section class="features">
-    <Section
-      bgColor="bg-custom-gradient-indigo"
-      color="text-base-bright"
-      firstOfType
-    >
-      <div class="mb-pxPage">
-        <TitledSplitSecton
-          imageClass="order-1"
-          textClass="order-2"
-          title={content.sections.section_02.title}
-          subTitle={content.sections.section_02.subTitle}
-          items={content.sections.section_02.items}
-          checkIcon={false}
-          border
+    <section class="svg-animator-capabilities">
+        <Section bgColor="bg-base-bright" color="text-base-dark-blue" standard>
+            <div class="flex flex-col items-center">
+                <div
+                    class="text-center mb-6"
+                    set:html={marked(content.sections.section_01.title ?? "")}
+                />
+
+                <div class="capability-points flex items-center">
+                    <div
+                        class="grid grid-cols-1 md:grid-cols-3 max-w-[68rem] gap-6"
+                    >
+                        {
+                            content.sections.section_01.item_01 && (
+                                <CapabilityPoint
+                                    section={
+                                        content.sections.section_01.item_01
+                                    }
+                                >
+                                    <ComputerIcon />
+                                </CapabilityPoint>
+                            )
+                        }
+                        {
+                            content.sections.section_01.item_02 && (
+                                <CapabilityPoint
+                                    section={
+                                        content.sections.section_01.item_02
+                                    }
+                                >
+                                    <SmallSizeIcon />
+                                </CapabilityPoint>
+                            )
+                        }
+
+                        {
+                            content.sections.section_01.item_03 && (
+                                <CapabilityPoint
+                                    section={
+                                        content.sections.section_01.item_03
+                                    }
+                                >
+                                    <RocketIcon />
+                                </CapabilityPoint>
+                            )
+                        }
+
+                        {
+                            content.sections.section_01.item_04 && (
+                                <CapabilityPoint
+                                    section={
+                                        content.sections.section_01.item_04
+                                    }
+                                >
+                                    <AllInclusiveIcon />
+                                </CapabilityPoint>
+                            )
+                        }
+                        {
+                            content.sections.section_01.item_05 && (
+                                <CapabilityPoint
+                                    section={
+                                        content.sections.section_01.item_05
+                                    }
+                                >
+                                    <FileDescriptionIcon />
+                                </CapabilityPoint>
+                            )
+                        }
+
+                        {
+                            content.sections.section_01.item_06 && (
+                                <CapabilityPoint
+                                    section={
+                                        content.sections.section_01.item_06
+                                    }
+                                >
+                                    <ExportIcon />
+                                </CapabilityPoint>
+                            )
+                        }
+                    </div>
+                </div>
+            </div>
+        </Section>
+    </section>
+
+    <section class="features">
+        <Section
+            bgColor="bg-custom-gradient-indigo"
+            color="text-base-bright"
+            firstOfType
         >
-          <div class="w-full">
-            {yoga ? <div class="" set:html={yoga} /> : null}
-          </div>
-        </TitledSplitSecton>
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
-        <Border>
-          <Features
-            title={content.sections.section_03.subSections[0]?.title}
-            items={content.sections.section_03.subSections[0]?.items}
-            bgImage
-          >
-            <div class="">
-              {
-                features2dCreate ? (
-                  <div class="" set:html={features2dCreate} />
-                ) : null
-              }
+            <div class="mb-pxPage">
+                <TitledSplitSecton
+                    imageClass="order-1"
+                    textClass="order-2"
+                    title={content.sections.section_02.title}
+                    subTitle={content.sections.section_02.subTitle}
+                    subTitleColor="text-custom-grey-200"
+                    items={content.sections.section_02.items}
+                    checkIcon={false}
+                    border
+                >
+                    <div class="w-full">
+                        {yoga ? <div class="" set:html={yoga} /> : null}
+                    </div>
+                </TitledSplitSecton>
             </div>
-          </Features>
-        </Border>
-        <Border>
-          <Features
-            title={content.sections.section_03.subSections[1]?.title}
-            items={content.sections.section_03.subSections[1]?.items}
-            bgImage
-          >
-            <div>
-              {
-                features2dAnimate ? (
-                  <div class="" set:html={features2dAnimate} />
-                ) : null
-              }
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
+                <Border>
+                    <Features
+                        title={content.sections.section_03.subSections[0]
+                            ?.title}
+                        items={content.sections.section_03.subSections[0]
+                            ?.items}
+                        bgImage
+                    >
+                        <div class="">
+                            {
+                                features2dCreate ? (
+                                    <div class="" set:html={features2dCreate} />
+                                ) : null
+                            }
+                        </div>
+                    </Features>
+                </Border>
+                <Border>
+                    <Features
+                        title={content.sections.section_03.subSections[1]
+                            ?.title}
+                        items={content.sections.section_03.subSections[1]
+                            ?.items}
+                        bgImage
+                    >
+                        <div>
+                            {
+                                features2dAnimate ? (
+                                    <div
+                                        class=""
+                                        set:html={features2dAnimate}
+                                    />
+                                ) : null
+                            }
+                        </div>
+                    </Features>
+                </Border>
+                <Border>
+                    <Features
+                        title={content.sections.section_03.subSections[2]
+                            ?.title}
+                        items={content.sections.section_03.subSections[2]
+                            ?.items}
+                        bgImage
+                    >
+                        <div>
+                            {
+                                features2dExport ? (
+                                    <div class="" set:html={features2dExport} />
+                                ) : null
+                            }
+                        </div>
+                    </Features>
+                </Border>
             </div>
-          </Features>
-        </Border>
-        <Border>
-          <Features
-            title={content.sections.section_03.subSections[2]?.title}
-            items={content.sections.section_03.subSections[2]?.items}
-            bgImage
-          >
-            <div>
-              {
-                features2dExport ? (
-                  <div class="" set:html={features2dExport} />
-                ) : null
-              }
-            </div>
-          </Features>
-        </Border>
-      </div>
-    </Section>
-  </section>
+        </Section>
+    </section>
 
-  <section class="auto-animate">
-    <Section bgColor="bg-custom-gradient-violet" color="text-base-bright">
-      <TitledSplitSecton
-        imageClass="order-1"
-        textClass="order-2"
-        title={content.sections.section_04.title}
-        subTitle={content.sections.section_04.subTitle}
-        items={content.sections.section_04.items}
-        border
-      >
-        <div class="w-full max-w-custom-standard">
-          {autoAnimate ? <div class="" set:html={autoAnimate} /> : null}
-        </div>
-      </TitledSplitSecton>
-    </Section>
-  </section>
-  <section class="easing">
-    <Section bgColor="bg-custom-gradient-navy" color="text-base-bright">
-      <TitledSplitSecton
-        imageClass="order-1"
-        textClass="order-2"
-        title={content.sections.section_05.title}
-        subTitle={content.sections.section_05.subTitle}
-        items={content.sections.section_05.items}
-        border
-      >
-        <div class="w-full max-w-custom-standard">
-          {easing ? <div class="" set:html={easing} /> : null}
-        </div>
-      </TitledSplitSecton>
-    </Section>
-  </section>
-  <section class="animated-icons">
-    <Section bgColor="bg-custom-gradient-indigo" color="text-base-bright">
-      <TitledSplitSecton
-        imageClass="order-1"
-        textClass="order-2"
-        title={content.sections.section_06.title}
-        subTitle={content.sections.section_06.subTitle}
-        items={content.sections.section_06.items}
-        border
-      >
-        <div class="w-full max-w-custom-standard">
-          {
-            animatedIconsWatch ? (
-              <div class="" set:html={animatedIconsWatch} />
-            ) : null
-          }
-        </div>
-      </TitledSplitSecton>
-    </Section>
-  </section>
+    <section class="auto-animate">
+        <Section bgColor="bg-custom-gradient-violet" color="text-base-bright">
+            <TitledSplitSecton
+                imageClass="order-1"
+                textClass="order-2"
+                title={content.sections.section_04.title}
+                subTitle={content.sections.section_04.subTitle}
+                subTitleColor="text-custom-grey-200"
+                items={content.sections.section_04.items}
+                border
+            >
+                <div class="w-full max-w-custom-standard">
+                    {
+                        autoAnimate ? (
+                            <div class="" set:html={autoAnimate} />
+                        ) : null
+                    }
+                </div>
+            </TitledSplitSecton>
+        </Section>
+    </section>
+    <section class="easing">
+        <Section bgColor="bg-custom-gradient-navy" color="text-base-bright">
+            <TitledSplitSecton
+                imageClass="order-1"
+                textClass="order-2"
+                title={content.sections.section_05.title}
+                subTitle={content.sections.section_05.subTitle}
+                subTitleColor="text-custom-grey-200"
+                items={content.sections.section_05.items}
+                border
+            >
+                <div class="w-full max-w-custom-standard">
+                    {easing ? <div class="" set:html={easing} /> : null}
+                </div>
+            </TitledSplitSecton>
+        </Section>
+    </section>
+    <section class="animated-icons">
+        <Section bgColor="bg-custom-gradient-indigo" color="text-base-bright">
+            <TitledSplitSecton
+                imageClass="order-1"
+                textClass="order-2"
+                title={content.sections.section_06.title}
+                subTitle={content.sections.section_06.subTitle}
+                subTitleColor="text-custom-grey-200"
+                items={content.sections.section_06.items}
+                border
+            >
+                <div class="w-full max-w-custom-standard">
+                    {
+                        animatedIconsWatch ? (
+                            <div class="" set:html={animatedIconsWatch} />
+                        ) : null
+                    }
+                </div>
+            </TitledSplitSecton>
+        </Section>
+    </section>
 
-  <section class="animated-splash-screens">
-    <Section
-      bgColor="bg-custom-gradient-violet"
-      color="text-base-bright"
-      lastOfType
-    >
-      <TitledSplitSecton
-        imageClass="order-1 md:order-2"
-        textClass="order-2 md:order-1"
-        title={content.sections.section_07.title}
-        subTitle={content.sections.section_07.subTitle}
-        items={content.sections.section_07.items}
-        border
-      >
-        <div class="w-full max-w-custom-standard [&_svg]:max-h-[50vh]">
-          {splashScreen ? <div class="" set:html={splashScreen} /> : null}
-        </div>
-      </TitledSplitSecton>
-    </Section>
-  </section>
-  <section class="all-devices">
-    <Section bgColor="bg-base-bright" color="text-base-dark-blue" firstOfType>
-      <AllDevices
-        title={content.sections.section_08.title}
-        subTitle={content.sections.section_08.subTitle}
-      >
-        <div class="w-full max-w-custom-standard mx-auto">
-          {devices ? <div class="" set:html={devices} /> : null}
-        </div>
-      </AllDevices>
-    </Section>
-  </section>
+    <section class="animated-splash-screens">
+        <Section
+            bgColor="bg-custom-gradient-violet"
+            color="text-base-bright"
+            lastOfType
+        >
+            <TitledSplitSecton
+                imageClass="order-1 md:order-2"
+                textClass="order-2 md:order-1"
+                title={content.sections.section_07.title}
+                subTitle={content.sections.section_07.subTitle}
+                subTitleColor="text-custom-grey-200"
+                items={content.sections.section_07.items}
+                border
+            >
+                <div class="w-full max-w-custom-standard [&_svg]:max-h-[50vh]">
+                    {
+                        splashScreen ? (
+                            <div class="" set:html={splashScreen} />
+                        ) : null
+                    }
+                </div>
+            </TitledSplitSecton>
+        </Section>
+    </section>
+    <section class="all-devices">
+        <Section
+            bgColor="bg-base-bright"
+            color="text-base-dark-blue"
+            firstOfType
+        >
+            <AllDevices
+                title={content.sections.section_08.title}
+                subTitle={content.sections.section_08.subTitle}
+            >
+                <div class="w-full max-w-custom-standard mx-auto">
+                    {devices ? <div class="" set:html={devices} /> : null}
+                </div>
+            </AllDevices>
+        </Section>
+    </section>
 </BaseLayout>

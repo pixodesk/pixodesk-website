@@ -32,7 +32,7 @@ const { content, className, bgColor, color, svg = "" } = Astro.props;
           class={`relative px-pxPage ${className === "pixodesk" ? "mb-0" : "mb-8"}`}
         >
           {content.items.map((item) => (
-            <div class="" set:html={marked(item.content ?? "")} />
+            <div class="text-custom-grey-200" set:html={marked(item.content ?? "")} />
           ))}
         </div>
       )

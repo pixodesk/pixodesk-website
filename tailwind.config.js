@@ -45,6 +45,8 @@ module.exports = {
         'base-bright': '#fff',
 
         'base-dark-blue': '#415274',
+        'custom-grey-400': '#98a2b4',
+        'custom-grey-200': '#c8d0d9',
 
         'base-red': '#cb5353',
         'base-red-darker': '#892929',
@@ -126,7 +128,10 @@ module.exports = {
 
     'bg-custom-radial-gradient-violet',
     'text-custom-radial-gradient-violet',
-
+    
+    // Text colors
+    "text-custom-grey-200",
+    "text-custom-grey-400",
     // Sky blue
     "text-sky-blue-light", "bg-sky-blue-light",
     // Indigo

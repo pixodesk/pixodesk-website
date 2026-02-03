@@ -123,9 +123,9 @@ sections:
     title: "## Gradient and Opacity Tool"
     subTitle: Use gradients and opacity to create smooth color transitions, realistic lighting, and layered visual effects.
     items:
-      - title: Add depth and dimension to vector shapes.
-      - title: Blend colors smoothly to create the illusion of light and shadow.
-      - title: Add realism to your vector art.
-      - title: Control shape transparency to achieve subtle or dramatic effects.
-      - title: Perfect for clean, balanced, and complex designs.
+      - content: Add depth and dimension to vector shapes.
+      - content: Blend colors smoothly to create the illusion of light and shadow.
+      - content: Add realism to your vector art.
+      - content: Control shape transparency to achieve subtle or dramatic effects.
+      - content: Perfect for clean, balanced, and complex designs.
       
