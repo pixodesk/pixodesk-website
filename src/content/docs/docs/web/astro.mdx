@@ -1,0 +1,138 @@
+---
+title: "Astro"
+description: "Lottie animations for Astro"
+sidebar:
+  order: 30
+---
+import SpacerBottom from '../../../../layouts/SpacerBottom.astro';
+import { Badge } from '@astrojs/starlight/components';
+
+# Add Lottie Animation to Astro Project
+<SpacerBottom />
+You can add Lottie animations to an Astro project easily using the `lottie-react` package with React integration.
+<SpacerBottom />
+---
+
+## Create Astro Project
+<SpacerBottom />
+Open terminal and navigate to your projects folder:
+
+```bash
+cd path/to/your/projects
+```
+
+Create a new Astro project:
+
+```bash
+npm create astro@latest my-animation-app
+```
+
+During setup, choose:
+- How would you like to start your new project?: **A basic, helpful starter project (recommended)**
+- Install dependencies: **Yes**
+- Initialize a new git repository? (optional): **Yes or No (depends on your preferences)** 
+
+Enter your project directory: 
+
+```bash
+cd my-animation-app
+```
+
+Start the development server:
+
+```bash
+npm run dev
+```
+
+You should see: 
+
+```bash
+Local: http://localhost:4321
+```
+
+<SpacerBottom />
+---
+
+## Install React and Lottie
+
+```bash
+npx astro add react
+npm install lottie-react
+```
+
+---
+
+## Get Your Lottie Animation
+<SpacerBottom size='1rem' />
+### Create an animation in 2D Animator
+- <a href="https://pixodesk.com/2d-animator" target="_blank">https://pixodesk.com/2d-animator</a><Badge text="Tool" variant="note" />
+
+### Download from LottieFiles
+- <a href="https://lottiefiles.com" target="_blank">https://lottiefiles.com</a>
+
+Create an animations folder and add your animation:
+
+```bash
+src/animations/animation.json
+```
+
+---
+
+## Create React Component for Lottie
+<SpacerBottom size='1rem' />
+**src/components/LottieAnimation.tsx**
+
+```tsx
+import React from "react";
+import Lottie from "lottie-react";
+import animationData from "../animations/animation.json";
+
+export default function LottieAnimation() {
+    return (
+        <div>
+            <Lottie 
+                animationData={animationData}
+                loop={true}
+                autoplay={true}
+                style={{ width: 300, height: 300 }}
+            />
+        </div>
+    );
+}
+```
+
+---
+
+## Use in Astro Page
+<SpacerBottom size='1rem' />
+**src/pages/index.astro**
+
+```astro
+---
+import LottieAnimation from '../components/LottieAnimation';
+---
+
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width" />
+        <title>Lottie Animation in Astro</title>
+    </head>
+    <body>
+        <main>
+            <h1>My Lottie Animation</h1>
+            <LottieAnimation client:only="react" />
+            {/* ... The rest of your code */}
+        </main>
+    </body>
+</html>
+```
+
+
+**Important:** Use `client:only="react"` directive to make the component interactive.
+<SpacerBottom />
+---
+
+## Done! 🎉
+<SpacerBottom />
+Your Lottie animation should now work in your Astro project.

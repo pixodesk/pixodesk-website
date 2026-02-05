@@ -1,0 +1,27 @@
+---
+import { marked } from "marked";
+import type { Item } from "../types/types";
+
+interface Props {
+    title: string;
+    items: Item[];
+}
+
+const {title, items} = Astro.props;
+---
+
+<>
+    <div
+        class="text-center text-white"
+        set:html={marked(title ?? "")}
+    />
+    {
+        items &&
+            items.map((item) => (
+                <div
+                    class="text-center text-custom-grey-400"
+                    set:html={marked(item.content ?? "")}
+                />
+            ))
+    }
+</>

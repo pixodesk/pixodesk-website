@@ -35,7 +35,7 @@ const {
   menus: passedMenus,
   bgColor = "bg-[#000000]", // default dark background
   bgSubColor = "bg-[#222222]",
-  color = "text-gray-400", // default text color
+  color = "text-custom-grey-400", // default text color
   hoverText = "hover:text-white",
   textSize = "text-xs", // default text size
 } = Astro.props as Props;
@@ -48,6 +48,7 @@ const menus: MenuItem[] = passedMenus ?? [
   //   subMenu: [],
   //   image: "../../public/assets/common/logos/logo-pixodesk.svg",
   // },
+  
   {
     label: "2D Animator (Lottie)",
     href: "/2d-animator",
@@ -76,6 +77,10 @@ const menus: MenuItem[] = passedMenus ?? [
       // { label: "Releases", href: "/svg-animator/releases" },
       { label: "Download", href: "/svg-animator/download" },
     ],
+  },
+  {
+    label: "Docs",
+    href: "/docs",
   },
   {
     label: "Pricing",

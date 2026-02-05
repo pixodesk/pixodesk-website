@@ -1,7 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import SplitSection from "../layouts/SplitSection.astro";
-import content from "./svg-editor/svg-index-text-content";
+import content from "../data/svg/svg-index-text-content";
 import HeroSection from "../layouts/HeroSection.astro";
 import Code from "../layouts/Code.astro";
 import WrapperX from "../layouts/WrapperX.astro";
@@ -20,6 +20,7 @@ import FileDescriptionIcon from "../components/svg/FileDescriptionIcon.astro";
 import RocketIcon from "../components/svg/RocketIcon.astro";
 import SmallSizeIcon from "../components/svg/SmallSizeIcon.astro";
 import CapabilityPoint from "../layouts/CapabilityPoint.astro";
+import IframeTitle from "../layouts/IframeTitle.astro";
 
 import RealTimeClock from "../layouts/RealTimeClock.astro";
 import eiffelTower from "../../public/assets/svg/sections/Eiffel-tower.svg?raw";
@@ -27,249 +28,275 @@ import birdTwittingShB from "../../public/assets/svg/sections/bird-twitting-svg.
 import editUsedColorsStatic from "../../public/assets/svg/sections/edit-colors-static.svg?raw";
 import mangoJuice from "../../public/assets/svg/sections/mango-juice.svg?raw";
 import vectorText from "../../public/assets/svg/sections/vector-text.svg?raw";
-import TitledSplitSecton from '../layouts/TitledSplitSecton.astro';
+import TitledSplitSecton from "../layouts/TitledSplitSecton.astro";
 ---
 
 <BaseLayout title="SVG Editor">
-  <!-- <pre>
+    <!-- <pre>
         {JSON.stringify(content, undefined, 2)}
     </pre> -->
 
-  <section
-    class="hero-section bg-custom-gradient-indigo text-white pt-navDouble"
-  >
-    <HeroSection content={content.sections.section_00}>
-      <div class="relative w-full flex flex-col items-center">
-        {
-          content.sections.section_00.images && (
-            // <div class="absolute inset-0 z-0">
-            //   <img src={content.sections.section_00.images.background} />
-            // </div>
-            <div class="relative w-1/4 z-10 items-center py-8">
-              <img src={content.sections.section_00.images.front} />
-            </div>
-          )
-        }
-      </div>
-    </HeroSection>
-  </section>
-
-  <section class="app-iframe hidden px-pxPage md:block md:svg-editor-app md:bg-custom-gradient-navy md:text-white">
-    <div
-      class="text-center"
-      set:html={marked(content.sections.section_001.title ?? "")}
-    />
-    {
-      content.sections.section_001.items &&
-        content.sections.section_001.items.map((item) => (
-          <div class="text-center" set:html={marked(item.content ?? "")} />
-        ))
-    }
-
-    <div class="pb-[30px] pt-4">
-      <iframe
-        src="/app/demo/index.html#svg"
-        class="w-[90vw] h-[90vh] mx-auto rounded-md"></iframe>
-    </div>
-  </section>
-
-  <section class="svg-editor-capabilities">
-    <Section
-      bgColor="bg-base-bright"
-      color="text-base-dark-blue"
-      standard
+    <section
+        class="hero-section bg-custom-gradient-indigo text-white pt-navDouble"
     >
-      <div class="flex flex-col items-center">
-        <div
-          class="text-center mb-6"
-          set:html={marked(content.sections.section_01.title ?? "")}
+        <HeroSection content={content.sections.section_00}>
+            <div class="relative w-full flex flex-col items-center">
+                {
+                    content.sections.section_00.images && (
+                        // <div class="absolute inset-0 z-0">
+                        //   <img src={content.sections.section_00.images.background} />
+                        // </div>
+                        <div class="relative w-1/4 z-10 items-center py-8">
+                            <img
+                                src={content.sections.section_00.images.front}
+                            />
+                        </div>
+                    )
+                }
+            </div>
+        </HeroSection>
+    </section>
+
+    <section
+        class="app-iframe hidden px-pxPage md:block md:svg-editor-app md:bg-custom-gradient-navy md:text-white"
+    >
+        <IframeTitle
+            title={content.sections.section_001.title}
+            items={content.sections.section_001.items}
         />
 
-        <div class="capability-points flex items-center">
-          <div class="grid grid-cols-1 md:grid-cols-3 max-w-[68rem] gap-6">
-            {
-              content.sections.section_01.item_01 && (
-                <CapabilityPoint section={content.sections.section_01.item_01}>
-                  <ComputerIcon />
-                </CapabilityPoint>
-              )
-            }
-            {
-              content.sections.section_01.item_02 && (
-                <CapabilityPoint section={content.sections.section_01.item_02}>
-                  <SmallSizeIcon />
-                </CapabilityPoint>
-              )
-            }
+        <div class="pb-[30px] pt-4">
+            <iframe
+                src="/app/demo/index.html#svg"
+                class="w-[90vw] h-[90vh] mx-auto rounded-md"></iframe>
+        </div>
+    </section>
 
-            {
-              content.sections.section_01.item_03 && (
-                <CapabilityPoint section={content.sections.section_01.item_03}>
-                  <RocketIcon />
-                </CapabilityPoint>
-              )
-            }
+    <section class="svg-editor-capabilities">
+        <Section bgColor="bg-base-bright" color="text-base-dark-blue" standard>
+            <div class="flex flex-col items-center">
+                <div
+                    class="text-center mb-6"
+                    set:html={marked(content.sections.section_01.title ?? "")}
+                />
 
-            {
-              content.sections.section_01.item_04 && (
-                <CapabilityPoint section={content.sections.section_01.item_04}>
-                  <AllInclusiveIcon />
-                </CapabilityPoint>
-              )
-            }
-            {
-              content.sections.section_01.item_05 && (
-                <CapabilityPoint section={content.sections.section_01.item_05}>
-                  <FileDescriptionIcon />
-                </CapabilityPoint>
-              )
-            }
+                <div class="capability-points flex items-center">
+                    <div
+                        class="grid grid-cols-1 md:grid-cols-3 max-w-[68rem] gap-6"
+                    >
+                        {
+                            content.sections.section_01.item_01 && (
+                                <CapabilityPoint
+                                    section={
+                                        content.sections.section_01.item_01
+                                    }
+                                >
+                                    <ComputerIcon />
+                                </CapabilityPoint>
+                            )
+                        }
+                        {
+                            content.sections.section_01.item_02 && (
+                                <CapabilityPoint
+                                    section={
+                                        content.sections.section_01.item_02
+                                    }
+                                >
+                                    <SmallSizeIcon />
+                                </CapabilityPoint>
+                            )
+                        }
 
-            {
-              content.sections.section_01.item_06 && (
-                <CapabilityPoint section={content.sections.section_01.item_06}>
-                  <ExportIcon />
-                </CapabilityPoint>
-              )
-            }
-          </div>
-        </div>
-      </div>
-    </Section>
-  </section>
+                        {
+                            content.sections.section_01.item_03 && (
+                                <CapabilityPoint
+                                    section={
+                                        content.sections.section_01.item_03
+                                    }
+                                >
+                                    <RocketIcon />
+                                </CapabilityPoint>
+                            )
+                        }
 
-  <section class="shape-builder">
-    <Section 
-      bgColor="bg-custom-gradient-navy" 
-      color="text-base-bright" 
-      firstOfType
-      >
-      <TitledSplitSecton
-        imageClass="order-1"
-        textClass="order-2"
-        title={content.sections.section_02.title}
-        subTitle={content.sections.section_02.subTitle}
-        items={content.sections.section_02.items}
-        border
-      >
-        <div class="w-full max-w-custom-standard">
-          {birdTwittingShB ? <div class="" set:html={birdTwittingShB} /> : null}
-        </div>
-      </TitledSplitSecton>
-    </Section>
-  </section>
-  <section class="edit-used-colours">
-    <Section 
-      bgColor="bg-custom-gradient-indigo" 
-      color="text-base-bright" 
-      >
-      <TitledSplitSecton
-        imageClass="order-1 md:order-2"
-        textClass="order-2 md:order-1"
-        title={content.sections.section_03.title}
-        subTitle={content.sections.section_03.subTitle}
-        items={content.sections.section_03.items}
-        border
-      >
-        <div class="w-full max-w-custom-standard">
-          {editUsedColorsStatic ? <div class="" set:html={editUsedColorsStatic} /> : null}
-        </div>
-      </TitledSplitSecton>
-    </Section>
-  </section>
-  <section class="gradient-opacity">
-    <Section 
-      bgColor="bg-custom-gradient-violet" 
-      color="text-base-bright" 
-      lastOfType
-      >
-      <TitledSplitSecton
-        imageClass="order-1"
-        textClass="order-2 "
-        title={content.sections.section_04.title}
-        subTitle={content.sections.section_04.subTitle}
-        items={content.sections.section_04.items}
-        border
-      >
-        <div class="relative w-full max-w-custom-standard">
-          {
-            mangoJuice ? (
-              <div
-                class="relative z-10 w-full h-full flex items-center justify-center"
-                set:html={mangoJuice}
-              />
-            ) : null
-          }
-        </div>
-      </TitledSplitSecton>
-    </Section>
-  </section>
-  <section class="vector-text">
-    <Section 
-      bgColor="bg-base-bright" 
-      color="text-base-dark-blue"
-      standard
-      >
-      <TitledSplitSecton
-        shadowColor="255, 233, 204, 1"
-        imageClass="order-1 md:order-2"
-        textClass="order-2 md:order-1"
-        title={content.sections.section_05.title}
-        subTitle={content.sections.section_05.subTitle}
-        items={content.sections.section_05.items}
-      >
-        <div class="w-full max-w-custom-standard">
-          {vectorText ? <div class="" set:html={vectorText} /> : null}
-        </div>
-      </SplitSection>
-    </Section>
-  </section>
-  <section class="pattern-markers-spray">
-    <Section 
-      bgColor="bg-custom-gradient-navy" 
-      color="text-base-bright"
-      firstOfType
-      >
-      <TitledSplitSecton
-        imageClass="order-1"
-        textClass="order-2"
-        title={content.sections.section_06.title}
-        subTitle={content.sections.section_06.subTitle}
-        items={content.sections.section_06.items}
-        border
-      >
-        <div class="w-full max-w-custom-standard">
-          {eiffelTower ? <div class="" set:html={eiffelTower} /> : null}
-        </div>
-      </TitledSplitSecton>
-    </Section>
-  </section>
-  <section class="repeater-clone">
-    <Section
-      bgColor="bg-custom-gradient-violet"
-      color="text-base-bright"
-      lastOfType
-    >
-      <TitledSplitSecton
-        imageClass="order-1 md:order-2"
-        textClass="order-2 md:order-1"
-        title={content.sections.section_07.title}
-        subTitle={content.sections.section_07.subTitle}
-        items={content.sections.section_07.items}
-        border
-      >
-        <div class="w-full max-w-custom-standard">
-          <RealTimeClock client:load />
-          <!-- {
+                        {
+                            content.sections.section_01.item_04 && (
+                                <CapabilityPoint
+                                    section={
+                                        content.sections.section_01.item_04
+                                    }
+                                >
+                                    <AllInclusiveIcon />
+                                </CapabilityPoint>
+                            )
+                        }
+                        {
+                            content.sections.section_01.item_05 && (
+                                <CapabilityPoint
+                                    section={
+                                        content.sections.section_01.item_05
+                                    }
+                                >
+                                    <FileDescriptionIcon />
+                                </CapabilityPoint>
+                            )
+                        }
+
+                        {
+                            content.sections.section_01.item_06 && (
+                                <CapabilityPoint
+                                    section={
+                                        content.sections.section_01.item_06
+                                    }
+                                >
+                                    <ExportIcon />
+                                </CapabilityPoint>
+                            )
+                        }
+                    </div>
+                </div>
+            </div>
+        </Section>
+    </section>
+
+    <section class="shape-builder">
+        <Section
+            bgColor="bg-custom-gradient-navy"
+            color="text-base-bright"
+            firstOfType
+        >
+            <TitledSplitSecton
+                imageClass="order-1"
+                textClass="order-2"
+                title={content.sections.section_02.title}
+                subTitle={content.sections.section_02.subTitle}
+                items={content.sections.section_02.items}
+                border
+            >
+                <div class="w-full max-w-custom-standard">
+                    {
+                        birdTwittingShB ? (
+                            <div class="" set:html={birdTwittingShB} />
+                        ) : null
+                    }
+                </div>
+            </TitledSplitSecton>
+        </Section>
+    </section>
+    <section class="edit-used-colours">
+        <Section bgColor="bg-custom-gradient-indigo" color="text-base-bright">
+            <TitledSplitSecton
+                imageClass="order-1 md:order-2"
+                textClass="order-2 md:order-1"
+                title={content.sections.section_03.title}
+                subTitle={content.sections.section_03.subTitle}
+                items={content.sections.section_03.items}
+                border
+            >
+                <div class="w-full max-w-custom-standard">
+                    {
+                        editUsedColorsStatic ? (
+                            <div class="" set:html={editUsedColorsStatic} />
+                        ) : null
+                    }
+                </div>
+            </TitledSplitSecton>
+        </Section>
+    </section>
+    <section class="gradient-opacity">
+        <Section
+            bgColor="bg-custom-gradient-violet"
+            color="text-base-bright"
+            lastOfType
+        >
+            <TitledSplitSecton
+                imageClass="order-1"
+                textClass="order-2 "
+                title={content.sections.section_04.title}
+                subTitle={content.sections.section_04.subTitle}
+                items={content.sections.section_04.items}
+                border
+            >
+                <div class="relative w-full max-w-custom-standard">
+                    {
+                        mangoJuice ? (
+                            <div
+                                class="relative z-10 w-full h-full flex items-center justify-center"
+                                set:html={mangoJuice}
+                            />
+                        ) : null
+                    }
+                </div>
+            </TitledSplitSecton>
+        </Section>
+    </section>
+    <section class="vector-text">
+        <Section bgColor="bg-base-bright" color="text-base-dark-blue" standard>
+            <TitledSplitSecton
+                shadowColor="255, 233, 204, 1"
+                imageClass="order-1 md:order-2"
+                textClass="order-2 md:order-1"
+                title={content.sections.section_05.title}
+                subTitle={content.sections.section_05.subTitle}
+                subTitleColor="text-base-dark-blue"
+                items={content.sections.section_05.items}
+            >
+                <div class="w-full max-w-custom-standard">
+                    {vectorText ? <div class="" set:html={vectorText} /> : null}
+                </div>
+            </TitledSplitSecton>
+        </Section>
+    </section>
+    <section class="pattern-markers-spray">
+        <Section
+            bgColor="bg-custom-gradient-navy"
+            color="text-base-bright"
+            firstOfType
+        >
+            <TitledSplitSecton
+                imageClass="order-1"
+                textClass="order-2"
+                title={content.sections.section_06.title}
+                subTitle={content.sections.section_06.subTitle}
+                items={content.sections.section_06.items}
+                border
+            >
+                <div class="w-full max-w-custom-standard">
+                    {
+                        eiffelTower ? (
+                            <div class="" set:html={eiffelTower} />
+                        ) : null
+                    }
+                </div>
+            </TitledSplitSecton>
+        </Section>
+    </section>
+    <section class="repeater-clone">
+        <Section
+            bgColor="bg-custom-gradient-violet"
+            color="text-base-bright"
+            lastOfType
+        >
+            <TitledSplitSecton
+                imageClass="order-1 md:order-2"
+                textClass="order-2 md:order-1"
+                title={content.sections.section_07.title}
+                subTitle={content.sections.section_07.subTitle}
+                items={content.sections.section_07.items}
+                border
+            >
+                <div class="w-full max-w-custom-standard">
+                    <RealTimeClock client:load />
+                    <!-- {
           clockFaceRepeater ? (
             <div class="" set:html={clockFaceRepeater} />
           ) : null
         } -->
-        </div>
-      </TitledSplitSecton>
-    </Section>
-  </section>
-  <!-- <section class="svg-code">
+                </div>
+            </TitledSplitSecton>
+        </Section>
+    </section>
+    <!-- <section class="svg-code">
     <Section 
       bgColor="bg-base-bright" 
       color="text-base-dark-blue" 

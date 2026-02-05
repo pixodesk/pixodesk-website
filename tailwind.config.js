@@ -13,6 +13,7 @@ module.exports = {
         'custom-narrower': '46rem',
         'custom-narrow': '56rem',
         'custom-standard': '76rem',
+        'custom-wide': '90rem',
       },
       fontSize: {
         'fs-xs': '0.75rem',  // 14px
@@ -44,6 +45,8 @@ module.exports = {
         'base-bright': '#fff',
 
         'base-dark-blue': '#415274',
+        'custom-grey-400': '#98a2b4',
+        'custom-grey-200': '#c8d0d9',
 
         'base-red': '#cb5353',
         'base-red-darker': '#892929',
@@ -125,7 +128,10 @@ module.exports = {
 
     'bg-custom-radial-gradient-violet',
     'text-custom-radial-gradient-violet',
-
+    
+    // Text colors
+    "text-custom-grey-200",
+    "text-custom-grey-400",
     // Sky blue
     "text-sky-blue-light", "bg-sky-blue-light",
     // Indigo
@@ -141,9 +147,12 @@ module.exports = {
     "bg-navy-lightest", "bg-navy-lighter", "bg-navy-light", "bg-navy-base", "bg-navy-dark",
 
 
-    //Max Width Pages
+    //Width Pages
+    'w-custom-narrow', 'w-custom-standard',
+    'w-custom-narrowest', 'w-custom-wide',
+
     'max-w-custom-narrow', 'max-w-custom-standard',
-    'max-w-custom-narrowest',
+    'max-w-custom-narrowest', 'max-w-custom-wide',
     
     // Spacing
     'px-pxPage', 'pl-pxPage', 'pr-pxPage',

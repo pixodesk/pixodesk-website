@@ -1,12 +1,12 @@
 ---
 import BaseLayout from "../../../layouts/BaseLayout.astro";
-import content from "../lottie-pages-text-content";
+import content from "../../../data/2d-animator/lottie-pages-text-content";
 import LottieProCard from "../../../layouts/LottieProCard.astro";
 import type { SubSection } from "../../../types/types";
 import { marked } from "marked";
 import LottiePlayerCard from "../../../layouts/LottiePlayerCard.astro";
 
-import "./lottie-animation.scss";
+import "../../../styles/global.scss";
 
 const pageContent = content.pages.page_04;
 const section_01 = pageContent.sections?.section_01;
