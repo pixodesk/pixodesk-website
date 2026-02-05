@@ -1,20 +1,20 @@
 ---
-title: "Vue"
-description: "Lottie animations for Vue"
+title: "Nuxt"
+description: "Lottie animations for Nuxt"
+slug: "docs/add-lottie-to-nuxt"
 sidebar:
-  order: 40
+  order: 50
 ---
-
 import SpacerBottom from '../../../../layouts/SpacerBottom.astro';
 import { Badge } from '@astrojs/starlight/components';
 
-# Add Lottie Animation to Vue Project
+# Add Lottie Animation to Nuxt Project
 <SpacerBottom />
-You can add Lottie animations to a Vue app easily using the `@lottiefiles/vue-lottie-player` package.
+You can add Lottie animations to a Nuxt app easily using the `@lottiefiles/vue-lottie-player` package.
 <SpacerBottom />
 ---
 
-## Create Vue Project
+## Create Nuxt Project
 <SpacerBottom />
 Open terminal and navigate to your projects folder:
 
@@ -22,18 +22,12 @@ Open terminal and navigate to your projects folder:
 cd path/to/your/projects
 ```
 
-Create a new Vue 3 project with TypeScript:
+Create a new Nuxt project with TypeScript:
 
 ```bash
-npm create vue@latest my-animation-app
+npx nuxi@latest init my-animation-app
 ```
-
-During setup, choose:
-- TypeScript: **Yes**
-- Other options as needed
-<SpacerBottom />
-Navigate into the project:
-
+Enter your project directory:
 ```bash
 cd my-animation-app
 ```
@@ -50,14 +44,14 @@ Start the development server:
 npm run dev
 ```
 
-You should see: 
+You should see:
 ```bash
-Local: http://localhost:5173
-```
+ Local: http://localhost:3000
+ ```
 
 ---
 
-## Install Lottie for Vue
+## Install Lottie Package
 
 ```bash
 npm install @lottiefiles/dotlottie-vue
@@ -72,23 +66,25 @@ npm install @lottiefiles/dotlottie-vue
 ### Download from LottieFiles
 - <a href="https://lottiefiles.com" target="_blank">https://lottiefiles.com</a>
 
-Create an assets folder and add your animation:
+In public folder create an animations folder and add your animation:
 
 ```bash
-src/assets/animation.json
+public/animations/animation.json
 ```
 
 ---
 
-## Use Lottie in Your Component
+## Create a Component
+<SpacerBottom />
+Next to app.vue file create a components folder and add there LottieAnimation.vue. 
 <SpacerBottom size='1rem' />
-**src/components/LottieAnimation.vue**
+**components/LottieAnimation.vue**
 
 ```vue
 <template>
     <div class="lottie-container">
         <DotLottieVue
-        src="/src/assets/animation.json"
+        src="/animations/animation.json"
         :loop="true"
         :autoplay="true"
         style="height: 300px; width: 300px;"
@@ -97,9 +93,7 @@ src/assets/animation.json
 </template>
 
 <script setup lang="ts">
-
 import { DotLottieVue } from '@lottiefiles/dotlottie-vue';
-
 </script>
 
 <style scoped>
@@ -107,19 +101,25 @@ import { DotLottieVue } from '@lottiefiles/dotlottie-vue';
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 100%;
 }
 </style>
 ```
 
-**src/App.vue**
+---
+
+## Use in Nuxt App
+<SpacerBottom size='1rem' />
+**app.vue**
 
 ```vue
-
 <template>
-  <div id="app">
-    <h1>My Lottie Animation</h1>
-    <LottieAnimation />
-    <!-- The rest of your content goes here -->
+  <div>
+    <div class="animation">
+      <LottieAnimation />
+    </div>
+    <!-- Your other components go here... -->
+    
   </div>
 </template>
 
@@ -128,18 +128,13 @@ import LottieAnimation from './components/LottieAnimation.vue';
 </script>
 
 <style scoped>
-#app {
+.animation {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 0;
 }
-
-/* Your other style goes here */
 </style>
-
-
 ```
 
 ---
@@ -147,4 +142,4 @@ import LottieAnimation from './components/LottieAnimation.vue';
 
 ## Done! 🎉
 <SpacerBottom />
-Your Lottie animation should now work in your Vue project.
+Your Lottie animation should now work in your Nuxt project.

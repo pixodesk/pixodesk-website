@@ -15,9 +15,7 @@ export default defineConfig({
         },
     },
     vite: {
-
         site: 'https://pixodesk.com',
-
         plugins: [yaml()],
         server: {
             host: true, // Allow access via 127.0.0.1 or custom domains
@@ -30,7 +28,7 @@ export default defineConfig({
             config: { applyBaseStyles: true },
         }),
         starlight({
-            title: "Pixodesk Docs",
+            title: "Pixodesk",
             disable404Route: true,
             pagefind: false,
             locales: {
@@ -41,14 +39,12 @@ export default defineConfig({
             },
             defaultLocale: 'root',
             expressiveCode: {
-                themes: ['github-light', 'github-dark'],  // Use light syntax theme, github-light, min-light, slack-ochin, solarized-light, vitesse-light
-
+                themes: ['github-light', 'github-dark'],  //  github-light, min-light, slack-ochin, solarized-light, vitesse-light
                 frames: {
                     terminalTitlebarDotsOpacity: '0',      // Hide the dots
                     terminalTitlebarBorderBottomColor: 'transparent',
                     editorTabBarBorderBottomColor: 'transparent',
                 },
-
                 styleOverrides: {
                     frames: {
                         showCopyToClipboardButton: true,  // keep copy button
@@ -57,13 +53,9 @@ export default defineConfig({
                 },
 
             },
-            // customCss: ['./src/styles/starlight-custom.css'], // Custom css
             customCss: ['./src/styles/starlight-custom-style.css'], 
             tableOfContents: { minHeadingLevel: 2, maxHeadingLevel: 3 },
-            components: {
-                // Header: './src/components/starlight/Header.astro',
-                // Footer: './src/components/starlight/Footer.astro',
-            },
+            components: {},
             sidebar: [
                 {
                     label: 'Getting Started',
@@ -72,13 +64,13 @@ export default defineConfig({
                     ],
                 },
                 {
-                    label: 'Lottie for Web',
-                    autogenerate: { directory: 'docs/web' },
+                    label: 'Lottie for Web and Mobile',
+                    autogenerate: { directory: 'docs/lottie-for-web-mobile' },
                 },
-                {
-                    label: 'Lottie for Mobile',
-                    autogenerate: { directory: 'docs/mobile' },
-                },
+                // {
+                //     label: 'Lottie for Mobile',
+                //     autogenerate: { directory: 'docs/mobile' },
+                // },
             ],
         }),
         mdx(),
