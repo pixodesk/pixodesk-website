@@ -35,7 +35,10 @@ const FOOTER_LINKS: IFooterLinks[] = [
 ];
 ---
 
-<nav class="max-w-custom-narrow mx-auto text-custom-grey-200 px-pxPage">
+<nav 
+    class="max-w-custom-narrow mx-auto text-custom-grey-200"
+    style={{paddingLeft: 'var(--sl-nav-pad-x)', paddingRight: 'var(--sl-nav-pad-x)'}}
+>
     <div class="grid grid-cols-1 gap-12">
         {
             FOOTER_LINKS.map((footerLinkCol) => (

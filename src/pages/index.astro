@@ -29,177 +29,209 @@ import editColors from "../../public/assets/index/sections/px-edit-color-anim.sv
 import allPlatformsGirlOnBike from "../../public/assets/index/sections/all-platforms-girl-on-bike.svg?raw";
 import TitledSplitSecton from "../layouts/TitledSplitSecton.astro";
 import mangoJuice from "../../public/assets/svg/sections/mango-juice.svg?raw";
-import TitledSecton from '../layouts/TitledSecton.astro';
+import TitledSecton from "../layouts/TitledSecton.astro";
 const cntnt = content.sections;
 ---
 
 <BaseLayout title="Pixodesk - SVG & Lottie Animations">
-  <section
-    class="hero-section bg-custom-gradient-indigo text-white pt-navSingle w-full"
-  >
-    <HeroSection className='pixodesk' content={content.sections.section_00}>
-      
-      <div class="relative w-full max-w-custom-narrowest mx-auto my-8">
-        <div class="relative w-full max-w-custom-narrowest mx-auto z-10">
-          <div class="-mt-4" set:html={astronaut} />
-        </div>
-        
-        <div class="absolute inset-0 z-0">          
-           <img
-            src="/assets/index/hero/px-apps-screenshot-1400.jpg"
-            alt="Pixodesk Desktop Apps"
-            class="w-full mx-auto pt-4 opacity-90"            
-            style="clip-path: polygon(0.1995% 28.3611%, 12.2437% 28.3611%, 12.2437% 6.6564%, 87.9342% 6.6564%, 87.9342% 29.0879%, 99.9075% 29.0879%, 99.9075% 100.1964%, 0.0883% 100.1964%, 0.1995% 28.3611%);"
-          />
-          </div>        
-      </div>
-    </HeroSection>
-    
-    <div class="app-desc-section px-pxPage relative z-10 -mt-8">
-      
-      <div
-        class="text-center"
-        set:html={marked(cntnt.section_01.title ?? "")}
-      />
-      <!-- {
+    <section
+        class="hero-section bg-custom-gradient-indigo text-white pt-navSingle w-full"
+    >
+        <HeroSection className="pixodesk" content={content.sections.section_00}>
+            <div class="relative w-full max-w-custom-narrowest mx-auto my-8">
+                <div
+                    class="relative w-full max-w-custom-narrowest mx-auto z-10"
+                >
+                    <div class="-mt-4" set:html={astronaut} />
+                </div>
+
+                <div class="absolute inset-0 z-0">
+                    <img
+                        src="/assets/index/hero/px-apps-screenshot-1400.jpg"
+                        alt="Pixodesk Desktop Apps"
+                        class="w-full mx-auto pt-4 opacity-90"
+                        style="clip-path: polygon(0.1995% 28.3611%, 12.2437% 28.3611%, 12.2437% 6.6564%, 87.9342% 6.6564%, 87.9342% 29.0879%, 99.9075% 29.0879%, 99.9075% 100.1964%, 0.0883% 100.1964%, 0.1995% 28.3611%);"
+                    />
+                </div>
+            </div>
+        </HeroSection>
+
+        <div
+            class="app-desc-section relative z-10 -mt-8"
+            style={{
+                paddingLeft: "var(--sl-nav-pad-x)",
+                paddingRight: "var(--sl-nav-pad-x)",
+            }}
+        >
+            <div
+                class="text-center"
+                set:html={marked(cntnt.section_01.title ?? "")}
+            />
+            <!-- {
         content.sections.section_01.items &&
           content.sections.section_01.items.map((item) => (
             <div class="text-center mb-8" set:html={marked(item.content ?? "")} />
           ))
       } -->
 
-      <div class="app-desc flex flex-col items-center justify-center mb-16">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-custom-standard">
-          <ListApp
-            bgClass="text-cyan-400"
-            iconFill="text-white"
-            card={cntnt.section_02}
-            iconBg="border-cyan-500/20 text-cyan-400 bg-cyan-500/5 group-hover:border-cyan-400 group-hover:shadow-[0_0_20px_rgba(34,211,238,0.2)]"
-          >
-            <LogoSVGFill />
-          </ListApp>
+            <div
+                class="app-desc flex flex-col items-center justify-center mb-16"
+            >
+                <div
+                    class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-custom-standard"
+                >
+                    <ListApp
+                        bgClass="text-cyan-400"
+                        iconFill="text-white"
+                        card={cntnt.section_02}
+                        iconBg="border-cyan-500/20 text-cyan-400 bg-cyan-500/5 group-hover:border-cyan-400 group-hover:shadow-[0_0_20px_rgba(34,211,238,0.2)]"
+                    >
+                        <LogoSVGFill />
+                    </ListApp>
 
-          <ListApp
-            bgClass="text-indigo-400"
-            iconFill="text-white"
-            card={cntnt.section_03}
-            iconBg="border-indigo-500/20 text-indigo-400 bg-indigo-500/5 group-hover:border-indigo-400 group-hover:shadow-[0_0_20px_rgba(129,140,248,0.2)]"
-          >
-            <Logo2DFill />
-          </ListApp>
-          <ListApp
-            bgClass="text-purple-400"
-            iconFill="text-white"
-            card={cntnt.section_04}
-            iconBg="border-purple-500/20 text-purple-400 bg-purple-500/5 group-hover:border-purple-400 group-hover:shadow-[0_0_20px_rgba(168,85,247,0.2)]"
-          >
-            <LogoSvgaFill />
-          </ListApp>
+                    <ListApp
+                        bgClass="text-indigo-400"
+                        iconFill="text-white"
+                        card={cntnt.section_03}
+                        iconBg="border-indigo-500/20 text-indigo-400 bg-indigo-500/5 group-hover:border-indigo-400 group-hover:shadow-[0_0_20px_rgba(129,140,248,0.2)]"
+                    >
+                        <Logo2DFill />
+                    </ListApp>
+                    <ListApp
+                        bgClass="text-purple-400"
+                        iconFill="text-white"
+                        card={cntnt.section_04}
+                        iconBg="border-purple-500/20 text-purple-400 bg-purple-500/5 group-hover:border-purple-400 group-hover:shadow-[0_0_20px_rgba(168,85,247,0.2)]"
+                    >
+                        <LogoSvgaFill />
+                    </ListApp>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  
+    <section class="apps-capabilities">
+        <Section bgColor="bg-base-bright" color="text-base-dark-blue" standard>
+            <div class="flex flex-col items-center">
+                <div
+                    class="text-center mb-6"
+                    set:html={marked(cntnt.section_05.title ?? "")}
+                />
 
-  <section class="apps-capabilities">
-    <Section bgColor="bg-base-bright" color="text-base-dark-blue" standard>
-      <div class="flex flex-col items-center">
-        <div
-          class="text-center mb-6"
-          set:html={marked(cntnt.section_05.title ?? "")}
-        />
+                <div class="capability-points flex items-center">
+                    <div
+                        class="grid grid-cols-1 md:grid-cols-4 max-w-custom-standard"
+                    >
+                        {
+                            cntnt.section_05.item_01 && (
+                                <CapabilityPoint
+                                    section={cntnt.section_05.item_01}
+                                >
+                                    <ComputerIcon />
+                                </CapabilityPoint>
+                            )
+                        }
+                        {
+                            cntnt.section_05.item_02 && (
+                                <CapabilityPoint
+                                    section={cntnt.section_05.item_02}
+                                >
+                                    <SmallSizeIcon />
+                                </CapabilityPoint>
+                            )
+                        }
 
-        <div class="capability-points flex items-center">
-          <div class="grid grid-cols-1 md:grid-cols-4 max-w-custom-standard">
-            {
-              cntnt.section_05.item_01 && (
-                <CapabilityPoint section={cntnt.section_05.item_01}>
-                  <ComputerIcon />
-                </CapabilityPoint>
-              )
-            }
-            {
-              cntnt.section_05.item_02 && (
-                <CapabilityPoint section={cntnt.section_05.item_02}>
-                  <SmallSizeIcon />
-                </CapabilityPoint>
-              )
-            }
+                        {
+                            cntnt.section_05.item_03 && (
+                                <CapabilityPoint
+                                    section={cntnt.section_05.item_03}
+                                >
+                                    <RocketIcon />
+                                </CapabilityPoint>
+                            )
+                        }
 
-            {
-              cntnt.section_05.item_03 && (
-                <CapabilityPoint section={cntnt.section_05.item_03}>
-                  <RocketIcon />
-                </CapabilityPoint>
-              )
-            }
+                        {
+                            cntnt.section_05.item_04 && (
+                                <CapabilityPoint
+                                    section={cntnt.section_05.item_04}
+                                >
+                                    <ExportIcon />
+                                </CapabilityPoint>
+                            )
+                        }
+                    </div>
+                </div>
+            </div>
+        </Section>
+    </section>
 
-            {
-              cntnt.section_05.item_04 && (
-                <CapabilityPoint section={cntnt.section_05.item_04}>
-                  <ExportIcon />
-                </CapabilityPoint>
-              )
-            }
-          </div>
-        </div>
-      </div>
-    </Section>
-  </section>
+    <section class="all-platforms">
+        <Section
+            bgColor="bg-custom-gradient-indigo"
+            color="text-base-bright"
+            standard
+        >
+            <TitledSecton
+                imageClass="order-1"
+                textClass="order-2"
+                title={content.sections.section_041.title}
+                subTitle={content.sections.section_041.subTitle}
+                items={content.sections.section_041.items}
+            >
+                <div class="w-full max-w-custom-standard">
+                    {
+                        allPlatformsGirlOnBike ? (
+                            <div class="" set:html={allPlatformsGirlOnBike} />
+                        ) : null
+                    }
+                </div>
+            </TitledSecton>
+        </Section>
+    </section>
 
-  <section class="all-platforms">
-    <Section bgColor="bg-custom-gradient-indigo" color="text-base-bright" standard>
-      <TitledSecton
-        imageClass="order-1"
-        textClass="order-2"
-        title={content.sections.section_041.title}
-        subTitle={content.sections.section_041.subTitle}
-        items={content.sections.section_041.items}
-      >
-        <div class="w-full max-w-custom-standard">
-          {allPlatformsGirlOnBike ? <div class="" set:html={allPlatformsGirlOnBike} /> : null}
-        </div>
-      </TitledSecton>
-    </Section>
-  </section>
+    <section class="shape-builder">
+        <Section
+            bgColor="bg-custom-gradient-navy"
+            color="text-base-bright"
+            page
+        >
+            <!-- <div class="text-lg text-center mb-16">Explore the Features Shared Across Pixodesk Desktop Applications</div> -->
+            <TitledSplitSecton
+                imageClass="order-1"
+                textClass="order-2"
+                title={content.sections.section_06.title}
+                subTitle={content.sections.section_06.subTitle}
+                items={content.sections.section_06.items}
+                border
+            >
+                {
+                    content.sections.section_06.svg && (
+                        <img
+                            src={content.sections.section_06.svg.src}
+                            alt={content.sections.section_06.svg.alt}
+                        />
+                    )
+                }
+            </TitledSplitSecton>
+        </Section>
+    </section>
 
-  
-
-  <section class="shape-builder">
-    <Section bgColor="bg-custom-gradient-navy" color="text-base-bright" page>
-      <!-- <div class="text-lg text-center mb-16">Explore the Features Shared Across Pixodesk Desktop Applications</div> -->
-      <TitledSplitSecton
-        imageClass="order-1"
-        textClass="order-2"
-        title={content.sections.section_06.title}
-        subTitle={content.sections.section_06.subTitle}
-        items={content.sections.section_06.items}
-        border
-      >
-        {
-          content.sections.section_06.svg && (
-            <img
-              src={content.sections.section_06.svg.src}
-              alt={content.sections.section_06.svg.alt}
-            />
-          )
-        }
-      </TitledSplitSecton>
-    </Section>
-  </section>
-
-  <section class="edit-color">
-    <Section bgColor="bg-custom-gradient-violet" color="text-base-bright" page>
-      <TitledSplitSecton
-        imageClass="order-1 md:order-2"
-        textClass="order-2 md:order-1"
-        title={content.sections.section_07.title}
-        subTitle={content.sections.section_07.subTitle}
-        items={content.sections.section_07.items}
-        border
-      >
-        <!-- {
+    <section class="edit-color">
+        <Section
+            bgColor="bg-custom-gradient-violet"
+            color="text-base-bright"
+            page
+        >
+            <TitledSplitSecton
+                imageClass="order-1 md:order-2"
+                textClass="order-2 md:order-1"
+                title={content.sections.section_07.title}
+                subTitle={content.sections.section_07.subTitle}
+                items={content.sections.section_07.items}
+                border
+            >
+                <!-- {
           content.sections.section_07.svg && (
             <img
               src={content.sections.section_07.svg.src}
@@ -207,36 +239,38 @@ const cntnt = content.sections;
             />
           )
         } -->
-        <div class="w-full max-w-custom-standard">
-          {editColors ? <div class="" set:html={editColors} /> : null}
-        </div>
-      </TitledSplitSecton>
-    </Section>
-  </section>
+                <div class="w-full max-w-custom-standard">
+                    {editColors ? <div class="" set:html={editColors} /> : null}
+                </div>
+            </TitledSplitSecton>
+        </Section>
+    </section>
 
-
-  <section class="gradient-opacity">
-    <Section bgColor="bg-custom-gradient-violet" color="text-base-bright" page>
-      <TitledSplitSecton
-        imageClass="order-1"
-        textClass="order-2 "
-        title={content.sections.section_08.title}
-        subTitle={content.sections.section_08.subTitle}
-        items={content.sections.section_08.items}
-        border
-      >
-        <div class="relative w-full max-w-custom-standard">
-          {
-            mangoJuice ? (
-              <div
-                class="relative z-10 w-full h-full flex items-center justify-center"
-                set:html={mangoJuice}
-              />
-            ) : null
-          }
-        </div>
-      </TitledSplitSecton>
-    </Section>
-  </section>
-
+    <section class="gradient-opacity">
+        <Section
+            bgColor="bg-custom-gradient-violet"
+            color="text-base-bright"
+            page
+        >
+            <TitledSplitSecton
+                imageClass="order-1"
+                textClass="order-2 "
+                title={content.sections.section_08.title}
+                subTitle={content.sections.section_08.subTitle}
+                items={content.sections.section_08.items}
+                border
+            >
+                <div class="relative w-full max-w-custom-standard">
+                    {
+                        mangoJuice ? (
+                            <div
+                                class="relative z-10 w-full h-full flex items-center justify-center"
+                                set:html={mangoJuice}
+                            />
+                        ) : null
+                    }
+                </div>
+            </TitledSplitSecton>
+        </Section>
+    </section>
 </BaseLayout>

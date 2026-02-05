@@ -3,11 +3,11 @@ import "../styles/tailwind.css";
 import type { SectionHero } from "../types/types";
 
 interface Props {
-  content: SectionHero;
-  className?: string;
-  bgColor?: string;
-  color?: string;
-  svg?: string;
+    content: SectionHero;
+    className?: string;
+    bgColor?: string;
+    color?: string;
+    svg?: string;
 }
 
 import { marked } from "marked";
@@ -18,33 +18,42 @@ const { content, className, bgColor, color, svg = "" } = Astro.props;
 ---
 
 <div
-  class={`${className ? className : ""} flex flex-col items-center pt-pyPage w-full relative z-0`}
+    class={`${className ? className : ""} flex flex-col items-center pt-pyPage w-full relative z-0`}
 >
-  <div class="z-20">
-    <div
-      class="relative text-center px-pxPage"
-      set:html={marked(content.title ?? "")}
-    />
-
-    {
-      content.items && (
+    <div class="z-20">
         <div
-          class={`relative px-pxPage ${className === "pixodesk" ? "mb-0" : "mb-8"}`}
-        >
-          {content.items.map((item) => (
-            <div class="text-custom-grey-200" set:html={marked(item.content ?? "")} />
-          ))}
-        </div>
-      )
-    }
+            class="relative text-center"
+            style={{paddingLeft: 'var(--sl-nav-pad-x)', paddingRight: 'var(--sl-nav-pad-x)'}}
+            set:html={marked(content.title ?? "")}
+        />
 
-    {
-      content.storeButtons && (
-        <StoreButtons storeButtons={content.storeButtons} />
-      )
-    }
-  </div>
-  <div class="relative my-0 w-full mx-auto">
-    <slot />
-  </div>
+        {
+            content.items && (
+                <div
+                    class={`relative ${className === "pixodesk" ? "mb-0" : "mb-8"}`}
+                    style={{paddingLeft: 'var(--sl-nav-pad-x)', paddingRight: 'var(--sl-nav-pad-x)'}}
+                >
+                    {content.items.map((item) => (
+                        <div
+                            class="text-custom-grey-200"
+                            set:html={marked(item.content ?? "")}
+                        />
+                    ))}
+                </div>
+            )
+        }
+
+        {
+            content.storeButtons && (
+                <div 
+                    style={{paddingLeft: 'var(--sl-nav-pad-x)', paddingRight: 'var(--sl-nav-pad-x)'}}
+                >
+                    <StoreButtons storeButtons={content.storeButtons} />
+                </div>
+            )
+        }
+    </div>
+    <div class="relative my-0 w-full mx-auto">
+        <slot />
+    </div>
 </div>

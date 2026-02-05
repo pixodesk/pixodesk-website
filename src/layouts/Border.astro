@@ -9,14 +9,15 @@ const {bgColor = 'bg-[#ffffff06]'} = Astro.props;
 
 <>
   <div
-    class=`
+    class={`
       ${bgColor} 
       rounded-lg 
       border 
       border-white/[.16] 
-      p-pxPage
+      
       h-full
-      `
+      `}
+      style={{padding: 'var(--sl-nav-pad-x)'}}
   >
     <slot />
   </div>

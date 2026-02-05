@@ -2,19 +2,33 @@
 // import type { Item } from "../types/types";
 
 interface Props {
-  title: string;
-  subTitle: string;
-  image?: string;
-  video?: string;
+    title: string;
+    subTitle: string;
+    image?: string;
+    video?: string;
 }
 import { marked } from "marked";
 const { title, subTitle, image, video } = Astro.props;
 ---
 
 <>
-  <div class="px-pxPage py-pyPage">
-    {title && <div class="text-center font-bold" set:html={marked(title)} />}
-    {subTitle && <div class="text-center mb-8" set:html={marked(subTitle)} />}
-    <slot />
-  </div>
+    <div
+        class="py-pyPage"
+        style={{
+            paddingLeft: "var(--sl-nav-pad-x)",
+            paddingRight: "var(--sl-nav-pad-x)",
+        }}
+    >
+        {
+            title && (
+                <div class="text-center font-bold" set:html={marked(title)} />
+            )
+        }
+        {
+            subTitle && (
+                <div class="text-center mb-8" set:html={marked(subTitle)} />
+            )
+        }
+        <slot />
+    </div>
 </>
