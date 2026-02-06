@@ -26,8 +26,14 @@ module.exports = {
       },
       backgroundImage: {
         'custom-gradient-indigo': 'linear-gradient(180deg, #000000, #03031c, #000000)',
+        
         'custom-gradient-violet': 'linear-gradient(180deg, #000000, #1d0737, #000000)',
+        'custom-gradient-violet-base': 'linear-gradient(180deg, #000000, #321651, #000000)',
+        
         'custom-gradient-navy': 'linear-gradient(180deg, #000000, #051f34, #000000)',
+        'custom-gradient-navy-base': 'linear-gradient(180deg, #000000, #15324d, #000000)',
+        
+        
         
         'custom-gradient-diagonal-indigo': 'linear-gradient(135deg, #1d1b53, #03031c)',
         'custom-gradient-diagonal-violet': 'linear-gradient(135deg, #321651, #1d0737)',
