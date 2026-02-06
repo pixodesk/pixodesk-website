@@ -13,17 +13,15 @@ const FOOTER_LINKS: IFooterLinks[] = [
     {
         title: "How to Add Lottie Animations to Your Project",
         links: [
-            { label: "React App with Lottie Animation", href: "/docs/add-lottie-to-react/" },
-            { label: "Next.js with Lottie Animation", href: "/docs/add-lottie-to-nextjs/" },
-            { label: "Astro with Lottie Animation", href: "/docs/add-lottie-to-astro/" },
-            { label: "Vue with Lottie Animation", href: "/docs/add-lottie-to-vue/" },
-            { label: "Nuxt with Lottie Animation", href: "/docs/add-lottie-to-nuxt/" },
-            { label: "React Native with Lottie Animation", href: "/docs/add-lottie-to-react-native/" },
+            { label: "React Lottie", href: "/docs/react-lottie/" },
+            { label: "Next.js Lottie", href: "/docs/nextjs-lottie/" },
+            { label: "Astro Lottie", href: "/docs/astro-lottie/" },
+            { label: "Vue Lottie", href: "/docs/vue-lottie/" },
+            { label: "Nuxt Lottie", href: "/docs/nuxt-lottie/" },
+            { label: "React Native Lottie", href: "/docs/react-native-lottie/" },
         ],
     },
-
 ];
-
 
 ---
 
@@ -34,8 +32,8 @@ const FOOTER_LINKS: IFooterLinks[] = [
     <div class="grid grid-cols-1 gap-12">
         {
             FOOTER_LINKS.map((footerLinkCol) => (
-                <div class="flex flex-col space-y-4 justify-center items-center ">
-                    <h3 class="text-white font-bold">
+                <div class="flex flex-col space-y-4 justify-center items-stretch ">
+                    <h3 class="text-white font-bold mb-2">
                         {footerLinkCol.title}
                     </h3>
                     <ul class="
