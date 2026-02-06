@@ -63,7 +63,7 @@
     /* --sl-color-accent-high: #74adee; */
 
     /* Background left sidebar */
-    /* --sl-color-bg-sidebar: var(--sl-color-bg); */
+    --sl-color-bg-sidebar: var(--sl-color-bg);
 
 }
 

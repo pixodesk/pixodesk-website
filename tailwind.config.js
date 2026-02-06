@@ -34,7 +34,7 @@ module.exports = {
         'custom-gradient-diagonal-navy': 'linear-gradient(135deg, #15324d, #051f34)',
         
         'custom-radial-gradient-indigo': "radial-gradient(ellipse at center, #0c0b38 0%, #0c0b38 40%, rgba(0,0,0,0) 70% )",
-        'custom-radial-gradient-violet': "radial-gradient(ellipse at center, #1d0737 0%, #1d0737 40%, rgba(0,0,0,0) 70% )",
+        'custom-radial-gradient-violet': "radial-gradient(ellipse at center, #1d0737aa 0%, #1d073788 50%, rgba(0,0,0,0) 90% )",
         'custom-radial-gradient-navy': "radial-gradient(ellipse at center, #051f34 0%, #051f34 40%, rgba(0,0,0,0) 70% )",
       },
       colors: {

@@ -35,7 +35,7 @@ const { content, className, bgColor, color, svg = "" } = Astro.props;
                 >
                     {content.items.map((item) => (
                         <div
-                            class="text-custom-grey-200"
+                            class="text-custom-grey-400"
                             set:html={marked(item.content ?? "")}
                         />
                     ))}
