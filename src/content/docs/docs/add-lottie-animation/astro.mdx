@@ -1,6 +1,6 @@
 ---
 title: "Astro"
-description: "Lottie animations for Astro"
+description: "Add Lottie Animation to Astro Project"
 slug: "docs/add-lottie-to-astro"
 sidebar:
   order: 30
@@ -17,7 +17,7 @@ You can add Lottie animations to an Astro project easily using the `lottie-react
 
 ## Create Astro Project
 <SpacerBottom />
-Open terminal and navigate to your projects folder:
+Open your terminal and navigate to your projects folder:
 
 ```bash
 cd path/to/your/projects
@@ -30,35 +30,27 @@ npm create astro@latest my-animation-app
 ```
 
 During setup, choose:
+<SpacerBottom size='1rem' />
 - How would you like to start your new project?: **A basic, helpful starter project (recommended)**
 - Install dependencies: **Yes**
-- Initialize a new git repository? (optional): **Yes or No (depends on your preferences)** 
+- Initialize a new Git repository? (optional): **Yes or No (depends on your preferences)** 
 
+<SpacerBottom size='1rem' />
 Enter your project directory: 
 
 ```bash
 cd my-animation-app
 ```
 
-Start the development server:
-
-```bash
-npm run dev
-```
-
-You should see: 
-
-```bash
-Local: http://localhost:4321
-```
-
-<SpacerBottom />
 ---
 
 ## Install React and Lottie
 
 ```bash
 npx astro add react
+```
+
+```bash
 npm install lottie-react
 ```
 
@@ -71,6 +63,8 @@ npm install lottie-react
 
 ### Download from LottieFiles
 - <a href="https://lottiefiles.com" target="_blank">https://lottiefiles.com</a>
+
+<SpacerBottom size='1rem' />
 
 Create an animations folder and add your animation:
 
@@ -124,15 +118,29 @@ import LottieAnimation from '../components/LottieAnimation';
         <main>
             <h1>My Lottie Animation</h1>
             <LottieAnimation client:only="react" />
-            {/* ... The rest of your code */}
+            {/* ... the rest of your code */}
         </main>
     </body>
 </html>
 ```
 
 
-**Important:** Use `client:only="react"` directive to make the component interactive.
+**Important:** Use the `client:only="react"` directive to make the component interactive.
 <SpacerBottom />
+---
+
+## Start Development Server
+<SpacerBottom />
+```bash
+npm run dev
+```
+
+You should see: 
+
+```bash
+Local: http://localhost:4321
+```
+
 ---
 
 ## Done! 🎉

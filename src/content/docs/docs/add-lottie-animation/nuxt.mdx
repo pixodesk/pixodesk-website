@@ -1,6 +1,6 @@
 ---
 title: "Nuxt"
-description: "Lottie animations for Nuxt"
+description: "Add Lottie Animation to Nuxt Project"
 slug: "docs/add-lottie-to-nuxt"
 sidebar:
   order: 50
@@ -10,7 +10,7 @@ import { Badge } from '@astrojs/starlight/components';
 
 # Add Lottie Animation to Nuxt Project
 <SpacerBottom />
-You can add Lottie animations to a Nuxt app easily using the `@lottiefiles/vue-lottie-player` package.
+You can add Lottie animations to a Nuxt app easily using the `@lottiefiles/dotlottie-vue` package.
 <SpacerBottom />
 ---
 
@@ -38,16 +38,6 @@ Install dependencies:
 npm install
 ```
 
-Start the development server:
-
-```bash
-npm run dev
-```
-
-You should see:
-```bash
- Local: http://localhost:3000
- ```
 
 ---
 
@@ -66,7 +56,9 @@ npm install @lottiefiles/dotlottie-vue
 ### Download from LottieFiles
 - <a href="https://lottiefiles.com" target="_blank">https://lottiefiles.com</a>
 
-In public folder create an animations folder and add your animation:
+<SpacerBottom size='1rem' />
+
+In public folder create an `animations` folder and add your animation:
 
 ```bash
 public/animations/animation.json
@@ -74,7 +66,7 @@ public/animations/animation.json
 
 ---
 
-## Create a Component
+## Create Lottie Component
 <SpacerBottom />
 Next to app.vue file create a components folder and add there LottieAnimation.vue. 
 <SpacerBottom size='1rem' />
@@ -118,13 +110,14 @@ import { DotLottieVue } from '@lottiefiles/dotlottie-vue';
     <div class="animation">
       <LottieAnimation />
     </div>
-    <!-- Your other components go here... -->
+    <!-- ... the rest of your code -->
     
   </div>
 </template>
 
 <script setup>
 import LottieAnimation from './components/LottieAnimation.vue';
+// ... the rest of your import
 </script>
 
 <style scoped>
@@ -134,11 +127,24 @@ import LottieAnimation from './components/LottieAnimation.vue';
   align-items: center;
   justify-content: center;
 }
+/* ... the rest of your style */
 </style>
 ```
 
 ---
+## Start Development Server
+<SpacerBottom />
+```bash
+npm run dev
+```
 
+You should see:
+```bash
+ Local: http://localhost:3000
+ ```
+
+
+---
 
 ## Done! 🎉
 <SpacerBottom />

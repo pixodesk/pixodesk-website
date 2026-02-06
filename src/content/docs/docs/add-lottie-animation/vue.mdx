@@ -1,6 +1,6 @@
 ---
 title: "Vue"
-description: "Lottie animations for Vue"
+description: "Add Lottie Animation to Vue Project"
 slug: "docs/add-lottie-to-vue"
 sidebar:
   order: 40
@@ -11,13 +11,13 @@ import { Badge } from '@astrojs/starlight/components';
 
 # Add Lottie Animation to Vue Project
 <SpacerBottom />
-You can add Lottie animations to a Vue app easily using the `@lottiefiles/vue-lottie-player` package.
+You can add Lottie animations to a Vue app easily using the `@lottiefiles/dotlottie-vue` package.
 <SpacerBottom />
 ---
 
 ## Create Vue Project
 <SpacerBottom />
-Open terminal and navigate to your projects folder:
+Open your terminal and navigate to your projects folder:
 
 ```bash
 cd path/to/your/projects
@@ -30,6 +30,7 @@ npm create vue@latest my-animation-app
 ```
 
 During setup, choose:
+<SpacerBottom size='1rem' />
 - TypeScript: **Yes**
 - Other options as needed
 <SpacerBottom />
@@ -43,17 +44,6 @@ Install dependencies:
 
 ```bash
 npm install
-```
-
-Start the development server:
-
-```bash
-npm run dev
-```
-
-You should see: 
-```bash
-Local: http://localhost:5173
 ```
 
 ---
@@ -73,15 +63,16 @@ npm install @lottiefiles/dotlottie-vue
 ### Download from LottieFiles
 - <a href="https://lottiefiles.com" target="_blank">https://lottiefiles.com</a>
 
-Create an assets folder and add your animation:
+<SpacerBottom size='1rem' />
+Create an `animations` folder in `src/assets` and add your animation:
 
 ```bash
-src/assets/animation.json
+src/assets/animations/animation.json
 ```
 
 ---
 
-## Use Lottie in Your Component
+## Use Lottie in Vue Component
 <SpacerBottom size='1rem' />
 **src/components/LottieAnimation.vue**
 
@@ -89,7 +80,7 @@ src/assets/animation.json
 <template>
     <div class="lottie-container">
         <DotLottieVue
-        src="/src/assets/animation.json"
+        src="./src/assets/animations/animation.json"
         :loop="true"
         :autoplay="true"
         style="height: 300px; width: 300px;"
@@ -98,9 +89,7 @@ src/assets/animation.json
 </template>
 
 <script setup lang="ts">
-
 import { DotLottieVue } from '@lottiefiles/dotlottie-vue';
-
 </script>
 
 <style scoped>
@@ -120,12 +109,13 @@ import { DotLottieVue } from '@lottiefiles/dotlottie-vue';
   <div id="app">
     <h1>My Lottie Animation</h1>
     <LottieAnimation />
-    <!-- The rest of your content goes here -->
   </div>
+  <!-- ... the rest of your code -->
 </template>
 
 <script setup>
 import LottieAnimation from './components/LottieAnimation.vue';
+// ... the rest of your import
 </script>
 
 <style scoped>
@@ -137,7 +127,7 @@ import LottieAnimation from './components/LottieAnimation.vue';
   margin: 0;
 }
 
-/* Your other style goes here */
+/* ... the rest of your style */
 </style>
 
 
@@ -145,6 +135,18 @@ import LottieAnimation from './components/LottieAnimation.vue';
 
 ---
 
+## Start Development Server
+
+```bash
+npm run dev
+```
+
+You should see: 
+```bash
+Local: http://localhost:5173
+```
+
+---
 
 ## Done! 🎉
 <SpacerBottom />

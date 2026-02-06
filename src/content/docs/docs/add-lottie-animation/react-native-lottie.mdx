@@ -1,39 +1,36 @@
 ---
 title: "React Native"
-description: "Lottie for React Native Expo"
+description: "Add Lottie Animation to React Native Project"
 slug: "docs/add-lottie-to-react-native"
 ---
 import SpacerBottom from '../../../../layouts/SpacerBottom.astro';
 import { Badge } from '@astrojs/starlight/components';
 
 
-# Add Lottie Animation to a React Native Expo App
+# Add Lottie Animation to React Native Expo Project
 <SpacerBottom />
-You can add Lottie animations to a React Native Expo app easily using the `lottie-react-native` package. Expo works on both iOS and Android.
+You can add Lottie animations to a React Native Expo easily using the `lottie-react-native` package. Expo works on both iOS and Android.
 <SpacerBottom />
 ---
 
-## Create an Expo Project
+## Create React Native Expo Project
 <SpacerBottom />
-Open a terminal and navigate to your projects folder:
+Open your terminal and navigate to your projects folder:
 
 ```bash
 cd path/to/your/projects
 ```
-<SpacerBottom />
 Create a new Expo project:
 
 ```bash
 npx create-expo-app@latest my-animation-app
 ```
-<SpacerBottom />
 
-Now go into the project folder:
+Now go into your project folder:
 
 ```bash
 cd my-animation-app
 ```
-<SpacerBottom />
 
 
 Install dependencies:
@@ -68,20 +65,15 @@ npx expo install lottie-react-native @lottiefiles/dotlottie-react
 ### Download from LottieFiles
 - <a href="https://lottiefiles.com" target="_blank">https://lottiefiles.com</a>
 <SpacerBottom />
-Create an `assets/animations` folder and add your animation:
+Create an `animations` folder in `assets` and add your animation:
 
 ```bash
 assets/animations/animation.json
 ```
 
-or 
-```bash
-assets/animations/animation.lottie
-```
-<SpacerBottom />
 ---
 
-## Use Lottie (.json) in Your Component 
+## Use Lottie in React Native Component
 <SpacerBottom size='1rem' />
 **app/(tabs)/index.tsx** 
 
@@ -93,7 +85,6 @@ import LottieView from 'lottie-react-native';
 
 export default function App() {
   return (
-    {/* Your other code goes here */}
     <View style={styles.container}>
       <LottieView
         source={require("../../assets/animations/animation.json")}
@@ -101,8 +92,9 @@ export default function App() {
         loop
         style={styles.animation}
       />
+      {/* ... the rest of your code */}
     </View>
-    {/* Your other code goes here */}
+    
   );
 }
 
@@ -117,7 +109,7 @@ const styles = StyleSheet.create({
     width: 300,
     height: 300,
   },
-  // Your style code goes here
+  // ... the rest of your style
 });
 ```
 
@@ -125,9 +117,8 @@ const styles = StyleSheet.create({
 ---
 
 
-## Run Your App
+## Start Development Server
 <SpacerBottom />
-Start the development server:
 
 ```bash
 npx expo start
@@ -138,7 +129,8 @@ You should see something like:
 - Metro waiting on exp://192.168.1.5:8081
 - Scan the QR code above with Expo Go (Android) or the Camera app (iOS)
 ```
-Scan the QR code with **Expo Go (Android)** or the **Camera app (iOS).**
+
+Download the Expo Go app on your mobile device (iOS or Android) and scan the QR code to view your animation.
 <SpacerBottom />
 ---
 ## Done! 🎉

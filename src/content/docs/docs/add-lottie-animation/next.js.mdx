@@ -1,6 +1,6 @@
 ---
 title: "Next.js"
-description: "Lottie animations for Next.js"
+description: "Add Lottie Animation to Next.js Project"
 slug: "docs/add-lottie-to-nextjs"
 sidebar:
   order: 20
@@ -16,7 +16,7 @@ You can add Lottie animations to a Next.js app easily using the `lottie-react` p
 
 ## Create Next.js Project
 <SpacerBottom />
-Open terminal and navigate to your projects folder:
+Open your terminal and navigate to your projects folder:
 
 ```bash
 cd path/to/your/projects
@@ -30,11 +30,12 @@ npx create-next-app@latest my-animation-app --typescript
 
 
 During setup, choose:
+<SpacerBottom size='1rem' />
 - Which linter would you like to use?: **ESLint**
 - Would you like to use React Compiler?: **No**
 - Would you like to use Tailwind CSS?: **Yes or No (depends on your preferences)** 
 - Would you like your code inside a src/ directory?: **Yes or No (depends on your preferences)** 
-- Would you like to use App Router?: (recommended): **Yes** 
+- Would you like to use App Router? (recommended): **Yes** 
 - Would you like to customize the import alias (@/* by default)?: (recommended): **No** 
 
 
@@ -46,16 +47,6 @@ Enter your project directory:
 cd my-animation-app
 ```
 
-Start the development server:
-
-```bash
-npm run dev
-```
-
-You should see: 
-```bash
-Local: http://localhost:3000
-```
 
 ---
 
@@ -74,7 +65,9 @@ npm install lottie-react
 ### Download from LottieFiles
 - <a href="https://lottiefiles.com" target="_blank">https://lottiefiles.com</a>
 
-Create an animations folder and add your animation:
+<SpacerBottom size='1rem' />
+
+Create an `animations` folder and add your animation:
 
 ```bash
 app/animations/animation.json
@@ -124,11 +117,26 @@ export default function Home() {
     return (
         <main className="flex min-h-screen items-center justify-center">
             <LottieAnimation />
-            {/* The rest of your code */}
+            {/* ... the rest of your code */}
         </main>
     );
 }
 ```
+
+---
+
+## Start Development Server
+<SpacerBottom />
+
+```bash
+npm run dev
+```
+
+You should see: 
+```bash
+Local: http://localhost:3000
+```
+
 
 ---
 

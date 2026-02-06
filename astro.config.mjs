@@ -64,8 +64,8 @@ export default defineConfig({
                     ],
                 },
                 {
-                    label: 'Lottie for Web and Mobile',
-                    autogenerate: { directory: 'docs/lottie-for-web-mobile' },
+                    label: 'Add Lottie Animation',
+                    autogenerate: { directory: 'docs/add-lottie-animation' },
                 },
                 // {
                 //     label: 'Lottie for Mobile',

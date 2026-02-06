@@ -12,17 +12,25 @@ import instagram from "../../public/assets/common/footer/instagram.svg?raw";
 import pinterest from "../../public/assets/common/footer/pinterest.svg?raw";
 
 import FooterLinks from "./FooterLinks.astro";
+import Section from "./Section.astro";
 
 const fMb = 2;
 const fFontSize = "text-xs";
 ---
 
-<footer class="relative pt-20 bg-black text-custom-grey-400 w-full text-center">
-    {FooterLinks && <div class="py-16 border-t border-zinc-900 ">
-        <FooterLinks />
-
-    </div>}
-    <div class="border-t border-zinc-900 h-1 mb-8"></div>
+<footer class="relative pt-12 bg-black text-custom-grey-400 w-full text-center">
+    <Section bgColor="bg-custom-gradient-violet" color="text-base-bright" page >
+        <div class="relative text-custom-grey-400 w-full text-center">
+            {
+                FooterLinks && (
+                    <div class="pb-16">
+                        <FooterLinks />
+                    </div>
+                )
+            }
+            
+        </div>
+    </Section>
     <div
         class={` 
         flex 

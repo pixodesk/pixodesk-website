@@ -8,14 +8,26 @@
     --sl-font: 'Inter', system-ui, sans-serif;
 
     /* Accent color */
-    --sl-color-accent-low: #f0aa8a;
+    /* --sl-color-accent-low: #f0aa8a;
     --sl-color-accent: #aed2fc;
-    --sl-color-accent-high: #0761d1;
+    --sl-color-accent-high: #0761d1; */
+}
+
+:root {
+  /* Change the background of the highlight */
+  --sl-color-text-selection-bg: #b3d7ff; /* A classic light blue */
+}
+
+::selection {
+  background-color: var(--sl-color-text-selection-bg) !important;
+}
+
+::-moz-selection {
+  background-color: var(--sl-color-text-selection-bg) !important;
 }
 
 :root {
     --sl-nav-height: 2.5rem;
-    /* --sl-nav-pad-x: 2rem; */
 }
 
 
@@ -48,10 +60,11 @@
     /* Accent color */
     /* --sl-color-accent-low: #0d2847; */
     /* --sl-color-accent: #3291ff; */
-    --sl-color-accent-high: #74adee;
+    /* --sl-color-accent-high: #74adee; */
 
     /* Background left sidebar */
-    --sl-color-bg-sidebar: var(--sl-color-bg);
+    /* --sl-color-bg-sidebar: var(--sl-color-bg); */
+
 }
 
 :root[data-theme='dark'] .sidebar-content a[aria-current='page'],
@@ -61,6 +74,9 @@
 
 :root[data-theme='dark'] .sidebar-content a {
     transition: color 0.2s ease;
+}
+:root[data-theme='dark'] .sl-markdown-content hr {
+  border-top: 1px solid var(--sl-color-gray-4);
 }
 
 
