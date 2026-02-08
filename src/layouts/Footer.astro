@@ -19,7 +19,7 @@ const fFontSize = "text-xs";
 ---
 
 <footer class="relative pt-12 bg-black text-custom-grey-400 w-full text-center">
-    <Section bgColor="bg-custom-gradient-violet" color="text-base-bright" page >
+    <!-- <Section bgColor="bg-custom-gradient-violet" color="text-base-bright" page >
         <div class="relative w-full text-center">
             {
                 FooterLinks && (
@@ -30,7 +30,7 @@ const fFontSize = "text-xs";
             }
             
         </div>
-    </Section>
+    </Section> -->
     <div
         class={` 
         flex 
@@ -128,15 +128,37 @@ const fFontSize = "text-xs";
             transition-color
             duration-300`}
             >
-            <a href="/eula">Terms of Use</a>
+            <a href="app/animator/eula">2D Animator Terms of Use</a>
         </div>
+        
         <div class="px-2">|</div>
+        
         <div class={`${fFontSize} 
             hover:text-white
             transition-color
             duration-300`}
             >
-            <a href="/privacy-policy">Privacy Policy</a>
+            <a href="app/animator/privacy-policy">2D Animator Privacy Policy</a>
+        </div>
+        
+        <div class="px-2">|</div>
+
+        <div class={`${fFontSize} 
+            hover:text-white
+            transition-color
+            duration-300`}
+            >
+            <a href="app/svg/eula">SVG Editor Terms of Use</a>
+        </div>
+        
+        <div class="px-2">|</div>
+        
+        <div class={`${fFontSize} 
+            hover:text-white
+            transition-color
+            duration-300`}
+            >
+            <a href="app/svg/privacy-policy">SVG Editor Privacy Policy</a>
         </div>
     </div>
 </footer>
