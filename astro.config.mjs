@@ -26,6 +26,7 @@ export default defineConfig({
         react(),
         tailwind({
             config: { applyBaseStyles: true },
+        })
         }),
         starlight({
             title: "Pixodesk",
@@ -74,6 +75,5 @@ export default defineConfig({
             ],
         }),
         mdx(),
-
     ],
 });
