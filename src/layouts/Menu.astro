@@ -1,7 +1,7 @@
 ---
-
 import "../styles/tailwind.css";
 import "../styles/global.scss";
+
 
 const { pathname } = Astro.url;
 
@@ -35,9 +35,9 @@ const {
   menus: passedMenus,
   bgColor = "bg-[#000000]", // default dark background
   bgSubColor = "bg-[#222222]",
-  color = "text-gray-400", // default text color
+  color = "text-custom-grey-400", // default text color
   hoverText = "hover:text-white",
-  textSize = "text-xs", // default text size
+  textSize = "text-[0.75rem]", // default text size
 } = Astro.props as Props;
 
 // Define default menus (used if not passed as prop)
@@ -48,6 +48,7 @@ const menus: MenuItem[] = passedMenus ?? [
   //   subMenu: [],
   //   image: "../../public/assets/common/logos/logo-pixodesk.svg",
   // },
+  
   {
     label: "2D Animator (Lottie)",
     href: "/2d-animator",
@@ -77,6 +78,10 @@ const menus: MenuItem[] = passedMenus ?? [
       { label: "Download", href: "/svg-animator/download" },
     ],
   },
+  // {
+  //   label: "Docs",
+  //   href: "/docs",
+  // },
   {
     label: "Pricing",
     href: "/pricing",
@@ -101,7 +106,6 @@ const activeMenu = menus.find((menu) => isActiveParent(menu));
     class={`
       ${bgColor} 
       ${color} 
-      ${textSize} 
       tracking-wider
       fixed 
       top-0 left-0 right-0 z-30 
@@ -111,7 +115,10 @@ const activeMenu = menus.find((menu) => isActiveParent(menu));
       font-montserrat
       `}
   >
-    <div class={`flex justify-between items-center w-full px-4 md:px-8 relative ${textSize}`}>
+    <div 
+      class={`flex justify-between items-center w-full relative ${textSize}`}
+      style={{paddingLeft: 'var(--sl-nav-pad-x)', paddingRight: 'var(--sl-nav-pad-x)'}}
+      >
       <a 
         href="/" 
         class=`uppercase ${pathname === '/' ? "text-white" : color} ${hoverText} } ${hoverText} font-montserrat`> Pixodesk </a>
@@ -208,7 +215,6 @@ const activeMenu = menus.find((menu) => isActiveParent(menu));
     class={`
       ${bgSubColor}
       ${color} 
-      ${textSize} 
       tracking-wider
       fixed 
       top-10 left-0 right-0 
@@ -225,7 +231,10 @@ const activeMenu = menus.find((menu) => isActiveParent(menu));
       }`}
   >
 
-    <div class={`flex justify-between md:justify-end items-center w-full px-4 md:px-8 ${textSize}`}>
+    <div 
+      class={`flex justify-between md:justify-end items-center w-full ${textSize}`}
+      style={{paddingLeft: 'var(--sl-nav-pad-x)', paddingRight: 'var(--sl-nav-pad-x)'}}
+    >
       <!-- ========== SUBMENU DESKTOP ========== -->
       {
         activeMenu?.subMenu?.length && (

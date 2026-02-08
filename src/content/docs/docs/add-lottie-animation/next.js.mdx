@@ -1,0 +1,147 @@
+---
+title: "Next.js"
+description: "Add Lottie Animation to Next.js Project"
+slug: "docs/nextjs-lottie"
+sidebar:
+  order: 20
+---
+import SpacerBottom from '../../../../layouts/SpacerBottom.astro';
+import { Badge } from '@astrojs/starlight/components';
+
+# Add Lottie Animation to Next.js Project
+<SpacerBottom />
+You can add Lottie animations to a Next.js app easily using the `lottie-react` package.
+<SpacerBottom />
+---
+
+## Create Next.js Project
+<SpacerBottom />
+Open your terminal and navigate to your projects folder:
+
+```bash
+cd path/to/your/projects
+```
+
+Create a new Next.js project with TypeScript:
+
+```bash
+npx create-next-app@latest my-animation-app --typescript
+```
+
+
+During setup, choose:
+<SpacerBottom size='1rem' />
+- Which linter would you like to use?: **ESLint**
+- Would you like to use React Compiler?: **No**
+- Would you like to use Tailwind CSS?: **Yes or No (depends on your preferences)** 
+- Would you like your code inside a src/ directory?: **Yes or No (depends on your preferences)** 
+- Would you like to use App Router? (recommended): **Yes** 
+- Would you like to customize the import alias (@/* by default)?: (recommended): **No** 
+
+
+
+<SpacerBottom />
+Enter your project directory:
+
+```bash
+cd my-animation-app
+```
+
+
+---
+
+## Install Lottie for Next.js
+```bash
+npm install lottie-react
+```
+
+---
+
+## Get Your Lottie Animation
+<SpacerBottom size='1rem' />
+### Create an animation in 2D Animator
+- <a href="https://pixodesk.com/2d-animator" target="_blank">https://pixodesk.com/2d-animator</a><Badge text="Tool" variant="note" />
+
+### Download from LottieFiles
+- <a href="https://lottiefiles.com" target="_blank">https://lottiefiles.com</a>
+
+<SpacerBottom size='1rem' />
+
+Create an `animations` folder and add your animation:
+
+```bash
+app/animations/animation.json
+```
+
+---
+
+## Create Lottie Component
+<SpacerBottom />
+Create a client component since Lottie needs browser APIs:
+<SpacerBottom size='1rem' />
+**app/components/LottieAnimation.tsx**
+
+```tsx
+"use client";
+
+import Lottie from "lottie-react";
+import animationData from "../animations/animation.json";
+
+export default function LottieAnimation() {
+    return (
+        <div>
+            <Lottie 
+                animationData={animationData}
+                loop={true}
+                autoplay={true}
+                style={{ width: 300, height: 300 }}
+            />
+        </div>
+    );
+}
+```
+
+
+Remember to add **"use client"** at the top of components using Lottie, as it requires browser APIs.
+<SpacerBottom />
+---
+
+## Use in Your Page
+<SpacerBottom size='1rem' />
+**app/page.tsx**
+
+```tsx
+import LottieAnimation from "./components/LottieAnimation";
+
+export default function Home() {
+    return (
+        <main className="flex min-h-screen items-center justify-center">
+            <LottieAnimation />
+            {/* ... the rest of your code */}
+        </main>
+    );
+}
+```
+
+---
+
+## Run Your App
+<SpacerBottom />
+
+Start the development server:
+
+```bash
+npm run dev
+```
+
+You should see: 
+```bash
+Local: http://localhost:3000
+```
+
+
+---
+
+## Done! 🎉
+<SpacerBottom />
+Your Lottie animation should now work in your Next.js project.

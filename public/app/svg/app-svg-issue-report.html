@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+</head>
+
+<body style="background: #eee;">
+
+    <style>
+        #close-btn {
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 24px;
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%,-50%);
+            margin: auto;
+            padding: 8px;
+            color: #555;
+        }
+        #close-btn:hover {
+            cursor: pointer;
+            color: #444;
+        }
+
+        #freshworks-frame-wrapper {
+            left: 16px !important;
+            right: 16px !important;
+            width: calc(100% - 32px) !important;
+            min-width: calc(100% - 32px) !important;
+            max-width: calc(100% - 32px) !important;
+            top: 16px !important;
+            bottom: 16px !important;
+            height: calc(100% - 32px) !important;
+            min-height: calc(100% - 32px) !important;
+            max-height: calc(100% - 32px) !important;
+        }
+    </style>
+
+    <div id="close-btn" onclick="window.close()">Close</div>
+
+    <script type='text/javascript' src='https://euc-widget.freshworks.com/widgets/103000000459.js' async defer></script>
+    <script>
+        window.fwSettings = {
+            'widget_id': 103000000459,
+            'locale': 'en'
+        };
+        !function () { if ("function" != typeof window.FreshworksWidget) { var n = function () { n.q.push(arguments) }; n.q = [], window.FreshworksWidget = n } }()
+
+        FreshworksWidget('open', 'ticketForm');
+        FreshworksWidget('hide', 'launcher');
+        
+        // Custom fields are not supported by the free plan
+        //FreshworksWidget('disable', 'ticketForm', ['custom_fields.cf_error']);
+
+        // FreshworksWidget("setLabels", {subject: 'Description', contact_form: {
+        //     subject: 'Description',
+        //     description: 'Error'
+        // }});
+        
+        // FreshworksWidget('disable', 'ticketForm', ['description', 'type']);
+
+        window.__prefillFeedbackFormAndShow = function (prefillMap) {
+            console.log(prefillMap);
+
+            FreshworksWidget('clear', 'ticketForm');
+            FreshworksWidget('prefill', 'ticketForm', prefillMap);
+            FreshworksWidget('open', 'ticketForm');
+        };
+    </script>
+</body>
+
+</html>

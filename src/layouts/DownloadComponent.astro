@@ -25,7 +25,7 @@ const { page }: { page: Page } = Astro.props;
   <!-- Page -->
   {page.parts &&
     Object.values(page.parts).map((part: Part) => (
-      <div class="mb-12">
+      <div class="mb-12 text-custom-grey-400">
         {part.title && (
             <div class="mb-6" set:html={marked(part.title)}/>
         )}

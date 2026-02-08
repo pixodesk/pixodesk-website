@@ -13,6 +13,7 @@ module.exports = {
         'custom-narrower': '46rem',
         'custom-narrow': '56rem',
         'custom-standard': '76rem',
+        'custom-wide': '90rem',
       },
       fontSize: {
         'fs-xs': '0.75rem',  // 14px
@@ -25,15 +26,21 @@ module.exports = {
       },
       backgroundImage: {
         'custom-gradient-indigo': 'linear-gradient(180deg, #000000, #03031c, #000000)',
+        
         'custom-gradient-violet': 'linear-gradient(180deg, #000000, #1d0737, #000000)',
+        'custom-gradient-violet-base': 'linear-gradient(180deg, #000000, #321651, #000000)',
+        
         'custom-gradient-navy': 'linear-gradient(180deg, #000000, #051f34, #000000)',
+        'custom-gradient-navy-base': 'linear-gradient(180deg, #000000, #15324d, #000000)',
+        
+        
         
         'custom-gradient-diagonal-indigo': 'linear-gradient(135deg, #1d1b53, #03031c)',
         'custom-gradient-diagonal-violet': 'linear-gradient(135deg, #321651, #1d0737)',
         'custom-gradient-diagonal-navy': 'linear-gradient(135deg, #15324d, #051f34)',
         
         'custom-radial-gradient-indigo': "radial-gradient(ellipse at center, #0c0b38 0%, #0c0b38 40%, rgba(0,0,0,0) 70% )",
-        'custom-radial-gradient-violet': "radial-gradient(ellipse at center, #1d0737 0%, #1d0737 40%, rgba(0,0,0,0) 70% )",
+        'custom-radial-gradient-violet': "radial-gradient(ellipse at center, #1d0737aa 0%, #1d073788 50%, rgba(0,0,0,0) 90% )",
         'custom-radial-gradient-navy': "radial-gradient(ellipse at center, #051f34 0%, #051f34 40%, rgba(0,0,0,0) 70% )",
       },
       colors: {
@@ -44,6 +51,8 @@ module.exports = {
         'base-bright': '#fff',
 
         'base-dark-blue': '#415274',
+        'custom-grey-400': '#98a2b4',
+        'custom-grey-200': '#c8d0d9',
 
         'base-red': '#cb5353',
         'base-red-darker': '#892929',
@@ -125,7 +134,10 @@ module.exports = {
 
     'bg-custom-radial-gradient-violet',
     'text-custom-radial-gradient-violet',
-
+    
+    // Text colors
+    "text-custom-grey-200",
+    "text-custom-grey-400",
     // Sky blue
     "text-sky-blue-light", "bg-sky-blue-light",
     // Indigo
@@ -141,9 +153,12 @@ module.exports = {
     "bg-navy-lightest", "bg-navy-lighter", "bg-navy-light", "bg-navy-base", "bg-navy-dark",
 
 
-    //Max Width Pages
+    //Width Pages
+    'w-custom-narrow', 'w-custom-standard',
+    'w-custom-narrowest', 'w-custom-wide',
+
     'max-w-custom-narrow', 'max-w-custom-standard',
-    'max-w-custom-narrowest',
+    'max-w-custom-narrowest', 'max-w-custom-wide',
     
     // Spacing
     'px-pxPage', 'pl-pxPage', 'pr-pxPage',

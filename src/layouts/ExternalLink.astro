@@ -1,0 +1,18 @@
+---
+const { href } = Astro.props;
+---
+
+<a href={href} target="_blank" rel="noopener noreferrer" class="external-link">
+  <slot />
+</a>
+
+<style>
+  .external-link {
+    color: var(--sl-color-accent-high);
+    text-decoration: underline;
+  }
+  /* .external-link::after {
+    content: " ↗";
+    font-size: 0.8em;
+  } */
+</style>

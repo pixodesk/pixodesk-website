@@ -63,10 +63,10 @@ sections:
     title: "## Explore Pixodesk SVG Animator Features"
     subTitle: Powerful SVG animator that combines vector tools, intuitive animation features, and flexible export options. <br/> Create vector graphics, add motion, and save them in lightweight formats optimized for production.
     items:
-      - title: Create vector designs, apply animations, easing, effects, and export ready-to-use animations - all in one app.
-      - title: Uses a globally supported SVG file format.
-      - title: Animations will play in all browsers and web applications.
-      - title: Supports multiple options for exporting your projects.
+      - content: Create vector designs, apply animations, easing, effects, and export ready-to-use animations - all in one app.
+      - content: Uses a globally supported SVG file format.
+      - content: Animations will play in all browsers and web applications.
+      - content: Supports multiple options for exporting your projects.
 
   section_03:  
     subSections:
@@ -118,14 +118,14 @@ sections:
     subTitle: Create and animate custom patterns, markers, and spray to give your vector artwork extra dimension.
     
     items:
-      - title: Animate custom Patterns.
-      - title: Adjust colors, scale, or shape variations to create moving, dynamic pattern effects.
+      - content: Animate custom Patterns.
+      - content: Adjust colors, scale, or shape variations to create moving, dynamic pattern effects.
 
-      - title: Animate your Marker designs.
-      - title: Duplicate shapes along lines or paths and add motion for expressive animated details.
+      - content: Animate your Marker designs.
+      - content: Duplicate shapes along lines or paths and add motion for expressive animated details.
 
-      - title: Create animated Spray effects.
-      - title: Add motion to scattered shapes - great for particles, stars, snow, or creative textures.
+      - content: Create animated Spray effects.
+      - content: Add motion to scattered shapes - great for particles, stars, snow, or creative textures.
 
   section_04: 
     title: "## Auto-Animate: Automatically Animate Between States"
@@ -160,20 +160,20 @@ sections:
     title: "## Animated Vector Text"
     subTitle: Easily animate text, apply effects over time, and move it along lines, waves, or geometric shapes.
     items:
-      - title: Animate custom fonts that match your brand perfectly.
-      - title: Animate text transforms using rotation, flip, scale, and other options.
-      - title: Move text along any path or shape, animating start and offset positions.
-      - title: Animate motion along closed shapes like circles and open shapes like lines or waves.
+      - content: Animate custom fonts that match your brand perfectly.
+      - content: Animate text transforms using rotation, flip, scale, and other options.
+      - content: Move text along any path or shape, animating start and offset positions.
+      - content: Animate motion along closed shapes like circles and open shapes like lines or waves.
 
   section_07: 
     title: "## Animated Repeater: Animate Multiple Elements at Once"
     subTitle: Make complex patterns move with ease by animating all duplicates in one go.
     image: "../assets/svg/sections/clock-face-repeater.svg"
     items:
-      - title: Animate all properties of an entire set of elements at once.
-      - title: Animate position, scale, rotation, and reference point (origin) for all duplicates from one place.
-      - title: Tweak the source shape, and all duplicates update automatically.
-      - title: Ensure symmetry and smooth motion while animating complex designs.
+      - content: Animate all properties of an entire set of elements at once.
+      - content: Animate position, scale, rotation, and reference point (origin) for all duplicates from one place.
+      - content: Tweak the source shape, and all duplicates update automatically.
+      - content: Ensure symmetry and smooth motion while animating complex designs.
 
   section_08: 
     title: "## Only your SVG and CSS animation in your file"

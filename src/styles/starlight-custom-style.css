@@ -1,0 +1,212 @@
+:root {
+    color-scheme: dark;
+    /* Header spacing */
+    /* height: var(--sl-nav-height); */
+    /* padding: var(--sl-nav-pad-y) var(--sl-nav-pad-x); */
+
+    /* Main font Inter */
+    --sl-font: 'Inter', system-ui, sans-serif;
+
+    /* Accent color */
+    /* --sl-color-accent-low: #f0aa8a;
+    --sl-color-accent: #aed2fc;
+    --sl-color-accent-high: #0761d1; */
+}
+
+:root {
+  /* Change the background of the highlight */
+  --sl-color-text-selection-bg: #b3d7ff; /* A classic light blue */
+}
+
+::selection {
+  background-color: var(--sl-color-text-selection-bg) !important;
+}
+
+::-moz-selection {
+  background-color: var(--sl-color-text-selection-bg) !important;
+}
+
+:root {
+    --sl-nav-height: 2.5rem;
+}
+
+
+/* Light theme */
+
+:root[data-theme='light'] .sl-markdown-content h1,
+:root[data-theme='light'] .sl-markdown-content h2,
+:root[data-theme='light'] .sl-markdown-content h3 {
+    color: #444;
+}
+
+:root[data-theme='light'] .sidebar-content a {
+    color: var(--sl-color-gray-3);
+    transition: color 0.2s ease;
+}
+
+:root[data-theme='light'] .sidebar-content a[aria-current='page'],
+:root[data-theme='light'] .sidebar-content a:hover {
+    color: var(--sl-color-white);
+}
+
+:root[data-theme='light'] .sidebar-content ul li .group-label span {
+    color: var(--sl-color-gray-2);
+}
+
+
+/* Dark theme */
+
+:root[data-theme='dark'] {
+    /* Accent color */
+    /* --sl-color-accent-low: #0d2847; */
+    /* --sl-color-accent: #3291ff; */
+    /* --sl-color-accent-high: #74adee; */
+
+    /* Background left sidebar */
+    --sl-color-bg-sidebar: var(--sl-color-bg);
+
+}
+
+:root[data-theme='dark'] .sidebar-content a[aria-current='page'],
+:root[data-theme='dark'] .sidebar-content a:hover {
+    color: var(--sl-color-white);
+}
+
+:root[data-theme='dark'] .sidebar-content a {
+    transition: color 0.2s ease;
+}
+:root[data-theme='dark'] .sl-markdown-content hr {
+  border-top: 1px solid var(--sl-color-gray-4);
+}
+
+
+/* Headers */
+
+.sl-markdown-content h1 {
+    font-weight: 900;
+}
+
+.sl-markdown-content h2,
+.sl-markdown-content h3 {
+    font-weight: 800;
+}
+
+
+/* Sidebar left panel */
+
+/* Details summery  */
+
+.top-level>li>details>summary::marker {
+    content: '';
+}
+
+.top-level>li>details>summary,
+.top-level>li>details>summary>svg {
+    display: flex;
+    margin-bottom: 0.5rem;
+}
+
+.top-level>li>details ul li {
+    margin-bottom: 0.5rem;
+}
+
+nav.sidebar a[aria-current='page'] {
+    background-color: transparent;
+}
+
+
+/* Right side panel */
+
+.right-sidebar-panel h2#starlight__on-this-page {
+    margin-bottom: 0.5rem;
+}
+
+.right-sidebar-panel nav>ul>li {
+    border-left: 1px solid var(--sl-color-gray-5);
+}
+
+.right-sidebar-panel a {
+    color: var(--sl-color-gray-3);
+}
+
+.right-sidebar-panel a[aria-current='true'] {
+    color: var(--sl-color-white);
+}
+
+@media (max-width: 72rem) {
+    .right-sidebar-container {
+        display: none;
+    }
+
+    .main-frame {
+        padding-top: calc(var(--sl-nav-height));
+    }
+
+}
+
+
+/* Expressive Code */
+
+.expressive-code {
+    margin: 1.5rem 0;
+}
+
+.expressive-code .frame {
+    border: 0.5px solid var(--sl-color-hairline);
+    border-radius: 0.5rem;
+    overflow: hidden;
+}
+
+.expressive-code .header {
+    display: none !important;
+}
+
+.expressive-code .copy {
+    position: absolute !important;
+    top: 0.5rem !important;
+    right: 0.5rem !important;
+}
+
+
+/* Theme selector */
+
+starlight-theme-select label select {
+    padding-left: 1.5rem;
+}
+
+starlight-theme-select label select:focus {
+    outline: none;
+}
+
+/* Header  */
+header {
+    font-family: "Montserrat", "Inter", system-ui, sans-serif;
+}
+
+header .site-title {
+    color: var(--sl-color-white);
+    background: transparent;
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+}
+
+header starlight-theme-select {
+    font-size: 0.75rem;
+}
+
+@media (max-width: 50rem) {
+    starlight-menu-button button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    starlight-menu-button button svg.close-menu {
+        display: none;
+    }
+
+    starlight-theme-select {
+        display: none;
+    }
+}

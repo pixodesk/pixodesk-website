@@ -9,7 +9,9 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/mdx": "^4.3.13",
     "@astrojs/react": "^4.3.0",
+    "@astrojs/starlight": "^0.37.3",
     "@astrojs/tailwind": "^6.0.2",
     "@tailwindcss/aspect-ratio": "^0.4.2",
     "@tailwindcss/typography": "^0.5.19",

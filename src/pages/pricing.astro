@@ -1,13 +1,13 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
-import content from "../pages/pricing/pricing-text-content";
+import content from "../data/pricing/pricing-text-content";
 import { marked } from "marked";
 import type { Page } from "../types/types";
 import ListLayout from "../layouts/ListLayout.astro";
 import PricingCard from "../layouts/PricingCard.astro";
-import LogoSvg from "../layouts/LogoSvg.astro";
-import Logo2D from "../layouts/Logo2D.astro";
-import LogoSvga from "../layouts/LogoSvga.astro";
+import LogoSvg from "../layouts/LogoSvgFill.astro";
+import Logo2D from "../layouts/Logo2DFill.astro";
+import LogoSvga from "../layouts/LogoSvgaFill.astro";
 import Border from "../layouts/Border.astro";
 
 // console.log("----->>>>>>>");
@@ -16,59 +16,79 @@ const page = content.pages.page_00;
 ---
 
 <BaseLayout title="Pricing">
-  <div class="bg-custom-gradient-navy text-base-bright pt-navSingle">
-    <section class="pricing px-8 pt-8 w-full max-w-5xl mx-auto">
-      <!-- Title -->
-      {
-        page.title && (
-          <div
-            class="font-bold text-center mb-0"
-            set:html={marked(page.title)}
-          />
-        )
-      }
-      {
-        page.descriptions && (
-          <ul class="text-center mb-4">
-            {page.descriptions.map((description) => (
-              <li class="text-center mb-2" set:html={marked(description)} />
-            ))}
-          </ul>
-        )
-      }
-      {
-        Array.isArray(page.priceForApps) && (
-          <div
-            class="
-            grid grid-cols-1 md:grid-cols-3
-            gap-4
-            w-full 
-            mx-auto 
-            py-8 
-            px-4 
-            "
-          >
-            {Array.isArray(page.priceForApps) &&
-              page.priceForApps.map((pricing) => (
-                <div
-                  class="
-                  max-w-[19rem] mx-auto mb-8
-                  transition-all duration-300 
-                  hover:-translate-y-2 hover:scale-104
+    <div class="bg-custom-gradient-navy text-base-bright pt-navSingle">
+        <section
+            class="pricing pt-8 w-full max-w-5xl mx-auto"
+            style={{
+                paddingLeft: "var(--sl-nav-pad-x)",
+                paddingRight: "var(--sl-nav-pad-x)",
+            }}
+        >
+            <!-- Title -->
+            {
+                page.title && (
+                    <div
+                        class="font-bold text-center mb-0"
+                        set:html={marked(page.title)}
+                    />
+                )
+            }
+            {
+                page.descriptions && (
+                    <ul class="text-center mb-4 text-custom-grey-400">
+                        {page.descriptions.map((description) => (
+                            <li
+                                class="text-center mb-2"
+                                set:html={marked(description)}
+                            />
+                        ))}
+                    </ul>
+                )
+            }
+            {
+                Array.isArray(page.priceForApps) && (
+                    <div
+                        class="
+                            grid grid-cols-1 md:grid-cols-3
+                            gap-4
+                            w-full 
+                            mx-auto 
+                            py-8 
+                        "
+                    >
+                        {Array.isArray(page.priceForApps) &&
+                            page.priceForApps.map((pricing) => (
+                                <div
+                                    class="
+                                        max-w-[19rem] mx-auto mb-8
+                                        transition-all duration-300 
+                                        hover:-translate-y-2 hover:scale-104
                   "
-                >
-                  <Border bgColor="bg-[#00000006]">
-                    <PricingCard pricingCardInfo={pricing}>
-                      {pricing.icon === "svg" && <LogoSvg />}
-                      {pricing.icon === "2d" && <Logo2D />}
-                      {pricing.icon === "svga" && <LogoSvga />}
-                    </PricingCard>
-                  </Border>
-                </div>
-              ))}
-          </div>
-        )
-      }
-    </section>
-  </div>
+                                >
+                                    <Border bgColor="bg-[#00000006]">
+                                        <PricingCard pricingCardInfo={pricing}>
+                                            {pricing.icon === "svg" && (
+                                                <div class="text-white w-8 h-8">
+                                                    <LogoSvg />
+                                                </div>
+                                            )}
+                                            {pricing.icon === "2d" && (
+                                                <div class="text-white w-8 h-8">
+                                                    <Logo2D />
+                                                </div>
+                                            )}
+                                            {pricing.icon === "svga" && (
+                                                <div class="text-custom-grey-400 w-8 h-8">
+                                                    <LogoSvga />
+                                                </div>
+                                            )}
+                                        </PricingCard>
+                                    </Border>
+                                </div>
+                            ))}
+                    </div>
+                )
+            }
+        </section>
+    </div>
 </BaseLayout>
