@@ -10,11 +10,26 @@ import { Badge } from '@astrojs/starlight/components';
 
 
 # Add Lottie Animation to React Project
-<SpacerBottom />
-You can add Lottie animations to a React app very easily. The most common and recommended way is to use the lottie-react package.
 
-This is a clean, modern, step-by-step approach.
+<SpacerBottom /> 
+You can add Lottie animations to a React app using the `lottie-react` package. 
+<SpacerBottom size='1rem'/> 
+It is a React-specific wrapper around a core Lottie player. It adapts the player to React components, lets you control it via props, and integrates smoothly with the React lifecycle. 
+<SpacerBottom size='1rem'/> 
+The steps to add a Lottie animation to a React project are: 
+<SpacerBottom size='1rem'/> 
+- Create a React project 
+- Install Lottie for React 
+- Add your Lottie (.json) animation to the project 
+- Use Lottie in a React component 
+- Run your app 
+- Edit your animation in the project folder (transform, colors, shapes, etc.) 
+- See the changes reflected on screen immediately 
+
 <SpacerBottom />
+
+
+
 ---
 
 ## Create React Project
@@ -30,7 +45,8 @@ npm create vite@latest my-animation-app -- --template react-ts
 
 This creates a React + TypeScript project called my-animation-app.
 <SpacerBottom size='1rem' />
-Enter your project directory: 
+
+Go into your project folder:
 ```bash
 cd my-animation-app
 ```
@@ -53,15 +69,18 @@ npm install lottie-react
 <SpacerBottom size='1rem' />
 ---
 
-## Get Your Lottie Animation
-<SpacerBottom size='1rem' />
-### Create an animation in 2D Animator
-- <a href="https://pixodesk.com/2d-animator" target="_blank">https://pixodesk.com/2d-animator</a><Badge text="Tool" variant="note" />
-
-### Download from LottieFiles
-- <a href="https://lottiefiles.com" target="_blank">https://lottiefiles.com</a>
+## Add Your Lottie Animation
 <SpacerBottom size='1rem' />
 
+To add a Lottie animation to your project, you can:
+<SpacerBottom size='1rem' />
+- create it from scratch in [`Pixodesk 2D Animator`](https://pixodesk.com/2d-animator) or 
+- download an animation from [`LottieFiles`](https://lottiefiles.com) and edit it in [`2D Animator`](https://pixodesk.com/2d-animator).
+<SpacerBottom size='1rem' />
+In 2D Animator, you can modify all animation properties: color, stroke, shapes, animation position, scale, opacity, easing, etc.
+<SpacerBottom size='1rem' />
+You can combine several animations into one to achieve the desired effect.
+<SpacerBottom size='1rem' />
 Create an `animations` folder in `src/assets/` and add your animation:
 
 ```bash
@@ -103,6 +122,7 @@ export default App;
 <SpacerBottom />
 
 Start the development server:
+
 ```bash
 npm run dev
 ```
@@ -112,8 +132,28 @@ You should see:
 Local: http://localhost:5173
 ```
 <SpacerBottom size='1rem' />
+
 ---
 
-## Done! 🎉
+## Animation Ready
 <SpacerBottom />
 Your Lottie animation should now work in your React project.
+<SpacerBottom />
+---
+
+## Edit Animation From Project Folder
+<SpacerBottom />
+- Open your animation in 2D Animator straight from your `src/assets/animations` folder.
+    <SpacerBottom size='1rem' />
+    Use the 2D Animator topbar menu `File -> Open`, navigate to your repository, choose your animation, and click `Open`.
+    <SpacerBottom size='1rem' />
+    Or you can drag and drop your animation straight into 2D Animator and choose 'Open file'.
+    <SpacerBottom size='1rem' />
+- Modify your file and press `File -> Save`. 
+
+<SpacerBottom />
+---
+
+## See Changes Instantly! 🎉
+<SpacerBottom />
+Your edited animation should update immediately at runtime, and you can see the updated animation in your browser straight away.

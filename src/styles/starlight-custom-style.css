@@ -20,10 +20,12 @@
 
 ::selection {
   background-color: var(--sl-color-text-selection-bg) !important;
+  color: var(--sl-color-black);
 }
 
 ::-moz-selection {
   background-color: var(--sl-color-text-selection-bg) !important;
+  color: var(--sl-color-black);
 }
 
 :root {
@@ -52,6 +54,12 @@
 :root[data-theme='light'] .sidebar-content ul li .group-label span {
     color: var(--sl-color-gray-2);
 }
+:root[data-theme='light'] ::selection {
+  background-color: var(--sl-color-text-selection-bg) !important;
+  color: var(--sl-color-white);
+}
+
+
 
 
 /* Dark theme */
@@ -209,4 +217,17 @@ header starlight-theme-select {
     starlight-theme-select {
         display: none;
     }
+}
+
+
+/* List style */
+
+.sl-markdown-content ul {
+  list-style-type: disc;
+  list-style-position: inside
+}
+
+.sl-markdown-content ol {
+  list-style-type: decimal;
+  list-style-position: inside
 }
