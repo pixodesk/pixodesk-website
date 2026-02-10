@@ -14,7 +14,7 @@ import { Badge } from '@astrojs/starlight/components';
 <SpacerBottom /> 
 You can add Lottie animations to a React app using the `lottie-react` package. 
 <SpacerBottom size='1rem'/> 
-It is a React-specific wrapper around a core Lottie player. It adapts the player to React components, lets you control it via props, and integrates smoothly with the React lifecycle. 
+It is a **React-specific Lottie player**. It adapts the player to React components, lets you control it via props, and integrates smoothly with the React lifecycle. 
 <SpacerBottom size='1rem'/> 
 The steps to add a Lottie animation to a React project are: 
 <SpacerBottom size='1rem'/> 
@@ -23,8 +23,8 @@ The steps to add a Lottie animation to a React project are:
 - Add your Lottie (.json) animation to the project 
 - Use Lottie in a React component 
 - Run your app 
-- Edit your animation in the project folder (transform, colors, shapes, etc.) 
-- See the changes reflected on screen immediately 
+- Edit the animation from the project folder (transform, colors, shapes, etc.) 
+- Done. Animation is ready
 
 <SpacerBottom />
 
@@ -90,6 +90,7 @@ src/assets/animations/animation.json
 ---
 
 ## Use Lottie in React Component
+
 <SpacerBottom size='1rem' />
 **src/App.tsx**
 ```tsx
@@ -127,33 +128,29 @@ Start the development server:
 npm run dev
 ```
 
-You should see:
-```bash
-Local: http://localhost:5173
-```
+You should see `Local: http://localhost:5173` in your terminal window. 
+
 <SpacerBottom size='1rem' />
 
----
+Open the link in your browser (note that the localhost port can be different if 5173 has been taken by another application).
 
-## Animation Ready
-<SpacerBottom />
+<SpacerBottom size='1rem' />
+
 Your Lottie animation should now work in your React project.
+
 <SpacerBottom />
+
+
 ---
 
 ## Edit Animation From Project Folder
 <SpacerBottom />
-- Open your animation in 2D Animator straight from your `src/assets/animations` folder.
-    <SpacerBottom size='1rem' />
-    Use the 2D Animator topbar menu `File -> Open`, navigate to your repository, choose your animation, and click `Open`.
-    <SpacerBottom size='1rem' />
-    Or you can drag and drop your animation straight into 2D Animator and choose 'Open file'.
-    <SpacerBottom size='1rem' />
-- Modify your file and press `File -> Save`. 
+- Open your animation in **`2D Animator`** straight from your `src/assets/animations` folder.
+- **Modify** your file and **save** it. 
 
 <SpacerBottom />
 ---
 
-## See Changes Instantly! 🎉
+## Done! 🎉
 <SpacerBottom />
-Your edited animation should update immediately at runtime, and you can see the updated animation in your browser straight away.
+Hot reloading will pick up changes straight away and reflect them in the browser immediately.
