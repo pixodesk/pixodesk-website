@@ -13,7 +13,7 @@ import { Badge } from '@astrojs/starlight/components';
 <SpacerBottom />
 
 You can add Lottie animations to a Vue app using the `@lottiefiles/dotlottie-vue` package.
-<SpacerBottom />
+<SpacerBottom size='1rem'/> 
 
 To add a Lottie animation to a Vue project:
 <SpacerBottom size='1rem'/> 
@@ -33,6 +33,7 @@ To add a Lottie animation to a Vue project:
 
 ## Create Vue Project
 <SpacerBottom />
+
 Open your terminal and navigate to your projects folder:
 
 ```bash
@@ -125,25 +126,25 @@ import { DotLottieVue } from '@lottiefiles/dotlottie-vue';
 ```vue
 
 <template>
-  <div id="app">
-    <h1>My Lottie Animation</h1>
-    <LottieAnimation />
-  </div>
-  <!-- ... the rest of your code -->
+    <div id="app">
+        <h1>My Lottie Animation</h1>
+        <LottieAnimation />
+    </div>
+     <!-- ... the rest of your code -->
 </template>
 
 <script setup>
 import LottieAnimation from './components/LottieAnimation.vue';
-// ... the rest of your import
+// ... the rest of your imports
 </script>
 
 <style scoped>
 #app {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 0;
 }
 
 /* ... the rest of your style */
