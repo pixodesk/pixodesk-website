@@ -11,9 +11,25 @@ import { Badge } from '@astrojs/starlight/components';
 
 # Add Lottie Animation to Vue Project
 <SpacerBottom />
+
 You can add Lottie animations to a Vue app using the `@lottiefiles/dotlottie-vue` package.
 <SpacerBottom />
+
+To add a Lottie animation to a Vue project:
+<SpacerBottom size='1rem'/> 
+
+- Create a Vue project 
+- Install the Lottie player for Vue
+- Add your Lottie animation to the project 
+- Create a Lottie component 
+- Use Lottie in a Vue component
+- Run your app 
+- Edit the animation in the project folder (transform, colors, shapes, etc.)
+- Done! The animation is ready
+<SpacerBottom />
+
 ---
+
 
 ## Create Vue Project
 <SpacerBottom />
@@ -29,18 +45,13 @@ Create a new Vue 3 project with TypeScript:
 npm create vue@latest my-animation-app
 ```
 
-During setup, choose:
-<SpacerBottom size='1rem' />
-- TypeScript: **Yes**
-- Other options as needed
-<SpacerBottom />
-Navigate into the project:
+Go into your project folder:
 
 ```bash
 cd my-animation-app
 ```
 
-Install dependencies:
+Then install dependencies:
 
 ```bash
 npm install
@@ -55,35 +66,39 @@ npm install @lottiefiles/dotlottie-vue
 ```
 ---
 
-## Get Your Lottie Animation
+## Add Your Lottie Animation
 <SpacerBottom size='1rem' />
-### Create an animation in 2D Animator
-- <a href="https://pixodesk.com/2d-animator" target="_blank">https://pixodesk.com/2d-animator</a><Badge text="Tool" variant="note" />
 
-### Download from LottieFiles
-- <a href="https://lottiefiles.com" target="_blank">https://lottiefiles.com</a>
 
+To add a Lottie animation to your project, you can:
 <SpacerBottom size='1rem' />
-Create an `animations` folder in `src/assets` and add your animation:
+
+- Create an animation from scratch in <span style="color: var(--sl-color-accent-high);">[`Pixodesk 2D Animator`](https://pixodesk.com/2d-animator)</span>, or 
+- Download an animation from <span style="color: var(--sl-color-accent-high);">[`LottieFiles`](https://lottiefiles.com)</span> and edit it in <span style="color: var(--sl-color-accent-high);">[`2D Animator`](https://pixodesk.com/2d-animator)</span>.
+<SpacerBottom size='1rem' />
+
+
+Create an `animations` folder in `public` and add your animation:
 
 ```bash
-src/assets/animations/animation.json
+public/animations/animation.json
 ```
 
 ---
 
-## Use Lottie in Vue Component
+## Create Lottie Component
 <SpacerBottom size='1rem' />
+
 **src/components/LottieAnimation.vue**
 
 ```vue
 <template>
     <div class="lottie-container">
         <DotLottieVue
-        src="./src/assets/animations/animation.json"
-        :loop="true"
-        :autoplay="true"
-        style="height: 300px; width: 300px;"
+            src="/animations/animation.json"
+            :loop="true"
+            :autoplay="true"
+            style="height: 300px; width: 300px;"
         />
     </div>
 </template>
@@ -100,6 +115,10 @@ import { DotLottieVue } from '@lottiefiles/dotlottie-vue';
 }
 </style>
 ```
+---
+
+## Use Lottie in Vue Component
+<SpacerBottom size='1rem' />
 
 **src/App.vue**
 
@@ -136,7 +155,6 @@ import LottieAnimation from './components/LottieAnimation.vue';
 ---
 
 ## Run Your App
-
 <SpacerBottom />
 
 Start the development server:
@@ -145,13 +163,36 @@ Start the development server:
 npm run dev
 ```
 
-You should see: 
-```bash
-Local: http://localhost:5173
-```
+
+
+You should see `Local: http://localhost:5173` in your terminal window. 
+<SpacerBottom size='1rem' />
+
+**Open the link in your browser.**
+<SpacerBottom size='1rem' />
+
+**Note:** The localhost port can be different if `5173` has been taken by another application.
+<SpacerBottom size='1rem' />
+
+Your Lottie animation should now work in your Vue project.
+<SpacerBottom />
+
+
+
+
+
+---
+
+## Edit Animation in the Project Folder
+<SpacerBottom />
+
+- Open your animation in **`2D Animator`** directly from your `public/animations` folder.
+- **Modify** your file and **save** it. 
+<SpacerBottom />
 
 ---
 
 ## Done! 🎉
 <SpacerBottom />
-Your Lottie animation should now work in your Vue project.
+
+Hot reloading will pick up changes and reflect them in the browser immediately. Refresh the page if necessary.
