@@ -11,26 +11,35 @@ import { Badge } from '@astrojs/starlight/components';
 # Add Lottie Animation to Nuxt Project
 <SpacerBottom />
 
-You can add Lottie animations to a Nuxt app using the `@lottiefiles/dotlottie-vue` package.
+You can add Lottie animations to a Nuxt app using:
+<SpacerBottom size='1rem'/> 
+
+- `Lottie module` integration 
+- `@lottiefiles/dotlottie-vue` package
+<SpacerBottom />
+---
+
+## Option 1: `Lottie module` integration
+<SpacerBottom />
+
+The Lottie module can be added to a Nuxt project as it is listed in the <span style="color: var(--sl-color-accent-high);">[`Nuxt Modules`](https://nuxt.com/modules/lottie)</span> directory.
 <SpacerBottom size='1rem'/> 
 
 To add a Lottie animation to a Nuxt app:
 <SpacerBottom size='1rem'/> 
 
-- Create a Nuxt project 
-- Install the Lottie player for Vue
-- Add your Lottie animation to the project 
-- Create a Lottie component 
+- Create a Nuxt project
+- Add Nuxt Lottie module
+- Add your Lottie animation
 - Use Lottie in a Nuxt app
 - Run your app
-- Edit the animation in the project folder (transform, colors, shapes, etc.)
+- Edit the animation in the project folder
 - Done! The animation is ready
 <SpacerBottom />
 
+--- 
 
----
-
-## Create Nuxt Project
+### Create Nuxt Project
 <SpacerBottom />
 
 Open your terminal and navigate to your projects folder:
@@ -60,14 +69,189 @@ npm install
 
 ---
 
-## Install Lottie for Vue
+
+### Add Nuxt Lottie module
+<SpacerBottom />
+
+```bash
+npx nuxi module add lottie
+```
+After installation, ensure that the `assets/lottie` folder exists. The module should automatically create it for you.
+<SpacerBottom />
+
+
+---
+
+### Add Your Lottie Animation
+<SpacerBottom size='1rem' />
+
+
+To add a Lottie animation to your project, you can:
+<SpacerBottom size='1rem' />
+
+- Create an animation from scratch in <span style="color: var(--sl-color-accent-high);">[`Pixodesk 2D Animator`](https://pixodesk.com/2d-animator)</span>, or 
+- Download an animation from <span style="color: var(--sl-color-accent-high);">[`LottieFiles`](https://lottiefiles.com)</span> and edit it in <span style="color: var(--sl-color-accent-high);">[`2D Animator`](https://pixodesk.com/2d-animator)</span>.
+<SpacerBottom size='1rem' />
+
+
+
+Add your animation to the `assets/lottie` folder.
+
+```bash
+assets/lottie/animation.json
+```
+
+---
+
+
+
+
+### Use Lottie in Nuxt App
+<SpacerBottom size='1rem' />
+
+**app.vue**
+
+```vue
+<template>
+    <div>
+        <Lottie name="animation" width="300px" height="300px" />
+        <!-- ... the rest of your code -->
+    </div>
+</template>
+
+```
+
+---
+
+
+
+---
+
+### Run Your App
+<SpacerBottom />
+
+Start the development server:
+```bash
+npm run dev
+```
+
+You should see `Local: http://localhost:3000` in your terminal window. 
+<SpacerBottom size='1rem' />
+
+**Open the link in your browser.**
+<SpacerBottom size='1rem' />
+
+**Note:** The localhost port can be different if `3000` has been taken by another application.
+<SpacerBottom size='1rem' />
+
+Your Lottie animation should now work in your Nuxt app.
+<SpacerBottom />
+
+
+
+---
+
+### Edit Animation in the Project Folder
+<SpacerBottom />
+
+- Open your animation in **`2D Animator`** directly from your `assets/lottie` folder.
+- **Modify** your file and **save** it. 
+<SpacerBottom />
+
+---
+
+### Done! Animation is Ready 🎉 
+<SpacerBottom />
+
+Hot reloading will pick up changes and reflect them in the browser immediately. Refresh the page if necessary.
+
+<SpacerBottom />
+---
+
+<SpacerBottom size='4rem'/>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Option 2: `@lottiefiles/dotlottie-vue` package
+<SpacerBottom />
+
+You can add Lottie animations to a Nuxt app using the `@lottiefiles/dotlottie-vue` package.
+<SpacerBottom size='1rem'/> 
+
+To add a Lottie animation to a Nuxt app:
+<SpacerBottom size='1rem'/> 
+
+- Create a Nuxt project 
+- Install the Lottie player for Vue
+- Add your Lottie animation to the project 
+- Create a Lottie component 
+- Use Lottie in a Nuxt app
+- Run your app
+- Edit the animation in the project folder (transform, colors, shapes, etc.)
+- Done! The animation is ready
+<SpacerBottom />
+
+
+---
+
+
+
+
+
+### Create Nuxt Project
+
+Open your terminal and navigate to your projects folder:
+
+```bash
+cd path/to/your/projects
+```
+
+Create a new Nuxt project with TypeScript:
+
+```bash
+npx nuxi@latest init my-animation-app
+```
+
+Go into your project folder:
+
+```bash
+cd my-animation-app
+```
+
+Then install dependencies:
+
+```bash
+npm install
+```
+
+
+---
+
+
+### Install Lottie for Vue
 
 ```bash
 npm install @lottiefiles/dotlottie-vue
 ```
 ---
 
-## Add Your Lottie Animation
+### Add Your Lottie Animation
 <SpacerBottom size='1rem' />
 
 
@@ -88,7 +272,7 @@ public/animations/animation.json
 
 ---
 
-## Create Lottie Component
+### Create Lottie Component
 <SpacerBottom />
 
 Next to the app.vue file, create a `components` folder and add LottieAnimation.vue to it.
@@ -124,7 +308,7 @@ import { DotLottieVue } from '@lottiefiles/dotlottie-vue';
 
 ---
 
-## Use Lottie in Nuxt App
+### Use Lottie in Nuxt App
 <SpacerBottom size='1rem' />
 
 **app.vue**
@@ -139,10 +323,6 @@ import { DotLottieVue } from '@lottiefiles/dotlottie-vue';
     </div>
 </template>
 
-<script setup>
-import LottieAnimation from './components/LottieAnimation.vue';
-// ... the rest of your imports
-</script>
 
 <style scoped>
 .animation {
@@ -159,7 +339,7 @@ import LottieAnimation from './components/LottieAnimation.vue';
 
 ---
 
-## Run Your App
+### Run Your App
 <SpacerBottom />
 
 Start the development server:
@@ -183,7 +363,7 @@ Your Lottie animation should now work in your Nuxt app.
 
 ---
 
-## Edit Animation in the Project Folder
+### Edit Animation in the Project Folder
 <SpacerBottom />
 
 - Open your animation in **`2D Animator`** directly from your `public/animations` folder.
@@ -192,7 +372,9 @@ Your Lottie animation should now work in your Nuxt app.
 
 ---
 
-## Done! 🎉
+### Done! Animation is Ready 🎉 
 <SpacerBottom />
 
 Hot reloading will pick up changes and reflect them in the browser immediately. Refresh the page if necessary.
+
+<SpacerBottom size='4rem'/>
