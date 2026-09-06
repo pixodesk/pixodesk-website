@@ -77,7 +77,7 @@ function parseSection(file) {
 function readSections(dir) {
     if (!fs.existsSync(dir)) return [];
     return fs.readdirSync(dir)
-        .filter(f => /\.mdx?$/.test(f) && f !== 'index.mdx' && f !== 'docs-content.mdx')
+        .filter(f => /\.mdx?$/.test(f) && f !== 'index.mdx')
         .map(f => parseSection(path.join(dir, f)))
         .filter(Boolean)
         .sort((a, b) => a.order - b.order);

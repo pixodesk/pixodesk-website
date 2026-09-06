@@ -4,6 +4,7 @@ slug: "docs/svga/editor/playback-settings"
 sidebar:
   order: 175
 draft: false
+description: "Set how long, how many times and what starts it once, in the editor, and forget about it: the settings travel inside the file, every player reads them, and\u2026"
 ---
 
 Set *how long*, *how many times* and *what starts it* once, in the editor, and forget about

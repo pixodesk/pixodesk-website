@@ -1,6 +1,7 @@
 ---
 title: "Vue — @pixodesk/svg-animator-vue"
 slug: "docs/svga/player-library/vue"
+description: "Use this in a Vue 3 or Nuxt app: drop in the component, pass it the JSON, and it renders the animation and controls its playback. It wraps the web player…"
 ---
 
 Use this in a Vue 3 or Nuxt app: drop in the component, pass it the JSON, and it renders the

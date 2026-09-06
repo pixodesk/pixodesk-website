@@ -1,6 +1,7 @@
 ---
 title: "Playback settings & triggers"
 slug: "docs/svga/player-library/playback-and-triggers"
+description: "Change how an animation plays — its length, loops, direction, what starts it — without going back to the editor. Everything about when and how it plays…"
 ---
 
 Change how an animation plays — its length, loops, direction, what starts it — without going

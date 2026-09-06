@@ -1,6 +1,7 @@
 ---
 title: "React Native — @pixodesk/svg-animator-rn 🧪 (in development)"
 slug: "docs/svga/player-library/react-native"
+description: "Use this in a React Native or Expo app. Give <PixodeskSvgAnimator doc={…} /> the same JSON the web player uses and it renders native SVG (react-native-svg),…"
 ---
 
 > **In development.** This player is not finished yet. The API may change without a major

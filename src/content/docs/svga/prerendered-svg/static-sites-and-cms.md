@@ -1,6 +1,7 @@
 ---
 title: "Static sites & CMS"
 slug: "docs/svga/prerendered-svg/static-sites-and-cms"
+description: "Building with a static-site generator or a CMS? Use a pre-rendered SVG: the build tool or CMS inlines the file and the animation is on screen before any\u2026"
 ---
 
 Building with a static-site generator or a CMS? Use a pre-rendered SVG: the build tool or

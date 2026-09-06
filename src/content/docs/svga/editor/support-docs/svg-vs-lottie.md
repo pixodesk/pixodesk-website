@@ -7,8 +7,6 @@ sidebar:
   order: 30
 ---
 
-# SVG Features Not Supported by Lottie
-
 Features available in SVG that have no equivalent in the Lottie format. Grouped at the same level as the Airbnb Lottie [supported-features.md](https://github.com/airbnb/lottie/blob/master/supported-features.md) reference. Bold rows mark category sections.
 
 | **SVG Features Not Supported by Lottie** |

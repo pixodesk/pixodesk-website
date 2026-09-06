@@ -58,7 +58,7 @@ function rewrite(url, dir) {
 
   if (resolved.startsWith('../')) {
     const repoPath = resolved.slice(3);
-    if (repoPath === 'README.md') return `${REPO}#readme`;
+    if (repoPath === 'README.md') return `${REPO}${hash || '#readme'}`;
     // GitHub redirects between blob and tree, so either works for files and
     // directories alike; blob keeps file anchors working.
     return `${REPO}/blob/main/${repoPath}${hash}`;

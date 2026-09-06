@@ -1,6 +1,7 @@
 ---
 title: "Pre-rendered SVG documentation"
 slug: "docs/svga/prerendered-svg"
+description: "A pre-rendered SVG is a finished .svg file with the animation embedded \u2014 it plays on its own, with no player library. Three flavours: SVG + CSS animation\u2026"
 ---
 
 A **pre-rendered SVG** is a finished `.svg` file with the animation embedded — it plays on

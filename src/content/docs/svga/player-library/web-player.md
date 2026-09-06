@@ -1,6 +1,7 @@
 ---
 title: "Web player — @pixodesk/svg-animator-web"
 slug: "docs/svga/player-library/web-player"
+description: "Use this on a plain web page — or anywhere you write JavaScript without a framework — to play a JSON animation with full control. Hand it the document and…"
 ---
 
 Use this on a plain web page — or anywhere you write JavaScript without a framework — to play

@@ -1,6 +1,7 @@
 ---
 title: "React — @pixodesk/svg-animator-react"
 slug: "docs/svga/player-library/react"
+description: "Use this in a React or Next.js app: drop in the component, pass it the JSON, and it renders the animation and controls its playback. It wraps the web player…"
 ---
 
 Use this in a React or Next.js app: drop in the component, pass it the JSON, and it renders

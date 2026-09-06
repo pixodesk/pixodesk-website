@@ -8,8 +8,6 @@ sidebar:
   
 ---
 
-# Lottie Supported Features
-
 Feature list and structure mirror the canonical Airbnb [supported-features.md](https://github.com/airbnb/lottie/blob/master/supported-features.md). Bold rows mark category sections.
 
 | **Lottie Supported Features** |

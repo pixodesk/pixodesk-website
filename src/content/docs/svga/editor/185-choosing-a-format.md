@@ -4,6 +4,7 @@ slug: "docs/svga/editor/choosing-a-format"
 sidebar:
   order: 185
 draft: false
+description: "As the Introduction covered, the editor saves an animation in one of two formats: JSON, which a player library renders, or pre-rendered SVG, which a browser\u2026"
 ---
 
 As the [Introduction](/docs/svga/editor/how-it-fits-together) covered, the editor saves an animation in one of two formats: **JSON**, which a player library renders, or **pre-rendered SVG**, which a
@@ -23,7 +24,7 @@ Both JSON and animated SVG are the same document in a different shape. You can s
 | **Pre-rendered SVG + JS animation** | `.svg` | ordinary SVG + the web player embedded in a `<script>` (25–38 KB) | no (the player is inline) |
 
 The editor can also export **Lottie** (`.json` / `.lottie`), **video**, **GIF** and **image**
-snapshots — see [The editor → Save, convert, export](/docs/svga#save-convert-export).
+snapshots — see [Save, File Format](/docs/svga/editor/save).
 
 ## The decision, short version
 

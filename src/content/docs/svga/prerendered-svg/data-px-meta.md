@@ -1,6 +1,7 @@
 ---
 title: "Meta in pre-rendered SVG — data-px-meta"
 slug: "docs/svga/prerendered-svg/data-px-meta"
+description: "Read this if you open a pre-rendered .svg in a text editor and want to know what the data-px-meta attributes are, whether you can remove them, or how to\u2026"
 ---
 
 Read this if you open a pre-rendered `.svg` in a text editor and want to know what the

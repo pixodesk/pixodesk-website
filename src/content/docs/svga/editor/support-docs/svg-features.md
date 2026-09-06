@@ -7,8 +7,6 @@ sidebar:
   order: 20
 ---
 
-# SVG Supported Features
-
 Feature list compiled from the [W3C SVG 2 specification](https://www.w3.org/TR/SVG2/) and [MDN SVG reference](https://developer.mozilla.org/en-US/docs/Web/SVG). Bold rows mark category sections.
 
 | **SVG Supported Features** |

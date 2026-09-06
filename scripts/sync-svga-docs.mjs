@@ -100,6 +100,23 @@ function slugFor(targetRel) {
   return [SLUG_BASE, ...parts].join('/');
 }
 
+/** Meta description: the page's first body paragraph, de-markdowned and
+ *  truncated at a word boundary. */
+function deriveDescription(body) {
+  const paragraph = body
+    .split(/\n\s*\n/)
+    .map((block) => block.trim())
+    .find((block) => block && !/^[#>|`\[!-]/.test(block) && !block.startsWith('**On this page'));
+  if (!paragraph) return undefined;
+  let text = paragraph
+    .replace(/\[([^\]]*)\]\([^)]*\)/g, '$1')
+    .replace(/[*_`]/g, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+  if (text.length > 160) text = text.slice(0, 157).replace(/\s+\S*$/, '') + '…';
+  return text || undefined;
+}
+
 for (const generated of GENERATED) {
   fs.rmSync(path.join(TARGET, generated), { recursive: true, force: true });
 }
@@ -133,7 +150,10 @@ for (const file of walk(source)) {
     .join('\n')
     .replace(/^\n+/, '');
 
-  const frontmatter = `---\ntitle: ${JSON.stringify(title)}\nslug: ${JSON.stringify(slug)}\n---\n\n`;
+  const description = deriveDescription(body);
+  const frontmatter = `---\ntitle: ${JSON.stringify(title)}\nslug: ${JSON.stringify(slug)}\n` +
+    (description ? `description: ${JSON.stringify(description)}\n` : '') +
+    `---\n\n`;
   const target = path.join(TARGET, targetRel);
   fs.mkdirSync(path.dirname(target), { recursive: true });
   fs.writeFileSync(target, frontmatter + body);

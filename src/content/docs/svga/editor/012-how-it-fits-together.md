@@ -4,6 +4,7 @@ slug: "docs/svga/editor/how-it-fits-together"
 sidebar:
   order: 12
 draft: false
+description: "Pixodesk SVG Animator is an editor that makes SVG animations, a set of players that run them, and the file format that connects the two. You make the\u2026"
 ---
 
 Pixodesk SVG Animator is an **editor** that makes SVG animations, a set of **players** that
@@ -84,15 +85,12 @@ collides with the first ([read more](/docs/svga/prerendered-svg/on-the-web#one-c
 Both JSON and animated SVG have the same features, and the editor converts between them at any time
 (**File → Save as JSON / Save as SVG**), so the choice is never final.
 
-## Which file format do I need?
+## Which package do I need?
 
-Start from where the animation is going:
-
-- **A page, a CMS, a static site — and you just want it to play.** Use a **pre-rendered SVG**.
-  No package to install: paste it in or let your build tool inline it. Start at
-  [Pre-rendered SVG on the web](/docs/svga/prerendered-svg/on-the-web).
-- **An app, or anything you need to control from code.** Use **JSON** with the player for your
-  stack. Start at [Installing the players (overview)](/docs/svga/player-library/installation).
+First pick the format — [Choosing a format](/docs/svga/editor/choosing-a-format) has the
+side-by-side comparison. A **pre-rendered SVG** needs no package at all
+([Pre-rendered SVG on the web](/docs/svga/prerendered-svg/on-the-web)); **JSON** needs the
+player for your stack ([installation overview](/docs/svga/player-library/installation)):
 
 | Your stack | Package |
 |---|---|
@@ -101,9 +99,6 @@ Start from where the animation is going:
 | Vue / Nuxt | `@pixodesk/svg-animator-vue` |
 | React Native / Expo 🧪 *(in development)* | `@pixodesk/svg-animator-rn` |
 | The core every player builds on — the format schema and the shared algorithms | `@pixodesk/svg-animator-core` |
-
-Still unsure? [Choosing a format](/docs/svga/editor/choosing-a-format) has the side-by-side
-comparison and what each engine can animate.
 
 The React and Vue packages wrap the web player; every player shares the core, so the same
 document produces the same frames everywhere:

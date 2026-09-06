@@ -1,6 +1,7 @@
 ---
 title: "Troubleshooting & FAQ"
 slug: "docs/svga/player-library/troubleshooting"
+description: "Player-library troubleshooting — find your symptom below; each entry says what to check and what to change. For pre-rendered SVG issues (a flavour that…"
 ---
 
 Player-library troubleshooting — find your symptom below; each entry says what to check and

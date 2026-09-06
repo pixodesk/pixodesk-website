@@ -1,6 +1,7 @@
 ---
 title: "The JSON format"
 slug: "docs/svga/format"
+description: "The JSON animation document, in one page: the principles behind the format, the full reference, the player effects, the editor's meta, and the core library…"
 ---
 
 The **JSON** animation document, in one page: the principles behind the format, the full

@@ -1,6 +1,7 @@
 ---
 title: "Pre-rendered SVG on the web"
 slug: "docs/svga/prerendered-svg/on-the-web"
+description: "Put a pre-rendered SVG on a page by inlining it \u2014 paste the <svg> into the HTML, or let your framework or static-site generator inline the file. It is a\u2026"
 ---
 
 Put a pre-rendered SVG on a page by **inlining** it — paste the `<svg>` into the HTML, or let

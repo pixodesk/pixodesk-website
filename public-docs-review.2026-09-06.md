@@ -387,7 +387,11 @@ R2-2); all player-repo → site absolute links resolve, anchors included; all si
 GitHub links point at existing repo paths; the sitemap contains no redirect stubs;
 `svg` fences highlight; code wraps; per-app sidebars and redirects behave.
 
-## R2-1. Player repo: links broken on GitHub by the router deletion 🔴
+## R2-1. Player repo: links broken on GitHub by the router deletion ✅ FIXED
+
+**Done:** all 8 `../README.md` references now point at `../../README.md#documentation`; the examples README link is the absolute site URL (anchor verified). Repo-wide link check: zero broken.
+
+*Original finding:*
 
 Nine broken relative links, all fallout from removing `docs/README.md` and
 `docs/prerendered-svg/`:
@@ -402,14 +406,22 @@ Nine broken relative links, all fallout from removing `docs/README.md` and
   — missed by the absolutization pass (its `../../docs/` prefix didn't match the
   rewrite pattern). Fix: the pixodesk.com URL.
 
-## R2-2. Site: one dangling anchor 🟠
+## R2-2. Site: one dangling anchor ✅ FIXED
+
+**Done:** now links `[Save, File Format](/docs/svga/editor/save)`. Site-wide anchor check: zero dangling.
+
+*Original finding:*
 
 `editor/185-choosing-a-format.md` links `[The editor → Save, convert, export](/docs/svga#save-convert-export)`
 — that heading belonged to the deleted `start/editor.md` digest and does not exist
 on the Introduction page. Correct target: `/docs/svga/editor/save` (the *Save, File
 Format* page). This was the **only** dangling anchor site-wide.
 
-## R2-3. The junk pages are now IN the sitemap 🟠 (issue 7, upgraded)
+## R2-3. The junk pages are now IN the sitemap ✅ FIXED (issue 7 closed)
+
+**Done:** deleted `/docs-old`, `/index copy`, `/great-post`, `/posts/*`, `/svg-animator/Menu_old`, the `/lottie-react` orphan (both routes — its content is covered by the Lottie Players page), the three superseded `add-svg-animation` drafts and `docs-content.mdx`. Sitemap re-checked: clean (66 pages).
+
+*Original finding:*
 
 Issue 7's dead pages are still routed, and since the generated sitemap went live
 they are now **advertised to search engines**: `/docs-old`, `/index%20copy` (the
@@ -417,7 +429,11 @@ URL-encoded "index copy"!), `/great-post`, `/posts/post1..3`, and `/lottie-react
 (twice — `/lottie-react/` and `/lottie-react/lottie-react/`). What was a
 guessable-URL embarrassment is now an indexed one. Deleting the files fixes both.
 
-## R2-4. The format-choice story is told in three Editor pages 🟡
+## R2-4. The format-choice story is told in three Editor pages ✅ FIXED
+
+**Done:** 012's section retitled **Which package do I need?** (which is what it mostly was — the package table and architecture diagram are unique and stay); its duplicate format-choice bullets became a one-line pointer at 185. 180's Save-dialog angle untouched.
+
+*Original finding:*
 
 After absorbing the start pages, the Editor section answers "which format?" in
 three places: `012-how-it-fits-together` (§ *Which file format do I need?*),
@@ -426,7 +442,11 @@ three places: `012-how-it-fits-together` (§ *Which file format do I need?*),
 Suggestion: cut 012's section to a two-line pointer at 185; keep 180's section
 (it is about the Save dialog, a different angle).
 
-## R2-5. Issue 4 status: mostly resolved ✅/🟡
+## R2-5. Issue 4 status: resolved ✅
+
+**Done:** the stale "Player docs — introduction" label now reads "How It Fits Together".
+
+*Original finding:*
 
 `200-add-svg-animation` is now a **276-word thin router** (which player for which
 stack + links into the player-library docs) — exactly the recommended shape, so
@@ -434,7 +454,11 @@ issue 4's SVG half is done. `210-add-lottie` (4.1k words) is by design the Lotti
 Players documentation, not a duplicate. Leftover nit: 200's link labelled
 "Player docs — introduction" now lands on *How It Fits Together* — relabel.
 
-## R2-6. Page-title rendering is now inconsistent 🟡 (issue 10's double-H1, sharpened)
+## R2-6. Page-title rendering is now inconsistent ✅ FIXED (double-H1 gone)
+
+**Done:** convention chosen: **one H1, rendered by Starlight from the frontmatter title**. Body H1s stripped from all 28 authored pages; three links that targeted the removed H1 anchors (`symbols#symbols`, `markers#markers`, `patterns#patterns`) retargeted to the page tops. (The four `<h1>My Lottie Animation</h1>` on the Lottie Players page are raw HTML inside its own example snippets — page content, flagged for its eventual rewrite pass.)
+
+*Original finding:*
 
 The authored `.mdx` manual pages still carry a body `# H1` (rendered **in addition
 to** Starlight's title), while the moved/synced `.md` pages have it stripped — so
@@ -442,7 +466,11 @@ within the same Editor section some pages show their title twice and some once.
 Fix remains: drop the body H1s from the ~25 mdx files (or hide Starlight's `_top`
 H1 globally and keep body H1s everywhere — pick one convention).
 
-## R2-7. Missing `description` frontmatter 🟢
+## R2-7. Missing `description` frontmatter ✅ FIXED
+
+**Done:** the sync script now derives a description from each synced page's first paragraph (de-markdowned, truncated at a word boundary); the seven authored pages (prerendered-svg + the three moved editor pages) got the same treatment one-time.
+
+*Original finding:*
 
 16 pages ship no meta description: all synced pages (player-library, format), the
 authored prerendered-svg pages, and the three moved editor pages. For the synced
@@ -461,11 +489,13 @@ want a hand-written line each.
 - No CI freshness check for the sync (issue 8 trade-off).
 - **Pixodesk SVG Editor** naming call (issue 5 leftover).
 
-## Round-2 checklist (most urgent first)
+## Round-2 checklist
 
-1. Fix the 9 broken GitHub-facing links in the player repo (R2-1).
-2. Fix the `/docs/svga#save-convert-export` link in 185 (R2-2).
-3. Delete the junk pages — now sitemap-visible (R2-3).
-4. Push the player repo.
-5. Then the 🟡/🟢 polish: 012-vs-185 overlap, H1 convention, descriptions,
-   maturity banner, Lottie drafts, SVG Editor naming.
+1. ~~Fix the 9 broken GitHub-facing links~~ ✅ (R2-1)
+2. ~~Fix the dangling anchor in 185~~ ✅ (R2-2)
+3. ~~Delete the junk pages~~ ✅ (R2-3, issue 7 closed)
+4. ~~012-vs-185 overlap · H1 convention · descriptions~~ ✅ (R2-4/6/7)
+5. **Still open (decisions / user actions):** push the player repo; publish the
+   Lottie feature-page drafts; the 🚧 maturity banner wording; the **SVG Editor**
+   naming call; a CI freshness check for the sync; a tone rewrite of the Lottie
+   Players page (R2-8).

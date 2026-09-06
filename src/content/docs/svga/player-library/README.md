@@ -1,6 +1,7 @@
 ---
 title: "Library documentation — the players"
 slug: "docs/svga/player-library"
+description: "How to install and use the player libraries that render and control JSON animations: plain HTML, React, Vue and React Native, plus the playback settings and…"
 ---
 
 How to install and use the player libraries that render and control **JSON** animations:
@@ -22,4 +23,4 @@ share. (Playing a **pre-rendered SVG** needs no library — see
 
 - [Which format do I need?](https://pixodesk.com/docs/svga/editor/choosing-a-format)
 - [Format documentation](../format/README.md) — the JSON documents the players consume
-- [Documentation home](../README.md)
+- [Documentation home](../../README.md#documentation)

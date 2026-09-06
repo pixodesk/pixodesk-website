@@ -1,6 +1,7 @@
 ---
 title: "Installing the players (overview)"
 slug: "docs/svga/player-library/installation"
+description: "Install a package only if you use the JSON format. A pre-rendered SVG needs nothing — the CSS flavour is plain SVG, and the JS flavour carries its own copy…"
 ---
 
 Install a package only if you use the **JSON** format. A pre-rendered SVG needs nothing —
