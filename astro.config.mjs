@@ -16,6 +16,7 @@ export default defineConfig({
     markdown: {
         remarkPlugins: [remarkSvgaDocLinks],
         shikiConfig: {
+            langAlias: { svg: 'xml' },   // shiki has no "svg" grammar; SVG is XML
             themes: {
                 light: "github-light",
                 dark: "github-dark",
@@ -50,6 +51,8 @@ export default defineConfig({
             },
             defaultLocale: 'root',
             expressiveCode: {
+                shiki: { langAlias: { svg: 'xml' } },   // shiki has no "svg" grammar; SVG is XML
+                defaultProps: { wrap: true },   // soft-wrap code blocks — no horizontal scroll
                 themes: ['github-light', 'github-dark'],  //  github-light, min-light, slack-ochin, solarized-light, vitesse-light
                 frames: {
                     terminalTitlebarDotsOpacity: '0',      // Hide the dots
@@ -57,6 +60,8 @@ export default defineConfig({
                     editorTabBarBorderBottomColor: 'transparent',
                 },
                 styleOverrides: {
+                    codeFontSize: '0.75rem',
+                    codeLineHeight: '1.2',
                     frames: {
                         showCopyToClipboardButton: true,  // keep copy button
                         frameBoxShadowCssValue: 'none',

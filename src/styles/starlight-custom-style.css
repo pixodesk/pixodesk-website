@@ -56,6 +56,10 @@
 :root {
     --sl-nav-height: 2.5rem;
 
+    /* Wider middle column than Starlight's 45rem default, but still bounded so
+       long text lines stay comfortable to read. */
+    --sl-content-width: 60rem;
+
     /* The site menu rendered above the Starlight header (starlight/Header.astro):
        main bar (h-10) + the Docs submenu bar (h-10). The submenu bar is always
        visible on docs pages, because the Docs menu entry is active there. */
@@ -356,3 +360,8 @@ starlight-toc a {
     max-width: 100%;
     height: auto;
 }
+
+
+/* Code blocks: size and line-height come from expressiveCode.styleOverrides
+   (codeFontSize / codeLineHeight) in astro.config.mjs — EC's own stylesheet
+   loads after this one, so plain CSS overrides here would lose. */

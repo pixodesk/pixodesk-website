@@ -16,7 +16,6 @@
 //
 //   upstream library/…         -> svga/player-library/…  /docs/svga/player-library/…
 //   upstream format/…          -> svga/format/…          /docs/svga/format
-//   upstream README.md         -> svga/player.md         /docs/svga/player
 //
 // Only those generated paths (GENERATED) are wiped and rewritten. Everything
 // else under svga/ is authored and never touched — notably editor/ (the manual,
@@ -44,20 +43,20 @@ const SLUG_BASE = 'docs/svga';
 const SEGMENT_MAP = { library: 'player-library' };
 
 // Everything the sync owns under TARGET; wiped before each run.
-const GENERATED = ['player-library', 'format', 'player.md'];
+const GENERATED = ['player-library', 'format', 'player.md' /* legacy, wiped */];
 
 // Upstream folders that intentionally do NOT sync: start/ lives on in the
 // editor manual (svga/editor), prerendered-svg/ is authored on the site.
 // Guarded here so an older checkout can never clobber the authored content.
-const SKIPPED_UPSTREAM = ['start', 'prerendered-svg'];
+const SKIPPED_UPSTREAM = ['start', 'prerendered-svg', 'README.md'];
 
 const DEFAULT_SOURCE = '../pixodesk-svg-animator/docs';
 
 const source = process.argv[2] ?? DEFAULT_SOURCE;
-if (!fs.existsSync(path.join(source, 'README.md'))) {
+if (!fs.existsSync(path.join(source, 'format', 'README.md'))) {
   console.error(
     `Source "${source}" does not look like the player docs directory ` +
-      `(no README.md in it).\n` +
+      `(no format/README.md in it).\n` +
       `  - default:  the sibling checkout at ${DEFAULT_SOURCE}\n` +
       `  - override: node scripts/sync-svga-docs.mjs <sourceDocsDir>\n` +
       `  - no local checkout: yarn sync:svga-docs:github`,
@@ -89,7 +88,6 @@ function isNavLine(line) {
  *  the filename, decides the URL. */
 function targetRelPath(relPath) {
   const parts = relPath.split(path.sep);
-  if (parts.length === 1 && parts[0] === 'README.md') return 'player.md';
   const mapped = parts.map((part, i) => (i === 0 && SEGMENT_MAP[part]) || part);
   return mapped.join('/');
 }

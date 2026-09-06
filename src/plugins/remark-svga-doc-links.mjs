@@ -10,7 +10,7 @@
  *
  *      ./react.md#nextjs   (from player-library/) -> /docs/svga/player-library/react#nextjs
  *      ../library/README.md (from start/)         -> /docs/svga/player-library
- *      ../README.md (the docs router)             -> /docs/svga/player
+ *      ../README.md (the retired docs router)     -> /docs/svga
  *      ../../SCHEMA.md, ../../examples/...        -> the file on GitHub
  *      ../../README.md                            -> the repository README on GitHub
  *
@@ -65,7 +65,8 @@ function rewrite(url, dir) {
   }
 
   let docPath = resolved.replace(/\.md$/, '');
-  if (docPath === 'README' || docPath === '.') return `${BASE}/player${hash}`;
+  // The former docs-router README: its role is played by the app home now.
+  if (docPath === 'README' || docPath === '.') return `${BASE}${hash}`;
   if (docPath.endsWith('/README')) docPath = docPath.slice(0, -'/README'.length);
   if (docPath in MOVED) docPath = MOVED[docPath];
   // Upstream folder names that read differently as site URL segments (kept in

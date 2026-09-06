@@ -36,15 +36,15 @@ export const SUPER_SECTIONS = {
 };
 
 /** The big top-level section titles (always open, styled large). */
-export const SECTION_LABELS = ['Editor', 'Player Library', 'Format', 'Pre-rendered SVG'];
+export const SECTION_LABELS = ['Editor', 'Player Library', 'JSON Format', 'Pre-rendered SVG File'];
 
 // [folder, section label, file order] for the synced player docs. 'Format' is a
 // single page: its section carries the page's `##` headings directly.
 // Unlisted files still appear, alphabetically last.
 const PLAYER_SECTIONS = [
     ['player-library', 'Player Library', ['README.md', 'installation.md', 'web-player.md', 'react.md', 'vue.md', 'react-native.md', 'playback-and-triggers.md', 'troubleshooting.md']],
-    ['format', 'Format', ['README.md']],
-    ['prerendered-svg', 'Pre-rendered SVG', ['README.md', 'on-the-web.md', 'static-sites-and-cms.md', 'data-px-meta.md']],
+    ['format', 'JSON Format', ['README.md']],
+    ['prerendered-svg', 'Pre-rendered SVG File', ['README.md', 'on-the-web.md', 'static-sites-and-cms.md', 'data-px-meta.md']],
 ];
 const PLAYER_SECTION_BASE_ORDER = 210; // after the Editor section (10)
 
@@ -132,9 +132,6 @@ function playerSections() {
             // Single-page section (Format): the page's `##` headings directly.
             ? [{ label: 'Overview', link: `/${sections[0].slug}` }, ...sections[0].items]
             : sections.map((s) => ({ label: shortLabel(s.label), link: `/${s.slug}` }));
-        if (label === 'Player Library') {
-            items.unshift({ label: 'Player overview', link: '/docs/svga/player' });
-        }
         result.push({
             order: PLAYER_SECTION_BASE_ORDER + index * 10,
             group: { label, collapsed: false, items },
@@ -160,8 +157,10 @@ export function docsSidebar() {
  */
 export function svgaRedirects() {
     const redirects = {
-        '/app/svga/docs': '/docs/svga/player',
-        '/docs/player': '/docs/svga/player',
+        // The player docs router page is retired; its sections are the homes now.
+        '/app/svga/docs': '/docs/svga/player-library',
+        '/docs/player': '/docs/svga/player-library',
+        '/docs/svga/player': '/docs/svga/player-library',
         // Old flat Lottie slugs.
         '/docs/lottie': '/docs/2d-lottie',
         '/docs/add-lottie-animation-to-your-project': '/docs/2d-lottie/add-lottie-animation-to-your-project',

@@ -5,8 +5,16 @@
 > Starlight tree at `/docs` (option A), Lottie editor separated into its own docs
 > section, product names made canonical, player docs linking back to the editor
 > manual, sync sourced locally, search enabled. Each fixed issue below is marked ✅
-> with what was done. Still open: **4, 7, 10** — plus a freshness check for the sync
-> (issue 8) and the player repo's docs restructure, which is **still unpushed**.
+> with what was done. Still open: **4 (mostly resolved — see R2-5), 7, 10** — plus a
+> freshness check for the sync (issue 8) and the player repo's docs restructure,
+> which is **still unpushed**.
+>
+> **Review round 2 (same day, evening):** re-audit after the per-app split
+> (`/docs/svga`, `/docs/2d-lottie`), the content-ownership moves (prerendered-svg
+> and the start pages out of the player repo, docs router deleted) and the UI
+> passes. Findings in the **Review round 2** section at the end — most urgent:
+> **broken GitHub-facing links in the player repo (R2-1)** and one dangling
+> anchor on the site (R2-2).
 
 Scope: everything a **user** meets — someone who wants to *create vector graphics,
 animate them, and integrate the result into their product* (a website or an app).
@@ -356,3 +364,108 @@ search box but indexes nothing — that is standard pagefind behaviour.)
    done (issues 1, 9); ~~player-docs → editor-manual backlinks~~ ✅ done (issue 6).
    Still open from the quick list: **delete dead pages** (issue 7) and the smaller
    notes in issue 10 (incl. the double-H1 quirk on editor-manual pages).
+
+
+---
+
+# Review round 2 — 2026-09-06 (evening)
+
+Re-audit after the day's restructures: per-app docs split (`/docs/svga/…`,
+`/docs/2d-lottie/…`, cards landing), prerendered-svg and the start pages moved out
+of the player repo, the docs router (`docs/README.md`) deleted, plus the UI passes
+(section sidebar, pills, code wrap, mermaid, svg highlighting).
+
+**What was checked:** every relative link in the player repo (script over all .md);
+every absolute pixodesk.com link from the player repo against the built site,
+anchors included; every GitHub link from the site against the live repo tree;
+site-wide internal links AND anchors across the whole `dist/`; sitemap contents;
+drafts, orphans, frontmatter descriptions; content overlap between the moved pages
+and the manual; naming spot-checks.
+
+**Verified healthy:** all site-internal links and anchors resolve (one exception,
+R2-2); all player-repo → site absolute links resolve, anchors included; all site →
+GitHub links point at existing repo paths; the sitemap contains no redirect stubs;
+`svg` fences highlight; code wraps; per-app sidebars and redirects behave.
+
+## R2-1. Player repo: links broken on GitHub by the router deletion 🔴
+
+Nine broken relative links, all fallout from removing `docs/README.md` and
+`docs/prerendered-svg/`:
+
+- **8 × `../README.md`** — the "Contents" fragment in the top/bottom nav lines of
+  every `docs/library/*.md` page, the bottom cross-doc line of
+  `docs/format/README.md`, and `docs/library/README.md` line 6. On the website
+  these nav lines are stripped by the sync, so **only GitHub readers hit the 404**.
+  Fix: point them at the repo root `../../README.md#documentation` (which now holds
+  the documentation index), or drop the Contents fragment from the nav lines.
+- **1 × `examples/docs-examples/README.md`** → `../../docs/prerendered-svg/on-the-web.md#flavour-2…`
+  — missed by the absolutization pass (its `../../docs/` prefix didn't match the
+  rewrite pattern). Fix: the pixodesk.com URL.
+
+## R2-2. Site: one dangling anchor 🟠
+
+`editor/185-choosing-a-format.md` links `[The editor → Save, convert, export](/docs/svga#save-convert-export)`
+— that heading belonged to the deleted `start/editor.md` digest and does not exist
+on the Introduction page. Correct target: `/docs/svga/editor/save` (the *Save, File
+Format* page). This was the **only** dangling anchor site-wide.
+
+## R2-3. The junk pages are now IN the sitemap 🟠 (issue 7, upgraded)
+
+Issue 7's dead pages are still routed, and since the generated sitemap went live
+they are now **advertised to search engines**: `/docs-old`, `/index%20copy` (the
+URL-encoded "index copy"!), `/great-post`, `/posts/post1..3`, and `/lottie-react`
+(twice — `/lottie-react/` and `/lottie-react/lottie-react/`). What was a
+guessable-URL embarrassment is now an indexed one. Deleting the files fixes both.
+
+## R2-4. The format-choice story is told in three Editor pages 🟡
+
+After absorbing the start pages, the Editor section answers "which format?" in
+three places: `012-how-it-fits-together` (§ *Which file format do I need?*),
+`185-choosing-a-format` (the dedicated page), and `180-save` (§ *File formats*).
+012 and 185 sit near each other in the same sidebar section — classic drift risk.
+Suggestion: cut 012's section to a two-line pointer at 185; keep 180's section
+(it is about the Save dialog, a different angle).
+
+## R2-5. Issue 4 status: mostly resolved ✅/🟡
+
+`200-add-svg-animation` is now a **276-word thin router** (which player for which
+stack + links into the player-library docs) — exactly the recommended shape, so
+issue 4's SVG half is done. `210-add-lottie` (4.1k words) is by design the Lottie
+Players documentation, not a duplicate. Leftover nit: 200's link labelled
+"Player docs — introduction" now lands on *How It Fits Together* — relabel.
+
+## R2-6. Page-title rendering is now inconsistent 🟡 (issue 10's double-H1, sharpened)
+
+The authored `.mdx` manual pages still carry a body `# H1` (rendered **in addition
+to** Starlight's title), while the moved/synced `.md` pages have it stripped — so
+within the same Editor section some pages show their title twice and some once.
+Fix remains: drop the body H1s from the ~25 mdx files (or hide Starlight's `_top`
+H1 globally and keep body H1s everywhere — pick one convention).
+
+## R2-7. Missing `description` frontmatter 🟢
+
+16 pages ship no meta description: all synced pages (player-library, format), the
+authored prerendered-svg pages, and the three moved editor pages. For the synced
+ones the sync script could derive it from the first paragraph; the authored ones
+want a hand-written line each.
+
+## R2-8. Carried forward, unchanged 🟢
+
+- Player README still opens with "🚧 under development" while the site sells
+  downloads (issue 10 maturity note).
+- Lottie feature pages still `draft: true`; `/lottie-react` orphan still to fold
+  in or delete (issue 3 leftovers).
+- Player repo docs restructure (now including today's deletions) **still
+  unpushed** — until pushed, `sync:svga-docs:github` and GitHub readers see the
+  old tree.
+- No CI freshness check for the sync (issue 8 trade-off).
+- **Pixodesk SVG Editor** naming call (issue 5 leftover).
+
+## Round-2 checklist (most urgent first)
+
+1. Fix the 9 broken GitHub-facing links in the player repo (R2-1).
+2. Fix the `/docs/svga#save-convert-export` link in 185 (R2-2).
+3. Delete the junk pages — now sitemap-visible (R2-3).
+4. Push the player repo.
+5. Then the 🟡/🟢 polish: 012-vs-185 overlap, H1 convention, descriptions,
+   maturity banner, Lottie drafts, SVG Editor naming.
