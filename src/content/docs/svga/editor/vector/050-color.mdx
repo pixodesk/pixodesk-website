@@ -1,0 +1,197 @@
+---
+title: "Color"
+description: "Fill and stroke colours: the colour panel, colour types, gradients, patterns, stroke options and trim, opacity, the eyedropper and used colours."
+slug: "docs/svga/editor/color"
+sidebar:
+  order: 50
+draft: false
+---
+
+# Color
+
+Every shape has a **fill** (the inside) and a **stroke** (the outline). Each can be a flat colour,
+a gradient, a pattern, nothing at all — or *unset*, so it inherits from its group. Colours are
+set in the **Colors** section of the Properties panel and animate like any other property.
+
+## Color Panel
+
+Select an object; the **Colors** section at the top of the Properties panel is where every colour
+is set. The same picker also appears in the toolbar while a drawing tool is active, and pressing
+`X` switches the active target between fill and stroke.
+
+1. **Fill / Stroke tabs** — which of the two you are editing.
+2. **Colour types** — flat colour, gradient, pattern, none or unset ([below](#colour-types)).
+3. **Colour wheel** — hue ring with a saturation / brightness triangle.
+4. **Values** — HEX, and the RGB / HSL channels with **A** for alpha.
+5. **Opacity** — the alpha slider for the colour itself.
+6. **Used colours** — swatches of the colours already in the document ([Used Colors](#used-colors)).
+
+{/* e2e-screenshot
+app: svga · viewport: 1440x900 · hideDevUi: true · date: 2026-08-30
+setup: setup(400, 400); click("toolsPicker.rectangle"); move("canvas.bg", "source:20%", "source:25%", "canvas.bg", "drop:70%", "drop:65%")
+crop: clip={"x":700,"y":52,"w":740,"h":460}
+annotate: annotate([{"kind":"dim","target":"attrs.color","padding":8,"color":"#fff","fillAlpha":0.8},{"kind":"box","theme":"red","bounds":{"x":1161,"y":97,"w":171,"h":27},"padding":3,"color":"#08f","stroke":1.5,"fill":"solid","fillAlpha":0.2},{"kind":"box","theme":"red","bounds":{"x":1060,"y":134,"w":249,"h":26},"padding":3,"color":"#08f","stroke":1.5,"fill":"solid","fillAlpha":0.2},{"kind":"box","theme":"red","bounds":{"x":1082,"y":169,"w":201,"h":200},"padding":3,"color":"#08f","stroke":1.5,"fill":"solid","fillAlpha":0.2},{"kind":"box","theme":"red","bounds":{"x":1316,"y":194,"w":98,"h":174},"padding":3,"color":"#08f","stroke":1.5,"fill":"solid","fillAlpha":0.2},{"kind":"box","theme":"red","bounds":{"x":1048,"y":374,"w":360,"h":28},"padding":3,"color":"#08f","stroke":1.5,"fill":"solid","fillAlpha":0.2},{"kind":"box","theme":"red","bounds":{"x":1052,"y":400,"w":60,"h":32},"padding":3,"color":"#08f","stroke":1.5,"fill":"solid","fillAlpha":0.2},{"kind":"number","theme":"red","halo":"chip","bounds":{"x":1161,"y":97,"w":171,"h":27},"num":"1","text":"Fill / Stroke","at":"left","offset":{"x":-97,"y":0},"arrow":true,"width":2.5,"arrowFill":"accent"},{"kind":"number","theme":"red","halo":"chip","bounds":{"x":1060,"y":134,"w":249,"h":26},"num":"2","text":"Color types","at":"left","offset":{"x":4,"y":0},"arrow":true,"width":2.5,"arrowFill":"accent"},{"kind":"number","theme":"red","halo":"chip","bounds":{"x":1082,"y":169,"w":201,"h":200},"num":"3","text":"Color wheel","at":"left","offset":{"x":-18,"y":0},"arrow":true,"width":2.5,"arrowFill":"accent"},{"kind":"number","theme":"red","halo":"chip","bounds":{"x":1316,"y":194,"w":98,"h":174},"num":"4","text":"Values","at":"bottom","offset":{"x":10,"y":26},"arrow":true,"width":2.5,"arrowFill":"accent"},{"kind":"number","theme":"red","halo":"chip","bounds":{"x":1048,"y":374,"w":360,"h":28},"num":"5","text":"Opacity","at":"left","offset":{"x":16,"y":0},"arrow":true,"width":2.5,"arrowFill":"accent"},{"kind":"number","theme":"red","halo":"chip","bounds":{"x":1052,"y":400,"w":60,"h":32},"num":"6","text":"Used colors","at":"left","offset":{"x":12,"y":0},"arrow":true,"width":2.5,"arrowFill":"accent"}])
+notes: scale 1 (740-px crop ~1:1 in the docs column); TRANSLUCENT white matte (fillAlpha 0.8, hole over attrs.color + 8) gives room for the badges while the toolbar, canvas and panel header stay visible — a screenshot must show WHERE it is (owner rule); badges 1-6 match the numbered list in the page text; region bounds from locate, except the wheel (no test-id) measured by pixel analysis of a clean crop; badge 4 sits below its region because the type-icon row is directly above it
+*/}
+![The Colors section of the Properties panel, annotated 1-6: Fill/Stroke tabs, colour types, colour wheel, values, opacity, used colours](/images/docs/editor/color/colors-fill.png)
+
+### Colour types
+
+The icon row at the top of the tab sets the **type** of colour:
+
+| Type | Meaning |
+| :-- | :-- |
+| **No Color** | no fill / no stroke |
+| **Flat Color** | one solid colour |
+| **Linear Gradient** | colours blending along a line |
+| **Circular Gradient** | colours radiating from a centre |
+| **Pattern** | a repeating tile ([Patterns](/docs/svga/editor/patterns)) |
+| **Unset Color** | no colour of its own — inherits from the parent group ([below](#unset-color)) |
+
+### Picking a colour
+
+- **Wheel** (hue ring + saturation/brightness triangle) or **rectangular** field — switch with
+  the button above the picker.
+- **HEX** field (e.g. `#d41a1a`), or the **RGB** / **HSL** channels — switch models with the
+  toggle above the numbers.
+- **A** (alpha) — the colour's transparency, 0–100 %.
+- **Swatches** — the colours already used in the document; click one to reuse it
+  ([Used colours](#used-colors)).
+- **Eyedropper** — pick a colour from anything on the canvas ([below](#eyedropper)).
+
+Colours follow SVG inheritance: a colour set on a group applies to every child that is *unset*.
+
+## Fill
+
+Set the fill type and colour on the **Fill** tab. Two more settings sit in the **Fill** section:
+
+- **Fill Opacity** — transparency of the fill alone (the object's own opacity is separate, see
+  [Opacity](#opacity)).
+- **Fill Rule** — how the inside of a self-intersecting or compound path is decided:
+  **Nonzero** (default, by winding direction) or **Even-Odd** (every second overlap is a hole).
+
+## Stroke
+
+The **Stroke** tab sets the outline colour; the **Stroke** section sets its shape. Expand the
+section (the chevron on its right) to reach everything below the first row:
+
+| Setting | Options |
+| :-- | :-- |
+| **Width** | thickness in document units |
+| **Line Cap** | **Butt** (flat at the end), **Round**, **Square** (flat, extended) |
+| **Line Join** | **Miter** (pointed), **Round**, **Bevel** (cut) |
+| **Miter Limit** | how far a pointed corner may extend before it is cut off |
+| **Opacity** | transparency of the stroke alone |
+| **Dash Array** | tick it, then set **Dash** and **Gap** lengths; **+** adds more pairs |
+| **Offset** | where the dash pattern starts along the path |
+
+{/* e2e-screenshot
+app: svga · viewport: 1440x900 · hideDevUi: true · date: 2026-08-30
+setup: setup(400, 400, {"fill": "#3d7fd6", "stroke": "#1b3a63"}); click("toolsPicker.rectangle"); move("canvas.bg", "source:20%", "source:25%", "canvas.bg", "drop:70%", "drop:65%"); input("attrs.stroke.width.input", "12"); click("attrs.stroke.expand"); click("attrs.stroke.dashArray.enabled.setOn"); click("attrs.color.collapse")
+crop: clip={"x":700,"y":52,"w":740,"h":400}
+annotate: annotate([{"kind":"dim","target":"attrs.stroke","padding":8,"color":"#fff","fillAlpha":0.8},{"kind":"box","theme":"red","bounds":{"x":1177,"y":182,"w":84,"h":26},"padding":3,"color":"#08f","stroke":1.5,"fill":"solid","fillAlpha":0.2},{"kind":"box","theme":"red","bounds":{"x":1273,"y":182,"w":60,"h":26},"padding":3,"color":"#08f","stroke":1.5,"fill":"solid","fillAlpha":0.2},{"kind":"box","theme":"red","bounds":{"x":1057,"y":241,"w":359,"h":30},"padding":2,"color":"#08f","stroke":1.5,"fill":"solid","fillAlpha":0.2},{"kind":"box","theme":"red","bounds":{"x":1057,"y":309,"w":359,"h":30},"padding":2,"color":"#08f","stroke":1.5,"fill":"solid","fillAlpha":0.2},{"kind":"box","theme":"red","bounds":{"x":1057,"y":339,"w":359,"h":30},"padding":2,"color":"#08f","stroke":1.5,"fill":"solid","fillAlpha":0.2},{"kind":"title","theme":"red","halo":"chip","bounds":{"x":1177,"y":182,"w":84,"h":26},"text":"Width","at":"top","offset":{"x":-75,"y":0},"arrow":true,"width":2.5,"arrowFill":"accent"},{"kind":"title","theme":"red","halo":"chip","bounds":{"x":1273,"y":182,"w":60,"h":26},"text":"Line cap & join","at":"top","offset":{"x":45,"y":0},"arrow":true,"width":2.5,"arrowFill":"accent"},{"kind":"title","theme":"red","halo":"chip","bounds":{"x":1057,"y":241,"w":359,"h":30},"text":"Stroke opacity","at":"left","arrow":true,"width":2.5,"arrowFill":"accent"},{"kind":"title","theme":"red","halo":"chip","bounds":{"x":1057,"y":309,"w":359,"h":30},"text":"Dash & gap","at":"left","arrow":true,"width":2.5,"arrowFill":"accent"},{"kind":"title","theme":"red","halo":"chip","bounds":{"x":1057,"y":339,"w":359,"h":30},"text":"Dash offset","at":"left","arrow":true,"width":2.5,"arrowFill":"accent"}])
+notes: scale 1; Colors section collapsed so the whole Stroke section fits; dash array ticked (Dash 5 / Gap 5); translucent white matte (0.8) with a hole over attrs.stroke — the crop keeps the panel header, the sections above/below and the canvas for context; bounds from locate — re-locate if the panel layout changes
+*/}
+![The Stroke section: width, line cap and join, stroke opacity, dash and gap, dash offset](/images/docs/editor/color/stroke-section.png)
+
+### Trim Stroke (draw-on effect)
+
+Tick **Trim Stroke** to show only part of the stroke — the basis of every "line drawing itself"
+animation:
+
+- **Start / End** — the visible portion, in % of the path length (0 % → 100 % shows everything).
+  Keyframe **End** from 0 % to 100 % and the line draws on; keyframe **Start** and it erases.
+- **Offset** — slides the visible portion along the path without changing its length; animate it
+  for a travelling dash or a looping progress ring.
+- **Sub-Paths** — for a shape made of several separate paths: **separate** trims each one on its
+  own, **combined** treats them as a single continuous stroke.
+
+Trim Stroke and a dash array are alternatives: tick Trim Stroke and the Dash Array row is hidden,
+and vice versa — the effect takes over the dash attributes it is built on.
+
+{/* e2e-screenshot
+app: svga · viewport: 1440x900 · hideDevUi: true · date: 2026-08-30
+setup: setup(400, 400, {"fill": "#3d7fd6", "stroke": "#1b3a63"}); click("toolsPicker.rectangle"); move("canvas.bg", "source:20%", "source:25%", "canvas.bg", "drop:70%", "drop:65%"); input("attrs.stroke.width.input", "12"); click("attrs.stroke.expand"); click("attrs.stroke.trimStroke.setOn"); input("attrs.stroke.start/End.y.input", "60"); click("attrs.color.collapse")
+crop: clip={"x":620,"y":52,"w":820,"h":420}
+annotate: annotate([{"kind":"dim","target":"attrs.stroke","padding":8,"color":"#fff","fillAlpha":0.8},{"kind":"box","theme":"red","target":"attrs.stroke.trimStroke","padding":2,"color":"#08f","stroke":1.5,"fill":"solid","fillAlpha":0.2},{"kind":"box","theme":"red","target":"attrs.stroke.trimSubPaths","padding":2,"color":"#08f","stroke":1.5,"fill":"solid","fillAlpha":0.2},{"kind":"box","theme":"red","target":"attrs.stroke.offset","padding":2,"color":"#08f","stroke":1.5,"fill":"solid","fillAlpha":0.2},{"kind":"box","theme":"red","target":"attrs.stroke.start/End","padding":2,"color":"#08f","stroke":1.5,"fill":"solid","fillAlpha":0.2},{"kind":"title","theme":"red","halo":"chip","target":"attrs.stroke.trimStroke","text":"Turn the effect on","at":"left","arrow":true,"width":2.5,"arrowFill":"accent"},{"kind":"title","theme":"red","halo":"chip","target":"attrs.stroke.trimSubPaths","text":"Sub-Paths","at":"left","arrow":true,"width":2.5,"arrowFill":"accent"},{"kind":"title","theme":"red","halo":"chip","target":"attrs.stroke.offset","text":"Offset","at":"left","arrow":true,"width":2.5,"arrowFill":"accent"},{"kind":"title","theme":"red","halo":"chip","target":"attrs.stroke.start/End","text":"Start / End — 60 % drawn","at":"left","arrow":true,"width":2.5,"arrowFill":"accent"}])
+notes: scale 1; Colors section collapsed; End set to 60 % so the canvas shows a partly drawn stroke; translucent white matte (0.8) with the canvas and neighbouring sections kept for context; ticking Trim Stroke replaces the Dash Array row (and hides the stroke-opacity row) — the two cannot be shown together
+*/}
+![The Trim Stroke controls: the tick box, Sub-Paths, Offset and Start/End](/images/docs/editor/color/trim-stroke.png)
+
+## Linear and Radial Gradients
+
+Choose **Linear Gradient** or **Circular Gradient** on the Fill or Stroke tab. A gradient has
+**stops** — colours at positions along it — each with its own colour and alpha.
+
+{/* e2e-screenshot
+app: svga · viewport: 1440x900 · hideDevUi: true · date: 2026-08-30
+setup: setup(400, 400, {"fill": "#3d7fd6", "stroke": "#1b3a63"}); click("toolsPicker.rectangle"); move("canvas.bg", "source:22%", "source:25%", "canvas.bg", "drop:78%", "drop:72%"); click("attrs.color.fill.content.type.linearGradient"); key("g")
+crop: clip={"x":400,"y":40,"w":1040,"h":540}
+annotate: annotate([{"kind":"box","theme":"red","target":"canvas.el.TGFillAttrPart","padding":8,"color":"#08f","stroke":1.5,"fill":"solid","fillAlpha":0.2},{"kind":"box","theme":"red","target":"attrs.color.fill.content.colorPoints","padding":4,"color":"#08f","stroke":1.5,"fill":"solid","fillAlpha":0.2},{"kind":"box","theme":"red","target":"attrs.color.fill.content.grad-p-offset","padding":3,"color":"#08f","stroke":1.5,"fill":"solid","fillAlpha":0.2},{"kind":"box","theme":"red","target":"attrs.color.fill.content.gradient","padding":3,"color":"#08f","stroke":1.5,"fill":"solid","fillAlpha":0.2},{"kind":"title","theme":"red","halo":"chip","target":"canvas.el.TGFillAttrPart","text":"Gradient handles on the canvas","at":"top","arrow":true,"width":2.5,"arrowFill":"accent"},{"kind":"title","theme":"red","halo":"chip","target":"attrs.color.fill.content.colorPoints","text":"Stops","at":"left","arrow":true,"width":2.5,"arrowFill":"accent"},{"kind":"title","theme":"red","halo":"chip","target":"attrs.color.fill.content.grad-p-offset","text":"Stop position","at":"top","offset":{"x":-85,"y":0},"arrow":true,"width":2.5,"arrowFill":"accent"},{"kind":"title","theme":"red","halo":"chip","target":"attrs.color.fill.content.gradient","text":"Gradient options","at":"left","arrow":true,"width":2.5,"arrowFill":"accent"}], {"scale": 1.45})
+notes: scale 1.45 = 1040-px crop shown in the ~710-px docs column; no matte — canvas and panel are both part of the picture; the Gradient tool (G) must be active for the canvas handles to exist (canvas.el.TGFillAttrPart)
+*/}
+![A rectangle with a linear gradient: the gradient handles on the canvas, the stop strip, the stop position field and the gradient options in the panel](/images/docs/editor/color/gradient.png)
+
+- **Stops** — click a stop in the colour strip to edit it; the `‹` `›` buttons step through
+  stops; the bin removes the selected stop.
+- **Gradient tool** (`G`) — drag the handles on the canvas to move, rotate or stretch the
+  gradient. For a radial gradient the toolbar's **Focal Point** toggle adds a handle for the
+  brightest point.
+- **Linear options** — **Start / End** (direction), **Position**, **Rotation**, **Scale**.
+- **Radial options** — **Center**, **Radius**, **Focal Point**.
+- **Gradient Units** — **objectBoundingBox** (relative to the shape, scales with it) or
+  **userSpaceOnUse** (document coordinates, shared across shapes).
+- **Spread Method** — what happens beyond the ends: **pad** (extend the last colour),
+  **reflect** (mirror), **repeat**.
+
+Gradient stops and geometry are animatable.
+
+## Pattern
+
+Choose **Pattern** on the Fill or Stroke tab and pick a pattern from the list — your own patterns
+first, then the built-in ones. The **Pattern** section then controls how the tile is placed:
+**Translation**, **Rotation**, **Scale**, and the tile grid (**Tile Start / Tile Size**).
+**Pattern Fill / Stroke** sets the colour of the tile's shapes.
+
+Creating and editing your own patterns: [Patterns](/docs/svga/editor/patterns).
+
+## Unset Color
+
+**Unset** means "no colour of my own". The shape takes its fill or stroke from the nearest group
+above it that has one. Put the colour on the group, keep the shapes unset, and recolouring the
+whole illustration is one click — great for icons with a theme colour.
+
+## Opacity
+
+There are three opacities, and they multiply:
+
+- **Colour alpha** (the **A** slider) — transparency of that one colour or gradient stop.
+- **Fill / Stroke Opacity** (Fill and Stroke sections) — the fill or the stroke as a whole.
+- **Object opacity** (**Appearance** section) — the whole object, including its children. Use
+  this one for pattern fills and for fading objects in and out.
+
+## Eyedropper
+
+1. Select the object to recolour and make **Fill** or **Stroke** the active tab.
+2. Pick the **Eyedropper** in the Tools panel.
+3. Click any object on the canvas — its colour is copied into the active tab.
+
+## Used Colors
+
+The **Used Colors** section at the bottom of the Objects panel lists every colour in the
+document — fills, strokes and gradient stops — and updates as you work.
+
+- **Reuse** — with an object selected, click a swatch to apply it to the active fill or stroke.
+- **Replace everywhere** — click a swatch with nothing selected and the **Edit Color panel**
+  opens: its own row shows the document's colours, the highlighted one is the colour you are
+  changing, and picking a new one from the wheel or HEX field updates every shape using it at
+  once — a one-click theme change.
+
+{/* e2e-screenshot
+app: svga · viewport: 1440x900 · hideDevUi: true · date: 2026-08-30
+setup: setup(400, 400, {"fill": "#e0533d", "stroke": "#1b3a63"}); click("toolsPicker.rectangle"); move("canvas.bg", "source:15%", "source:20%", "canvas.bg", "drop:45%", "drop:50%"); click("toolsPicker.ellipse"); move("canvas.bg", "source:55%", "source:20%", "canvas.bg", "drop:88%", "drop:50%"); color("attrs.color.fill.content.value", "rgba(61,127,214,1)"); click("toolsPicker.star"); move("canvas.bg", "source:30%", "source:60%", "canvas.bg", "drop:70%", "drop:92%"); color("attrs.color.fill.content.value", "rgba(240,190,60,1)"); click("elementTree.usedColors.header.title"); click("elementTree.usedColors.rgb_224_ 83_ 61")
+crop: clip={"x":0,"y":298,"w":770,"h":320}
+annotate: annotate([{"kind":"box","theme":"red","bounds":{"x":22,"y":314,"w":402,"h":246},"padding":2,"color":"#08f","stroke":1.5,"fill":"none"},{"kind":"box","theme":"red","bounds":{"x":26,"y":527,"w":120,"h":24},"padding":2,"color":"#08f","stroke":1.5,"fill":"solid","fillAlpha":0.2},{"kind":"box","theme":"red","bounds":{"x":27,"y":564,"w":96,"h":18},"padding":4,"color":"#08f","stroke":1.5,"fill":"solid","fillAlpha":0.2},{"kind":"title","theme":"red","halo":"chip","bounds":{"x":22,"y":314,"w":402,"h":246},"text":"Edit Color panel","at":"right","offset":{"x":0,"y":-80},"arrow":true,"width":2.5,"arrowFill":"accent"},{"kind":"title","theme":"red","halo":"chip","bounds":{"x":26,"y":527,"w":120,"h":24},"text":"Colour being replaced","at":"right","offset":{"x":270,"y":0},"arrow":true,"width":2.5,"arrowFill":"accent"},{"kind":"title","theme":"red","halo":"chip","bounds":{"x":27,"y":564,"w":96,"h":18},"text":"Used Colors","at":"right","offset":{"x":300,"y":0},"arrow":true,"width":2.5,"arrowFill":"accent"}], {"scale": 1.1})
+notes: scale 1.1 = 770-px crop shown in the ~710-px docs column; three shapes give four document colours (three fills + the shared stroke); clicking a Used Colors swatch opens the floating Edit Color panel — it has no test-id, bounds measured from a clean crop; no matte, the panel is the subject
+*/}
+![The Used Colors swatches with the Edit Color panel open above them: the colour being replaced is selected in the panel's own row](/images/docs/editor/color/used-colors.png)

@@ -19,12 +19,15 @@
     --sl-color-text-selection-bg: #b3d7ff;
     /* A classic light blue */
 
-    p, ul {
+    /* Prose spacing — scoped to the rendered markdown so it cannot leak into
+       the nav bars / sidebar (an unscoped `ul` margin used to push the menu
+       lists off-centre on docs pages). */
+    .sl-markdown-content p,
+    .sl-markdown-content ul {
         margin-bottom: 1rem;
     }
 
-
-    li>p {
+    .sl-markdown-content li>p {
         display: inline;
     }
 
@@ -35,7 +38,7 @@
         margin-bottom: 2rem;
     }
 
-    hr {
+    .sl-markdown-content hr {
         margin: 2rem 0;
     }
 }
@@ -53,10 +56,13 @@
 :root {
     --sl-nav-height: 2.5rem;
 
-    /* --sl-custom-menu-height: 2.5rem;  */
+    /* The site menu rendered above the Starlight header (starlight/Header.astro):
+       main bar (h-10) + the Docs submenu bar (h-10). The submenu bar is always
+       visible on docs pages, because the Docs menu entry is active there. */
+    --sl-custom-menu-height: 5rem;
 }
 
-/* .page > .header {
+.page > .header {
     top: var(--sl-custom-menu-height);
 }
 
@@ -70,7 +76,12 @@
 
 .right-sidebar {
     padding-top: calc(var(--sl-custom-menu-height) + var(--sl-nav-height)) !important;
-} */
+}
+
+/* Starlight's mobile "On this page" bar hangs right below its (now pushed-down) header. */
+mobile-starlight-toc nav {
+    top: calc(var(--sl-custom-menu-height) + var(--sl-nav-height)) !important;
+}
 
 
 /* Light theme */
@@ -326,3 +337,22 @@ starlight-toc a {
 }
 .shot.small { min-height: 110px; max-width: 480px; }
 .shot.tall { min-height: 320px; }
+
+/* Mermaid diagrams in the synced player docs (lifted to <pre class="mermaid">
+   by remark-svga-doc-links; drawn client-side from starlight/Header.astro). */
+.sl-markdown-content pre.mermaid {
+    background: none;
+    padding: 0;
+    overflow-x: auto;
+    text-align: center;
+    visibility: hidden;
+}
+
+.sl-markdown-content pre.mermaid.mermaid-ready {
+    visibility: visible;
+}
+
+.sl-markdown-content pre.mermaid svg {
+    max-width: 100%;
+    height: auto;
+}

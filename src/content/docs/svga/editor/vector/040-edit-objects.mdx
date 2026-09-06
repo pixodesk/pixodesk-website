@@ -1,0 +1,233 @@
+---
+title: "Edit Objects"
+description: "The Object Tree and the Properties panel; selecting, moving, transforming, arranging, aligning and distributing objects; clones; moving along a path; hiding and locking."
+slug: "docs/svga/editor/edit-objects"
+sidebar:
+  order: 40
+draft: false
+---
+
+# Edit Objects
+
+Once something is on the canvas you select it, move it, transform it, stack it, align it — on the
+canvas, in the **Object Tree**, or with exact numbers in the **Properties panel**. This section
+is about those everyday operations.
+
+## Object Tree
+
+The **Objects panel** (left) shows everything in the document. Its top section, the **Object
+Tree**, is the element hierarchy: every shape, path, text, group, image and instance as a named
+row, nested as on the canvas.
+
+{/* e2e-screenshot
+app: svga · viewport: 1440x900 · hideDevUi: true · date: 2026-08-31
+setup: setup(400, 400, {"fill": "#e0533d", "stroke": "#1b3a63"}); click("toolsPicker.rectangle"); move("canvas.bg", "source:40", "source:60", "canvas.bg", "drop:170", "drop:170"); click("toolsPicker.ellipse"); move("canvas.bg", "source:215", "source:60", "canvas.bg", "drop:350", "drop:170"); color("attrs.color.fill.content.value", "rgba(61,127,214,1)"); click("toolsPicker.star"); move("canvas.bg", "source:105", "source:280", "canvas.bg", "drop:105", "drop:215"); color("attrs.color.fill.content.value", "rgba(240,190,60,1)"); click("elementTree.root.el(nm:Rectangle,ty:rect).title"); click("elementTree.root.el(nm:Ellipse,ty:ellipse).title", undefined, undefined, "meta"); key("g", "meta"); click("elementTree.root.el(nm:Star,ty:path).title")
+crop: clip={"x":0,"y":40,"w":800,"h":560}
+annotate: annotate([{"kind":"dim","target":"elementTree","padding":6,"color":"#fff","fillAlpha":0.75},{"kind":"box","theme":"red","target":"elementTree.header","padding":2,"color":"#08f","stroke":1.5,"fill":"solid","fillAlpha":0.2},{"kind":"box","theme":"red","target":"elementTree.root.el(nm:Star,ty:path)","padding":1,"color":"#08f","stroke":1.5,"fill":"solid","fillAlpha":0.2},{"kind":"box","theme":"red","bounds":{"x":7,"y":145,"w":244,"h":96},"padding":1,"color":"#08f","stroke":1.5,"fill":"solid","fillAlpha":0.2},{"kind":"box","theme":"red","bounds":{"x":197,"y":181,"w":44,"h":24},"padding":2,"color":"#08f","stroke":1.5,"fill":"solid","fillAlpha":0.2},{"kind":"title","theme":"red","halo":"chip","target":"elementTree.header","text":"Search the tree","at":"right","arrow":true,"width":2.5,"arrowFill":"accent"},{"kind":"title","theme":"red","halo":"chip","target":"elementTree.root.el(nm:Star,ty:path)","text":"Selected object","at":"right","offset":{"x":110,"y":0},"arrow":true,"width":2.5,"arrowFill":"accent"},{"kind":"title","theme":"red","halo":"chip","bounds":{"x":7,"y":145,"w":244,"h":96},"text":"A group, opened","at":"right","offset":{"x":230,"y":-24},"arrow":true,"width":2.5,"arrowFill":"accent"},{"kind":"title","theme":"red","halo":"chip","bounds":{"x":197,"y":181,"w":44,"h":24},"text":"Lock · hide","at":"right","offset":{"x":110,"y":60},"arrow":true,"width":2.5,"arrowFill":"accent"}])
+notes: scale 1. RE-SHOT 2026-08-31 with a real document — the previous version showed a single lonely rectangle, which taught the reader nothing about a tree. Now: a star, plus a group holding an ellipse and a rectangle, each with its colour thumbnail. Translucent matte over the panel so the canvas stays visible behind.
+*/}
+*/}
+![The Object Tree with one rectangle under the Svg root](/images/docs/editor/workspace/objects-panel-rectangle.png)
+
+- **Order = stacking.** Rows higher in the list are in front on the canvas. Drag rows to
+  reorder; drag into a group to nest.
+- **The `<svg/>` root** is always the first row. Click it to edit the
+  [document properties](/docs/svga/editor/quick-start#document-properties).
+- **Thumbnails** preview each row's content (black when the fill is *unset*).
+- **Select** — click a row; **⌘ / Ctrl + click** adds rows; **Shift + click** selects a range.
+- **Rename** — double-click the name, or select the row and press **Enter**. The name becomes
+  the element's SVG `id`.
+- **Expand / collapse** groups with the arrow; **Expand All** is at the top of the panel, and the
+  **search box** filters rows by name.
+- **Eye** and **lock** icons at the right of each row hide or lock it ([below](#hide-and-lock-objects)).
+
+Below the tree, the panel's other sections list the document's reusable definitions — **Symbols,
+Markers, Patterns, Filters** — and the **Used Colors**. Sections collapse by clicking their
+header and resize by dragging their top edge; a red triangle on a collapsed header means an
+unused definition inside.
+
+## Properties Panel
+
+The panel on the right shows the properties of the selection — or the document's when nothing is
+selected. It is context-sensitive: a rectangle, a text and a symbol instance show different
+sections.
+
+{/* e2e-screenshot
+app: svga · viewport: 1440x900 · hideDevUi: true · date: 2026-09-01
+setup: (see tools-panel in vector/020-canvas.mdx for the two shapes) then click("elementTree.root.el(nm:Rectangle,ty:rect).title"); click("attrs.color.collapse")
+crop: clip={"x":560,"y":44,"w":880,"h":628}
+annotate: none
+notes: WIDER CONTEXT (owner request 2026-09-01) — was a bare testId="attrs" crop. The crop now shows the selected rectangle on the canvas NEXT TO the panel describing it, which is the whole point of the picture. Same crop as the document-properties shot in 015-quick-start so the two read as a pair. Collapse the colour picker first (`attrs.color.collapse`) or the wheel fills the panel.
+*/}
+![The Properties panel for a selected rectangle: Colors, Fill, Stroke, Opacity, Transform…](/images/docs/editor/workspace/properties-panel-rectangle.png)
+
+Each **section** has an icon, a name and a chevron to expand or collapse it; collapsed, only its
+first row stays visible. A **clock** icon next to a value means the value can be animated
+([Keyframes](/docs/svga/editor/keyframes)).
+
+| Section | What it holds | Shown for |
+| :-- | :-- | :-- |
+| **Colors** | fill and stroke colour picker ([Color](/docs/svga/editor/color)) | everything |
+| **Fill** / **Stroke** | fill opacity and rule; stroke width, caps, joins, dashes, trim | everything |
+| **Opacity** (Appearance) | the object's overall opacity | shapes, groups, instances |
+| **Transform** | origin, position, rotation, skew, scale; flip, apply, reset | shapes, groups, instances |
+| **Shape** | size, corner radius, points count… | shapes |
+| **Text**, **Font**, **Text Path** | text content, font, path options ([Text](/docs/svga/editor/text)) | text |
+| **Filter** | applied filters and **Add Filter** ([Filters](/docs/svga/editor/filters)) | shapes, groups, instances |
+| **Marker** | start / mid / end markers ([Markers](/docs/svga/editor/markers)) | paths |
+| **Repeater** | the repeater switch and settings | groups |
+| **Symbol** / **Reference**, **Display** | what an instance or clone points at ([Symbols](/docs/svga/editor/symbols), [Clones](#clones)) | instances, clones |
+| **Image** | href, bounds, aspect ratio | images |
+| **Arrange**, **Path** | align / distribute buttons; node align / distribute | shapes; paths |
+| **DOM Attributes** | the element's `id` and `class` — hidden by default | everything |
+
+The narrow **sections bar** at the far right edge toggles each section on or off (the same
+toggles are in the **Window** menu) — it only lists sections that make sense for the selection.
+
+## Select Objects
+
+- **Click** an object on the canvas. **Shift + click** adds or removes objects; **drag** on empty
+  canvas draws a selection box.
+- **Inside a group** — hold **⌘ / Ctrl** and click the object, or double-click the group to enter
+  it.
+- **Everything** — `Ctrl + A`; **nothing** — `⇧ ⌘ / Ctrl + Shift + A` or click empty canvas.
+- **Previous / Next Selection** — the arrows in the top bar (or the **Edit** menu) step back and
+  forward through what you selected before.
+- Locked objects cannot be selected on the canvas — select them in the Object Tree.
+
+## Move and Transform
+
+**With the mouse** — drag with the Selection tool (`S`). **Shift** constrains to horizontal /
+vertical. The **Transform** tool (`T`) adds rotate and scale handles: **Shift** snaps rotation to
+45° and keeps the aspect ratio while scaling.
+
+**With the keyboard** — arrow keys nudge 1 px; **Shift + arrow** nudges 10 px.
+
+**With numbers** — the **Transform** section of the Properties panel:
+
+| Field | Meaning |
+| :-- | :-- |
+| **Origin** | the pivot for rotation and scale; the nine-dot button snaps it to a corner, edge midpoint or the centre (also **Object › Transform › Align Anchor Point**, `⇧ 5` for the centre) |
+| **Position** | X / Y on the canvas |
+| **Rotation** | degrees, clockwise |
+| **Skew** | shear angle |
+| **Scale** | X / Y in %; the lock keeps both equal |
+| **Flip Horizontal / Vertical** | mirror the object (`⇧ H`, `⇧ V`); **Rotate 45° CW / CCW** is in **Object › Transform** |
+| **Apply Transform** | bake the transform into the geometry and reset the fields |
+| **Reset Transform** | discard the transform |
+
+All transform fields are animatable — this is where most motion comes from.
+
+{/* e2e-screenshot
+app: svga · viewport: 1440x900 · hideDevUi: true · date: 2026-08-31
+setup: setup(400, 400, {"fill": "#e0533d", "stroke": "#1b3a63"}); click("toolsPicker.rectangle"); move("canvas.bg", "source:40", "source:60", "canvas.bg", "drop:170", "drop:170"); click("toolsPicker.ellipse"); move("canvas.bg", "source:215", "source:60", "canvas.bg", "drop:350", "drop:170"); color("attrs.color.fill.content.value", "rgba(61,127,214,1)"); click("toolsPicker.star"); move("canvas.bg", "source:105", "source:280", "canvas.bg", "drop:105", "drop:215"); color("attrs.color.fill.content.value", "rgba(240,190,60,1)"); click("elementTree.root.el(nm:Rectangle,ty:rect).title"); click("elementTree.root.el(nm:Ellipse,ty:ellipse).title", undefined, undefined, "meta"); key("g", "meta"); click("elementTree.root.el(nm:Star,ty:path).title"); click("attrs.color.collapse")
+crop: clip={"x":640,"y":52,"w":800,"h":460}
+annotate: annotate([{"kind":"dim","target":"attrs.transform","padding":8,"color":"#fff","fillAlpha":0.8},{"kind":"box","theme":"red","bounds":{"x":1177,"y":263,"w":108,"h":24},"padding":3,"color":"#08f","stroke":1.5,"fill":"solid","fillAlpha":0.2},{"kind":"box","theme":"red","target":"attrs.transform.origin","padding":2,"color":"#08f","stroke":1.5,"fill":"solid","fillAlpha":0.2},{"kind":"box","theme":"red","target":"attrs.transform.translation","padding":2,"color":"#08f","stroke":1.5,"fill":"solid","fillAlpha":0.2},{"kind":"box","theme":"red","target":"attrs.transform.rotation","padding":2,"color":"#08f","stroke":1.5,"fill":"solid","fillAlpha":0.2},{"kind":"box","theme":"red","target":"attrs.transform.scale","padding":2,"color":"#08f","stroke":1.5,"fill":"solid","fillAlpha":0.2},{"kind":"title","theme":"red","halo":"chip","bounds":{"x":1177,"y":263,"w":108,"h":24},"text":"Flip · apply · reset","at":"top","offset":{"x":-40,"y":0},"arrow":true,"width":2.5,"arrowFill":"accent"},{"kind":"title","theme":"red","halo":"chip","target":"attrs.transform.origin","text":"Origin — the anchor point","at":"left","arrow":true,"width":2.5,"arrowFill":"accent"},{"kind":"title","theme":"red","halo":"chip","target":"attrs.transform.translation","text":"Position","at":"left","arrow":true,"width":2.5,"arrowFill":"accent"},{"kind":"title","theme":"red","halo":"chip","target":"attrs.transform.rotation","text":"Rotation","at":"left","arrow":true,"width":2.5,"arrowFill":"accent"},{"kind":"title","theme":"red","halo":"chip","target":"attrs.transform.scale","text":"Scale, with lock","at":"left","arrow":true,"width":2.5,"arrowFill":"accent"}])
+notes: scale 1; translucent matte so the canvas and the sections above stay visible. Uses the shared demo scene (rectangle + ellipse grouped, plus a star) so the picture is not one lonely shape. Rows: attrs.transform.origin / .translation / .rotation / .skew / .scale; header buttons flipH / flipV / applyTransform / reset.
+*/}
+![The Transform section of the Properties panel: origin, position, rotation, scale with its lock, and the flip / apply / reset buttons](/images/docs/editor/objects/transform-section.png)
+
+## Duplicate and Copy
+
+- **Duplicate** — **Edit › Duplicate** (`⌘ / Ctrl + D`): an independent copy on top of the
+  original. Copy / paste (`Ctrl + C` / `Ctrl + V`) does the same, also across documents.
+- **Clone** — a *linked* copy that follows the original: [Clones](#clones), next.
+- **Symbol** — many linked instances of a whole group with their own timing: [Symbols](/docs/svga/editor/symbols).
+
+## Clones
+
+A **clone** is a linked copy of one object: an SVG `<use>` that points at the original. Edit the
+original — shape, colour, animation — and every clone follows. Clones cost almost nothing in
+file size, which is what the [Spray](/docs/svga/editor/object-creation-tools#spray) tool relies on.
+
+{/* e2e-screenshot
+app: svga · viewport: 1440x900 · hideDevUi: true · date: 2026-08-31
+setup: setup(400, 400, {"fill": "#3d7fd6", "stroke": "#1b3a63"}); click("toolsPicker.star"); move("canvas.bg", "source:90", "source:150", "canvas.bg", "drop:90", "drop:110"); click("toolsPicker.select"); click("toolbar.actionsGroup-addSymbol.svgClone"); move("canvas.el(nm:Clone,ty:use)", 110, 0); click("toolbar.actionsGroup-addSymbol.svgClone"); move("canvas.el(nm:Clone_2,ty:use)", 220, 0)
+crop: clip={"x":0,"y":40,"w":1440,"h":500}
+annotate: annotate([{"kind":"box","theme":"red","target":"elementTree.root.el(nm:Star,ty:path)","padding":2,"color":"#08f","stroke":1.5,"fill":"solid","fillAlpha":0.2},{"kind":"box","theme":"red","bounds":{"x":7,"y":113,"w":244,"h":64},"padding":2,"color":"#08f","stroke":1.5,"fill":"solid","fillAlpha":0.2},{"kind":"box","theme":"red","target":"attrs.svg","padding":3,"color":"#08f","stroke":1.5,"fill":"solid","fillAlpha":0.2},{"kind":"title","theme":"red","halo":"chip","target":"elementTree.root.el(nm:Star,ty:path)","text":"The original","at":"right","offset":{"x":140,"y":0},"arrow":true,"width":2.5,"arrowFill":"accent"},{"kind":"title","theme":"red","halo":"chip","bounds":{"x":7,"y":113,"w":244,"h":64},"text":"Two clones of it","at":"right","offset":{"x":140,"y":-40},"arrow":true,"width":2.5,"arrowFill":"accent"},{"kind":"title","theme":"red","halo":"chip","target":"attrs.svg","text":"Reference — which object it clones","at":"left","offset":{"x":-40,"y":0},"arrow":true,"width":2.5,"arrowFill":"accent"}])
+notes: scale 2 (full-width crop). Clone is toolbar.actionsGroup-addSymbol.svgClone — the Edit > Clone MENU submenu will NOT open under a scripted click, so use the toolbar group. A clone is ty:use; its Reference section (attrs.svg) shows Href pointing at the original, plus Retime options.
+*/}
+![One original star and two clones of it, with the Reference section of the selected clone showing what it points at](/images/docs/editor/objects/clones.png)
+
+1. Select the object.
+2. Choose **Edit › Clone › Create Linked Clone** (`⌥ / Alt + D`). The clone appears in place of
+   the selection — drag it away.
+
+A clone's Properties panel has a **Reference** section:
+
+- **Href** — what the clone shows: pick any symbol or any clone-able object in the document.
+- **Locks to source element location** (toggle) — on, the clone appears wherever the source is
+  and you offset it from there; off, the clone ignores the source's own position and you place
+  it freely.
+- **Source** (↗) — jumps to the source object.
+- **Edit Symbol** — when the target is a symbol, opens it for editing.
+
+If the target is a symbol with a view box, a **Display** section adds **Custom Size**.
+
+The rest of **Edit › Clone**:
+
+| Command | What it does |
+| :-- | :-- |
+| **Select Clone Source** | selects the original(s) of the selected clone(s) |
+| **Select Clones** | selects every clone of the selected original |
+| **Unlink Clone & Make Symbol** | turns the source into a [symbol](/docs/svga/editor/symbols) and points the clones at it |
+| **Clones to Copies** | breaks the link — each clone becomes an independent copy of the content |
+
+A clone can have its own animation timing (start, stretch, crop) on top of the source's
+animation, like a symbol instance.
+
+## Arrange (Stacking Order)
+
+Objects render in Object Tree order. Change it with **Object › Arrange** — **Bring to Front**
+(`⇧ ⌘ / Ctrl + Shift + ]`), **Bring Forward** (`⌘ / Ctrl + ]`), **Send Backward**
+(`⌘ / Ctrl + [`), **Send to Back** (`⇧ ⌘ / Ctrl + Shift + [`) — the toolbar buttons, or by
+dragging rows in the Object Tree.
+
+## Align and Distribute
+
+With two or more objects selected, use **Object › Align** / **Object › Distribute**, the toolbar
+buttons, or the **Arrange** section of the Properties panel.
+
+{/* e2e-screenshot
+app: svga · viewport: 1440x900 · hideDevUi: true · date: 2026-08-31
+setup: setup(400, 400, {"fill": "#e0533d", "stroke": "#1b3a63"}); click("toolsPicker.rectangle"); move("canvas.bg", "source:40", "source:60", "canvas.bg", "drop:170", "drop:170"); click("toolsPicker.ellipse"); move("canvas.bg", "source:215", "source:60", "canvas.bg", "drop:350", "drop:170"); color("attrs.color.fill.content.value", "rgba(61,127,214,1)"); click("toolsPicker.star"); move("canvas.bg", "source:105", "source:280", "canvas.bg", "drop:105", "drop:215"); color("attrs.color.fill.content.value", "rgba(240,190,60,1)"); key("a", "meta"); click("toolbar.actionsGroup-align")
+crop: clip={"x":230,"y":40,"w":780,"h":480}
+annotate: annotate([{"kind":"dim","bounds":{"x":560,"y":120,"w":220,"h":280},"padding":8,"color":"#fff","fillAlpha":0.78},{"kind":"box","theme":"red","target":"toolbar.actionsGroup-align","padding":2,"color":"#08f","stroke":1.5,"fill":"solid","fillAlpha":0.2},{"kind":"box","theme":"red","bounds":{"x":571,"y":135,"w":197,"h":52},"padding":2,"color":"#08f","stroke":1.5,"fill":"solid","fillAlpha":0.2},{"kind":"box","theme":"red","bounds":{"x":571,"y":210,"w":197,"h":104},"padding":2,"color":"#08f","stroke":1.5,"fill":"solid","fillAlpha":0.2},{"kind":"box","theme":"red","bounds":{"x":571,"y":337,"w":104,"h":52},"padding":2,"color":"#08f","stroke":1.5,"fill":"solid","fillAlpha":0.2},{"kind":"title","theme":"red","halo":"chip","target":"toolbar.actionsGroup-align","text":"Align & distribute","at":"right","offset":{"x":30,"y":0},"arrow":true,"width":2.5,"arrowFill":"accent"},{"kind":"title","theme":"red","halo":"chip","bounds":{"x":571,"y":135,"w":197,"h":52},"text":"Each object, or all as one","at":"left","arrow":true,"width":2.5,"arrowFill":"accent"},{"kind":"title","theme":"red","halo":"chip","bounds":{"x":571,"y":210,"w":197,"h":104},"text":"Relative to page or selection","at":"left","arrow":true,"width":2.5,"arrowFill":"accent"},{"kind":"title","theme":"red","halo":"chip","bounds":{"x":571,"y":337,"w":104,"h":52},"text":"Align edges & centres","at":"left","arrow":true,"width":2.5,"arrowFill":"accent"}])
+notes: scale 1. Select everything first (Cmd+A) or the dropdown is disabled. The popup has no test-id of its own — row ids are toolbar.actionsGroup-align.align.alignMode.* / .alignRelativeTo.* / .alignLeft...alignBottom; the popup rectangle is hand-measured. Distribute lives in the neighbouring actionsGroup-distribute button.
+*/}
+![The Align dropdown open with all objects selected: mode, relative-to options and the align buttons](/images/docs/editor/objects/align-distribute.png)
+
+**Align** — first choose what moves and what it aligns to, then the edge:
+
+- **Each Selected Shape** (every object individually) or **All Selection** (the selection as one
+  block).
+- Relative to **Page**, **All Shapes**, **Selected Shapes** or **Axis Origin**.
+- **Left · Center · Right** and **Top · Middle · Bottom**.
+
+**Distribute** — equal spacing along one axis, by **Left / Right / Top / Bottom Edges**,
+**Centers**, **Gaps** (equal space between objects) or **Side by Side** (touching).
+
+**Grid** — arrange the selection into rows and columns: **Grid Size**, **Gaps**, and how each
+object aligns inside its cell.
+
+**Distribute Along Last Path** — spaces the selected objects evenly along a path placed below
+them in the Object Tree; **Auto-rotate** turns each object to follow the path direction.
+
+## Move Along Path
+
+Make an object travel along any path — a car on a road, a dot on a chart line:
+
+1. Draw the path and place it **below** the moving object in the Object Tree.
+2. Select both and click **Move Element Along Path** (toolbar or the **Path** section).
+3. Keyframe the object's **Position** (now a distance along the path) — 0 % at the start,
+   100 % at the end, easing as you like.
+
+**Edit motion path** in the Path section (with the moving object selected and the Node tool
+active) lets you reshape the route afterwards. Text has its own variant:
+[Text along path](/docs/svga/editor/text#text-along-path).
+
+## Hide and Lock Objects
+
+In the Object Tree, the **eye** hides an object (it is not rendered or exported, but stays in the
+document) and the **lock** protects it from selection and edits on the canvas. Locked objects can
+still be selected and edited from the tree.

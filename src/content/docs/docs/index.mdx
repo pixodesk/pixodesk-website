@@ -4,49 +4,56 @@ description: Pixodesk Docs — Create and animate SVG and Lottie for web and nat
 draft: false
 ---
 
-# Pixodesk Docs
+import { CardGrid } from '@astrojs/starlight/components';
+import DocCard from '../../../components/DocCard.astro';
 
-**Pixodesk SVG Animator** is a vector drawing and animation editor. You draw on a canvas, animate
-with keyframes on a timeline, and save a file that plays on any web page — as a JSON animation
-for the Pixodesk player, as a self-contained SVG, or as Lottie. It is also the SVG half of
-**Pixodesk Animator Studio**, which adds the Lottie editor.
+{/* No page title: the two application sections are the headings. The frontmatter
+    title still names the browser tab; this hides Starlight's rendered H1 panel
+    (and the divider it leaves behind) on this page only. */}
+<style>{`
+  main > .content-panel:first-of-type { display: none; }
+  main .content-panel + .content-panel { border-top: 0; }
+`}</style>
 
-## Where do you want to go?
+## Pixodesk SVG Animator
 
-| I want to… | Start here |
-| :-- | :-- |
-| **Make an animation** in the editor | [Introduction](/docs/introduction) → [Quick Start](/docs/quick-start) → [Your first animation](/docs/quick-start#your-first-animation) |
-| **Put an animation on my page** (HTML, React, Vue, Next, Nuxt, Astro, React Native) | [Add SVG animation to your project](/docs/add-svg-animation-to-your-project) · [Player docs](/app/svga/docs) |
-| **Understand the file** the editor writes | [File formats](/docs/save#file-formats-which-one-to-save) · [Format docs](/app/svga/docs/13-format--format-principles) |
-| **Look something up** — a tool, a panel, a shortcut | [Keyboard shortcuts](/docs/useful-info#keyboard-shortcuts) · the sidebar (every topic is one entry) |
+<CardGrid>
+  <DocCard title="Editor" href="/docs/svga" icon="pencil">
+    The full manual — draw, animate, save: every tool, panel and dialog.
+    Start with the Introduction and the Quick Start.
+  </DocCard>
+  <DocCard title="Player Library" href="/docs/svga/player-library" icon="rocket">
+    Play JSON animations in your product: plain HTML, React, Vue, React Native —
+    installation, APIs, playback and triggers.
+  </DocCard>
+  <DocCard title="JSON Format" href="/docs/svga/format" icon="seti:json">
+    The format reference in one page: principles, the full schema, player
+    effects and editor meta.
+  </DocCard>
+  <DocCard title="Pre-rendered SVG" href="/docs/svga/prerendered-svg" icon="seti:image">
+    A finished .svg that plays on its own — no library: embedding, static sites
+    and CMS, the file's own metadata.
+  </DocCard>
+</CardGrid>
 
-## The editor, section by section
+More: [Quick Start](/docs/svga/editor/quick-start) ·
+[Which format do I need?](/docs/svga/editor/choosing-a-format) ·
+[Which file should I save?](/docs/svga/editor/save#file-formats-which-one-to-save) ·
+[Add an animation to your project](/docs/svga/editor/add-svg-animation-to-your-project) ·
+[Player docs overview](/docs/svga/player) ·
+[Keyboard shortcuts](/docs/svga/editor/useful-info#keyboard-shortcuts)
 
-- **[Introduction](/docs/introduction)** — what it is, the workspace, which file to save,
-  SVG ↔ Lottie support.
-- **[Quick Start](/docs/quick-start)** — create a document, your first animation, import and
-  export, document properties.
-- **[Canvas](/docs/canvas)** — tools and toolbar, rulers and grid, canvas size, snapping, pan and zoom.
-- **Vector editing** — [Draw on Canvas](/docs/draw-on-canvas) · [Text](/docs/text) ·
-  [Object Creation Tools](/docs/object-creation-tools) · [Edit Paths](/docs/edit-paths) ·
-  [Color](/docs/color) · [Edit Objects](/docs/edit-objects) · [Symbols](/docs/symbols) ·
-  [Markers](/docs/markers) · [Patterns](/docs/patterns) · [Filters](/docs/filters) · [Masks](/docs/masks).
-- **Animation editing** — [Animation Overview](/docs/animation) · [Keyframes](/docs/keyframes) ·
-  [Loop Animation](/docs/loop-animation) · [Easing Charts](/docs/easing-charts).
-- **[Save, File Format](/docs/save)** — which file to save and why, save options, preview.
-- **[Export to Lottie, Video, Image](/docs/export)** — Lottie and dotLottie, video and GIF, static images.
-- **[Add SVG animation](/docs/add-svg-animation-to-your-project)** and
-  **[Add Lottie animation](/docs/add-lottie-animation-to-your-project)** to your project.
-- **[Useful Info](/docs/useful-info)** — keyboard shortcuts, preferences, troubleshooting, glossary.
+## Pixodesk 2D Animator (Lottie)
 
-## Which file should I save?
+<CardGrid>
+  <DocCard title="Lottie Editor" href="/docs/2d-lottie" icon="star">
+    Create and edit Lottie files directly — the editor, tutorials, and how it
+    relates to the shared drawing and animation tools.
+  </DocCard>
+  <DocCard title="Lottie Players" href="/docs/2d-lottie/add-lottie-animation-to-your-project" icon="puzzle">
+    Playing a Lottie file with the third-party Lottie players — web, React,
+    Vue, iOS, Android, React Native.
+  </DocCard>
+</CardGrid>
 
-| Save as | When | Needs on the page |
-| :-- | :-- | :-- |
-| **JSON (Pixodesk player)** | apps and frameworks; control from code | the small player library |
-| **SVG + CSS animation** | plain HTML, CMS, static sites — it just plays | nothing |
-| **SVG + CSS + JS triggers** | same, but start on click / hover / scroll | a few embedded lines |
-| **SVG + JS animation** | one self-contained file with every feature | embedded in the file |
-| **Lottie / .lottie** | existing Lottie pipelines, mobile apps | a Lottie player |
-
-Details and trade-offs: [File formats: which one to save](/docs/save#file-formats-which-one-to-save).
+More: [Export to Lottie from the SVG Animator editor](/docs/svga/editor/export)

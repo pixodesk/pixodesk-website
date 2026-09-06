@@ -1,0 +1,440 @@
+---
+title: "Canvas"
+description: "The tools and the toolbar, what is shown on the canvas, its size, snapping, and moving around it."
+slug: "docs/svga/editor/canvas"
+sidebar:
+  order: 20
+draft: false
+---
+
+# Canvas
+
+The tools and the toolbar, what is shown on the canvas, its size, snapping, and moving around it.
+
+## Tools and Toolbar
+
+### Tools panel
+
+Pixodesk SVG Animator provides a set of tools for creating vector graphics directly on the canvas.
+They live in the **Tools panel**, the vertical strip of buttons on the left side of the workspace.
+The tools build shapes, text and custom paths that can later be animated in the timeline.
+
+{/* e2e-screenshot
+app: svga · viewport: 1440x900 · hideDevUi: true · date: 2026-09-01
+setup: setup(400, 400, {"fill": "#3d7de0", "stroke": "#1b3a63"}); click("toolsPicker.rectangle"); move("canvas.bg", "source:40", "source:60", "canvas.bg", "drop:180", "drop:170"); click("toolsPicker.ellipse"); move("canvas.bg", "source:240", "source:230", "canvas.bg", "drop:340", "drop:330"); click("toolsPicker.select"); move("canvas.bg", "source:110", "source:115", "canvas.bg", "drop:265", "drop:95"); click("elementTree.root.title")
+crop: clip={"x":0,"y":44,"w":940,"h":622}
+annotate: annotate([{"kind":"title","theme":"red","halo":"chip","bounds":{"x":262,"y":107,"w":32,"h":137},"text":"Selection and editing","at":"right","offset":{"x":150,"y":0},"arrow":true,"width":2.5,"arrowFill":"accent"},{"kind":"title","theme":"red","halo":"chip","bounds":{"x":262,"y":248,"w":32,"h":110},"text":"Object tools","at":"right","offset":{"x":150,"y":0},"arrow":true,"width":2.5,"arrowFill":"accent"},{"kind":"title","theme":"red","halo":"chip","bounds":{"x":262,"y":397,"w":32,"h":166},"text":"Drawing tools","at":"right","offset":{"x":150,"y":0},"arrow":true,"width":2.5,"arrowFill":"accent"},{"kind":"title","theme":"red","halo":"chip","bounds":{"x":262,"y":603,"w":32,"h":24},"text":"Page tool","at":"right","offset":{"x":150,"y":0},"arrow":true,"width":2.5,"arrowFill":"accent"}],{"scale":1.3})
+notes: scale 1.3 (940-px crop). Titles only, NO blue region boxes (owner request 2026-09-01) — the group bounds are hand-measured spans of the tools strip (select→transform, repeater→hand, bezier→text, pageTool), which has no per-group test-id. offset x150 lengthens the arrow tails. Two shapes give the canvas and Objects panel content; the rectangle is moved right so the "Object tools" chip does not land on it. Crop starts at x0 so the whole Objects panel shows — the tools strip is NOT the leftmost thing in the window, and without the panel beside it the picture is unplaceable.
+*/}
+![The Tools panel, with its four groups labelled: selection and editing, object tools, drawing tools, page tool](/images/docs/editor/workspace/tools-panel.png)
+
+Selecting a tool changes the active editing mode, which in turn determines:
+
+- what the **Toolbar** shows (context-sensitive action buttons and options — see [below](#toolbar)),
+- what the **Properties panel** shows on the right,
+- how mouse interactions work on the canvas.
+
+Tools are grouped by function, separated by a divider. The tables give the short version;
+[Tool by tool](#tool-by-tool) describes each tool.
+
+**Selection and editing:**
+
+| Tool | Shortcut | Description |
+|------|----------|-------------|
+| Selection Tool | S | Select and move objects |
+| Node Tool | N | Edit individual bezier nodes on paths |
+| Round Corner | C | Selectively round corners on vector shapes |
+| Shape Builder | B | Merge, subtract, and extract overlapping areas of shapes |
+| Transform Tool | T | Scale and rotate objects using a transform box |
+
+**Object tools:**
+
+| Tool | Shortcut | Description |
+|------|----------|-------------|
+| Repeater Tool | Y | Create radial or linear arrays of an object |
+| Spray | — | Distribute multiple instances of an object across the canvas |
+| Gradient Tool | G | Create and edit gradient fills |
+| Hand Tool | H | Pan the canvas |
+
+**Drawing tools:**
+
+| Tool | Shortcut | Description |
+|------|----------|-------------|
+| Pen Tool | P | Draw freeform Bézier paths and curves |
+| Freehand Tool | F | Draw paths by freehand, converted to smooth bezier curves |
+| Ellipse Tool | E | Draw ellipses and circles |
+| Rectangle Tool | R | Draw rectangles and squares |
+| Shape Tool | W | Draw stars, polygons, or spirals — select the sub-type in the Toolbar |
+| Text Tool | Shift + T | Create and edit text elements |
+
+The Page tool (no shortcut) sits below the divider. The full shortcut list is on
+[Keyboard shortcuts](/docs/svga/editor/useful-info#keyboard-shortcuts).
+
+### Toolbar
+
+The Toolbar is the horizontal bar above the canvas. The **left side is context-sensitive** — its
+content changes with the active tool selected in the [Tools panel](#tools-panel). The
+**right side holds the object actions** — edit, arrange, align, distribute, transform, motion
+path, shape path, symbols and masks — which stay in place whichever tool is active.
+
+{/* e2e-screenshot
+app: svga · viewport: 1440x900 · hideDevUi: true · date: 2026-09-01
+setup: (tools-panel setup) then click("elementTree.root.el(nm:Rectangle,ty:rect).title") — a shape is selected so the action buttons are enabled, not greyed out
+crop: clip={"x":240,"y":0,"w":820,"h":180}
+annotate: annotate([{"kind":"title","theme":"red","halo":"chip","bounds":{"x":271,"y":57,"w":56,"h":32},"text":"Changes with the active tool","at":"bottom","offset":{"x":170,"y":8},"arrow":true,"width":2.5,"arrowFill":"accent"},{"kind":"title","theme":"red","halo":"chip","bounds":{"x":673,"y":57,"w":356,"h":32},"text":"Object actions","at":"bottom","offset":{"x":0,"y":8},"arrow":true,"width":2.5,"arrowFill":"accent"}],{"scale":1.15})
+notes: scale 1.15 (820-px crop). Titles only, NO blue region boxes (owner request 2026-09-01). The crop includes the app bar ABOVE the toolbar (menu, file name, undo/redo, layout) — that band is what places the picture; it also shows that undo/redo/preview/export live up there, NOT in the toolbar. Left label carries offset x170 so the chip clears the crop edge. Height stops at 180 so no shape is cut in half at the bottom edge.
+*/}
+![The Toolbar with the Selection tool active: tool-specific buttons on the left, object actions on the right](/images/docs/editor/workspace/toolbar-selection-tool.png)
+
+{/* e2e-screenshot
+app: svga · viewport: 1440x900 · hideDevUi: true · date: 2026-09-01
+setup: (tools-panel setup) then click("toolsPicker.rectangle")
+crop: clip={"x":240,"y":0,"w":820,"h":180}
+annotate: annotate([{"kind":"title","theme":"red","halo":"chip","bounds":{"x":271,"y":57,"w":152,"h":32},"text":"Rectangle tool: fill, stroke, stroke width","at":"bottom","offset":{"x":150,"y":8},"arrow":true,"width":2.5,"arrowFill":"accent"},{"kind":"title","theme":"red","halo":"chip","bounds":{"x":673,"y":57,"w":356,"h":32},"text":"Object actions (always here)","at":"bottom","offset":{"x":0,"y":8},"arrow":true,"width":2.5,"arrowFill":"accent"}],{"scale":1.15})
+notes: scale 1.15 (820-px crop). Same crop and framing as the Selection-tool shot directly above so the pair reads as a before/after of the SAME strip — only the left half changes. Titles only, no blue boxes.
+*/}
+![The Toolbar with the Rectangle tool active: fill, stroke, stroke width, then the object actions](/images/docs/editor/workspace/toolbar-rectangle-tool.png)
+
+#### Persistent controls
+
+These controls are always available, and they sit in two places outside the tool options:
+**Undo / Redo**, **Layout**, **Preview** and **Export** are in the app bar along the very top of
+the window, while **Snap**, **Canvas** and **Zoom** are on the narrow vertical strip down the
+right-hand edge of the canvas.
+
+##### Undo / Redo
+
+- **Undo** `Ctrl/Cmd+Z` — reverse the last action
+- **Redo** `Shift+Ctrl/Cmd+Z` — reapply the last undone action
+
+##### Snap
+
+Two toggle buttons and a settings dropdown control snapping behaviour:
+
+- **Snap to Other** — toggle snapping to other objects on the canvas
+- **Snap to Step** — toggle snapping to grid intervals and angle steps
+- **Snap settings** (dropdown) — detailed snap configuration:
+  - **Snap/Align to Other** — enable object-to-object snapping and alignment
+    - What is snapped: Bounding Box Corners and Midpoints, Shape Path Nodes, Control Points
+    - Snap to: Bounding Box Corners and Midpoints, Shape Path Nodes, Page Borders and Midpoint
+    - Align to: Bounding Box Corners and Midpoints, Shape Path Nodes, Page Borders and Midpoint
+  - **Snap to Closest Point on Path** — snap to the nearest point along any path
+  - **Snap threshold** — pixel distance within which snapping activates
+  - **Snap to Step** — snap movement to a fixed grid interval (configurable step size)
+  - **Snap Rotation to Angle Step** — constrain rotation to fixed angle increments
+
+Every option is explained on [Snap](/docs/svga/editor/canvas#snapping-to-objects-and-grid).
+
+##### Canvas
+
+The **Canvas** dropdown controls what is shown on and around the canvas:
+
+- **Show Ruler** — toggle the rulers along the top and left edges
+- **Show Grid** — overlay a grid on the canvas
+- **Show Canvas Outline** — show the canvas boundary outline
+- **Clip Canvas Content** — hide objects outside the canvas boundary
+- **Show Canvas Background** — show or hide the canvas background fill
+- **Canvas Background** — colour picker to set the canvas background colour
+
+Details: [Canvas display options](/docs/svga/editor/canvas#rulers-grid-and-background).
+
+##### Zoom
+
+The **Zoom** dropdown provides zoom shortcuts:
+
+- **Zoom in**
+- **Zoom out**
+- **Zoom 100%** — reset to actual size
+- **Zoom to Fit** — fit the content in the available space
+- **Zoom to Page** — fit the canvas boundary in the view
+- **Zoom to Selection** — zoom to the current selection
+- **Zoom Timeline to Frame Range** — fit the timeline view to the animation duration
+
+Details: [Zoom](/docs/svga/editor/canvas#zoom).
+
+##### Layout
+
+The **Layout** dropdown controls panel and timeline visibility:
+
+- **Maximize Canvas** — hide all panels to maximise the canvas area
+- **Left Panel** — show or hide the Objects panel (left side)
+- **Bottom Panel** — show or hide the Timeline panel (bottom)
+- **Right Panel** — show or hide the Properties panel (right side)
+- **Show Keyframes** — toggle the keyframe editor within the Timeline panel
+- **Show Charts** — toggle the chart panel within the Timeline panel
+
+See [Workspace panels](/docs/svga#show-hide-and-resize-panels).
+
+##### Dark / Light theme
+
+Toggle between **dark** and **light** application themes.
+
+##### Show Preview panel
+
+Open or close the [Preview panel](/docs/svga/editor/save#preview-panel) — an inline browser frame that renders
+your animation live without saving.
+
+##### Export
+
+Open the export dialog to save or download the animation in the configured file format. See
+[Export options](/docs/svga/editor/export).
+
+### Tool by tool
+
+What the Toolbar's left side shows depends on the active tool; each entry below ends with its
+**Toolbar shows** line.
+
+#### Selection Tool `S`
+
+Select, move, and resize objects. Click to select individual objects or groups. Double-click a
+group to select an object inside it. Hold `Ctrl/Cmd` to add objects to a multi-selection.
+
+**Toolbar shows:** Group / Ungroup, Make Symbol, Make Marker, Make Pattern, Arrange, Align,
+Distribute, Flip, Move Along Path, Mask, Path operations (Union, Subtract, Intersect, Exclude,
+Divide) — the standard object actions. The same set appears for the Transform and Hand tools.
+
+#### Node Tool `N`
+
+Edit the nodes and path segments of a selected vector path. Select nodes by clicking individually
+or dragging a selection rectangle. Drag nodes to reshape the path. Double-click a path to add a
+node.
+
+**Toolbar shows:** Add Node, Remove Node, Break at Points, Path Start, Reverse Path, node type
+buttons (Cusp, Smooth, Symmetric, Auto-Smooth), Path operations, Align / Distribute nodes.
+See [Edit paths](/docs/svga/editor/edit-paths#node-tool).
+
+#### Round Corner `C`
+
+Round, bevel, or invert the corners of shapes. Click a corner node and drag to adjust the radius.
+
+**Toolbar shows:** Corner Radius (numeric input), Corner Type (Round / Bevel / Inverted Round),
+Convert to Curves (convert the shape to a fully editable path). See [Round corners](/docs/svga/editor/draw-on-canvas#round-corners).
+
+#### Shape Builder `B`
+
+Combine or subtract overlapping shapes interactively by clicking or dragging across them.
+
+**Toolbar shows:** Mode buttons — Add, Remove, All, Subtract, Intersect, Exclude, Deselect.
+See [Shape builder](/docs/svga/editor/object-creation-tools#shape-builder).
+
+#### Transform Tool `T`
+
+Move, rotate, and scale objects using transform handles. Hold `Shift` to constrain movement to
+horizontal / vertical, constrain rotation to 45° increments, or keep the aspect ratio when scaling.
+
+**Toolbar shows:** the same object actions as the Selection tool. See [Transform](/docs/svga/editor/edit-objects#move-and-transform).
+
+#### Repeater Tool `Y`
+
+Create circular or linear repeating patterns from a selected object.
+
+**Toolbar shows:** Count input, Add Circular Repeat, Add Linear Repeat, Add one clone / Remove one
+clone, Cancel Repeat. See [Repeater](/docs/svga/editor/object-creation-tools#repeater).
+
+#### Spray
+
+Spray copies of a selected object across the canvas with randomised size, rotation, and opacity.
+
+**Toolbar shows:** Spray Radius (the area in which copies are sprayed), Amount (copies per
+stroke), Rotation (variation applied to copies), Min / Max Scale, Min / Max Opacity.
+See [Spray](/docs/svga/editor/object-creation-tools#spray).
+
+#### Gradient Tool `G`
+
+Adjust gradient control points for objects with a linear or radial gradient fill or stroke.
+
+**Toolbar shows:** Focal Point toggle (on / off) for radial gradients.
+See [Linear and radial gradients](/docs/svga/editor/color#linear-and-radial-gradients).
+
+#### Hand Tool `H`
+
+Pan around the canvas without affecting content. Click and drag to scroll the view.
+
+**Toolbar shows:** the standard object actions. See [Pan](/docs/svga/editor/canvas#pan).
+
+#### Pen Tool `P`
+
+Draw precise vector paths by clicking to place nodes. Click for straight segments; click and drag
+for curves. Double-click or press `Escape` to finish. Close the path by clicking the start node.
+
+**Toolbar shows:** Fill / Stroke colour pickers, Stroke Width, Path operations.
+See [Bezier paths](/docs/svga/editor/draw-on-canvas#bezier-paths).
+
+#### Freehand Tool `F`
+
+Draw freehand paths by clicking and dragging. The path follows your cursor movement and is
+converted to smooth bezier curves.
+
+**Toolbar shows:** Fill / Stroke colour pickers, Stroke Width.
+
+#### Ellipse Tool `E`
+
+Draw ellipses and circles. Hold `Alt/Option` to draw from the centre. Hold `Shift` to constrain
+to a circle.
+
+**Toolbar shows:** Fill / Stroke colour pickers, Stroke Width. See [Ellipses](/docs/svga/editor/draw-on-canvas#ellipses).
+
+#### Rectangle Tool `R`
+
+Draw rectangles and squares. Hold `Alt/Option` to draw from the centre. Hold `Shift` to constrain
+to a square.
+
+**Toolbar shows:** Fill / Stroke colour pickers, Stroke Width. See [Rectangles](/docs/svga/editor/draw-on-canvas#rectangles).
+
+#### Shape Tool `W`
+
+Draw stars, polygons, and spirals. When the Shape tool is active, three sub-type buttons appear in
+the Toolbar:
+
+- **Star** — a star shape with a configurable number of points
+- **Polygon** — a regular polygon with a configurable number of sides
+- **Spiral** — a spiral with a configurable number of turns
+
+**Toolbar shows:** Fill / Stroke colour pickers, Stroke Width, Shape type (Star / Polygon / Spiral).
+See [Stars](/docs/svga/editor/draw-on-canvas#shape-presets-stars-polygons-spirals), [Polygons](/docs/svga/editor/draw-on-canvas#shape-presets-stars-polygons-spirals), [Spiral](/docs/svga/editor/draw-on-canvas#shape-presets-stars-polygons-spirals).
+
+#### Text Tool `Shift + T`
+
+Add and edit text. Click on the canvas to place a text object.
+
+**Toolbar shows:** Fill colour, Font Type, Font Family, Font Style, Font Size, Put Text on Path,
+Text to Bezier Shape. See [Text](/docs/svga/editor/text#text-objects).
+
+#### Page Tool
+
+Select and reposition the page (canvas boundary) within the viewport, and resize the canvas by
+dragging its handles. The Toolbar shows no tool-specific controls — use the persistent Canvas,
+Zoom and Layout dropdowns. See [Change canvas size](/docs/svga/editor/canvas#change-canvas-size).
+
+### Grouping
+
+Objects can be grouped to behave as a single unit, making it easier to move, transform, and manage
+them together. See [Groups](/docs/svga/editor/draw-on-canvas#groups).
+
+## Rulers, Grid and Background
+
+The canvas is the white page in the middle of the workspace: your document, at the current zoom.
+Objects can sit outside its edge — they stay in the document but are cut off in the output. What
+is drawn *around* the page is up to you; the **Canvas** dropdown on the canvas toolbar (the icon
+strip down the right-hand edge of the canvas) and the **View** menu hold the switches:
+
+{/* e2e-screenshot
+app: svga · viewport: 1440x900 · hideDevUi: true · date: 2026-08-31
+setup: setup(400, 400); click("grid")
+crop: clip={"x":500,"y":100,"w":600,"h":560}
+annotate: annotate([{"kind":"dim","bounds":{"x":806,"y":266,"w":240,"h":366},"padding":3,"color":"#fff","fillAlpha":0.78},{"kind":"box","theme":"red","target":"grid","padding":2,"color":"#08f","stroke":1.5,"fill":"solid","fillAlpha":0.2},{"kind":"box","theme":"red","target":"grid.showRuler","padding":1,"color":"#08f","stroke":1.5,"fill":"solid","fillAlpha":0.2},{"kind":"box","theme":"red","bounds":{"x":808,"y":372,"w":220,"h":96},"padding":1,"color":"#08f","stroke":1.5,"fill":"solid","fillAlpha":0.2},{"kind":"box","theme":"red","target":"grid.showPageOutline","padding":1,"color":"#08f","stroke":1.5,"fill":"solid","fillAlpha":0.2},{"kind":"box","theme":"red","target":"grid.clipPageContent","padding":1,"color":"#08f","stroke":1.5,"fill":"solid","fillAlpha":0.2},{"kind":"box","theme":"red","bounds":{"x":808,"y":532,"w":220,"h":92},"padding":1,"color":"#08f","stroke":1.5,"fill":"solid","fillAlpha":0.2},{"kind":"title","theme":"red","halo":"chip","target":"grid","text":"Canvas dropdown","at":"left","arrow":true,"width":2.5,"arrowFill":"accent"},{"kind":"title","theme":"red","halo":"chip","target":"grid.showRuler","text":"Rulers","at":"left","arrow":true,"width":2.5,"arrowFill":"accent"},{"kind":"title","theme":"red","halo":"chip","bounds":{"x":808,"y":372,"w":220,"h":96},"text":"Grid — dot or line","at":"left","arrow":true,"width":2.5,"arrowFill":"accent"},{"kind":"title","theme":"red","halo":"chip","target":"grid.showPageOutline","text":"Page outline","at":"left","arrow":true,"width":2.5,"arrowFill":"accent"},{"kind":"title","theme":"red","halo":"chip","target":"grid.clipPageContent","text":"Clip to the page","at":"left","arrow":true,"width":2.5,"arrowFill":"accent"},{"kind":"title","theme":"red","halo":"chip","bounds":{"x":808,"y":532,"w":220,"h":92},"text":"Background colour","at":"left","arrow":true,"width":2.5,"arrowFill":"accent"}])
+notes: scale 1 (600-px crop). The Canvas dropdown hangs off the vertical toolbar on the right edge of the canvas — test-id "grid" (the button) and "grid.*" (the rows). Translucent matte (fillAlpha 0.78) instead of an opaque one so the ruler, canvas and Properties-panel edge stay visible for context. The hole covers button + popup; the popup itself has no test-id, bounds measured by pixel analysis (panel background differs from the workspace background).
+*/}
+![The Canvas dropdown open on the canvas toolbar, with rulers, grid, page outline, clipping and background rows annotated](/images/docs/editor/canvas/canvas-dropdown.png)
+
+| Option | What it does | Shortcut |
+| :-- | :-- | :-- |
+| **Show Ruler** | rulers along the top and left, in document units | `⌘ / Ctrl + ;` |
+| **Show Grid** | an alignment grid over the page — **Dot Grid** or **Line Grid** (switch in the dropdown); never exported | `⌘ / Ctrl + '` |
+| **Show Canvas Outline** | a border on the page edge | — |
+| **Clip Canvas Content** | hide whatever lies outside the page, as the output will | `⇧ ⌘ / Ctrl + Shift + /` |
+| **Show Canvas Background** / **Canvas Background** | a solid colour behind the page and its picker — a viewing aid only, not part of the file | `⌘ / Ctrl + /` |
+
+> The grid is for your eyes; to make objects *snap* to it, see [Snapping](#snapping-to-objects-and-grid).
+
+## Change Canvas Size
+
+The canvas size is the document's **view box**. Two ways to change it:
+
+- **Numbers** — select nothing (or the `<svg/>` root) and set **W** and **H** on the **Content**
+  row of the Properties panel. The **lock** beside them keeps width and height proportional;
+  the **Display** row below shows the size the animation is placed at.
+- **On the canvas** — pick the **Page** tool (bottom of the Tools panel) and drag a corner of the
+  page.
+
+Resizing the page does not scale the artwork; move or scale the objects afterwards if needed. How
+the page scales when it is placed on a web page — **Aspect Ratio** (meet / slice, alignment) and
+**Display** size — is set in the same place: [Document properties](/docs/svga/editor/quick-start#document-properties).
+
+{/* e2e-screenshot
+app: svga · viewport: 1440x900 · hideDevUi: true · date: 2026-08-31
+setup: setup(400, 400); click("toolsPicker.pageTool"); move("canvas.se", "source:50%", "source:50%", "canvas.bg", "drop:80%", "drop:78%"); click("attrs.color.collapse")
+crop: clip={"x":400,"y":52,"w":1040,"h":600}
+annotate: annotate([{"kind":"box","theme":"red","target":"canvas.se","padding":8,"color":"#08f","stroke":1.5,"fill":"solid","fillAlpha":0.2},{"kind":"box","theme":"red","target":"attrs.svg","padding":2,"color":"#08f","stroke":1.5,"fill":"solid","fillAlpha":0.2},{"kind":"title","theme":"red","halo":"chip","target":"canvas.se","text":"Drag a corner with the Page tool","at":"left","arrow":true,"width":2.5,"arrowFill":"accent"},{"kind":"title","theme":"red","halo":"chip","target":"attrs.svg","text":"Content size updates","at":"bottom","offset":{"x":-90,"y":0},"arrow":true,"width":2.5,"arrowFill":"accent"}], {"scale": 1.45})
+notes: scale 1.45 (1040-px crop). Page tool handles are canvas.nw/ne/sw/se. Colors collapsed so the CONTENT row sits high; the crop keeps the top toolbar, ruler and panel header for context. The canvas ends up 320x312 — the numbers in the picture are the resized values.
+*/}
+![The Page tool: dragging the canvas corner handle while the Content size fields in the Properties panel update](/images/docs/editor/canvas/canvas-resize.png)
+
+## Snapping to Objects and Grid
+
+Snapping pulls what you drag — objects, nodes, control points — onto nearby geometry so things
+line up without zooming in. Everything lives in the **Snap** dropdown on the canvas toolbar (the
+icon strip down the right-hand edge of the canvas): two master switches — **Snap/Align to Other**
+and **Snap to Step** — each with its own group of options underneath.
+
+{/* e2e-screenshot
+app: svga · viewport: 1440x1100 · hideDevUi: true · date: 2026-08-31
+setup: setup(400, 400, {"fill": "#3d7fd6"}); click("toolsPicker.rectangle"); move("canvas.bg", "source:100", "source:60", "canvas.bg", "drop:190", "drop:150"); move("canvas.bg", "source:100", "source:230", "canvas.bg", "drop:180", "drop:320"); click("toolsPicker.select"); click("Snap"); click("Snap.SnapToOther")
+crop: clip={"x":480,"y":150,"w":620,"h":890}
+annotate: annotate([{"kind":"dim","bounds":{"x":728,"y":210,"w":302,"h":812},"padding":4,"color":"#fff","fillAlpha":0.78},{"kind":"box","theme":"red","target":"Snap","padding":2,"color":"#08f","stroke":1.5,"fill":"solid","fillAlpha":0.2},{"kind":"box","theme":"red","target":"Snap.SnapToOther","padding":1,"color":"#08f","stroke":1.5,"fill":"solid","fillAlpha":0.2},{"kind":"box","theme":"red","bounds":{"x":746,"y":349,"w":282,"h":96},"padding":1,"color":"#08f","stroke":1.5,"fill":"solid","fillAlpha":0.2},{"kind":"box","theme":"red","bounds":{"x":746,"y":488,"w":282,"h":96},"padding":1,"color":"#08f","stroke":1.5,"fill":"solid","fillAlpha":0.2},{"kind":"box","theme":"red","bounds":{"x":746,"y":626,"w":282,"h":96},"padding":1,"color":"#08f","stroke":1.5,"fill":"solid","fillAlpha":0.2},{"kind":"box","theme":"red","target":"Snap.SnapToStep","padding":1,"color":"#08f","stroke":1.5,"fill":"solid","fillAlpha":0.2},{"kind":"title","theme":"red","halo":"chip","target":"Snap","text":"Snap settings","at":"left","arrow":true,"width":2.5,"arrowFill":"accent"},{"kind":"title","theme":"red","halo":"chip","target":"Snap.SnapToOther","text":"Snap to Other","at":"left","arrow":true,"width":2.5,"arrowFill":"accent"},{"kind":"title","theme":"red","halo":"chip","bounds":{"x":746,"y":349,"w":282,"h":96},"text":"What is snapped","at":"left","arrow":true,"width":2.5,"arrowFill":"accent"},{"kind":"title","theme":"red","halo":"chip","bounds":{"x":746,"y":488,"w":282,"h":96},"text":"Snap to","at":"left","arrow":true,"width":2.5,"arrowFill":"accent"},{"kind":"title","theme":"red","halo":"chip","bounds":{"x":746,"y":626,"w":282,"h":96},"text":"Align with","at":"left","arrow":true,"width":2.5,"arrowFill":"accent"},{"kind":"title","theme":"red","halo":"chip","target":"Snap.SnapToStep","text":"Snap to Step","at":"left","arrow":true,"width":2.5,"arrowFill":"accent"}])
+notes: scale 1 (620-px crop). VIEWPORT 1440x1100 for this one — the dropdown is ~760 px tall and does not fit in 900; reset to 1440x900 afterwards. Snap/Align to Other is clicked ON so the sub-options are not greyed out. Translucent matte keeps the canvas and panel visible for context. A live snap GUIDE was tried first and abandoned: it only exists between pointerdown and pointerup, and a scripted mouse() drag did not move the shape — the settings dropdown documents the section better anyway.
+*/}
+![The Snap settings dropdown: Snap to Other with its What is snapped / Snap to / Align with groups, and Snap to Step below](/images/docs/editor/canvas/snap-settings.png)
+
+### Snap / Align to Other
+
+Snaps to other objects and to the page.
+
+| Setting | Choices |
+| :-- | :-- |
+| **What is snapped** (points on the object you drag) | Bounding Box Corners and Midpoint · Shape Path Nodes · Control Points |
+| **Snap to** (points on other objects) | Bounding Box Corners and Midpoint · Shape Path Nodes · Page Borders and Midpoint |
+| **Align with** (guide lines that appear when edges or centres line up) | Bounding Box Corners and Midpoint · Shape Path Nodes · Page Borders and Midpoint |
+| **Snap to Closest Point on Path** | snap onto the nearest point of any path, not only its nodes |
+| **Snap Screen Threshold** | how close (in screen pixels) before snapping kicks in |
+
+### Snap to Step
+
+Snaps movement and rotation to fixed increments.
+
+| Setting | Meaning |
+| :-- | :-- |
+| **Snap to Grid** + **Grid Step** | move in steps of the grid spacing |
+| **Snap Rotation to Angle Step** + **Angle Step** | rotate in fixed angle steps (e.g. 15°) |
+
+> Hold **Shift** while drawing or transforming for the classic constraints (square / circle,
+> 45° rotation) even with snapping off.
+
+## Pan and Zoom
+
+Pan and zoom only change how the canvas appears on screen — they never affect the document or the
+final output.
+
+### Pan
+
+Panning moves the canvas view without changing zoom level or affecting objects. Use it to scroll around a large document or to reposition the view after zooming in.
+
+#### How to Pan
+
+- **Hand Tool** `H` — select the Hand Tool, then click and drag anywhere on the canvas to pan freely
+- **Space + drag** — hold `Space` with any tool active to temporarily switch to the Hand Tool; release `Space` to return to the previous tool
+- **Middle mouse button drag** — hold the middle mouse button and drag to pan
+- **Scroll** — scroll vertically with the mouse wheel; hold `Shift` to scroll horizontally
+
+### Zoom
+
+Zoom controls adjust the magnification of the canvas view. They do not affect the document or the final output — only how the canvas appears on screen.
+
+#### How to Zoom
+
+- **Ctrl/Cmd + scroll** — zoom in and out at the cursor position
+- **`+` / `-`** keys — zoom in or out by one step
+- **Zoom dropdown** in the toolbar — access named zoom levels and fit options
+
+#### Zoom Options
+
+- **Zoom In** — increase magnification one step
+- **Zoom Out** — decrease magnification one step
+- **Zoom 100%** — reset to actual size (1:1 pixel ratio)
+- **Zoom to Fit** — fit all document content within the visible window
+- **Zoom to Page** — fit the canvas boundary within the visible window
+- **Zoom to Selection** — zoom in to focus on the currently selected objects
+
+#### Timeline Zoom
+
+To adjust the horizontal zoom of the timeline view (how many frames are visible), use the **Zoom** control in the [Timeline Panel](/docs/svga/editor/animation#keyframe-editor). The **Zoom Timeline to Frame Range** option in the Zoom dropdown also fits the timeline view to the full animation duration.

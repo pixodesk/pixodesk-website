@@ -3,11 +3,17 @@ import "../styles/tailwind.css";
 import "../styles/global.scss";
 
 
-const { pathname } = Astro.url;
+// Normalised: no trailing slash (static builds serve /docs/svga/ for /docs/svga),
+// so exact-match highlighting works in dev and build alike.
+const pathname = Astro.url.pathname.replace(/\/$/, "") || "/";
 
 interface SubMenuItem {
   label: string;
   href: string;
+  /** Path prefix that marks this item active (defaults to `href`). Lets a
+   *  section-home link (e.g. Editor at /docs/svga) claim only its own pages
+   *  instead of every sibling section under the same path. */
+  activePrefix?: string;
 }
 
 interface MenuItem {
@@ -40,6 +46,42 @@ const {
   textSize = "text-[0.75rem]", // default text size
 } = Astro.props as Props;
 
+// The Docs submenu is per-app: inside one app's docs it lists that app's
+// sub-docs plus a single link to the other app's main doc. `activePrefix`
+// scopes highlighting: a section-home link (Editor, Lottie Editor) is active on
+// its own pages only, never on sibling sections that share its URL prefix.
+const docsSubMenu: SubMenuItem[] = pathname.startsWith("/docs/2d-lottie")
+  ? [
+      { label: "Docs Home", href: "/docs" },
+      { label: "Lottie Editor", href: "/docs/2d-lottie", activePrefix: "/docs/2d-lottie/lottie-features" },
+      { label: "Lottie Players", href: "/docs/2d-lottie/add-lottie-animation-to-your-project" },
+      { label: "SVG Animator", href: "/docs/svga" },
+    ]
+  : pathname.startsWith("/docs/svga")
+    ? [
+        { label: "Docs Home", href: "/docs" },
+        { label: "Editor", href: "/docs/svga", activePrefix: "/docs/svga/editor" },
+        { label: "Player Library", href: "/docs/svga/player-library" },
+        { label: "JSON Format", href: "/docs/svga/format" },
+        { label: "Pre-rendered SVG", href: "/docs/svga/prerendered-svg" },
+        { label: "2D Animator (Lottie)", href: "/docs/2d-lottie" },
+      ]
+    : [
+        { label: "Docs Home", href: "/docs" },
+        { label: "SVG Animator Docs", href: "/docs/svga" },
+        { label: "2D Animator (Lottie) Docs", href: "/docs/2d-lottie" },
+      ];
+
+// A submenu item is active on its exact href, or within its active scope
+// (activePrefix, defaulting to href). "Docs Home" (/docs) is exact-only —
+// every docs page lives under it.
+function isActiveSub(sub: SubMenuItem) {
+  if (pathname === sub.href) return true;
+  const prefix = sub.activePrefix ?? sub.href;
+  if (prefix === "/docs") return false;
+  return pathname === prefix || pathname.startsWith(prefix + "/");
+}
+
 // Define default menus (used if not passed as prop)
 const menus: MenuItem[] = passedMenus ?? [
   // {
@@ -50,7 +92,7 @@ const menus: MenuItem[] = passedMenus ?? [
   // },
   
   {
-    label: "Animator (Lottie)",
+    label: "2D Animator (Lottie)",
     href: "/animator",
     subMenu: [
       { label: "Lottie Animation", href: "/animator/lottie-animation" },
@@ -78,10 +120,11 @@ const menus: MenuItem[] = passedMenus ?? [
       { label: "Download", href: "/svg-animator/download" },
     ],
   },
-  // {
-  //   label: "Docs",
-  //   href: "/docs",
-  // },
+  {
+    label: "Docs",
+    href: "/docs",
+    subMenu: docsSubMenu,
+  },
   {
     label: "Pricing",
     href: "/pricing",
@@ -89,9 +132,12 @@ const menus: MenuItem[] = passedMenus ?? [
   },
 ];
 
-// Helper: check active main link
+// Helper: check active main link — a menu is active on its own path or on any
+// of its submenu paths (e.g. Docs on /app/svga/docs/...).
 function isActiveParent(menu: MenuItem) {
-  return pathname === menu.href || pathname.startsWith(menu.href + "/");
+  const matches = (href: string) =>
+    pathname === href || pathname.startsWith(href + "/");
+  return matches(menu.href) || (menu.subMenu ?? []).some((sub) => matches(sub.href));
 }
 
 // Find active menu for subnav
@@ -129,10 +175,10 @@ const activeMenu = menus.find((menu) => isActiveParent(menu));
             <li class="flex items-center h-full">
               <a 
                 href={menu.href}
-                class={`uppercase px-3 py-2 font-montserrat ${
+                class={`uppercase px-3 py-1.5 rounded-full font-montserrat transition-colors duration-150 ${
                   isActiveParent(menu)
-                    ? "text-white"
-                    : `${color} ${hoverText}`
+                    ? "text-white bg-white/20"
+                    : `${color} ${hoverText} hover:bg-white/10`
                 }`}
               >
                 {menu.label}
@@ -176,8 +222,10 @@ const activeMenu = menus.find((menu) => isActiveParent(menu));
               <li>
                 <a 
                   href={menu.href}
-                  class={`block px-4 py-3 uppercase ${hoverText} font-montserrat ${
-                    isActiveParent(menu) ? "text-white" : ""
+                  class={`block px-4 py-3 uppercase ${hoverText} font-montserrat border-l-2 transition-colors duration-150 ${
+                    isActiveParent(menu)
+                      ? "text-white bg-white/10 border-white"
+                      : "border-transparent"
                   }`}
                 >
                   {menu.label}
@@ -190,7 +238,7 @@ const activeMenu = menus.find((menu) => isActiveParent(menu));
                         <a
                           href={sub.href}
                           class={`block px-10 py-2 hover:bg-[#222] hover:text-white ${
-                            pathname === sub.href || pathname.startsWith(sub.href + "/")
+                            isActiveSub(sub)
                             ? "text-white " 
                             : ""
                           }`}
@@ -254,10 +302,10 @@ const activeMenu = menus.find((menu) => isActiveParent(menu));
                 <li class="flex items-center h-full">
                   <a 
                     href={sub.href}
-                    class={`uppercase px-3 py-2 font-montserrat ${
-                      pathname === sub.href || pathname.startsWith(sub.href + "/")
-                        ? `text-white`
-                        : `${color} ${hoverText}`
+                    class={`uppercase px-3 py-1.5 rounded-full font-montserrat transition-colors duration-150 ${
+                      isActiveSub(sub)
+                        ? `text-white bg-white/20`
+                        : `${color} ${hoverText} hover:bg-white/10`
                     }`}
                   >
                     {sub.label} 
@@ -302,10 +350,10 @@ const activeMenu = menus.find((menu) => isActiveParent(menu));
               <li class="w-full">
                 <a 
                   href={sub.href}
-                  class={`block px-4 py-3 uppercase ${hoverText} font-montserrat ${
-                    pathname === sub.href || pathname.startsWith(sub.href + "/") 
-                    ? `text-white ` 
-                    : `${color} `
+                  class={`block px-4 py-3 uppercase ${hoverText} font-montserrat border-l-2 transition-colors duration-150 ${
+                    isActiveSub(sub)
+                    ? `text-white bg-white/10 border-white`
+                    : `${color} border-transparent`
                   }`}
                 >
                   {sub.label}

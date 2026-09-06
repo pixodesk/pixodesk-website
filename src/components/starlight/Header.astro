@@ -31,6 +31,36 @@ const shouldRenderSearch =
 	</div>
 </div>
 
+<script>
+	// The synced player docs carry mermaid diagrams, lifted to <pre class="mermaid">
+	// by remark-svga-doc-links. Mermaid is ~400kB, so it is only pulled in on the
+	// pages that draw a diagram. The blocks stay hidden until this settles,
+	// successfully or not, to avoid flashing the diagram source.
+	async function renderMermaid() {
+		const blocks = document.querySelectorAll("pre.mermaid:not(.mermaid-ready)");
+		if (blocks.length === 0) return;
+
+		try {
+			const { default: mermaid } = await import("mermaid");
+			mermaid.initialize({
+				startOnLoad: false,
+				theme: "base",
+				// The docs are our own source, and the diagrams use HTML in
+				// node labels (<b>, <br/>), which "strict" would escape.
+				securityLevel: "loose",
+			});
+			await mermaid.run({ nodes: blocks });
+		} catch (error) {
+			console.error("Could not render mermaid diagrams", error);
+		} finally {
+			blocks.forEach((block) => block.classList.add("mermaid-ready"));
+		}
+	}
+
+	renderMermaid();
+	document.addEventListener("astro:page-load", renderMermaid);
+</script>
+
 <style>
 	@layer starlight.core {
 		.header {

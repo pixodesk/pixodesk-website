@@ -2,11 +2,11 @@ pages:
 
   page_00: 
     menu_item: Tutorials
-    title: "# Pixodesk 2D Animator Tutorials"
+    title: "# Pixodesk 2D Animator (Lottie) Tutorials"
 
   page_01:
     menu_item: Features
-    title: "# Pixodesk 2D Animator Features"
+    title: "# Pixodesk 2D Animator (Lottie) Features"
     subTitle: "##### Supported Lottie Animation File Features"
 
     sections:

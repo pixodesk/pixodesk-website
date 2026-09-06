@@ -1,0 +1,408 @@
+---
+title: "SVG JSON Animation"
+description: "Pixodesk SVG animations for web"
+category: "SVG Animations"
+order: 30
+slug: "docs/svga/editor/svg-animation-json"
+draft: true
+---
+
+# Getting Started with SVG Animator JSON
+
+
+## Installation
+
+Terminal window
+
+```bash
+npm install @pixodesk/svg-animator-web
+```
+
+## Usage
+
+### Basic Usage
+
+After installation, you can import and use the SVG Animator in your JavaScript or TypeScript module:
+
+**index.html**
+
+```astro
+<!-- Container where the animation will be rendered -->
+<div id="animation-container"></div>
+```
+
+**index.js**
+
+```javascript
+import { createAnimator } from '@pixodesk/svg-animator-web';
+
+// Load animation from URL
+const animator = createAnimator(
+  '/path/to/your/animation.json',
+  null, // adapter (optional)
+  {
+    onPlay: () => console.log('Animation started'),
+    onComplete: () => console.log('Animation complete')
+  },
+  '#animation-container' // container selector or element
+);
+
+// Control the animation
+animator.play();
+```
+
+### With Animation Data Object
+
+```javascript
+import { createAnimator } from '@pixodesk/svg-animator-web';
+import animationData from './animation.json';
+
+const animator = createAnimator(
+  animationData, // Pass the JSON object directly
+  null,
+  {
+    onPlay: () => console.log('Playing'),
+    onPause: () => console.log('Paused'),
+    onComplete: () => console.log('Complete')
+  },
+  document.getElementById('container')
+);
+
+animator.play();
+```
+
+### Via CDN
+
+**index.html**
+
+```astro
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>@pixodesk/svg-animator-web | basic example</title>
+</head>
+<body>
+  <!-- Container for animation -->
+  <div id="animation-container" style="width: 400px; height: 400px;"></div>
+
+  <script type="module">
+    import { createAnimator } from "https://cdn.jsdelivr.net/npm/@pixodesk/svg-animator-web/+esm";
+    
+    const animator = createAnimator(
+      '/path/to/animation.json',
+      null,
+      {
+        onPlay: () => console.log('Animation started')
+      },
+      '#animation-container'
+    );
+    
+    animator.play();
+  </script>
+</body>
+</html>
+```
+
+### Auto-Loading with Data Attributes
+
+The simplest way - automatically load animations from HTML:
+
+**index.html**
+
+```astro
+<div 
+  data-px-animation-src="/path/to/animation.json"
+  style="width: 400px; height: 400px;"
+></div>
+
+<script type="module">
+  import { loadTagAnimators } from '@pixodesk/svg-animator-web';
+  
+  // Automatically finds and loads all animations
+  loadTagAnimators();
+</script>
+```
+
+---
+
+## Controlling Animations
+
+### Playback Methods
+
+```javascript
+const animator = createAnimator(animationData, null, {}, '#container');
+
+// Play or resume
+animator.play();
+
+// Pause
+animator.pause();
+
+// Stop and reset
+animator.cancel();
+
+// Jump to end
+animator.finish();
+
+// Change speed (1 = normal, 2 = double, -1 = reverse)
+animator.setPlaybackRate(2);
+
+// Jump to specific time (in milliseconds)
+animator.setCurrentTime(1500);
+
+// Get current time
+const currentTime = animator.getCurrentTime();
+
+// Clean up when done
+animator.destroy();
+```
+
+---
+
+## Animation Triggers
+
+Pixodesk SVG animations support interactive triggers defined in the animation file:
+
+### Trigger Types
+
+- **`load`** - Starts when page loads
+- **`mouseOver`** - Starts when mouse enters
+- **`click`** - Toggles on click
+- **`scrollIntoView`** - Starts when scrolled into view
+- **`programmatic`** - Manual control only
+
+### Trigger Configuration Example
+
+```javascript
+const animationData = {
+  type: 'svg',
+  animator: {
+    duration: 2000,
+    iterations: 1,
+    trigger: {
+      startOn: 'mouseOver',
+      outAction: 'reverse', // What happens when mouse leaves
+      scrollIntoViewThreshold: 0.5 // For scrollIntoView (50% visible)
+    }
+  },
+  children: [
+    // ... SVG nodes
+  ]
+};
+```
+
+### Out Actions (for mouseOver/scrollIntoView)
+
+- **`continue`** - Animation continues
+- **`pause`** - Animation pauses
+- **`reset`** - Animation resets to start
+- **`reverse`** - Animation plays in reverse
+
+---
+
+## Lifecycle Callbacks
+
+```javascript
+const animator = createAnimator(
+  animationData,
+  null,
+  {
+    onPlay: () => {
+      console.log('Animation started/resumed');
+    },
+    onPause: () => {
+      console.log('Animation paused');
+    },
+    onComplete: () => {
+      console.log('Animation completed');
+    },
+    onCancel: () => {
+      console.log('Animation cancelled/reset');
+    }
+  },
+  '#container'
+);
+```
+
+---
+
+## Animation Configuration
+
+Animations exported from Pixodesk Animator Studio include built-in configuration:
+
+```javascript
+const animationData = {
+  type: 'svg',
+  viewBox: '0 0 500 500',
+  animator: {
+    duration: 3000,        // Total duration in milliseconds
+    delay: 500,            // Start delay in milliseconds
+    iterations: 'infinite', // Number of loops or "infinite"
+    fill: 'forwards',      // 'forwards' | 'backwards' | 'both' | 'none'
+    direction: 'normal',   // 'normal' | 'reverse' | 'alternate' | 'alternate-reverse'
+    mode: 'auto',          // 'auto' | 'webapi' | 'frames'
+    frameRate: 60,         // Target FPS (when mode="frames")
+    trigger: {
+      startOn: 'load'
+    }
+  },
+  // ... animation data
+};
+```
+
+---
+
+## File Format
+
+Pixodesk Animator Studio exports animations as JSON files with this structure:
+
+```json
+{
+  "type": "svg",
+  "viewBox": "0 0 500 500",
+  "animator": {
+    "duration": 2000,
+    "iterations": 1
+  },
+  "defs": {
+    "easings": {
+      "bounce": [0.68, -0.55, 0.265, 1.55]
+    },
+    "animations": {
+      "fadeIn": {
+        "opacity": {
+          "keyframes": [
+            { "time": 0, "value": 0 },
+            { "time": 1000, "value": 1, "easing": "ease-out" }
+          ]
+        }
+      }
+    }
+  },
+  "children": [
+    {
+      "type": "circle",
+      "cx": 250,
+      "cy": 250,
+      "r": 100,
+      "fill": "blue",
+      "animate": "fadeIn"
+    }
+  ]
+}
+```
+
+---
+
+## Creating Animations
+
+To create SVG animations:
+
+1. Download **Pixodesk Animator Studio** from:
+   - <a href="https://apps.microsoft.com/detail/9ppd94xqfpc9" target="_blank">Microsoft Store (Windows)</a>
+   - <a href="https://apps.apple.com/us/app/pixodesk-animator/id1632981604" target="_blank">Mac App Store</a>
+
+2. Create or import your vector artwork
+
+3. Animate using keyframes and the timeline
+
+4. Export as **Animated SVG (JavaScript)** format
+
+5. Use the exported `.json` file with this library
+
+---
+
+## Supported Platforms
+
+`@pixodesk/svg-animator-web` works in all modern browsers that support:
+
+### Browser Requirements
+
+| Feature | Required |
+| --- | --- |
+| **ES6 Modules** | ✅ Yes |
+| **SVG 1.1** | ✅ Yes |
+| **Web Animations API** | Optional* |
+| **requestAnimationFrame** | ✅ Yes (fallback mode) |
+
+*The library automatically falls back to frame-based animation if Web Animations API is not available.
+
+#### Minimum Browser Versions
+
+- **Chrome**: 60+ (July 2017)
+- **Firefox**: 55+ (August 2017)
+- **Safari**: 13+ (September 2019)
+- **Edge**: 79+ (January 2020)
+- **Opera**: 47+ (August 2017)
+
+---
+
+## Advanced: Custom Platform Adapter
+
+For non-browser environments (Node.js, React Native), provide a custom adapter:
+
+```typescript
+import { createAnimator, PxPlatformAdapter } from '@pixodesk/svg-animator-web';
+
+const customAdapter: PxPlatformAdapter = {
+  isConnected: () => true,
+  setAttribute: (id: string, attrName: string, value: string) => {
+    // Custom implementation for your platform
+  }
+};
+
+const animator = createAnimator(
+  animationData,
+  customAdapter,
+  {},
+  containerElement
+);
+```
+
+---
+
+## TypeScript Support
+
+Full TypeScript definitions are included:
+
+```typescript
+import { 
+  createAnimator,
+  PxAnimatedSvgDocument,
+  PxAnimatorAPI,
+  PxAnimatorCallbacksConfig 
+} from '@pixodesk/svg-animator-web';
+
+const callbacks: PxAnimatorCallbacksConfig = {
+  onPlay: () => console.log('Playing'),
+  onComplete: () => console.log('Complete')
+};
+
+const animator: PxAnimatorAPI = createAnimator(
+  animationData,
+  null,
+  callbacks,
+  '#container'
+);
+```
+
+---
+
+## Differences from Lottie
+
+| Feature | Pixodesk SVG Animator | Lottie |
+|---------|----------------------|--------|
+| Format | True vector SVG | Raster-based JSON |
+| Scalability | Perfect at any size | Optimized for specific sizes |
+| SVG Features | Full SVG support (masks, clips, filters) | Limited SVG support |
+| File Size | Typically smaller | Can be larger |
+| Interactivity | Built-in triggers | External libraries needed |
+| Browser Rendering | Native SVG rendering | Canvas/SVG hybrid |
+
+---
+
+## Done! 🎉
+
+Your Pixodesk SVG animations should now work beautifully on the web. Visit <a href="https://pixodesk.com" target="_blank">Pixodesk.com</a> to download the animator app and start creating!

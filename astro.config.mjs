@@ -5,9 +5,14 @@ import yaml from "@modyfi/vite-plugin-yaml";
 import mdx from '@astrojs/mdx';
 import starlight from "@astrojs/starlight";
 import { remarkSvgaDocLinks } from "./src/plugins/remark-svga-doc-links.mjs";
-import { docsSidebar, docsSidebarIntegration } from "./src/plugins/docs-sidebar.mjs";
+import { docsSidebar, docsSidebarIntegration, svgaRedirects } from "./src/plugins/docs-sidebar.mjs";
 
 export default defineConfig({
+    site: 'https://pixodesk.com',
+    // The player docs moved from the custom /app/svga/docs shell into the
+    // Starlight tree under /docs (same section paths, plus /docs/player for the
+    // old index). One explicit redirect per synced page.
+    redirects: svgaRedirects(),
     markdown: {
         remarkPlugins: [remarkSvgaDocLinks],
         shikiConfig: {
@@ -18,8 +23,13 @@ export default defineConfig({
         },
     },
     vite: {
-        site: 'https://pixodesk.com',
         plugins: [yaml()],
+        // Mermaid is loaded via a lazy dynamic import (starlight/Header.astro), so
+        // without this the dev server only discovers it on first use and serves 504
+        // "outdated optimize dep" until a restart — diagrams silently don't render.
+        optimizeDeps: {
+            include: ['mermaid'],
+        },
         server: {
             host: true, // Allow access via 127.0.0.1 or custom domains
             allowedHosts: ['pixodesk.com'], // Domain
@@ -32,7 +42,6 @@ export default defineConfig({
         starlight({
             title: "Pixodesk",
             disable404Route: true,
-            pagefind: false,
             locales: {
                 root: {
                     label: 'English',
@@ -55,11 +64,12 @@ export default defineConfig({
                 },
 
             },
-            customCss: ['./src/styles/starlight-custom-style.css'], 
+            customCss: ['./src/styles/starlight-custom-style.css'],
+            routeMiddleware: './src/routeData.ts',   // per-app sidebar filtering + bare cards landing
             tableOfContents: { minHeadingLevel: 2, maxHeadingLevel: 3 },
             components: {
                 Sidebar: './src/components/starlight/Sidebar.astro',   // default sidebar + scroll-spy for the hash-link items
-                // Header: './src/components/starlight/Header.astro',
+                Header: './src/components/starlight/Header.astro',     // site menu on top of the Starlight header
                 // Footer: './src/components/starlight/Footer.astro',
             },
             sidebar: docsSidebar(),

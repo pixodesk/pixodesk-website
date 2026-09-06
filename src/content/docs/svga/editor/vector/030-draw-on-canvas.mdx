@@ -1,0 +1,197 @@
+---
+title: "Draw on Canvas"
+description: "Drawing shapes and paths: rectangles, ellipses, groups, bezier paths, round corners, the preset shapes, freehand and images."
+slug: "docs/svga/editor/draw-on-canvas"
+sidebar:
+  order: 30
+draft: false
+---
+
+# Draw on Canvas
+
+Everything starts with a shape. Pick a tool in the Tools panel (or press its key), drag on the
+canvas, and refine the result in the Properties panel. All shapes are vectors — resize them as
+much as you like, they stay sharp.
+
+| Shape | Tool | Key |
+| :-- | :-- | :-- |
+| Rectangle, square | Rectangle | `R` |
+| Ellipse, circle | Ellipse | `E` |
+| Any line or curve | Pen | `P` |
+| Hand-drawn curve | Freehand | `F` |
+| Star, polygon, spiral | Shape | `W` |
+| Text | Text | `Shift + T` |
+
+While dragging any shape tool: **Shift** constrains proportions (square, circle, 30° steps),
+**Alt / Option** draws from the centre. The tools themselves are described in
+[Tools and toolbar](/docs/svga/editor/canvas#tools-and-toolbar).
+
+## Rectangles
+
+{/* e2e-screenshot
+app: svga · viewport: 1440x900 · hideDevUi: true · date: 2026-08-30
+setup: setup(400, 400); click("toolsPicker.rectangle"); move("canvas.bg", "source:22%", "source:28%", "canvas.bg", "drop:72%", "drop:66%")
+crop: testId="canvas" padding=0
+annotate: none
+notes: rectangle drawn and selected
+*/}
+![A rectangle just drawn with the Rectangle tool, resize handles visible](/images/docs/editor/draw/rectangle-drawn.png)
+
+Press `R`, then click and drag on the canvas.
+
+- **Shift** — a perfect square.
+- **Alt / Option** — draw from the centre point where you started dragging.
+- Both together — a square growing from the centre.
+
+After drawing, the **Shape** section of the Properties panel shows the size and the
+**corner radius** (see [Round corners](#round-corners)); the **Transform** section shows position,
+rotation and scale.
+
+## Ellipses
+
+Press `E`, then click and drag.
+
+- **Shift** — a perfect circle.
+- **Alt / Option** — draw from the centre.
+
+The **Shape** section shows the ellipse size; the radii follow from it.
+
+## Groups
+
+A group makes several objects behave as one: move, transform, animate or colour them together,
+and keep the Object Tree tidy.
+
+- **Group** — select the objects and choose **Object › Group** (`⌘ / Ctrl + G`).
+- **Ungroup** — select the group and choose **Object › Ungroup** (`⇧ ⌘ / Ctrl + Shift + G`).
+
+Double-click a group on the canvas to work inside it; hold **⌘ / Ctrl** and click to grab one
+object inside a group without entering it. Groups can be nested, and a group is also the
+starting point for the [Repeater](/docs/svga/editor/object-creation-tools#repeater) and
+[Spray](/docs/svga/editor/object-creation-tools#spray) tools.
+
+> **Tip:** set a fill on the group and leave the shapes inside on *Unset colour* — all of them
+> follow the group's colour. See [Unset colour](/docs/svga/editor/color#unset-color).
+
+## Bezier Paths
+
+Custom shapes are **paths**: nodes (points) joined by straight or curved segments. The **Pen**
+tool (`P`) draws them; the [Node tool](/docs/svga/editor/edit-paths#node-tool) (`N`) edits them afterwards.
+
+{/* e2e-screenshot
+app: svga · viewport: 1440x900 · hideDevUi: true
+setup: setup(400, 400); click("toolsPicker.bezier"); addBezier("draw", "M60,300 C120,100 220,100 280,300")
+crop: testId="canvas" padding=0
+annotate: [{"kind":"label","target":"canvas.??.node(1)","text":"curved node with handles","at":"right"}]
+notes: planned — a path with two corner nodes and one curved node, handles visible
+*/}
+{/* e2e-screenshot
+app: svga · viewport: 1440x900 · hideDevUi: true · date: 2026-08-31
+setup: setup(400, 400, {"fill": "#3d7fd6", "stroke": "#1b3a63"}); click("toolsPicker.bezier"); click("canvas.bg", "source:20%", "source:70%"); click("canvas.bg", "source:40%", "source:30%"); move("canvas.bg", "source:65%", "source:55%", "canvas.bg", "drop:80%", "drop:35%")
+crop: clip={"x":380,"y":130,"w":720,"h":490}
+annotate: annotate([{"kind":"box","theme":"red","bounds":{"x":522,"y":489,"w":18,"h":18},"padding":4,"color":"#08f","stroke":1.5,"fill":"solid","fillAlpha":0.2},{"kind":"box","theme":"red","bounds":{"x":755,"y":414,"w":18,"h":18},"padding":4,"color":"#08f","stroke":1.5,"fill":"solid","fillAlpha":0.2},{"kind":"box","theme":"red","bounds":{"x":832,"y":314,"w":18,"h":18},"padding":4,"color":"#08f","stroke":1.5,"fill":"solid","fillAlpha":0.2},{"kind":"title","theme":"red","halo":"chip","bounds":{"x":522,"y":489,"w":18,"h":18},"text":"Corner node — single click","at":"bottom","offset":{"x":70,"y":0},"arrow":true,"width":2.5,"arrowFill":"accent"},{"kind":"title","theme":"red","halo":"chip","bounds":{"x":755,"y":414,"w":18,"h":18},"text":"Curved node — click and drag","at":"bottom","offset":{"x":40,"y":60},"arrow":true,"width":2.5,"arrowFill":"accent"},{"kind":"title","theme":"red","halo":"chip","bounds":{"x":832,"y":314,"w":18,"h":18},"text":"Direction handle","at":"right","arrow":true,"width":2.5,"arrowFill":"accent"}])
+notes: scale 1. The pen tool is toolsPicker.bezier; two plain clicks make corner nodes, the third click-and-drag pulls out direction handles. The path is left UNFINISHED (no Escape / no closing click) so the in-progress state shows. Node bounds are hand-measured from the canvas — the in-progress nodes have no stable test-ids (only bezierSegment(n) does).
+*/}
+![The Pen tool mid-path: a corner node, a curved node and its direction handle](/images/docs/editor/draw/pen-tool.png)
+
+### Drawing
+
+1. Press `P` and click on the canvas: the first node.
+2. **Click** again for a **corner node** — a straight segment.
+3. **Click and drag** for a **curved node** — the drag direction sets the curve's angle, the
+   drag distance its strength; the node gets two handles.
+4. Finish with a **double-click**, or press **Escape**. To **close** the shape, click its first
+   node.
+
+Hold **Shift** while placing nodes or dragging handles to snap to 90° angles.
+
+### Connecting paths
+
+The Pen tool also joins open paths:
+
+- **Close a single open path** — click one open end node, then the other.
+- **Join two paths into one** — select both paths, pick the Pen, click the open end of the first
+  path, then the open end of the second. A new segment connects them.
+
+### Freehand
+
+Press `F` and draw with the mouse; the stroke is converted into a smooth bezier path you can edit
+with the Node tool. Good for organic shapes and quick sketches.
+
+## Round Corners
+
+Two ways to round corners:
+
+**Corner radius in the Properties panel** — for rectangles, the **Shape** section has a
+**Corner Radius** with a lock: locked, the horizontal and vertical radius change together;
+unlocked, you set them independently.
+
+**Round Corner tool** (`C`) — rounds *individual* corners of any shape:
+
+1. Select the shape and press `C`. Every corner gets a handle.
+2. Click a corner (**Shift + click** to pick several) and drag the handle, or type the
+   **Corner Radius** in the toolbar.
+3. Choose the **Corner Type** in the toolbar: **Round** (circular), **Bevel** (straight cut) or
+   **Inverted Round** (concave).
+
+The toolbar's **Convert to Curves** turns the result into an editable path. Copying a radius value
+from the toolbar field and pasting it with other corners selected applies the same value to them.
+
+{/* e2e-screenshot
+app: svga · viewport: 1440x900 · hideDevUi: true
+setup: setup(400, 400); click("toolsPicker.rectangle"); move("canvas.bg", "source:22%", "source:28%", "canvas.bg", "drop:72%", "drop:66%"); click("toolsPicker.roundCorner"); click("canvas.el(nm:Rectangle,ty:rect).path(0).radiusControlPoint(0)")
+crop: testId="canvas" padding=0
+annotate: [{"kind":"circle","target":"canvas.??.radiusControlPoint(0)","text":"drag","at":"right"}]
+notes: planned — a rectangle with one corner rounded, the corner handle circled
+*/}
+{/* e2e-screenshot
+app: svga · viewport: 1440x900 · hideDevUi: true · date: 2026-08-31
+setup: setup(400, 400, {"fill": "#3d7fd6", "stroke": "#1b3a63"}); click("toolsPicker.rectangle"); move("canvas.bg", "source:25%", "source:28%", "canvas.bg", "drop:72%", "drop:70%"); click("toolsPicker.roundCorner"); click("canvas.el.path(0).radiusControlPoint(0)"); input("toolbar.rcRadius.input", "35")
+crop: clip={"x":240,"y":40,"w":800,"h":500}
+annotate: annotate([{"kind":"box","theme":"red","target":"toolbar.rcRadius","padding":3,"color":"#08f","stroke":1.5,"fill":"solid","fillAlpha":0.2},{"kind":"box","theme":"red","bounds":{"x":367,"y":59,"w":84,"h":28},"padding":3,"color":"#08f","stroke":1.5,"fill":"solid","fillAlpha":0.2},{"kind":"box","theme":"red","bounds":{"x":695,"y":235,"w":105,"h":105},"padding":2,"color":"#08f","stroke":1.5,"fill":"solid","fillAlpha":0.2},{"kind":"title","theme":"red","halo":"chip","target":"toolbar.rcRadius","text":"Radius","at":"bottom","offset":{"x":-40,"y":0},"arrow":true,"width":2.5,"arrowFill":"accent"},{"kind":"title","theme":"red","halo":"chip","bounds":{"x":367,"y":59,"w":84,"h":28},"text":"Corner type: round / bevel / inset","at":"bottom","offset":{"x":150,"y":0},"arrow":true,"width":2.5,"arrowFill":"accent"},{"kind":"title","theme":"red","halo":"chip","bounds":{"x":695,"y":235,"w":105,"h":105},"text":"Drag the handle to set the radius","at":"left","offset":{"x":0,"y":-70},"arrow":true,"width":2.5,"arrowFill":"accent"}])
+notes: scale 1. Select a radiusControlPoint first, then type the radius — dragging the point works too but is hard to land on a tidy value. The dotted preview circle shows the radius. Toolbar ids: toolbar.rcRadius(.input) and toolbar.type.r / .b / .i (round / bevel / inset). The rect stays ty:rect until the corner is actually applied.
+*/}
+![The Round Corner tool: the radius field and corner-type buttons in the toolbar, and the rounded corner with its radius preview on the canvas](/images/docs/editor/draw/round-corner.png)
+
+## Shape Presets (Stars, Polygons, Spirals)
+
+Press `W` and pick the sub-type in the toolbar — **Star**, **Polygon** or **Spiral** — then drag
+on the canvas. **Shift** snaps the rotation to 30° steps, so a star points exactly where you
+want. Each preset has one geometry setting, **Points Count**, in the Properties panel:
+
+| Preset | Points Count means | Examples |
+| :-- | :-- | :-- |
+| **Star** | number of points (spikes) | 5 = classic star, 3 = triangle star |
+| **Polygon** | number of sides | 3 = triangle, 6 = hexagon |
+| **Spiral** | number of turns | more turns = a longer, denser spiral |
+
+{/* e2e-screenshot
+app: svga · viewport: 1440x900 · hideDevUi: true · date: 2026-08-31
+setup: setup(400, 400, {"fill": "#3d7fd6", "stroke": "#1b3a63"}); click("toolsPicker.star"); move("canvas.bg", "source:70", "source:200", "canvas.bg", "drop:70", "drop:145"); click("toolbar.type.polygon"); move("canvas.bg", "source:200", "source:200", "canvas.bg", "drop:200", "drop:145"); click("toolbar.type.spiral"); move("canvas.bg", "source:330", "source:200", "canvas.bg", "drop:330", "drop:145")
+crop: clip={"x":330,"y":40,"w":720,"h":500}
+annotate: annotate([{"kind":"box","theme":"red","bounds":{"x":455,"y":59,"w":84,"h":28},"padding":3,"color":"#08f","stroke":1.5,"fill":"solid","fillAlpha":0.2},{"kind":"box","theme":"red","target":"toolbar.count","padding":3,"color":"#08f","stroke":1.5,"fill":"solid","fillAlpha":0.2},{"kind":"title","theme":"red","halo":"chip","bounds":{"x":455,"y":59,"w":84,"h":28},"text":"Star · Polygon · Spiral","at":"bottom","offset":{"x":-60,"y":0},"arrow":true,"width":2.5,"arrowFill":"accent"},{"kind":"title","theme":"red","halo":"chip","target":"toolbar.count","text":"Points / turns","at":"bottom","offset":{"x":170,"y":0},"arrow":true,"width":2.5,"arrowFill":"accent"}])
+notes: scale 1. IMPORTANT: preset shapes are drawn from the CENTRE outwards — the drag start is the centre and the distance is the radius. Use model coordinates ("source:N") not percentages, or the shapes come out huge and overlapping. Toolbar: toolbar.type.star / .polygon / .spiral and toolbar.count (labelled Points for star/polygon, Turns for spiral).
+*/}
+![Star, polygon and spiral drawn side by side, with the preset buttons and the points/turns field in the toolbar](/images/docs/editor/draw/shape-presets.png)
+
+## Images
+
+Raster images (PNG, JPEG, WebP, GIF) are objects too. Drop an image file on the canvas, choose
+**File › Import**, or paste a copied image (**Edit › Paste**); it becomes an image layer you can
+move, scale, rotate, mask, animate and place inside groups like any shape. See
+[Import files](/docs/svga/editor/quick-start#import-and-export) for the ways in.
+
+The **Image** section of the Properties panel shows the image's **Href** (an embedded
+`data:` image or a linked URL), its **Bounds** (position and size) and **Aspect**: unchecked, the
+image stretches to its bounds; checked, it keeps its ratio with an **X / Y alignment** and
+**meet** (fit inside) or **slice** (fill and crop).
+
+> **Note:** an image stays a bitmap — it does not get sharper when scaled up. For vector output,
+> redraw it with the Pen tool.
+
+---
+
+**Next**
+
+- Style what you drew: [Color](/docs/svga/editor/color).
+- Reshape it: [Edit paths](/docs/svga/editor/edit-paths).
+- Move, align, arrange: [Edit objects](/docs/svga/editor/edit-objects).

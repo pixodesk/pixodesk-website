@@ -1,0 +1,308 @@
+---
+title: "Quick Start"
+description: "Create a document, build your first animation in ten minutes, bring files in and get your animation out, and set the document properties."
+slug: "docs/svga/editor/quick-start"
+sidebar:
+  order: 15
+draft: false
+---
+
+# Quick Start
+
+Hands-on from the first minute: create a document, animate a bouncing ball, learn the ways in
+(import) and out (save, export, preview), and the document settings you will meet along the way.
+
+## Create a Document
+
+### New document
+
+When you open Pixodesk SVG Animator you land on the welcome screen. **Choose the file format** you
+want to work with, set the canvas size and the playback start, and click **Create**. A new
+animation document opens with the selected format and default settings. To start another
+document later, choose **File › New** (a new window opens).
+
+{/* e2e-screenshot
+app: svga · viewport: 1440x900 · hideDevUi: true · date: 2026-08-30
+setup: setup(400, 400, "welcome")
+crop: testId="welcomeScreen" padding=16
+annotate: none
+notes: the welcome screen's New section — file type picker (.json Pixodesk player / .svg CSS keyframes / .svg embedded JS), document and playback defaults
+*/}
+![The welcome screen: file type picker, document size and playback start](/images/docs/editor/get-started/welcome-screen.png)
+
+The editor supports:
+
+- JSON file format for the Pixodesk player ("Pixodesk animation")
+- SVG file format with CSS keyframes
+- SVG file format with JavaScript triggers
+- SVG file format with JavaScript animation
+- JSON file format for Lottie animation (save / export)
+
+The selected format defines the initial structure and saving settings of the document. However,
+file formats are **interchangeable** — you can change the format at any time during the project.
+If you are creating an animation intended for multiple platforms, you can start with any format
+and convert it later depending on your final deployment requirements.
+
+### Open an existing file
+
+You can open animation files created in Pixodesk SVG Animator, as well as supported SVG and Lottie
+JSON files, in several ways.
+
+#### Drag and drop
+
+Drag an animation file from your file system and drop it directly onto the editor window. A
+dialog appears with options for how the file should be handled:
+
+- **Open File** — opens the dropped file as a new document. If the current window is empty, the
+  file opens in the same window; if a project is already open, the file opens in a new window.
+- **Add Content** — imports the dropped animation into the currently open document. The imported
+  animation is added as a group, preserving its structure and animation data.
+- **Replace Content** — replaces all existing content in the current document with the content
+  from the dropped file. The previous animation content is removed.
+
+#### From the file system
+
+Double-click an animation file in File Explorer (Windows) or Finder (macOS) to open it in the
+editor, or right-click it and choose **Open With › Pixodesk SVG Animator**.
+
+#### Open command and Open Recent
+
+Choose **File › Open** (`⌘ / Ctrl + O`) and navigate to the file, or **File › Open Recent** and
+pick a document from the list of recently opened files.
+
+To add a file to the current document instead of opening it, see [Import files](/docs/svga/editor/quick-start#import-and-export).
+
+The file types themselves — and which to choose — are explained in
+[File formats: which one to save](/docs/svga/editor/save#file-formats-which-one-to-save); the document's
+settings in [Document properties](#document-properties).
+
+## Your First Animation
+
+Ten minutes, one bouncing ball, every part of the workflow once. Follow along in a new document.
+
+{/* e2e-screenshot
+app: svga · viewport: 1440x900 · hideDevUi: true · date: 2026-09-01
+setup: setup(400, 400, {"fill": "#2a7fff", "stroke": "none"}); click("toolsPicker.ellipse"); move("canvas.bg", "source:160", "source:20", "canvas.bg", "drop:240", "drop:100"); addKeyframes("Ellipse", "Position", {"0":{"x":200,"y":60},"500":{"x":200,"y":320},"1000":{"x":200,"y":60}}); click("toolsPicker.select"); click("attrs.color.collapse"); click("timeline.goToAnimationStart")
+crop: clip={"x":0,"y":44,"w":1050,"h":830}
+annotate: annotate([{"kind":"title","theme":"red","halo":"chip","target":"canvas.el(nm:Ellipse,ty:ellipse)","text":"The ball","at":"left","offset":{"x":-120,"y":0},"arrow":true,"width":2.5,"arrowFill":"accent"},{"kind":"title","theme":"red","halo":"chip","bounds":{"x":500,"y":718,"w":425,"h":26},"text":"Position row — three keyframes","at":"bottom","offset":{"x":0,"y":15},"arrow":true,"width":2.5,"arrowFill":"accent"},{"kind":"title","theme":"red","halo":"chip","target":"timeline.togglePlay","text":"Play","at":"bottom","offset":{"x":0,"y":45},"arrow":true,"width":2.5,"arrowFill":"accent"}],{"scale":1.48})
+notes: scale 1.48 (1050-px crop). Follows the page steps: 80-px ball near the top, Position keyframes at 0 / 500 / 1000 ms (down and back). Keeping the ball SELECTED is deliberate — the red motion path down the canvas is what makes the fall readable in a still. Playhead sent back to 0 (`timeline.goToAnimationStart`) so the ball sits at its start position, not mid-fall. Collapse the colour picker (`attrs.color.collapse`) — it is open after a fresh draw and would swallow the Properties panel. `at:"left"` with a NEGATIVE x offset pushes the chip AWAY from the target (a positive one drags it onto the ball); bottom chips use small offsets (15/45) or they fall outside the crop.
+*/}
+![The finished bouncing-ball document: the ball and its motion path on the canvas, the Position row with three keyframes in the timeline, and the Play button](/images/docs/editor/get-started/bouncing-ball.png)
+
+### 1. Create the document
+
+On the welcome screen keep **.json (Pixodesk player)**, canvas **400 × 400**, and click
+**Create**. (Any type works — you can change it later.)
+
+### 2. Draw the ball
+
+Press `E` (Ellipse), hold **Shift** and drag near the top of the canvas to draw a circle about
+80 px wide. With the ball selected, pick a fill colour in the **Colors** section of the
+Properties panel — a bright blue, say — and set **Stroke** to *No Color*.
+
+### 3. Make it fall
+
+1. In the timeline toolbar the **time** field shows `0 ms`. Leave the playhead there.
+2. In the Properties panel, open **Transform** and click the **clock** next to **Position**.
+   The property is now animated; a keyframe appears in the timeline at 0 ms.
+3. Type `500` in the time field (half a second) and press Enter — the playhead moves.
+4. Change the Position **Y** value so the ball sits at the bottom of the canvas (e.g. `320`).
+   A second keyframe appears.
+
+Press **Space**. The ball falls. Press Space again to stop.
+
+### 4. Make it bounce
+
+1. Type `1000` in the time field.
+2. Set Position **Y** back to the starting value (e.g. `60`). Third keyframe — the ball comes
+   back up.
+3. Click the **mini chart** between the first two keyframes. In the **Easing Function** panel
+   pick **gravity › fall** (it accelerates like a real drop). Click the second segment and pick
+   **gravity › rise**.
+
+Press Space again: now it bounces. For a squash, add **Scale** keyframes the same way at
+`490 ms` (100 %), `500 ms` (130 % × 70 %) and `510 ms` (100 %).
+
+### 5. Loop it and preview
+
+Select nothing (click empty canvas): the Properties panel shows the document. In **Animation**
+switch **Loop** on. Click **Preview** in the toolbar — this is exactly what the player will show
+on a web page.
+
+### 6. Save it
+
+Press `⌘ / Ctrl + S` and save `bouncing-ball.json`. To get a file that needs no library, choose
+**File › Save As SVG (for static websites)** instead, or **Export** it as a video or GIF.
+
+**Where next:** put it on a page — [Add SVG animation to your project](/docs/svga/editor/add-svg-animation-to-your-project);
+or keep going with [Keyframes](/docs/svga/editor/keyframes) and [Easing charts](/docs/svga/editor/easing-charts).
+
+## Import and Export
+
+This page is a short introduction. Importing brings other files **into** the document; saving
+and exporting get your animation **out** — the details are in the [Save](/docs/svga/editor/save) and
+[Export](/docs/svga/editor/export) sections later in the docs.
+
+### Import
+
+Importing adds content to the **current** document — as opposed to [opening a file](/docs/svga/editor/quick-start#open-an-existing-file),
+which starts a new document. Imported elements appear on the canvas and can be edited like any
+other objects.
+
+#### SVG and Lottie files
+
+Import existing SVG and Lottie JSON animations into your current document. Imported files are
+added to the canvas while preserving their vector structure and animation data wherever possible.
+
+- **Drag and drop** — drag the animation file from your file system and drop it directly onto the
+  editor window, then choose **Add Content** in the dialog (or **Replace Content** to swap the
+  whole document for it).
+- **Import command** — choose **File › Import** from the application menu, then navigate to the
+  file you want to import.
+
+After importing, the animation elements appear on the canvas as a group and can be edited like
+any other objects in the document.
+
+#### Images
+
+Raster images (PNG, JPEG, WebP, GIF) can be added to the animation:
+
+- **Drag and drop** — drag an image file from your file system onto the editor window. The image
+  appears on the canvas as a new layer.
+- **Import command** — choose **File › Import** and navigate to the image file.
+- **Copy and paste** — copy an image or take a screenshot in another application, switch to the
+  editor and choose **Edit › Paste** (or press the standard paste shortcut). The image is
+  inserted into the document as a new layer on the canvas.
+
+#### Fonts (.ttf)
+
+You can import custom fonts for use in text layers. Choose **File › Import Font Files (TTF)**
+from the application menu. Once imported, the font becomes available in the Font section of the
+[Properties panel](/docs/svga/editor/edit-objects#properties-panel) when a text layer is selected. See [Text](/docs/svga/editor/text#text-objects)
+for the font options.
+
+### Export
+
+There are three ways to get an animation out of the editor:
+
+- **Save** (`⌘ / Ctrl + S`) writes the document in its file type — JSON for the Pixodesk player,
+  or a pre-rendered SVG (CSS animation, CSS + JS triggers, or JS animation). **File › Save As…**
+  and the cross-format commands (**Save As JSON**, **Save As SVG**, **Save As Lottie JSON**,
+  **Save As dotLottie**) write another type without changing your document. Which type to pick:
+  [File formats](/docs/svga/editor/save#file-formats-which-one-to-save).
+- **Export** (`⌘ / Ctrl + E`) opens the export dialog for the other targets: **Lottie**
+  (`.json` / `.lottie`), **Video** (MP4 / WebM), **GIF**, and a **static image** (PNG, JPEG,
+  WebP, SVG) of any frame. The dialog previews the result and lists warnings for features the
+  target cannot reproduce.
+- **Preview** shows the animation exactly as the player will play it, without saving — see
+  [Preview panel](/docs/svga/editor/save#preview-panel).
+
+Then put the file on your page: [Add SVG animation to your project](/docs/svga/editor/add-svg-animation-to-your-project#which-player-do-i-need) or
+[Add Lottie animation to your project](/docs/2d-lottie/add-lottie-animation-to-your-project#lottie-players-overview).
+
+## Document Properties
+
+{/* e2e-screenshot
+app: svga · viewport: 1440x900 · hideDevUi: true · date: 2026-09-01
+setup: (see tools-panel in vector/020-canvas.mdx for the two shapes) then click("attrs.color.collapse"); click("elementTree.root.title")
+crop: clip={"x":560,"y":44,"w":880,"h":628}
+annotate: none
+notes: WIDER CONTEXT (owner request 2026-09-01) — was a bare testId="attrs" crop, which showed a floating column of controls with nothing to place it. The crop now carries the right half of the canvas and the canvas-side strip, so the panel is visibly attached to the document it describes. Nothing selected ⇒ the header reads "Document" and the sections are Colors, Content, Display, Animation, Timeline & Trigger, Runtime. Collapse the colour picker first (`attrs.color.collapse`) or the wheel fills the panel and hides the section list.
+*/}
+![The Properties panel showing the document properties (nothing selected)](/images/docs/editor/workspace/properties-panel-document.png)
+
+Document properties define the **global settings** for your animation, including canvas dimensions, playback behaviour, export format, and rendering options.
+
+You can view and edit document properties in the **Properties Panel**. They are available when no object is selected, or when the root **`<svg/>`** element is selected at the top of the [Object Tree](/docs/svga/editor/edit-objects#object-tree).
+
+
+### View Box
+
+The View Box defines the coordinate system and visible area of the SVG canvas. It controls how the animation content is positioned and scaled within the document.
+
+**Content Start (x, y)** — the starting coordinates of the view box within the SVG coordinate system.
+
+**Content Size (x, y)** — the width and height of the view box.
+
+**Size Lock** — when enabled, width and height scale proportionally. When disabled, they can be edited independently.
+
+
+### Aspect Ratio
+
+Controls how the SVG content scales when the document is resized or embedded in different layouts.
+
+#### Horizontal Alignment
+
+- **xMin** — aligns content to the left side of the viewport
+- **xMid** — centres content horizontally
+- **xMax** — aligns content to the right side of the viewport
+
+#### Vertical Alignment
+
+- **yMin** — aligns content to the top of the viewport
+- **yMid** — centres content vertically
+- **yMax** — aligns content to the bottom of the viewport
+
+#### Scale Behaviour
+
+- **Meet** — scales the animation to fit entirely inside the viewport, preserving the aspect ratio. Empty space may appear on two sides.
+- **Slice** — scales the animation to fill the viewport completely. Parts of the animation may be clipped.
+- **None** — disables aspect-ratio-preserving scaling and stretches the animation to match the viewport size.
+
+
+### Display
+
+**Width / Height** — the display size of the document in the chosen unit. This controls how the SVG is rendered in a browser when no external sizing is applied.
+
+
+### Animation
+
+These properties control how the animation timeline behaves.
+
+**Duration (ms)** — the total length of the animation in milliseconds.
+
+**Delay (ms)** — a delay before the animation begins playing.
+
+**Frame Rate (fps)** — the number of frames per second used during playback.
+
+**Loop** — when enabled, the animation restarts automatically after reaching the end.
+
+#### Timeline Mode
+
+Defines how the animation timeline progresses.
+
+- **Time** — the animation plays based on elapsed time
+- **Scroll** — the animation progress is controlled by the page scroll position
+
+#### Playback Triggers
+
+Determines when the animation starts.
+
+- **On Load** — starts automatically when the document loads
+- **On Mouse Over** — starts when the pointer moves over the animation
+- **On Click** — starts after a click interaction
+- **On Scroll Into View** — starts when the element enters the viewport
+- **Programmatic** — playback is controlled through JavaScript APIs
+
+**Reset on Finish** — when enabled, the animation resets to its starting state after reaching the end of the timeline.
+
+
+### File Type
+
+The File Type defines the output format used when saving the animation.
+
+Available formats:
+- JSON file format for Lottie animation
+- JSON file format for SVG animation
+- SVG file format with CSS keyframes
+- SVG file format with JavaScript triggers
+- SVG file format with JavaScript animation
+
+These file formats are described in [Create documents, file formats](/docs/svga/editor/save#file-formats-which-one-to-save).
+
+Because the formats are interchangeable, you can change the file type at any time without losing your work.
+
+
+### DOM Attributes
+
+**ID** — sets a custom ID attribute on the root SVG element. Useful for targeting the animation via CSS or JavaScript.

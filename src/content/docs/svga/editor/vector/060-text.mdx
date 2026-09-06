@@ -1,0 +1,129 @@
+---
+title: "Text"
+description: "Text objects: fonts, size, decoration, spacing and position — and text that follows a path."
+slug: "docs/svga/editor/text"
+sidebar:
+  order: 60
+draft: false
+---
+
+# Text
+
+Text in Pixodesk SVG Animator is real, editable text: pick a font, type, style it in the
+Properties panel, animate it like any other object, and decide at save time whether the file uses
+live fonts or baked outlines.
+
+## Text Objects
+
+Press `Shift + T` (the **Text** tool), click on the canvas and type. The text is edited directly
+on the canvas; click elsewhere or press **Escape** to finish. Everything about its look lives in
+the **Text** sections of the Properties panel.
+
+{/* e2e-screenshot
+app: svga · viewport: 1440x900 · hideDevUi: true · date: 2026-08-31
+setup: setup(400, 400, {"fill": "#1b3a63", "stroke": "#1b3a63"}); click("toolsPicker.text"); click("canvas.bg", "source:60", "source:180"); key("P"); key("i"); key("x"); key("o"); key("d"); key("e"); key("s"); key("k"); input("toolbar.fontSize.input", "56")
+crop: clip={"x":330,"y":40,"w":720,"h":420}
+annotate: annotate([{"kind":"box","theme":"red","target":"canvas.el(nm:Text,ty:text)","padding":6,"color":"#08f","stroke":1.5,"fill":"solid","fillAlpha":0.2},{"kind":"box","theme":"red","bounds":{"x":457,"y":53,"w":228,"h":30},"padding":3,"color":"#08f","stroke":1.5,"fill":"solid","fillAlpha":0.2},{"kind":"box","theme":"red","bounds":{"x":701,"y":54,"w":56,"h":28},"padding":3,"color":"#08f","stroke":1.5,"fill":"solid","fillAlpha":0.2},{"kind":"title","theme":"red","halo":"chip","target":"canvas.el(nm:Text,ty:text)","text":"Click and type on the canvas","at":"bottom","offset":{"x":40,"y":0},"arrow":true,"width":2.5,"arrowFill":"accent"},{"kind":"title","theme":"red","halo":"chip","bounds":{"x":457,"y":53,"w":228,"h":30},"text":"Font, style and size","at":"bottom","offset":{"x":-120,"y":30},"arrow":true,"width":2.5,"arrowFill":"accent"},{"kind":"title","theme":"red","halo":"chip","bounds":{"x":701,"y":54,"w":56,"h":28},"text":"Text on path · text to shape","at":"bottom","offset":{"x":170,"y":90},"arrow":true,"width":2.5,"arrowFill":"accent"}])
+notes: scale 1. IMPORTANT: the addText(x, y, text) DSL action silently creates nothing here — type instead: pick toolsPicker.text, click the canvas, then one key() per character. Font controls live on the text toolbar (toolbar.fontFamily / .fontStyle / .fontSize / .putTextOnPath / .textToShape) and only exist while the text tool is active.
+*/}
+![Typing a text object on the canvas, with the font family, style and size controls in the toolbar](/images/docs/editor/text/text-tool.png)
+
+### Font
+
+- **Source** — where the font comes from:
+  - **Font Asset File (.ttf)** — a font file imported into the document
+    (**File › Import Font Files (TTF)**). The font travels with the file, so the text looks the
+    same everywhere.
+  - **Browser Font** — a font installed on the viewer's computer or provided by the page.
+- **Name** — the font family.
+- **Weight / style** — for an asset file, the styles the file contains; for a browser font, the
+  weight plus an *italic* toggle.
+- **Size** — with a unit: `px`, `pt`, `em`, `rem`, `ex` or `%`.
+- **Use Glyphs** (asset fonts only) — embeds the letters you actually use as vector outlines, so
+  the saved SVG / JSON is self-contained and needs no font file. The embedded outlines are listed
+  in the **Used Glyphs** section of the Objects panel. With a browser font, the page must provide
+  the font itself (CSS `@font-face`).
+
+### Decoration and case
+
+- **Decoration** — **Underline**, **Overline**, **Line-through**; several can be combined.
+- **Transform** — **None**, **Uppercase**, **Lowercase**, **Capitalize** (first letter of each
+  word).
+
+### Alignment and spacing
+
+- **Anchor** — how the text sits relative to its start point: **Start** (left in most
+  languages), **Middle** (centred), **End** (right).
+- **Letter spacing** — the space between characters.
+- **Word spacing** — the space between words.
+
+### Position
+
+- **Start (x / y)** — the text's start point on the canvas.
+- **Offset (dx / dy)** — an extra shift applied on top, handy for fine adjustments (and for
+  animation) without touching the start point.
+
+### Text as outlines
+
+**Text to Bezier Shape** (in the toolbar with the Text tool) converts the text into a group of
+paths, one per character, keeping fill, stroke, opacity and animation — for logo work,
+node-level editing, or when a font cannot ship with the file. It needs an asset (.ttf) font; the
+text stops being editable as text.
+
+{/* e2e-screenshot
+app: svga · viewport: 1440x900 · hideDevUi: true · date: 2026-08-31
+setup: setup(400, 400, {"fill": "#1b3a63", "stroke": "#1b3a63"}); click("toolsPicker.text"); click("canvas.bg", "source:60", "source:180"); key("P"); key("i"); key("x"); key("o"); key("d"); key("e"); key("s"); key("k"); click("toolsPicker.select"); click("elementTree.root.el(nm:Text,ty:text).title"); key("d", "meta"); move("canvas.el(nm:Text_2,ty:text)", 0, 90); click("toolsPicker.text"); click("toolbar.textToShape")
+crop: clip={"x":380,"y":40,"w":720,"h":500}
+annotate: annotate([{"kind":"box","theme":"red","target":"canvas.el(nm:Text,ty:text)","padding":8,"color":"#08f","stroke":1.5,"fill":"solid","fillAlpha":0.2},{"kind":"box","theme":"red","target":"canvas.el(nm:Group,ty:g)","padding":8,"color":"#08f","stroke":1.5,"fill":"solid","fillAlpha":0.2},{"kind":"title","theme":"red","halo":"chip","target":"canvas.el(nm:Text,ty:text)","text":"Live text — still editable","at":"right","arrow":true,"width":2.5,"arrowFill":"accent"},{"kind":"title","theme":"red","halo":"chip","target":"canvas.el(nm:Group,ty:g)","text":"Text to Bezier Shape — now a group of paths","at":"right","arrow":true,"width":2.5,"arrowFill":"accent"},{"kind":"box","theme":"red","bounds":{"x":729,"y":54,"w":28,"h":28},"padding":3,"color":"#08f","stroke":1.5,"fill":"solid","fillAlpha":0.2},{"kind":"title","theme":"red","halo":"chip","bounds":{"x":729,"y":54,"w":28,"h":28},"text":"Text to Bezier Shape","at":"bottom","offset":{"x":90,"y":0},"arrow":true,"width":2.5,"arrowFill":"accent"}])
+notes: scale 1. Duplicate (Cmd+D) then convert the copy — the converted one becomes el(nm:Group,ty:g), a group of letter paths, which is how you can tell the two apart in the Objects panel. toolbar.textToShape only exists while the text tool is active, so switch back to it after duplicating with the selection tool.
+*/}
+![The same word twice: live editable text above, and the same word converted to a group of outline paths below](/images/docs/editor/text/text-to-outlines.png)
+
+## Text Along Path
+
+Text can follow a curve. There are three related commands; which one you see depends on the tool
+and the selection.
+
+{/* e2e-screenshot
+app: svga · viewport: 1440x900 · hideDevUi: true · date: 2026-08-31
+setup: setup(400, 400, {"fill": "#1b3a63", "stroke": "#3d7fd6"}); addBezier("exact", "M40,240C120,120 280,120 360,240"); click("toolsPicker.text"); click("canvas.bg", "source:80", "source:320"); key("A"); key("l"); key("o"); key("n"); key("g"); click("toolsPicker.select"); key("a", "meta"); click("toolsPicker.text"); click("toolbar.putTextOnPath"); click("elementTree.root.el(nm:Path,ty:path).title"); click("attrs.color.fill.content.type.noColor")
+crop: clip={"x":250,"y":200,"w":760,"h":380}
+annotate: annotate([{"kind":"box","theme":"red","target":"canvas.el(nm:Path,ty:path)","padding":10,"color":"#08f","stroke":1.5,"fill":"none"},{"kind":"box","theme":"red","target":"canvas.el(nm:Text,ty:text)","padding":6,"color":"#08f","stroke":1.5,"fill":"solid","fillAlpha":0.2},{"kind":"title","theme":"red","halo":"chip","target":"canvas.el(nm:Path,ty:path)","text":"The path the text follows","at":"top","arrow":true,"width":2.5,"arrowFill":"accent"},{"kind":"title","theme":"red","halo":"chip","target":"canvas.el(nm:Text,ty:text)","text":"Text flows along it","at":"left","arrow":true,"width":2.5,"arrowFill":"accent"}])
+notes: scale 1. Select BOTH the text and the path (Cmd+A here) before pressing Put Text on Path. Afterwards the path keeps its own fill — set it to No Color (attrs.color.fill.content.type.noColor) or the curve reads as a filled blob instead of a line.
+*/}
+![Text flowing along a curved path, with the path outlined above it](/images/docs/editor/text/text-on-path.png)
+
+### Put text on a path
+
+1. Draw the path (Pen tool) and create the text.
+2. Select **both** — the text and the path.
+3. With the **Text** tool active, click **Put Text on Path** in the toolbar.
+
+The text now follows the path instead of a straight line. Edit the path's nodes with the Node
+tool and the text re-flows.
+
+### The Text Path section
+
+Text on a path gets a **Text Path** section in the Properties panel:
+
+| Setting | Meaning |
+| :-- | :-- |
+| **Along Path** | the switch itself — off returns the text to a straight line |
+| **Create path shape** | makes a standalone, editable path from the text's curve |
+| **Offset** | slides the text along the path — keyframe it to animate the text travelling |
+| **Overflow** | **Clip** hides letters past the end of the path; **Extend** continues them (glyph mode, open paths) |
+| **Length Adjust / Method / Spacing**, **Text Length** | the browser's own text-path layout controls (hidden in glyph mode) |
+
+Text on a path is single-line; a multi-line text is flattened to one line when you put it on a path.
+
+### Moving any object along a path
+
+The related **Move Element Along Path** (Selection tool, two objects selected) makes the top
+object travel along the lower one — see [Move along path](/docs/svga/editor/edit-objects#move-along-path).
+
+---
+
+**Next**
+
+- Animate the text's position, opacity or offset: [Keyframes](/docs/svga/editor/keyframes).
+- Fonts and the saved file: [Save](/docs/svga/editor/save).

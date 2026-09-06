@@ -1,0 +1,93 @@
+---
+title: "Export to Lottie, Video, Image"
+description: "Export to Lottie and dotLottie, to video and GIF, and to static images — the export dialog and its options."
+slug: "docs/svga/editor/export"
+sidebar:
+  order: 190
+draft: false
+---
+
+# Export to Lottie, Video, Image
+
+Besides saving the document as JSON or SVG, the editor **exports** it to other targets: a
+**Lottie** animation (`.json` or `.lottie`) for the Lottie players on web, mobile and desktop, a
+**video** or **GIF**, and a **static image** of any frame. All of them go through the Export
+dialog.
+
+## Lottie and dotLottie
+
+Lottie is the cross-platform animation format played by lottie-web, dotLottie, Lottie for iOS /
+Android and countless integrations. **File › Save As Lottie JSON** writes a `.json` Lottie file,
+**File › Save As dotLottie (.lottie)** the zipped `.lottie` container, and **File › Export…**
+(`⌘ / Ctrl + E`) opens the same **Lottie** tab of the Export dialog:
+
+- **File Type** — `.json` (Lottie player) or `.lottie` (LottieFiles player)
+- **File Name**
+- **Frame Rate (fps)** — the Lottie frame rate the keyframes are resampled to
+- **Inline repeated clones** — write each repeater / clone copy as its own layer instead of a
+  reusable pre-composition (larger file, no precomp indirection)
+- **Duration (sec)**
+- the preview player (**lottie-web** or **LottieFiles**) and the playback speed / loop controls
+  above the preview
+
+Not every editor feature has a Lottie equivalent — the dialog lists warnings above the buttons,
+and [SVG ↔ Lottie support](/docs/svga#svg--lottie-support) has the full matrix. Review the
+preview before exporting.
+
+The export dialog: Lottie, video, GIF and static images.
+
+## Export Options
+
+**File › Export…** (`⌘ / Ctrl + E`) or the **Export** button on the toolbar opens the export
+dialog. The left side previews the result — with a checkered / white / black background choice,
+playback speed (0.25× – 4×, Auto), a loop toggle and, for Lottie, the player to preview with
+(**lottie-web** or **LottieFiles**). The right side has one tab per target:
+
+{/* e2e-screenshot
+app: svga · viewport: 1440x900 · hideDevUi: true
+setup: setup(400, 400); click("export")
+crop: testId="messageBox" padding=0
+annotate: [{"kind":"number","target":"messageBox.exportType","text":"1","at":"left"},{"kind":"number","target":"messageBox.animation","text":"2","at":"left"},{"kind":"number","target":"messageBox.preview-background","text":"3","at":"left"}]
+notes: planned — the export dialog on the Lottie tab: 1 target tabs, 2 options, 3 preview controls
+*/}
+{/* e2e-screenshot
+app: svga · viewport: 1440x900 · hideDevUi: true · date: 2026-08-31
+setup: setup(400, 400, {"fill": "#e0533d", "stroke": "#1b3a63"}); click("toolsPicker.ellipse"); move("canvas.bg", "source:60", "source:60", "canvas.bg", "drop:150", "drop:150"); click("export")
+crop: clip={"x":40,"y":30,"w":1400,"h":620}
+annotate: annotate([{"kind":"box","theme":"red","target":"messageBox.previewPlayer","padding":6,"color":"#08f","stroke":1.5,"fill":"none"},{"kind":"box","theme":"red","bounds":{"x":812,"y":69,"w":247,"h":29},"padding":4,"color":"#08f","stroke":1.5,"fill":"solid","fillAlpha":0.2},{"kind":"box","theme":"red","bounds":{"x":809,"y":98,"w":567,"h":267},"padding":4,"color":"#08f","stroke":1.5,"fill":"solid","fillAlpha":0.2},{"kind":"title","theme":"red","halo":"chip","target":"messageBox.previewPlayer","text":"Live preview of the export","at":"top","offset":{"x":0,"y":10},"arrow":true,"width":2.5,"arrowFill":"accent"},{"kind":"title","theme":"red","halo":"chip","bounds":{"x":812,"y":69,"w":247,"h":29},"text":"Lottie · Video · Gif · Image","at":"left","offset":{"x":-20,"y":0},"arrow":true,"width":2.5,"arrowFill":"accent"},{"kind":"title","theme":"red","halo":"chip","bounds":{"x":809,"y":98,"w":567,"h":267},"text":"Options for the chosen target","at":"bottom","offset":{"x":0,"y":30},"arrow":true,"width":2.5,"arrowFill":"accent"}])
+notes: scale 2 (1400-px crop). The dialog is "messageBox" and fills the viewport, so its own bounds are useless for cropping — use an explicit clip. Target tabs: messageBox.exportType.lottie / .video / .gif / .image; the options block below changes with the tab. Draw something first or the preview is blank.
+*/}
+![The Export dialog: the live preview on the left, the Lottie / Video / Gif / Static image tabs and the options for the chosen target](/images/docs/editor/export/export-dialog.png)
+
+
+| Tab | Writes | Main options |
+| :-- | :-- | :-- |
+| **Lottie** | `.json` / `.lottie` | frame rate, inline repeated clones, duration — see [Save › Lottie JSON](/docs/svga/editor/export#lottie-and-dotlottie) |
+| **Video** | `.mp4` / `.webm` | frame rate, duration, bitrate, size |
+| **Gif** | `.gif` | frame, frame rate, duration, size, loop |
+| **Static image** | `.png` / `.jpeg` / `.webp` / `.gif` / `.svg` | at frame / at time, size, background, quality, fit content |
+
+Warnings for features the target cannot reproduce are listed above the buttons — review the
+preview before you click **Export**. **Reveal in Finder / Explorer** opens the saved file's folder.
+The tabs shown depend on the document type; Lottie documents also offer a **Pixodesk JSON/SVG**
+tab for the reverse conversion.
+
+## Static Image
+
+The **Static image** tab exports one frame. Options: **File Type** (`svg`, `png`, `jpeg`, `webp`,
+`gif`), **Image quality** (0–1, for lossy formats), **At Frame / At Time**, **Size** (width and
+height in pixels; the aspect ratio follows the document unless changed), **Background** colour
+(transparent by default where the format allows it), **Fit content**.
+
+## Video and GIF
+
+The **Video** tab renders the whole animation to `.mp4` or `.webm`. Options: **Frame Rate**
+(fps), **Duration** (seconds — defaults to the animation length), **Bitrate**, **Size**. Video has
+no transparency; set the document background first if you need a solid colour. **Gif** exports the
+same way with a **Loop** option and 256 colours per frame.
+## Convert Animation to Static Format
+
+To get a still picture of one moment of the animation, use the **Static image** tab: set **At
+Frame** (or **At Time**), the output **Size**, an optional **Background** colour and **Fit
+content**, and choose `.svg` for a vector snapshot or a raster format.
+

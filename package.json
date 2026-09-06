@@ -3,7 +3,8 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "sync:svga-docs": "rm -rf .tmp-svga-docs && mkdir -p .tmp-svga-docs && curl -fsSL https://github.com/pixodesk/pixodesk-svg-animator/archive/refs/heads/main.tar.gz | tar -xz -C .tmp-svga-docs --strip-components=2 pixodesk-svg-animator-main/docs && rm -rf src/content/docs2 && mv .tmp-svga-docs src/content/docs2 && echo \"svga docs synced -> src/content/docs2\"",
+    "sync:svga-docs": "node scripts/sync-svga-docs.mjs",
+    "sync:svga-docs:github": "rm -rf .tmp-svga-docs && mkdir -p .tmp-svga-docs && curl -fsSL https://github.com/pixodesk/pixodesk-svg-animator/archive/refs/heads/main.tar.gz | tar -xz -C .tmp-svga-docs --strip-components=2 pixodesk-svg-animator-main/docs && node scripts/sync-svga-docs.mjs .tmp-svga-docs && rm -rf .tmp-svga-docs",
     "dev": "astro dev --host 127.0.0.1",
     "build": "astro build",
     "preview": "astro preview",

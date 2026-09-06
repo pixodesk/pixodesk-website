@@ -1,0 +1,61 @@
+---
+title: "Add SVG Animation to Your Project"
+description: "Putting a saved JSON or pre-rendered SVG animation on a web page — plain HTML, React, Vue, Next.js, Nuxt, Astro, React Native."
+slug: "docs/svga/editor/add-svg-animation-to-your-project"
+sidebar:
+  order: 200
+draft: false
+---
+
+# Add SVG Animation to Your Project
+
+Putting a saved JSON or pre-rendered SVG animation on a web page — plain HTML, React, Vue, Next.js, Nuxt, Astro, React Native.
+
+## Which Player Do I Need
+
+A saved animation is either a **JSON** file for the Pixodesk player or a **pre-rendered SVG**.
+The player is documented in its own docs; the pages below say which one to open for your stack.
+
+- JSON needs the player library on the page: `@pixodesk/svg-animator-web`, or the React / Vue /
+  React Native wrappers.
+- Pre-rendered SVG needs nothing: inline it, reference it with `<img>` (static frame only) or
+  `<object>`, or import it with SVGR / vite-svg-loader.
+
+Start here: [Player docs — introduction](/docs/svga/editor/how-it-fits-together) ·
+[Choosing a format](/docs/svga/editor/choosing-a-format) ·
+[Installation](/docs/svga/player-library/installation).
+
+## Web
+
+Plain HTML / vanilla JavaScript: [Web player](/docs/svga/player-library/web-player) —
+install from npm or a CDN, load the JSON, control playback and triggers
+([Playback and triggers](/docs/svga/player-library/playback-and-triggers)).
+For a pre-rendered SVG: [Pre-rendered SVG](/docs/svga/prerendered-svg).
+
+## Astro
+
+Astro and other static site generators / CMS platforms (Jekyll, WordPress, Shopify):
+[Static sites and CMS](/docs/svga/prerendered-svg/static-sites-and-cms).
+
+## React
+
+[React player](/docs/svga/player-library/react) — the `@pixodesk/svg-animator-react` component,
+its props, control modes and the CSS-flavour wrapper.
+
+## Next.js
+
+Next.js notes (SSR, app router) are in the React chapter:
+[React player › Next.js](/docs/svga/player-library/react#nextjs).
+
+## Vue
+
+[Vue player](/docs/svga/player-library/vue) — the `@pixodesk/svg-animator-vue` component, props
+and events.
+
+## Nuxt
+
+Nuxt notes are in the Vue chapter: [Vue player › Nuxt](/docs/svga/player-library/vue#nuxt).
+
+## React Native
+
+[React Native player](/docs/svga/player-library/react-native) (experimental).

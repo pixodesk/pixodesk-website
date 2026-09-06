@@ -1,0 +1,85 @@
+---
+title: "Masks"
+description: "Hiding parts of an object with another object: masks, mask effects and clip paths — how they differ, how to make and remove them."
+slug: "docs/svga/editor/masks"
+sidebar:
+  order: 130
+draft: false
+---
+
+# Masks
+
+A mask hides part of an object using the shape of another object — a photo inside a circle, a
+line drawing revealed by a sweeping rectangle, text that shows a gradient through its letters.
+The editor offers three variants; all keep both objects editable and animatable.
+
+{/* e2e-screenshot
+app: svga · viewport: 1440x900 · hideDevUi: true · date: 2026-08-31
+setup: setup(400, 400, {"fill": "#e0533d", "stroke": "#1b3a63"}); click("toolsPicker.rectangle"); move("canvas.bg", "source:60", "source:100", "canvas.bg", "drop:340", "drop:300"); click("toolsPicker.ellipse"); move("canvas.bg", "source:110", "source:120", "canvas.bg", "drop:290", "drop:280"); click("toolsPicker.select"); key("a", "meta"); click("toolbar.actionsGroup-mask")
+crop: clip={"x":380,"y":40,"w":800,"h":520}
+annotate: annotate([{"kind":"dim","bounds":{"x":775,"y":105,"w":220,"h":195},"padding":8,"color":"#fff","fillAlpha":0.78},{"kind":"box","theme":"red","target":"toolbar.actionsGroup-mask","padding":2,"color":"#08f","stroke":1.5,"fill":"solid","fillAlpha":0.2},{"kind":"box","theme":"red","bounds":{"x":785,"y":120,"w":200,"h":92},"padding":2,"color":"#08f","stroke":1.5,"fill":"solid","fillAlpha":0.2},{"kind":"box","theme":"red","bounds":{"x":785,"y":224,"w":200,"h":61},"padding":2,"color":"#08f","stroke":1.5,"fill":"solid","fillAlpha":0.2},{"kind":"title","theme":"red","halo":"chip","target":"toolbar.actionsGroup-mask","text":"Mask & clip","at":"right","offset":{"x":30,"y":0},"arrow":true,"width":2.5,"arrowFill":"accent"},{"kind":"title","theme":"red","halo":"chip","bounds":{"x":785,"y":120,"w":200,"h":92},"text":"Mask — luminance or alpha","at":"left","arrow":true,"width":2.5,"arrowFill":"accent"},{"kind":"title","theme":"red","halo":"chip","bounds":{"x":785,"y":224,"w":200,"h":61},"text":"Clip path — hard-edged","at":"left","arrow":true,"width":2.5,"arrowFill":"accent"}])
+notes: scale 1. CHANGED FROM THE PLAN: dropping a real image needs a fixture in the e2e OPFS namespace, so a filled rectangle stands in for the masked content. Shows the Mask & Clip menu, which is what the reader has to find. Ids: toolbar.actionsGroup-mask.addMaskEffect / .alphaMask / .removeMask / .addClip / .removeClip. Select the content AND the mask shape first (Cmd+A here) or the menu is disabled.
+*/}
+![The Mask and Clip menu open over two stacked shapes, showing Add Mask Effect, Make Mask, Remove Mask and the clip-path commands](/images/docs/editor/masks/mask-menu.png)
+
+| Variant | Which object hides | Menu | Best for |
+| :-- | :-- | :-- | :-- |
+| **Mask** | the **top** selected object becomes the mask of the one below | Object › Make Mask | classic SVG masking, including soft edges via opacity |
+| **Mask Effect** | the **lower** object controls the visibility of the one above — a live reference, both stay on the canvas | Object › Add Mask Effect | masking with an object that also stays visible or animates on its own |
+| **Clip Path** | the **top** object's outline clips the one below (hard edge, the clip shape leaves the canvas) | Object › Make Clip Path | crisp cut-outs, windows, reveals |
+
+All three are also in the **Mask** dropdown of the toolbar (Selection or Transform tool). Each
+needs **exactly two** objects selected; a group counts as one object, so group first when several
+shapes should be masked together.
+
+## Mask
+
+1. Place the mask shape **above** the content in the Object Tree and select both.
+2. **Object › Make Mask**.
+
+Only the content inside the mask shape stays visible. The mask keeps its own fill and opacity —
+a semi-transparent or gradient-filled mask fades the content — and it can be moved, reshaped or
+animated at any time.
+
+## Mask Effect
+
+1. Place the masking shape **below** the content and select both.
+2. **Object › Add Mask Effect**.
+
+The lower object now defines where the upper one is visible, while remaining an ordinary,
+independent object — animate it, restyle it, reuse it. Because the link is a reference, removing
+the effect leaves both objects exactly as they were.
+
+## Clip Path
+
+1. Place the clipping shape **above** the content and select both.
+2. **Object › Make Clip Path**.
+
+The top shape's geometry becomes a clip path (it disappears as a drawable object) and the content
+below is cut to it — hard-edged, no transparency. A clip made from a single animated path keeps
+its shape animation; more complex animated clips are frozen at the current frame (a warning tells
+you).
+
+{/* e2e-screenshot
+app: svga · viewport: 1440x900 · hideDevUi: true · date: 2026-08-31
+setup: setup(400, 400, {"fill": "#e0533d", "stroke": "#1b3a63"}); click("toolsPicker.rectangle"); move("canvas.bg", "source:60", "source:100", "canvas.bg", "drop:340", "drop:300"); click("toolsPicker.ellipse"); move("canvas.bg", "source:110", "source:120", "canvas.bg", "drop:290", "drop:280"); click("toolsPicker.select"); key("a", "meta"); click("toolbar.actionsGroup-mask"); click("toolbar.actionsGroup-mask.addClip"); click("elementTree.root.el(nm:Rectangle,ty:rect).expand")
+crop: clip={"x":0,"y":40,"w":1000,"h":580}
+annotate: annotate([{"kind":"box","theme":"red","bounds":{"x":565,"y":255,"w":240,"h":210},"padding":6,"color":"#08f","stroke":1.5,"fill":"none"},{"kind":"box","theme":"red","bounds":{"x":7,"y":113,"w":244,"h":64},"padding":2,"color":"#08f","stroke":1.5,"fill":"solid","fillAlpha":0.2},{"kind":"title","theme":"red","halo":"chip","bounds":{"x":565,"y":255,"w":240,"h":210},"text":"The rectangle, clipped to the ellipse","at":"bottom","offset":{"x":0,"y":10},"arrow":true,"width":2.5,"arrowFill":"accent"},{"kind":"title","theme":"red","halo":"chip","bounds":{"x":7,"y":113,"w":244,"h":64},"text":"The clip shape becomes a child","at":"right","offset":{"x":120,"y":-40},"arrow":true,"width":2.5,"arrowFill":"accent"}])
+notes: scale 1.4 (1000-px crop). CHANGED FROM THE PLAN: a rectangle clipped by an ellipse instead of text clipped by a star — same idea, far less setup. Make Clip Path uses the TOP shape as the clipper; afterwards it disappears from the canvas and becomes a child of the clipped object in the tree.
+*/}
+![A rectangle clipped to an ellipse, with the clip shape shown nested under it in the Objects panel](/images/docs/editor/masks/clip-path.png)
+
+## Animating a Mask
+
+Masks are a favourite animation device: keyframe the mask shape's position, scale or path and the
+content is revealed, wiped or spot-lit. A mask that slides across a line drawing, a circle that
+grows to reveal a photo, a trim-stroke path used as a mask for a "drawing on" effect — all work in
+every saved format; see [SVG ↔ Lottie support](/docs/svga#svg--lottie-support) for the
+Lottie limits.
+
+## Remove a Mask, Mask Effect or Clip Path
+
+Select the masked object (or the group) and choose **Object › Remove Mask** or
+**Object › Remove Clip Path** — also in the toolbar's **Mask** dropdown. For a Mask, the mask
+shape returns to the canvas as a normal object; for a Mask Effect, the reference is dropped and
+both objects are unchanged.

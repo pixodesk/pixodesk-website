@@ -31,7 +31,7 @@ pages:
             #       title: Download
             #       link: "/2d-animator/download"
 
-            - title: <div class='uppercase text-xs text-gray-400'>Pixodesk</div> 2D Animator
+            - title: <div class='uppercase text-xs text-gray-400'>Pixodesk</div> 2D Animator (Lottie)
               icon: 2d
               platform: For macOS and Windows
               price: $4.99/month or $29.99/year
