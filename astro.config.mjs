@@ -5,6 +5,7 @@ import yaml from "@modyfi/vite-plugin-yaml";
 import mdx from '@astrojs/mdx';
 import starlight from "@astrojs/starlight";
 import { remarkSvgaDocLinks } from "./src/plugins/remark-svga-doc-links.mjs";
+import { rehypeTableWrap } from "./src/plugins/rehype-table-wrap.mjs";
 import { docsSidebar, docsSidebarIntegration, svgaRedirects } from "./src/plugins/docs-sidebar.mjs";
 
 export default defineConfig({
@@ -15,6 +16,7 @@ export default defineConfig({
     redirects: svgaRedirects(),
     markdown: {
         remarkPlugins: [remarkSvgaDocLinks],
+        rehypePlugins: [rehypeTableWrap],   // scroll/frame wrapper around every table
         shikiConfig: {
             langAlias: { svg: 'xml' },   // shiki has no "svg" grammar; SVG is XML
             themes: {
