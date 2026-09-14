@@ -1,16 +1,17 @@
 ---
 title: "Installing the players (overview)"
 slug: "docs/svga/player-library/installation"
-description: "Install a package only if you use the JSON format. A pre-rendered SVG needs nothing — the CSS flavour is plain SVG, and the JS flavour carries its own copy…"
+description: "Install a package only if you use the JSON format. A pre-rendered SVG needs nothing — the CSS flavor is plain SVG, and the JS flavor carries its own copy of…"
 ---
 
 Install a package only if you use the **JSON** format. A pre-rendered SVG needs nothing —
-the CSS flavour is plain SVG, and the JS flavour carries its own copy of the player — so if
+the CSS flavor is plain SVG, and the JS flavor carries its own copy of the player — so if
 that is your route, skip this page. (One limit to know before you commit to it: a pre-rendered
 file can be inlined **once per page** — [read more](https://pixodesk.com/docs/svga/prerendered-svg/on-the-web#one-copy-of-a-file-per-page).)
 
 ## Packages
 
+<!-- px-check off the package list, prose -->
 | Package | For | Install |
 |---|---|---|
 | `@pixodesk/svg-animator-web` | browsers, vanilla JavaScript / any framework via the DOM | `npm install @pixodesk/svg-animator-web` |
@@ -49,7 +50,7 @@ cp node_modules/@pixodesk/svg-animator-web/dist/pixodesk-svg-animator.umd.min.js
 ```
 
 No project to install into? `npm pack @pixodesk/svg-animator-web` downloads the exact package
-tarball; the file is at `package/dist/index.umd.min.js` inside it.
+tarball; the file is at `package/dist/pixodesk-svg-animator.umd.min.js` inside it.
 
 Then load it with a relative path, like any other script of yours:
 
@@ -79,6 +80,7 @@ if you prefer ([the examples](../../examples/docs-examples/src/cases/static/vani
 
 Files in `dist/`:
 
+<!-- px-check off the dist file list, prose -->
 | File | Use |
 |---|---|
 | `index.js` · `index.cjs` (+ `.min` variants) | ESM / CJS entry for bundlers |
@@ -100,6 +102,17 @@ const animation = _animation as PxAnimatedSvgDocument;
 Importing a `.json` file at all requires `"resolveJsonModule": true` in your `tsconfig.json`,
 under `compilerOptions`. The same `PxAnimatedSvgDocument` type is exported by the core and React
 Native packages.
+
+The other types worth knowing by name sit on a player's own surface. Creating one:
+`PxTagAnimatorOptions` is what `loadTagAnimators` takes, and `PxPrerenderedAnimatorOptions` what
+the pre-rendered builds take. Driving one: `PxAnimatorHandle` is the handle the components hand
+back through `apiRef`, and `PxPlaybackApi` the smaller surface a pre-rendered player offers.
+Retuning one: `PxPlaybackOverride` is the override block every surface accepts.
+
+Hearing back from it: `PxAnimatorCallbacks` is the single callback shape — the playback lifecycle
+plus `onWarn` / `onError` — and `PxDiagnosticsConfig` is the diagnostics half of it on its own. A
+handler receives a `PxDiagnostic`, whose `kind` is a `PxDiagnosticKind` saying who can act on it,
+and `PxDiagnostics` is the channel object a player reports through.
 
 ## Requirements
 

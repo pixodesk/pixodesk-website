@@ -155,9 +155,9 @@ the **File** section of the Properties panel when nothing is selected:
 - **File Type** — JSON for the Pixodesk player (`.json`), or pre-rendered SVG (`.svg`) with
   **CSS keyframes** or **Embedded JS** animation (the same choice is a radio in the File menu:
   *SVG − CSS keyframes animation, no JS* / *SVG − Embedded JS animation*).
-- **JS-Animation** — for embedded JS: **Auto** (the editor picks the engine per feature),
-  **Web Animation API**, or **Animation Frames**; the size of the embedded player is shown next
-  to each choice.
+- **JS-Animation** — for embedded JS: **Auto** (the browser where it can, the player where it
+  must), **Native** (the browser's Web Animations API only), or **Player** (the player's own
+  frame loop); the size of the embedded player is shown next to each choice.
 - **Embed JS Player** — embed the player inside the SVG, or reference it as an external script.
 - **Unoptimised JS** — write the readable, non-minified player (for debugging only).
 

@@ -27,12 +27,14 @@ by sizing the parent (the SVG keeps its `viewBox`).
 
 ## Control modes
 
-Pick one — they are mutually exclusive, and take precedence in the order listed. The `apiRef`
-is filled in **every** mode, so you can always call `play()` / `pause()` yourself; passing
-`apiRef` and nothing else is the imperative mode, where the document's trigger is switched off
-and the ref is the only thing that starts playback.
+Three control modes, plus a handle that is not one. Set more than one control prop and the
+highest-priority one wins — `progress` / `time` → `play` / `pause` → `autoplay` — and the
+component warns, naming both props and the winner. `apiRef` is filled in **every** mode and never
+changes which one you are in, so you can always call `play()` / `pause()` yourself; `apiRef` with
+no control prop beside it is simply the static mode, where nothing plays until you say so. React,
+Vue and React Native all resolve this the same way, from one rule in core.
 
-### 1 · Imperative API (`apiRef`)
+### Imperative API (`apiRef`)
 
 > **Example:** [`react/imperative`](../../examples/docs-examples/src/cases/react/imperative/) — `pnpm example:docs`, then open `#react/imperative`.
 
@@ -57,20 +59,30 @@ export function Player() {
 }
 ```
 
-`ReactAnimatorApi`:
+What `apiRef.current` gives you — the web API minus `destroy` / `getRootElement` / `isReady`,
+because the component owns the element's lifetime. It is core's `PxAnimatorHandle` under this
+package's name; `VueAnimatorApi` and `RnAnimatorApi` are the same type, so the three cannot drift:
 
-| Method | Description |
-|---|---|
-| `play()` | start, or resume from the current time |
-| `pause()` | pause at the current time |
-| `cancel()` | stop and reset to the start |
-| `finish()` | jump to the end and hold it |
-| `setPlaybackRate(rate)` | `1` normal, `2` double, negative = reverse |
-| `getCurrentTime()` | ms, or `null` before mount |
-| `setCurrentTime(ms)` | jump to a point in the animation, in milliseconds from its start |
-| `isPlaying()` | `true` while the animation is running, `false` when paused, finished or not started |
+<!-- px-check signature pkg=react -->
+```typescript
+interface ReactAnimatorApi {
+    isPlaying(): boolean;                  // true while running; false when paused, finished or not started
+    play(): void;                          // start, or resume from the current time
+    pause(): void;                         // hold the current frame
+    cancel(): void;                        // stop and reset to the start
+    finish(): void;                        // jump to the end and hold it
+    setPlaybackRate(rate: number): void;   // 1 normal, 2 double, negative = reverse; 0 is rejected
+                                           //   with a warning — use pause()
+    getCurrentTime(): number | null;       // ms from the start of the whole run, every iteration
+                                           //   included; null before mount
+    setCurrentTime(time: number): void;    // seek, ms from the start; clamped to the run
+    getCurrentProgress(): number | null;   // the same position as 0–1 of the whole run — the read
+                                           //   twin of the `progress` prop
+    setCurrentProgress(p: number): void;   // seek, 0–1 of the whole run
+}
+```
 
-### 2 · Autoplay
+### Autoplay
 
 > **Example:** [`react/autoplay`](../../examples/docs-examples/src/cases/react/autoplay/) — `pnpm example:docs`, then open `#react/autoplay`.
 
@@ -87,9 +99,11 @@ export function Intro() {
 ```
 
 Uses the trigger saved in the document — on load, on hover, on click, when scrolled into view
-— and its out action. Override with `startOn` / `outAction` / `scrollIntoViewThreshold`.
+— and its out action. Override it for this one mount with the `startOn` shortcut, or with
+`timeline={{ trigger: { … } }}` for the rest of the trigger — see
+[Playback overrides](#playback-overrides).
 
-### 3 · Controlled time (`progress` / `time`)
+### Controlled time (`progress` / `time`)
 
 > **Example:** [`react/controlled-time`](../../examples/docs-examples/src/cases/react/controlled-time/) — `pnpm example:docs`, then open `#react/controlled-time`.
 
@@ -114,7 +128,7 @@ export function Scrubber() {
 
 `progress` is a position in the whole timeline (duration × iterations), from `0`, the first frame, to `1`, the last; `time` is a time in milliseconds from the start.
 
-### 4 · Declarative play / pause
+### Declarative play / pause
 
 > **Example:** [`react/declarative`](../../examples/docs-examples/src/cases/react/declarative/) — `pnpm example:docs`, then open `#react/declarative`.
 
@@ -139,51 +153,111 @@ export function Controlled() {
 }
 ```
 
-`play && !pause` plays; `pause` pauses; `play === false` jumps to the end state; a pause that is
+`play && !pause` plays; `pause` pauses; `play === false` holds where it is (it used to jump to the end); a pause that is
 switched back off resumes.
 
-With none of `apiRef` / `autoplay` / `progress` / `time` / `play` / `pause` set, the component
-renders the first frame statically.
+With none of `autoplay` / `progress` / `time` / `play` / `pause` set, the component renders the
+first frame statically — `apiRef` on its own is such a case, so playback waits for your `play()`.
+
+## Playback overrides
+
+> **Example:** [`playback/override-react`](../../examples/docs-examples/src/cases/playback/override-react/) — `pnpm example:docs`, then open `#playback/override-react`.
+
+The same document can play differently in each place you mount it. `timeline` takes an object
+shaped exactly like the file's own `animator` block and deep-merges it over what the file says
+— the document you passed is never modified.
+
+```tsx
+// The file loops twice and starts on load; here it loops forever and waits for play().
+<PixodeskSvgAnimator
+  doc={animation}
+  timeline={{ iterations: 'infinite', trigger: { startOn: 'programmatic' } }}
+  apiRef={apiRef}
+/>
+```
+
+Objects merge key by key, values replace, and `null` **deletes** a key so the default its
+absence means comes back:
+
+```tsx
+<PixodeskSvgAnimator doc={animation} autoplay timeline={{ delay: null }} />
+```
+
+`duration`, `delay`, `iterations` and `startOn` are also plain props, because
+`duration={2000}` reads better than a nested object; a prop wins over the same key inside
+`timeline`. To ignore the file's playback settings entirely and start from the player's defaults,
+add `resetTimeline`.
+
+Full merge rules — including what happens when the override changes the kind of timeline — are
+in [Playback & triggers → Overriding from a player](./playback-and-triggers.md#overriding-from-a-player).
 
 ## Props
 
-| Prop | Type | Description |
-|---|---|---|
-| `doc` | `PxAnimatedSvgDocument` | **required** — the animation document |
-| `className` | `string` | class on the rendered root `<svg>` |
-| `style` | `CSSProperties` | inline style on the root `<svg>` |
-| **Control** | | |
-| `autoplay` | `boolean` | start the way the file says — the *Start* trigger you chose in the editor: at once, on hover, on click, or when scrolled into view |
-| `play` | `boolean` | play unconditionally (ignores document triggers) |
-| `pause` | `boolean` | pause current playback |
-| `apiRef` | `RefObject<ReactAnimatorApi>` | imperative control |
-| `progress` | `number` | show the frame at this position in the whole timeline (duration × iterations): `0` is the first frame, `0.5` the middle, `1` the last |
-| `time` | `number` | show the frame at that time, in milliseconds from the start |
-| **Timing overrides** | | *(each replaces the document's `animator` value)* |
-| `duration` | `number` | ms for one iteration |
-| `delay` | `number` | wait this many ms, then start. A negative value skips ahead instead: `-500` starts right away from the frame at 0.5 s, as if the animation had already been running for half a second |
-| `iterations` | `number \| 'infinite'` | how many times to play; `'infinite'` never stops |
-| `direction` | `'normal' \| 'reverse' \| 'alternate' \| 'alternate-reverse'` | play forward, backward, or turn around on every iteration (starting forward or backward) |
-| `fill` | `'forwards' \| 'backwards' \| 'both' \| 'none'` | what shows before start / after the end |
-| `mode` | `'auto' \| 'waapi' \| 'frames'` | engine — see [Web player → Engine modes](./web-player.md#engine-modes) |
-| `frameRate` | `number` | target fps (frames engine) |
-| **Trigger overrides** | | |
-| `startOn` | `'load' \| 'mouseOver' \| 'click' \| 'scrollIntoView' \| 'programmatic'` | what starts the animation: at once, on hover, on click, when scrolled into view, or only a `play()` call from code |
-| `outAction` | `'continue' \| 'pause' \| 'reset' \| 'reverse'` | when the trigger ends (mouse out, second click, scrolled out) |
-| `scrollIntoViewThreshold` | `number` | how much of the animation must be on screen before it starts, as a share of its area: `0` (default) starts as soon as any part of it shows, `0.5` waits until half of it is visible, `1` until all of it is |
-| **Callbacks** | | |
-| `onPlay` | `() => void` | the animation started playing — for the first time, or resumed after a pause |
-| `onPause` | `() => void` | playback paused at the current frame — via the `pause` prop, the API's `pause()`, or a trigger's *out action* |
-| `onCancel` | `() => void` | playback stopped and the animation went back to its start state |
-| `onFinish` | `() => void` | the animation reached its end — it played all its iterations, or `finish()` was called. Does not fire when playback is stopped early |
-| `onRemove` | `() => void` | the animator was thrown away: the component unmounted, or you passed a different `doc` and a new animator was built for it |
-| `onStop` | `() => void` | fires *in addition to* whichever of `onPause`, `onCancel`, `onFinish` or `onRemove` just fired. Use this one callback when you only care that the animation is no longer playing, whatever the reason |
+Only `doc` is required; everything else overrides what the document already says. React renders
+the SVG; the player drives its attributes.
+
+<!-- px-check signature pkg=react -->
+```typescript
+const PixodeskSvgAnimator: FC<PixodeskSvgAnimatorProps>;
+
+interface PixodeskSvgAnimatorProps {
+    doc: PxAnimatedSvgDocument;           // the animation document (the JSON format page); no URL form
+    className?: string;                   // added to the root <svg>
+    style?: CSSProperties;                // set on the root <svg>
+
+    // Playback override — one object, shaped exactly like the file's `timeline` block,
+    // deep-merged over it. `null` at a slot DELETES that key — see Playback overrides above:
+    //   timeline={{ engine, frameRate, fillMode, direction,
+    //              trigger: { outAction, finishAction, scrollIntoViewThreshold } }}
+    timeline?: PxTimelinePatch | string;  // a JSON string is accepted too
+    resetTimeline?: boolean;              // start from the player's defaults, `timeline` on top
+
+    // Shortcuts — a shortcut wins over the same key inside `timeline`
+    duration?: number;                    // ▸ timeline.duration (one iteration, ms)
+    delay?: number;                       // ▸ timeline.delay (ms). Negative skips ahead: -500 starts
+                                          //   at once from the frame at 0.5 s
+    iterations?: number | 'infinite';     // ▸ timeline.iterations; 'infinite' never stops
+    startOn?: PxStartOn;                  // ▸ timeline.trigger.startOn: 'load' | 'mouseOver' | 'click' |
+                                          //   'scrollIntoView' | 'programmatic' (only a play() from code)
+
+    // Control — the HIGHEST-priority one that is set picks the mode (Control modes, above)
+    apiRef?: React.RefObject<ReactAnimatorApi | null>;   // never a mode: filled in every mode
+    autoplay?: boolean;                   // obey the document's own trigger — the Start setting from the editor
+    progress?: number;                    // controlled: 0–1 of duration × iterations
+                                          //   (one iteration when iterations is 'infinite')
+    time?: number;                        // controlled: ms from the start
+    play?: boolean;                       // true: play regardless of the trigger; false: hold where it is
+    pause?: boolean;                      // hold the current frame; false again resumes
+
+    // Lifecycle — no arguments
+    onPlay?: () => void;     // started, or resumed after a pause
+    onPause?: () => void;    // paused: the `pause` prop, the API's pause(), or a trigger's out action
+    onCancel?: () => void;   // stopped and back at the start state
+    onFinish?: () => void;   // reached the end — every iteration played, or finish() was called;
+                             //   not when stopped early
+    onRemove?: () => void;   // the player was destroyed — unmount, or a new `doc` re-created it
+    onStop?: () => void;     // after any of onPause / onCancel / onFinish / onRemove — the one to use
+                             //   when you only care that it is no longer playing
+
+    // Diagnostics — the shared channel (the API at a glance): onWarn = it plays, but something was
+    // ignored, degraded or misspelled; onError = this instance will not play, `apiRef` stays empty
+    onWarn?: (d: PxDiagnostic) => void;
+    onError?: (d: PxDiagnostic) => void;
+    muteWarn?: boolean; muteError?: boolean;
+}
+```
+
+Each diagnostic is `{ kind, message, detail?, error? }`, where `kind` says **who can act on it**:
+`document` (repair the file) · `host` (fix the page) · `platform` (the browser could not do it;
+the player degraded) · `usage` (fix the props you passed) · `internal` (report it to us). So you
+can route rather than just log — surface `document` problems in a build check, for instance. Once
+you know what a document has to say and tolerate it, `muteWarn` keeps it out of the console.
 
 Passing a different `doc` (or changing `className` / `style` / the control mode) throws the
 old animator away and builds a new one; the old instance emits `onCancel`, `onRemove` and
 `onStop` on its way out. Changing `progress` / `time` does not recreate anything.
 
-## CSS-flavour SVGs — `PixodeskSvgCssAnimator`
+## CSS-flavor SVGs — `PixodeskSvgCssAnimator`
 
 > **Example:** [`react/css-svgr`](../../examples/docs-examples/src/cases/react/css-svgr/) — `pnpm example:docs`, then open `#react/css-svgr`.
 
@@ -206,12 +280,23 @@ export function HoverLogo() {
 }
 ```
 
-| Prop | Type | Default |
-|---|---|---|
-| `children` | the SVGR component | required |
-| `startOn` | `'load' \| 'mouseOver' \| 'click' \| 'scrollIntoView'` | `'load'` |
-| `outAction` | `'continue' \| 'pause' \| 'reset'` | `'continue'` |
-| `className` · `style` | on the wrapper `<div>` | — |
+<!-- px-check signature pkg=react -->
+```typescript
+// Wraps the SVG in a div and drives it by toggling class names — `px-anim-enabled` once
+// started, plus `px-anim-playing` while running.
+const PixodeskSvgCssAnimator: FC<{
+    children: ReactNode;                  // the SVGR-imported SVG component
+    startOn?: PxStartOn;                  // 'load' (default) | 'mouseOver' | 'click' | 'scrollIntoView'
+                                          //   — 'programmatic' does nothing here (no play())
+    outAction?: PxOutAction;              // 'continue' (default) | 'pause' | 'reset'
+                                          //   — 'reverse' is accepted but acts as 'continue': a class
+                                          //   toggle cannot run CSS keyframes backwards
+    scrollIntoViewThreshold?: number;     // 0–1 of the SVG visible before 'scrollIntoView' starts;
+                                          //   default 0, the wire default
+    className?: string;                   // on the wrapper div
+    style?: CSSProperties;                // on the wrapper div
+}>;
+```
 
 > ⚠️ **Don't put the same SVG file on a page twice.** You can have as many
 > `<PixodeskSvgCssAnimator>` on a page as you like, each with a *different* file. What does not
@@ -220,7 +305,7 @@ export function HoverLogo() {
 > one animation several times, use the JSON component instead — the player gives every copy
 > its own ids ([read more](https://pixodesk.com/docs/svga/prerendered-svg/on-the-web#one-copy-of-a-file-per-page)).
 
-SVGR strips `<script>` tags, so only the pure CSS flavour works this way. Files with scripts
+SVGR strips `<script>` tags, so only the pure CSS flavor works this way. Files with scripts
 (JS triggers / JS animation) should be inlined as raw HTML, or switched to JSON.
 
 ## Next.js
@@ -238,6 +323,16 @@ export default function Hero() {
 }
 ```
 
-JSON imports work out of the box in Next.js; for a CSS-flavour SVG use `@svgr/webpack`.
+JSON imports work out of the box in Next.js; for a CSS-flavor SVG use `@svgr/webpack`.
 
+## API reference
+
+Everything is spelled out above: `PixodeskSvgAnimator` and its props under [Props](#props), the
+handle under [Imperative API](#imperative-api-apiref), `PixodeskSvgCssAnimator` under
+[CSS-flavor SVGs](#css-flavor-svgs--pixodesksvgcssanimator). The callbacks and diagnostics are
+the shape every player shares — [the API at a glance](./README.md#the-api-at-a-glance).
+
+<!-- px-check exports @pixodesk/svg-animator-react -->
+Also exported: **●** `PixodeskSvgAnimatorProps`, `ReactAnimatorApi`,
+`PixodeskSvgAnimatorCallbacks` (the six `on*` props as a standalone type).
 

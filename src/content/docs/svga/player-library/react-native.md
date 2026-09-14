@@ -75,7 +75,7 @@ Common variations. Each line is the `<PixodeskSvgAnimator>` element inside a com
 
 ```tsx
 // Play once when a screen opens, then hold the last frame
-<PixodeskSvgAnimator doc={doc} autoplay iterations={1} fill="forwards" />
+<PixodeskSvgAnimator doc={doc} autoplay iterations={1} timeline={{ fillMode: 'forwards' }} />
 
 // Loop forever regardless of what the document says
 <PixodeskSvgAnimator doc={doc} autoplay iterations="infinite" />
@@ -106,9 +106,13 @@ const doc = animation as PxAnimatedSvgDocument;
 
 ## Control modes
 
-Four ways to drive playback — pick one, they are mutually exclusive.
+Three control modes, plus a handle that is not one. Set more than one control prop and the
+highest-priority one wins — `progress` / `time` → `play` / `pause` → `autoplay` — and the
+component warns, naming both props and the winner; set none of them and the first frame renders
+statically. `apiRef` is filled in every mode and never changes which one you are in. React, Vue
+and React Native all resolve this the same way, from one rule in core.
 
-**Autoplay** — honours the document's trigger (`load` plays on mount; `click` wraps the
+**Autoplay** — honors the document's trigger (`load` plays on mount; `click` wraps the
 animation in a `Pressable`; `scrollIntoView` measures visibility against the window):
 
 ```tsx
@@ -162,8 +166,13 @@ export function Imperative() {
 ```
 
 `RnAnimatorApi`: `play()`, `pause()`, `cancel()`, `finish()`, `isPlaying()`,
-`setPlaybackRate(rate)` (negative = reverse), `getCurrentTime()`, `setCurrentTime(ms)` — jumping to a time
-while playing continues from there.
+`setPlaybackRate(rate)` (negative = reverse; `0` is rejected with a warning — use `pause()`),
+`getCurrentTime()`, `setCurrentTime(ms)`, `getCurrentProgress()`, `setCurrentProgress(p)` —
+jumping to a time while playing continues from there.
+
+`getCurrentTime()` is ms from the start of the whole run, every iteration included — the same
+as the web players. It used to be ms within the *current* iteration here, so a slider built on
+it jumped back to zero each time the animation repeated.
 
 **Controlled time:**
 
@@ -191,43 +200,101 @@ Only `doc` is required. The file already carries the timing and the trigger you 
 editor; every other prop is optional and, when passed, replaces the file's value for this one
 component.
 
-| Prop | Type | Description |
-|---|---|---|
-| `doc` | `PxAnimatedSvgDocument` | **required** — the animation, as saved by the editor |
-| `autoplay` | `boolean` | start the way the file says — the *Start* trigger you chose in the editor: at once, on tap, or when scrolled into view |
-| `play` | `boolean` | play now, whatever the file's trigger says |
-| `pause` | `boolean` | pause the current playback; set it back to `false` to resume |
-| `apiRef` | `RefObject<RnAnimatorApi>` | imperative control |
-| `progress` | `number` | show the frame at this position in the whole timeline (duration × iterations): `0` is the first frame, `0.5` the middle, `1` the last |
-| `time` | `number` | show the frame at that time, in milliseconds from the start |
-| `duration` · `delay` | `number` | length of one iteration, and the wait before it starts, both in ms. The file already carries the values you set in the editor — pass these only to change them for this one component |
-| `iterations` | `number \| 'infinite'` | how many times to play; `'infinite'` never stops |
-| `fill` | `'forwards' \| 'backwards' \| 'both' \| 'none'` | what shows before the start / after the end |
-| `direction` | `'normal' \| 'reverse' \| 'alternate' \| 'alternate-reverse'` | play forward, backward, or turn around on every iteration (starting forward or backward) |
-| `resetOnFinish` | `boolean` | snap back to the start after a natural finish (the file spells it `timeline.trigger.onFinish: "reset"`) |
-| `outAction` | `'continue' \| 'pause' \| 'reset' \| 'reverse'` | what happens when the trigger ends — a second tap with the `click` trigger, or scrolling out of view with `scrollIntoView`: keep playing, pause, go back to the start, or play backwards. If you don't pass it, the value saved in the file is used (set in the editor as *When the trigger ends*); if the file has none either, `pause` |
-| `onPlay` · `onPause` · `onFinish` · `onCancel` · `onStop` | `() => void` | called when the animation starts or resumes (`onPlay`), pauses (`onPause`), reaches its end (`onFinish`), or is stopped and reset to the start (`onCancel`) — same meanings as in the [React component](./react.md#props). `onStop` fires *in addition to* any of the others that halt playback — use it when you only care that the animation is no longer playing |
-| `onError` | `(error, componentStack?) => void` | the document could not be compiled or rendered |
-| `fallback` | `(error) => ReactElement \| null` | rendered in place of a failed animation (default: renders nothing) |
+Mirrors the React component on `react-native-svg` + `reanimated`: the document is materialized
+once, sampled into per-element tracks, and played on the UI thread. No CSS-flavor component, no
+`className` / `style`, and a `fallback` element instead of a DOM.
+
+<!-- px-check signature pkg=rn -->
+```typescript
+// The component — a plain function, also the default export.
+function PixodeskSvgAnimator(props: PixodeskSvgAnimatorProps): ReactElement | null;
+
+interface PixodeskSvgAnimatorProps {
+    doc: PxAnimatedSvgDocument;           // required — the animation, as saved by the editor
+
+    // Playback override — the same object as React (Playback overrides below). `timeline.engine`
+    // is accepted but ignored: React Native always uses the `native` materialization.
+    timeline?: PxTimelinePatch | string;
+    resetTimeline?: boolean;              // start from the player's defaults, `timeline` on top
+
+    duration?: number; delay?: number;    // shortcuts, ms: one iteration, and the wait before it
+    iterations?: number | 'infinite';     // 'infinite' never stops
+    startOn?: PxStartOn;                  // 'mouseOver' has no touch equivalent and is ignored;
+                                          //   'click' = tap (a second tap applies outAction);
+                                          //   'scrollIntoView' = measured every 200 ms
+
+    // Control — the highest-priority one that is set picks the mode (Control modes above)
+    autoplay?: boolean;                   // honor the document trigger — the same defaults as the
+                                          //   web: startOn 'load', outAction 'continue'
+    play?: boolean; pause?: boolean;      // unconditional control; play={false} holds where it is
+    progress?: number;                    // 0–1 of duration × iterations (one iteration when 'infinite')
+    time?: number;                        // ms from the start
+
+    apiRef?: React.RefObject<RnAnimatorApi | null>;   // the same methods as ReactAnimatorApi, and the
+                                          //   same meanings: whole-run time, clamped seeks, rate 0 rejected
+
+    // Lifecycle — no arguments; the same meanings as on the web
+    onPlay?: () => void; onStop?: () => void; onPause?: () => void;
+    onCancel?: () => void; onFinish?: () => void;
+    onRemove?: () => void;                // unmount, or a `doc` swap
+
+    // Diagnostics — the shared channel (the API at a glance): onError means THIS INSTANCE WILL NOT
+    // PLAY — the compile or the render threw; d.error is the Error, d.detail.componentStack is set
+    // when the error boundary caught it — and `fallback` is what shows instead. Only JavaScript
+    // failures reach it; a crash inside the native renderer does not.
+    onWarn?: (d: PxDiagnostic) => void;
+    onError?: (d: PxDiagnostic) => void;
+    muteWarn?: boolean; muteError?: boolean;
+    fallback?: (error: Error) => ReactElement | null;   // rendered in place of a failed animation
+}
+```
+
+The package exports the component, its props (`PixodeskSvgAnimatorProps`) and its handle
+(`RnAnimatorApi`); nothing else.
 
 With none of `autoplay` / `play` / `pause` / `progress` / `time` set, the first frame renders
 statically.
 
+### Playback overrides
+
+The same document can play differently on each screen. `timeline` takes an object shaped exactly
+like the file's own `animator` block and deep-merges it over what the file says — the document
+you passed is never modified.
+
+```tsx
+// The file loops twice and starts on mount; here it loops forever and holds the last frame.
+<PixodeskSvgAnimator
+  doc={doc}
+  autoplay
+  timeline={{ iterations: 'infinite', fillMode: 'forwards' }}
+/>
+```
+
+Objects merge key by key, values replace, and `null` **deletes** a key so the default its
+absence means comes back. `duration`, `delay`, `iterations` and `startOn` are also plain props,
+and win over the same key inside `timeline`. To ignore the file's playback settings entirely,
+add `resetTimeline`.
+
+`timeline` is where the settings that used to be their own props now live —
+`{ timeline: { fillMode, direction, trigger: { outAction, finishAction } } }`. Full merge rules
+are in [Playback & triggers → Overriding from a player](./playback-and-triggers.md#overriding-from-a-player).
+
 ### Differences from the React package
 
+<!-- px-check off differences from React, prose -->
 | Prop | Why it differs |
 |---|---|
-| `mode` | not accepted — there is no Web Animations API on React Native; playback is always native-driven |
-| `frameRate` | not accepted — the screen's own refresh rate is used. On React Native the player does not compute values frame by frame; when the document loads it works out the animated values in advance, as a list of snapshots — 60 per second of animation — and while playing, each screen refresh shows the nearest one. The closest thing to a frame rate is how many snapshots per second are prepared, and that can only be changed when you call the lower-level `compileTracks({ sampleRate })` yourself instead of using the component |
-| `startOn` | not accepted — the document's trigger is honoured via `autoplay` (`load`, `click`, `scrollIntoView`, `programmatic`); `mouseOver` has no touch equivalent |
+| `timeline.engine` | accepted inside `timeline` but ignored — there is no Web Animations API on React Native; playback is always native-driven |
+| `timeline.frameRate` | ignored — the screen's own refresh rate is used. On React Native the player does not compute values frame by frame; when the document loads it works out the animated values in advance, as a list of snapshots — 60 per second of animation — and while playing, each screen refresh shows the nearest one. The closest thing to a frame rate is how many snapshots per second are prepared, which the player fixes at 60 |
+| `startOn: 'mouseOver'` | has no touch equivalent, so it is not honored. The other four values (`load`, `click`, `scrollIntoView`, `programmatic`) work as they do on the web, from the file or from the prop |
 | `className` / `style` | not accepted — you cannot style the component itself. It fills whatever `View` you put it in, so to set its size, give that `View` a `width` and `height` (see [Quick start](#quick-start)). Styling *inside* the document — `style` on an element in the JSON — is supported |
-| `onRemove` | never called. On the web it tells you the animator was thrown away; here there is nothing to tell — when the component leaves the screen, React removes it and everything it created. If you need to run code at that moment, use a `useEffect` cleanup function in your own component |
 
 ### Failure handling
 
 The component never throws errors for a bad document: compilation and rendering run in `try/catch`
-and behind an error boundary, so a failure reaches `onError` and shows `fallback` while the
-rest of the screen keeps working.
+and behind an error boundary, so a failure reaches `onError` — the shared diagnostic, exactly as
+on the web: **this instance will not play** — and shows `fallback` while the rest of the screen
+keeps working. It is reported once, as an error; nothing else is logged for it.
 
 ```tsx
 import { Text } from 'react-native';
@@ -239,7 +306,7 @@ export function Safe() {
     <PixodeskSvgAnimator
       doc={doc}
       autoplay
-      onError={e => console.warn('animation failed:', e.message)}
+      onError={d => console.warn('animation failed:', d.message)}
       fallback={() => <Text>could not play this animation</Text>}
     />
   );
@@ -280,6 +347,7 @@ not supported.
 
 ### Elements
 
+<!-- px-check off support matrix, prose -->
 | Element | Supported | Notes |
 |---|---|---|
 | `svg`, `g`, `defs` | ✅ | |
@@ -295,21 +363,23 @@ not supported.
 
 ### Animatable attributes
 
+<!-- px-check off support matrix, prose -->
 | Attribute | Supported | Notes |
 |---|---|---|
-| `opacity`, `fill-opacity`, `stroke-opacity` | ✅ | |
-| `fill`, `stroke`, `stop-color` | ✅ | colours blend through RGBA |
-| `stroke-width`, `stroke-dashoffset` | ✅ | |
-| `stroke-dasharray` | ⚠️ | animates; the native value bridge not yet checked on a device |
+| `opacity`, `fillOpacity`, `strokeOpacity` | ✅ | |
+| `fill`, `stroke`, `stopColor` | ✅ | colors blend through RGBA |
+| `strokeWidth`, `strokeDashoffset` | ✅ | |
+| `strokeDasharray` | ⚠️ | animates; the native value bridge not yet checked on a device |
 | `x`, `y`, `width`, `height`, `cx`, `cy`, `r`, `rx`, `ry` | ✅ | |
 | `d` (path morphing) | ✅ | keyframes must share the same command structure |
 | `transform` (an object holding all the parts: translate, rotate, scale, …) and per-key `translate` / `rotate` / `scale` | ✅ | |
-| gradient stop `offset`, `stop-color` | ✅ | |
-| `font-size` and any other numeric attribute | ✅ | |
+| gradient stop `offset`, `stopColor` | ✅ | |
+| `fontSize` and any other numeric attribute | ✅ | |
 | filter primitive attributes | ⚠️ | compiles; on-device rendering not yet checked |
 
 ### Effects
 
+<!-- px-check schema PxEffectsSchema -->
 | Effect | Supported | Notes |
 |---|---|---|
 | `transformBy` | ✅ | |
@@ -318,13 +388,14 @@ not supported.
 | `clipPath` | ✅ | |
 | `strokeTrim` | ✅ | incl. `offset` and `subPaths: 'combined'` |
 | `clone` + `retime` | ✅ | incl. `timeCrop` |
-| `fillGradient` / `strokeGradient` | ✅ | animated stops **and** geometry |
-| Animated `gradientTransform` | ❌ | not implemented in the shared core, so unavailable on every player; a static `gradientTransform` works |
+| `fillGradient` / `strokeGradient` | ✅ | animated stops **and** geometry | <!-- px names=fillGradient,strokeGradient -->
+| Animated `gradientTransform` | ❌ | not implemented in the shared core, so unavailable on every player; a static `gradientTransform` works | <!-- px skip -->
 | `textPath` | ✅ | incl. animated `startOffset` |
 | `text.useGlyphs` | ✅ | |
 
 ### Motion, timing, references
 
+<!-- px-check off support matrix, prose -->
 | Feature | Supported | Notes |
 |---|---|---|
 | Motion along a path, `autoOrient` | ✅ | positions worked out in advance by the core |
@@ -332,21 +403,22 @@ not supported.
 | Text on a *closed* path with a non-zero `startOffset` | ⚠️ | worked around, not fixed: `react-native-svg`'s own text-on-path layout crashes on this (iOS), so the player gives such text its own *open* copy of the path; text that would wrap past the end of the loop is cut off instead. The web player is unaffected |
 | Per-property `loop`, incl. ping-pong | ✅ | |
 | Cubic-bezier and named easings | ✅ | |
-| `definitions.animations` / `easings` / `styles` / `glyphs` | ✅ | |
-| `node.style` | ✅ | |
+| `definitions.animations` / `easings` / `fonts` | ✅ | |
+| `node.style` (inline record) | ✅ | |
 
 ### Playback and triggers
 
+<!-- px-check off support matrix, prose -->
 | Feature | Supported | Notes |
 |---|---|---|
 | `duration`, `delay`, `iterations` (incl. infinite) | ✅ | |
-| All four `direction` values, all `fill` values, `resetOnFinish` | ✅ | |
+| All four `direction` values, all `fillMode` values, `trigger.finishAction` | ✅ | through `timeline` — see [Playback overrides](#playback-overrides) |
 | play / pause / cancel / finish | ✅ | |
 | Jumping to any time, also while playing | ✅ | |
 | Playback rate: faster, slower, reverse | ✅ | |
 | Triggers `load`, `programmatic`, `click`, `scrollIntoView` | ✅ | incl. `scrollIntoViewThreshold` and `outAction` |
 | Trigger `mouseOver` | ❌ | no touch equivalent; will not be added |
-| `frameRate`, `mode` | ❌ | see [Differences from the React package](#differences-from-the-react-package) |
+| `timeline.frameRate`, `timeline.engine` | ❌ | see [Differences from the React package](#differences-from-the-react-package) |
 | Scroll-driven playback (`timeline.type: 'scroll' / 'view'`) | ❌ | |
 
 ## Monorepo setup
@@ -380,19 +452,6 @@ config.resolver.resolveRequest = (context, moduleName, platform) => {
 
 A complete config is in
 [`examples/react-native-preview-player/metro.config.js`](../../examples/react-native-preview-player/metro.config.js).
-
-## Advanced exports
-
-For custom rendering or diagnostics:
-
-| Export | Purpose |
-|---|---|
-| `renderRnNode(node, opts)` | render a document tree to `react-native-svg` elements, with a `decorate` hook for wrapping animated elements |
-| `compileTracks(doc, { sampleRate, maxSamples, native })` | build the sampled tracks yourself; `sampleRate` is how many snapshots per second of animation are prepared — more make fast movement smoother but take more memory (default 60/s); `native: true` yields the value form native views want (a `transform` becomes a 6-number matrix) |
-| `sampleProps(tracks, tMs, stepMs, sampleCount, native)` | the worklet-safe track lookup |
-| `openClosedTextPathTargets(doc, warnings?)` | the closed-path `<textPath>` workaround |
-| `PxRnErrorBoundary` | the boundary the component wraps itself in |
-| `RN_SVG_COMPONENTS`, `toRnPropName` | the tag and attribute maps |
 
 ## Example apps
 

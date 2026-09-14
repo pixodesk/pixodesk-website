@@ -29,18 +29,22 @@ save.
 | **Delay** | `timeline.delay` (ms) | wait before the first iteration starts |
 | **Iterations** | `timeline.iterations` | a number, or “infinite” |
 | **Direction** | `timeline.direction` | “normal”, “reverse”, “alternate” (ping-pong), “alternate-reverse” |
-| **Fill mode** | `timeline.fill` | what shows outside the active time — “forwards” holds the last frame, “backwards” shows the first frame during the delay, “both”, or “none” to revert to the static SVG |
-| ***Reset on finish*** | `timeline.trigger.onFinish: "reset"` | snap back to the start after a natural finish |
+| **Fill mode** | `timeline.fillMode` | what shows outside the active time — “forwards” holds the last frame, “backwards” shows the first frame during the delay, “both”, or “none” to revert to the static SVG |
+| ***Reset on finish*** | `timeline.trigger.finishAction: "reset"` | snap back to the start after a natural finish |
 | **Frame rate** | `frameRate` | a target rate for the frame-loop engine only; leave it unset to run uncapped |
 
-## Engine mode
+## Engine
 
-**Engine mode** writes `mode`, and decides what actually drives the animation in a browser:
+**Engine** writes `timeline.engine`, and decides how the animated attributes actually get
+updated in a browser:
 
-- **Auto** (default) — the Web Animations API, falling back to a frame loop by itself when the
-  document animates something WAAPI cannot express.
-- **WAAPI** — Web Animations API only.
-- **Frames** — a `requestAnimationFrame` loop; universal browser support, honours *frame rate*.
+- **Auto** (default) — the browser's own machinery (the Web Animations API; for a
+  scroll-driven animation also its scroll timeline), falling back to the player's frame loop by
+  itself when the document animates something the browser cannot express.
+- **Native** — the browser only: Web Animations API, and the browser's scroll timeline for a
+  scroll-driven animation.
+- **JS** — the player's own `requestAnimationFrame` loop (and its own scroll measurement);
+  identical in every browser, honours *frame rate*.
 
 Leave it on **auto** unless you need a guarantee. React Native ignores it — playback there is
 always native-driven.

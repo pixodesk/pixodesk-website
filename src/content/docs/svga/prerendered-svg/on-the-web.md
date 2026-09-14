@@ -76,7 +76,7 @@ as the editor writes it (this is the file the
 [example](https://github.com/pixodesk/pixodesk-svg-animator/blob/main/examples/docs-examples/src/fixtures/ball-css-onload.svg) inlines):
 
 ```svg
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" id="_px_1" class="px-anim-enabled px-anim-playing" data-px-meta="runtime:{useCssAnimation:true},animator:{duration:1000,mode:'auto',iterations:'infinite',direction:'alternate',trigger:{startOn:'load',outAction:'pause'}}">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" id="_px_1" class="px-anim-enabled px-anim-playing" data-px-meta="runtime:{useCssAnimation:true},animator:{timeline:{duration:1000,iterations:'infinite',direction:'alternate',trigger:{startOn:'load',outAction:'pause'}}}">
   <style>@keyframes _px_2 {0% {transform:translate(200px,60px);animation-timing-function:cubic-bezier(0.33,0,0.67,0.33);}
 100% {transform:translate(200px,340px)}}
 .px-anim-enabled ._px_3 { animation: 1000ms _px_2 infinite alternate both; }
@@ -154,13 +154,13 @@ the player library). With *Embed JS Player* switched **on**, the editor inlines 
 `<script data-px-script="true">`, so the file is self-contained.
 
 ```svg
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" id="_px_1" data-px-meta="runtime:{externalJs:true},animator:{duration:1000,mode:'auto',iterations:'infinite',direction:'alternate',trigger:{startOn:'load',outAction:'pause'}}">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" id="_px_1" data-px-meta="runtime:{externalJs:true},animator:{timeline:{duration:1000,iterations:'infinite',direction:'alternate',trigger:{startOn:'load',outAction:'pause'}}}">
   <ellipse id="ball" fill="#0087ff" transform="translate(200,60)" rx="40" ry="40" data-px-meta="animate:{transform:{keyframes:[{time:0,value:{translate:[200,60]},easing:[0.33,0,0.67,0.33]},{time:1000,value:{translate:[200,340]}}]}}"/>
 <script data-px-script="true">
 //<![CDATA[
 (function() {
 var a = PixodeskAnimator.createAnimator({"data": 
-{"id":"_px_1","type":"svg","animator":{"mode":"auto","timeline":{"type":"clock","duration":1000,"trigger":{"startOn":"load","outAction":"pause"},"iterations":"infinite","direction":"alternate"},"definitions":{"animations":{"a0":{"transform":{"keyframes":[{"time":0,"value":{"translate":[200,60]},"easing":[0.33,0,0.67,0.33]},{"time":1000,"value":{"translate":[200,340]}}]}}}},"animateById":{"#ball":["a0"]}}}
+{"id":"_px_1","type":"svg","animator":{"timeline":{"duration":1000,"trigger":{"startOn":"load","outAction":"pause"},"iterations":"infinite","direction":"alternate"},"definitions":{"animations":{"a0":{"transform":{"keyframes":[{"time":0,"value":{"translate":[200,60]},"easing":[0.33,0,0.67,0.33]},{"time":1000,"value":{"translate":[200,340]}}]}}}},"animateById":{"#ball":["a0"]}}}
 });
 })();
 //]]>
@@ -196,9 +196,10 @@ control in a variable of its own, where scripts on your page cannot see it. So t
 plays fine, but your code has no way to pause it or jump around in it. If you need that
 control, you have two options:
 
-- choose the *Manually from JS* start option in the editor, then edit the exported script by
-  hand so it puts the remote control somewhere your code can reach, for example
-  `window.myAnim = PixodeskAnimator.createAnimator(…)`;
+- give the document a **debug handle**: `animator.debugGlobalName: "myAnim"` makes the player
+  publish its remote control as `window.myAnim`, so `myAnim.pause()` works from your page or
+  the console without touching the exported file. Pair it with the *Manually from JS* start
+  option when you want your code to decide when it begins;
 - or — simpler, and recommended — use the [JSON format](/docs/svga/player-library/web-player) instead:
   controlling the animation from code is exactly what it is made for.
 

@@ -1,11 +1,11 @@
 ---
 title: "Troubleshooting & FAQ"
 slug: "docs/svga/player-library/troubleshooting"
-description: "Player-library troubleshooting — find your symptom below; each entry says what to check and what to change. For pre-rendered SVG issues (a flavour that…"
+description: "Player-library troubleshooting — find your symptom below; each entry says what to check and what to change. For pre-rendered SVG issues (a flavor that shows…"
 ---
 
 Player-library troubleshooting — find your symptom below; each entry says what to check and
-what to change. For pre-rendered SVG issues (a flavour that shows a static frame, `<script>`
+what to change. For pre-rendered SVG issues (a flavor that shows a static frame, `<script>`
 stripped on import, two inlined copies interfering) see
 [Pre-rendered SVG on the web](https://pixodesk.com/docs/svga/prerendered-svg/on-the-web); for what each engine can and
 cannot animate per browser, see [Choosing a format](https://pixodesk.com/docs/svga/editor/choosing-a-format). If yours
@@ -15,13 +15,14 @@ is not here, go to [Still stuck?](#still-stuck) at the end.
 
 **The trigger is not "on load".** Check `animator.timeline.trigger.startOn` in the file (or the *Start*
 setting in the editor). `click` / `mouseOver` / `scrollIntoView` wait for the user;
-`programmatic` waits for you to call `play()`. In React/Vue, remember that `autoplay` is the
-only mode that uses the document's trigger — with `play`, `apiRef`, `time` etc. the trigger is
-switched to programmatic.
+`programmatic` waits for you to call `play()`. In React/Vue/React Native, remember that
+`autoplay` is the only mode that uses the document's trigger — with `play`, `pause`, `progress`
+or `time` the trigger is switched to programmatic. Passing `apiRef` does **not** change the mode.
 
 **React / Vue component with no control prop.** With none of `autoplay` / `play` / `pause` /
-`apiRef` / `progress` / `time` set, the component deliberately renders the first frame and does
-nothing. Add `autoplay`.
+`progress` / `time` set, the component deliberately renders the first frame and does
+nothing. Add `autoplay`. `apiRef` on its own is such a case: the ref is a handle, not an
+instruction, so nothing moves until you call `play()` on it.
 
 **`loadTagAnimators()` ran before the elements existed.** Call it after the DOM is ready (end of
 `<body>`, `DOMContentLoaded`), and call it again after inserting content dynamically — it only
@@ -56,7 +57,7 @@ component — add `'use client'` at the top of the file that renders it.
 
 **`Type '…' is not assignable to type 'PxAnimatedSvgDocument'` when importing JSON.** Cast
 once: `const doc = animation as PxAnimatedSvgDocument;` — JSON imports are typed structurally
-and a string field such as `"mode": "auto"` widens to `string`. Enable `resolveJsonModule`.
+and a string field such as `"engine": "auto"` widens to `string`. Enable `resolveJsonModule`.
 
 ## React Native
 
@@ -74,11 +75,12 @@ path. Details in [React Native → Feature support](./react-native.md#motion-tim
 **Hover does nothing.** `mouseOver` has no touch equivalent; use `click` or drive `play`
 yourself.
 
-## Playback behaviour
+## Playback behavior
 
-**It holds the last frame — I want it to reset.** Set `timeline.trigger.onFinish: "reset"`
-in the file (as a component prop it is `resetOnFinish: true`), or `fill: 'none'` (see
-[Playback settings](./playback-and-triggers.md#timing)).
+**It holds the last frame — I want it to reset.** Set `timeline.trigger.finishAction: "reset"`
+in the file, or `fillMode: 'none'` (see [Playback settings](./playback-and-triggers.md#timing)).
+For one mount only, pass the same thing as an override:
+`timeline={{ trigger: { finishAction: 'reset' } }}`.
 
 **How do I play backwards?** `animator.setPlaybackRate(-1); animator.play();` — also as a
 trigger out action (`outAction: 'reverse'`).
@@ -86,15 +88,22 @@ trigger out action (`outAction: 'reverse'`).
 **Jumping to a time while playing.** `setCurrentTime(ms)` works while playing (the animation
 continues from the new point) and while paused (it shows that frame and stays there).
 
-**Frame rate.** `frameRate` applies only to the frames engine; WAAPI runs at the display rate.
+**Frame rate.** `timeline.frameRate` applies only to the player's own frame loop (`engine: 'js'`,
+or `'auto'` after falling back to it); WAAPI runs at the display rate.
 React Native always runs at the display rate.
 
-**A property does not animate under `mode: 'waapi'`.** WAAPI cannot drive it (the console
-says which); leave `mode` on `auto` so the document switches to the frame loop.
+**A property does not animate under `timeline.engine: 'native'`.** WAAPI cannot drive it (the
+console says which); leave `engine` on `auto` so the document switches to the player's frame loop.
+
+**The animation loads but nothing moves, and only in the production build.** Your bundler may be
+property-mangling third-party code, which renames the keys the player reads out of the document.
+See [Minification & property mangling](./minification.md); `validateDocument(doc)` will report the
+unrecognized keys.
 
 ## Still stuck?
 
 - [Repository issues](https://github.com/pixodesk/pixodesk-svg-animator/issues) — include the
   JSON (or the SVG), the package version and the browser / platform.
 - The [runnable examples](../../examples/docs-examples/) show every documented case working end to end — one page per case, each tested on every build.
+
 

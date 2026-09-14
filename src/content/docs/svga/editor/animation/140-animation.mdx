@@ -181,8 +181,6 @@ Start from a **Preset** — it fills in all the fields below:
 
 The fields, for fine-tuning (the preset shows *custom* once you edit them):
 
-- **Driver** — **Built-in** (the player measures scroll itself; identical in every browser) or
-  **Native** (the browser's scroll timeline; falls back to Built-in where unavailable).
 - **Progress** — **Element** (how far *this canvas* has travelled across the screen) or
   **Container** (how far a scrollable area has scrolled — for a fixed-position canvas such as a
   progress bar), with **Scroller** Nearest / Page.
@@ -190,7 +188,8 @@ The fields, for fine-tuning (the preset shows *custom* once you edit them):
 - **Measure** — what is tracked: This canvas · Parent section · Scroll container · a custom CSS
   selector.
 - **Smoothing** (ms) — how long the animation takes to catch up with the scrollbar; empty locks
-  it exactly (needs the Built-in driver).
+  it exactly (while it is set, the player measures scrolling itself instead of the browser's
+  scroll timeline — see [Engine](/docs/svga/editor/playback-settings#engine)).
 - **Pin (Sticky)** — holds the canvas on screen while the scroll plays it, with **Offset**,
   **Length** (in screens) and **Align** Top / Middle / Bottom (Middle and Bottom need the JS
   player).

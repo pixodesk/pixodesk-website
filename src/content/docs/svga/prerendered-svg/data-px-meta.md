@@ -17,7 +17,7 @@ the host, its core and every derived copy carry the marks described in
 [Editor meta → derived elements (host / core / part)](/docs/svga/prerendered-svg/data-px-meta#applied-effects-that-create-derived-elements-host--core--part):
 
 ```svg
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" id="_px_1" class="px-anim-enabled px-anim-playing" data-px-meta="runtime:{useCssAnimation:true},animator:{duration:1000,mode:'auto',iterations:'infinite',direction:'alternate',trigger:{startOn:'load',outAction:'pause'}}">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" id="_px_1" class="px-anim-enabled px-anim-playing" data-px-meta="runtime:{useCssAnimation:true},animator:{timeline:{duration:1000,iterations:'infinite',direction:'alternate',trigger:{startOn:'load',outAction:'pause'}}}">
   <style>@keyframes _px_3 {0% {opacity:1;animation-timing-function:cubic-bezier(0.167,0.167,0.833,0.833);}
 100% {opacity:0.2}}
 .px-anim-enabled ._px_4 { animation: 1000ms _px_3 infinite alternate both; }
@@ -105,14 +105,14 @@ The same settings, in both forms:
 // JSON document — an ordinary key of the root object
 {
   "type": "svg",
-  "animator": { "timeline": { "type": "clock", "duration": 1000, "trigger": { "startOn": "load" } } },
+  "animator": { "timeline": { "duration": 1000, "trigger": { "startOn": "load" } } },
   "children": [ … ]
 }
 ```
 
 ```svg
 <!-- pre-rendered SVG — inside the root's data-px-meta -->
-<svg data-px-meta="animator:{duration:1000,trigger:{startOn:'load'}}">
+<svg data-px-meta="animator:{timeline:{duration:1000,trigger:{startOn:'load'}}}">
 ```
 
 The editor lifts one to the other on save and open. A tool that reads both forms has to check
