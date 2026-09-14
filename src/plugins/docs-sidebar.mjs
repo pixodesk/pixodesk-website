@@ -5,7 +5,7 @@
  *   src/content/docs/svga/{player-library,format,player.md}
  *                                — the synced player docs (scripts/sync-svga-docs.mjs)
  *   src/content/docs/svga/prerendered-svg — authored (moved out of the player repo)
- *   src/content/docs/2d-lottie   — Pixodesk 2D Animator (Lottie)
+ *   src/content/docs/2d-lottie   — Pixodesk Lottie Animator
  *
  * The SVG Animator sidebar is organised into big top-level sections (always
  * open, large titles — see SECTION_LABELS and the styling in

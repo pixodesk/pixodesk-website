@@ -6,7 +6,7 @@
  *
  *   /docs               — the cards landing: no sidebar, no ToC, no prev/next
  *   /docs/svga/...      — only Pixodesk SVG Animator entries
- *   /docs/2d-lottie/... — only Pixodesk 2D Animator (Lottie) entries
+ *   /docs/2d-lottie/... — only Pixodesk Lottie Animator entries
  *
  * Prev/next links that would cross from one app into the other are dropped.
  */

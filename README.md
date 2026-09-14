@@ -13,7 +13,7 @@ at [/docs](https://pixodesk.com/docs):
 | **SVG Animator — player library** | `/docs/svga/player-library/…` | **synced** from `pixodesk-svg-animator/docs/library` |
 | **SVG Animator — JSON format** | `/docs/svga/format` | **synced** from `pixodesk-svg-animator/docs/format` |
 | **SVG Animator — pre-rendered SVG** | `/docs/svga/prerendered-svg/…` | authored here: `src/content/docs/svga/prerendered-svg/` (moved out of the player repo — only JSON concerns the player library) |
-| **2D Animator (Lottie)** | `/docs/2d-lottie/…` | authored here: `src/content/docs/2d-lottie/` |
+| **Lottie Animator** | `/docs/2d-lottie/…` | authored here: `src/content/docs/2d-lottie/` |
 
 The player-repo docs (`library/`, `format/`) stay in that repo because they are read
 on GitHub next to the packages; `yarn sync:svga-docs` copies them in from the local

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pixodesk SVG Animator — Preview Player</title>
+    <script type="module" crossorigin src="./assets/index-TJ7evmQ6.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-vpUKD6v0.css">
+  </head>
+  <body>
+    <div id="app">
+      <header class="app-header">
+        <div class="title-row">
+          <h1>Pixodesk SVG Animator — Preview Player</h1>
+          <button id="btn-theme" type="button" class="theme-toggle" aria-label="Toggle light/dark theme">
+            <span class="theme-icon">🌙</span>
+            <span class="theme-label">Dark</span>
+          </button>
+        </div>
+        <div class="options-row">
+          <fieldset class="picker">
+            <legend>Choose player</legend>
+            <label><input type="radio" name="player" value="web" checked /> Web</label>
+            <label><input type="radio" name="player" value="react" /> React</label>
+            <label><input type="radio" name="player" value="vue" /> Vue</label>
+          </fieldset>
+          <fieldset class="picker">
+            <legend>Loop</legend>
+            <label><input type="radio" name="loop" value="auto" checked /> Auto (from JSON)</label>
+            <label><input type="radio" name="loop" value="loop" /> Loop</label>
+            <label><input type="radio" name="loop" value="no-loop" /> No loop</label>
+          </fieldset>
+        </div>
+      </header>
+
+      <main class="app-main">
+        <div id="stage-wrap">
+          <div id="stage" aria-label="Animation stage">
+            <div id="canvas">
+              <span id="canvas-size" class="canvas-size"></span>
+              <div id="mount"></div>
+            </div>
+          </div>
+          <div id="empty" class="empty">
+            <p>Drop a Pixodesk animation <code>.json</code> here</p>
+            <button id="btn-demo" type="button" class="demo-btn">Load demo</button>
+          </div>
+          <div id="dropzone" class="dropzone">
+            <span>Drop a Pixodesk animation <code>.json</code> here</span>
+          </div>
+        </div>
+
+        <p id="error" class="error" hidden></p>
+
+        <fieldset class="picker" id="trigger-picker">
+          <legend>Trigger</legend>
+          <label><input type="checkbox" id="chk-use-trigger" /> Use trigger</label>
+          <div id="trigger-config" class="trigger-config" hidden>
+            <label><input type="checkbox" id="chk-file-config" checked /> Use trigger config from file</label>
+            <div class="trigger-fields">
+              <label>Start on
+                <select id="sel-start-on">
+                  <option value="load">load</option>
+                  <option value="mouseOver">mouseOver</option>
+                  <option value="click">click</option>
+                  <option value="scrollIntoView">scrollIntoView</option>
+                </select>
+              </label>
+              <label id="out-action-field">Out action
+                <select id="sel-out-action">
+                  <option value="pause">pause</option>
+                  <option value="reset">reset</option>
+                  <option value="continue">continue</option>
+                  <option value="reverse">reverse</option>
+                </select>
+              </label>
+              <label id="threshold-field">Scroll threshold
+                <input id="inp-threshold" type="number" min="0" max="1" step="0.05" value="0.5" />
+              </label>
+            </div>
+          </div>
+        </fieldset>
+
+        <div class="transport">
+          <button id="btn-play" type="button">▶ Play</button>
+          <button id="btn-pause" type="button">❚❚ Pause</button>
+          <button id="btn-stop" type="button">◼ Stop</button>
+          <button id="btn-restart" type="button">↺ Restart</button>
+          <button id="btn-finish" type="button">⤓ Finish</button>
+        </div>
+
+        <div class="timeline">
+          <input id="seek" type="range" min="0" max="1000" step="1" value="0" />
+          <span id="time" class="time">0 / 0 ms</span>
+        </div>
+
+        <div class="meta">
+          <span class="filename">Source: <strong id="filename">none</strong></span>
+          <label class="rate">
+            Rate
+            <select id="rate">
+              <option value="0.25">0.25×</option>
+              <option value="0.5">0.5×</option>
+              <option value="1" selected>1×</option>
+              <option value="2">2×</option>
+              <option value="4">4×</option>
+            </select>
+          </label>
+          <span id="rate-note" class="rate-note">(Web player only)</span>
+        </div>
+      </main>
+    </div>
+
+  </body>
+</html>

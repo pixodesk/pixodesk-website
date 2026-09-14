@@ -14,6 +14,9 @@ interface SubMenuItem {
    *  section-home link (e.g. Editor at /docs/svga) claim only its own pages
    *  instead of every sibling section under the same path. */
   activePrefix?: string;
+  /** A shortcut into another menu's section — an app's Docs link. It never makes
+   *  its own menu active, so /docs/* pages keep showing the Docs submenu. */
+  crossLink?: boolean;
 }
 
 interface MenuItem {
@@ -48,12 +51,12 @@ const {
 
 // The Docs submenu is per-app: inside one app's docs it lists that app's
 // sub-docs plus a single link to the other app's main doc. `activePrefix`
-// scopes highlighting: a section-home link (Editor, Lottie Editor) is active on
+// scopes highlighting: a section-home link (Editor, Lottie Animator) is active on
 // its own pages only, never on sibling sections that share its URL prefix.
 const docsSubMenu: SubMenuItem[] = pathname.startsWith("/docs/2d-lottie")
   ? [
       { label: "Docs Home", href: "/docs" },
-      { label: "Lottie Editor", href: "/docs/2d-lottie", activePrefix: "/docs/2d-lottie/lottie-features" },
+      { label: "Lottie Animator", href: "/docs/2d-lottie", activePrefix: "/docs/2d-lottie/lottie-features" },
       { label: "Lottie Players", href: "/docs/2d-lottie/add-lottie-animation-to-your-project" },
       { label: "SVG Animator", href: "/docs/svga" },
     ]
@@ -64,12 +67,12 @@ const docsSubMenu: SubMenuItem[] = pathname.startsWith("/docs/2d-lottie")
         { label: "Player Library", href: "/docs/svga/player-library" },
         { label: "JSON Format", href: "/docs/svga/format" },
         { label: "Pre-rendered SVG File", href: "/docs/svga/prerendered-svg" },
-        { label: "2D Animator (Lottie)", href: "/docs/2d-lottie" },
+        { label: "Lottie Animator", href: "/docs/2d-lottie" },
       ]
     : [
         { label: "Docs Home", href: "/docs" },
         { label: "SVG Animator Docs", href: "/docs/svga" },
-        { label: "2D Animator (Lottie) Docs", href: "/docs/2d-lottie" },
+        { label: "Lottie Animator Docs", href: "/docs/2d-lottie" },
       ];
 
 // A submenu item is active on its exact href, or within its active scope
@@ -92,14 +95,27 @@ const menus: MenuItem[] = passedMenus ?? [
   // },
   
   {
-    label: "2D Animator (Lottie)",
+    label: "Lottie Animator",
     href: "/animator",
     subMenu: [
       { label: "Lottie Animation", href: "/animator/lottie-animation" },
       { label: "Tutorials", href: "/animator/tutorials" },
       { label: "Features", href: "/animator/features" },
+      { label: "Preview Player", href: "/animator/player" },
       { label: "Releases", href: "/animator/releases" },
+      { label: "Docs", href: "/docs/2d-lottie", crossLink: true },
       { label: "Download", href: "/animator/download" },
+    ],
+  },
+  {
+    label: "SVG Animator",
+    href: "/svg-animator",
+    subMenu: [
+      { label: "Features", href: "/svg-animator/features" },
+      { label: "Preview Player", href: "/svg-animator/player" },
+      // { label: "Releases", href: "/svg-animator/releases" },
+      { label: "Docs", href: "/docs/svga", crossLink: true },
+      { label: "Download", href: "/svg-animator/download" },
     ],
   },
   {
@@ -109,15 +125,6 @@ const menus: MenuItem[] = passedMenus ?? [
       { label: "Features", href: "/svg-editor/features" },
       { label: "Releases", href: "/svg-editor/releases" },
       { label: "Download", href: "/svg-editor/download" },
-    ],
-  },
-  {
-    label: "SVG Animator",
-    href: "/svg-animator",
-    subMenu: [
-      { label: "Features", href: "/svg-animator/features" },
-      // { label: "Releases", href: "/svg-animator/releases" },
-      { label: "Download", href: "/svg-animator/download" },
     ],
   },
   {
@@ -133,11 +140,12 @@ const menus: MenuItem[] = passedMenus ?? [
 ];
 
 // Helper: check active main link — a menu is active on its own path or on any
-// of its submenu paths (e.g. Docs on /app/svga/docs/...).
+// of its submenu paths (e.g. Docs on /app/svga/docs/...), except cross-links:
+// they point into another menu's section and must not steal it.
 function isActiveParent(menu: MenuItem) {
   const matches = (href: string) =>
     pathname === href || pathname.startsWith(href + "/");
-  return matches(menu.href) || (menu.subMenu ?? []).some((sub) => matches(sub.href));
+  return matches(menu.href) || (menu.subMenu ?? []).some((sub) => !sub.crossLink && matches(sub.href));
 }
 
 // Find active menu for subnav

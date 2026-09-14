@@ -16,7 +16,7 @@ import SVG from Illustrator, Figma, Inkscape and other design tools. Animate any
 add effects, then save. It also imports and exports **Lottie**, and exports to video, GIF and
 static images when you need a fallback. It ships for Windows and Mac from
 [pixodesk.com](https://pixodesk.com) — on its own, and in *Pixodesk Animator Studio*, the
-edition that adds *Pixodesk 2D Animator (Lottie)*.
+edition that adds *Pixodesk Lottie Animator*.
 
 **The players** are small, open-source runtime libraries — MIT-licensed, published on npm as
 `@pixodesk/svg-animator-*`, and developed in [this repository](https://github.com/pixodesk/pixodesk-svg-animator#readme). Pick the one for
