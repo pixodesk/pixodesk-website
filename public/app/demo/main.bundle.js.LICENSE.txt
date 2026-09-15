@@ -46,13 +46,6 @@
  * MIT license
  */
 
-/*!
- * is-plain-object <https://github.com/jonschlinkert/is-plain-object>
- *
- * Copyright (c) 2014-2017, Jon Schlinkert.
- * Released under the MIT License.
- */
-
 /*! *****************************************************************************
 Copyright (c) Microsoft Corporation. All rights reserved.
 Licensed under the Apache License, Version 2.0 (the "License"); you may not use
@@ -74,19 +67,9 @@ and limitations under the License.
 
 /**
  * @license React
- * react-dom-server-legacy.browser.production.min.js
+ * react-dom-client.production.js
  *
- * Copyright (c) Facebook, Inc. and its affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
-/**
- * @license React
- * react-dom-server.browser.production.min.js
- *
- * Copyright (c) Facebook, Inc. and its affiliates.
+ * Copyright (c) Meta Platforms, Inc. and affiliates.
  *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
@@ -94,19 +77,9 @@ and limitations under the License.
 
 /**
  * @license React
- * react-dom.production.min.js
+ * react-dom-server-legacy.browser.production.js
  *
- * Copyright (c) Facebook, Inc. and its affiliates.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
-/**
- * @license React
- * react-jsx-runtime.production.min.js
- *
- * Copyright (c) Facebook, Inc. and its affiliates.
+ * Copyright (c) Meta Platforms, Inc. and affiliates.
  *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
@@ -114,9 +87,9 @@ and limitations under the License.
 
 /**
  * @license React
- * react.production.min.js
+ * react-dom-server.browser.production.js
  *
- * Copyright (c) Facebook, Inc. and its affiliates.
+ * Copyright (c) Meta Platforms, Inc. and affiliates.
  *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
@@ -124,9 +97,29 @@ and limitations under the License.
 
 /**
  * @license React
- * scheduler.production.min.js
+ * react-dom.production.js
  *
- * Copyright (c) Facebook, Inc. and its affiliates.
+ * Copyright (c) Meta Platforms, Inc. and affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+/**
+ * @license React
+ * react.production.js
+ *
+ * Copyright (c) Meta Platforms, Inc. and affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+/**
+ * @license React
+ * scheduler.production.js
+ *
+ * Copyright (c) Meta Platforms, Inc. and affiliates.
  *
  * This source code is licensed under the MIT license found in the
  * LICENSE file in the root directory of this source tree.
@@ -289,16 +282,16 @@ and limitations under the License.
  *   });
  */
 
-//!!         tr.__ser_hidePxAttrs = true;
-
-//!!         tr.__ser_showDefaultValuesAtFrameForDunamic = true;
-
 //!! FIXME - move to some other place, report this and other warning in Toast when meaningful for the user
 
-//!! FIXME - not very good to check for it here
-
-//!! Get rid of::::        tr.__ser_preferMatrixFormat = false; // Prefer fn format, easier to debug, e.g. <g transform="rotate(41)">
+//!! FIXME - where does it come from?
 
 //!! IMPORTANT!!! - DYNAMIC SCALE CANNOT HAVE DYNAMIC INVERSE SCALE. SCALE INTERPOLATION IS NOT LINEAR!!!! E.G:
 
-//!! What about contentLink?
+//!! Somehow sometimes it maps innerIds on themselves...
+
+//!! This dowsn't work properly!!!!
+
+//!! resetOnFinishAction is not implemented for this case!!!
+
+//!! this was removed???

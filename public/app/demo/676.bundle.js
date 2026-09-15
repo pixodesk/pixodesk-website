@@ -1,1 +1,1 @@
-(self.webpackChunkapp=self.webpackChunkapp||[]).push([[676],{7676:()=>{}}]);
+(self.webpackChunkapp=self.webpackChunkapp||[]).push([[676],{67676(){}}]);

@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- Created with Pixodesk SVG (https://pixodesk.com) -->
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 470 465" text-rendering="geometricPrecision" shape-rendering="geometricPrecision" fill="#fbf5f5" stroke="none" data-px-attrs="animation:{duration:1000;inThreshold:0.5}">
-  <g data-px-label="BIRD" transform="translate(165.2328,223.8164)rotate(10.7379)scale(1.0607,1.0607)translate(-847.143,-78.301)">
-    <g data-px-label="Wing 2" transform="translate(939.6313,-6.0587)rotate(-14.7945)scale(1.22,1.2299)translate(-937.4152,-407.8057)">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 470 465" text-rendering="geometricPrecision" shape-rendering="geometricPrecision" fill="#fbf5f5" stroke="none" data-px-meta="animation:{duration:1000;inThreshold:0.5}">
+  <g transform="translate(165.2328,223.8164)rotate(10.7379)scale(1.0607,1.0607)translate(-847.143,-78.301)" data-px-meta="label:'BIRD'">
+    <g transform="translate(939.6313,-6.0587)rotate(-14.7945)scale(1.22,1.2299)translate(-937.4152,-407.8057)" data-px-meta="label:'Wing 2'">
       <path fill="#ff1f4a" transform="translate(634.832,293.732)scale(1.5039,1.5039)" d="M165.6639,134.618L174.217,148.497L187.892,108.961L198.7769,118.389L205.233,71.281L212.563,75.3139L223.822,47.583L232.553,50.819L243.352,28.784L250.969,30.242L268.637,3.207L191.386,8.529L133.761,78.505L151.581,103.491L165.6639,134.618z"/>
       <path fill="#ff2f1c" transform="translate(634.832,293.732)scale(1.5039,1.5039)" d="M165.6639,134.618L174.217,148.497L187.892,108.961L198.7769,118.389L205.233,71.281L212.563,75.3139L223.822,47.583L232.553,50.819L243.352,28.784L191.386,8.529L133.761,78.505L151.581,103.491L165.6639,134.618z"/>
       <path fill="#ff4c1f" transform="translate(634.832,293.732)scale(1.5039,1.5039)" d="M165.6639,134.618L174.217,148.497L187.892,108.961L198.7769,118.389L205.233,71.281L212.563,75.3139L223.822,47.583L179.8,22.598L133.761,78.505L151.581,103.491L165.6639,134.618z"/>
@@ -10,7 +10,7 @@
       <path fill="#ff1f51" transform="translate(634.832,293.732)scale(1.5039,1.5039)" d="M168.273,148.341L174.217,148.497L178.494,136.143L151.735,103.657L150.987,57.585L133.761,78.505L151.581,103.491L168.273,148.341z"/>
       <path fill="#c20c00" transform="translate(634.832,293.732)scale(1.5039,1.5039)" d="M162.922,73.919L191.386,8.529L133.761,78.505L162.922,73.919z"/>
     </g>
-    <g data-px-label="Body">
+    <g data-px-meta="label:'Body'">
       <path fill="#33556b" transform="translate(658.511,-102.8289)scale(1.5039,1.5039)" d="M2.275,11.996L67.612,55.326L67.8771,55.9038L74.9841,34.9268L74.444,34.882L2.275,11.996z"/>
       <path fill="#ff681f" transform="translate(658.511,-102.8289)scale(1.5039,1.5039)" d="M67.612,55.326L88.2159,100.233L93.447,136.032L153.422,191.0149L178.925,187.428L165.058,149.006L147.808,99.225L133.761,78.505L96.589,36.718L74.444,34.882L67.612,55.326z"/>
       <path fill="#ff480f" transform="translate(658.511,-102.8289)scale(1.5039,1.5039)" d="M67.612,55.326L88.2159,100.233L93.447,136.032L153.422,191.0149L178.925,187.428L165.058,149.006L147.808,99.225L67.612,55.326z"/>
@@ -22,7 +22,7 @@
       <path fill="#ff681f" transform="translate(658.511,-102.8289)scale(1.5039,1.5039)" d="M214.2,255.753L232.115,238.874L192.204,225.208L214.2,255.753z"/>
       <path fill="#ff3f0f" transform="translate(658.511,-102.8289)scale(1.5039,1.5039)" d="M232.115,238.874L178.925,187.428L192.204,225.208L232.115,238.874z"/>
     </g>
-    <g data-px-label="Wing 1" transform="translate(-173.197,-505.821)scale(1.22,1.2299)">
+    <g transform="translate(-173.197,-505.821)scale(1.22,1.2299)" data-px-meta="label:'Wing 1'">
       <path fill="#ff1f4a" transform="translate(634.832,293.732)scale(1.5039,1.5039)" d="M165.6639,134.618L174.217,148.497L187.892,108.961L198.7769,118.389L205.233,71.281L212.563,75.3139L223.822,47.583L232.553,50.819L243.352,28.784L250.969,30.242L268.637,3.207L191.386,8.529L133.761,78.505L151.581,103.491L165.6639,134.618z"/>
       <path fill="#ff2f1c" transform="translate(634.832,293.732)scale(1.5039,1.5039)" d="M165.6639,134.618L174.217,148.497L187.892,108.961L198.7769,118.389L205.233,71.281L212.563,75.3139L223.822,47.583L232.553,50.819L243.352,28.784L191.386,8.529L133.761,78.505L151.581,103.491L165.6639,134.618z"/>
       <path fill="#ff4c1f" transform="translate(634.832,293.732)scale(1.5039,1.5039)" d="M165.6639,134.618L174.217,148.497L187.892,108.961L198.7769,118.389L205.233,71.281L212.563,75.3139L223.822,47.583L179.8,22.598L133.761,78.505L151.581,103.491L165.6639,134.618z"/>
@@ -31,6 +31,6 @@
       <path fill="#ff1f51" transform="translate(634.832,293.732)scale(1.5039,1.5039)" d="M168.273,148.341L174.217,148.497L178.494,136.143L151.735,103.657L150.987,57.585L133.761,78.505L151.581,103.491L168.273,148.341z"/>
       <path fill="#c20c00" transform="translate(634.832,293.732)scale(1.5039,1.5039)" d="M162.922,73.919L191.386,8.529L133.761,78.505L162.922,73.919z"/>
     </g>
-    <ellipse data-px-label="eye" fill="#000000" transform="translate(790.1042,-31.8492)rotate(-10.7379)scale(0.8461,0.8461)" rx="7.7882" ry="7.7882"/>
+    <ellipse fill="#000000" transform="translate(790.1042,-31.8492)rotate(-10.7379)scale(0.8461,0.8461)" rx="7.7882" ry="7.7882" data-px-meta="label:'eye'"/>
   </g>
 </svg>
