@@ -46,6 +46,21 @@ div, p {
   @apply leading-[1.5] text-base;
 }
 
+// Code blocks size themselves (expressive-code's codeFontSize/codeLineHeight in
+// astro.config.mjs). The global div/p default above targets the per-line <div>s
+// inside them directly, which would override the code font — restore inheritance.
+// Code blocks size themselves — expressive-code's codeFontSize/codeLineHeight in
+// astro.config.mjs, exposed as :root CSS vars. The global div/p default above
+// targets the per-line <div>s inside code blocks directly, and `inherit` would
+// clobber EC's own application point on `pre`, so set the vars explicitly.
+.expressive-code div,
+.expressive-code p,
+.expressive-code pre,
+.expressive-code code {
+  font-size: var(--ec-codeFontSize, 0.75rem);
+  line-height: 1.75;
+}
+
 
 // Font family Montserrat
 @font-face {

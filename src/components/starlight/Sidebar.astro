@@ -9,8 +9,8 @@
  * scrolls it into view; above the first heading the section's "Overview" item is current.
  */
 import Default from '@astrojs/starlight/components/Sidebar.astro';
-import { SUPER_SECTIONS } from '../../plugins/docs-sidebar.mjs';
-const superLabels = JSON.stringify(Object.values(SUPER_SECTIONS));
+import { SUPER_SECTIONS, SECTION_LABELS } from '../../plugins/docs-sidebar.mjs';
+const superLabels = JSON.stringify([...Object.values(SUPER_SECTIONS), ...SECTION_LABELS]);
 ---
 
 <Default {...Astro.props}><slot /></Default>
@@ -27,6 +27,19 @@ const superLabels = JSON.stringify(Object.values(SUPER_SECTIONS));
         color: var(--sl-color-gray-2) !important;
     }
     .sidebar-content details.sl-super > ul { border-inline-start: 0; padding-inline-start: 0.25rem; }
+    /* Big titles for the TOP-LEVEL sections (Editor, Getting Started, Player Library,
+       Format, Pre-rendered SVG, …). Nested sub-sections (Vector/Animation Editing)
+       keep the small uppercase style above. Starlight wraps the top-level <ul> in an
+       <sl-sidebar-state-persist> element, so the depth scoping goes through it. */
+    .sidebar-content sl-sidebar-state-persist > ul > li > details.sl-super > summary { padding-top: 1.25rem; }
+    .sidebar-content sl-sidebar-state-persist > ul > li:first-child > details.sl-super > summary { padding-top: 0.25rem; }
+    .sidebar-content sl-sidebar-state-persist > ul > li > details.sl-super > summary .group-label > span {
+        font-size: 1.35rem !important;
+        font-weight: 700;
+        letter-spacing: 0.02em;
+        text-transform: none !important;
+        color: var(--sl-color-white) !important;
+    }
     /* Nested groups inside a super-section: Starlight styles only top-level summaries, so give the
        nested ones the same look (no native marker, label + caret on one line). */
     .sidebar-content details.sl-super details > summary {
@@ -62,8 +75,50 @@ const superLabels = JSON.stringify(Object.values(SUPER_SECTIONS));
         }
     }
 
+    /** On a fresh load (deep link), bring the sidebar's current item into view —
+     *  centred in the sidebar's own scroll pane, without touching the page scroll.
+     *  Skipped when Starlight is about to restore the previous sidebar scroll
+     *  (same-session navigation between docs pages). */
+    function scrollActiveIntoView() {
+        if ((window as any)._starlightScrollRestore !== undefined) return;
+        const pane = document.querySelector<HTMLElement>('.sidebar-pane');
+        const active = pane?.querySelector<HTMLElement>('[aria-current="page"]');
+        if (!pane || !active) return;
+        const paneRect = pane.getBoundingClientRect();
+        const activeRect = active.getBoundingClientRect();
+        pane.scrollTop +=
+            activeRect.top - paneRect.top - pane.clientHeight / 2 + activeRect.height / 2;
+    }
+
+    /** Keep the right "On this page" panel following its current item — on long
+     *  pages (e.g. the Format reference) a deep link or reading far down the page
+     *  puts the highlighted ToC entry off-screen. Starlight's own scroll-spy sets
+     *  aria-current on the ToC links; this scrolls the panel to keep it visible. */
+    function initTocFollow() {
+        const toc = document.querySelector('starlight-toc');
+        if (!toc) return;
+        const scroller =
+            document.querySelector<HTMLElement>('.right-sidebar') ??
+            toc.closest<HTMLElement>('aside');
+        if (!scroller) return;
+        const follow = () => {
+            const current = toc.querySelector<HTMLElement>('a[aria-current="true"]');
+            if (!current) return;
+            const scrollerRect = scroller.getBoundingClientRect();
+            const currentRect = current.getBoundingClientRect();
+            if (currentRect.top < scrollerRect.top || currentRect.bottom > scrollerRect.bottom) {
+                scroller.scrollTop +=
+                    currentRect.top - scrollerRect.top - scroller.clientHeight / 2 + currentRect.height / 2;
+            }
+        };
+        new MutationObserver(follow).observe(toc, { subtree: true, attributeFilter: ['aria-current'] });
+        follow();
+    }
+
     function init() {
         pinSuperSections();
+        scrollActiveIntoView();
+        initTocFollow();
         const path = location.pathname.replace(/\/$/, '');
         const links = Array.from(document.querySelectorAll<HTMLAnchorElement>('.sidebar-content a[href]'))
             .filter(a => new URL(a.getAttribute('href') ?? '', location.origin).pathname.replace(/\/$/, '') === path);

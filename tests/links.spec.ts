@@ -26,9 +26,9 @@ const storeUrls = {
 test.describe('nav menu', () => {
   const links = [
     { label: 'Pixodesk', href: '/' },
-    { label: 'Animator (Lottie)', href: '/animator' },
-    { label: 'SVG Editor', href: '/svg-editor' },
+    { label: 'Lottie Animator', href: '/animator' },
     { label: 'SVG Animator', href: '/svg-animator' },
+    { label: 'SVG Editor', href: '/svg-editor' },
     { label: 'Pricing', href: '/pricing' },
   ];
 
@@ -49,14 +49,26 @@ test.describe('nav menu', () => {
 test.describe('nav submenu links', () => {
   const sections = [
     {
-      section: 'Animator (Lottie)',
+      section: 'Lottie Animator',
       parentHref: '/animator',
       subLinks: [
         { label: 'Lottie Animation', href: '/animator/lottie-animation' },
         { label: 'Tutorials', href: '/animator/tutorials' },
         { label: 'Features', href: '/animator/features' },
+        { label: 'Preview Player', href: '/animator/player' },
         { label: 'Releases', href: '/animator/releases' },
+        { label: 'Docs', href: '/docs/2d-lottie' },
         { label: 'Download', href: '/animator/download' },
+      ],
+    },
+    {
+      section: 'SVG Animator',
+      parentHref: '/svg-animator',
+      subLinks: [
+        { label: 'Features', href: '/svg-animator/features' },
+        { label: 'Preview Player', href: '/svg-animator/player' },
+        { label: 'Docs', href: '/docs/svga' },
+        { label: 'Download', href: '/svg-animator/download' },
       ],
     },
     {
@@ -66,14 +78,6 @@ test.describe('nav submenu links', () => {
         { label: 'Features', href: '/svg-editor/features' },
         { label: 'Releases', href: '/svg-editor/releases' },
         { label: 'Download', href: '/svg-editor/download' },
-      ],
-    },
-    {
-      section: 'SVG Animator',
-      parentHref: '/svg-animator',
-      subLinks: [
-        { label: 'Features', href: '/svg-animator/features' },
-        { label: 'Download', href: '/svg-animator/download' },
       ],
     },
   ];
@@ -91,6 +95,19 @@ test.describe('nav submenu links', () => {
       }
     });
   }
+
+  // An app's Docs link is a cross-link: on a docs page the Docs submenu must still win,
+  // not the app whose submenu happens to link there.
+  for (const { path, docsLink } of [
+    { path: '/docs/svga/format', docsLink: '/docs/svga/player-library' },
+    { path: '/docs/2d-lottie', docsLink: '/docs/2d-lottie/add-lottie-animation-to-your-project' },
+    { path: '/docs/svga/editor/canvas', docsLink: '/docs/svga/player-library' },
+  ]) {
+    test(`${path} keeps the Docs submenu`, async ({ page }) => {
+      await page.goto(path);
+      await expect(page.locator(`nav a[href="${docsLink}"]`).first()).toHaveCount(1);
+    });
+  }
 });
 
 // ──────────────────────────────────────────────────────────
@@ -100,7 +117,7 @@ test.describe('index page - app cards', () => {
   // hrefs are relative in the source ("./svg-editor" etc.)
   const cards = [
     { name: 'SVG Editor', href: './svg-editor', resolvedPath: '/svg-editor' },
-    { name: 'Animator', href: './animator', resolvedPath: '/animator' },
+    { name: 'Lottie Animator', href: './animator', resolvedPath: '/animator' },
     { name: 'SVG Animator', href: './svg-animator', resolvedPath: '/svg-animator' },
   ];
 
@@ -120,7 +137,7 @@ test.describe('index page - app cards', () => {
 test.describe('pricing page - download buttons', () => {
   const links = [
     { name: 'SVG Editor', href: '/svg-editor/download' },
-    { name: 'Animator', href: '/animator/download' },
+    { name: 'Lottie Animator', href: '/animator/download' },
     { name: 'SVG Animator', href: '/svg-animator/download' },
   ];
 

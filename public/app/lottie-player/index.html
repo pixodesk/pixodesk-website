@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pixodesk Lottie Animator — Preview Player</title>
+    <script type="module" crossorigin src="./assets/index-B5mYt_og.js"></script>
+    <link rel="stylesheet" crossorigin href="./assets/index-CzK0bn9b.css">
+  </head>
+  <body>
+    <div id="app">
+      <header class="app-header">
+        <div class="title-row">
+          <h1>Pixodesk Lottie Animator — Preview Player</h1>
+          <button id="btn-theme" type="button" class="theme-toggle" aria-label="Toggle light/dark theme">
+            <span class="theme-icon">🌙</span>
+            <span class="theme-label">Dark</span>
+          </button>
+        </div>
+        <div class="options-row">
+          <fieldset class="picker">
+            <legend>Choose player</legend>
+            <label><input type="radio" name="player" value="lottie-web" checked /> lottie-web</label>
+            <label><input type="radio" name="player" value="lottiefiles" /> LottieFiles</label>
+          </fieldset>
+          <fieldset class="picker" id="renderer-picker">
+            <legend>Renderer</legend>
+            <label><input type="radio" name="renderer" value="svg" checked /> SVG</label>
+            <label><input type="radio" name="renderer" value="canvas" /> Canvas</label>
+            <label><input type="radio" name="renderer" value="html" /> HTML</label>
+            <span id="renderer-note" class="picker-note" hidden>LottieFiles always draws to a canvas</span>
+          </fieldset>
+          <fieldset class="picker">
+            <legend>Loop</legend>
+            <label><input type="radio" name="loop" value="loop" checked /> Loop</label>
+            <label><input type="radio" name="loop" value="once" /> Play once</label>
+          </fieldset>
+        </div>
+      </header>
+
+      <main class="app-main">
+        <div id="stage-wrap">
+          <div id="stage" aria-label="Animation stage">
+            <div id="canvas">
+              <span id="canvas-size" class="canvas-size"></span>
+              <div id="mount"></div>
+            </div>
+          </div>
+          <div id="empty" class="empty">
+            <p>Drop a Lottie <code>.json</code> or <code>.lottie</code> here</p>
+            <button id="btn-demo" type="button" class="demo-btn">Load demo</button>
+          </div>
+          <div id="dropzone" class="dropzone">
+            <span>Drop a Lottie <code>.json</code> or <code>.lottie</code> here</span>
+          </div>
+        </div>
+
+        <p id="error" class="error" hidden></p>
+
+        <div class="transport">
+          <button id="btn-play" type="button">▶ Play</button>
+          <button id="btn-pause" type="button">❚❚ Pause</button>
+          <button id="btn-stop" type="button">◼ Stop</button>
+          <button id="btn-restart" type="button">↺ Restart</button>
+          <button id="btn-finish" type="button">⤓ Finish</button>
+        </div>
+
+        <div class="timeline">
+          <input id="seek" type="range" min="0" max="1000" step="1" value="0" />
+          <span id="time" class="time">0 / 0 ms</span>
+        </div>
+
+        <div class="meta">
+          <span class="filename">Source: <strong id="filename">none</strong></span>
+          <span id="frame" class="frame"></span>
+          <label class="rate">
+            Rate
+            <select id="rate">
+              <option value="0.25">0.25×</option>
+              <option value="0.5">0.5×</option>
+              <option value="1" selected>1×</option>
+              <option value="2">2×</option>
+              <option value="4">4×</option>
+            </select>
+          </label>
+        </div>
+      </main>
+    </div>
+
+  </body>
+</html>

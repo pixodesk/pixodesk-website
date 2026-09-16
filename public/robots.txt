@@ -1,1 +1,1 @@
-Sitemap: https://pixodesk.com/sitemap.xml
+Sitemap: https://pixodesk.com/sitemap-index.xml

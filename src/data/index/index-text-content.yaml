@@ -27,7 +27,7 @@ sections:
 
   section_03:
     icon: true
-    title: Animator
+    title: Lottie Animator
     subtitle: Best for native devices
     description: Creates Lottie animations
     status: Ready

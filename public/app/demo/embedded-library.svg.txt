@@ -302,13 +302,13 @@
     </marker>
 
 
-    <filter pixodesk:label="Drop Shadow" id="drop-shadow-filter-0" color-interpolation-filters="sRGB" x="-50%" y="-50%" width="200%" height="200%">
-        <feGaussianBlur in="SourceAlpha" stdDeviation="2" data-px-attr-title--stddeviation="Shadow Radius"></feGaussianBlur>
-        <feOffset dx="2" dy="2" data-px-attr-title--offset="Offset"></feOffset>
+    <filter data-px-meta="label:'Drop Shadow'" id="drop-shadow-filter-0" color-interpolation-filters="sRGB" x="-50%" y="-50%" width="200%" height="200%">
+        <feGaussianBlur in="SourceAlpha" stdDeviation="2" data-px-attr-title--stddeviation="Shadow Radius" data-px-meta="previewVariants:{stdDeviation:[4,0.8,6]}"></feGaussianBlur>
+        <feOffset dx="2" dy="2" data-px-attr-title--offset="Offset" data-px-meta="previewVariants:{dx:[6,1,0],dy:[6,1,0]}"></feOffset>
         <feComponentTransfer result="offsetblur">
             <feFuncA id="spread-ctrl" type="linear" slope="1"></feFuncA>
         </feComponentTransfer>
-        <feFlood flood-color="rgb(0,0,0)" data-px-attr-title--floodcolor="Shadow Color"></feFlood>
+        <feFlood flood-color="rgb(0,0,0)" data-px-attr-title--floodcolor="Shadow Color" data-px-meta="previewVariants:{'flood-color':['rgb(0,0,0)','rgb(0,0,0)','#3b82f6']}"></feFlood>
         <feComposite in2="offsetblur" operator="in"></feComposite>
         <feMerge>
             <feMergeNode></feMergeNode>
@@ -316,17 +316,17 @@
         </feMerge>
     </filter>
 
-    <filter pixodesk:label="Inner Shadow" id="inner-shadow-filter-0" color-interpolation-filters="sRGB" x="-50%" y="-50%" width="200%" height="200%">
-        <feOffset dx="0" dy="0" data-px-attr-title--offset="Offset"></feOffset>
-        <feGaussianBlur stdDeviation="2" data-px-attr-title--stddeviation="Shadow Radius"></feGaussianBlur>
+    <filter data-px-meta="label:'Inner Shadow'" id="inner-shadow-filter-0" color-interpolation-filters="sRGB" x="-50%" y="-50%" width="200%" height="200%">
+        <feOffset dx="0" dy="0" data-px-attr-title--offset="Offset" data-px-meta="previewVariants:{dx:[3,0,-3],dy:[3,0,-3]}"></feOffset>
+        <feGaussianBlur stdDeviation="2" data-px-attr-title--stddeviation="Shadow Radius" data-px-meta="previewVariants:{stdDeviation:[2,5,3]}"></feGaussianBlur>
         <feComposite operator="out" in="SourceGraphic"></feComposite>
         <feComponentTransfer result="choke"><feFuncA type="linear" slope="1"></feFuncA></feComponentTransfer>
-        <feFlood flood-color="rgb(0,0,0)" result="color" data-px-attr-title--floodcolor="Shadow Color"></feFlood>
+        <feFlood flood-color="rgb(0,0,0)" result="color" data-px-attr-title--floodcolor="Shadow Color" data-px-meta="previewVariants:{'flood-color':['rgb(0,0,0)','rgb(0,0,0)','#e11d48']}"></feFlood>
         <feComposite operator="in" in="color" in2="choke" result="shadow"></feComposite>
         <feComposite operator="over" in="shadow" in2="SourceGraphic"></feComposite>
     </filter>
 
-    <!-- <filter pixodesk:label="Point Light" id="point-light-filter-0" primitiveUnits="objectBoundingBox" color-interpolation-filters="sRGB" x="-50%" y="-50%" width="200%" height="200%">
+    <!-- <filter data-px-meta="label:'Point Light'" id="point-light-filter-0" primitiveUnits="objectBoundingBox" color-interpolation-filters="sRGB" x="-50%" y="-50%" width="200%" height="200%">
         <feSpecularLighting result="specular-lighting" lighting-color="#ffffff" specularConstant="1" specularExponent="66">
             <fePointLight x="0.5" y="0.5" z="0.5"></fePointLight>
         </feSpecularLighting>
@@ -340,7 +340,7 @@
         <feComposite in="SourceGraphic" in2="lighting" operator="arithmetic" k1="1" k2="0" k3="0" k4="0"></feComposite>
     </filter> -->
 
-    <!-- <filter pixodesk:label="Spot Light" id="spot-light-filter-0" primitiveUnits="objectBoundingBox" color-interpolation-filters="sRGB" x="-50%" y="-50%" width="200%" height="200%">
+    <!-- <filter data-px-meta="label:'Spot Light'" id="spot-light-filter-0" primitiveUnits="objectBoundingBox" color-interpolation-filters="sRGB" x="-50%" y="-50%" width="200%" height="200%">
         <feSpecularLighting result="specular-lighting" lighting-color="#ffffff" specularConstant="2" specularExponent="30">
             <feSpotLight x="0.5" y="0.5" z="1" limitingConeAngle="20" pointsAtX="0.5" pointsAtY="0.5" pointsAtZ="0"></feSpotLight>
         </feSpecularLighting>
@@ -355,9 +355,9 @@
         <feComposite in="SourceGraphic" in2="lighting" operator="arithmetic" k1="1" k2="0" k3="0" k4="0"></feComposite>
     </filter> -->
 
-    <filter pixodesk:label="Outline" id="outline-filter-0" color-interpolation-filters="sRGB" x="-50%" y="-50%" width="200%" height="200%">
-        <feMorphology in="SourceAlpha" result="dilated" operator="dilate" radius="4" data-px-attr-title--radius="Width"></feMorphology>
-        <feFlood flood-color="#bada55" result="flood" data-px-attr-title--floodcolor="Color"></feFlood>
+    <filter data-px-meta="label:'Outline'" id="outline-filter-0" color-interpolation-filters="sRGB" x="-50%" y="-50%" width="200%" height="200%">
+        <feMorphology in="SourceAlpha" result="dilated" operator="dilate" radius="4" data-px-attr-title--radius="Width" data-px-meta="previewVariants:{radius:[2,7,4]}"></feMorphology>
+        <feFlood flood-color="#bada55" result="flood" data-px-attr-title--floodcolor="Color" data-px-meta="previewVariants:{'flood-color':['#000000','#3b82f6','#ff4081']}"></feFlood>
         <feComposite in="flood" in2="dilated" operator="in" result="outline"></feComposite>
         <feMerge>
             <feMergeNode in="outline"></feMergeNode>
@@ -365,19 +365,19 @@
         </feMerge>
     </filter>
 
-    <filter pixodesk:label="Gaussian Blur" id="gaussian-blur-filter-0" color-interpolation-filters="sRGB" x="-50%" y="-50%" width="200%" height="200%">
-        <feGaussianBlur stdDeviation="2 2" edgeMode="none" data-px-attr-title--stddeviation="Blur Radius"></feGaussianBlur>
+    <filter data-px-meta="label:'Gaussian Blur'" id="gaussian-blur-filter-0" color-interpolation-filters="sRGB" x="-50%" y="-50%" width="200%" height="200%">
+        <feGaussianBlur stdDeviation="2 2" edgeMode="none" data-px-attr-title--stddeviation="Blur Radius" data-px-meta="previewVariants:{stdDeviation:[1,5,10]}"></feGaussianBlur>
     </filter>
 
-    <filter pixodesk:label="Motion Blur" id="motion-blur-filter-0" color-interpolation-filters="sRGB" x="-50%" y="-50%" width="200%" height="200%">
+    <filter data-px-meta="label:'Motion Blur'" id="motion-blur-filter-0" color-interpolation-filters="sRGB" x="-50%" y="-50%" width="200%" height="200%">
         <feGaussianBlur stdDeviation="2 4" edgeMode="none" data-px-attr-title--stddeviation="Blur Radius"></feGaussianBlur>
     </filter>
 
-    <!-- <filter pixodesk:label="Sharpen" id="sharpen-filter-0" color-interpolation-filters="sRGB" x="-50%" y="-50%" width="200%" height="200%">
-        <feConvolveMatrix order="3" kernelMatrix="-4,-4,-4,-4,33,-4,-4,-4,-4"></feConvolveMatrix>
-    </filter> -->
+    <filter data-px-meta="label:'Sharpen'" id="sharpen-filter-0" color-interpolation-filters="sRGB" x="-50%" y="-50%" width="200%" height="200%">
+        <feConvolveMatrix order="3" kernelMatrix="-1 -1 -1 -1 9 -1 -1 -1 -1" data-px-meta="previewVariants:{kernelMatrix:['0 -1 0 -1 5 -1 0 -1 0','0 -2 0 -2 9 -2 0 -2 0','-4 -4 -4 -4 33 -4 -4 -4 -4']}"></feConvolveMatrix>
+    </filter>
 
-    <filter pixodesk:label="Pixelete" id="pixelete-filter-0" color-interpolation-filters="sRGB" x="0" y="0" width="100%" height="100%">
+    <filter data-px-meta="label:'Pixelete'" id="pixelete-filter-0" color-interpolation-filters="sRGB" x="0" y="0" width="100%" height="100%">
         <feFlood height="2" width="2"></feFlood>
         <feComposite width="10" height="10"></feComposite>
         <feTile result="a"></feTile>
@@ -385,7 +385,7 @@
         <feMorphology operator="dilate" radius="5" data-px-attr-title--radius="Pixel Radius"></feMorphology>
     </filter>
 
-    <filter pixodesk:label="Warp" id="warp-filter-0" color-interpolation-filters="sRGB" x="-50%" y="-50%" width="200%" height="200%">
+    <filter data-px-meta="label:'Warp'" id="warp-filter-0" color-interpolation-filters="sRGB" x="-50%" y="-50%" width="200%" height="200%">
         <feComponentTransfer>
             <feFuncR type="table" tableValues="1 0.5"></feFuncR>
         </feComponentTransfer>
@@ -393,45 +393,35 @@
             <feMergeNode></feMergeNode>
             <feMergeNode in="SourceGraphic"></feMergeNode>
         </feMerge>
-        <feTurbulence type="fractalNoise" baseFrequency="0.01" numOctaves="1" result="warp" data-px-attr-title--baseFrequency="Frequency"></feTurbulence>
-        <feDisplacementMap xChannelSelector="R" yChannelSelector="G" scale="50" in="a" in2="warp" data-px-attr-title--scale="Amount"></feDisplacementMap>
+        <feTurbulence type="fractalNoise" baseFrequency="0.01" numOctaves="1" result="warp" data-px-attr-title--baseFrequency="Frequency" data-px-meta="previewVariants:{baseFrequency:[0.03,0.06,0.12]}"></feTurbulence>
+        <feDisplacementMap xChannelSelector="R" yChannelSelector="G" scale="50" in="a" in2="warp" data-px-attr-title--scale="Amount" data-px-meta="previewVariants:{scale:[30,50,80]}"></feDisplacementMap>
     </filter>
 
-    <filter pixodesk:label="Morphology" id="morphology-filter-0" color-interpolation-filters="sRGB" x="-50%" y="-50%" width="200%" height="200%">
-        <feMorphology operator="dilate" radius="4" data-px-attr-title--radius="Radius"></feMorphology>
+    <filter data-px-meta="label:'Morphology'" id="morphology-filter-0" color-interpolation-filters="sRGB" x="-50%" y="-50%" width="200%" height="200%">
+        <feMorphology operator="dilate" radius="4" data-px-attr-title--radius="Radius" data-px-meta="previewVariants:{operator:['erode','dilate','erode'],radius:[2,8,5]}"></feMorphology>
     </filter>
 
-    <!-- <filter pixodesk:label="Black and White" id="black-and-white-filter-0" color-interpolation-filters="sRGB" x="-50%" y="-50%" width="200%" height="200%">
-        <feColorMatrix type="saturate" values="0"></feColorMatrix>
-        <feComponentTransfer>
-            <feFuncR type="discrete"
-                tableValues="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 "></feFuncR>
-            <feFuncG type="discrete"
-                tableValues="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 "></feFuncG>
-            <feFuncB type="discrete"
-                tableValues="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 "></feFuncB>
-        </feComponentTransfer>
-    </filter> -->
-
-    <!-- <filter pixodesk:label="Grayscale" id="grayscale-filter-0" color-interpolation-filters="sRGB" x="-50%" y="-50%" width="200%" height="200%">
-        <feColorMatrix type="matrix"
-            values="0.213 0.715 0.072 0 0 0.213 0.715 0.072 0 0 0.213 0.715 0.072 0 0 0 0 0 1 0"></feColorMatrix>
-    </filter> -->
-
-    <!-- <filter pixodesk:label="Sepia" id="sepia-filter-0" color-interpolation-filters="sRGB" x="-50%" y="-50%" width="200%" height="200%">
-        <feColorMatrix type="matrix"
-            values="0.393 0.769 0.189 0 0 0.349 0.686 0.168 0 0 0.272 0.534 0.131 0 0 0 0 0 1 0"></feColorMatrix>
-    </filter> -->
-
-    <filter pixodesk:label="Saturate" id="saturate-filter-0" color-interpolation-filters="sRGB" x="-50%" y="-50%" width="200%" height="200%">
-        <feColorMatrix type="saturate" values="0.5" data-px-attr-title--values="Amount"></feColorMatrix>
+    <filter data-px-meta="label:'Black and White'" id="black-and-white-filter-0" color-interpolation-filters="sRGB" x="-50%" y="-50%" width="200%" height="200%">
+        <feColorMatrix type="matrix" values="6.378 21.456 2.166 0 -15 6.378 21.456 2.166 0 -15 6.378 21.456 2.166 0 -15 0 0 0 1 0" data-px-meta="previewVariants:{values:['6.378 21.456 2.166 0 -9 6.378 21.456 2.166 0 -9 6.378 21.456 2.166 0 -9 0 0 0 1 0','6.378 21.456 2.166 0 -12 6.378 21.456 2.166 0 -12 6.378 21.456 2.166 0 -12 0 0 0 1 0','6.378 21.456 2.166 0 -18 6.378 21.456 2.166 0 -18 6.378 21.456 2.166 0 -18 0 0 0 1 0']}"></feColorMatrix>
     </filter>
 
-    <filter pixodesk:label="Hue Rotate" id="hue-rotate-filter-0" color-interpolation-filters="sRGB" x="-50%" y="-50%" width="200%" height="200%">
-        <feColorMatrix type="hueRotate" values="90" data-px-attr-title--values="Angle"></feColorMatrix>
+    <filter data-px-meta="label:'Grayscale'" id="grayscale-filter-0" color-interpolation-filters="sRGB" x="-50%" y="-50%" width="200%" height="200%">
+        <feColorMatrix type="matrix" values="0.2126 0.7152 0.0722 0 0 0.2126 0.7152 0.0722 0 0 0.2126 0.7152 0.0722 0 0 0 0 0 1 0" data-px-meta="previewVariants:{values:['0.6 0.3 0.1 0 0 0.6 0.3 0.1 0 0 0.6 0.3 0.1 0 0 0 0 0 1 0','0.2 0.7 0.1 0 0 0.2 0.7 0.1 0 0 0.2 0.7 0.1 0 0 0 0 0 1 0','0.1 0.3 0.6 0 0 0.1 0.3 0.6 0 0 0.1 0.3 0.6 0 0 0 0 0 1 0']}"></feColorMatrix>
     </filter>
 
-    <filter pixodesk:label="Invert" id="invert-filter-0" color-interpolation-filters="sRGB" x="-50%" y="-50%" width="200%" height="200%">
+    <filter data-px-meta="label:'Sepia'" id="sepia-filter-0" color-interpolation-filters="sRGB" x="-50%" y="-50%" width="200%" height="200%">
+        <feColorMatrix type="matrix" values="0.393 0.769 0.189 0 0 0.349 0.686 0.168 0 0 0.272 0.534 0.131 0 0 0 0 0 1 0" data-px-meta="previewVariants:{values:['0.7875 0.2692 0.0662 0 0 0.1221 0.8901 0.0588 0 0 0.0952 0.1869 0.6959 0 0 0 0 0 1 0','0.6055 0.4999 0.1229 0 0 0.2268 0.7959 0.1092 0 0 0.1768 0.3471 0.4352 0 0 0 0 0 1 0','0.5 0.97 0.24 0 -0.05 0.44 0.87 0.21 0 -0.05 0.34 0.67 0.17 0 -0.05 0 0 0 1 0']}"></feColorMatrix>
+    </filter>
+
+    <filter data-px-meta="label:'Saturate'" id="saturate-filter-0" color-interpolation-filters="sRGB" x="-50%" y="-50%" width="200%" height="200%">
+        <feColorMatrix type="saturate" values="0.5" data-px-attr-title--values="Amount" data-px-meta="previewVariants:{values:[0,2,5]}"></feColorMatrix>
+    </filter>
+
+    <filter data-px-meta="label:'Hue Rotate'" id="hue-rotate-filter-0" color-interpolation-filters="sRGB" x="-50%" y="-50%" width="200%" height="200%">
+        <feColorMatrix type="hueRotate" values="90" data-px-attr-title--values="Angle" data-px-meta="previewVariants:{values:[45,180,270]}"></feColorMatrix>
+    </filter>
+
+    <filter data-px-meta="label:'Invert'" id="invert-filter-0" color-interpolation-filters="sRGB" x="-50%" y="-50%" width="200%" height="200%">
         <feComponentTransfer>
             <feFuncR type="table" tableValues="1 0"></feFuncR>
             <feFuncG type="table" tableValues="1 0"></feFuncG>
@@ -439,7 +429,7 @@
         </feComponentTransfer>
     </filter>
 
-    <filter pixodesk:label="Brightness" id="brightness-filter-0" color-interpolation-filters="sRGB" x="-50%" y="-50%" width="200%" height="200%">
+    <filter data-px-meta="label:'Brightness'" id="brightness-filter-0" color-interpolation-filters="sRGB" x="-50%" y="-50%" width="200%" height="200%">
         <feComponentTransfer>
             <feFuncR type="linear" slope="1.5"></feFuncR>
             <feFuncG type="linear" slope="1.5"></feFuncG>
@@ -447,7 +437,7 @@
         </feComponentTransfer>
     </filter>
 
-    <filter pixodesk:label="Contrast" id="contrast-filter-0" color-interpolation-filters="sRGB" x="-50%" y="-50%" width="200%" height="200%">
+    <filter data-px-meta="label:'Contrast'" id="contrast-filter-0" color-interpolation-filters="sRGB" x="-50%" y="-50%" width="200%" height="200%">
         <feComponentTransfer>
             <feFuncR type="linear" slope="2" intercept="-0.5"></feFuncR>
             <feFuncG type="linear" slope="2" intercept="-0.5"></feFuncG>
@@ -455,39 +445,85 @@
         </feComponentTransfer>
     </filter>
 
-    <filter pixodesk:label="Opacity" id="opacity-filter-0" color-interpolation-filters="sRGB" x="-50%" y="-50%" width="200%" height="200%">
+    <filter data-px-meta="label:'Opacity'" id="opacity-filter-0" color-interpolation-filters="sRGB" x="-50%" y="-50%" width="200%" height="200%">
         <feComponentTransfer>
-            <feFuncA type="table" tableValues="0 0.5"></feFuncA>
+            <feFuncA type="table" tableValues="0 0.5" data-px-meta="previewVariants:{tableValues:['0 0.2','0 0.35','0 0.8']}"></feFuncA>
         </feComponentTransfer>
     </filter>
 
-    <filter pixodesk:label="Posterize" id="posterize-filter-0" color-interpolation-filters="sRGB" x="-50%" y="-50%" width="200%" height="200%">
+    <filter data-px-meta="label:'Posterize'" id="posterize-filter-0" color-interpolation-filters="sRGB" x="-50%" y="-50%" width="200%" height="200%">
         <feColorMatrix type="saturate" values="0.9"></feColorMatrix>
         <feComponentTransfer>
             <feFuncR type="discrete" tableValues="0 0.333 0.667 1"></feFuncR>
-            <feFuncG type="discrete" tableValues=""></feFuncG>
-            <feFuncB type="discrete" tableValues=""></feFuncB>
+            <feFuncG type="discrete" tableValues="0 0.333 0.667 1"></feFuncG>
+            <feFuncB type="discrete" tableValues="0 0.333 0.667 1"></feFuncB>
         </feComponentTransfer>
     </filter>
 
-      <!-- <filter pixodesk:label="Duotone" id="duotone-filter-0" color-interpolation-filters="sRGB" x="-50%" y="-50%" width="200%" height="200%">
-        <feColorMatrix type="matrix" result="grayscale" values="1 0 0 0 0 1 0 0 0 0 1 0 0 0 0 0 0 0 1 0">
-        </feColorMatrix>
-        <feComponentTransfer color-interpolation-filters="sRGB">
-            <feFuncR type="gamma" exponent="1.5" amplitude="1" offset="0"></feFuncR>
-            <feFuncG type="gamma" exponent="1.5" amplitude="1" offset="0"></feFuncG>
-            <feFuncB type="gamma" exponent="1.5" amplitude="1" offset="0"></feFuncB>
-        </feComponentTransfer>
-        <feComponentTransfer color-interpolation-filters="sRGB" result="duotone">
-            <feFuncR type="table" tableValues="0.741 0.988"></feFuncR>
-            <feFuncG type="table" tableValues="0.043 0.733"></feFuncG>
-            <feFuncB type="table" tableValues="0.569 0.051"></feFuncB>
-            <feFuncA type="table" tableValues="0 1"></feFuncA>
-        </feComponentTransfer>
-    </filter> -->
+    <filter data-px-meta="label:'Duotone'" id="duotone-filter-0" color-interpolation-filters="sRGB" x="-50%" y="-50%" width="200%" height="200%">
+        <feColorMatrix type="matrix" values="0.0525 0.1767 0.0178 0 0.7412 0.1467 0.4936 0.0498 0 0.0431 -0.1101 -0.3702 -0.0374 0 0.5686 0 0 0 1 0" data-px-meta="previewVariants:{values:['0.1834 0.617 0.0623 0 0.1176 0.1217 0.4095 0.0413 0 0.2275 -0.0975 -0.3282 -0.0331 0 0.5412 0 0 0 1 0','0.1951 0.6563 0.0663 0 0.0588 0.0417 0.1402 0.0142 0 0.4627 0.085 0.2861 0.0289 0 0.4314 0 0 0 1 0','0.105 0.3534 0.0357 0 0.498 0.1676 0.5637 0.0569 0 0.1137 0.0909 0.3057 0.0309 0 0.1137 0 0 0 1 0']}"></feColorMatrix>
+    </filter>
 
-      <!-- <filter pixodesk:label="X-ray" id="x-ray-filter-0" color-interpolation-filters="sRGB" x="-50%" y="-50%" width="200%" height="200%">
+    <filter data-px-meta="label:'X-ray'" id="x-ray-filter-0" color-interpolation-filters="sRGB" x="-50%" y="-50%" width="200%" height="200%">
         <feColorMatrix type="matrix" values="-1 0 0 0 0 0 -1 0 0 0 0 0 -1 0 0 1 1 1 0 0"></feColorMatrix>
-    </filter> -->
+    </filter>
+
+    <filter data-px-meta="label:'Vintage'" id="vintage-filter-0" color-interpolation-filters="sRGB" x="-50%" y="-50%" width="200%" height="200%">
+        <feColorMatrix type="matrix" values="0.8 0.1 0.05 0 0.08 0.05 0.8 0.05 0 0.08 0.05 0.1 0.7 0 0.1 0 0 0 1 0" data-px-meta="previewVariants:{values:['1.1 0.05 0 0 0.02 0.02 1 0 0 0.01 0 0 0.85 0 0 0 0 0 1 0','0.85 0 0 0 0 0 1 0.05 0 0.01 0 0.05 1.1 0 0.03 0 0 0 1 0','1.2 0 0 0 -0.05 0 1.1 0 0 -0.03 0 0 0.9 0 0.02 0 0 0 1 0']}"></feColorMatrix>
+    </filter>
+
+    <filter data-px-meta="label:'Glow'" id="glow-filter-0" color-interpolation-filters="sRGB" x="-50%" y="-50%" width="200%" height="200%">
+        <feFlood flood-color="#00e5ff" result="color" data-px-attr-title--floodcolor="Glow Color" data-px-meta="previewVariants:{'flood-color':['#ff00d4','#ffd000','#ffffff']}"></feFlood>
+        <feComposite in="color" in2="SourceAlpha" operator="in" result="silhouette"></feComposite>
+        <feGaussianBlur in="silhouette" stdDeviation="4" result="glow" data-px-attr-title--stddeviation="Glow Radius" data-px-meta="previewVariants:{stdDeviation:[2,6,8]}"></feGaussianBlur>
+        <feMerge>
+            <feMergeNode in="glow"></feMergeNode>
+            <feMergeNode in="glow"></feMergeNode>
+            <feMergeNode in="SourceGraphic"></feMergeNode>
+        </feMerge>
+    </filter>
+
+    <filter data-px-meta="label:'Emboss'" id="emboss-filter-0" color-interpolation-filters="sRGB" x="-50%" y="-50%" width="200%" height="200%">
+        <feConvolveMatrix order="3" kernelMatrix="-2 -1 0 -1 1 1 0 1 2" data-px-meta="previewVariants:{kernelMatrix:['0 1 2 -1 1 1 -2 -1 0','2 1 0 1 1 -1 0 -1 -2','-1 -1 0 -1 1 1 0 1 1']}"></feConvolveMatrix>
+    </filter>
+
+    <filter data-px-meta="label:'Edge Detect'" id="edge-detect-filter-0" color-interpolation-filters="sRGB" x="-50%" y="-50%" width="200%" height="200%">
+        <feConvolveMatrix order="3" kernelMatrix="-1 -1 -1 -1 8 -1 -1 -1 -1" data-px-meta="previewVariants:{kernelMatrix:['0 -1 0 -1 4 -1 0 -1 0','-1 0 1 -2 0 2 -1 0 1','-1 -2 -1 0 0 0 1 2 1']}"></feConvolveMatrix>
+    </filter>
+
+    <filter data-px-meta="label:'Noise'" id="noise-filter-0" color-interpolation-filters="sRGB" x="0" y="0" width="100%" height="100%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="3" stitchTiles="stitch" result="noise" data-px-attr-title--basefrequency="Grain Size" data-px-meta="previewVariants:{baseFrequency:[0.4,0.85,2]}"></feTurbulence>
+        <feColorMatrix in="noise" type="matrix" values="0.33 0.33 0.33 0 0 0.33 0.33 0.33 0 0 0.33 0.33 0.33 0 0 0 0 0 0 1" result="mono"></feColorMatrix>
+        <feComposite in="SourceGraphic" in2="mono" operator="arithmetic" k1="0" k2="1" k3="0.35" k4="-0.17" result="grainy" data-px-meta="previewVariants:{k3:[0.35,0.8,0.5],k4:[-0.17,-0.4,-0.25]}"></feComposite>
+        <feComposite in="grainy" in2="SourceGraphic" operator="in"></feComposite>
+    </filter>
+
+    <filter data-px-meta="label:'Rough Edges'" id="rough-edges-filter-0" color-interpolation-filters="sRGB" x="-20%" y="-20%" width="140%" height="140%">
+        <feTurbulence type="turbulence" baseFrequency="0.05" numOctaves="2" result="noise" data-px-attr-title--basefrequency="Roughness" data-px-meta="previewVariants:{baseFrequency:[0.02,0.1,0.2]}"></feTurbulence>
+        <feDisplacementMap in="SourceGraphic" in2="noise" scale="6" xChannelSelector="R" yChannelSelector="G" data-px-attr-title--scale="Amount" data-px-meta="previewVariants:{scale:[10,4,8]}"></feDisplacementMap>
+    </filter>
+
+    <filter data-px-meta="label:'Gooey'" id="gooey-filter-0" color-interpolation-filters="sRGB" x="-50%" y="-50%" width="200%" height="200%">
+        <feGaussianBlur in="SourceGraphic" stdDeviation="6" result="blur" data-px-attr-title--stddeviation="Goo Radius" data-px-meta="previewVariants:{stdDeviation:[3,9,12]}"></feGaussianBlur>
+        <feColorMatrix in="blur" type="matrix" values="1 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 18 -7" result="goo"></feColorMatrix>
+        <feComposite in="SourceGraphic" in2="goo" operator="atop"></feComposite>
+    </filter>
+
+    <filter data-px-meta="label:'Bevel'" id="bevel-filter-0" color-interpolation-filters="sRGB" x="-50%" y="-50%" width="200%" height="200%">
+        <feGaussianBlur in="SourceAlpha" stdDeviation="2" result="blur" data-px-meta="previewVariants:{stdDeviation:[1,3,4]}"></feGaussianBlur>
+        <feSpecularLighting in="blur" surfaceScale="5" specularConstant="0.75" specularExponent="20" result="specular" data-px-meta="previewVariants:{surfaceScale:[3,8,5],specularExponent:[10,30,40]}">
+            <fePointLight x="-5000" y="-10000" z="20000"></fePointLight>
+        </feSpecularLighting>
+        <feComposite in="specular" in2="SourceAlpha" operator="in" result="specularIn"></feComposite>
+        <feComposite in="SourceGraphic" in2="specularIn" operator="arithmetic" k1="0" k2="1" k3="1" k4="0"></feComposite>
+    </filter>
+
+    <filter data-px-meta="label:'Chromatic Aberration'" id="chromatic-aberration-filter-0" color-interpolation-filters="sRGB" x="-50%" y="-50%" width="200%" height="200%">
+        <feColorMatrix in="SourceGraphic" type="matrix" values="1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0" result="red"></feColorMatrix>
+        <feOffset in="red" dx="-2" dy="0" result="redShift" data-px-meta="previewVariants:{dx:[-1,-4,-2],dy:[0,0,-2]}"></feOffset>
+        <feColorMatrix in="SourceGraphic" type="matrix" values="0 0 0 0 0 0 1 0 0 0 0 0 1 0 0 0 0 0 1 0" result="cyan"></feColorMatrix>
+        <feOffset in="cyan" dx="2" dy="0" result="cyanShift" data-px-meta="previewVariants:{dx:[1,4,2],dy:[0,0,2]}"></feOffset>
+        <feBlend in="redShift" in2="cyanShift" mode="screen"></feBlend>
+    </filter>
   </defs>
 </svg>

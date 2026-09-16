@@ -1,0 +1,18 @@
+---
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+
+// The Lottie Animator preview player: drop a Lottie .json or .lottie and play it with airbnb
+// lottie-web or the LottieFiles player. public/app/lottie-player is a static build of the
+// private kf/lottie-preview-player project, published by `yarn website:lottie-player` in the
+// private app repo — don't edit that folder by hand, re-run the command.
+---
+
+<BaseLayout title="Lottie Animator Preview Player">
+  <div class="pt-navDouble flex flex-col flex-1 bg-black">
+    <iframe
+      src="/app/lottie-player/index.html"
+      title="Pixodesk Lottie Animator — Preview Player"
+      class="w-full flex-1 min-h-[calc(100vh-5rem)] border-0"
+    ></iframe>
+  </div>
+</BaseLayout>
