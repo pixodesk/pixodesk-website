@@ -447,3 +447,34 @@ starlight-toc a {
 /* Code blocks: size and line-height come from expressiveCode.styleOverrides
    (codeFontSize / codeLineHeight) in astro.config.mjs — EC's own stylesheet
    loads after this one, so plain CSS overrides here would lose. */
+
+
+/* ── Search: restore the padding Tailwind's preflight strips ──────────────────────────────
+   Starlight's search styles and Pagefind's stylesheet both live in the
+   `starlight.core` cascade layer, while Tailwind's preflight is unlayered —
+   and unlayered rules beat layered ones at any specificity. Preflight's
+   `button, input { padding: 0 }` and `* { border-width: 0 }` therefore win,
+   which leaves the magnifier flush against the field edge in the header and,
+   in the modal, sitting on top of the "Search" placeholder. These rules are
+   unlayered too, so they restore the intended values.
+   The icon stays where Pagefind puts it — inline-start, with the input's text
+   padded to clear it (.pagefind-ui__form::before is absolutely positioned and
+   was never the thing that moved). */
+
+@media (min-width: 50rem) {
+    site-search button[data-open-modal] {
+        padding-inline-start: 0.75rem;   /* Starlight's own values */
+        padding-inline-end: 0.5rem;
+        /* border: 1px solid var(--sl-color-gray-5); */
+    }
+
+    site-search button[data-open-modal]:hover {
+        border-color: var(--sl-color-gray-2);
+    }
+}
+
+/* Pagefind's own expressions, so they keep tracking --pagefind-ui-scale. */
+#starlight__search .pagefind-ui__search-input {
+    padding-inline-start: calc(54px * var(--pagefind-ui-scale));
+    padding-inline-end: calc(70px * var(--pagefind-ui-scale));
+}
