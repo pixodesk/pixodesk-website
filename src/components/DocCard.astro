@@ -94,4 +94,13 @@ const { title, href, icon } = Astro.props;
         font-size: 0.875rem;
         line-height: 1.5;
     }
+
+    /* Spacing below the grid. Starlight's markdown flow gives .card-grid a
+       1rem margin-top; the paragraph that follows has its margins zeroed by
+       Tailwind's preflight, so the grid would otherwise sit flush against it.
+       :global — .card-grid is Starlight's own element, outside this
+       component's scope. */
+    :global(.card-grid) {
+        margin-bottom: 1rem;
+    }
 </style>
