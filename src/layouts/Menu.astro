@@ -50,7 +50,7 @@ const {
 } = Astro.props as Props;
 
 // The Docs submenu is per-app: inside one app's docs it lists that app's
-// sub-docs plus a single link to the other app's main doc. `activePrefix`
+// sub-docs only — the other app is reachable through Docs Home. `activePrefix`
 // scopes highlighting: a section-home link (Editor, Lottie Animator) is active on
 // its own pages only, never on sibling sections that share its URL prefix.
 const docsSubMenu: SubMenuItem[] = pathname.startsWith("/docs/2d-lottie")
@@ -58,7 +58,6 @@ const docsSubMenu: SubMenuItem[] = pathname.startsWith("/docs/2d-lottie")
       { label: "Docs Home", href: "/docs" },
       { label: "Lottie Animator", href: "/docs/2d-lottie", activePrefix: "/docs/2d-lottie/lottie-features" },
       { label: "Lottie Players", href: "/docs/2d-lottie/add-lottie-animation-to-your-project" },
-      { label: "SVG Animator", href: "/docs/svga" },
     ]
   : pathname.startsWith("/docs/svga")
     ? [
@@ -67,7 +66,6 @@ const docsSubMenu: SubMenuItem[] = pathname.startsWith("/docs/2d-lottie")
         { label: "Player Library", href: "/docs/svga/player-library" },
         { label: "JSON Format", href: "/docs/svga/format" },
         { label: "Pre-rendered SVG File", href: "/docs/svga/prerendered-svg" },
-        { label: "Lottie Animator", href: "/docs/2d-lottie" },
       ]
     : [
         { label: "Docs Home", href: "/docs" },
