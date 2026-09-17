@@ -1,16 +1,19 @@
 ---
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 
-// The Lottie Animator preview player: drop a Lottie .json or .lottie and play it with airbnb
-// lottie-web or the LottieFiles player. public/app/lottie-player is a static build of the
-// private kf/lottie-preview-player project, published by `yarn website:lottie-player` in the
-// private app repo — don't edit that folder by hand, re-run the command.
+// Lottie Animator's preview player — the UNIFIED player (public/app/player) opened on the
+// Lottie player, so a dropped Lottie plays with airbnb lottie-web and can be switched to the
+// LottieFiles (dotLottie) player from the transport bar. It reads Pixodesk JSON and
+// pre-rendered SVG too; this page only picks the starting player.
+//
+// Published by `yarn website:player` in the private app repo — don't edit public/app/player by
+// hand, re-run the command.
 ---
 
 <BaseLayout title="Lottie Animator Preview Player">
   <div class="pt-navDouble flex flex-col flex-1 bg-black">
     <iframe
-      src="/app/lottie-player/index.html"
+      src="/app/player/index.html?player=lottie"
       title="Pixodesk Lottie Animator — Preview Player"
       class="w-full flex-1 min-h-[calc(100vh-5rem)] border-0"
     ></iframe>

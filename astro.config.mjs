@@ -7,6 +7,7 @@ import starlight from "@astrojs/starlight";
 import { remarkSvgaDocLinks } from "./src/plugins/remark-svga-doc-links.mjs";
 import { rehypeTableWrap } from "./src/plugins/rehype-table-wrap.mjs";
 import { docsSidebar, docsSidebarIntegration, svgaRedirects } from "./src/plugins/docs-sidebar.mjs";
+import { expressiveCodePxPlayer } from "./src/plugins/expressive-code-px-player.mjs";
 
 export default defineConfig({
     site: 'https://pixodesk.com',
@@ -52,7 +53,14 @@ export default defineConfig({
                 },
             },
             defaultLocale: 'root',
+            // The preview player's embed script, on every docs page: it turns code blocks marked
+            // `px-player` into live players (@see expressive-code-px-player.mjs). Deferred and
+            // tiny — pages with no marked block do nothing.
+            head: [
+                { tag: 'script', attrs: { src: '/app/player/embed.js', type: 'module', defer: true } },
+            ],
             expressiveCode: {
+                plugins: [expressiveCodePxPlayer()],   // ```json px-player  →  a live player under the block
                 shiki: { langAlias: { svg: 'xml' } },   // shiki has no "svg" grammar; SVG is XML
                 defaultProps: { wrap: true },   // soft-wrap code blocks — no horizontal scroll
                 themes: ['github-light', 'github-dark'],  //  github-light, min-light, slack-ochin, solarized-light, vitesse-light

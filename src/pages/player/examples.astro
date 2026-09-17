@@ -1,0 +1,58 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+// Inline players — the same build as /player, embedded three times on an ordinary page, once per
+// format Pixodesk produces. This is what a documentation page gets from
+// `/app/player/embed.js`: an element marked `data-px-player` becomes a live player, fed either
+// from a file (`data-px-player-src`, as here) or from the text of the code block it follows.
+//
+// Each player runs the animation in its OWN sandboxed frame, so a heavy or broken example on a
+// docs page can never take the page down with it.
+---
+
+<BaseLayout title="Preview Player — inline examples">
+  <script src="/app/player/embed.js" type="module" defer></script>
+
+  <div class="pt-navDouble flex flex-col flex-1 bg-black text-white">
+    <div class="mx-auto w-full max-w-5xl px-6 py-10">
+      <h1 class="text-3xl font-semibold">Inline preview players</h1>
+      <p class="mt-3 text-white/70">
+        One player, every format. Each frame below is the same build, told what to load by a
+        single attribute — and each plays its animation inside its own sandbox.
+      </p>
+
+      <h2 class="mt-10 text-xl font-medium">Pixodesk animation JSON</h2>
+      <div
+        data-px-player
+        data-px-player-src="/app/player/samples/pixodesk-pulse.json"
+        data-px-player-height="320px"
+        class="mt-3"
+      ></div>
+
+      <h2 class="mt-10 text-xl font-medium">Lottie JSON</h2>
+      <div
+        data-px-player
+        data-px-player-src="/app/player/samples/lottie-spin.json"
+        data-px-player-height="320px"
+        class="mt-3"
+      ></div>
+
+      <h2 class="mt-10 text-xl font-medium">Pre-rendered SVG</h2>
+      <div
+        data-px-player
+        data-px-player-src="/app/player/samples/prerendered-slide.svg"
+        data-px-player-height="320px"
+        class="mt-3"
+      ></div>
+
+      <h2 class="mt-10 text-xl font-medium">In documentation</h2>
+      <p class="mt-3 text-white/70">
+        On a docs page the animation is usually already there, as a code block. Marking the fence
+        turns it into a player without repeating the content anywhere:
+      </p>
+      <pre class="mt-3 overflow-x-auto rounded bg-white/5 p-4 text-sm"><code>```json px-player
+&#123; "type": "svg", … &#125;
+```</code></pre>
+    </div>
+  </div>
+</BaseLayout>

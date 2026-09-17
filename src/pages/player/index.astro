@@ -1,0 +1,23 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+// The unified preview player — one player for every format Pixodesk produces: Lottie JSON,
+// Pixodesk lightweight JSON and pre-rendered SVG (CSS or JS animated). Drop a file, or pass
+// ?src=. The animation runs inside the player's own sandboxed frame, so a broken or
+// pathological file cannot take the page down with it.
+//
+// public/app/player is a static build of the private kf/unified-preview-player project,
+// published by `yarn website:player` in the private app repo — don't edit that folder by hand,
+// re-run the command. The same build serves /animator/player and /svg-animator/player, which
+// only differ by the ?player= parameter.
+---
+
+<BaseLayout title="Preview Player">
+  <div class="pt-navDouble flex flex-col flex-1 bg-black">
+    <iframe
+      src="/app/player/index.html?source=1"
+      title="Pixodesk — Preview Player"
+      class="w-full flex-1 min-h-[calc(100vh-5rem)] border-0"
+    ></iframe>
+  </div>
+</BaseLayout>

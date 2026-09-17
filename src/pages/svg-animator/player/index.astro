@@ -1,16 +1,19 @@
 ---
 import BaseLayout from "../../../layouts/BaseLayout.astro";
 
-// The SVG Animator preview player: drop an animation .json and play it with the web, React or
-// Vue player. public/app/svga-player is a static build of pixodesk-svg-animator's
-// examples/preview-player, published by `yarn website:svga-player` in the private app repo —
-// don't edit that folder by hand, re-run the command.
+// SVG Animator's preview player — the UNIFIED player (public/app/player) opened on the Pixodesk
+// player, so a dropped animation .json plays with @pixodesk/svg-animator-web and can be switched
+// to the React or Vue component from the transport bar. It reads Lottie and pre-rendered SVG
+// too; this page only picks the starting player.
+//
+// Published by `yarn website:player` in the private app repo — don't edit public/app/player by
+// hand, re-run the command.
 ---
 
 <BaseLayout title="SVG Animator Preview Player">
   <div class="pt-navDouble flex flex-col flex-1 bg-black">
     <iframe
-      src="/app/svga-player/index.html"
+      src="/app/player/index.html?player=pixodesk"
       title="Pixodesk SVG Animator — Preview Player"
       class="w-full flex-1 min-h-[calc(100vh-5rem)] border-0"
     ></iframe>

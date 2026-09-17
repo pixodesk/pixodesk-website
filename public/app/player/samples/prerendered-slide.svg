@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <style>
+    /* A pre-rendered SVG animates itself: the player only starts and drives it.
+       `px-anim-enabled` / `px-anim-playing` on the root are what the preview toggles. */
+    .px-anim-element { animation-play-state: paused; }
+    .px-anim-playing .px-anim-element { animation-play-state: running; }
+    #bar { animation: px-slide 1400ms ease-in-out infinite alternate; }
+    @keyframes px-slide {
+      from { transform: translateX(0); }
+      to   { transform: translateX(90px); }
+    }
+  </style>
+  <rect width="200" height="200" fill="none"/>
+  <rect id="bar" class="px-anim-element" x="20" y="80" width="70" height="40" rx="10" fill="#4c8dff"/>
+</svg>

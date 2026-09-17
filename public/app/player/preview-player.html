@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Pixodesk preview player (frame)</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { width: 100%; height: 100%; background: transparent; overflow: hidden; }
+    /* Both mounts fill the frame; the page shows exactly one, chosen by `load`. */
+    #dlc, #pxc { width: 100%; height: 100%; display: block; }
+    #pxc { display: none; }
+    #pxc svg { width: 100%; height: 100%; display: block; }
+  </style>
+  <script type="module" crossorigin src="./assets/page-ChaphI46.js"></script>
+  <link rel="modulepreload" crossorigin href="./assets/previewPlayerProtocol-Bkf8Z64z.js">
+</head>
+<body>
+  <!-- dotLottie renders to a canvas; the React / Vue components render into a div. -->
+  <canvas id="dlc"></canvas>
+  <div id="pxc"></div>
+</body>
+</html>

@@ -1,0 +1,11 @@
+{
+  "type": "svg", "viewBox": "0 0 200 200",
+  "animator": { "timeline": { "duration": 1600, "iterations": "infinite" } },
+  "children": [
+    { "type": "circle", "cx": 100, "cy": 100, "r": 30, "fill": "#4c8dff",
+      "animate": {
+        "r": { "keyframes": [ { "time": 0, "value": 20 }, { "time": 800, "value": 70 }, { "time": 1600, "value": 20 } ] },
+        "opacity": { "keyframes": [ { "time": 0, "value": 1 }, { "time": 800, "value": 0.35 }, { "time": 1600, "value": 1 } ] }
+      } }
+  ]
+}
