@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- Created with Pixodesk SVG (https://pixodesk.com) -->
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 680" text-rendering="geometricPrecision" shape-rendering="geometricPrecision" fill="url(#_px_svg_1k6s3uev)" stroke="none" id="_px_2kagth8o" data-px-attrs="animation:{duration:15000;loop:true;inThreshold:0.5;startOn:scrollIntoView}">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 680" text-rendering="geometricPrecision" shape-rendering="geometricPrecision" fill="url(#_px_svg_1k6s3uev)" stroke="none" id="_px_2kagth8o" data-px-meta="animator:{timeline:{duration:15000,iterations:'infinite',trigger:{scrollIntoViewThreshold:0.5,startOn:'scrollIntoView'}}}">
   <style>@keyframes _px_2kppeh4a {0% {transform:scale(1,1);animation-timing-function:cubic-bezier(0.167,0.167,0.833,0.833);}
 1% {transform:scale(0.1116,1);animation-timing-function:cubic-bezier(0.167,0.167,0.833,0.833);}
 3.1333% {transform:scale(1,1);animation-timing-function:cubic-bezier(0.167,0.167,0.833,0.833);}
@@ -125,7 +125,7 @@
       </g>
     </symbol>
     <symbol id="_px_2kagth83" viewBox="0 0 37.6528 49.1586">
-      <g data-px-label="dandelion-seed" transform="translate(19.8211,24.5793)translate(-79.5212,-374.3275)">
+      <g transform="translate(19.8211,24.5793)translate(-79.5212,-374.3275)" data-px-meta="label:'dandelion-seed'">
         <g transform="translate(78.5,389.4936)translate(-78.5,-378.4132)">
           <rect fill="#ffffff" stroke="none" transform="translate(79,383.1368)translate(-1,-14.1368)" y="-12.912" width="1" height="29.912"/>
           <rect fill="#ffffff" stroke="none" transform="translate(79,383.1368)translate(-1,-14.1368)" rx="1" ry="1" x="-0.5655" y="12.118" width="2.1311" height="6.7084"/>
@@ -147,20 +147,20 @@
       <use transform="translate(23.1704,27.7199)rotate(-11)translate(-18.8264,-24.5792)" href="#_px_2kagth83" width="37.6528" height="49.1584"/>
     </pattern>
     <pattern viewBox="0 0 134.9052 99.989" x="-16" width="88.9052" height="65.8948" patternUnits="userSpaceOnUse" patternTransform="rotate(15)">
-      <g data-px-label="butterfly-test 2" fill="#ffffff" stroke="none" transform="translate(70.5605,50.0449)rotate(21)scale(0.6208,0.6208)translate(-1041.5202,47.5221)">
-        <rect data-px-label="body" stroke="none" transform="translate(1041.8913,-38.6232)translate(-4.0143,-34.9401)" rx="26" ry="26" width="8.0286" height="69.8802"/>
-        <g data-px-label="wings" transform="translate(1041.5331,-47.5221)translate(-1041.5331,47.5221)">
-          <path data-px-label="wing 2" stroke="none" transform="translate(-799.5472,11.6552)rotate(-21.8649)scale(1.6297,1.6297)" d="M1039.6166,407.9137C1029.6739,410.8627,1020.2652,408.7051,1017.5825,402.4264C1014.5802,395.399,1021.1326,385.8514,1032.2372,381.013C1030.9957,379.1115,1029.8759,377.0273,1028.9201,374.7898C1023.212,361.43,1025.4941,347.6476,1034.0172,344.0061C1042.5401,340.3646,1054.077,348.2427,1059.785,361.6025C1061.5663,365.7721,1062.5698,369.9828,1062.8478,373.9135C1062.3833,371.2451,1061.5716,368.4791,1060.3966,365.7285C1055.2402,353.6599,1045.034,346.4511,1037.6005,349.627C1030.167,352.8029,1028.3211,365.1613,1033.4776,377.23C1034.3412,379.2512,1035.3468,381.1364,1036.4567,382.8592C1026.7729,387.0813,1021.134,395.5866,1023.8464,401.9348C1025.93,406.8113,1032.3395,409.0067,1039.6166,407.9137z"/>
-          <path data-px-label="wing 1" stroke="none" transform="translate(1083.1076,-50.9876)rotate(18.9259)scale(-1.6297,1.6297)translate(-1039.851,-376.1665)" d="M1039.6166,407.9137C1029.6739,410.8627,1020.265,408.7048,1017.5825,402.4263C1014.5802,395.3989,1021.1326,385.8512,1032.2372,381.0129C1030.9957,379.1112,1029.8759,377.0273,1028.9201,374.7897C1023.2121,361.4301,1025.494,347.6476,1034.0171,344.0061C1042.54,340.3646,1054.077,348.2428,1059.785,361.6025C1061.5662,365.7718,1062.5698,369.9828,1062.8478,373.9135C1062.3834,371.2451,1061.5715,368.4791,1060.3965,365.7285C1055.2401,353.6601,1045.0336,346.4511,1037.6004,349.627C1030.167,352.8029,1028.3211,365.1613,1033.4775,377.2299C1034.3411,379.2511,1035.3468,381.1364,1036.4567,382.8591C1026.7729,387.0812,1021.1341,395.5865,1023.8464,401.9347C1025.9299,406.811,1032.3395,409.0067,1039.6166,407.9137z"/>
+      <g fill="#ffffff" stroke="none" transform="translate(70.5605,50.0449)rotate(21)scale(0.6208,0.6208)translate(-1041.5202,47.5221)" data-px-meta="label:'butterfly-test 2'">
+        <rect stroke="none" transform="translate(1041.8913,-38.6232)translate(-4.0143,-34.9401)" rx="26" ry="26" width="8.0286" height="69.8802" data-px-meta="label:'body'"/>
+        <g transform="translate(1041.5331,-47.5221)translate(-1041.5331,47.5221)" data-px-meta="label:'wings'">
+          <path stroke="none" transform="translate(-799.5472,11.6552)rotate(-21.8649)scale(1.6297,1.6297)" d="M1039.6166,407.9137C1029.6739,410.8627,1020.2652,408.7051,1017.5825,402.4264C1014.5802,395.399,1021.1326,385.8514,1032.2372,381.013C1030.9957,379.1115,1029.8759,377.0273,1028.9201,374.7898C1023.212,361.43,1025.4941,347.6476,1034.0172,344.0061C1042.5401,340.3646,1054.077,348.2427,1059.785,361.6025C1061.5663,365.7721,1062.5698,369.9828,1062.8478,373.9135C1062.3833,371.2451,1061.5716,368.4791,1060.3966,365.7285C1055.2402,353.6599,1045.034,346.4511,1037.6005,349.627C1030.167,352.8029,1028.3211,365.1613,1033.4776,377.23C1034.3412,379.2512,1035.3468,381.1364,1036.4567,382.8592C1026.7729,387.0813,1021.134,395.5866,1023.8464,401.9348C1025.93,406.8113,1032.3395,409.0067,1039.6166,407.9137z" data-px-meta="label:'wing 2'"/>
+          <path stroke="none" transform="translate(1083.1076,-50.9876)rotate(18.9259)scale(-1.6297,1.6297)translate(-1039.851,-376.1665)" d="M1039.6166,407.9137C1029.6739,410.8627,1020.265,408.7048,1017.5825,402.4263C1014.5802,395.3989,1021.1326,385.8512,1032.2372,381.0129C1030.9957,379.1112,1029.8759,377.0273,1028.9201,374.7897C1023.2121,361.4301,1025.494,347.6476,1034.0171,344.0061C1042.54,340.3646,1054.077,348.2428,1059.785,361.6025C1061.5662,365.7718,1062.5698,369.9828,1062.8478,373.9135C1062.3834,371.2451,1061.5715,368.4791,1060.3965,365.7285C1055.2401,353.6601,1045.0336,346.4511,1037.6004,349.627C1030.167,352.8029,1028.3211,365.1613,1033.4775,377.2299C1034.3411,379.2511,1035.3468,381.1364,1036.4567,382.8591C1026.7729,387.0812,1021.1341,395.5865,1023.8464,401.9347C1025.9299,406.811,1032.3395,409.0067,1039.6166,407.9137z" data-px-meta="label:'wing 1'"/>
         </g>
       </g>
     </pattern>
   </defs>
   <g transform="translate(340,340)translate(-300.9964,-299.9469)">
     <g transform="translate(300,300)scale(1.0944,1.0944)translate(-250.0005,-250.0004)">
-      <g data-px-label="grid repeator" stroke="#8a8a8a" opacity="0.38" transform="translate(243.5564,250.3435)scale(0.941,0.941)translate(-676.3277,284.642)" mask="url(#_px_2jo02g3p)">
+      <g stroke="#8a8a8a" opacity="0.38" transform="translate(243.5564,250.3435)scale(0.941,0.941)translate(-676.3277,284.642)" mask="url(#_px_2jo02g3p)" data-px-meta="label:'grid repeator'">
         <rect fill="#ffffff00" stroke="#000000" transform="translate(669.1735,-300.0281)scale(1.2129,1.2129)translate(-261.9721,-261.9721)" width="548.6287" height="548.6287"/>
-        <g transform="translate(447.9069,-284.4923)translate(-453.9712,284.4923)" data-px-attrs="elementEffect:{baseId:_px_2kbjlutb;transform:{origin:[453.9712,-284.4923];translate:[-6.0643,0]};repeater:{copies:4;translation:[149,0];scale:[100.9865,100]}}">
+        <g transform="translate(447.9069,-284.4923)translate(-453.9712,284.4923)" data-px-meta="effectsHost:{coreId:'_px_2kbjlutb',appliedEffects:{repeater:{copies:4,translate:[149,0],scale:[1.009865,1]},transformBy:{origin:[453.9712,-284.4923],translate:[-6.0643,0]}}}">
           <g id="_px_2kbjlutb">
             <path fill="#ffffff" stroke-linecap="round" transform="translate(384.9712,-581.4716)" d="M0,0L0,593.9586"/>
             <path fill="#8a8a8a" stroke-width="0.5" stroke-linecap="round" transform="translate(400.3046,-581.4715)" d="M0,0L0,593.9585"/>
@@ -177,7 +177,7 @@
           <use href="#_px_2kbjlutb" transform="matrix(1.0198,0,0,1,298,0)"/>
           <use href="#_px_2kbjlutb" transform="matrix(1.0299,0,0,1,447,0)"/>
         </g>
-        <g transform="translate(676.3276,-512.771)rotate(90)translate(-453.9712,284.4922)" data-px-attrs="elementEffect:{baseId:_px_2kbjluta;transform:{origin:[453.9712,-284.4922];translate:[222.3564,-228.2788];rotate:90};repeater:{copies:4;translation:[149,0]}}">
+        <g transform="translate(676.3276,-512.771)rotate(90)translate(-453.9712,284.4922)" data-px-meta="effectsHost:{coreId:'_px_2kbjluta',appliedEffects:{repeater:{copies:4,translate:[149,0]},transformBy:{origin:[453.9712,-284.4922],translate:[222.3564,-228.2788],rotate:90}}}">
           <g id="_px_2kbjluta">
             <path fill="#ffffff" stroke-linecap="round" transform="translate(384.9712,-581.4715)" d="M0,0L0,593.9585"/>
             <path fill="#8a8a8a" stroke-width="0.5" stroke-linecap="round" transform="translate(400.3045,-581.4715)" d="M0,0L0,593.9585"/>
@@ -197,37 +197,37 @@
       </g>
     </g>
     <g transform="translate(263.0457,288.8842)scale(0.9537,0.9537)translate(-263.0457,-279.8842)">
-      <g data-px-label="cat group" transform="translate(287.9999,300)translate(-299.9999,-300)">
-        <rect data-px-label="tail" fill="#ffffff" stroke="none" transform="translate(432.7059,440.5439)rotate(17.3459)scale(1.0608,1.0608)translate(-30.8516,-84.6247)" rx="40" ry="40" y="-198.6255" width="61.7032" height="325.748"/>
-        <g data-px-label="cat" transform="translate(327.5762,300.3472)scale(1.0608,1.0608)translate(-1254.0927,-447.0955)">
-          <g data-px-label="ears" transform="translate(1241.0993,297.8252)translate(-1236.1613,-297.8252)">
-            <g data-px-label="ear 2" transform="translate(1175.5271,296.652)translate(-1175.5271,-296.652)">
+      <g transform="translate(287.9999,300)translate(-299.9999,-300)" data-px-meta="label:'cat group'">
+        <rect fill="#ffffff" stroke="none" transform="translate(432.7059,440.5439)rotate(17.3459)scale(1.0608,1.0608)translate(-30.8516,-84.6247)" rx="40" ry="40" y="-198.6255" width="61.7032" height="325.748" data-px-meta="label:'tail'"/>
+        <g transform="translate(327.5762,300.3472)scale(1.0608,1.0608)translate(-1254.0927,-447.0955)" data-px-meta="label:'cat'">
+          <g transform="translate(1241.0993,297.8252)translate(-1236.1613,-297.8252)" data-px-meta="label:'ears'">
+            <g transform="translate(1175.5271,296.652)translate(-1175.5271,-296.652)" data-px-meta="label:'ear 2'">
               <path fill="#e1464f" stroke="none" transform="translate(1155.2022,287.5712)rotate(-23)" d="M0,-73.5082C24.3723,-73.5082,63.66,36.7541,63.66,36.7541L-63.66,36.7541C-63.66,36.7541,-24.3723,-73.5082,0,-73.5082z"/>
               <path fill="#ffffff" stroke="none" transform="translate(1166.7897,317.7727)rotate(-23)" d="M0,-73.5082C24.3723,-73.5082,63.6599,36.7541,63.6599,36.7541L-63.6599,36.7541C-63.6599,36.7541,-24.3723,-73.5082,0,-73.5082z"/>
             </g>
-            <g data-px-label="ear 1" transform="translate(1298.5958,295.9416)translate(-1298.5958,-295.9416)">
+            <g transform="translate(1298.5958,295.9416)translate(-1298.5958,-295.9416)" data-px-meta="label:'ear 1'">
               <path fill="#e1464f" stroke="none" transform="translate(1317.1205,287.5712)rotate(23)" d="M0,-73.5082C24.3723,-73.5082,63.6599,36.7541,63.6599,36.7541L-63.6599,36.7541C-63.6599,36.7541,-24.3723,-73.5082,0,-73.5082z"/>
               <path fill="#ffffff" stroke="none" transform="translate(1304.9156,317.7727)rotate(23)" d="M0,-73.5082C24.3723,-73.5082,63.6599,36.7541,63.6599,36.7541L-63.6599,36.7541C-63.6599,36.7541,-24.3723,-73.5082,0,-73.5082z"/>
             </g>
           </g>
-          <path data-px-label="body" fill="#e1464f" stroke="none" transform="translate(1241.0993,454.8175)translate(-1240.0186,-454.8175)" d="M1260.252,254.9441C1327.0784,254.9441,1381.252,302.4574,1381.252,361.068L1381.252,447.3832L1381.252,548.567L1381.252,589.7886C1381.252,625.6331,1348.121,654.6909,1307.252,654.6909L1260.252,654.691L1219.7852,654.691L1172.7852,654.6909C1131.9162,654.6909,1098.7852,625.6331,1098.7852,589.7886L1098.7852,548.567L1098.7852,447.3832L1098.7852,361.068C1098.7852,302.4574,1152.9588,254.9441,1219.7852,254.9441L1260.252,254.9441z"/>
-          <path data-px-label="pattern" fill="url(#_px_svg_1k6s3uev)" stroke="none" transform="translate(1241.0992,491.1613)translate(-1240.0186,-491.1613)" d="M1381.252,447.3832L1381.2521,534.9394L1098.7853,534.9394L1098.7852,447.3832L1381.252,447.3832z"/>
-          <g data-px-label="mouth" transform="translate(1232.764,364.0781)rotate(-0.8151)scale(3.6421,3.6421)translate(-468.512,-308.2501)">
+          <path fill="#e1464f" stroke="none" transform="translate(1241.0993,454.8175)translate(-1240.0186,-454.8175)" d="M1260.252,254.9441C1327.0784,254.9441,1381.252,302.4574,1381.252,361.068L1381.252,447.3832L1381.252,548.567L1381.252,589.7886C1381.252,625.6331,1348.121,654.6909,1307.252,654.6909L1260.252,654.691L1219.7852,654.691L1172.7852,654.6909C1131.9162,654.6909,1098.7852,625.6331,1098.7852,589.7886L1098.7852,548.567L1098.7852,447.3832L1098.7852,361.068C1098.7852,302.4574,1152.9588,254.9441,1219.7852,254.9441L1260.252,254.9441z" data-px-meta="label:'body'"/>
+          <path fill="url(#_px_svg_1k6s3uev)" stroke="none" transform="translate(1241.0992,491.1613)translate(-1240.0186,-491.1613)" d="M1381.252,447.3832L1381.2521,534.9394L1098.7853,534.9394L1098.7852,447.3832L1381.252,447.3832z" data-px-meta="label:'pattern'"/>
+          <g transform="translate(1232.764,364.0781)rotate(-0.8151)scale(3.6421,3.6421)translate(-468.512,-308.2501)" data-px-meta="label:'mouth'">
             <path fill="none" stroke="#001a34" transform="translate(468.5916,303.0869)" d="M0,0L0,8.8394"/>
             <path fill="#007fff" stroke="#001a34" stroke-linecap="round" transform="translate(468.4594,311.5225)" d="M0,0L2.425,1.8908"/>
             <path fill="#007fff" stroke="#001a34" stroke-linecap="round" transform="translate(468.5159,311.5394)" d="M0,0L-2.3763,1.6849"/>
           </g>
-          <g data-px-label="eyes" transform="translate(1232.6886,338.9483)rotate(-0.8151)scale(3.6421,3.6421)translate(-468.5894,-301.3507)">
+          <g transform="translate(1232.6886,338.9483)rotate(-0.8151)scale(3.6421,3.6421)translate(-468.5894,-301.3507)" data-px-meta="label:'eyes'">
             <path fill="#ffffff" stroke="none" transform="translate(455.8894,301.3519)" d="M0,-7.1974C3.0009,-7.1974,5.4335,-3.975,5.4335,0C5.4335,3.975,3.0009,7.1974,0,7.1974C-3.0009,7.1974,-5.4335,3.975,-5.4335,0C-5.4335,-3.975,-3.0009,-7.1974,0,-7.1974z"/>
             <path fill="#ffffff" stroke="none" transform="translate(481.2895,301.3495)" d="M0,-7.1974C3.0008,-7.1974,5.4335,-3.975,5.4335,0C5.4335,3.975,3.0008,7.1974,0,7.1974C-3.0008,7.1974,-5.4335,3.975,-5.4335,0C-5.4335,-3.975,-3.0008,-7.1974,0,-7.1974z"/>
-            <g transform="translate(466.9011,304.6566)" data-px-attrs="elementEffect:{baseId:_px_2ka8ll1r;transform:{origin:[466.9011,304.6566];translate:{kfs:[{t:130;v:[-0.8764,-1.705];e:[0.1692,0.1692,0.5784,0.5784]},{t:1150;v:[-1.0642,-4.0272];e:[0.4108,0.4108,0.835,0.835]},{t:2310;v:[-0.1715,-6.6524];e:[0.1641,0.1641,0.8007,0.8007]},{t:6450;v:[1.3601,-7.3911];e:[0.365,0.365,0.6992,0.6992]},{t:6930;v:[1.3924,-7.4067];e:[0,0,1,1]},{t:7240;v:[-0.7191,-5.8812];e:[0,0,1,1]},{t:8010;v:[-1.1458,-3.1006];e:[0,0,1,1]},{t:8920;v:[-0.0047,-0.1786]},{t:10390;v:[-0.5187,-0.4448]},{t:12820;v:[-0.515,-0.7036]},{t:14990;v:[-0.8764,-1.705]}]}}}">
+            <g transform="translate(466.9011,304.6566)" data-px-meta="effectsHost:{coreId:'_px_2ka8ll1r',appliedEffects:{transformBy:{origin:[466.9011,304.6566],translate:{keyframes:[{time:130,value:[-0.8764,-1.705],easing:[0.1692,0.1692,0.5784,0.5784]},{time:1150,value:[-1.0642,-4.0272],easing:[0.4108,0.4108,0.835,0.835]},{time:2310,value:[-0.1715,-6.6524],easing:[0.1641,0.1641,0.8007,0.8007]},{time:6450,value:[1.3601,-7.3911],easing:[0.365,0.365,0.6992,0.6992]},{time:6930,value:[1.3924,-7.4067],easing:[0,0,1,1]},{time:7240,value:[-0.7191,-5.8812],easing:[0,0,1,1]},{time:8010,value:[-1.1458,-3.1006],easing:[0,0,1,1]},{time:8920,value:[-0.0047,-0.1786]},{time:10390,value:[-0.5187,-0.4448]},{time:12820,value:[-0.515,-0.7036]},{time:14990,value:[-0.8764,-1.705]}]}}}}">
               <g class="_px-animated _px_2kagth8e" transform="translate(-0.8764,-1.705)">
-                <g id="_px_2ka8ll1r" data-px-label="iris" transform="translate(-466.9011,-304.6566)">
-                  <g data-px-label="eye1" transform="translate(454.1701,304.8159)translate(-457.1581,-303.8299)">
+                <g id="_px_2ka8ll1r" transform="translate(-466.9011,-304.6566)" data-px-meta="label:'iris'">
+                  <g transform="translate(454.1701,304.8159)translate(-457.1581,-303.8299)" data-px-meta="label:'eye1'">
                     <path fill="#000000" stroke="none" transform="translate(457.1581,303.8299)" d="M0,-3.2628C1.3604,-3.2628,2.4632,-1.802,2.4632,0C2.4632,1.802,1.3604,3.2628,0,3.2628C-1.3604,3.2628,-2.4632,1.802,-2.4632,0C-2.4632,-1.802,-1.3604,-3.2628,0,-3.2628z"/>
                     <path fill="#ffffff" stroke="none" transform="translate(457.7111,302.5992)" d="M0,-0.9211C0.384,-0.9211,0.6954,-0.5087,0.6954,0C0.6954,0.5087,0.384,0.9211,0,0.9211C-0.384,0.9211,-0.6954,0.5087,-0.6954,0C-0.6954,-0.5087,-0.384,-0.9211,0,-0.9211z"/>
                   </g>
-                  <g data-px-label="eye2" transform="translate(479.6255,304.7565)translate(-479.1299,-303.4499)">
+                  <g transform="translate(479.6255,304.7565)translate(-479.1299,-303.4499)" data-px-meta="label:'eye2'">
                     <path fill="#000000" stroke="none" transform="translate(479.1299,303.4499)" d="M0,-3.2629C1.3604,-3.2629,2.4632,-1.802,2.4632,0C2.4632,1.802,1.3604,3.2629,0,3.2629C-1.3604,3.2629,-2.4632,1.802,-2.4632,0C-2.4632,-1.802,-1.3604,-3.2629,0,-3.2629z"/>
                     <path fill="#ffffff" stroke="none" transform="translate(479.7417,301.9318)" d="M0,-1.0058C0.4194,-1.0058,0.7593,-0.5555,0.7593,0C0.7593,0.5555,0.4194,1.0058,0,1.0058C-0.4194,1.0058,-0.7593,0.5555,-0.7593,0C-0.7593,-0.5555,-0.4194,-1.0058,0,-1.0058z"/>
                   </g>
@@ -235,12 +235,12 @@
               </g>
             </g>
           </g>
-          <path data-px-label="nose" fill="#001a34" stroke="none" transform="translate(1225.6338,336.6283)rotate(-0.8151)scale(3.6421,3.6421)" d="M0,0C0.5203,-1.0527,3.1422,-0.9955,3.6947,0C4.2473,0.9955,3.1154,2.6104,2.0354,2.662C0.9554,2.7134,-0.5203,1.0527,0,0z"/>
-          <g data-px-label="cheeks" transform="translate(1230.5806,383.6277)rotate(-0.8151)scale(3.6421,3.6421)translate(-208.7835,-295.5811)">
+          <path fill="#001a34" stroke="none" transform="translate(1225.6338,336.6283)rotate(-0.8151)scale(3.6421,3.6421)" d="M0,0C0.5203,-1.0527,3.1422,-0.9955,3.6947,0C4.2473,0.9955,3.1154,2.6104,2.0354,2.662C0.9554,2.7134,-0.5203,1.0527,0,0z" data-px-meta="label:'nose'"/>
+          <g transform="translate(1230.5806,383.6277)rotate(-0.8151)scale(3.6421,3.6421)translate(-208.7835,-295.5811)" data-px-meta="label:'cheeks'">
             <path fill="#ff949a" stroke="none" transform="translate(189.2148,295.2352)" d="M0,-4.8547C2.7277,-4.8547,4.9391,-2.6812,4.9391,0C4.9391,2.6812,2.7277,4.8547,0,4.8547C-2.7277,4.8547,-4.9391,2.6812,-4.9391,0C-4.9391,-2.6812,-2.7277,-4.8547,0,-4.8547z"/>
             <path fill="#ff949a" stroke="none" transform="translate(228.3521,295.9269)" d="M0,-4.8547C2.7277,-4.8547,4.9391,-2.6812,4.9391,0C4.9391,2.6812,2.7277,4.8547,0,4.8547C-2.7277,4.8547,-4.9391,2.6812,-4.9391,0C-4.9391,-2.6812,-2.7277,-4.8547,0,-4.8547z"/>
           </g>
-          <g data-px-label="wiskers" stroke="#ffffff" transform="translate(1230.7101,359.6766)rotate(-0.8151)scale(3.6421,3.6421)translate(-208.9127,-289.0061)">
+          <g stroke="#ffffff" transform="translate(1230.7101,359.6766)rotate(-0.8151)scale(3.6421,3.6421)translate(-208.9127,-289.0061)" data-px-meta="label:'wiskers'">
             <path fill="none" stroke-linecap="round" transform="translate(235.3935,287.3172)" d="M-0.5145,2.4878C0.1512,-1.4886,16.6711,-5.2656,20.1863,-4.261"/>
             <path fill="none" stroke-linecap="round" transform="translate(235.0404,289.805)" d="M0.5325,1.9693C2.6661,-0.4603,15.6741,-1.0773,21.0346,-1.1183"/>
             <path fill="none" stroke-linecap="round" transform="translate(235.7209,293.0636)" d="M1.1661,0.4769C9.2949,-2.2341,16.4304,1.2863,19.6225,1.9302"/>
@@ -248,23 +248,23 @@
             <path fill="none" stroke-linecap="round" transform="translate(184.0671,290.176)" d="M-2.1088,0.7715C-5.1376,-1.2984,-17.9722,-4.6997,-22.1024,-3.6249"/>
             <path fill="none" stroke-linecap="round" transform="translate(179.8195,294.2941)" d="M0.9585,-1.6221C-1.4864,-3.3368,-13.636,-4.166,-20.0652,-1.9279"/>
           </g>
-          <g data-px-label="legs" transform="translate(1244.5611,610.8038)translate(-1236.2524,-610.8038)">
+          <g transform="translate(1244.5611,610.8038)translate(-1236.2524,-610.8038)" data-px-meta="label:'legs'">
             <rect fill="#ffffff" stroke="none" transform="translate(1160.9049,631.8673)translate(-30.8516,-84.6248)" rx="24" ry="24" width="61.7032" height="127.1225"/>
             <rect fill="#ffffff" stroke="none" transform="translate(1304.7289,631.8672)translate(-30.8516,-84.6247)" rx="24" ry="24" width="61.7032" height="127.1225"/>
             <ellipse fill="#e1464f" stroke="none" transform="translate(1232.7906,556.947)" rx="135.6325" ry="14.5473"/>
           </g>
         </g>
       </g>
-      <g data-px-label="butterfly group" transform="translate(44.7481,282.0773)translate(-21.6809,-275.7862)">
-        <g transform="translate(1041.5203,-47.5221)" data-px-attrs="elementEffect:{baseId:_px_2j65bh8s;transform:{origin:[1041.5203,-47.5221];translate:{autoOrient:true;kfs:[{t:0;v:[-1001.428,244.99];e:[0.3333,0.6666,0.6666,1];to:[54.4366,-120.1447]},{t:4490;v:[-775.8711,84.0988];e:[0.645,0.045,0.355,1];to:[62.2394,36.2139];ti:[-62.2394,-36.2139]},{t:10400;v:[-938.3438,367.1863];e:[0.3333,0,0.6666,0.3333];to:[-86.6683,14.8057];ti:[86.6683,-14.8057]},{t:14990;v:[-1001.3708,245.0117];ti:[-30.8296,74.5306]}]};rotate:85.0185;scale:[65.09,65.09]}}">
+      <g transform="translate(44.7481,282.0773)translate(-21.6809,-275.7862)" data-px-meta="label:'butterfly group'">
+        <g transform="translate(1041.5203,-47.5221)" data-px-meta="effectsHost:{coreId:'_px_2j65bh8s',appliedEffects:{transformBy:{origin:[1041.5203,-47.5221],translate:{autoOrient:true,keyframes:[{time:0,value:[-1001.428,244.99],easing:[0.3333,0.6666,0.6666,1],tangentOut:[54.4366,-120.1447]},{time:4490,value:[-775.8711,84.0988],easing:[0.645,0.045,0.355,1],tangentOut:[62.2394,36.2139],tangentIn:[-62.2394,-36.2139]},{time:10400,value:[-938.3438,367.1863],easing:[0.3333,0,0.6666,0.3333],tangentOut:[-86.6683,14.8057],tangentIn:[86.6683,-14.8057]},{time:14990,value:[-1001.3708,245.0117],tangentIn:[-30.8296,74.5306]}]},rotate:85.0185,scale:[0.6509,0.6509]}}}">
           <g class="_px-animated _px_2kagth8c" offset-distance="0%" style="offset-path:url(#_px_2j65bh8t);offset-anchor:0 0;offset-distance:0%;offset-rotate:auto">
-            <g id="_px_2j65bh8s" data-px-label="butterfly" fill="#ffffff" stroke="none" transform="rotate(85.0185),scale(0.6509,0.6509),translate(-1041.5203,47.5221)">
-              <rect data-px-label="body" stroke="none" transform="translate(1041.8913,-38.6232)translate(-4.0143,-34.9401)" rx="26" ry="26" width="8.0286" height="69.8802"/>
-              <g transform="translate(1041.5331,-47.5221)" data-px-attrs="elementEffect:{baseId:_px_2ka8ll1m;transform:{origin:[1041.5331,-47.5221];scale:{loop:{keyframesCount:0};kfs:[{t:0;v:[1,1]},{t:150;v:[0.1116,1]},{t:470;v:[1,1]},{t:550;v:[0.1116,1]},{t:620;v:[1,1]},{t:870;v:[0.1116,1]},{t:990;v:[1,1]},{t:1190;v:[0.1116,1]},{t:1390;v:[1,1]},{t:1520;v:[0.1116,1]},{t:1840;v:[1,1]},{t:2060;v:[0.1116,1]},{t:2240;v:[1,1]},{t:2480;v:[0.1116,1]},{t:2600;v:[1,1]},{t:2810;v:[0.1116,1]},{t:3000;v:[1,1]}]}}}">
+            <g id="_px_2j65bh8s" fill="#ffffff" stroke="none" transform="rotate(85.0185),scale(0.6509,0.6509),translate(-1041.5203,47.5221)" data-px-meta="label:'butterfly'">
+              <rect stroke="none" transform="translate(1041.8913,-38.6232)translate(-4.0143,-34.9401)" rx="26" ry="26" width="8.0286" height="69.8802" data-px-meta="label:'body'"/>
+              <g transform="translate(1041.5331,-47.5221)" data-px-meta="effectsHost:{coreId:'_px_2ka8ll1m',appliedEffects:{transformBy:{origin:[1041.5331,-47.5221],scale:{loop:{},keyframes:[{time:0,value:[1,1]},{time:150,value:[0.1116,1]},{time:470,value:[1,1]},{time:550,value:[0.1116,1]},{time:620,value:[1,1]},{time:870,value:[0.1116,1]},{time:990,value:[1,1]},{time:1190,value:[0.1116,1]},{time:1390,value:[1,1]},{time:1520,value:[0.1116,1]},{time:1840,value:[1,1]},{time:2060,value:[0.1116,1]},{time:2240,value:[1,1]},{time:2480,value:[0.1116,1]},{time:2600,value:[1,1]},{time:2810,value:[0.1116,1]},{time:3000,value:[1,1]}]}}}}">
                 <g class="_px-animated _px_2kppeh4b" transform="scale(1,1)">
-                  <g id="_px_2ka8ll1m" data-px-label="wings" transform="translate(-1041.5331,47.5221)">
-                    <path data-px-label="wing 2" stroke="none" transform="translate(1001.5003,-50.5272)rotate(-21.865)scale(1.6297,1.6297)translate(-1039.851,-376.1665)" d="M1039.6166,407.9137C1029.6739,410.8627,1020.2652,408.7051,1017.5825,402.4264C1014.5801,395.399,1021.1326,385.8514,1032.2372,381.013C1030.9957,379.1114,1029.876,377.0273,1028.9201,374.7898C1023.212,361.43,1025.4941,347.6476,1034.0172,344.0061C1042.5402,340.3646,1054.077,348.2427,1059.785,361.6025C1061.5664,365.7721,1062.5698,369.9828,1062.8478,373.9135C1062.3833,371.245,1061.5717,368.4792,1060.3966,365.7285C1055.2402,353.6599,1045.034,346.4511,1037.6005,349.627C1030.167,352.8029,1028.3211,365.1613,1033.4776,377.23C1034.3412,379.2513,1035.3467,381.1364,1036.4567,382.8592C1026.7729,387.0813,1021.134,395.5866,1023.8464,401.9348C1025.93,406.8113,1032.3395,409.0067,1039.6166,407.9137z"/>
-                    <path data-px-label="wing 1" stroke="none" transform="translate(1083.1077,-50.9876)rotate(18.926)scale(-1.6297,1.6297)translate(-1039.851,-376.1665)" d="M1039.6166,407.9137C1029.6739,410.8627,1020.265,408.7049,1017.5825,402.4263C1014.5801,395.3989,1021.1326,385.8512,1032.2372,381.0129C1030.9957,379.1112,1029.876,377.0273,1028.9201,374.7897C1023.2121,361.4301,1025.494,347.6476,1034.0171,344.0061C1042.5401,340.3646,1054.077,348.2428,1059.785,361.6025C1061.5663,365.7719,1062.5698,369.9828,1062.8478,373.9135C1062.3834,371.2451,1061.5716,368.4791,1060.3965,365.7285C1055.2401,353.66,1045.0337,346.4511,1037.6004,349.627C1030.167,352.8029,1028.3211,365.1613,1033.4775,377.2299C1034.3411,379.2511,1035.3467,381.1364,1036.4567,382.8591C1026.7729,387.0812,1021.1341,395.5865,1023.8464,401.9347C1025.9299,406.8111,1032.3395,409.0067,1039.6166,407.9137z"/>
+                  <g id="_px_2ka8ll1m" transform="translate(-1041.5331,47.5221)" data-px-meta="label:'wings'">
+                    <path stroke="none" transform="translate(1001.5003,-50.5272)rotate(-21.865)scale(1.6297,1.6297)translate(-1039.851,-376.1665)" d="M1039.6166,407.9137C1029.6739,410.8627,1020.2652,408.7051,1017.5825,402.4264C1014.5801,395.399,1021.1326,385.8514,1032.2372,381.013C1030.9957,379.1114,1029.876,377.0273,1028.9201,374.7898C1023.212,361.43,1025.4941,347.6476,1034.0172,344.0061C1042.5402,340.3646,1054.077,348.2427,1059.785,361.6025C1061.5664,365.7721,1062.5698,369.9828,1062.8478,373.9135C1062.3833,371.245,1061.5717,368.4792,1060.3966,365.7285C1055.2402,353.6599,1045.034,346.4511,1037.6005,349.627C1030.167,352.8029,1028.3211,365.1613,1033.4776,377.23C1034.3412,379.2513,1035.3467,381.1364,1036.4567,382.8592C1026.7729,387.0813,1021.134,395.5866,1023.8464,401.9348C1025.93,406.8113,1032.3395,409.0067,1039.6166,407.9137z" data-px-meta="label:'wing 2'"/>
+                    <path stroke="none" transform="translate(1083.1077,-50.9876)rotate(18.926)scale(-1.6297,1.6297)translate(-1039.851,-376.1665)" d="M1039.6166,407.9137C1029.6739,410.8627,1020.265,408.7049,1017.5825,402.4263C1014.5801,395.3989,1021.1326,385.8512,1032.2372,381.0129C1030.9957,379.1112,1029.876,377.0273,1028.9201,374.7897C1023.2121,361.4301,1025.494,347.6476,1034.0171,344.0061C1042.5401,340.3646,1054.077,348.2428,1059.785,361.6025C1061.5663,365.7719,1062.5698,369.9828,1062.8478,373.9135C1062.3834,371.2451,1061.5716,368.4791,1060.3965,365.7285C1055.2401,353.66,1045.0337,346.4511,1037.6004,349.627C1030.167,352.8029,1028.3211,365.1613,1033.4775,377.2299C1034.3411,379.2511,1035.3467,381.1364,1036.4567,382.8591C1026.7729,387.0812,1021.1341,395.5865,1023.8464,401.9347C1025.9299,406.8111,1032.3395,409.0067,1039.6166,407.9137z" data-px-meta="label:'wing 1'"/>
                   </g>
                 </g>
               </g>

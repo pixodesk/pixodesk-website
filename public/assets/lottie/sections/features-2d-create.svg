@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- Created with Pixodesk SVG (https://pixodesk.com) -->
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 340" text-rendering="geometricPrecision" shape-rendering="geometricPrecision" fill="none" id="_px_2khnd6ge" data-px-attrs="animation:{duration:13750;loop:true;inThreshold:0.5;startOn:scrollIntoView}">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 340" text-rendering="geometricPrecision" shape-rendering="geometricPrecision" fill="none" id="_px_2khnd6ge" data-px-meta="animator:{timeline:{duration:13750,iterations:'infinite',trigger:{scrollIntoViewThreshold:0.5,startOn:'scrollIntoView'}}}">
   <style>@keyframes _px_2khnd6f5 {0% {opacity:0;animation-timing-function:cubic-bezier(0.167,0.167,0.833,0.833);}
 6.4% {opacity:0;animation-timing-function:cubic-bezier(0.167,0.167,0.833,0.833);}
 9.0909% {opacity:1;animation-timing-function:cubic-bezier(0.167,0.167,0.833,0.833);}
@@ -538,13 +538,13 @@
 ._px_animate._px_init_paused._px_running ._px-animated {animation-play-state: running !important;}</style>
   <defs>
     <mask id="_px_2jkdakhc" mask-type="alpha">
-      <g data-px-label="Group" fill="none" stroke="none" transform="translate(174.7887,167.8825)translate(-242.4025,-198.666)">
-        <g transform="translate(274.3258,190.551)" data-px-attrs="elementEffect:{baseId:_px_2khnd6g8;transform:{origin:[274.3258,190.551];scale:{kfs:[{t:8750;v:[1,1];e:[0.3333,0,0.6666,0.3333]},{t:10500;v:[1.1,1.1];e:[0,0,1,1]},{t:10810;v:[1.1,1.1];e:[0.3333,0.6666,0.6666,1]},{t:12810;v:[1,1]}]}}}">
+      <g fill="none" stroke="none" transform="translate(174.7887,167.8825)translate(-242.4025,-198.666)" data-px-meta="label:'Group'">
+        <g transform="translate(274.3258,190.551)" data-px-meta="effectsHost:{coreId:'_px_2khnd6g8',appliedEffects:{transformBy:{origin:[274.3258,190.551],scale:{keyframes:[{time:8750,value:[1,1],easing:[0.3333,0,0.6666,0.3333]},{time:10500,value:[1.1,1.1],easing:[0,0,1,1]},{time:10810,value:[1.1,1.1],easing:[0.3333,0.6666,0.6666,1]},{time:12810,value:[1,1]}]}}}}">
           <g class="_px-animated _px_2khnd6g7" transform="scale(1,1)">
-            <g id="_px_2khnd6g8" data-px-label="Stars Zoom" fill="none" stroke="none" transform="translate(-274.3258,-190.551)">
-              <g data-px-label="Star with lines" fill="none" stroke="none" transform="translate(274.3258,208.9391)translate(-274.3258,-208.9391)">
-                <g data-px-label="Star" fill="none" stroke="none" transform="translate(206.7835,235.9451)translate(-206.7835,-235.9451)">
-                  <ellipse data-px-label="Ellipse 3" fill="#9cdbfe" stroke="#5c78f6" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" transform="translate(228.0489,229.8699)scale(1.217,1.217)translate(-5,-5)" rx="14.5" ry="14.5"/>
+            <g id="_px_2khnd6g8" fill="none" stroke="none" transform="translate(-274.3258,-190.551)" data-px-meta="label:'Stars Zoom'">
+              <g fill="none" stroke="none" transform="translate(274.3258,208.9391)translate(-274.3258,-208.9391)" data-px-meta="label:'Star with lines'">
+                <g fill="none" stroke="none" transform="translate(206.7835,235.9451)translate(-206.7835,-235.9451)" data-px-meta="label:'Star'">
+                  <ellipse fill="#9cdbfe" stroke="#5c78f6" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" transform="translate(228.0489,229.8699)scale(1.217,1.217)translate(-5,-5)" rx="14.5" ry="14.5" data-px-meta="label:'Ellipse 3'"/>
                 </g>
               </g>
             </g>
@@ -553,12 +553,12 @@
       </g>
     </mask>
     <mask id="_px_2jkdakho" mask-type="alpha">
-      <g data-px-label="Group" fill="none" stroke="none" transform="translate(174.7887,167.8825)translate(-242.4025,-198.666)">
-        <g transform="translate(274.3258,190.551)" data-px-attrs="elementEffect:{baseId:_px_2khnd6gc;transform:{origin:[274.3258,190.551];scale:{kfs:[{t:8750;v:[1,1];e:[0.3333,0,0.6666,0.3333]},{t:10500;v:[1.1,1.1];e:[0,0,1,1]},{t:10810;v:[1.1,1.1];e:[0.3333,0.6666,0.6666,1]},{t:12810;v:[1,1]}]}}}">
+      <g fill="none" stroke="none" transform="translate(174.7887,167.8825)translate(-242.4025,-198.666)" data-px-meta="label:'Group'">
+        <g transform="translate(274.3258,190.551)" data-px-meta="effectsHost:{coreId:'_px_2khnd6gc',appliedEffects:{transformBy:{origin:[274.3258,190.551],scale:{keyframes:[{time:8750,value:[1,1],easing:[0.3333,0,0.6666,0.3333]},{time:10500,value:[1.1,1.1],easing:[0,0,1,1]},{time:10810,value:[1.1,1.1],easing:[0.3333,0.6666,0.6666,1]},{time:12810,value:[1,1]}]}}}}">
           <g class="_px-animated _px_2khnd6g7" transform="scale(1,1)">
-            <g id="_px_2khnd6gc" data-px-label="Stars Zoom" fill="none" stroke="none" transform="translate(-274.3258,-190.551)">
-              <g data-px-label="Star 2 small" fill="none" stroke="none" transform="translate(295.0979,251.037)scale(0.9227,0.9227)translate(-224.6691,-1025.0365)">
-                <ellipse data-px-label="Ellipse 8" fill="#9cdbfe" stroke="#5c78f6" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" transform="translate(233.8445,1022.5134)scale(0.5251,0.5251)translate(-5,-5)" rx="14.5" ry="14.5"/>
+            <g id="_px_2khnd6gc" fill="none" stroke="none" transform="translate(-274.3258,-190.551)" data-px-meta="label:'Stars Zoom'">
+              <g fill="none" stroke="none" transform="translate(295.0979,251.037)scale(0.9227,0.9227)translate(-224.6691,-1025.0365)" data-px-meta="label:'Star 2 small'">
+                <ellipse fill="#9cdbfe" stroke="#5c78f6" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" transform="translate(233.8445,1022.5134)scale(0.5251,0.5251)translate(-5,-5)" rx="14.5" ry="14.5" data-px-meta="label:'Ellipse 8'"/>
               </g>
             </g>
           </g>
@@ -566,12 +566,12 @@
       </g>
     </mask>
     <mask id="_px_2jkdakhs" mask-type="alpha">
-      <g data-px-label="Group" fill="none" stroke="none" transform="translate(174.7887,167.8825)translate(-242.4025,-198.666)">
-        <g transform="translate(274.3258,190.551)" data-px-attrs="elementEffect:{baseId:_px_2khnd6gd;transform:{origin:[274.3258,190.551];scale:{kfs:[{t:8750;v:[1,1];e:[0.3333,0,0.6666,0.3333]},{t:10500;v:[1.1,1.1];e:[0,0,1,1]},{t:10810;v:[1.1,1.1];e:[0.3333,0.6666,0.6666,1]},{t:12810;v:[1,1]}]}}}">
+      <g fill="none" stroke="none" transform="translate(174.7887,167.8825)translate(-242.4025,-198.666)" data-px-meta="label:'Group'">
+        <g transform="translate(274.3258,190.551)" data-px-meta="effectsHost:{coreId:'_px_2khnd6gd',appliedEffects:{transformBy:{origin:[274.3258,190.551],scale:{keyframes:[{time:8750,value:[1,1],easing:[0.3333,0,0.6666,0.3333]},{time:10500,value:[1.1,1.1],easing:[0,0,1,1]},{time:10810,value:[1.1,1.1],easing:[0.3333,0.6666,0.6666,1]},{time:12810,value:[1,1]}]}}}}">
           <g class="_px-animated _px_2khnd6g7" transform="scale(1,1)">
-            <g id="_px_2khnd6gd" data-px-label="Stars Zoom" fill="none" stroke="none" transform="translate(-274.3258,-190.551)">
-              <g data-px-label="Star 1 small" fill="none" stroke="none" transform="translate(239.6646,130.9526)scale(1.3485,1.3485)translate(-352.4951,-130.7843)">
-                <ellipse data-px-label="Ellipse 3" fill="#9cdbfe" stroke="#5c78f6" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" transform="translate(360.7499,128.4261)scale(0.4724,0.4724)translate(-5,-5)" rx="14.5" ry="14.5"/>
+            <g id="_px_2khnd6gd" fill="none" stroke="none" transform="translate(-274.3258,-190.551)" data-px-meta="label:'Stars Zoom'">
+              <g fill="none" stroke="none" transform="translate(239.6646,130.9526)scale(1.3485,1.3485)translate(-352.4951,-130.7843)" data-px-meta="label:'Star 1 small'">
+                <ellipse fill="#9cdbfe" stroke="#5c78f6" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" transform="translate(360.7499,128.4261)scale(0.4724,0.4724)translate(-5,-5)" rx="14.5" ry="14.5" data-px-meta="label:'Ellipse 3'"/>
               </g>
             </g>
           </g>
@@ -579,115 +579,115 @@
       </g>
     </mask>
   </defs>
-  <g data-px-label="Group" fill="none" stroke="none" transform="translate(174.7887,167.8825)translate(-242.4025,-198.666)">
-    <g data-px-label="Tool box" fill="none" stroke="none" transform="translate(121.8858,208.666)scale(1.4278,1.4278)translate(-50,-946.0875)">
-      <rect data-px-label="Rectangle 3" fill="#22222261" stroke="none" transform="translate(50,946.5)translate(0,-0.4125)" x="-17" y="-124.585" width="34" height="238.1286"/>
+  <g fill="none" stroke="none" transform="translate(174.7887,167.8825)translate(-242.4025,-198.666)" data-px-meta="label:'Group'">
+    <g fill="none" stroke="none" transform="translate(121.8858,208.666)scale(1.4278,1.4278)translate(-50,-946.0875)" data-px-meta="label:'Tool box'">
+      <rect fill="#22222261" stroke="none" transform="translate(50,946.5)translate(0,-0.4125)" x="-17" y="-124.585" width="34" height="238.1286" data-px-meta="label:'Rectangle 3'"/>
     </g>
   </g>
-  <g data-px-label="Group" fill="none" stroke="none" transform="translate(174.7887,167.8825)translate(-242.4025,-198.666)">
-    <g data-px-label="Tool box" fill="none" stroke="none" transform="translate(121.8858,208.666)scale(1.4278,1.4278)translate(-50,-946.0875)">
-      <rect data-px-label="Rectangle 5" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="translate(50,925.5284)" rx="2" ry="2" x="-8" y="-8.5" width="16" height="17"/>
+  <g fill="none" stroke="none" transform="translate(174.7887,167.8825)translate(-242.4025,-198.666)" data-px-meta="label:'Group'">
+    <g fill="none" stroke="none" transform="translate(121.8858,208.666)scale(1.4278,1.4278)translate(-50,-946.0875)" data-px-meta="label:'Tool box'">
+      <rect fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="translate(50,925.5284)" rx="2" ry="2" x="-8" y="-8.5" width="16" height="17" data-px-meta="label:'Rectangle 5'"/>
     </g>
   </g>
-  <g data-px-label="Group" fill="none" stroke="none" transform="translate(174.7887,167.8825)translate(-242.4025,-198.666)">
-    <g data-px-label="Tool box" fill="none" stroke="none" transform="translate(121.8858,208.666)scale(1.4278,1.4278)translate(-50,-946.0875)">
-      <path data-px-label="Star 9" fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" transform="translate(50.1024,963.0727)scale(0.5955,0.5955)" d="M14.5829,-5.3235L7,2L9.5693,12.2241L0.261,7.2754L-8.6688,12.8784L-6.8387,2.4965L-14.9269,-4.2648L-4.4875,-5.7325L-0.5566,-15.5142L4.0652,-6.0394L14.5829,-5.3235z" data-px-attrs="shape:{type:star;points:5;innerRadius:7.2801;radius:15.5242;startAngle:69.9454}"/>
+  <g fill="none" stroke="none" transform="translate(174.7887,167.8825)translate(-242.4025,-198.666)" data-px-meta="label:'Group'">
+    <g fill="none" stroke="none" transform="translate(121.8858,208.666)scale(1.4278,1.4278)translate(-50,-946.0875)" data-px-meta="label:'Tool box'">
+      <path fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" transform="translate(50.1024,963.0727)scale(0.5955,0.5955)" d="M14.5829,-5.3235L7,2L9.5693,12.2241L0.261,7.2754L-8.6688,12.8784L-6.8387,2.4965L-14.9269,-4.2648L-4.4875,-5.7325L-0.5566,-15.5142L4.0652,-6.0394L14.5829,-5.3235z" data-px-meta="label:'Star 9',appliedEffects:{shape:{preset:{type:'star',points:5,innerRadius:7.2801,radius:15.5242,startAngle:69.9454}}}"/>
     </g>
   </g>
-  <g data-px-label="Group" fill="none" stroke="none" transform="translate(174.7887,167.8825)translate(-242.4025,-198.666)">
-    <g data-px-label="Tool box" fill="none" stroke="none" transform="translate(121.8858,208.666)scale(1.4278,1.4278)translate(-50,-946.0875)">
-      <path data-px-label="Polygon" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="translate(50,1001)" d="M0,-9L8.5595,-2.7812L5.2901,7.2812L-5.2901,7.2812L-8.5595,-2.7812L0,-9z" data-px-attrs="shape:{type:polygon;points:5;radius:9}"/>
+  <g fill="none" stroke="none" transform="translate(174.7887,167.8825)translate(-242.4025,-198.666)" data-px-meta="label:'Group'">
+    <g fill="none" stroke="none" transform="translate(121.8858,208.666)scale(1.4278,1.4278)translate(-50,-946.0875)" data-px-meta="label:'Tool box'">
+      <path fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="translate(50,1001)" d="M0,-9L8.5595,-2.7812L5.2901,7.2812L-5.2901,7.2812L-8.5595,-2.7812L0,-9z" data-px-meta="label:'Polygon',appliedEffects:{shape:{preset:{type:'polygon',points:5,radius:9}}}"/>
     </g>
   </g>
-  <g data-px-label="Group" fill="none" stroke="none" transform="translate(174.7887,167.8825)translate(-242.4025,-198.666)">
-    <g data-px-label="Tool box" fill="none" stroke="none" transform="translate(121.8858,208.666)scale(1.4278,1.4278)translate(-50,-946.0875)">
-      <ellipse data-px-label="Ellipse 8" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="translate(50,886)" rx="9" ry="9"/>
+  <g fill="none" stroke="none" transform="translate(174.7887,167.8825)translate(-242.4025,-198.666)" data-px-meta="label:'Group'">
+    <g fill="none" stroke="none" transform="translate(121.8858,208.666)scale(1.4278,1.4278)translate(-50,-946.0875)" data-px-meta="label:'Tool box'">
+      <ellipse fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="translate(50,886)" rx="9" ry="9" data-px-meta="label:'Ellipse 8'"/>
     </g>
   </g>
-  <g data-px-label="Group" fill="none" stroke="none" transform="translate(174.7887,167.8825)translate(-242.4025,-198.666)">
-    <g data-px-label="Tool box" fill="none" stroke="none" transform="translate(121.8858,208.666)scale(1.4278,1.4278)translate(-50,-946.0875)">
-      <g data-px-label="Pen 3" fill="none" stroke="none" transform="translate(48.4225,849.677)rotate(-50)scale(0.2027,0.2027)translate(-1077.3605,-1321.7174)">
-        <g data-px-label="Group 6" fill="none" stroke="none" transform="translate(1070.177,1321.7174)translate(-1070.177,-1321.7174)">
-          <path data-px-label="Path 8" fill="#ffffff" stroke="#222222" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" transform="translate(1020.8311,1321.7174)" d="M0,0L56.834,-39.748L98.691,-17.826L98.691,0L98.691,17.826L56.834,39.748L0,0z"/>
-          <ellipse data-px-label="Ellipse 2" fill="#222222" stroke="none" transform="translate(1071.2126,1321.2322)" rx="9.2084" ry="9.2084"/>
-          <path data-px-label="Path 9" fill="none" stroke="#222222" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" transform="translate(1025.8599,1322.0203)" d="M-3.591,0L45.506,0"/>
+  <g fill="none" stroke="none" transform="translate(174.7887,167.8825)translate(-242.4025,-198.666)" data-px-meta="label:'Group'">
+    <g fill="none" stroke="none" transform="translate(121.8858,208.666)scale(1.4278,1.4278)translate(-50,-946.0875)" data-px-meta="label:'Tool box'">
+      <g fill="none" stroke="none" transform="translate(48.4225,849.677)rotate(-50)scale(0.2027,0.2027)translate(-1077.3605,-1321.7174)" data-px-meta="label:'Pen 3'">
+        <g fill="none" stroke="none" transform="translate(1070.177,1321.7174)translate(-1070.177,-1321.7174)" data-px-meta="label:'Group 6'">
+          <path fill="#ffffff" stroke="#222222" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" transform="translate(1020.8311,1321.7174)" d="M0,0L56.834,-39.748L98.691,-17.826L98.691,0L98.691,17.826L56.834,39.748L0,0z" data-px-meta="label:'Path 8'"/>
+          <ellipse fill="#222222" stroke="none" transform="translate(1071.2126,1321.2322)" rx="9.2084" ry="9.2084" data-px-meta="label:'Ellipse 2'"/>
+          <path fill="none" stroke="#222222" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" transform="translate(1025.8599,1322.0203)" d="M-3.591,0L45.506,0" data-px-meta="label:'Path 9'"/>
         </g>
-        <rect data-px-label="Rectangle 3" fill="#ffffff" stroke="#222222" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" transform="translate(1124.7536,1321.7174)translate(1.9651,0)" x="-7.1712" y="-20.3179" width="14.3425" height="40.6359"/>
+        <rect fill="#ffffff" stroke="#222222" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" transform="translate(1124.7536,1321.7174)translate(1.9651,0)" x="-7.1712" y="-20.3179" width="14.3425" height="40.6359" data-px-meta="label:'Rectangle 3'"/>
       </g>
     </g>
   </g>
   <g mask="url(#_px_2jkdakhs)">
-    <g data-px-label="Group" fill="none" stroke="none" transform="translate(174.7887,167.8825)translate(-242.4025,-198.666)">
-      <g transform="translate(274.3258,190.551)" data-px-attrs="elementEffect:{baseId:_px_2jkdakhr;transform:{origin:[274.3258,190.551];scale:{kfs:[{t:8750;v:[1,1];e:[0.3333,0,0.6666,0.3333]},{t:10500;v:[1.1,1.1];e:[0,0,1,1]},{t:10810;v:[1.1,1.1];e:[0.3333,0.6666,0.6666,1]},{t:12810;v:[1,1]}]}}}">
+    <g fill="none" stroke="none" transform="translate(174.7887,167.8825)translate(-242.4025,-198.666)" data-px-meta="label:'Group'">
+      <g transform="translate(274.3258,190.551)" data-px-meta="effectsHost:{coreId:'_px_2jkdakhr',appliedEffects:{transformBy:{origin:[274.3258,190.551],scale:{keyframes:[{time:8750,value:[1,1],easing:[0.3333,0,0.6666,0.3333]},{time:10500,value:[1.1,1.1],easing:[0,0,1,1]},{time:10810,value:[1.1,1.1],easing:[0.3333,0.6666,0.6666,1]},{time:12810,value:[1,1]}]}}}}">
         <g class="_px-animated _px_2khnd6g7" transform="scale(1,1)">
-          <g id="_px_2jkdakhr" data-px-label="Stars Zoom" fill="none" stroke="none" transform="translate(-274.3258,-190.551)">
-            <g data-px-label="Star 1 small" fill="none" stroke="none" transform="translate(239.6646,130.9526)scale(1.3485,1.3485)translate(-352.4951,-130.7843)">
-              <path data-px-label="Star 3" fill="#4290dd" stroke="#ffc716" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" transform="translate(350.8919,130.1024)scale(0.4724,0.4724)" d="M-18.0873,-18.9169L-1.6324,-12.0485L12.4018,-23.0477L10.9544,-5.2757L25.752,4.6726L8.4026,8.788L3.5139,25.9355L-5.7613,10.707L-23.5803,11.3564L-11.9633,-2.1707L-18.0873,-18.9169z" data-px-attrs="shape:{type:star;points:5;innerRadius:12.1586;radius:26.1725;startAngle:316.2843}"/>
+          <g id="_px_2jkdakhr" fill="none" stroke="none" transform="translate(-274.3258,-190.551)" data-px-meta="label:'Stars Zoom'">
+            <g fill="none" stroke="none" transform="translate(239.6646,130.9526)scale(1.3485,1.3485)translate(-352.4951,-130.7843)" data-px-meta="label:'Star 1 small'">
+              <path fill="#4290dd" stroke="#ffc716" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" transform="translate(350.8919,130.1024)scale(0.4724,0.4724)" d="M-18.0873,-18.9169L-1.6324,-12.0485L12.4018,-23.0477L10.9544,-5.2757L25.752,4.6726L8.4026,8.788L3.5139,25.9355L-5.7613,10.707L-23.5803,11.3564L-11.9633,-2.1707L-18.0873,-18.9169z" data-px-meta="label:'Star 3',appliedEffects:{shape:{preset:{type:'star',points:5,innerRadius:12.1586,radius:26.1725,startAngle:316.2843}}}"/>
             </g>
           </g>
         </g>
       </g>
     </g>
   </g>
-  <g data-px-label="Group" fill="none" stroke="none" transform="translate(174.7887,167.8825)translate(-242.4025,-198.666)">
-    <g transform="translate(274.3258,190.551)" data-px-attrs="elementEffect:{baseId:_px_2jkdakhq;transform:{origin:[274.3258,190.551];scale:{kfs:[{t:8750;v:[1,1];e:[0.3333,0,0.6666,0.3333]},{t:10500;v:[1.1,1.1];e:[0,0,1,1]},{t:10810;v:[1.1,1.1];e:[0.3333,0.6666,0.6666,1]},{t:12810;v:[1,1]}]}}}">
+  <g fill="none" stroke="none" transform="translate(174.7887,167.8825)translate(-242.4025,-198.666)" data-px-meta="label:'Group'">
+    <g transform="translate(274.3258,190.551)" data-px-meta="effectsHost:{coreId:'_px_2jkdakhq',appliedEffects:{transformBy:{origin:[274.3258,190.551],scale:{keyframes:[{time:8750,value:[1,1],easing:[0.3333,0,0.6666,0.3333]},{time:10500,value:[1.1,1.1],easing:[0,0,1,1]},{time:10810,value:[1.1,1.1],easing:[0.3333,0.6666,0.6666,1]},{time:12810,value:[1,1]}]}}}}">
       <g class="_px-animated _px_2khnd6g7" transform="scale(1,1)">
-        <g id="_px_2jkdakhq" data-px-label="Stars Zoom" fill="none" stroke="none" transform="translate(-274.3258,-190.551)">
-          <g data-px-label="Star 1 small" fill="none" stroke="none" transform="translate(239.6646,130.9526)scale(1.3485,1.3485)translate(-352.4951,-130.7843)">
-            <path data-px-label="Star" fill="none" stroke="#ffc716" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" transform="translate(350.8919,130.1024)scale(0.4724,0.4724)" d="M-18.0873,-18.9169L-1.6324,-12.0485L12.4018,-23.0477L10.9544,-5.2757L25.752,4.6726L8.4026,8.788L3.5139,25.9355L-5.7613,10.707L-23.5803,11.3564L-11.9633,-2.1707L-18.0873,-18.9169z" data-px-attrs="shape:{type:star;points:5;innerRadius:12.1586;radius:26.1725;startAngle:316.2843}"/>
+        <g id="_px_2jkdakhq" fill="none" stroke="none" transform="translate(-274.3258,-190.551)" data-px-meta="label:'Stars Zoom'">
+          <g fill="none" stroke="none" transform="translate(239.6646,130.9526)scale(1.3485,1.3485)translate(-352.4951,-130.7843)" data-px-meta="label:'Star 1 small'">
+            <path fill="none" stroke="#ffc716" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" transform="translate(350.8919,130.1024)scale(0.4724,0.4724)" d="M-18.0873,-18.9169L-1.6324,-12.0485L12.4018,-23.0477L10.9544,-5.2757L25.752,4.6726L8.4026,8.788L3.5139,25.9355L-5.7613,10.707L-23.5803,11.3564L-11.9633,-2.1707L-18.0873,-18.9169z" data-px-meta="label:'Star',appliedEffects:{shape:{preset:{type:'star',points:5,innerRadius:12.1586,radius:26.1725,startAngle:316.2843}}}"/>
           </g>
         </g>
       </g>
     </g>
   </g>
   <g mask="url(#_px_2jkdakho)">
-    <g data-px-label="Group" fill="none" stroke="none" transform="translate(174.7887,167.8825)translate(-242.4025,-198.666)">
-      <g transform="translate(274.3258,190.551)" data-px-attrs="elementEffect:{baseId:_px_2jkdakhn;transform:{origin:[274.3258,190.551];scale:{kfs:[{t:8750;v:[1,1];e:[0.3333,0,0.6666,0.3333]},{t:10500;v:[1.1,1.1];e:[0,0,1,1]},{t:10810;v:[1.1,1.1];e:[0.3333,0.6666,0.6666,1]},{t:12810;v:[1,1]}]}}}">
+    <g fill="none" stroke="none" transform="translate(174.7887,167.8825)translate(-242.4025,-198.666)" data-px-meta="label:'Group'">
+      <g transform="translate(274.3258,190.551)" data-px-meta="effectsHost:{coreId:'_px_2jkdakhn',appliedEffects:{transformBy:{origin:[274.3258,190.551],scale:{keyframes:[{time:8750,value:[1,1],easing:[0.3333,0,0.6666,0.3333]},{time:10500,value:[1.1,1.1],easing:[0,0,1,1]},{time:10810,value:[1.1,1.1],easing:[0.3333,0.6666,0.6666,1]},{time:12810,value:[1,1]}]}}}}">
         <g class="_px-animated _px_2khnd6g7" transform="scale(1,1)">
-          <g id="_px_2jkdakhn" data-px-label="Stars Zoom" fill="none" stroke="none" transform="translate(-274.3258,-190.551)">
-            <g data-px-label="Star 2 small" fill="none" stroke="none" transform="translate(295.0979,251.037)scale(0.9227,0.9227)translate(-224.6691,-1025.0365)">
-              <path data-px-label="Star 10" fill="#4290dd" stroke="none" transform="translate(223.4769,1024.1798)scale(0.5251,0.5251)" d="M-18.0873,-18.9169L-1.6324,-12.0485L12.4018,-23.0477L10.9544,-5.2757L25.752,4.6726L8.4026,8.788L3.5139,25.9355L-5.7613,10.707L-23.5803,11.3564L-11.9633,-2.1707L-18.0873,-18.9169z" data-px-attrs="shape:{type:star;points:5;innerRadius:12.1586;radius:26.1725;startAngle:316.2843}"/>
+          <g id="_px_2jkdakhn" fill="none" stroke="none" transform="translate(-274.3258,-190.551)" data-px-meta="label:'Stars Zoom'">
+            <g fill="none" stroke="none" transform="translate(295.0979,251.037)scale(0.9227,0.9227)translate(-224.6691,-1025.0365)" data-px-meta="label:'Star 2 small'">
+              <path fill="#4290dd" stroke="none" transform="translate(223.4769,1024.1798)scale(0.5251,0.5251)" d="M-18.0873,-18.9169L-1.6324,-12.0485L12.4018,-23.0477L10.9544,-5.2757L25.752,4.6726L8.4026,8.788L3.5139,25.9355L-5.7613,10.707L-23.5803,11.3564L-11.9633,-2.1707L-18.0873,-18.9169z" data-px-meta="label:'Star 10',appliedEffects:{shape:{preset:{type:'star',points:5,innerRadius:12.1586,radius:26.1725,startAngle:316.2843}}}"/>
             </g>
           </g>
         </g>
       </g>
     </g>
   </g>
-  <g data-px-label="Group" fill="none" stroke="none" transform="translate(174.7887,167.8825)translate(-242.4025,-198.666)">
-    <g transform="translate(274.3258,190.551)" data-px-attrs="elementEffect:{baseId:_px_2jkdakhm;transform:{origin:[274.3258,190.551];scale:{kfs:[{t:8750;v:[1,1];e:[0.3333,0,0.6666,0.3333]},{t:10500;v:[1.1,1.1];e:[0,0,1,1]},{t:10810;v:[1.1,1.1];e:[0.3333,0.6666,0.6666,1]},{t:12810;v:[1,1]}]}}}">
+  <g fill="none" stroke="none" transform="translate(174.7887,167.8825)translate(-242.4025,-198.666)" data-px-meta="label:'Group'">
+    <g transform="translate(274.3258,190.551)" data-px-meta="effectsHost:{coreId:'_px_2jkdakhm',appliedEffects:{transformBy:{origin:[274.3258,190.551],scale:{keyframes:[{time:8750,value:[1,1],easing:[0.3333,0,0.6666,0.3333]},{time:10500,value:[1.1,1.1],easing:[0,0,1,1]},{time:10810,value:[1.1,1.1],easing:[0.3333,0.6666,0.6666,1]},{time:12810,value:[1,1]}]}}}}">
       <g class="_px-animated _px_2khnd6g7" transform="scale(1,1)">
-        <g id="_px_2jkdakhm" data-px-label="Stars Zoom" fill="none" stroke="none" transform="translate(-274.3258,-190.551)">
-          <g data-px-label="Star 2 small" fill="none" stroke="none" transform="translate(295.0979,251.037)scale(0.9227,0.9227)translate(-224.6691,-1025.0365)">
-            <path data-px-label="Star 9" fill="none" stroke="#ffc716" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" transform="translate(222.8871,1024.3767)scale(0.5251,0.5251)" d="M-18.0873,-18.9169L-1.6324,-12.0485L12.4018,-23.0477L10.9544,-5.2757L25.752,4.6726L8.4026,8.788L3.5139,25.9355L-5.7613,10.707L-23.5803,11.3564L-11.9633,-2.1707L-18.0873,-18.9169z" data-px-attrs="shape:{type:star;points:5;innerRadius:12.1586;radius:26.1725;startAngle:316.2843}"/>
+        <g id="_px_2jkdakhm" fill="none" stroke="none" transform="translate(-274.3258,-190.551)" data-px-meta="label:'Stars Zoom'">
+          <g fill="none" stroke="none" transform="translate(295.0979,251.037)scale(0.9227,0.9227)translate(-224.6691,-1025.0365)" data-px-meta="label:'Star 2 small'">
+            <path fill="none" stroke="#ffc716" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" transform="translate(222.8871,1024.3767)scale(0.5251,0.5251)" d="M-18.0873,-18.9169L-1.6324,-12.0485L12.4018,-23.0477L10.9544,-5.2757L25.752,4.6726L8.4026,8.788L3.5139,25.9355L-5.7613,10.707L-23.5803,11.3564L-11.9633,-2.1707L-18.0873,-18.9169z" data-px-meta="label:'Star 9',appliedEffects:{shape:{preset:{type:'star',points:5,innerRadius:12.1586,radius:26.1725,startAngle:316.2843}}}"/>
           </g>
         </g>
       </g>
     </g>
   </g>
-  <g data-px-label="Group" fill="none" stroke="none" transform="translate(174.7887,167.8825)translate(-242.4025,-198.666)">
-    <g transform="translate(274.3258,190.551)" data-px-attrs="elementEffect:{baseId:_px_2jkdakhh;transform:{origin:[274.3258,190.551];scale:{kfs:[{t:8750;v:[1,1];e:[0.3333,0,0.6666,0.3333]},{t:10500;v:[1.1,1.1];e:[0,0,1,1]},{t:10810;v:[1.1,1.1];e:[0.3333,0.6666,0.6666,1]},{t:12810;v:[1,1]}]}}}">
+  <g fill="none" stroke="none" transform="translate(174.7887,167.8825)translate(-242.4025,-198.666)" data-px-meta="label:'Group'">
+    <g transform="translate(274.3258,190.551)" data-px-meta="effectsHost:{coreId:'_px_2jkdakhh',appliedEffects:{transformBy:{origin:[274.3258,190.551],scale:{keyframes:[{time:8750,value:[1,1],easing:[0.3333,0,0.6666,0.3333]},{time:10500,value:[1.1,1.1],easing:[0,0,1,1]},{time:10810,value:[1.1,1.1],easing:[0.3333,0.6666,0.6666,1]},{time:12810,value:[1,1]}]}}}}">
       <g class="_px-animated _px_2khnd6g7" transform="scale(1,1)">
-        <g id="_px_2jkdakhh" data-px-label="Stars Zoom" fill="none" stroke="none" transform="translate(-274.3258,-190.551)">
-          <g data-px-label="Star with lines" fill="none" stroke="none" transform="translate(274.3258,208.9391)translate(-274.3258,-208.9391)">
-            <g class="_px-animated _px_2khnd6ga" data-px-label="Line behind stars" fill="none" stroke="none" transform="translate(301.6761,190.6941)translate(-301.6761,-190.6941)" data-px-attrs="opacity:{kfs:[{t:0;v:1;e:[0.166,0.166,0.8227,0.8227]},{t:10560;v:1;e:[0.3441,0.3441,0.6775,0.6775]},{t:10630;v:0},{t:13690;v:0},{t:13750;v:1}]}">
-              <path class="_px-animated _px_2khnd6gb" data-px-label="Path" fill="none" stroke="#ffc716" stroke-width="4" stroke-dasharray="0,0" stroke-linecap="round" stroke-linejoin="round" transform="translate(228.6574,206.1388)scale(1.217,1.217)" d="M0,0C22.794,-28.913,58.895,-47.302,88,-44" data-px-attrs="d:{kfs:[{t:5312.5;v:{paths:[path(M0,0C22.794,-28.913,58.895,-47.302,88,-44)]}},{t:5937.5;v:{paths:[path(M0,0C19.924,-40.835,53.024,-59.781,88,-44)]}},{t:6562.5;v:{paths:[path(M0,0C19.924,-40.835,53.024,-59.781,88,-44)]}},{t:7187.5;v:{paths:[path(M0,0C22.794,-28.913,58.895,-47.302,88,-44)]}}]}"/>
-              <path data-px-label="Path 2" fill="none" stroke="#ffc716" stroke-width="4" stroke-dasharray="0,0" stroke-linecap="round" stroke-linejoin="round" transform="translate(232.3084,221.9595)scale(1.217,1.217)" d="M0,0C0,0,34.388,-36.537,63,-37"/>
-              <path data-px-label="Path 3" fill="none" stroke="#ffc716" stroke-width="4" stroke-dasharray="0,0" stroke-linecap="round" stroke-linejoin="round" transform="translate(244.4781,229.2614)scale(1.217,1.217)" d="M0,0C23.157,-19.516,71.96,-31.545,107,-24.5"/>
+        <g id="_px_2jkdakhh" fill="none" stroke="none" transform="translate(-274.3258,-190.551)" data-px-meta="label:'Stars Zoom'">
+          <g fill="none" stroke="none" transform="translate(274.3258,208.9391)translate(-274.3258,-208.9391)" data-px-meta="label:'Star with lines'">
+            <g class="_px-animated _px_2khnd6ga" fill="none" stroke="none" transform="translate(301.6761,190.6941)translate(-301.6761,-190.6941)" data-px-meta="label:'Line behind stars',animate:{opacity:{keyframes:[{time:0,value:1,easing:[0.166,0.166,0.8227,0.8227]},{time:10560,value:1,easing:[0.3441,0.3441,0.6775,0.6775]},{time:10630,value:0},{time:13690,value:0},{time:13750,value:1}]}}">
+              <path class="_px-animated _px_2khnd6gb" fill="none" stroke="#ffc716" stroke-width="4" stroke-dasharray="0,0" stroke-linecap="round" stroke-linejoin="round" transform="translate(228.6574,206.1388)scale(1.217,1.217)" d="M0,0C22.794,-28.913,58.895,-47.302,88,-44" data-px-meta="label:'Path',appliedEffects:{shape:{pathData:{keyframes:[{time:5312.5,value:{pathData:'M0,0C22.794,-28.913,58.895,-47.302,88,-44'}},{time:5937.5,value:{pathData:'M0,0C19.924,-40.835,53.024,-59.781,88,-44'}},{time:6562.5,value:{pathData:'M0,0C19.924,-40.835,53.024,-59.781,88,-44'}},{time:7187.5,value:{pathData:'M0,0C22.794,-28.913,58.895,-47.302,88,-44'}}]}}}"/>
+              <path fill="none" stroke="#ffc716" stroke-width="4" stroke-dasharray="0,0" stroke-linecap="round" stroke-linejoin="round" transform="translate(232.3084,221.9595)scale(1.217,1.217)" d="M0,0C0,0,34.388,-36.537,63,-37" data-px-meta="label:'Path 2'"/>
+              <path fill="none" stroke="#ffc716" stroke-width="4" stroke-dasharray="0,0" stroke-linecap="round" stroke-linejoin="round" transform="translate(244.4781,229.2614)scale(1.217,1.217)" d="M0,0C23.157,-19.516,71.96,-31.545,107,-24.5" data-px-meta="label:'Path 3'"/>
             </g>
           </g>
         </g>
       </g>
     </g>
   </g>
-  <g data-px-label="Group" fill="none" stroke="none" transform="translate(174.7887,167.8825)translate(-242.4025,-198.666)">
-    <g transform="translate(274.3258,190.551)" data-px-attrs="elementEffect:{baseId:_px_2jkdakhe;transform:{origin:[274.3258,190.551];scale:{kfs:[{t:8750;v:[1,1];e:[0.3333,0,0.6666,0.3333]},{t:10500;v:[1.1,1.1];e:[0,0,1,1]},{t:10810;v:[1.1,1.1];e:[0.3333,0.6666,0.6666,1]},{t:12810;v:[1,1]}]}}}">
+  <g fill="none" stroke="none" transform="translate(174.7887,167.8825)translate(-242.4025,-198.666)" data-px-meta="label:'Group'">
+    <g transform="translate(274.3258,190.551)" data-px-meta="effectsHost:{coreId:'_px_2jkdakhe',appliedEffects:{transformBy:{origin:[274.3258,190.551],scale:{keyframes:[{time:8750,value:[1,1],easing:[0.3333,0,0.6666,0.3333]},{time:10500,value:[1.1,1.1],easing:[0,0,1,1]},{time:10810,value:[1.1,1.1],easing:[0.3333,0.6666,0.6666,1]},{time:12810,value:[1,1]}]}}}}">
       <g class="_px-animated _px_2khnd6g7" transform="scale(1,1)">
-        <g id="_px_2jkdakhe" data-px-label="Stars Zoom" fill="none" stroke="none" transform="translate(-274.3258,-190.551)">
-          <g data-px-label="Star with lines" fill="none" stroke="none" transform="translate(274.3258,208.9391)translate(-274.3258,-208.9391)">
-            <g class="_px-animated _px_2khnd6g9" data-px-label="Line 2 behind stars" fill="none" stroke="none" opacity="0" transform="translate(301.6761,190.6941)translate(-301.6761,-190.6941)" data-px-attrs="opacity:{kfs:[{t:0;v:0},{t:10440;v:0},{t:10500;v:1},{t:13690;v:1},{t:13750;v:0}]}">
-              <path data-px-label="Path" fill="none" stroke="#ffc716" stroke-width="4" stroke-dasharray="0,0" stroke-linecap="round" stroke-linejoin="round" transform="translate(228.6574,206.1388)scale(1.217,1.217)" d="M0,0C22.794,-28.913,58.895,-47.302,88,-44"/>
-              <path data-px-label="Path 2" fill="none" stroke="#ffc716" stroke-width="4" stroke-dasharray="0,0" stroke-linecap="round" stroke-linejoin="round" transform="translate(232.3084,221.9595)scale(1.217,1.217)" d="M0,0C0,0,34.388,-36.537,63,-37"/>
-              <path data-px-label="Path 3" fill="none" stroke="#ffc716" stroke-width="4" stroke-dasharray="0,0" stroke-linecap="round" stroke-linejoin="round" transform="translate(244.4781,229.2614)scale(1.217,1.217)" d="M0,0C23.157,-19.516,71.96,-31.545,107,-24.5"/>
+        <g id="_px_2jkdakhe" fill="none" stroke="none" transform="translate(-274.3258,-190.551)" data-px-meta="label:'Stars Zoom'">
+          <g fill="none" stroke="none" transform="translate(274.3258,208.9391)translate(-274.3258,-208.9391)" data-px-meta="label:'Star with lines'">
+            <g class="_px-animated _px_2khnd6g9" fill="none" stroke="none" opacity="0" transform="translate(301.6761,190.6941)translate(-301.6761,-190.6941)" data-px-meta="label:'Line 2 behind stars',animate:{opacity:{keyframes:[{time:0,value:0},{time:10440,value:0},{time:10500,value:1},{time:13690,value:1},{time:13750,value:0}]}}">
+              <path fill="none" stroke="#ffc716" stroke-width="4" stroke-dasharray="0,0" stroke-linecap="round" stroke-linejoin="round" transform="translate(228.6574,206.1388)scale(1.217,1.217)" d="M0,0C22.794,-28.913,58.895,-47.302,88,-44" data-px-meta="label:'Path'"/>
+              <path fill="none" stroke="#ffc716" stroke-width="4" stroke-dasharray="0,0" stroke-linecap="round" stroke-linejoin="round" transform="translate(232.3084,221.9595)scale(1.217,1.217)" d="M0,0C0,0,34.388,-36.537,63,-37" data-px-meta="label:'Path 2'"/>
+              <path fill="none" stroke="#ffc716" stroke-width="4" stroke-dasharray="0,0" stroke-linecap="round" stroke-linejoin="round" transform="translate(244.4781,229.2614)scale(1.217,1.217)" d="M0,0C23.157,-19.516,71.96,-31.545,107,-24.5" data-px-meta="label:'Path 3'"/>
             </g>
           </g>
         </g>
@@ -695,13 +695,13 @@
     </g>
   </g>
   <g mask="url(#_px_2jkdakhc)">
-    <g data-px-label="Group" fill="none" stroke="none" transform="translate(174.7887,167.8825)translate(-242.4025,-198.666)">
-      <g transform="translate(274.3258,190.551)" data-px-attrs="elementEffect:{baseId:_px_2jkdakhb;transform:{origin:[274.3258,190.551];scale:{kfs:[{t:8750;v:[1,1];e:[0.3333,0,0.6666,0.3333]},{t:10500;v:[1.1,1.1];e:[0,0,1,1]},{t:10810;v:[1.1,1.1];e:[0.3333,0.6666,0.6666,1]},{t:12810;v:[1,1]}]}}}">
+    <g fill="none" stroke="none" transform="translate(174.7887,167.8825)translate(-242.4025,-198.666)" data-px-meta="label:'Group'">
+      <g transform="translate(274.3258,190.551)" data-px-meta="effectsHost:{coreId:'_px_2jkdakhb',appliedEffects:{transformBy:{origin:[274.3258,190.551],scale:{keyframes:[{time:8750,value:[1,1],easing:[0.3333,0,0.6666,0.3333]},{time:10500,value:[1.1,1.1],easing:[0,0,1,1]},{time:10810,value:[1.1,1.1],easing:[0.3333,0.6666,0.6666,1]},{time:12810,value:[1,1]}]}}}}">
         <g class="_px-animated _px_2khnd6g7" transform="scale(1,1)">
-          <g id="_px_2jkdakhb" data-px-label="Stars Zoom" fill="none" stroke="none" transform="translate(-274.3258,-190.551)">
-            <g data-px-label="Star with lines" fill="none" stroke="none" transform="translate(274.3258,208.9391)translate(-274.3258,-208.9391)">
-              <g data-px-label="Star" fill="none" stroke="none" transform="translate(206.7835,235.9451)translate(-206.7835,-235.9451)">
-                <path data-px-label="Star 3" fill="#4290dd" stroke="none" transform="translate(202.6535,234.1884)scale(1.217,1.217)" d="M-18.0873,-18.9169L-1.6324,-12.0485L12.4018,-23.0477L10.9544,-5.2757L25.752,4.6726L8.4026,8.788L3.5139,25.9355L-5.7613,10.707L-23.5803,11.3564L-11.9633,-2.1707L-18.0873,-18.9169z" data-px-attrs="shape:{type:star;points:5;innerRadius:12.1586;radius:26.1725;startAngle:316.2843}"/>
+          <g id="_px_2jkdakhb" fill="none" stroke="none" transform="translate(-274.3258,-190.551)" data-px-meta="label:'Stars Zoom'">
+            <g fill="none" stroke="none" transform="translate(274.3258,208.9391)translate(-274.3258,-208.9391)" data-px-meta="label:'Star with lines'">
+              <g fill="none" stroke="none" transform="translate(206.7835,235.9451)translate(-206.7835,-235.9451)" data-px-meta="label:'Star'">
+                <path fill="#4290dd" stroke="none" transform="translate(202.6535,234.1884)scale(1.217,1.217)" d="M-18.0873,-18.9169L-1.6324,-12.0485L12.4018,-23.0477L10.9544,-5.2757L25.752,4.6726L8.4026,8.788L3.5139,25.9355L-5.7613,10.707L-23.5803,11.3564L-11.9633,-2.1707L-18.0873,-18.9169z" data-px-meta="label:'Star 3',appliedEffects:{shape:{preset:{type:'star',points:5,innerRadius:12.1586,radius:26.1725,startAngle:316.2843}}}"/>
               </g>
             </g>
           </g>
@@ -709,91 +709,91 @@
       </g>
     </g>
   </g>
-  <g data-px-label="Group" fill="none" stroke="none" transform="translate(174.7887,167.8825)translate(-242.4025,-198.666)">
-    <g transform="translate(274.3258,190.551)" data-px-attrs="elementEffect:{baseId:_px_2jkdakh6;transform:{origin:[274.3258,190.551];scale:{kfs:[{t:8750;v:[1,1];e:[0.3333,0,0.6666,0.3333]},{t:10500;v:[1.1,1.1];e:[0,0,1,1]},{t:10810;v:[1.1,1.1];e:[0.3333,0.6666,0.6666,1]},{t:12810;v:[1,1]}]}}}">
+  <g fill="none" stroke="none" transform="translate(174.7887,167.8825)translate(-242.4025,-198.666)" data-px-meta="label:'Group'">
+    <g transform="translate(274.3258,190.551)" data-px-meta="effectsHost:{coreId:'_px_2jkdakh6',appliedEffects:{transformBy:{origin:[274.3258,190.551],scale:{keyframes:[{time:8750,value:[1,1],easing:[0.3333,0,0.6666,0.3333]},{time:10500,value:[1.1,1.1],easing:[0,0,1,1]},{time:10810,value:[1.1,1.1],easing:[0.3333,0.6666,0.6666,1]},{time:12810,value:[1,1]}]}}}}">
       <g class="_px-animated _px_2khnd6g7" transform="scale(1,1)">
-        <g id="_px_2jkdakh6" data-px-label="Stars Zoom" fill="none" stroke="none" transform="translate(-274.3258,-190.551)">
-          <g data-px-label="Star with lines" fill="none" stroke="none" transform="translate(274.3258,208.9391)translate(-274.3258,-208.9391)">
-            <g data-px-label="Star" fill="none" stroke="none" transform="translate(206.7835,235.9451)translate(-206.7835,-235.9451)">
-              <path class="_px-animated _px_2khnd6g6" data-px-label="Star" fill="none" stroke="#ffc716" stroke-width="4" stroke-dasharray="80,20" stroke-linecap="round" stroke-linejoin="round" transform="translate(202.6535,234.1884)scale(1.217,1.217)" d="M-18.0873,-18.9169L-1.6324,-12.0485L12.4018,-23.0477L10.9544,-5.2757L25.752,4.6726L8.4026,8.788L3.5139,25.9355L-5.7613,10.707L-23.5803,11.3564L-11.9633,-2.1707L-18.0873,-18.9169z" data-px-attrs="strokeDashoffset:{kfs:[{t:8130;v:0},{t:8750;v:-100},{t:8750;v:0},{t:9380;v:-100},{t:9380;v:0},{t:10000;v:-100},{t:10000;v:0},{t:10630;v:-100},{t:10630;v:0},{t:11250;v:-100},{t:11250;v:0},{t:11880;v:-100},{t:11880;v:0},{t:12500;v:-100},{t:12500;v:0}]};shape:{type:star;points:5;innerRadius:12.1586;radius:26.1725;startAngle:316.2843}"/>
+        <g id="_px_2jkdakh6" fill="none" stroke="none" transform="translate(-274.3258,-190.551)" data-px-meta="label:'Stars Zoom'">
+          <g fill="none" stroke="none" transform="translate(274.3258,208.9391)translate(-274.3258,-208.9391)" data-px-meta="label:'Star with lines'">
+            <g fill="none" stroke="none" transform="translate(206.7835,235.9451)translate(-206.7835,-235.9451)" data-px-meta="label:'Star'">
+              <path class="_px-animated _px_2khnd6g6" fill="none" stroke="#ffc716" stroke-width="4" stroke-dasharray="80,20" stroke-linecap="round" stroke-linejoin="round" transform="translate(202.6535,234.1884)scale(1.217,1.217)" d="M-18.0873,-18.9169L-1.6324,-12.0485L12.4018,-23.0477L10.9544,-5.2757L25.752,4.6726L8.4026,8.788L3.5139,25.9355L-5.7613,10.707L-23.5803,11.3564L-11.9633,-2.1707L-18.0873,-18.9169z" data-px-meta="label:'Star',animate:{strokeDashoffset:{keyframes:[{time:8130,value:0},{time:8750,value:-100},{time:8750,value:0},{time:9380,value:-100},{time:9380,value:0},{time:10000,value:-100},{time:10000,value:0},{time:10630,value:-100},{time:10630,value:0},{time:11250,value:-100},{time:11250,value:0},{time:11880,value:-100},{time:11880,value:0},{time:12500,value:-100},{time:12500,value:0}]}},appliedEffects:{shape:{preset:{type:'star',points:5,innerRadius:12.1586,radius:26.1725,startAngle:316.2843}}}"/>
             </g>
           </g>
         </g>
       </g>
     </g>
   </g>
-  <g data-px-label="Group" fill="none" stroke="none" transform="translate(174.7887,167.8825)translate(-242.4025,-198.666)">
-    <g transform="translate(267.0024,204.5945)" data-px-attrs="elementEffect:{baseId:_px_2jkdakgd;transform:{origin:[267.0024,204.5945];scale:{kfs:[{t:8750;v:[1,1];e:[0.3333,0,0.6666,0.3333]},{t:10440;v:[1.05,1.05];e:[0,0,1,1]},{t:10940;v:[1.05,1.05];e:[0.3333,0.6666,0.6666,1]},{t:12500;v:[1,1]}]}}}">
+  <g fill="none" stroke="none" transform="translate(174.7887,167.8825)translate(-242.4025,-198.666)" data-px-meta="label:'Group'">
+    <g transform="translate(267.0024,204.5945)" data-px-meta="effectsHost:{coreId:'_px_2jkdakgd',appliedEffects:{transformBy:{origin:[267.0024,204.5945],scale:{keyframes:[{time:8750,value:[1,1],easing:[0.3333,0,0.6666,0.3333]},{time:10440,value:[1.05,1.05],easing:[0,0,1,1]},{time:10940,value:[1.05,1.05],easing:[0.3333,0.6666,0.6666,1]},{time:12500,value:[1,1]}]}}}}">
       <g class="_px-animated _px_2khnd6g4" transform="scale(1,1)">
-        <g id="_px_2jkdakgd" data-px-label="Starts create" fill="none" stroke="none" transform="translate(-267.0024,-204.5945)">
-          <ellipse class="_px-animated _px_2khnd6g3" data-px-label="Ellipse 32" fill="#ffffff" stroke="none" transform="translate(80.57,175.5509)scale(1.6895,1.6895)" rx="1.2814" ry="1.2814" data-px-attrs="opacity:{loop:{keyframesCount:0};kfs:[{t:0;v:1},{t:250;v:1},{t:380;v:0;e:[0.1628,0.1628,0.5969,0.5969]},{t:630;v:0;e:[0.4268,0.4268,0.8275,0.8275]},{t:750;v:1},{t:2500;v:1}]}"/>
-          <ellipse class="_px-animated _px_2khnd6g2" data-px-label="Ellipse 33" fill="#ffffff" stroke="none" transform="translate(158.0436,328.6345)scale(1.6895,1.6895)translate(-0.639,-0.639)" rx="1.2895" ry="1.2895" data-px-attrs="opacity:{loop:{keyframesCount:0};kfs:[{t:0;v:1},{t:130;v:0;e:[0.1628,0.1628,0.5969,0.5969]},{t:380;v:0;e:[0.4268,0.4268,0.8275,0.8275]},{t:500;v:1},{t:2500;v:1}]}"/>
-          <ellipse class="_px-animated _px_2khnd6g1" data-px-label="Ellipse 34" fill="#ffffff" stroke="none" transform="translate(274.9331,93.4487)scale(1.6895,1.6895)" rx="1.2562" ry="1.2562" data-px-attrs="opacity:{loop:{keyframesCount:0};kfs:[{t:0;v:1},{t:250;v:1},{t:380;v:0;e:[0.1628,0.1628,0.5969,0.5969]},{t:630;v:0;e:[0.4268,0.4268,0.8275,0.8275]},{t:750;v:1},{t:1380;v:1},{t:1500;v:0;e:[0.1628,0.1628,0.5969,0.5969]},{t:1750;v:0;e:[0.4268,0.4268,0.8275,0.8275]},{t:1880;v:1},{t:2500;v:1}]}"/>
-          <ellipse class="_px-animated _px_2khnd6g0" data-px-label="Ellipse 35" fill="#ffffff" stroke="none" transform="translate(411.9442,258.8575)scale(1.6895,1.6895)" rx="1.4835" ry="1.4835" data-px-attrs="opacity:{loop:{keyframesCount:0};kfs:[{t:0;v:1},{t:630;v:1},{t:750;v:0;e:[0.1628,0.1628,0.5969,0.5969]},{t:1000;v:0;e:[0.4268,0.4268,0.8275,0.8275]},{t:1130;v:1},{t:2500;v:1}]}"/>
-          <ellipse class="_px-animated _px_2khnd6fv" data-px-label="Ellipse 36" fill="#ffffff" stroke="none" transform="translate(317.6331,279.3497)scale(1.6895,1.6895)" rx="1.4208" ry="1.4208" data-px-attrs="opacity:{loop:{keyframesCount:0};kfs:[{t:0;v:1},{t:1560;v:1},{t:1690;v:0;e:[0.1628,0.1628,0.5969,0.5969]},{t:1940;v:0;e:[0.4268,0.4268,0.8275,0.8275]},{t:2130;v:1},{t:2500;v:1}]}"/>
-          <ellipse class="_px-animated _px_2khnd6fu" data-px-label="Ellipse 38" fill="#ffffff" stroke="none" transform="translate(193.7773,110.1171)scale(1.6895,1.6895)" rx="1.8367" ry="1.8367" data-px-attrs="opacity:{loop:{keyframesCount:0};kfs:[{t:0;v:1},{t:1250;v:1},{t:1380;v:0;e:[0.1628,0.1628,0.5969,0.5969]},{t:1630;v:0;e:[0.4268,0.4268,0.8275,0.8275]},{t:1750;v:1},{t:2500;v:1}]}"/>
-          <ellipse data-px-label="Ellipse 39" fill="#ffffff" stroke="none" transform="translate(347.5916,330.2648)scale(1.6895,1.6895)" rx="1.2303" ry="1.2303"/>
-          <ellipse data-px-label="Ellipse 40" fill="#ffffff" stroke="none" transform="translate(382.2288,120.6161)scale(1.6895,1.6895)" rx="1.2303" ry="1.2303"/>
-          <ellipse class="_px-animated _px_2khnd6ft" data-px-label="Ellipse 41" fill="#ffffff" stroke="none" transform="translate(343.4695,68.937)scale(1.6895,1.6895)" rx="1.2303" ry="1.2303" data-px-attrs="opacity:{loop:{keyframesCount:0};kfs:[{t:0;v:1},{t:940;v:1},{t:1060;v:0;e:[0.1628,0.1628,0.5969,0.5969]},{t:1310;v:0;e:[0.4268,0.4268,0.8275,0.8275]},{t:1440;v:1},{t:2500;v:1}]}"/>
-          <ellipse data-px-label="Ellipse 42" fill="#ffffff" stroke="none" transform="translate(240.3343,316.0044)scale(1.6895,1.6895)" rx="1.2562" ry="1.2562"/>
-          <g class="_px-animated _px_2khnd6fs" data-px-label="Group 3" fill="none" stroke="none" transform="translate(395.1666,168.5545)rotate(41)scale(0.3805,0.3805)translate(-286,-179)" data-px-attrs="opacity:{loop:{keyframesCount:0};kfs:[{t:0;v:1},{t:1560;v:1},{t:1690;v:0;e:[0.1628,0.1628,0.5969,0.5969]},{t:1940;v:0;e:[0.4268,0.4268,0.8275,0.8275]},{t:2060;v:1},{t:2500;v:1}]}">
-            <path data-px-label="Path 4" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" transform="translate(286,170)" d="M0,0L0,18"/>
-            <path data-px-label="Path 5" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" transform="translate(276,179)" d="M0,0L20,0"/>
+        <g id="_px_2jkdakgd" fill="none" stroke="none" transform="translate(-267.0024,-204.5945)" data-px-meta="label:'Starts create'">
+          <ellipse class="_px-animated _px_2khnd6g3" fill="#ffffff" stroke="none" transform="translate(80.57,175.5509)scale(1.6895,1.6895)" rx="1.2814" ry="1.2814" data-px-meta="label:'Ellipse 32',animate:{opacity:{loop:{},keyframes:[{time:0,value:1},{time:250,value:1},{time:380,value:0,easing:[0.1628,0.1628,0.5969,0.5969]},{time:630,value:0,easing:[0.4268,0.4268,0.8275,0.8275]},{time:750,value:1},{time:2500,value:1}]}}"/>
+          <ellipse class="_px-animated _px_2khnd6g2" fill="#ffffff" stroke="none" transform="translate(158.0436,328.6345)scale(1.6895,1.6895)translate(-0.639,-0.639)" rx="1.2895" ry="1.2895" data-px-meta="label:'Ellipse 33',animate:{opacity:{loop:{},keyframes:[{time:0,value:1},{time:130,value:0,easing:[0.1628,0.1628,0.5969,0.5969]},{time:380,value:0,easing:[0.4268,0.4268,0.8275,0.8275]},{time:500,value:1},{time:2500,value:1}]}}"/>
+          <ellipse class="_px-animated _px_2khnd6g1" fill="#ffffff" stroke="none" transform="translate(274.9331,93.4487)scale(1.6895,1.6895)" rx="1.2562" ry="1.2562" data-px-meta="label:'Ellipse 34',animate:{opacity:{loop:{},keyframes:[{time:0,value:1},{time:250,value:1},{time:380,value:0,easing:[0.1628,0.1628,0.5969,0.5969]},{time:630,value:0,easing:[0.4268,0.4268,0.8275,0.8275]},{time:750,value:1},{time:1380,value:1},{time:1500,value:0,easing:[0.1628,0.1628,0.5969,0.5969]},{time:1750,value:0,easing:[0.4268,0.4268,0.8275,0.8275]},{time:1880,value:1},{time:2500,value:1}]}}"/>
+          <ellipse class="_px-animated _px_2khnd6g0" fill="#ffffff" stroke="none" transform="translate(411.9442,258.8575)scale(1.6895,1.6895)" rx="1.4835" ry="1.4835" data-px-meta="label:'Ellipse 35',animate:{opacity:{loop:{},keyframes:[{time:0,value:1},{time:630,value:1},{time:750,value:0,easing:[0.1628,0.1628,0.5969,0.5969]},{time:1000,value:0,easing:[0.4268,0.4268,0.8275,0.8275]},{time:1130,value:1},{time:2500,value:1}]}}"/>
+          <ellipse class="_px-animated _px_2khnd6fv" fill="#ffffff" stroke="none" transform="translate(317.6331,279.3497)scale(1.6895,1.6895)" rx="1.4208" ry="1.4208" data-px-meta="label:'Ellipse 36',animate:{opacity:{loop:{},keyframes:[{time:0,value:1},{time:1560,value:1},{time:1690,value:0,easing:[0.1628,0.1628,0.5969,0.5969]},{time:1940,value:0,easing:[0.4268,0.4268,0.8275,0.8275]},{time:2130,value:1},{time:2500,value:1}]}}"/>
+          <ellipse class="_px-animated _px_2khnd6fu" fill="#ffffff" stroke="none" transform="translate(193.7773,110.1171)scale(1.6895,1.6895)" rx="1.8367" ry="1.8367" data-px-meta="label:'Ellipse 38',animate:{opacity:{loop:{},keyframes:[{time:0,value:1},{time:1250,value:1},{time:1380,value:0,easing:[0.1628,0.1628,0.5969,0.5969]},{time:1630,value:0,easing:[0.4268,0.4268,0.8275,0.8275]},{time:1750,value:1},{time:2500,value:1}]}}"/>
+          <ellipse fill="#ffffff" stroke="none" transform="translate(347.5916,330.2648)scale(1.6895,1.6895)" rx="1.2303" ry="1.2303" data-px-meta="label:'Ellipse 39'"/>
+          <ellipse fill="#ffffff" stroke="none" transform="translate(382.2288,120.6161)scale(1.6895,1.6895)" rx="1.2303" ry="1.2303" data-px-meta="label:'Ellipse 40'"/>
+          <ellipse class="_px-animated _px_2khnd6ft" fill="#ffffff" stroke="none" transform="translate(343.4695,68.937)scale(1.6895,1.6895)" rx="1.2303" ry="1.2303" data-px-meta="label:'Ellipse 41',animate:{opacity:{loop:{},keyframes:[{time:0,value:1},{time:940,value:1},{time:1060,value:0,easing:[0.1628,0.1628,0.5969,0.5969]},{time:1310,value:0,easing:[0.4268,0.4268,0.8275,0.8275]},{time:1440,value:1},{time:2500,value:1}]}}"/>
+          <ellipse fill="#ffffff" stroke="none" transform="translate(240.3343,316.0044)scale(1.6895,1.6895)" rx="1.2562" ry="1.2562" data-px-meta="label:'Ellipse 42'"/>
+          <g class="_px-animated _px_2khnd6fs" fill="none" stroke="none" transform="translate(395.1666,168.5545)rotate(41)scale(0.3805,0.3805)translate(-286,-179)" data-px-meta="label:'Group 3',animate:{opacity:{loop:{},keyframes:[{time:0,value:1},{time:1560,value:1},{time:1690,value:0,easing:[0.1628,0.1628,0.5969,0.5969]},{time:1940,value:0,easing:[0.4268,0.4268,0.8275,0.8275]},{time:2060,value:1},{time:2500,value:1}]}}">
+            <path fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" transform="translate(286,170)" d="M0,0L0,18" data-px-meta="label:'Path 4'"/>
+            <path fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" transform="translate(276,179)" d="M0,0L20,0" data-px-meta="label:'Path 5'"/>
           </g>
-          <g class="_px-animated _px_2khnd6fr" data-px-label="Group 2" fill="none" stroke="none" transform="translate(226.2235,276.7235)rotate(33)scale(0.466,0.466)translate(-286,-179)" data-px-attrs="opacity:{loop:{keyframesCount:0};kfs:[{t:0;v:1},{t:1310;v:1},{t:1440;v:0;e:[0.1628,0.1628,0.5969,0.5969]},{t:1690;v:0;e:[0.4268,0.4268,0.8275,0.8275]},{t:1810;v:1},{t:2500;v:1}]}">
-            <path data-px-label="Path 4" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" transform="translate(286,170)" d="M0,0L0,18"/>
-            <path data-px-label="Path 5" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" transform="translate(276,179)" d="M0,0L20,0"/>
+          <g class="_px-animated _px_2khnd6fr" fill="none" stroke="none" transform="translate(226.2235,276.7235)rotate(33)scale(0.466,0.466)translate(-286,-179)" data-px-meta="label:'Group 2',animate:{opacity:{loop:{},keyframes:[{time:0,value:1},{time:1310,value:1},{time:1440,value:0,easing:[0.1628,0.1628,0.5969,0.5969]},{time:1690,value:0,easing:[0.4268,0.4268,0.8275,0.8275]},{time:1810,value:1},{time:2500,value:1}]}}">
+            <path fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" transform="translate(286,170)" d="M0,0L0,18" data-px-meta="label:'Path 4'"/>
+            <path fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" transform="translate(276,179)" d="M0,0L20,0" data-px-meta="label:'Path 5'"/>
           </g>
-          <g class="_px-animated _px_2khnd6fq" data-px-label="Group" fill="none" stroke="none" transform="translate(189.7141,178.1483)rotate(-30)scale(0.4448,0.4448)translate(-286,-179)" data-px-attrs="opacity:{loop:{keyframesCount:0};kfs:[{t:0;v:1},{t:810;v:1},{t:940;v:0;e:[0.1628,0.1628,0.5969,0.5969]},{t:1190;v:0;e:[0.4268,0.4268,0.8275,0.8275]},{t:1310;v:1},{t:2500;v:1}]}">
-            <path data-px-label="Path 4" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" transform="translate(286,170)" d="M0,0L0,18"/>
-            <path data-px-label="Path 5" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" transform="translate(276,179)" d="M0,0L20,0"/>
+          <g class="_px-animated _px_2khnd6fq" fill="none" stroke="none" transform="translate(189.7141,178.1483)rotate(-30)scale(0.4448,0.4448)translate(-286,-179)" data-px-meta="label:'Group',animate:{opacity:{loop:{},keyframes:[{time:0,value:1},{time:810,value:1},{time:940,value:0,easing:[0.1628,0.1628,0.5969,0.5969]},{time:1190,value:0,easing:[0.4268,0.4268,0.8275,0.8275]},{time:1310,value:1},{time:2500,value:1}]}}">
+            <path fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" transform="translate(286,170)" d="M0,0L0,18" data-px-meta="label:'Path 4'"/>
+            <path fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" transform="translate(276,179)" d="M0,0L20,0" data-px-meta="label:'Path 5'"/>
           </g>
-          <ellipse class="_px-animated _px_2khnd6fp" data-px-label="Ellipse 15" fill="#ffffff" stroke="none" transform="translate(87.6823,271.7057)scale(1.2067,1.2067)" rx="2.2108" ry="2.2108" data-px-attrs="opacity:{loop:{keyframesCount:0};kfs:[{t:0;v:1},{t:1190;v:1},{t:1310;v:0;e:[0.1628,0.1628,0.5969,0.5969]},{t:1560;v:0;e:[0.4268,0.4268,0.8275,0.8275]},{t:1690;v:1},{t:2500;v:1}]}"/>
+          <ellipse class="_px-animated _px_2khnd6fp" fill="#ffffff" stroke="none" transform="translate(87.6823,271.7057)scale(1.2067,1.2067)" rx="2.2108" ry="2.2108" data-px-meta="label:'Ellipse 15',animate:{opacity:{loop:{},keyframes:[{time:0,value:1},{time:1190,value:1},{time:1310,value:0,easing:[0.1628,0.1628,0.5969,0.5969]},{time:1560,value:0,easing:[0.4268,0.4268,0.8275,0.8275]},{time:1690,value:1},{time:2500,value:1}]}}"/>
         </g>
       </g>
     </g>
   </g>
-  <g data-px-label="Group" fill="none" stroke="none" transform="translate(174.7887,167.8825)translate(-242.4025,-198.666)">
-    <g class="_px-animated _px_2khnd6fh" data-px-label="Guide line" fill="none" stroke="none" opacity="0" transform="translate(274.1579,208.6158)scale(0.9227,0.9227)translate(-246.3715,-946.7075)" data-px-attrs="opacity:{kfs:[{t:0;v:0;e:[0.1588,0.1588,0.7242,0.7242]},{t:4560;v:0;e:[0.4166,0.4166,0.7599,0.7599]},{t:4690;v:1},{t:7500;v:1},{t:7880;v:0}]}">
-      <g data-px-label="Guide line left" fill="none" stroke="none" transform="translate(193.7907,943.3286)rotate(40)scale(1.3077,1.3077)translate(-41.76,-153.6204)">
-        <path class="_px-animated _px_2khnd6fo" data-px-label="Path 2" fill="#ffffff" stroke="#4290dd" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="translate(34.3133,133.3498)" d="M1.67,-19.236L9.383,18.765" data-px-attrs="d:{kfs:[{t:5312.5;v:{paths:[path(M1.67,-19.236L9.383,18.765)]}},{t:5937.5;v:{paths:[path(M-6.763,-24.148L9.383,18.765)]}},{t:6562.5;v:{paths:[path(M-6.763,-24.148L9.383,18.765)]}},{t:7187.5;v:{paths:[path(M1.67,-19.236L9.383,18.765)]}}]}"/>
-        <ellipse class="_px-animated _px_2khnd6fn" data-px-label="Ellipse 14" fill="#ffffff" stroke="#4290dd" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="translate(35.5753,113.4473)" rx="3" ry="3" data-px-attrs="transform:{translate:{kfs:[{t:5310;v:[35.5753,113.4473]},{t:5940;v:[26.9816,107.6364]},{t:6560;v:[26.9816,107.6364]},{t:7190;v:[35.5753,113.4473]}]}}"/>
-        <ellipse data-px-label="Ellipse 20" fill="#ffffff" stroke="#4290dd" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="translate(44.0027,152.653)" rx="3" ry="3"/>
+  <g fill="none" stroke="none" transform="translate(174.7887,167.8825)translate(-242.4025,-198.666)" data-px-meta="label:'Group'">
+    <g class="_px-animated _px_2khnd6fh" fill="none" stroke="none" opacity="0" transform="translate(274.1579,208.6158)scale(0.9227,0.9227)translate(-246.3715,-946.7075)" data-px-meta="label:'Guide line',animate:{opacity:{keyframes:[{time:0,value:0,easing:[0.1588,0.1588,0.7242,0.7242]},{time:4560,value:0,easing:[0.4166,0.4166,0.7599,0.7599]},{time:4690,value:1},{time:7500,value:1},{time:7880,value:0}]}}">
+      <g fill="none" stroke="none" transform="translate(193.7907,943.3286)rotate(40)scale(1.3077,1.3077)translate(-41.76,-153.6204)" data-px-meta="label:'Guide line left'">
+        <path class="_px-animated _px_2khnd6fo" fill="#ffffff" stroke="#4290dd" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="translate(34.3133,133.3498)" d="M1.67,-19.236L9.383,18.765" data-px-meta="label:'Path 2',appliedEffects:{shape:{pathData:{keyframes:[{time:5312.5,value:{pathData:'M1.67,-19.236L9.383,18.765'}},{time:5937.5,value:{pathData:'M-6.763,-24.148L9.383,18.765'}},{time:6562.5,value:{pathData:'M-6.763,-24.148L9.383,18.765'}},{time:7187.5,value:{pathData:'M1.67,-19.236L9.383,18.765'}}]}}}"/>
+        <ellipse class="_px-animated _px_2khnd6fn" fill="#ffffff" stroke="#4290dd" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="translate(35.5753,113.4473)" rx="3" ry="3" data-px-meta="label:'Ellipse 14',animate:{translate:{keyframes:[{time:5310,value:[35.5753,113.4473]},{time:5940,value:[26.9816,107.6364]},{time:6560,value:[26.9816,107.6364]},{time:7190,value:[35.5753,113.4473]}]}}"/>
+        <ellipse fill="#ffffff" stroke="#4290dd" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="translate(44.0027,152.653)" rx="3" ry="3" data-px-meta="label:'Ellipse 20'"/>
       </g>
-      <g data-px-label="Guide light right" fill="none" stroke="none" transform="translate(303.5811,878.6183)translate(-303.5811,-878.6183)">
-        <path class="_px-animated _px_2khnd6fm" data-px-label="Path 11" fill="#ffffff" stroke="#4290dd" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="translate(292.0098,870.2074)rotate(-35)scale(1.3077,1.3077)" d="M-15.068,-6.86L7.304,20.345" data-px-attrs="d:{kfs:[{t:5312.5;v:{paths:[path(M-15.068,-6.86L7.304,20.345)]}},{t:5937.5;v:{paths:[path(M-9.861,-18.765L7.304,20.345)]}},{t:6562.5;v:{paths:[path(M-9.861,-18.765L7.304,20.345)]}},{t:7187.5;v:{paths:[path(M-15.068,-6.86L7.304,20.345)]}}]}"/>
-        <g class="_px-animated _px_2khnd6fl" transform="translate(271.9819,874.2408)" data-px-attrs="elementEffect:{baseId:_px_2jkdakg4;transform:{translate:{kfs:[{t:5310;v:[271.9819,874.2408]},{t:5940;v:[266.4129,856.5261]},{t:6560;v:[266.4129,856.5261]},{t:7190;v:[271.9819,874.2408]}]};rotate:-35;scale:[130.7722,130.7722]}}">
-          <ellipse id="_px_2jkdakg4" data-px-label="Ellipse 14" fill="#ffffff" stroke="#4290dd" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" rx="3" ry="3" transform="rotate(-35),scale(1.3077,1.3077)"/>
+      <g fill="none" stroke="none" transform="translate(303.5811,878.6183)translate(-303.5811,-878.6183)" data-px-meta="label:'Guide light right'">
+        <path class="_px-animated _px_2khnd6fm" fill="#ffffff" stroke="#4290dd" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="translate(292.0098,870.2074)rotate(-35)scale(1.3077,1.3077)" d="M-15.068,-6.86L7.304,20.345" data-px-meta="label:'Path 11',appliedEffects:{shape:{pathData:{keyframes:[{time:5312.5,value:{pathData:'M-15.068,-6.86L7.304,20.345'}},{time:5937.5,value:{pathData:'M-9.861,-18.765L7.304,20.345'}},{time:6562.5,value:{pathData:'M-9.861,-18.765L7.304,20.345'}},{time:7187.5,value:{pathData:'M-15.068,-6.86L7.304,20.345'}}]}}}"/>
+        <g class="_px-animated _px_2khnd6fl" transform="translate(271.9819,874.2408)" data-px-meta="effectsHost:{coreId:'_px_2jkdakg4',appliedEffects:{transformBy:{translate:{keyframes:[{time:5310,value:[271.9819,874.2408]},{time:5940,value:[266.4129,856.5261]},{time:6560,value:[266.4129,856.5261]},{time:7190,value:[271.9819,874.2408]}]},rotate:-35,scale:[1.307722,1.307722]}}}">
+          <ellipse id="_px_2jkdakg4" fill="#ffffff" stroke="#4290dd" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" rx="3" ry="3" transform="rotate(-35),scale(1.3077,1.3077)" data-px-meta="label:'Ellipse 14'"/>
         </g>
-        <ellipse data-px-label="Ellipse 20" fill="#ffffff" stroke="#4290dd" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="translate(315.024,886.5993)rotate(-35)scale(1.3077,1.3077)" rx="3" ry="3"/>
+        <ellipse fill="#ffffff" stroke="#4290dd" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="translate(315.024,886.5993)rotate(-35)scale(1.3077,1.3077)" rx="3" ry="3" data-px-meta="label:'Ellipse 20'"/>
       </g>
-      <path class="_px-animated _px_2khnd6fk" data-px-label="Path 5" fill="none" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" transform="translate(197.0612,944.0231)scale(1.3189,1.3189)" d="M0,0C22.794,-28.913,58.895,-47.302,88,-44" data-px-attrs="d:{kfs:[{t:5312.5;v:{paths:[path(M0,0C22.794,-28.913,58.895,-47.302,88,-44)]}},{t:5937.5;v:{paths:[path(M0,0C18.92,-37.005,47.635,-59.94,88,-44)]}},{t:6562.5;v:{paths:[path(M0,0C18.92,-37.005,47.635,-59.94,88,-44)]}},{t:7187.5;v:{paths:[path(M0,0C22.794,-28.913,58.895,-47.302,88,-44)]}}]}"/>
-      <path class="_px-animated _px_2khnd6fj" data-px-label="Path 4" fill="none" stroke="#88b1fd" stroke-dasharray="5" stroke-dashoffset="5" stroke-linecap="round" stroke-linejoin="round" transform="translate(197.0612,944.0231)scale(1.3189,1.3189)" d="M0,0C22.794,-28.913,58.895,-47.302,88,-44" data-px-attrs="d:{kfs:[{t:5312.5;v:{paths:[path(M0,0C22.794,-28.913,58.895,-47.302,88,-44)]}},{t:5937.5;v:{paths:[path(M0,0C19.291,-40.072,52.171,-59.374,88,-44)]}},{t:6562.5;v:{paths:[path(M0,0C19.291,-40.072,52.171,-59.374,88,-44)]}},{t:7187.5;v:{paths:[path(M0,0C22.794,-28.913,58.895,-47.302,88,-44)]}}]}"/>
-      <g transform="translate(178.7113,208.757)" data-px-attrs="elementEffect:{baseId:_px_2jkdakft;transform:{origin:[178.7113,208.757];translate:{kfs:[{t:5310;v:[69.3302,692.0659]},{t:5940;v:[71.6376,677.1222]},{t:6560;v:[71.6376,677.1222]},{t:7190;v:[69.3302,692.0659]}]};rotate:62.0019;scale:[180.3999,180.3999]}}">
+      <path class="_px-animated _px_2khnd6fk" fill="none" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" transform="translate(197.0612,944.0231)scale(1.3189,1.3189)" d="M0,0C22.794,-28.913,58.895,-47.302,88,-44" data-px-meta="label:'Path 5',appliedEffects:{shape:{pathData:{keyframes:[{time:5312.5,value:{pathData:'M0,0C22.794,-28.913,58.895,-47.302,88,-44'}},{time:5937.5,value:{pathData:'M0,0C18.92,-37.005,47.635,-59.94,88,-44'}},{time:6562.5,value:{pathData:'M0,0C18.92,-37.005,47.635,-59.94,88,-44'}},{time:7187.5,value:{pathData:'M0,0C22.794,-28.913,58.895,-47.302,88,-44'}}]}}}"/>
+      <path class="_px-animated _px_2khnd6fj" fill="none" stroke="#88b1fd" stroke-dasharray="5" stroke-dashoffset="5" stroke-linecap="round" stroke-linejoin="round" transform="translate(197.0612,944.0231)scale(1.3189,1.3189)" d="M0,0C22.794,-28.913,58.895,-47.302,88,-44" data-px-meta="label:'Path 4',appliedEffects:{shape:{pathData:{keyframes:[{time:5312.5,value:{pathData:'M0,0C22.794,-28.913,58.895,-47.302,88,-44'}},{time:5937.5,value:{pathData:'M0,0C19.291,-40.072,52.171,-59.374,88,-44'}},{time:6562.5,value:{pathData:'M0,0C19.291,-40.072,52.171,-59.374,88,-44'}},{time:7187.5,value:{pathData:'M0,0C22.794,-28.913,58.895,-47.302,88,-44'}}]}}}"/>
+      <g transform="translate(178.7113,208.757)" data-px-meta="effectsHost:{coreId:'_px_2jkdakft',appliedEffects:{transformBy:{origin:[178.7113,208.757],translate:{keyframes:[{time:5310,value:[69.3302,692.0659]},{time:5940,value:[71.6376,677.1222]},{time:6560,value:[71.6376,677.1222]},{time:7190,value:[69.3302,692.0659]}]},rotate:62.0019,scale:[1.8039990000000001,1.8039990000000001]}}}">
         <g class="_px-animated _px_2khnd6fi" transform="translate(69.3302,692.0659)">
-          <g id="_px_2jkdakft" data-px-label="Arrow" fill="none" stroke="none" transform="rotate(62.0019),scale(1.804,1.804),translate(-178.7113,-208.757)">
-            <path data-px-label="Path 2" fill="#ffffff" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" transform="translate(178.6899,210.9751)scale(1.1,1.1)translate(0.156,-5.627)" d="M0,0L3.758,7.185L-0.119,5.054L-4.03,7.221L0,0z"/>
-            <path data-px-label="Path" fill="#3f88dd" stroke="none" transform="translate(178.6896,210.9751)translate(0.1563,-5.627)" d="M0,0L3.739,7.047L-0.186,4.744L-4.051,7.083L0,0z"/>
+          <g id="_px_2jkdakft" fill="none" stroke="none" transform="rotate(62.0019),scale(1.804,1.804),translate(-178.7113,-208.757)" data-px-meta="label:'Arrow'">
+            <path fill="#ffffff" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" transform="translate(178.6899,210.9751)scale(1.1,1.1)translate(0.156,-5.627)" d="M0,0L3.758,7.185L-0.119,5.054L-4.03,7.221L0,0z" data-px-meta="label:'Path 2'"/>
+            <path fill="#3f88dd" stroke="none" transform="translate(178.6896,210.9751)translate(0.1563,-5.627)" d="M0,0L3.739,7.047L-0.186,4.744L-4.051,7.083L0,0z" data-px-meta="label:'Path'"/>
           </g>
         </g>
       </g>
     </g>
   </g>
-  <g data-px-label="Group" fill="none" stroke="none" transform="translate(174.7887,167.8825)translate(-242.4025,-198.666)">
-    <g transform="translate(104.151,68.7642)" data-px-attrs="elementEffect:{baseId:_px_2jkdakfc;transform:{origin:[104.151,68.7642];translate:{kfs:[{t:3130;v:[16.8122,2.7013]},{t:4380;v:[166.1438,99.7699]}]};scale:[129.1976,129.1976]}}">
+  <g fill="none" stroke="none" transform="translate(174.7887,167.8825)translate(-242.4025,-198.666)" data-px-meta="label:'Group'">
+    <g transform="translate(104.151,68.7642)" data-px-meta="effectsHost:{coreId:'_px_2jkdakfc',appliedEffects:{transformBy:{origin:[104.151,68.7642],translate:{keyframes:[{time:3130,value:[16.8122,2.7013]},{time:4380,value:[166.1438,99.7699]}]},scale:[1.291976,1.291976]}}}">
       <g class="_px-animated _px_2khnd6fg" transform="translate(16.8122,2.7013)">
-        <g id="_px_2jkdakfc" class="_px-animated _px_2khnd6fb" data-px-label="Click" fill="none" stroke="none" opacity="0" transform="scale(1.292,1.292),translate(-104.151,-68.7642)" data-px-attrs="opacity:{kfs:[{t:0;v:0},{t:2560;v:0},{t:2630;v:1},{t:3130;v:0},{t:4380;v:0},{t:4440;v:1}]}">
-          <g transform="translate(104.151,68.7642)" data-px-attrs="elementEffect:{baseId:_px_2jkdakfk;transform:{origin:[104.151,68.7642];scale:{kfs:[{t:2630;v:[1,1]},{t:2940;v:[1.5,1.5]},{t:4380;v:[1,1]},{t:4690;v:[1.5,1.5]}]}}}">
+        <g id="_px_2jkdakfc" class="_px-animated _px_2khnd6fb" fill="none" stroke="none" opacity="0" transform="scale(1.292,1.292),translate(-104.151,-68.7642)" data-px-meta="label:'Click',animate:{opacity:{keyframes:[{time:0,value:0},{time:2560,value:0},{time:2630,value:1},{time:3130,value:0},{time:4380,value:0},{time:4440,value:1}]}}">
+          <g transform="translate(104.151,68.7642)" data-px-meta="effectsHost:{coreId:'_px_2jkdakfk',appliedEffects:{transformBy:{origin:[104.151,68.7642],scale:{keyframes:[{time:2630,value:[1,1]},{time:2940,value:[1.5,1.5]},{time:4380,value:[1,1]},{time:4690,value:[1.5,1.5]}]}}}}">
             <g class="_px-animated _px_2khnd6ff" transform="scale(1,1)">
-              <g id="_px_2jkdakfk" class="_px-animated _px_2khnd6fe" data-px-label="Outer el" fill="none" stroke="none" transform="translate(-104.151,-68.7642)" data-px-attrs="opacity:{kfs:[{t:2630;v:1},{t:2880;v:1},{t:3060;v:0},{t:4380;v:1},{t:4630;v:1},{t:4810;v:0}]}">
-                <ellipse data-px-label="Ellipse 2" fill="#3f88dd" fill-opacity="0.3" stroke="#3f88dd" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="translate(104.151,68.7642)" rx="16.4464" ry="16.4464"/>
+              <g id="_px_2jkdakfk" class="_px-animated _px_2khnd6fe" fill="none" stroke="none" transform="translate(-104.151,-68.7642)" data-px-meta="label:'Outer el',animate:{opacity:{keyframes:[{time:2630,value:1},{time:2880,value:1},{time:3060,value:0},{time:4380,value:1},{time:4630,value:1},{time:4810,value:0}]}}">
+                <ellipse fill="#3f88dd" fill-opacity="0.3" stroke="#3f88dd" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="translate(104.151,68.7642)" rx="16.4464" ry="16.4464" data-px-meta="label:'Ellipse 2'"/>
               </g>
             </g>
           </g>
-          <g transform="translate(104.151,68.7642)" data-px-attrs="elementEffect:{baseId:_px_2jkdakff;transform:{origin:[104.151,68.7642];scale:{kfs:[{t:2630;v:[1,1]},{t:2810;v:[1.5,1.5]},{t:4380;v:[1,1]},{t:4560;v:[1.5,1.5]}]}}}">
+          <g transform="translate(104.151,68.7642)" data-px-meta="effectsHost:{coreId:'_px_2jkdakff',appliedEffects:{transformBy:{origin:[104.151,68.7642],scale:{keyframes:[{time:2630,value:[1,1]},{time:2810,value:[1.5,1.5]},{time:4380,value:[1,1]},{time:4560,value:[1.5,1.5]}]}}}}">
             <g class="_px-animated _px_2khnd6fd" transform="scale(1,1)">
-              <g id="_px_2jkdakff" class="_px-animated _px_2khnd6fc" data-px-label="Inner el" fill="none" stroke="none" transform="translate(-104.151,-68.7642)" data-px-attrs="opacity:{kfs:[{t:2630;v:1},{t:2750;v:1},{t:2940;v:0},{t:4380;v:1},{t:4500;v:1},{t:4690;v:0}]}">
-                <ellipse data-px-label="Ellipse" fill="#3f88dd" fill-opacity="0.3" stroke="#3f88dd" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="translate(104.151,68.7642)" rx="11.419" ry="11.419"/>
+              <g id="_px_2jkdakff" class="_px-animated _px_2khnd6fc" fill="none" stroke="none" transform="translate(-104.151,-68.7642)" data-px-meta="label:'Inner el',animate:{opacity:{keyframes:[{time:2630,value:1},{time:2750,value:1},{time:2940,value:0},{time:4380,value:1},{time:4500,value:1},{time:4690,value:0}]}}">
+                <ellipse fill="#3f88dd" fill-opacity="0.3" stroke="#3f88dd" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="translate(104.151,68.7642)" rx="11.419" ry="11.419" data-px-meta="label:'Ellipse'"/>
               </g>
             </g>
           </g>
@@ -801,29 +801,29 @@
       </g>
     </g>
   </g>
-  <g data-px-label="Group" fill="none" stroke="none" transform="translate(174.7887,167.8825)translate(-242.4025,-198.666)">
-    <g transform="translate(1087.7644,1321.7174)" data-px-attrs="elementEffect:{baseId:_px_2jkdakf7;transform:{origin:[1087.7644,1321.7174];translate:{kfs:[{t:3190;v:[-954.6071,-1231.1909];e:[0.3333,0.6666,0.6666,1]},{t:4380;v:[-800.8319,-1128.4431]},{t:5310;v:[-800.8319,-1128.4431]},{t:5940;v:[-798.2905,-1143.9496]},{t:6560;v:[-798.2905,-1143.9496]},{t:7190;v:[-800.8319,-1128.4431]}]};rotate:56.642;scale:[37.1469,37.1469]}}">
+  <g fill="none" stroke="none" transform="translate(174.7887,167.8825)translate(-242.4025,-198.666)" data-px-meta="label:'Group'">
+    <g transform="translate(1087.7644,1321.7174)" data-px-meta="effectsHost:{coreId:'_px_2jkdakf7',appliedEffects:{transformBy:{origin:[1087.7644,1321.7174],translate:{keyframes:[{time:3190,value:[-954.6071,-1231.1909],easing:[0.3333,0.6666,0.6666,1]},{time:4380,value:[-800.8319,-1128.4431]},{time:5310,value:[-800.8319,-1128.4431]},{time:5940,value:[-798.2905,-1143.9496]},{time:6560,value:[-798.2905,-1143.9496]},{time:7190,value:[-800.8319,-1128.4431]}]},rotate:56.642,scale:[0.37146900000000005,0.37146900000000005]}}}">
       <g class="_px-animated _px_2khnd6fa" transform="translate(-954.6071,-1231.1909)">
-        <g id="_px_2jkdakf7" class="_px-animated _px_2khnd6f9" data-px-label="Pen" fill="none" stroke="none" opacity="0" transform="rotate(56.642),scale(0.3715,0.3715),translate(-1087.7644,-1321.7174)" data-px-attrs="opacity:{kfs:[{t:-130;v:0},{t:2830;v:0},{t:2900;v:1},{t:7500;v:1},{t:7880;v:0}]}">
-          <g data-px-label="Group 6" fill="none" stroke="none" transform="translate(1070.177,1321.7174)translate(-1070.177,-1321.7174)">
-            <path data-px-label="white pen" fill="#ffffff" stroke="none" transform="translate(1070.1766,1321.7174)scale(1.3,1.3)translate(-49.3455,0)" d="M0,0L56.834,-39.748L98.691,-17.826L98.691,0L98.691,17.826L56.834,39.748L0,0z"/>
-            <path data-px-label="Path 8" fill="#ffffff" stroke="#000000" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" transform="translate(1020.8311,1321.7174)" d="M0,0L56.834,-39.748L98.691,-17.826L98.691,0L98.691,17.826L56.834,39.748L0,0z"/>
-            <ellipse data-px-label="Ellipse 2" fill="#000000" stroke="none" transform="translate(1071.2126,1321.2322)" rx="9.2084" ry="9.2084"/>
-            <path data-px-label="Path 9" fill="none" stroke="#000000" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" transform="translate(1025.8599,1322.0203)" d="M-3.591,0L45.506,0"/>
+        <g id="_px_2jkdakf7" class="_px-animated _px_2khnd6f9" fill="none" stroke="none" opacity="0" transform="rotate(56.642),scale(0.3715,0.3715),translate(-1087.7644,-1321.7174)" data-px-meta="label:'Pen',animate:{opacity:{keyframes:[{time:-130,value:0},{time:2830,value:0},{time:2900,value:1},{time:7500,value:1},{time:7880,value:0}]}}">
+          <g fill="none" stroke="none" transform="translate(1070.177,1321.7174)translate(-1070.177,-1321.7174)" data-px-meta="label:'Group 6'">
+            <path fill="#ffffff" stroke="none" transform="translate(1070.1766,1321.7174)scale(1.3,1.3)translate(-49.3455,0)" d="M0,0L56.834,-39.748L98.691,-17.826L98.691,0L98.691,17.826L56.834,39.748L0,0z" data-px-meta="label:'white pen'"/>
+            <path fill="#ffffff" stroke="#000000" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" transform="translate(1020.8311,1321.7174)" d="M0,0L56.834,-39.748L98.691,-17.826L98.691,0L98.691,17.826L56.834,39.748L0,0z" data-px-meta="label:'Path 8'"/>
+            <ellipse fill="#000000" stroke="none" transform="translate(1071.2126,1321.2322)" rx="9.2084" ry="9.2084" data-px-meta="label:'Ellipse 2'"/>
+            <path fill="none" stroke="#000000" stroke-width="10" stroke-linecap="round" stroke-linejoin="round" transform="translate(1025.8599,1322.0203)" d="M-3.591,0L45.506,0" data-px-meta="label:'Path 9'"/>
           </g>
-          <rect data-px-label="Rectangle 4" fill="#ffffff" stroke="none" transform="translate(1136.8993,1322.1551)scale(1.3,1.3)translate(-2.4885,0)" rx="2" ry="2" x="-7.6946" y="-20.3179" width="15.3892" height="40.6359"/>
-          <rect data-px-label="Rectangle 3" fill="#ffffff" stroke="#000000" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" transform="translate(1124.7536,1321.7174)translate(1.9651,0)" x="-7.1712" y="-20.3179" width="14.3425" height="40.6359"/>
+          <rect fill="#ffffff" stroke="none" transform="translate(1136.8993,1322.1551)scale(1.3,1.3)translate(-2.4885,0)" rx="2" ry="2" x="-7.6946" y="-20.3179" width="15.3892" height="40.6359" data-px-meta="label:'Rectangle 4'"/>
+          <rect fill="#ffffff" stroke="#000000" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" transform="translate(1124.7536,1321.7174)translate(1.9651,0)" x="-7.1712" y="-20.3179" width="14.3425" height="40.6359" data-px-meta="label:'Rectangle 3'"/>
         </g>
       </g>
     </g>
   </g>
-  <g data-px-label="Group" fill="none" stroke="none" transform="translate(174.7887,167.8825)translate(-242.4025,-198.666)">
-    <g transform="translate(384.8155,318.4215)" data-px-attrs="elementEffect:{baseId:_px_2jkdakf2;transform:{origin:[384.8155,318.4215];translate:{kfs:[{t:1250;v:[0,0];e:[0.3333,0.6666,0.6666,1]},{t:2500;v:[-254.7472,-234.2269]},{t:2630;v:[-254.4372,-227.213]},{t:3130;v:[-254.7472,-234.2269]}]}}}">
+  <g fill="none" stroke="none" transform="translate(174.7887,167.8825)translate(-242.4025,-198.666)" data-px-meta="label:'Group'">
+    <g transform="translate(384.8155,318.4215)" data-px-meta="effectsHost:{coreId:'_px_2jkdakf2',appliedEffects:{transformBy:{origin:[384.8155,318.4215],translate:{keyframes:[{time:1250,value:[0,0],easing:[0.3333,0.6666,0.6666,1]},{time:2500,value:[-254.7472,-234.2269]},{time:2630,value:[-254.4372,-227.213]},{time:3130,value:[-254.7472,-234.2269]}]}}}}">
       <g class="_px-animated _px_2khnd6f7" transform="translate(0,0)">
-        <g id="_px_2jkdakf2" class="_px-animated _px_2khnd6f6" data-px-label="Mouse Group" fill="none" stroke="none" opacity="0" transform="translate(-384.8155,-318.4215)" data-px-attrs="opacity:{kfs:[{t:0;v:0},{t:880;v:0},{t:1250;v:1},{t:2830;v:1},{t:2900;v:0}]}">
-          <g data-px-label="mouse" fill="none" stroke="none" transform="translate(382.5197,317.796)rotate(-20)scale(3.575,3.575)translate(-178.7112,-210.8317)">
-            <path data-px-label="Path 2" fill="#ffffff" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" transform="translate(178.6899,210.9751)scale(1.1,1.1)translate(0.156,-5.627)" d="M0,0L3.758,7.185L1.165,6.585L1.13,10.993L-1.203,10.993L-1.245,6.608L-4.03,7.221L0,0z"/>
-            <path data-px-label="Path" fill="#000000" stroke="none" transform="translate(178.6896,210.9751)translate(0.1563,-5.627)" d="M0,0L3.739,7.047L1.029,6.347L1.029,11.254L-1.071,11.254L-1.071,6.37L-4.051,7.083L0,0z"/>
+        <g id="_px_2jkdakf2" class="_px-animated _px_2khnd6f6" fill="none" stroke="none" opacity="0" transform="translate(-384.8155,-318.4215)" data-px-meta="label:'Mouse Group',animate:{opacity:{keyframes:[{time:0,value:0},{time:880,value:0},{time:1250,value:1},{time:2830,value:1},{time:2900,value:0}]}}">
+          <g fill="none" stroke="none" transform="translate(382.5197,317.796)rotate(-20)scale(3.575,3.575)translate(-178.7112,-210.8317)" data-px-meta="label:'mouse'">
+            <path fill="#ffffff" stroke="#ffffff" stroke-linecap="round" stroke-linejoin="round" transform="translate(178.6899,210.9751)scale(1.1,1.1)translate(0.156,-5.627)" d="M0,0L3.758,7.185L1.165,6.585L1.13,10.993L-1.203,10.993L-1.245,6.608L-4.03,7.221L0,0z" data-px-meta="label:'Path 2'"/>
+            <path fill="#000000" stroke="none" transform="translate(178.6896,210.9751)translate(0.1563,-5.627)" d="M0,0L3.739,7.047L1.029,6.347L1.029,11.254L-1.071,11.254L-1.071,6.37L-4.051,7.083L0,0z" data-px-meta="label:'Path'"/>
           </g>
         </g>
       </g>

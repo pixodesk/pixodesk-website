@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- Created with Pixodesk SVG (https://pixodesk.com) -->
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 766 430" text-rendering="geometricPrecision" shape-rendering="geometricPrecision" fill="#ffffff" data-px-attrs="animation:{duration:1000;inThreshold:0.5}">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 766 430" text-rendering="geometricPrecision" shape-rendering="geometricPrecision" fill="#ffffff" data-px-meta="animator:{timeline:{duration:1000,trigger:{scrollIntoViewThreshold:0.5}}}">
   <defs>
     <path id="_px_svg_1bvb5n30" d="M1260.5608,-597.7939C1318.385,-597.7939,1365.2608,-550.9181,1365.2608,-493.0939C1365.2608,-435.2697,1318.385,-388.3939,1260.5608,-388.3939C1202.7366,-388.3939,1155.8608,-435.2697,1155.8608,-493.0939C1155.8608,-550.9181,1202.7366,-597.7939,1260.5608,-597.7939z"/>
     <path id="_px_svg_1bvb5n2v" d="M540.2128,-464.6471C482.3886,-464.6471,435.5128,-417.7713,435.5128,-359.9471C435.5128,-302.1228,482.3886,-255.2471,540.2128,-255.2471C598.037,-255.2471,644.9128,-302.1228,644.9128,-359.9471C644.9128,-417.7713,598.037,-464.6471,540.2128,-464.6471z"/>
@@ -19,25 +19,25 @@
     </linearGradient>
     <path id="_px_svg_1bt88n3a" d="M-459.6189,162.0508C-459.6189,162.0508,-164.9225,18.714,40.6469,18.714C246.2163,18.714,335.3435,162.0508,540.9129,162.0508C746.4823,162.0508,835.6094,18.714,1041.1788,18.714C1246.7482,18.714,1541.4447,162.0508,1541.4447,162.0508"/>
     <mask id="_px_2k1joln2" mask-type="alpha">
-      <rect data-px-label="mask" fill="#ffffff" stroke="none" transform="translate(530.4398,1596.9155)translate(-757.5,-426)" rx="30" ry="30" width="1508.1709" height="846.6234"/>
+      <rect fill="#ffffff" stroke="none" transform="translate(530.4398,1596.9155)translate(-757.5,-426)" rx="30" ry="30" width="1508.1709" height="846.6234" data-px-meta="label:'mask'"/>
     </mask>
     <filter id="shadow-filter" x="-1" y="-1" width="3" height="3">
       <feDropShadow dx="0.5" dy="0.5" stdDeviation="1" flood-color="#000000bf"/>
     </filter>
   </defs>
-  <g data-px-label="main" fill="#00ffb9" transform="translate(392.3079,230.83)scale(0.5079,0.5079)translate(-545.3515,-1625.3947)" mask="url(#_px_2k1joln2)">
-    <rect data-px-label="background" fill="#212c42" stroke="none" transform="translate(526.5259,1594.9999)translate(-757.5,-426)" rx="10" ry="10" width="1515" height="852"/>
-    <g data-px-label="Text Main" transform="translate(545.3515,1540.0026)translate(-575.3515,-1590.0026)">
+  <g fill="#00ffb9" transform="translate(392.3079,230.83)scale(0.5079,0.5079)translate(-545.3515,-1625.3947)" mask="url(#_px_2k1joln2)" data-px-meta="label:'main'">
+    <rect fill="#212c42" stroke="none" transform="translate(526.5259,1594.9999)translate(-757.5,-426)" rx="10" ry="10" width="1515" height="852" data-px-meta="label:'background'"/>
+    <g transform="translate(545.3515,1540.0026)translate(-575.3515,-1590.0026)" data-px-meta="label:'Text Main'">
       <g transform="translate(575.3514,1544.7435)translate(-776.0307,-443.4067)">
         <text fill="url(#_px_svg_1tj4st1s)" letter-spacing="10" font-family="Montserrat-Black" font-size="115px" xml:space="preserve" transform="translate(233.5116,380.9491)" style="text-transform:uppercase;white-space:pre"><textPath startOffset="326" href="#_px_svg_1bt88n3a"><tspan>Pixodesk SVG text</tspan></textPath></text>
-        <path data-px-label="path copy" fill="#00000000" stroke="#ffffff" stroke-dasharray="10,10" transform="translate(-226.1072,534.6804)" d="M0,8.3195C0,8.3195,295.4996,-135.0172,501.069,-135.0172C706.6384,-135.0172,796.5686,8.3195,1002.138,8.3195C1207.7074,8.3195,1297.6376,-135.0172,1503.207,-135.0172C1708.7764,-135.0172,2004.276,8.3195,2004.276,8.3195"/>
+        <path fill="#00000000" stroke="#ffffff" stroke-dasharray="10,10" transform="translate(-226.1072,534.6804)" d="M0,8.3195C0,8.3195,295.4996,-135.0172,501.069,-135.0172C706.6384,-135.0172,796.5686,8.3195,1002.138,8.3195C1207.7074,8.3195,1297.6376,-135.0172,1503.207,-135.0172C1708.7764,-135.0172,2004.276,8.3195,2004.276,8.3195" data-px-meta="label:'path copy'"/>
       </g>
       <g transform="translate(575.3514,1662.5472)translate(-776.0307,-443.4067)">
         <text fill="#ffffff" font-family="Montserrat-Black" font-size="115px" xml:space="preserve" transform="translate(233.5116,380.9491)" style="text-transform:uppercase;white-space:pre"><textPath startOffset="636" href="#_px_svg_1bt88n39"><tspan>on a wavy path </tspan></textPath></text>
-        <path data-px-label="path copy" fill="#00000000" stroke="#ffffff" stroke-dasharray="10,10" transform="translate(-226.1072,534.6804)" d="M0,8.3195C0,8.3195,295.4996,-135.0172,501.069,-135.0172C706.6384,-135.0172,796.5686,8.3195,1002.138,8.3195C1207.7074,8.3195,1297.6376,-135.0172,1503.207,-135.0172C1708.7764,-135.0172,2004.276,8.3195,2004.276,8.3195"/>
+        <path fill="#00000000" stroke="#ffffff" stroke-dasharray="10,10" transform="translate(-226.1072,534.6804)" d="M0,8.3195C0,8.3195,295.4996,-135.0172,501.069,-135.0172C706.6384,-135.0172,796.5686,8.3195,1002.138,8.3195C1207.7074,8.3195,1297.6376,-135.0172,1503.207,-135.0172C1708.7764,-135.0172,2004.276,8.3195,2004.276,8.3195" data-px-meta="label:'path copy'"/>
       </g>
     </g>
-    <g data-px-label="Text bg left" fill-opacity="0.12" transform="translate(205.9667,1577.0634)rotate(350)translate(-205.9667,-1577.0634)">
+    <g fill-opacity="0.12" transform="translate(205.9667,1577.0634)rotate(350)translate(-205.9667,-1577.0634)" data-px-meta="label:'Text bg left'">
       <g fill="#ffffff" transform="translate(567.359,1308.6133)translate(-744.5561,-1404.5198)">
         <text font-family="Montserrat-Regular" font-size="45px" xml:space="preserve" transform="translate(259.9825,1307.6528)translate(-282.4154,16.431)" style="white-space:pre"><tspan fill="#ff61e7">For </tspan><tspan fill="#ff61e7" stroke="none">web</tspan><tspan fill="#ff61e7"> and native</tspan><tspan fill="#ff00d8"> </tspan><tspan fill="#ffffff">apps </tspan></text>
         <text font-family="Montserrat-Regular" font-size="45px" xml:space="preserve" transform="translate(200.8941,1880.9025)translate(-282.4154,16.4309)" style="white-space:pre"><tspan fill="#0088ff">no code skills </tspan><tspan fill="#ffffff">needed </tspan></text>
@@ -54,7 +54,7 @@
         <text fill="#32ff00" font-family="Montserrat-Regular" font-size="45px" xml:space="preserve" transform="translate(159.7654,1664.9288)translate(-282.4154,16.431)" style="white-space:pre"><tspan>Use letter rotation </tspan></text>
       </g>
     </g>
-    <g data-px-label="shapes" stroke="#fdff00" stroke-opacity="0.12" stroke-width="2" transform="translate(531.5705,1336.8839)translate(-531.5705,-1336.8839)">
+    <g stroke="#fdff00" stroke-opacity="0.12" stroke-width="2" transform="translate(531.5705,1336.8839)translate(-531.5705,-1336.8839)" data-px-meta="label:'shapes'">
       <path fill="#00000000" transform="translate(594.2179,1227.4156)" d="M28.2902,20.0524L-10.3288,33.1021L-34.6737,0.4058L-11.1007,-32.8513L27.8131,-20.709L28.2902,20.0524z"/>
       <path fill="#00000000" transform="translate(1240.9347,1973.553)" d="M16.6495,30.9211L-2.3526,17.401L-24.2627,25.3898L-17.2763,3.1397L-31.6447,-15.2293L-8.3248,-15.4605L4.7052,-34.802L12.1314,-12.6949L34.5527,-6.2795L15.8224,7.6147L16.6495,30.9211z"/>
       <path fill="#00000000" transform="translate(456.5736,1436.7003)" d="M2.278,1.9521C1.7828,4.2632,-1.4626,5.1923,-3.6173,4.2211C-7.0605,2.6691,-8.0096,-1.9872,-6.1642,-5.2825C-3.6283,-9.8109,2.5424,-10.8516,6.9476,-8.1074C12.5525,-4.6159,13.7028,3.1113,10.0505,8.6128C5.6166,15.2917,-3.6876,16.5582,-10.278,11.9936C-18.0302,6.6244,-19.4159,-4.2682,-13.9368,-11.9432C-7.6364,-20.7683,4.8516,-22.275,13.6083,-15.8799C23.5064,-8.6512,25.135,5.4369,17.823,15.2735C9.6679,26.2444,-6.0234,27.9956,-16.9387,19.7661C-28.9824,10.6858,-30.8567,-6.611,-21.7093,-18.6038C-11.7048,-31.7205,7.1992,-33.718,20.269,-23.6524C34.4585,-12.7244,36.5796,7.7881,25.5955,21.9342"/>
@@ -64,7 +64,7 @@
       <path fill="#00000000" transform="translate(632.2542,1980.6642)rotate(50.8188)" d="M28.2901,20.0523L-10.3288,33.102L-34.6737,0.4058L-11.1007,-32.8512L27.813,-20.709L28.2901,20.0523z"/>
       <path fill="#00000000" transform="translate(-38.3617,1646.3899)" d="M28.2901,20.0523L-10.3288,33.1019L-34.6736,0.4058L-11.1007,-32.8512L27.813,-20.709L28.2901,20.0523z"/>
     </g>
-    <g data-px-label="Text bg right" fill-opacity="0.08" transform="translate(1016.8977,1613.3534)rotate(350)scale(-1,1)translate(-93.3997,-1577.0634)">
+    <g fill-opacity="0.08" transform="translate(1016.8977,1613.3534)rotate(350)scale(-1,1)translate(-93.3997,-1577.0634)" data-px-meta="label:'Text bg right'">
       <g fill="#ffffff" transform="translate(567.3591,1308.6133)translate(-744.5561,-1404.5198)">
         <text font-family="Montserrat-Regular" font-size="45px" xml:space="preserve" transform="translate(259.9826,1307.6528)translate(-282.4154,16.431)" style="white-space:pre"><tspan fill="#ff00d8">For </tspan><tspan fill="#ff00d8" stroke="none">web</tspan><tspan fill="#ff00d8"> and native </tspan><tspan fill="#ffffff">apps </tspan></text>
         <text font-family="Montserrat-Regular" font-size="45px" xml:space="preserve" transform="translate(200.8942,1880.9025)translate(-282.4154,16.4309)" style="white-space:pre"><tspan fill="#0088ff">no code skills </tspan><tspan fill="#ffffff">needed </tspan></text>
@@ -81,12 +81,12 @@
         <text fill="#32ff00" font-family="Montserrat-Regular" font-size="45px" xml:space="preserve" transform="translate(159.7655,1664.9288)translate(-282.4154,16.431)" style="white-space:pre"><tspan>Use letter rotation </tspan></text>
       </g>
     </g>
-    <g data-px-label="stamp" transform="translate(1046.3911,1823.3161)translate(-1046.391,-1823.3161)">
+    <g transform="translate(1046.3911,1823.3161)translate(-1046.391,-1823.3161)" data-px-meta="label:'stamp'">
       <ellipse fill="#ffffff26" stroke="none" transform="translate(1046.391,1818.9883)" rx="148.391" ry="148.391"/>
       <text fill="#ffffff" font-family="Montserrat-Regular" font-size="21px" xml:space="preserve" transform="translate(1046.391,1818.9883)rotate(5)scale(1.3138,1.3138)translate(-540.2128,359.9471)" style="text-transform:uppercase;white-space:pre"><textPath startOffset="213" href="#_px_svg_1bvb5n2v"><tspan>Customised for you</tspan></textPath></text>
       <ellipse fill="#00000030" stroke="none" transform="translate(1046.391,1818.9883)scale(0.9706,0.9706)" rx="104.7" ry="104.7"/>
       <text fill="#ffffff" stroke="none" letter-spacing="-0.5" font-family="Roboto-Regular" font-size="21px" xml:space="preserve" transform="translate(1046.391,1827.7598)rotate(-91.975)scale(1.1232,1.1232)translate(-1252.7814,493.7745)" style="text-transform:uppercase;white-space:pre"><textPath href="#_px_svg_1bvb5n30"><tspan>business, branding and content </tspan></textPath></text>
-      <path data-px-label="logo svg editor" fill="#ffffff" stroke="#ffffff00" transform="translate(1056.2355,1811.0961)scale(5.3403,5.3403)translate(-12.505,-11.495)" d="M24.01,8.474L20.474,12.01L11.989,3.525L15.525,-0.01L24.01,8.474zM19,23L2.414,23L7.968,17.446C8.563,17.7969,9.2591,18,10,18C12.2089,18,14,16.2089,14,14C14,11.7911,12.2089,10,10,10C7.7911,10,6,11.7911,6,14C6,14.7409,6.202,15.435,6.553,16.03L1,21.585L1,5L10.021,4.999L14.3574,9.3354L19,13.978L19,23z"/>
+      <path fill="#ffffff" stroke="#ffffff00" transform="translate(1056.2355,1811.0961)scale(5.3403,5.3403)translate(-12.505,-11.495)" d="M24.01,8.474L20.474,12.01L11.989,3.525L15.525,-0.01L24.01,8.474zM19,23L2.414,23L7.968,17.446C8.563,17.7969,9.2591,18,10,18C12.2089,18,14,16.2089,14,14C14,11.7911,12.2089,10,10,10C7.7911,10,6,11.7911,6,14C6,14.7409,6.202,15.435,6.553,16.03L1,21.585L1,5L10.021,4.999L14.3574,9.3354L19,13.978L19,23z" data-px-meta="label:'logo svg editor'"/>
     </g>
   </g>
 </svg>

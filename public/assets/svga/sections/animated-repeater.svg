@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- Created with Pixodesk SVG (https://pixodesk.com) -->
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 367 756.2680491551458" text-rendering="geometricPrecision" shape-rendering="geometricPrecision" fill="none" class="_px_animate" data-px-attrs="animation:{duration:6010;loop:true;inThreshold:0.5}">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 367 756.2680491551458" text-rendering="geometricPrecision" shape-rendering="geometricPrecision" fill="none" class="_px_animate" data-px-meta="animator:{timeline:{duration:6010,iterations:'infinite',trigger:{scrollIntoViewThreshold:0.5}}}">
   <style>@keyframes _px_2k3tok8l {0%, 15.6406% {opacity:0;animation-timing-function:cubic-bezier(0.42,0,1,1);}
 20.7987% {opacity:1;animation-timing-function:cubic-bezier(0.167,0.167,0.833,0.833);}
 55.0749% {opacity:1;animation-timing-function:cubic-bezier(0,0,0.58,1);}
@@ -105,25 +105,25 @@
       <stop offset="100%" stop-color="rgb(0,0,0)"/>
     </radialGradient>
     <mask id="_px_2jkdtgh6" mask-type="alpha">
-      <rect data-px-label="Mask-phone" fill="#000000" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="translate(83.2443,168.1762)scale(1.2041,1.2041)" rx="16" ry="16" x="-71.5" y="-157" width="142" height="305"/>
+      <rect fill="#000000" stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="translate(83.2443,168.1762)scale(1.2041,1.2041)" rx="16" ry="16" x="-71.5" y="-157" width="142" height="305" data-px-meta="label:'Mask-phone'"/>
     </mask>
   </defs>
   <g transform="translate(183.5,378.134)scale(1.946,1.946)translate(-93,-188.5491)">
-    <g data-px-label="Phone-outline" fill="none" stroke="none" transform="translate(92.3674,188.5491)scale(1.2041,1.2041)translate(-77,-157.5)">
-      <rect data-px-label="Rectangle 4" fill="none" stroke="#5f5f5f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="translate(2.5,40.062)" x="-0.5" y="-11.5" width="1" height="23"/>
-      <rect data-px-label="Rectangle 5" fill="none" stroke="#5f5f5f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="translate(2.5,67.8148)" x="-0.5" y="-11.5" width="1" height="23"/>
-      <rect data-px-label="Rectangle 6" fill="none" stroke="#5f5f5f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="translate(151.5,54.062)" x="-0.5" y="-11.5" width="1" height="23"/>
-      <path data-px-label="Rectangle 3" fill="#000000" stroke="#c7c7c7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="translate(77,157.5)translate(-180,-179.5)" d="M238,24C246.836,24,254,31.1641,254,40L254,319C254,327.836,246.836,335,238,335L122,335C113.1641,335,106,327.836,106,319L106,40C106,31.1641,113.1641,24,122,24L238,24z"/>
+    <g fill="none" stroke="none" transform="translate(92.3674,188.5491)scale(1.2041,1.2041)translate(-77,-157.5)" data-px-meta="label:'Phone-outline'">
+      <rect fill="none" stroke="#5f5f5f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="translate(2.5,40.062)" x="-0.5" y="-11.5" width="1" height="23" data-px-meta="label:'Rectangle 4'"/>
+      <rect fill="none" stroke="#5f5f5f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="translate(2.5,67.8148)" x="-0.5" y="-11.5" width="1" height="23" data-px-meta="label:'Rectangle 5'"/>
+      <rect fill="none" stroke="#5f5f5f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="translate(151.5,54.062)" x="-0.5" y="-11.5" width="1" height="23" data-px-meta="label:'Rectangle 6'"/>
+      <path fill="#000000" stroke="#c7c7c7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="translate(77,157.5)translate(-180,-179.5)" d="M238,24C246.836,24,254,31.1641,254,40L254,319C254,327.836,246.836,335,238,335L122,335C113.1641,335,106,327.836,106,319L106,40C106,31.1641,113.1641,24,122,24L238,24z" data-px-meta="label:'Rectangle 3'"/>
     </g>
     <g transform="translate(9.9634,23.5248)" mask="url(#_px_2jkdtgh6)">
-      <g data-px-label="Phone-video" fill="none" stroke="none" transform="translate(83.0366,171.5139)scale(0.6654,0.6654)translate(-200,-200)">
-        <rect data-px-label="Rectangle 2" fill="#000000" stroke="none" transform="translate(199.6097,194.8966)scale(1.5029,1.5029)" x="-99.1347" y="-174.9448" width="198.2694" height="349.8895"/>
-        <rect data-px-label="Background" fill="url(#_px_2jkdtgh5)" stroke="none" transform="translate(200,200)" x="-200" y="-200" width="400" height="400"/>
-        <g data-px-label="Lines-long" fill="none" stroke="none" transform="translate(200,200)">
-          <g data-px-label="Group" fill="none" stroke="none" transform="translate(-200,-200)">
-            <g data-px-attrs="elementEffect:{baseId:_px_2jkdtggv;transform:{};repeater:{copies:8;origin:[200,200];rotation:45}}">
-              <g id="_px_2jkdtggv" data-px-label="Clone-withRotation" fill="none" stroke="none">
-                <g class="_px-animated _px_2k3tok9n" data-px-label="Path" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-px-attrs="trimPathEffect:{range:{kfs:[{t:0;v:[0,0];e:[0.3565,0.3196,0.6651,0.6425]},{t:310;v:[0.6003,0.0387];e:[0.3309,0.3179,0.6506,0.6419]},{t:630;v:[0.8751,0.1453];e:[0.3281,0.3372,0.6472,0.6633]},{t:940;v:[0.976,0.4467];e:[0.3011,0.453,0.6228,0.7854]},{t:1250;v:[1,1]}]}};isCombinedShape:true">
+      <g fill="none" stroke="none" transform="translate(83.0366,171.5139)scale(0.6654,0.6654)translate(-200,-200)" data-px-meta="label:'Phone-video'">
+        <rect fill="#000000" stroke="none" transform="translate(199.6097,194.8966)scale(1.5029,1.5029)" x="-99.1347" y="-174.9448" width="198.2694" height="349.8895" data-px-meta="label:'Rectangle 2'"/>
+        <rect fill="url(#_px_2jkdtgh5)" stroke="none" transform="translate(200,200)" x="-200" y="-200" width="400" height="400" data-px-meta="label:'Background'"/>
+        <g fill="none" stroke="none" transform="translate(200,200)" data-px-meta="label:'Lines-long'">
+          <g fill="none" stroke="none" transform="translate(-200,-200)" data-px-meta="label:'Group'">
+            <g data-px-meta="effectsHost:{coreId:'_px_2jkdtggv',appliedEffects:{repeater:{copies:8,origin:[200,200],rotate:45},transformBy:{}}}">
+              <g id="_px_2jkdtggv" fill="none" stroke="none" data-px-meta="label:'Clone-withRotation'">
+                <g class="_px-animated _px_2k3tok9n" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-px-meta="label:'Path',effectsHost:{appliedEffects:{strokeTrim:{range:{keyframes:[{time:0,value:[0,0],easing:[0.3565,0.3196,0.6651,0.6425]},{time:310,value:[0.6003,0.0387],easing:[0.3309,0.3179,0.6506,0.6419]},{time:630,value:[0.8751,0.1453],easing:[0.3281,0.3372,0.6472,0.6633]},{time:940,value:[0.976,0.4467],easing:[0.3011,0.453,0.6228,0.7854]},{time:1250,value:[1,1]}]}},combinedPath:true}}">
                   <path class="_px-animated _px_2kahb4ng" d="M200,199.999L200,50.273" stroke-dashoffset="1" stroke-dasharray="0,1,0,150.726" opacity="0"/>
                 </g>
               </g>
@@ -137,11 +137,11 @@
             </g>
           </g>
         </g>
-        <g data-px-label="Lines-short" fill="none" stroke="none" transform="translate(200,200)">
-          <g data-px-label="Group-rotation" fill="none" stroke="none" transform="rotate(22.5)translate(-200,-200)">
-            <g data-px-attrs="elementEffect:{baseId:_px_2jkdtggp;transform:{};repeater:{copies:8;origin:[200,200];rotation:45}}">
-              <g id="_px_2jkdtggp" data-px-label="Clone-withRotation" fill="none" stroke="none">
-                <g class="_px-animated _px_2k3tok9i" data-px-label="Path" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" data-px-attrs="trimPathEffect:{range:{kfs:[{t:500;v:[0.4,0.4];e:[0.3578,0.3169,0.6578,0.6354]},{t:690;v:[0.6034,0.4156];e:[0.3306,0.3206,0.6556,0.6479]},{t:810;v:[0.6625,0.4436];e:[0.3256,0.3442,0.6385,0.6681]},{t:1000;v:[0.6956,0.5624];e:[0.3048,0.4636,0.6311,0.797]},{t:1130;v:[0.7,0.7]}]}};isCombinedShape:true">
+        <g fill="none" stroke="none" transform="translate(200,200)" data-px-meta="label:'Lines-short'">
+          <g fill="none" stroke="none" transform="rotate(22.5)translate(-200,-200)" data-px-meta="label:'Group-rotation'">
+            <g data-px-meta="effectsHost:{coreId:'_px_2jkdtggp',appliedEffects:{repeater:{copies:8,origin:[200,200],rotate:45},transformBy:{}}}">
+              <g id="_px_2jkdtggp" fill="none" stroke="none" data-px-meta="label:'Clone-withRotation'">
+                <g class="_px-animated _px_2k3tok9i" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" data-px-meta="label:'Path',effectsHost:{appliedEffects:{strokeTrim:{range:{keyframes:[{time:500,value:[0.4,0.4],easing:[0.3578,0.3169,0.6578,0.6354]},{time:690,value:[0.6034,0.4156],easing:[0.3306,0.3206,0.6556,0.6479]},{time:810,value:[0.6625,0.4436],easing:[0.3256,0.3442,0.6385,0.6681]},{time:1000,value:[0.6956,0.5624],easing:[0.3048,0.4636,0.6311,0.797]},{time:1130,value:[0.7,0.7]}]}},combinedPath:true}}">
                   <path class="_px-animated _px_2kahb4ne" d="M200,199.999L200,50.273" stroke-dashoffset="1" stroke-dasharray="0,60.8904,0,90.8356" opacity="0"/>
                 </g>
               </g>
@@ -155,13 +155,13 @@
             </g>
           </g>
         </g>
-        <g data-px-label="Circles" fill="none" stroke="none" transform="translate(200,200)">
-          <g transform="rotate(22.5)" data-px-attrs="elementEffect:{baseId:_px_2jkdtggj;transform:{rotate:22.5;scale:{kfs:[{t:880;v:[1,1]},{t:1500;v:[1.5,1.5]}]}}}">
-            <g id="_px_2jkdtggj" class="_px-animated _px_2k3tok9e _px-animated _px_2k3tok9g" data-px-label="ScaleAndOpacity" fill="none" stroke="none" opacity="0" transform="scale(1,1)" data-px-attrs="opacity:{kfs:[{t:880;v:0;e:[0.42,0,1,1]},{t:1000;v:1},{t:1130;v:1;e:[0,0,0.58,1]},{t:1750;v:0}]}">
-              <g data-px-label="CloningAnchorFix" fill="none" stroke="none" transform="translate(0,-150)">
-                <g data-px-attrs="elementEffect:{baseId:_px_2jkdtggm;transform:{};repeater:{copies:8;origin:[0,150];rotation:45}}">
-                  <g id="_px_2jkdtggm" data-px-label="Clone-withRotation" fill="none" stroke="none">
-                    <ellipse data-px-label="Ellipse" fill="#ffffff" stroke="none" rx="8" ry="8"/>
+        <g fill="none" stroke="none" transform="translate(200,200)" data-px-meta="label:'Circles'">
+          <g transform="rotate(22.5)" data-px-meta="effectsHost:{coreId:'_px_2jkdtggj',appliedEffects:{transformBy:{rotate:22.5,scale:{keyframes:[{time:880,value:[1,1]},{time:1500,value:[1.5,1.5]}]}}}}">
+            <g id="_px_2jkdtggj" class="_px-animated _px_2k3tok9e _px-animated _px_2k3tok9g" fill="none" stroke="none" opacity="0" transform="scale(1,1)" data-px-meta="label:'ScaleAndOpacity',animate:{opacity:{keyframes:[{time:880,value:0,easing:[0.42,0,1,1]},{time:1000,value:1},{time:1130,value:1,easing:[0,0,0.58,1]},{time:1750,value:0}]}}">
+              <g fill="none" stroke="none" transform="translate(0,-150)" data-px-meta="label:'CloningAnchorFix'">
+                <g data-px-meta="effectsHost:{coreId:'_px_2jkdtggm',appliedEffects:{repeater:{copies:8,origin:[0,150],rotate:45},transformBy:{}}}">
+                  <g id="_px_2jkdtggm" fill="none" stroke="none" data-px-meta="label:'Clone-withRotation'">
+                    <ellipse fill="#ffffff" stroke="none" rx="8" ry="8" data-px-meta="label:'Ellipse'"/>
                   </g>
                   <use href="#_px_2jkdtggm" transform="matrix(0.7071,0.7071,-0.7071,0.7071,106.066,43.934)"/>
                   <use href="#_px_2jkdtggm" transform="matrix(0,1,-1,0,150,150)"/>
@@ -175,61 +175,61 @@
             </g>
           </g>
         </g>
-        <g data-px-label="Squares-bg" fill="none" stroke="none">
-          <g transform="translate(200,200)" data-px-attrs="elementEffect:{baseId:_px_2jkdtgg4;transform:{translate:[200,200];rotate:{kfs:[{t:940;v:0;e:[0.215,0.61,0.355,1]},{t:3130;v:30}]}}}">
-            <g id="_px_2jkdtgg4" class="_px-animated _px_2k3tok9c" data-px-label="Rotation" fill="none" stroke="none" transform="rotate(0)">
-              <g data-px-attrs="elementEffect:{baseId:_px_2jkdtgg5;transform:{};repeater:{copies:4;rotation:21;scale:[132,132]}}">
-                <g id="_px_2jkdtgg5" class="_px-animated _px_2k3tok92" data-px-label="Clone-withScaleAndRotation" fill="none" stroke="none" opacity="0" data-px-attrs="opacity:{kfs:[{t:940;v:0;e:[0.42,0,1,1]},{t:1250;v:1},{t:2060;v:1;e:[0,0,0.58,1]},{t:3130;v:0}]}">
-                  <g class="_px-animated _px_2k3tok94" data-px-label="CloningAnchorFix" fill="none" stroke="none" data-px-attrs="transform:{translate:{kfs:[{t:940;v:[0,0];e:[0.215,0.61,0.355,1]},{t:2190;v:[0,-100]}]}}">
-                    <g data-px-attrs="elementEffect:{baseId:_px_2jkdtgga;transform:{};repeater:{copies:8;origin:{kfs:[{t:940;v:[0,0];e:[0.215,0.61,0.355,1]},{t:2190;v:[0,100]}]};rotation:45}}">
-                      <g id="_px_2jkdtgga" data-px-label="Clone-withRotation" fill="none" stroke="none">
-                        <rect class="_px-animated _px_2kahb4nc" data-px-label="Rectangle" fill="none" stroke="#80aeff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" x="-2" y="-2" width="4" height="4" data-px-attrs="transform:{rotate:{kfs:[{t:940;v:0;e:[0.215,0.61,0.355,1]},{t:2810;v:53}]}};width:{kfs:[{t:940;v:4;e:[0.215,0.61,0.355,1]},{t:2190;v:16}]};height:{kfs:[{t:940;v:4;e:[0.215,0.61,0.355,1]},{t:2190;v:16}]}"/>
+        <g fill="none" stroke="none" data-px-meta="label:'Squares-bg'">
+          <g transform="translate(200,200)" data-px-meta="effectsHost:{coreId:'_px_2jkdtgg4',appliedEffects:{transformBy:{translate:[200,200],rotate:{keyframes:[{time:940,value:0,easing:[0.215,0.61,0.355,1]},{time:3130,value:30}]}}}}">
+            <g id="_px_2jkdtgg4" class="_px-animated _px_2k3tok9c" fill="none" stroke="none" transform="rotate(0)" data-px-meta="label:'Rotation'">
+              <g data-px-meta="effectsHost:{coreId:'_px_2jkdtgg5',appliedEffects:{repeater:{copies:4,rotate:21,scale:[1.32,1.32]},transformBy:{}}}">
+                <g id="_px_2jkdtgg5" class="_px-animated _px_2k3tok92" fill="none" stroke="none" opacity="0" data-px-meta="label:'Clone-withScaleAndRotation',animate:{opacity:{keyframes:[{time:940,value:0,easing:[0.42,0,1,1]},{time:1250,value:1},{time:2060,value:1,easing:[0,0,0.58,1]},{time:3130,value:0}]}}">
+                  <g class="_px-animated _px_2k3tok94" fill="none" stroke="none" data-px-meta="label:'CloningAnchorFix',animate:{translate:{keyframes:[{time:940,value:[0,0],easing:[0.215,0.61,0.355,1]},{time:2190,value:[0,-100]}]}}">
+                    <g data-px-meta="effectsHost:{coreId:'_px_2jkdtgga',appliedEffects:{repeater:{copies:8,origin:{keyframes:[{time:940,value:[0,0],easing:[0.215,0.61,0.355,1]},{time:2190,value:[0,100]}]},rotate:45},transformBy:{}}}">
+                      <g id="_px_2jkdtgga" fill="none" stroke="none" data-px-meta="label:'Clone-withRotation'">
+                        <rect class="_px-animated _px_2kahb4nc" fill="none" stroke="#80aeff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" x="-2" y="-2" width="4" height="4" data-px-meta="label:'Rectangle',animate:{rotate:{keyframes:[{time:940,value:0,easing:[0.215,0.61,0.355,1]},{time:2810,value:53}]},width:{keyframes:[{time:940,value:4,easing:[0.215,0.61,0.355,1]},{time:2190,value:16}]},height:{keyframes:[{time:940,value:4,easing:[0.215,0.61,0.355,1]},{time:2190,value:16}]}}"/>
                       </g>
-                      <g class="_px-animated _px_2k3tok9a" transform="translate(0,0)" data-px-attrs="origin:{kfs:[{t:940;v:[0,0];e:[0.215,0.61,0.355,1]},{t:2190;v:[0,100]}]}">
+                      <g class="_px-animated _px_2k3tok9a" transform="translate(0,0)" data-px-meta="animate:{origin:{keyframes:[{time:940,value:[0,0],easing:[0.215,0.61,0.355,1]},{time:2190,value:[0,100]}]}}">
                         <g transform="rotate(45)">
-                          <g class="_px-animated _px_2k3tok94" transform="translate(0,0)" data-px-attrs="origin:{kfs:[{t:940;v:[0,0];e:[0.215,0.61,0.355,1]},{t:2190;v:[0,-100]}]}">
+                          <g class="_px-animated _px_2k3tok94" transform="translate(0,0)" data-px-meta="animate:{origin:{keyframes:[{time:940,value:[0,0],easing:[0.215,0.61,0.355,1]},{time:2190,value:[0,-100]}]}}">
                             <use href="#_px_2jkdtgga"/>
                           </g>
                         </g>
                       </g>
-                      <g class="_px-animated _px_2k3tok9a" transform="translate(0,0)" data-px-attrs="origin:{kfs:[{t:940;v:[0,0];e:[0.215,0.61,0.355,1]},{t:2190;v:[0,100]}]}">
+                      <g class="_px-animated _px_2k3tok9a" transform="translate(0,0)" data-px-meta="animate:{origin:{keyframes:[{time:940,value:[0,0],easing:[0.215,0.61,0.355,1]},{time:2190,value:[0,100]}]}}">
                         <g transform="rotate(90)">
-                          <g class="_px-animated _px_2k3tok94" transform="translate(0,0)" data-px-attrs="origin:{kfs:[{t:940;v:[0,0];e:[0.215,0.61,0.355,1]},{t:2190;v:[0,-100]}]}">
+                          <g class="_px-animated _px_2k3tok94" transform="translate(0,0)" data-px-meta="animate:{origin:{keyframes:[{time:940,value:[0,0],easing:[0.215,0.61,0.355,1]},{time:2190,value:[0,-100]}]}}">
                             <use href="#_px_2jkdtgga"/>
                           </g>
                         </g>
                       </g>
-                      <g class="_px-animated _px_2k3tok9a" transform="translate(0,0)" data-px-attrs="origin:{kfs:[{t:940;v:[0,0];e:[0.215,0.61,0.355,1]},{t:2190;v:[0,100]}]}">
+                      <g class="_px-animated _px_2k3tok9a" transform="translate(0,0)" data-px-meta="animate:{origin:{keyframes:[{time:940,value:[0,0],easing:[0.215,0.61,0.355,1]},{time:2190,value:[0,100]}]}}">
                         <g transform="rotate(135)">
-                          <g class="_px-animated _px_2k3tok94" transform="translate(0,0)" data-px-attrs="origin:{kfs:[{t:940;v:[0,0];e:[0.215,0.61,0.355,1]},{t:2190;v:[0,-100]}]}">
+                          <g class="_px-animated _px_2k3tok94" transform="translate(0,0)" data-px-meta="animate:{origin:{keyframes:[{time:940,value:[0,0],easing:[0.215,0.61,0.355,1]},{time:2190,value:[0,-100]}]}}">
                             <use href="#_px_2jkdtgga"/>
                           </g>
                         </g>
                       </g>
-                      <g class="_px-animated _px_2k3tok9a" transform="translate(0,0)" data-px-attrs="origin:{kfs:[{t:940;v:[0,0];e:[0.215,0.61,0.355,1]},{t:2190;v:[0,100]}]}">
+                      <g class="_px-animated _px_2k3tok9a" transform="translate(0,0)" data-px-meta="animate:{origin:{keyframes:[{time:940,value:[0,0],easing:[0.215,0.61,0.355,1]},{time:2190,value:[0,100]}]}}">
                         <g transform="rotate(180)">
-                          <g class="_px-animated _px_2k3tok94" transform="translate(0,0)" data-px-attrs="origin:{kfs:[{t:940;v:[0,0];e:[0.215,0.61,0.355,1]},{t:2190;v:[0,-100]}]}">
+                          <g class="_px-animated _px_2k3tok94" transform="translate(0,0)" data-px-meta="animate:{origin:{keyframes:[{time:940,value:[0,0],easing:[0.215,0.61,0.355,1]},{time:2190,value:[0,-100]}]}}">
                             <use href="#_px_2jkdtgga"/>
                           </g>
                         </g>
                       </g>
-                      <g class="_px-animated _px_2k3tok9a" transform="translate(0,0)" data-px-attrs="origin:{kfs:[{t:940;v:[0,0];e:[0.215,0.61,0.355,1]},{t:2190;v:[0,100]}]}">
+                      <g class="_px-animated _px_2k3tok9a" transform="translate(0,0)" data-px-meta="animate:{origin:{keyframes:[{time:940,value:[0,0],easing:[0.215,0.61,0.355,1]},{time:2190,value:[0,100]}]}}">
                         <g transform="rotate(225)">
-                          <g class="_px-animated _px_2k3tok94" transform="translate(0,0)" data-px-attrs="origin:{kfs:[{t:940;v:[0,0];e:[0.215,0.61,0.355,1]},{t:2190;v:[0,-100]}]}">
+                          <g class="_px-animated _px_2k3tok94" transform="translate(0,0)" data-px-meta="animate:{origin:{keyframes:[{time:940,value:[0,0],easing:[0.215,0.61,0.355,1]},{time:2190,value:[0,-100]}]}}">
                             <use href="#_px_2jkdtgga"/>
                           </g>
                         </g>
                       </g>
-                      <g class="_px-animated _px_2k3tok9a" transform="translate(0,0)" data-px-attrs="origin:{kfs:[{t:940;v:[0,0];e:[0.215,0.61,0.355,1]},{t:2190;v:[0,100]}]}">
+                      <g class="_px-animated _px_2k3tok9a" transform="translate(0,0)" data-px-meta="animate:{origin:{keyframes:[{time:940,value:[0,0],easing:[0.215,0.61,0.355,1]},{time:2190,value:[0,100]}]}}">
                         <g transform="rotate(270)">
-                          <g class="_px-animated _px_2k3tok94" transform="translate(0,0)" data-px-attrs="origin:{kfs:[{t:940;v:[0,0];e:[0.215,0.61,0.355,1]},{t:2190;v:[0,-100]}]}">
+                          <g class="_px-animated _px_2k3tok94" transform="translate(0,0)" data-px-meta="animate:{origin:{keyframes:[{time:940,value:[0,0],easing:[0.215,0.61,0.355,1]},{time:2190,value:[0,-100]}]}}">
                             <use href="#_px_2jkdtgga"/>
                           </g>
                         </g>
                       </g>
-                      <g class="_px-animated _px_2k3tok9a" transform="translate(0,0)" data-px-attrs="origin:{kfs:[{t:940;v:[0,0];e:[0.215,0.61,0.355,1]},{t:2190;v:[0,100]}]}">
+                      <g class="_px-animated _px_2k3tok9a" transform="translate(0,0)" data-px-meta="animate:{origin:{keyframes:[{time:940,value:[0,0],easing:[0.215,0.61,0.355,1]},{time:2190,value:[0,100]}]}}">
                         <g transform="rotate(315)">
-                          <g class="_px-animated _px_2k3tok94" transform="translate(0,0)" data-px-attrs="origin:{kfs:[{t:940;v:[0,0];e:[0.215,0.61,0.355,1]},{t:2190;v:[0,-100]}]}">
+                          <g class="_px-animated _px_2k3tok94" transform="translate(0,0)" data-px-meta="animate:{origin:{keyframes:[{time:940,value:[0,0],easing:[0.215,0.61,0.355,1]},{time:2190,value:[0,-100]}]}}">
                             <use href="#_px_2jkdtgga"/>
                           </g>
                         </g>
@@ -244,61 +244,61 @@
             </g>
           </g>
         </g>
-        <g data-px-label="Squares-fg" fill="none" stroke="none" transform="translate(200,200)scale(0.81,0.81)translate(-200,-200)">
-          <g transform="translate(200,200)" data-px-attrs="elementEffect:{baseId:_px_2jkdtgfl;transform:{translate:[200,200];rotate:{kfs:[{t:940;v:0;e:[0.215,0.61,0.355,1]},{t:4380;v:30}]}}}">
-            <g id="_px_2jkdtgfl" class="_px-animated _px_2k3tok90" data-px-label="Rotation" fill="none" stroke="none" transform="rotate(0)">
-              <g data-px-attrs="elementEffect:{baseId:_px_2jkdtgfm;transform:{};repeater:{copies:4;rotation:21;scale:[132,132]}}">
-                <g id="_px_2jkdtgfm" class="_px-animated _px_2k3tok8m" data-px-label="Clone-withScaleAndRotation" fill="none" stroke="none" opacity="0" data-px-attrs="opacity:{kfs:[{t:940;v:0;e:[0.42,0,1,1]},{t:1250;v:1},{t:3310;v:1;e:[0,0,0.58,1]},{t:4380;v:0}]}">
-                  <g class="_px-animated _px_2k3tok8o" data-px-label="CloningAnchorFix" fill="none" stroke="none" data-px-attrs="transform:{translate:{kfs:[{t:940;v:[0,0];e:[0.215,0.61,0.355,1]},{t:3440;v:[0,-100]}]}}">
-                    <g data-px-attrs="elementEffect:{baseId:_px_2jkdtgfr;transform:{};repeater:{copies:8;origin:{kfs:[{t:940;v:[0,0];e:[0.215,0.61,0.355,1]},{t:3440;v:[0,100]}]};rotation:45}}">
-                      <g id="_px_2jkdtgfr" data-px-label="Clone-withRotation" fill="none" stroke="none">
-                        <rect class="_px-animated _px_2kahb4n9" data-px-label="Rectangle" fill="none" stroke="#fffd80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" x="-2" y="-2" width="4" height="4" data-px-attrs="transform:{rotate:{kfs:[{t:940;v:0;e:[0.215,0.61,0.355,1]},{t:4059.9998;v:53}]}};width:{kfs:[{t:940;v:4;e:[0.215,0.61,0.355,1]},{t:3440;v:16}]};height:{kfs:[{t:940;v:4;e:[0.215,0.61,0.355,1]},{t:3440;v:16}]}"/>
+        <g fill="none" stroke="none" transform="translate(200,200)scale(0.81,0.81)translate(-200,-200)" data-px-meta="label:'Squares-fg'">
+          <g transform="translate(200,200)" data-px-meta="effectsHost:{coreId:'_px_2jkdtgfl',appliedEffects:{transformBy:{translate:[200,200],rotate:{keyframes:[{time:940,value:0,easing:[0.215,0.61,0.355,1]},{time:4380,value:30}]}}}}">
+            <g id="_px_2jkdtgfl" class="_px-animated _px_2k3tok90" fill="none" stroke="none" transform="rotate(0)" data-px-meta="label:'Rotation'">
+              <g data-px-meta="effectsHost:{coreId:'_px_2jkdtgfm',appliedEffects:{repeater:{copies:4,rotate:21,scale:[1.32,1.32]},transformBy:{}}}">
+                <g id="_px_2jkdtgfm" class="_px-animated _px_2k3tok8m" fill="none" stroke="none" opacity="0" data-px-meta="label:'Clone-withScaleAndRotation',animate:{opacity:{keyframes:[{time:940,value:0,easing:[0.42,0,1,1]},{time:1250,value:1},{time:3310,value:1,easing:[0,0,0.58,1]},{time:4380,value:0}]}}">
+                  <g class="_px-animated _px_2k3tok8o" fill="none" stroke="none" data-px-meta="label:'CloningAnchorFix',animate:{translate:{keyframes:[{time:940,value:[0,0],easing:[0.215,0.61,0.355,1]},{time:3440,value:[0,-100]}]}}">
+                    <g data-px-meta="effectsHost:{coreId:'_px_2jkdtgfr',appliedEffects:{repeater:{copies:8,origin:{keyframes:[{time:940,value:[0,0],easing:[0.215,0.61,0.355,1]},{time:3440,value:[0,100]}]},rotate:45},transformBy:{}}}">
+                      <g id="_px_2jkdtgfr" fill="none" stroke="none" data-px-meta="label:'Clone-withRotation'">
+                        <rect class="_px-animated _px_2kahb4n9" fill="none" stroke="#fffd80" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" x="-2" y="-2" width="4" height="4" data-px-meta="label:'Rectangle',animate:{rotate:{keyframes:[{time:940,value:0,easing:[0.215,0.61,0.355,1]},{time:4059.9998,value:53}]},width:{keyframes:[{time:940,value:4,easing:[0.215,0.61,0.355,1]},{time:3440,value:16}]},height:{keyframes:[{time:940,value:4,easing:[0.215,0.61,0.355,1]},{time:3440,value:16}]}}"/>
                       </g>
-                      <g class="_px-animated _px_2k3tok8u" transform="translate(0,0)" data-px-attrs="origin:{kfs:[{t:940;v:[0,0];e:[0.215,0.61,0.355,1]},{t:3440;v:[0,100]}]}">
+                      <g class="_px-animated _px_2k3tok8u" transform="translate(0,0)" data-px-meta="animate:{origin:{keyframes:[{time:940,value:[0,0],easing:[0.215,0.61,0.355,1]},{time:3440,value:[0,100]}]}}">
                         <g transform="rotate(45)">
-                          <g class="_px-animated _px_2k3tok8o" transform="translate(0,0)" data-px-attrs="origin:{kfs:[{t:940;v:[0,0];e:[0.215,0.61,0.355,1]},{t:3440;v:[0,-100]}]}">
+                          <g class="_px-animated _px_2k3tok8o" transform="translate(0,0)" data-px-meta="animate:{origin:{keyframes:[{time:940,value:[0,0],easing:[0.215,0.61,0.355,1]},{time:3440,value:[0,-100]}]}}">
                             <use href="#_px_2jkdtgfr"/>
                           </g>
                         </g>
                       </g>
-                      <g class="_px-animated _px_2k3tok8u" transform="translate(0,0)" data-px-attrs="origin:{kfs:[{t:940;v:[0,0];e:[0.215,0.61,0.355,1]},{t:3440;v:[0,100]}]}">
+                      <g class="_px-animated _px_2k3tok8u" transform="translate(0,0)" data-px-meta="animate:{origin:{keyframes:[{time:940,value:[0,0],easing:[0.215,0.61,0.355,1]},{time:3440,value:[0,100]}]}}">
                         <g transform="rotate(90)">
-                          <g class="_px-animated _px_2k3tok8o" transform="translate(0,0)" data-px-attrs="origin:{kfs:[{t:940;v:[0,0];e:[0.215,0.61,0.355,1]},{t:3440;v:[0,-100]}]}">
+                          <g class="_px-animated _px_2k3tok8o" transform="translate(0,0)" data-px-meta="animate:{origin:{keyframes:[{time:940,value:[0,0],easing:[0.215,0.61,0.355,1]},{time:3440,value:[0,-100]}]}}">
                             <use href="#_px_2jkdtgfr"/>
                           </g>
                         </g>
                       </g>
-                      <g class="_px-animated _px_2k3tok8u" transform="translate(0,0)" data-px-attrs="origin:{kfs:[{t:940;v:[0,0];e:[0.215,0.61,0.355,1]},{t:3440;v:[0,100]}]}">
+                      <g class="_px-animated _px_2k3tok8u" transform="translate(0,0)" data-px-meta="animate:{origin:{keyframes:[{time:940,value:[0,0],easing:[0.215,0.61,0.355,1]},{time:3440,value:[0,100]}]}}">
                         <g transform="rotate(135)">
-                          <g class="_px-animated _px_2k3tok8o" transform="translate(0,0)" data-px-attrs="origin:{kfs:[{t:940;v:[0,0];e:[0.215,0.61,0.355,1]},{t:3440;v:[0,-100]}]}">
+                          <g class="_px-animated _px_2k3tok8o" transform="translate(0,0)" data-px-meta="animate:{origin:{keyframes:[{time:940,value:[0,0],easing:[0.215,0.61,0.355,1]},{time:3440,value:[0,-100]}]}}">
                             <use href="#_px_2jkdtgfr"/>
                           </g>
                         </g>
                       </g>
-                      <g class="_px-animated _px_2k3tok8u" transform="translate(0,0)" data-px-attrs="origin:{kfs:[{t:940;v:[0,0];e:[0.215,0.61,0.355,1]},{t:3440;v:[0,100]}]}">
+                      <g class="_px-animated _px_2k3tok8u" transform="translate(0,0)" data-px-meta="animate:{origin:{keyframes:[{time:940,value:[0,0],easing:[0.215,0.61,0.355,1]},{time:3440,value:[0,100]}]}}">
                         <g transform="rotate(180)">
-                          <g class="_px-animated _px_2k3tok8o" transform="translate(0,0)" data-px-attrs="origin:{kfs:[{t:940;v:[0,0];e:[0.215,0.61,0.355,1]},{t:3440;v:[0,-100]}]}">
+                          <g class="_px-animated _px_2k3tok8o" transform="translate(0,0)" data-px-meta="animate:{origin:{keyframes:[{time:940,value:[0,0],easing:[0.215,0.61,0.355,1]},{time:3440,value:[0,-100]}]}}">
                             <use href="#_px_2jkdtgfr"/>
                           </g>
                         </g>
                       </g>
-                      <g class="_px-animated _px_2k3tok8u" transform="translate(0,0)" data-px-attrs="origin:{kfs:[{t:940;v:[0,0];e:[0.215,0.61,0.355,1]},{t:3440;v:[0,100]}]}">
+                      <g class="_px-animated _px_2k3tok8u" transform="translate(0,0)" data-px-meta="animate:{origin:{keyframes:[{time:940,value:[0,0],easing:[0.215,0.61,0.355,1]},{time:3440,value:[0,100]}]}}">
                         <g transform="rotate(225)">
-                          <g class="_px-animated _px_2k3tok8o" transform="translate(0,0)" data-px-attrs="origin:{kfs:[{t:940;v:[0,0];e:[0.215,0.61,0.355,1]},{t:3440;v:[0,-100]}]}">
+                          <g class="_px-animated _px_2k3tok8o" transform="translate(0,0)" data-px-meta="animate:{origin:{keyframes:[{time:940,value:[0,0],easing:[0.215,0.61,0.355,1]},{time:3440,value:[0,-100]}]}}">
                             <use href="#_px_2jkdtgfr"/>
                           </g>
                         </g>
                       </g>
-                      <g class="_px-animated _px_2k3tok8u" transform="translate(0,0)" data-px-attrs="origin:{kfs:[{t:940;v:[0,0];e:[0.215,0.61,0.355,1]},{t:3440;v:[0,100]}]}">
+                      <g class="_px-animated _px_2k3tok8u" transform="translate(0,0)" data-px-meta="animate:{origin:{keyframes:[{time:940,value:[0,0],easing:[0.215,0.61,0.355,1]},{time:3440,value:[0,100]}]}}">
                         <g transform="rotate(270)">
-                          <g class="_px-animated _px_2k3tok8o" transform="translate(0,0)" data-px-attrs="origin:{kfs:[{t:940;v:[0,0];e:[0.215,0.61,0.355,1]},{t:3440;v:[0,-100]}]}">
+                          <g class="_px-animated _px_2k3tok8o" transform="translate(0,0)" data-px-meta="animate:{origin:{keyframes:[{time:940,value:[0,0],easing:[0.215,0.61,0.355,1]},{time:3440,value:[0,-100]}]}}">
                             <use href="#_px_2jkdtgfr"/>
                           </g>
                         </g>
                       </g>
-                      <g class="_px-animated _px_2k3tok8u" transform="translate(0,0)" data-px-attrs="origin:{kfs:[{t:940;v:[0,0];e:[0.215,0.61,0.355,1]},{t:3440;v:[0,100]}]}">
+                      <g class="_px-animated _px_2k3tok8u" transform="translate(0,0)" data-px-meta="animate:{origin:{keyframes:[{time:940,value:[0,0],easing:[0.215,0.61,0.355,1]},{time:3440,value:[0,100]}]}}">
                         <g transform="rotate(315)">
-                          <g class="_px-animated _px_2k3tok8o" transform="translate(0,0)" data-px-attrs="origin:{kfs:[{t:940;v:[0,0];e:[0.215,0.61,0.355,1]},{t:3440;v:[0,-100]}]}">
+                          <g class="_px-animated _px_2k3tok8o" transform="translate(0,0)" data-px-meta="animate:{origin:{keyframes:[{time:940,value:[0,0],easing:[0.215,0.61,0.355,1]},{time:3440,value:[0,-100]}]}}">
                             <use href="#_px_2jkdtgfr"/>
                           </g>
                         </g>
@@ -315,8 +315,8 @@
         </g>
       </g>
     </g>
-    <g data-px-label="Phone-menu" fill="none" stroke="none" transform="translate(93.5165,23.4514)scale(0.7228,0.7228)translate(-305.9663,-967.0791)">
-      <g data-px-label="nav" transform="translate(221.1226,968.7247)scale(1.3835,1.3835)translate(-32.1774,-24.8941)">
+    <g fill="none" stroke="none" transform="translate(93.5165,23.4514)scale(0.7228,0.7228)translate(-305.9663,-967.0791)" data-px-meta="label:'Phone-menu'">
+      <g transform="translate(221.1226,968.7247)scale(1.3835,1.3835)translate(-32.1774,-24.8941)" data-px-meta="label:'nav'">
         <path fill="url(#_px_2k2456h4)" stroke="#ffffff" stroke-width="2" transform="translate(25.0584,19.8941)" d="M0,0L14.2379,0"/>
         <path fill="url(#_px_2k2456h3)" stroke="#ffffff" stroke-width="2" transform="translate(25.0584,24.8941)" d="M0,0L14.2379,0"/>
         <path fill="url(#_px_2k2456h2)" stroke="#ffffff" stroke-width="2" transform="translate(25.0584,29.8941)" d="M0,0L14.2379,0"/>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- Created with Pixodesk SVG (https://pixodesk.com) -->
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 340" text-rendering="geometricPrecision" shape-rendering="geometricPrecision" fill="none" id="_px_2kho2p2k" data-px-attrs="animation:{duration:25188;loop:true;inThreshold:0.5;startOn:scrollIntoView}">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 340" text-rendering="geometricPrecision" shape-rendering="geometricPrecision" fill="none" id="_px_2kho2p2k" data-px-meta="animator:{timeline:{duration:25188,iterations:'infinite',trigger:{scrollIntoViewThreshold:0.5,startOn:'scrollIntoView'}}}">
   <style>@keyframes _px_2jkdicrb {0% {transform:scale(1,1);animation-timing-function:cubic-bezier(0.167,0.167,0.833,0.833);}
 4.9627% {transform:scale(0.8,0.8);animation-timing-function:cubic-bezier(0.167,0.167,0.833,0.833);}
 9.9254% {transform:scale(1,1);animation-timing-function:cubic-bezier(0.167,0.167,0.833,0.833);}
@@ -962,13 +962,13 @@
 ._px_animate._px_init_paused._px_running ._px-animated {animation-play-state: running !important;}</style>
   <defs>
     <mask id="_px_2jkdicrd" mask-type="alpha">
-      <g data-px-label="Group" fill="none" stroke="none" transform="translate(200,170)translate(-212.4079,-167.4005)">
-        <g data-px-label="Group 3" fill="none" stroke="none" transform="translate(261.2152,66.767)translate(-1145.3695,-48.8746)">
-          <g transform="translate(1129.1046,54.7758),rotate(-3.5342)" data-px-attrs="elementEffect:{baseId:_px_2jkdicre;transform:{origin:[644.3718,73.7904];translate:[484.7328,-19.0146];rotate:-3.5342;scale:{loop:{keyframesCount:0};kfs:[{t:0;v:[1,1]},{t:1250;v:[0.8,0.8]},{t:2500;v:[1,1]}]}}}">
+      <g fill="none" stroke="none" transform="translate(200,170)translate(-212.4079,-167.4005)" data-px-meta="label:'Group'">
+        <g fill="none" stroke="none" transform="translate(261.2152,66.767)translate(-1145.3695,-48.8746)" data-px-meta="label:'Group 3'">
+          <g transform="translate(1129.1046,54.7758),rotate(-3.5342)" data-px-meta="effectsHost:{coreId:'_px_2jkdicre',appliedEffects:{transformBy:{origin:[644.3718,73.7904],translate:[484.7328,-19.0146],rotate:-3.5342,scale:{loop:{},keyframes:[{time:0,value:[1,1]},{time:1250,value:[0.8,0.8]},{time:2500,value:[1,1]}]}}}}">
             <g class="_px-animated _px_2kho2p1t" transform="scale(1,1)">
-              <g id="_px_2jkdicre" data-px-label="Big star with shine 2" fill="none" stroke="none" transform="translate(-644.3718,-73.7904)">
-                <g class="_px-animated _px_2kho2p1u" transform="translate(606.0704,73.7904)" data-px-attrs="elementEffect:{baseId:_px_2jkdicrf;transform:{translate:{loop:{keyframesCount:0};kfs:[{t:0;v:[606.0704,73.7904]},{t:1250;v:[736.0704,73.7904]},{t:2500;v:[736.0704,73.7904]}]};rotate:24.4137}}">
-                  <rect id="_px_2jkdicrf" data-px-label="Rectangle" fill="#ffffff" stroke="none" x="-7.6839" y="-34.3199" width="15.3679" height="68.6399" transform="rotate(24.4137)"/>
+              <g id="_px_2jkdicre" fill="none" stroke="none" transform="translate(-644.3718,-73.7904)" data-px-meta="label:'Big star with shine 2'">
+                <g class="_px-animated _px_2kho2p1u" transform="translate(606.0704,73.7904)" data-px-meta="effectsHost:{coreId:'_px_2jkdicrf',appliedEffects:{transformBy:{translate:{loop:{},keyframes:[{time:0,value:[606.0704,73.7904]},{time:1250,value:[736.0704,73.7904]},{time:2500,value:[736.0704,73.7904]}]},rotate:24.4137}}}">
+                  <rect id="_px_2jkdicrf" fill="#ffffff" stroke="none" x="-7.6839" y="-34.3199" width="15.3679" height="68.6399" transform="rotate(24.4137)" data-px-meta="label:'Rectangle'"/>
                 </g>
               </g>
             </g>
@@ -977,45 +977,45 @@
       </g>
     </mask>
   </defs>
-  <g data-px-label="rocket" fill="none" stroke="none" transform="translate(200,170)translate(-212.4079,-167.4005)">
-    <g transform="translate(223.7958,219.6875)" data-px-attrs="elementEffect:{baseId:_px_2jkdictl;transform:{origin:[837.0124,120.2531];translate:[-613.2166,99.4344];scale:{loop:{keyframesCount:0};kfs:[{t:0;v:[1.3336,1.3336]},{t:1250;v:[1.5667,1.5667]},{t:2500;v:[1.3336,1.3336]}]}}}">
+  <g fill="none" stroke="none" transform="translate(200,170)translate(-212.4079,-167.4005)" data-px-meta="label:'rocket'">
+    <g transform="translate(223.7958,219.6875)" data-px-meta="effectsHost:{coreId:'_px_2jkdictl',appliedEffects:{transformBy:{origin:[837.0124,120.2531],translate:[-613.2166,99.4344],scale:{loop:{},keyframes:[{time:0,value:[1.3336,1.3336]},{time:1250,value:[1.5667,1.5667]},{time:2500,value:[1.3336,1.3336]}]}}}}">
       <g class="_px-animated _px_2kho2p2j" transform="scale(1.3336,1.3336)">
-        <g id="_px_2jkdictl" data-px-label="Rocket" fill="none" stroke="none" transform="translate(-837.0124,-120.2531)">
-          <g data-px-label="Group 2" fill="none" stroke="none" transform="translate(837,114)translate(-1037,-191)">
-            <path data-px-label="Path" fill="#1a3d90" stroke="#ffd374" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" transform="translate(1036.9998,170.1524)translate(-1036.9998,-170.1524)" d="M1022,154.812C1024.506,150.904,1033.717,136.59,1037,136L1037,136C1040.282,136.59,1049.494,150.904,1052,154.811C1054.506,158.719,1054.781,185.928,1052,197.999C1048.191,205.598,1037,204.203,1037,204.203L1037,204.204C1037,204.204,1025.81,205.6,1022,198C1019.218,185.929,1019.494,158.72,1022,154.812z"/>
-            <path data-px-label="Path 6" fill="#a33e3e" stroke="#ffd374" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" transform="translate(1021,176)" d="M-6.249,-0.02C-7.473,0.306,-8.763,0.874,-10,1.812C-14.642,5.333,-16,25,-16,25C-16,25,-8.656,27.402,-0.615,27.425"/>
-            <path data-px-label="Path 7" fill="none" stroke="#ffd374" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" transform="translate(1030,205)" d="M-1.356,4.067L-3,9L3.814,9L3.814,4.176"/>
-            <path data-px-label="Path" fill="none" stroke="#ff9174" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" transform="translate(1036.9994,230.8)translate(-1036.9994,-232.8)" d="M1049.525,219.896C1051.148,223.01,1052.701,227.112,1051.664,230.062C1049.748,229.245,1047.924,226.867,1046.776,227.129C1044.614,229.03,1045.884,233.804,1048.731,238.861C1045.893,238.895,1039.292,233.642,1039.3,234.867C1039.08,239.028,1038.206,243.706,1036.999,245.704C1035.528,243.637,1034.772,238.974,1034.637,234.828C1034.589,233.333,1028.107,238.895,1025.268,238.861C1028.115,233.804,1029.386,229.031,1027.223,227.129C1026.074,226.867,1024.251,229.244,1022.335,230.062C1021.313,227.154,1022.805,223.13,1024.402,220.034"/>
-            <path data-px-label="Path 9" fill="none" stroke="#ffd374" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" transform="translate(1023.5614,161.5802)" d="M1.944,0.854C7.396,2.379,20.439,2.081,25.877,0.795"/>
-            <path data-px-label="Path 6" fill="#a33e3e" stroke="#ffd374" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" transform="translate(1053,176)scale(-1,1)" d="M-5.847,-0.119C-7.188,0.186,-8.626,0.77,-10,1.812C-14.642,5.333,-16,25,-16,25C-16,25,-8.438,27.473,-0.258,27.425"/>
-            <path data-px-label="Ellipse 13" fill="none" stroke="#70dfff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="translate(1037.4724,179)" d="M-6.652,-4.681C-5.156,-6.872,-2.638,-8.311,0.215,-8.311C4.805,-8.311,8.527,-4.59,8.527,0C8.527,4.59,4.805,8.311,0.215,8.311C-2.708,8.311,-5.279,6.8,-6.76,4.518"/>
-            <path data-px-label="Path 8" fill="none" stroke="#ffd374" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" transform="translate(1043.407,205)scale(-1,1)translate(-0.407,0)" d="M-1.356,4.067L-3,9L3.814,9L3.814,4.176"/>
+        <g id="_px_2jkdictl" fill="none" stroke="none" transform="translate(-837.0124,-120.2531)" data-px-meta="label:'Rocket'">
+          <g fill="none" stroke="none" transform="translate(837,114)translate(-1037,-191)" data-px-meta="label:'Group 2'">
+            <path fill="#1a3d90" stroke="#ffd374" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" transform="translate(1036.9998,170.1524)translate(-1036.9998,-170.1524)" d="M1022,154.812C1024.506,150.904,1033.717,136.59,1037,136L1037,136C1040.282,136.59,1049.494,150.904,1052,154.811C1054.506,158.719,1054.781,185.928,1052,197.999C1048.191,205.598,1037,204.203,1037,204.203L1037,204.204C1037,204.204,1025.81,205.6,1022,198C1019.218,185.929,1019.494,158.72,1022,154.812z" data-px-meta="label:'Path'"/>
+            <path fill="#a33e3e" stroke="#ffd374" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" transform="translate(1021,176)" d="M-6.249,-0.02C-7.473,0.306,-8.763,0.874,-10,1.812C-14.642,5.333,-16,25,-16,25C-16,25,-8.656,27.402,-0.615,27.425" data-px-meta="label:'Path 6'"/>
+            <path fill="none" stroke="#ffd374" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" transform="translate(1030,205)" d="M-1.356,4.067L-3,9L3.814,9L3.814,4.176" data-px-meta="label:'Path 7'"/>
+            <path fill="none" stroke="#ff9174" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" transform="translate(1036.9994,230.8)translate(-1036.9994,-232.8)" d="M1049.525,219.896C1051.148,223.01,1052.701,227.112,1051.664,230.062C1049.748,229.245,1047.924,226.867,1046.776,227.129C1044.614,229.03,1045.884,233.804,1048.731,238.861C1045.893,238.895,1039.292,233.642,1039.3,234.867C1039.08,239.028,1038.206,243.706,1036.999,245.704C1035.528,243.637,1034.772,238.974,1034.637,234.828C1034.589,233.333,1028.107,238.895,1025.268,238.861C1028.115,233.804,1029.386,229.031,1027.223,227.129C1026.074,226.867,1024.251,229.244,1022.335,230.062C1021.313,227.154,1022.805,223.13,1024.402,220.034" data-px-meta="label:'Path'"/>
+            <path fill="none" stroke="#ffd374" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" transform="translate(1023.5614,161.5802)" d="M1.944,0.854C7.396,2.379,20.439,2.081,25.877,0.795" data-px-meta="label:'Path 9'"/>
+            <path fill="#a33e3e" stroke="#ffd374" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" transform="translate(1053,176)scale(-1,1)" d="M-5.847,-0.119C-7.188,0.186,-8.626,0.77,-10,1.812C-14.642,5.333,-16,25,-16,25C-16,25,-8.438,27.473,-0.258,27.425" data-px-meta="label:'Path 6'"/>
+            <path fill="none" stroke="#70dfff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" transform="translate(1037.4724,179)" d="M-6.652,-4.681C-5.156,-6.872,-2.638,-8.311,0.215,-8.311C4.805,-8.311,8.527,-4.59,8.527,0C8.527,4.59,4.805,8.311,0.215,8.311C-2.708,8.311,-5.279,6.8,-6.76,4.518" data-px-meta="label:'Ellipse 13'"/>
+            <path fill="none" stroke="#ffd374" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" transform="translate(1043.407,205)scale(-1,1)translate(-0.407,0)" d="M-1.356,4.067L-3,9L3.814,9L3.814,4.176" data-px-meta="label:'Path 8'"/>
           </g>
-          <g data-px-label="Group 15" fill="none" stroke="none" transform="translate(837.0124,166.3798)translate(-837.0124,-168.3798)">
-            <g transform="translate(784.3198,165.2047)" data-px-attrs="elementEffect:{baseId:_px_2jkdicu1;transform:{translate:[784.3198,165.2047];rotate:{loop:{keyframesCount:0};kfs:[{t:0;v:0;e:[0.2062,0.2062,0.5646,0.5646]},{t:630;v:72;e:[0.3318,0.3318,0.8428,0.8428]},{t:1250;v:360}]}}}">
-              <g id="_px_2jkdicu1" class="_px-animated _px_2kho2p2c _px-animated _px_2kho2p2e" data-px-label="Ellipse 15" fill="none" stroke="#1e65b1" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" transform="rotate(0)" data-px-attrs="trimPathEffect:{range:{loop:{keyframesCount:0};kfs:[{t:0;v:[0.25,1]},{t:630;v:[1,1]},{t:1250;v:[0.25,1]}]}};isCombinedShape:true">
+          <g fill="none" stroke="none" transform="translate(837.0124,166.3798)translate(-837.0124,-168.3798)" data-px-meta="label:'Group 15'">
+            <g transform="translate(784.3198,165.2047)" data-px-meta="effectsHost:{coreId:'_px_2jkdicu1',appliedEffects:{strokeTrim:{range:{loop:{},keyframes:[{time:0,value:[0.25,1]},{time:630,value:[1,1]},{time:1250,value:[0.25,1]}]}},combinedPath:true,transformBy:{translate:[784.3198,165.2047],rotate:{loop:{},keyframes:[{time:0,value:0,easing:[0.2062,0.2062,0.5646,0.5646]},{time:630,value:72,easing:[0.3318,0.3318,0.8428,0.8428]},{time:1250,value:360}]}}}}">
+              <g id="_px_2jkdicu1" class="_px-animated _px_2kho2p2c _px-animated _px_2kho2p2e" fill="none" stroke="#1e65b1" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" transform="rotate(0)" data-px-meta="label:'Ellipse 15'">
                 <path class="_px-animated _px_2kho2p2i" d="M0,-11.9514C6.6006,-11.9514,11.9514,-6.6006,11.9514,0C11.9514,6.6006,6.6006,11.9514,0,11.9514C-6.6006,11.9514,-11.9514,6.6006,-11.9514,0C-11.9514,-6.6006,-6.6006,-11.9514,0,-11.9514z" stroke-dashoffset="1" stroke-dasharray="0,19.7757,56.327,1"/>
               </g>
             </g>
-            <g data-px-label="Group" fill="none" stroke="none" transform="translate(808.7412,177)rotate(45)translate(-808.7412,-177)">
-              <g transform="translate(808.7412,177)" data-px-attrs="elementEffect:{baseId:_px_2jkdicu0;transform:{translate:[808.7412,177];rotate:{loop:{keyframesCount:0};kfs:[{t:0;v:0;e:[0.2062,0.2062,0.5646,0.5646]},{t:630;v:72;e:[0.3318,0.3318,0.8428,0.8428]},{t:1250;v:360}]}}}">
-                <g id="_px_2jkdicu0" class="_px-animated _px_2kho2p2c _px-animated _px_2kho2p2e" data-px-label="Ellipse 19" fill="none" stroke="#1e65b1" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" transform="rotate(0)" data-px-attrs="trimPathEffect:{range:{loop:{keyframesCount:0};kfs:[{t:0;v:[0.25,1]},{t:630;v:[1,1]},{t:1250;v:[0.25,1]}]}};isCombinedShape:true">
+            <g fill="none" stroke="none" transform="translate(808.7412,177)rotate(45)translate(-808.7412,-177)" data-px-meta="label:'Group'">
+              <g transform="translate(808.7412,177)" data-px-meta="effectsHost:{coreId:'_px_2jkdicu0',appliedEffects:{strokeTrim:{range:{loop:{},keyframes:[{time:0,value:[0.25,1]},{time:630,value:[1,1]},{time:1250,value:[0.25,1]}]}},combinedPath:true,transformBy:{translate:[808.7412,177],rotate:{loop:{},keyframes:[{time:0,value:0,easing:[0.2062,0.2062,0.5646,0.5646]},{time:630,value:72,easing:[0.3318,0.3318,0.8428,0.8428]},{time:1250,value:360}]}}}}">
+                <g id="_px_2jkdicu0" class="_px-animated _px_2kho2p2c _px-animated _px_2kho2p2e" fill="none" stroke="#1e65b1" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" transform="rotate(0)" data-px-meta="label:'Ellipse 19'">
                   <path class="_px-animated _px_2kho2p2g" d="M0,-6.5062C3.5933,-6.5062,6.5062,-3.5933,6.5062,0C6.5062,3.5933,3.5933,6.5062,0,6.5062C-3.5933,6.5062,-6.5062,3.5933,-6.5062,0C-6.5062,-3.5933,-3.5933,-6.5062,0,-6.5062z" stroke-dashoffset="1" stroke-dasharray="0,11.2213,30.6638,1"/>
                 </g>
               </g>
             </g>
-            <g data-px-label="Group 2" fill="none" stroke="none" transform="translate(889.7049,165.2047)rotate(46)translate(-889.7049,-165.2047)">
-              <g transform="translate(889.7049,165.2047)" data-px-attrs="elementEffect:{baseId:_px_2jkdictt;transform:{translate:[889.7049,165.2047];rotate:{loop:{keyframesCount:0};kfs:[{t:0;v:0;e:[0.2062,0.2062,0.5646,0.5646]},{t:630;v:72;e:[0.3318,0.3318,0.8428,0.8428]},{t:1250;v:360}]};scale:[-100,100]}}">
+            <g fill="none" stroke="none" transform="translate(889.7049,165.2047)rotate(46)translate(-889.7049,-165.2047)" data-px-meta="label:'Group 2'">
+              <g transform="translate(889.7049,165.2047)" data-px-meta="effectsHost:{coreId:'_px_2jkdictt',appliedEffects:{strokeTrim:{range:{loop:{},keyframes:[{time:0,value:[0.25,1]},{time:630,value:[1,1]},{time:1250,value:[0.25,1]}]}},combinedPath:true,transformBy:{translate:[889.7049,165.2047],rotate:{loop:{},keyframes:[{time:0,value:0,easing:[0.2062,0.2062,0.5646,0.5646]},{time:630,value:72,easing:[0.3318,0.3318,0.8428,0.8428]},{time:1250,value:360}]},scale:[-1,1]}}}">
                 <g class="_px-animated _px_2kho2p2e" transform="rotate(0)">
-                  <g id="_px_2jkdictt" class="_px-animated _px_2kho2p2c" data-px-label="Ellipse 15" fill="none" stroke="#1e65b1" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" transform="scale(-1,1)" data-px-attrs="trimPathEffect:{range:{loop:{keyframesCount:0};kfs:[{t:0;v:[0.25,1]},{t:630;v:[1,1]},{t:1250;v:[0.25,1]}]}};isCombinedShape:true">
+                  <g id="_px_2jkdictt" class="_px-animated _px_2kho2p2c" fill="none" stroke="#1e65b1" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" transform="scale(-1,1)" data-px-meta="label:'Ellipse 15'">
                     <path class="_px-animated _px_2kho2p2i" d="M-11.9514,0C-11.9514,6.6006,-6.6006,11.9514,0,11.9514C6.6006,11.9514,11.9514,6.6006,11.9514,0C11.9514,-6.6006,6.6006,-11.9514,0,-11.9514C-6.6006,-11.9514,-11.9514,-6.6006,-11.9514,0z" stroke-dashoffset="1" stroke-dasharray="0,19.7757,56.327,1"/>
                   </g>
                 </g>
               </g>
             </g>
-            <g data-px-label="Group 3" fill="none" stroke="none" transform="translate(865.2836,177)rotate(-8)translate(-865.2836,-177)">
-              <g transform="translate(865.2836,177)" data-px-attrs="elementEffect:{baseId:_px_2jkdictm;transform:{translate:[865.2836,177];rotate:{loop:{keyframesCount:0};kfs:[{t:0;v:0;e:[0.2062,0.2062,0.5646,0.5646]},{t:630;v:72;e:[0.3318,0.3318,0.8428,0.8428]},{t:1250;v:360}]}}}">
-                <g id="_px_2jkdictm" class="_px-animated _px_2kho2p2c _px-animated _px_2kho2p2e" data-px-label="Ellipse 19" fill="none" stroke="#1e65b1" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" transform="rotate(0)" data-px-attrs="trimPathEffect:{range:{loop:{keyframesCount:0};kfs:[{t:0;v:[0.25,1]},{t:630;v:[1,1]},{t:1250;v:[0.25,1]}]}};isCombinedShape:true">
+            <g fill="none" stroke="none" transform="translate(865.2836,177)rotate(-8)translate(-865.2836,-177)" data-px-meta="label:'Group 3'">
+              <g transform="translate(865.2836,177)" data-px-meta="effectsHost:{coreId:'_px_2jkdictm',appliedEffects:{strokeTrim:{range:{loop:{},keyframes:[{time:0,value:[0.25,1]},{time:630,value:[1,1]},{time:1250,value:[0.25,1]}]}},combinedPath:true,transformBy:{translate:[865.2836,177],rotate:{loop:{},keyframes:[{time:0,value:0,easing:[0.2062,0.2062,0.5646,0.5646]},{time:630,value:72,easing:[0.3318,0.3318,0.8428,0.8428]},{time:1250,value:360}]}}}}">
+                <g id="_px_2jkdictm" class="_px-animated _px_2kho2p2c _px-animated _px_2kho2p2e" fill="none" stroke="#1e65b1" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" transform="rotate(0)" data-px-meta="label:'Ellipse 19'">
                   <path class="_px-animated _px_2kho2p2g" d="M0,-6.5062C3.5933,-6.5062,6.5062,-3.5933,6.5062,0C6.5062,3.5933,3.5933,6.5062,0,6.5062C-3.5933,6.5062,-6.5062,3.5933,-6.5062,0C-6.5062,-3.5933,-3.5933,-6.5062,0,-6.5062z" stroke-dashoffset="1" stroke-dasharray="0,11.2213,30.6638,1"/>
                 </g>
               </g>
@@ -1025,161 +1025,161 @@
       </g>
     </g>
   </g>
-  <g data-px-label="space" transform="translate(200,130.5624)translate(-200,-164.5624)">
-    <g data-px-label="stars" fill="none" stroke="none" transform="translate(200,170)translate(-212.4079,-167.4005)">
-      <g data-px-label="Stars" fill="none" stroke="none" transform="translate(206.5108,153.1573)translate(-1107.0021,-155.5044)">
-        <ellipse data-px-label="Ellipse 32" fill="#ffffff" stroke="none" transform="translate(1209.6797,90.1991)scale(1.3077,1.3077)" rx="1.5366" ry="1.5366"/>
-        <ellipse class="_px-animated _px_2kho2p2b" data-px-label="Ellipse 28" fill="#ffffff" stroke="none" transform="translate(917.3786,153.9702)scale(1.3077,1.3077)" rx="1.014" ry="1.014" data-px-attrs="opacity:{loop:{keyframesCount:0};kfs:[{t:0;v:1},{t:1000;v:1},{t:1130;v:0;e:[0.1628,0.1628,0.5969,0.5969]},{t:1380;v:0;e:[0.4268,0.4268,0.8275,0.8275]},{t:1500;v:1},{t:2500;v:1}]}"/>
-        <ellipse data-px-label="Ellipse 33" fill="#ffffff" stroke="none" transform="translate(962.6797,255.1991)scale(1.3077,1.3077)" rx="1.5366" ry="1.5366"/>
-        <g class="_px-animated _px_2kho2p2a" data-px-label="Group 17" fill="none" stroke="none" transform="translate(1108.1265,114.7744)rotate(10)scale(0.2402,0.2402)translate(-286,-179)" data-px-attrs="opacity:{loop:{keyframesCount:0};kfs:[{t:0;v:1},{t:1440;v:1},{t:1560;v:0;e:[0.1628,0.1628,0.5969,0.5969]},{t:1810;v:0;e:[0.4268,0.4268,0.8275,0.8275]},{t:1940;v:1},{t:2500;v:1}]}">
-          <path data-px-label="Path 4" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" transform="translate(286,170)" d="M0,0L0,18"/>
-          <path data-px-label="Path 5" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" transform="translate(276,179)" d="M0,0L20,0"/>
+  <g transform="translate(200,130.5624)translate(-200,-164.5624)" data-px-meta="label:'space'">
+    <g fill="none" stroke="none" transform="translate(200,170)translate(-212.4079,-167.4005)" data-px-meta="label:'stars'">
+      <g fill="none" stroke="none" transform="translate(206.5108,153.1573)translate(-1107.0021,-155.5044)" data-px-meta="label:'Stars'">
+        <ellipse fill="#ffffff" stroke="none" transform="translate(1209.6797,90.1991)scale(1.3077,1.3077)" rx="1.5366" ry="1.5366" data-px-meta="label:'Ellipse 32'"/>
+        <ellipse class="_px-animated _px_2kho2p2b" fill="#ffffff" stroke="none" transform="translate(917.3786,153.9702)scale(1.3077,1.3077)" rx="1.014" ry="1.014" data-px-meta="label:'Ellipse 28',animate:{opacity:{loop:{},keyframes:[{time:0,value:1},{time:1000,value:1},{time:1130,value:0,easing:[0.1628,0.1628,0.5969,0.5969]},{time:1380,value:0,easing:[0.4268,0.4268,0.8275,0.8275]},{time:1500,value:1},{time:2500,value:1}]}}"/>
+        <ellipse fill="#ffffff" stroke="none" transform="translate(962.6797,255.1991)scale(1.3077,1.3077)" rx="1.5366" ry="1.5366" data-px-meta="label:'Ellipse 33'"/>
+        <g class="_px-animated _px_2kho2p2a" fill="none" stroke="none" transform="translate(1108.1265,114.7744)rotate(10)scale(0.2402,0.2402)translate(-286,-179)" data-px-meta="label:'Group 17',animate:{opacity:{loop:{},keyframes:[{time:0,value:1},{time:1440,value:1},{time:1560,value:0,easing:[0.1628,0.1628,0.5969,0.5969]},{time:1810,value:0,easing:[0.4268,0.4268,0.8275,0.8275]},{time:1940,value:1},{time:2500,value:1}]}}">
+          <path fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" transform="translate(286,170)" d="M0,0L0,18" data-px-meta="label:'Path 4'"/>
+          <path fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" transform="translate(276,179)" d="M0,0L20,0" data-px-meta="label:'Path 5'"/>
         </g>
-        <ellipse class="_px-animated _px_2kho2p29" data-px-label="Ellipse 29" fill="#ffffff" stroke="none" transform="translate(1038.3786,75.9702)scale(0.9853,0.9853)" rx="1.5444" ry="1.5444" data-px-attrs="opacity:{loop:{keyframesCount:0};kfs:[{t:0;v:1},{t:2000;v:1},{t:2130;v:0;e:[0.1628,0.1628,0.5969,0.5969]},{t:2380;v:0;e:[0.4268,0.4268,0.8275,0.8275]},{t:2500;v:1}]}"/>
-        <ellipse class="_px-animated _px_2kho2p28" data-px-label="Ellipse 30" fill="#ffffff" stroke="none" transform="translate(1217.3786,243.9702)scale(1.3077,1.3077)" cx="-0.5321" cy="-0.5321" rx="1.9679" ry="1.9679" data-px-attrs="opacity:{loop:{keyframesCount:0};kfs:[{t:0;v:1},{t:1750;v:1},{t:1880;v:0;e:[0.1628,0.1628,0.5969,0.5969]},{t:2130;v:0;e:[0.4268,0.4268,0.8275,0.8275]},{t:2250;v:1},{t:2500;v:1}]}"/>
-        <g class="_px-animated _px_2kho2p27" data-px-label="Group 18" fill="none" stroke="none" transform="translate(1068.1265,185.7744)rotate(10)scale(0.2402,0.2402)translate(-286,-179)" data-px-attrs="opacity:{loop:{keyframesCount:0};kfs:[{t:0;v:1},{t:500;v:1},{t:630;v:0;e:[0.1628,0.1628,0.5969,0.5969]},{t:880;v:0;e:[0.4268,0.4268,0.8275,0.8275]},{t:1000;v:1},{t:2500;v:1}]}">
-          <path data-px-label="Path 4" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" transform="translate(286,170)" d="M0,0L0,18"/>
-          <path data-px-label="Path 5" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" transform="translate(276,179)" d="M0,0L20,0"/>
+        <ellipse class="_px-animated _px_2kho2p29" fill="#ffffff" stroke="none" transform="translate(1038.3786,75.9702)scale(0.9853,0.9853)" rx="1.5444" ry="1.5444" data-px-meta="label:'Ellipse 29',animate:{opacity:{loop:{},keyframes:[{time:0,value:1},{time:2000,value:1},{time:2130,value:0,easing:[0.1628,0.1628,0.5969,0.5969]},{time:2380,value:0,easing:[0.4268,0.4268,0.8275,0.8275]},{time:2500,value:1}]}}"/>
+        <ellipse class="_px-animated _px_2kho2p28" fill="#ffffff" stroke="none" transform="translate(1217.3786,243.9702)scale(1.3077,1.3077)" cx="-0.5321" cy="-0.5321" rx="1.9679" ry="1.9679" data-px-meta="label:'Ellipse 30',animate:{opacity:{loop:{},keyframes:[{time:0,value:1},{time:1750,value:1},{time:1880,value:0,easing:[0.1628,0.1628,0.5969,0.5969]},{time:2130,value:0,easing:[0.4268,0.4268,0.8275,0.8275]},{time:2250,value:1},{time:2500,value:1}]}}"/>
+        <g class="_px-animated _px_2kho2p27" fill="none" stroke="none" transform="translate(1068.1265,185.7744)rotate(10)scale(0.2402,0.2402)translate(-286,-179)" data-px-meta="label:'Group 18',animate:{opacity:{loop:{},keyframes:[{time:0,value:1},{time:500,value:1},{time:630,value:0,easing:[0.1628,0.1628,0.5969,0.5969]},{time:880,value:0,easing:[0.4268,0.4268,0.8275,0.8275]},{time:1000,value:1},{time:2500,value:1}]}}">
+          <path fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" transform="translate(286,170)" d="M0,0L0,18" data-px-meta="label:'Path 4'"/>
+          <path fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" transform="translate(276,179)" d="M0,0L20,0" data-px-meta="label:'Path 5'"/>
         </g>
-        <g class="_px-animated _px_2kho2p26" data-px-label="Group 19" fill="none" stroke="none" transform="translate(1278.1265,184.7744)rotate(10)scale(0.2402,0.2402)translate(-286,-179)" data-px-attrs="opacity:{loop:{keyframesCount:0};kfs:[{t:0;v:1},{t:1880;v:1},{t:2000;v:0;e:[0.1628,0.1628,0.5969,0.5969]},{t:2250;v:0;e:[0.4268,0.4268,0.8275,0.8275]},{t:2380;v:1},{t:2500;v:1}]}">
-          <path data-px-label="Path 4" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" transform="translate(286,170)" d="M0,0L0,18"/>
-          <path data-px-label="Path 5" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" transform="translate(276,179)" d="M0,0L20,0"/>
+        <g class="_px-animated _px_2kho2p26" fill="none" stroke="none" transform="translate(1278.1265,184.7744)rotate(10)scale(0.2402,0.2402)translate(-286,-179)" data-px-meta="label:'Group 19',animate:{opacity:{loop:{},keyframes:[{time:0,value:1},{time:1880,value:1},{time:2000,value:0,easing:[0.1628,0.1628,0.5969,0.5969]},{time:2250,value:0,easing:[0.4268,0.4268,0.8275,0.8275]},{time:2380,value:1},{time:2500,value:1}]}}">
+          <path fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" transform="translate(286,170)" d="M0,0L0,18" data-px-meta="label:'Path 4'"/>
+          <path fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" transform="translate(276,179)" d="M0,0L20,0" data-px-meta="label:'Path 5'"/>
         </g>
-        <ellipse class="_px-animated _px_2kho2p25" data-px-label="Ellipse 25" fill="#ffffff" stroke="none" transform="translate(1282.3872,38.1193)scale(0.4403,0.4403)" rx="3.5" ry="3.5" data-px-attrs="opacity:{loop:{keyframesCount:0};kfs:[{t:0;v:1},{t:750;v:1},{t:880;v:0;e:[0.1628,0.1628,0.5969,0.5969]},{t:1130;v:0;e:[0.4268,0.4268,0.8275,0.8275]},{t:1250;v:1},{t:2500;v:1}]}"/>
-        <ellipse class="_px-animated _px_2kho2p24" data-px-label="Ellipse 31" fill="#ffffff" stroke="none" transform="translate(982.3872,328.1193)scale(0.6603,0.6603)" rx="3.5" ry="3.5" data-px-attrs="opacity:{loop:{keyframesCount:0};kfs:[{t:0;v:1},{t:1500;v:1},{t:1630;v:0;e:[0.1628,0.1628,0.5969,0.5969]},{t:1880;v:0;e:[0.4268,0.4268,0.8275,0.8275]},{t:2000;v:1},{t:2500;v:1}]}"/>
-        <ellipse class="_px-animated _px_2kho2p23" data-px-label="Ellipse 34" fill="#ffffff" stroke="none" transform="translate(1269.6797,320.1991)scale(1.3077,1.3077)" rx="1.5366" ry="1.5366" data-px-attrs="opacity:{loop:{keyframesCount:0};kfs:[{t:0;v:1},{t:250;v:1},{t:380;v:0;e:[0.1628,0.1628,0.5969,0.5969]},{t:630;v:0;e:[0.4268,0.4268,0.8275,0.8275]},{t:750;v:1},{t:2500;v:1}]}"/>
-        <ellipse class="_px-animated _px_2kho2p22" data-px-label="Ellipse 35" fill="#ffffff" stroke="none" transform="translate(1099.6797,50.1991)scale(1.3077,1.3077)" rx="1.5366" ry="1.5366" data-px-attrs="opacity:{loop:{keyframesCount:0};kfs:[{t:0;v:1},{t:1250;v:1},{t:1380;v:0;e:[0.1628,0.1628,0.5969,0.5969]},{t:1630;v:0;e:[0.4268,0.4268,0.8275,0.8275]},{t:1750;v:1},{t:2500;v:1}]}"/>
-        <ellipse class="_px-animated _px_2kho2p21" data-px-label="Ellipse 36" fill="#ffffff" stroke="none" transform="translate(949.6797,41.1991)scale(1.3077,1.3077)" rx="1.5366" ry="1.5366" data-px-attrs="opacity:{loop:{keyframesCount:0};kfs:[{t:0;v:1},{t:130;v:0;e:[0.1628,0.1628,0.5969,0.5969]},{t:380;v:0;e:[0.4268,0.4268,0.8275,0.8275]},{t:500;v:1},{t:2500;v:1}]}"/>
+        <ellipse class="_px-animated _px_2kho2p25" fill="#ffffff" stroke="none" transform="translate(1282.3872,38.1193)scale(0.4403,0.4403)" rx="3.5" ry="3.5" data-px-meta="label:'Ellipse 25',animate:{opacity:{loop:{},keyframes:[{time:0,value:1},{time:750,value:1},{time:880,value:0,easing:[0.1628,0.1628,0.5969,0.5969]},{time:1130,value:0,easing:[0.4268,0.4268,0.8275,0.8275]},{time:1250,value:1},{time:2500,value:1}]}}"/>
+        <ellipse class="_px-animated _px_2kho2p24" fill="#ffffff" stroke="none" transform="translate(982.3872,328.1193)scale(0.6603,0.6603)" rx="3.5" ry="3.5" data-px-meta="label:'Ellipse 31',animate:{opacity:{loop:{},keyframes:[{time:0,value:1},{time:1500,value:1},{time:1630,value:0,easing:[0.1628,0.1628,0.5969,0.5969]},{time:1880,value:0,easing:[0.4268,0.4268,0.8275,0.8275]},{time:2000,value:1},{time:2500,value:1}]}}"/>
+        <ellipse class="_px-animated _px_2kho2p23" fill="#ffffff" stroke="none" transform="translate(1269.6797,320.1991)scale(1.3077,1.3077)" rx="1.5366" ry="1.5366" data-px-meta="label:'Ellipse 34',animate:{opacity:{loop:{},keyframes:[{time:0,value:1},{time:250,value:1},{time:380,value:0,easing:[0.1628,0.1628,0.5969,0.5969]},{time:630,value:0,easing:[0.4268,0.4268,0.8275,0.8275]},{time:750,value:1},{time:2500,value:1}]}}"/>
+        <ellipse class="_px-animated _px_2kho2p22" fill="#ffffff" stroke="none" transform="translate(1099.6797,50.1991)scale(1.3077,1.3077)" rx="1.5366" ry="1.5366" data-px-meta="label:'Ellipse 35',animate:{opacity:{loop:{},keyframes:[{time:0,value:1},{time:1250,value:1},{time:1380,value:0,easing:[0.1628,0.1628,0.5969,0.5969]},{time:1630,value:0,easing:[0.4268,0.4268,0.8275,0.8275]},{time:1750,value:1},{time:2500,value:1}]}}"/>
+        <ellipse class="_px-animated _px_2kho2p21" fill="#ffffff" stroke="none" transform="translate(949.6797,41.1991)scale(1.3077,1.3077)" rx="1.5366" ry="1.5366" data-px-meta="label:'Ellipse 36',animate:{opacity:{loop:{},keyframes:[{time:0,value:1},{time:130,value:0,easing:[0.1628,0.1628,0.5969,0.5969]},{time:380,value:0,easing:[0.4268,0.4268,0.8275,0.8275]},{time:500,value:1},{time:2500,value:1}]}}"/>
       </g>
     </g>
-    <g data-px-label="planet 2" transform="translate(95.7272,144.3888)translate(-105.7272,-134.3888)">
-      <g data-px-label="Group" fill="none" stroke="none" transform="translate(200,170)translate(-212.4079,-167.4005)">
-        <g data-px-label="Group" fill="none" stroke="none" transform="translate(118.1351,118.6524)translate(-992.2895,-100.76)">
-          <g transform="translate(992.2895,113.1344)" data-px-attrs="elementEffect:{baseId:_px_2jkdicsr;transform:{origin:[992.2895,113.1344];scale:{loop:{keyframesCount:0};kfs:[{t:0;v:[0.77,0.77];e:[0.3333,0.6666,0.6666,1]},{t:1250;v:[0.68,0.68];e:[0.3333,0,0.6666,0.3333]},{t:2500;v:[0.77,0.77]}]}}}">
+    <g transform="translate(95.7272,144.3888)translate(-105.7272,-134.3888)" data-px-meta="label:'planet 2'">
+      <g fill="none" stroke="none" transform="translate(200,170)translate(-212.4079,-167.4005)" data-px-meta="label:'Group'">
+        <g fill="none" stroke="none" transform="translate(118.1351,118.6524)translate(-992.2895,-100.76)" data-px-meta="label:'Group'">
+          <g transform="translate(992.2895,113.1344)" data-px-meta="effectsHost:{coreId:'_px_2jkdicsr',appliedEffects:{transformBy:{origin:[992.2895,113.1344],scale:{loop:{},keyframes:[{time:0,value:[0.77,0.77],easing:[0.3333,0.6666,0.6666,1]},{time:1250,value:[0.68,0.68],easing:[0.3333,0,0.6666,0.3333]},{time:2500,value:[0.77,0.77]}]}}}}">
             <g class="_px-animated _px_2kho2p20" transform="scale(0.77,0.77)">
-              <g id="_px_2jkdicsr" data-px-label="Planet 1 Scale" fill="none" stroke="none" transform="translate(-992.2895,-113.1344)">
-                <g data-px-label="Planet 1" fill="none" stroke="none" transform="translate(992.2895,113.1344)scale(0.5138,0.5138)translate(-808.2621,-892.4321)">
-                  <ellipse data-px-label="Ellipse 33" fill="none" stroke="#134274" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" transform="translate(804.3026,894.4686)scale(1.6418,1.6418)" rx="39" ry="39"/>
+              <g id="_px_2jkdicsr" fill="none" stroke="none" transform="translate(-992.2895,-113.1344)" data-px-meta="label:'Planet 1 Scale'">
+                <g fill="none" stroke="none" transform="translate(992.2895,113.1344)scale(0.5138,0.5138)translate(-808.2621,-892.4321)" data-px-meta="label:'Planet 1'">
+                  <ellipse fill="none" stroke="#134274" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" transform="translate(804.3026,894.4686)scale(1.6418,1.6418)" rx="39" ry="39" data-px-meta="label:'Ellipse 33'"/>
                 </g>
               </g>
             </g>
           </g>
         </g>
       </g>
-      <g data-px-label="Group" fill="none" stroke="none" transform="translate(200,170)translate(-212.4079,-167.4005)">
-        <g data-px-label="Group" fill="none" stroke="none" transform="translate(118.1351,118.6524)translate(-992.2895,-100.76)">
-          <g transform="translate(992.2895,113.1344)" data-px-attrs="elementEffect:{baseId:_px_2jkdicsq;transform:{origin:[992.2895,113.1344];scale:{loop:{keyframesCount:0};kfs:[{t:0;v:[0.77,0.77];e:[0.3333,0.6666,0.6666,1]},{t:1250;v:[0.68,0.68];e:[0.3333,0,0.6666,0.3333]},{t:2500;v:[0.77,0.77]}]}}}">
+      <g fill="none" stroke="none" transform="translate(200,170)translate(-212.4079,-167.4005)" data-px-meta="label:'Group'">
+        <g fill="none" stroke="none" transform="translate(118.1351,118.6524)translate(-992.2895,-100.76)" data-px-meta="label:'Group'">
+          <g transform="translate(992.2895,113.1344)" data-px-meta="effectsHost:{coreId:'_px_2jkdicsq',appliedEffects:{transformBy:{origin:[992.2895,113.1344],scale:{loop:{},keyframes:[{time:0,value:[0.77,0.77],easing:[0.3333,0.6666,0.6666,1]},{time:1250,value:[0.68,0.68],easing:[0.3333,0,0.6666,0.3333]},{time:2500,value:[0.77,0.77]}]}}}}">
             <g class="_px-animated _px_2kho2p20" transform="scale(0.77,0.77)">
-              <g id="_px_2jkdicsq" data-px-label="Planet 1 Scale" fill="none" stroke="none" transform="translate(-992.2895,-113.1344)">
-                <g data-px-label="Planet 1" fill="none" stroke="none" transform="translate(992.2895,113.1344)scale(0.5138,0.5138)translate(-808.2621,-892.4321)">
-                  <ellipse data-px-label="Ellipse 34" fill="#98aeba" stroke="none" transform="translate(804.3026,897.0841)scale(1.6418,1.6418)" rx="35.8407" ry="35.8407"/>
+              <g id="_px_2jkdicsq" fill="none" stroke="none" transform="translate(-992.2895,-113.1344)" data-px-meta="label:'Planet 1 Scale'">
+                <g fill="none" stroke="none" transform="translate(992.2895,113.1344)scale(0.5138,0.5138)translate(-808.2621,-892.4321)" data-px-meta="label:'Planet 1'">
+                  <ellipse fill="#98aeba" stroke="none" transform="translate(804.3026,897.0841)scale(1.6418,1.6418)" rx="35.8407" ry="35.8407" data-px-meta="label:'Ellipse 34'"/>
                 </g>
               </g>
             </g>
           </g>
         </g>
       </g>
-      <g data-px-label="Group" fill="none" stroke="none" transform="translate(200,170)translate(-212.4079,-167.4005)">
-        <g data-px-label="Group" fill="none" stroke="none" transform="translate(118.1351,118.6524)translate(-992.2895,-100.76)">
-          <g transform="translate(992.2895,113.1344)" data-px-attrs="elementEffect:{baseId:_px_2jkdicsp;transform:{origin:[992.2895,113.1344];scale:{loop:{keyframesCount:0};kfs:[{t:0;v:[0.77,0.77];e:[0.3333,0.6666,0.6666,1]},{t:1250;v:[0.68,0.68];e:[0.3333,0,0.6666,0.3333]},{t:2500;v:[0.77,0.77]}]}}}">
+      <g fill="none" stroke="none" transform="translate(200,170)translate(-212.4079,-167.4005)" data-px-meta="label:'Group'">
+        <g fill="none" stroke="none" transform="translate(118.1351,118.6524)translate(-992.2895,-100.76)" data-px-meta="label:'Group'">
+          <g transform="translate(992.2895,113.1344)" data-px-meta="effectsHost:{coreId:'_px_2jkdicsp',appliedEffects:{transformBy:{origin:[992.2895,113.1344],scale:{loop:{},keyframes:[{time:0,value:[0.77,0.77],easing:[0.3333,0.6666,0.6666,1]},{time:1250,value:[0.68,0.68],easing:[0.3333,0,0.6666,0.3333]},{time:2500,value:[0.77,0.77]}]}}}}">
             <g class="_px-animated _px_2kho2p20" transform="scale(0.77,0.77)">
-              <g id="_px_2jkdicsp" data-px-label="Planet 1 Scale" fill="none" stroke="none" transform="translate(-992.2895,-113.1344)">
-                <g data-px-label="Planet 1" fill="none" stroke="none" transform="translate(992.2895,113.1344)scale(0.5138,0.5138)translate(-808.2621,-892.4321)">
-                  <ellipse data-px-label="Ellipse 35" fill="#5371b7" stroke="none" transform="translate(804.3026,897.0841)scale(1.6418,1.6418)" rx="37.2938" ry="37.2938"/>
+              <g id="_px_2jkdicsp" fill="none" stroke="none" transform="translate(-992.2895,-113.1344)" data-px-meta="label:'Planet 1 Scale'">
+                <g fill="none" stroke="none" transform="translate(992.2895,113.1344)scale(0.5138,0.5138)translate(-808.2621,-892.4321)" data-px-meta="label:'Planet 1'">
+                  <ellipse fill="#5371b7" stroke="none" transform="translate(804.3026,897.0841)scale(1.6418,1.6418)" rx="37.2938" ry="37.2938" data-px-meta="label:'Ellipse 35'"/>
                 </g>
               </g>
             </g>
           </g>
         </g>
       </g>
-      <g data-px-label="Group" fill="none" stroke="none" transform="translate(200,171.1384)translate(-212.4079,-167.4005)">
-        <g data-px-label="Group" fill="none" stroke="none" transform="translate(118.1351,118.6524)translate(-992.2895,-100.76)">
-          <g transform="translate(992.2895,113.1344)" data-px-attrs="elementEffect:{baseId:_px_2jkdicso;transform:{origin:[992.2895,113.1344];scale:{loop:{keyframesCount:0};kfs:[{t:0;v:[0.77,0.77];e:[0.3333,0.6666,0.6666,1]},{t:1250;v:[0.68,0.68];e:[0.3333,0,0.6666,0.3333]},{t:2500;v:[0.77,0.77]}]}}}">
+      <g fill="none" stroke="none" transform="translate(200,171.1384)translate(-212.4079,-167.4005)" data-px-meta="label:'Group'">
+        <g fill="none" stroke="none" transform="translate(118.1351,118.6524)translate(-992.2895,-100.76)" data-px-meta="label:'Group'">
+          <g transform="translate(992.2895,113.1344)" data-px-meta="effectsHost:{coreId:'_px_2jkdicso',appliedEffects:{transformBy:{origin:[992.2895,113.1344],scale:{loop:{},keyframes:[{time:0,value:[0.77,0.77],easing:[0.3333,0.6666,0.6666,1]},{time:1250,value:[0.68,0.68],easing:[0.3333,0,0.6666,0.3333]},{time:2500,value:[0.77,0.77]}]}}}}">
             <g class="_px-animated _px_2kho2p20" transform="scale(0.77,0.77)">
-              <g id="_px_2jkdicso" data-px-label="Planet 1 Scale" fill="none" stroke="none" transform="translate(-992.2895,-113.1344)">
-                <g data-px-label="Planet 1" fill="none" stroke="none" transform="translate(992.2895,113.1344)scale(0.5138,0.5138)translate(-808.2621,-892.4321)">
-                  <ellipse data-px-label="Ellipse 36" fill="#8295a0" stroke="none" transform="translate(803.9405,890.632)scale(1.6418,1.6418)" rx="37.432" ry="37.432"/>
+              <g id="_px_2jkdicso" fill="none" stroke="none" transform="translate(-992.2895,-113.1344)" data-px-meta="label:'Planet 1 Scale'">
+                <g fill="none" stroke="none" transform="translate(992.2895,113.1344)scale(0.5138,0.5138)translate(-808.2621,-892.4321)" data-px-meta="label:'Planet 1'">
+                  <ellipse fill="#8295a0" stroke="none" transform="translate(803.9405,890.632)scale(1.6418,1.6418)" rx="37.432" ry="37.432" data-px-meta="label:'Ellipse 36'"/>
                 </g>
               </g>
             </g>
           </g>
         </g>
       </g>
-      <g data-px-label="Group" fill="none" stroke="none" transform="translate(200,170)translate(-212.4079,-167.4005)">
-        <g data-px-label="Group" fill="none" stroke="none" transform="translate(118.1351,118.6524)translate(-992.2895,-100.76)">
-          <g transform="translate(992.2895,113.1344)" data-px-attrs="elementEffect:{baseId:_px_2jkdicsn;transform:{origin:[992.2895,113.1344];scale:{loop:{keyframesCount:0};kfs:[{t:0;v:[0.77,0.77];e:[0.3333,0.6666,0.6666,1]},{t:1250;v:[0.68,0.68];e:[0.3333,0,0.6666,0.3333]},{t:2500;v:[0.77,0.77]}]}}}">
+      <g fill="none" stroke="none" transform="translate(200,170)translate(-212.4079,-167.4005)" data-px-meta="label:'Group'">
+        <g fill="none" stroke="none" transform="translate(118.1351,118.6524)translate(-992.2895,-100.76)" data-px-meta="label:'Group'">
+          <g transform="translate(992.2895,113.1344)" data-px-meta="effectsHost:{coreId:'_px_2jkdicsn',appliedEffects:{transformBy:{origin:[992.2895,113.1344],scale:{loop:{},keyframes:[{time:0,value:[0.77,0.77],easing:[0.3333,0.6666,0.6666,1]},{time:1250,value:[0.68,0.68],easing:[0.3333,0,0.6666,0.3333]},{time:2500,value:[0.77,0.77]}]}}}}">
             <g class="_px-animated _px_2kho2p20" transform="scale(0.77,0.77)">
-              <g id="_px_2jkdicsn" data-px-label="Planet 1 Scale" fill="none" stroke="none" transform="translate(-992.2895,-113.1344)">
-                <g data-px-label="Planet 1" fill="none" stroke="none" transform="translate(992.2895,113.1344)scale(0.5138,0.5138)translate(-808.2621,-892.4321)">
-                  <path data-px-label="Path 13" fill="#ffffff" stroke="none" transform="translate(812.5115,862.454)scale(1.6418,1.6418)" d="M-47.054,-2.935C-47.054,-2.935,-66.302,-5.805,-69.201,8.5C-72.1,22.805,-9,32.5,-9,32.5C-9,32.5,64.631,40.318,65,29.5C65.369,18.682,38.76,8.345,38.76,8.345C38.76,8.345,81.164,17.579,81,36.5C80.836,55.421,-12,45.5,-12,45.5C-12,45.5,-90.381,25.775,-86,10.5C-81.619,-4.775,-47.054,-2.935,-47.054,-2.935z"/>
+              <g id="_px_2jkdicsn" fill="none" stroke="none" transform="translate(-992.2895,-113.1344)" data-px-meta="label:'Planet 1 Scale'">
+                <g fill="none" stroke="none" transform="translate(992.2895,113.1344)scale(0.5138,0.5138)translate(-808.2621,-892.4321)" data-px-meta="label:'Planet 1'">
+                  <path fill="#ffffff" stroke="none" transform="translate(812.5115,862.454)scale(1.6418,1.6418)" d="M-47.054,-2.935C-47.054,-2.935,-66.302,-5.805,-69.201,8.5C-72.1,22.805,-9,32.5,-9,32.5C-9,32.5,64.631,40.318,65,29.5C65.369,18.682,38.76,8.345,38.76,8.345C38.76,8.345,81.164,17.579,81,36.5C80.836,55.421,-12,45.5,-12,45.5C-12,45.5,-90.381,25.775,-86,10.5C-81.619,-4.775,-47.054,-2.935,-47.054,-2.935z" data-px-meta="label:'Path 13'"/>
                 </g>
               </g>
             </g>
           </g>
         </g>
       </g>
-      <g data-px-label="Group" fill="none" stroke="none" transform="translate(200,170)translate(-212.4079,-167.4005)">
-        <g data-px-label="Group" fill="none" stroke="none" transform="translate(118.1351,118.6524)translate(-992.2895,-100.76)">
-          <g transform="translate(992.2895,113.1344)" data-px-attrs="elementEffect:{baseId:_px_2jkdicsm;transform:{origin:[992.2895,113.1344];scale:{loop:{keyframesCount:0};kfs:[{t:0;v:[0.77,0.77];e:[0.3333,0.6666,0.6666,1]},{t:1250;v:[0.68,0.68];e:[0.3333,0,0.6666,0.3333]},{t:2500;v:[0.77,0.77]}]}}}">
+      <g fill="none" stroke="none" transform="translate(200,170)translate(-212.4079,-167.4005)" data-px-meta="label:'Group'">
+        <g fill="none" stroke="none" transform="translate(118.1351,118.6524)translate(-992.2895,-100.76)" data-px-meta="label:'Group'">
+          <g transform="translate(992.2895,113.1344)" data-px-meta="effectsHost:{coreId:'_px_2jkdicsm',appliedEffects:{transformBy:{origin:[992.2895,113.1344],scale:{loop:{},keyframes:[{time:0,value:[0.77,0.77],easing:[0.3333,0.6666,0.6666,1]},{time:1250,value:[0.68,0.68],easing:[0.3333,0,0.6666,0.3333]},{time:2500,value:[0.77,0.77]}]}}}}">
             <g class="_px-animated _px_2kho2p20" transform="scale(0.77,0.77)">
-              <g id="_px_2jkdicsm" data-px-label="Planet 1 Scale" fill="none" stroke="none" transform="translate(-992.2895,-113.1344)">
-                <g data-px-label="Planet 1" fill="none" stroke="none" transform="translate(992.2895,113.1344)scale(0.5138,0.5138)translate(-808.2621,-892.4321)">
-                  <path data-px-label="Ellipse 14" fill="none" stroke="#134274" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" transform="translate(809.2279,893.6477)rotate(9)scale(1.6418,1.6418)" d="M38.923,-16.145C57.763,-12.447,68,-5.42,68,0C68,8.007,37.555,14.5,0,14.5C-37.555,14.5,-68,8.007,-68,0C-68,-4.531,-59.192,-11.276,-44.914,-15.094"/>
+              <g id="_px_2jkdicsm" fill="none" stroke="none" transform="translate(-992.2895,-113.1344)" data-px-meta="label:'Planet 1 Scale'">
+                <g fill="none" stroke="none" transform="translate(992.2895,113.1344)scale(0.5138,0.5138)translate(-808.2621,-892.4321)" data-px-meta="label:'Planet 1'">
+                  <path fill="none" stroke="#134274" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" transform="translate(809.2279,893.6477)rotate(9)scale(1.6418,1.6418)" d="M38.923,-16.145C57.763,-12.447,68,-5.42,68,0C68,8.007,37.555,14.5,0,14.5C-37.555,14.5,-68,8.007,-68,0C-68,-4.531,-59.192,-11.276,-44.914,-15.094" data-px-meta="label:'Ellipse 14'"/>
                 </g>
               </g>
             </g>
           </g>
         </g>
       </g>
-      <g data-px-label="Group" fill="none" stroke="none" transform="translate(200,170)translate(-212.4079,-167.4005)">
-        <g data-px-label="Group" fill="none" stroke="none" transform="translate(118.1351,118.6524)translate(-992.2895,-100.76)">
-          <g transform="translate(992.2895,113.1344)" data-px-attrs="elementEffect:{baseId:_px_2jkdicsl;transform:{origin:[992.2895,113.1344];scale:{loop:{keyframesCount:0};kfs:[{t:0;v:[0.77,0.77];e:[0.3333,0.6666,0.6666,1]},{t:1250;v:[0.68,0.68];e:[0.3333,0,0.6666,0.3333]},{t:2500;v:[0.77,0.77]}]}}}">
+      <g fill="none" stroke="none" transform="translate(200,170)translate(-212.4079,-167.4005)" data-px-meta="label:'Group'">
+        <g fill="none" stroke="none" transform="translate(118.1351,118.6524)translate(-992.2895,-100.76)" data-px-meta="label:'Group'">
+          <g transform="translate(992.2895,113.1344)" data-px-meta="effectsHost:{coreId:'_px_2jkdicsl',appliedEffects:{transformBy:{origin:[992.2895,113.1344],scale:{loop:{},keyframes:[{time:0,value:[0.77,0.77],easing:[0.3333,0.6666,0.6666,1]},{time:1250,value:[0.68,0.68],easing:[0.3333,0,0.6666,0.3333]},{time:2500,value:[0.77,0.77]}]}}}}">
             <g class="_px-animated _px_2kho2p20" transform="scale(0.77,0.77)">
-              <g id="_px_2jkdicsl" data-px-label="Planet 1 Scale" fill="none" stroke="none" transform="translate(-992.2895,-113.1344)">
-                <g data-px-label="Planet 1" fill="none" stroke="none" transform="translate(992.2895,113.1344)scale(0.5138,0.5138)translate(-808.2621,-892.4321)">
-                  <path data-px-label="Ellipse 15" fill="none" stroke="#134274" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" transform="translate(809.2279,893.6477)rotate(9)scale(1.6418,1.6418)translate(0,3.9649)" d="M39.001,-20.409C66.575,-16.904,84,-9.122,84,0C84,12.445,46.391,22.535,0,22.535C-46.391,22.535,-84,12.445,-84,0C-84,-7.977,-68.546,-14.988,-45.233,-18.991"/>
+              <g id="_px_2jkdicsl" fill="none" stroke="none" transform="translate(-992.2895,-113.1344)" data-px-meta="label:'Planet 1 Scale'">
+                <g fill="none" stroke="none" transform="translate(992.2895,113.1344)scale(0.5138,0.5138)translate(-808.2621,-892.4321)" data-px-meta="label:'Planet 1'">
+                  <path fill="none" stroke="#134274" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" transform="translate(809.2279,893.6477)rotate(9)scale(1.6418,1.6418)translate(0,3.9649)" d="M39.001,-20.409C66.575,-16.904,84,-9.122,84,0C84,12.445,46.391,22.535,0,22.535C-46.391,22.535,-84,12.445,-84,0C-84,-7.977,-68.546,-14.988,-45.233,-18.991" data-px-meta="label:'Ellipse 15'"/>
                 </g>
               </g>
             </g>
           </g>
         </g>
       </g>
-      <g data-px-label="Group" fill="none" stroke="none" transform="translate(200,170)translate(-212.4079,-167.4005)">
-        <g data-px-label="Group" fill="none" stroke="none" transform="translate(118.1351,118.6524)translate(-992.2895,-100.76)">
-          <g transform="translate(992.2895,113.1344)" data-px-attrs="elementEffect:{baseId:_px_2jkdicsk;transform:{origin:[992.2895,113.1344];scale:{loop:{keyframesCount:0};kfs:[{t:0;v:[0.77,0.77];e:[0.3333,0.6666,0.6666,1]},{t:1250;v:[0.68,0.68];e:[0.3333,0,0.6666,0.3333]},{t:2500;v:[0.77,0.77]}]}}}">
+      <g fill="none" stroke="none" transform="translate(200,170)translate(-212.4079,-167.4005)" data-px-meta="label:'Group'">
+        <g fill="none" stroke="none" transform="translate(118.1351,118.6524)translate(-992.2895,-100.76)" data-px-meta="label:'Group'">
+          <g transform="translate(992.2895,113.1344)" data-px-meta="effectsHost:{coreId:'_px_2jkdicsk',appliedEffects:{transformBy:{origin:[992.2895,113.1344],scale:{loop:{},keyframes:[{time:0,value:[0.77,0.77],easing:[0.3333,0.6666,0.6666,1]},{time:1250,value:[0.68,0.68],easing:[0.3333,0,0.6666,0.3333]},{time:2500,value:[0.77,0.77]}]}}}}">
             <g class="_px-animated _px_2kho2p20" transform="scale(0.77,0.77)">
-              <g id="_px_2jkdicsk" data-px-label="Planet 1 Scale" fill="none" stroke="none" transform="translate(-992.2895,-113.1344)">
-                <g data-px-label="Planet 1" fill="none" stroke="none" transform="translate(992.2895,113.1344)scale(0.5138,0.5138)translate(-808.2621,-892.4321)">
-                  <path data-px-label="Ellipse 37" fill="none" stroke="#4290dd" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" transform="translate(804.3026,894.4686)scale(1.6418,1.6418)" d="M-39,0C-39,-21.539,-21.539,-39,0,-39C21.539,-39,39.944,-18.238,39,0" style="display:none"/>
+              <g id="_px_2jkdicsk" fill="none" stroke="none" transform="translate(-992.2895,-113.1344)" data-px-meta="label:'Planet 1 Scale'">
+                <g fill="none" stroke="none" transform="translate(992.2895,113.1344)scale(0.5138,0.5138)translate(-808.2621,-892.4321)" data-px-meta="label:'Planet 1'">
+                  <path fill="none" stroke="#4290dd" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" transform="translate(804.3026,894.4686)scale(1.6418,1.6418)" d="M-39,0C-39,-21.539,-21.539,-39,0,-39C21.539,-39,39.944,-18.238,39,0" style="display:none" data-px-meta="label:'Ellipse 37'"/>
                 </g>
               </g>
             </g>
           </g>
         </g>
       </g>
-      <g data-px-label="Group" fill="none" stroke="none" transform="translate(200,170)translate(-212.4079,-167.4005)">
-        <g data-px-label="Group" fill="none" stroke="none" transform="translate(118.1351,118.6524)translate(-992.2895,-100.76)">
-          <g transform="translate(992.2895,113.1344)" data-px-attrs="elementEffect:{baseId:_px_2jkdicsj;transform:{origin:[992.2895,113.1344];scale:{loop:{keyframesCount:0};kfs:[{t:0;v:[0.77,0.77];e:[0.3333,0.6666,0.6666,1]},{t:1250;v:[0.68,0.68];e:[0.3333,0,0.6666,0.3333]},{t:2500;v:[0.77,0.77]}]}}}">
+      <g fill="none" stroke="none" transform="translate(200,170)translate(-212.4079,-167.4005)" data-px-meta="label:'Group'">
+        <g fill="none" stroke="none" transform="translate(118.1351,118.6524)translate(-992.2895,-100.76)" data-px-meta="label:'Group'">
+          <g transform="translate(992.2895,113.1344)" data-px-meta="effectsHost:{coreId:'_px_2jkdicsj',appliedEffects:{transformBy:{origin:[992.2895,113.1344],scale:{loop:{},keyframes:[{time:0,value:[0.77,0.77],easing:[0.3333,0.6666,0.6666,1]},{time:1250,value:[0.68,0.68],easing:[0.3333,0,0.6666,0.3333]},{time:2500,value:[0.77,0.77]}]}}}}">
             <g class="_px-animated _px_2kho2p20" transform="scale(0.77,0.77)">
-              <g id="_px_2jkdicsj" data-px-label="Planet 1 Scale" fill="none" stroke="none" transform="translate(-992.2895,-113.1344)">
-                <g data-px-label="Planet 1" fill="none" stroke="none" transform="translate(992.2895,113.1344)scale(0.5138,0.5138)translate(-808.2621,-892.4321)">
-                  <path data-px-label="Ellipse 38" fill="none" stroke="#134274" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" transform="translate(804.3026,894.4686)scale(1.6418,1.6418)" d="M-39,0C-39,-21.539,-21.539,-39,0,-39C21.539,-39,39.944,-18.238,39,0" style="display:none"/>
+              <g id="_px_2jkdicsj" fill="none" stroke="none" transform="translate(-992.2895,-113.1344)" data-px-meta="label:'Planet 1 Scale'">
+                <g fill="none" stroke="none" transform="translate(992.2895,113.1344)scale(0.5138,0.5138)translate(-808.2621,-892.4321)" data-px-meta="label:'Planet 1'">
+                  <path fill="none" stroke="#134274" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" transform="translate(804.3026,894.4686)scale(1.6418,1.6418)" d="M-39,0C-39,-21.539,-21.539,-39,0,-39C21.539,-39,39.944,-18.238,39,0" style="display:none" data-px-meta="label:'Ellipse 38'"/>
                 </g>
               </g>
             </g>
           </g>
         </g>
       </g>
-      <g data-px-label="Group" fill="none" stroke="none" transform="translate(200,170)translate(-212.4079,-167.4005)">
-        <g data-px-label="Group" fill="none" stroke="none" transform="translate(118.1351,118.6524)translate(-992.2895,-100.76)">
-          <g transform="translate(992.2895,113.1344)" data-px-attrs="elementEffect:{baseId:_px_2jkdicsi;transform:{origin:[992.2895,113.1344];scale:{loop:{keyframesCount:0};kfs:[{t:0;v:[0.77,0.77];e:[0.3333,0.6666,0.6666,1]},{t:1250;v:[0.68,0.68];e:[0.3333,0,0.6666,0.3333]},{t:2500;v:[0.77,0.77]}]}}}">
+      <g fill="none" stroke="none" transform="translate(200,170)translate(-212.4079,-167.4005)" data-px-meta="label:'Group'">
+        <g fill="none" stroke="none" transform="translate(118.1351,118.6524)translate(-992.2895,-100.76)" data-px-meta="label:'Group'">
+          <g transform="translate(992.2895,113.1344)" data-px-meta="effectsHost:{coreId:'_px_2jkdicsi',appliedEffects:{transformBy:{origin:[992.2895,113.1344],scale:{loop:{},keyframes:[{time:0,value:[0.77,0.77],easing:[0.3333,0.6666,0.6666,1]},{time:1250,value:[0.68,0.68],easing:[0.3333,0,0.6666,0.3333]},{time:2500,value:[0.77,0.77]}]}}}}">
             <g class="_px-animated _px_2kho2p20" transform="scale(0.77,0.77)">
-              <g id="_px_2jkdicsi" data-px-label="Planet 1 Scale" fill="none" stroke="none" transform="translate(-992.2895,-113.1344)">
-                <g data-px-label="Planet 1" fill="none" stroke="none" transform="translate(992.2895,113.1344)scale(0.5138,0.5138)translate(-808.2621,-892.4321)">
-                  <g data-px-label="Group 27" fill="none" stroke="none" transform="translate(809.2408,855.4208)rotate(90)scale(0.8258,0.8258)translate(-484,-642)">
-                    <ellipse data-px-label="Ellipse 28" fill="#153173" stroke="none" transform="translate(483,642)" rx="9" ry="9"/>
-                    <ellipse data-px-label="Ellipse 32" fill="#42588f" stroke="none" transform="translate(484,642)" rx="9" ry="9"/>
-                    <ellipse data-px-label="Ellipse 34" fill="#7a8db7" stroke="none" transform="translate(485,642)" rx="9" ry="9"/>
+              <g id="_px_2jkdicsi" fill="none" stroke="none" transform="translate(-992.2895,-113.1344)" data-px-meta="label:'Planet 1 Scale'">
+                <g fill="none" stroke="none" transform="translate(992.2895,113.1344)scale(0.5138,0.5138)translate(-808.2621,-892.4321)" data-px-meta="label:'Planet 1'">
+                  <g fill="none" stroke="none" transform="translate(809.2408,855.4208)rotate(90)scale(0.8258,0.8258)translate(-484,-642)" data-px-meta="label:'Group 27'">
+                    <ellipse fill="#153173" stroke="none" transform="translate(483,642)" rx="9" ry="9" data-px-meta="label:'Ellipse 28'"/>
+                    <ellipse fill="#42588f" stroke="none" transform="translate(484,642)" rx="9" ry="9" data-px-meta="label:'Ellipse 32'"/>
+                    <ellipse fill="#7a8db7" stroke="none" transform="translate(485,642)" rx="9" ry="9" data-px-meta="label:'Ellipse 34'"/>
                   </g>
                 </g>
               </g>
@@ -1187,16 +1187,16 @@
           </g>
         </g>
       </g>
-      <g data-px-label="Group" fill="none" stroke="none" transform="translate(200,170)translate(-212.4079,-167.4005)">
-        <g data-px-label="Group" fill="none" stroke="none" transform="translate(118.1351,118.6524)translate(-992.2895,-100.76)">
-          <g transform="translate(992.2895,113.1344)" data-px-attrs="elementEffect:{baseId:_px_2jkdicsh;transform:{origin:[992.2895,113.1344];scale:{loop:{keyframesCount:0};kfs:[{t:0;v:[0.77,0.77];e:[0.3333,0.6666,0.6666,1]},{t:1250;v:[0.68,0.68];e:[0.3333,0,0.6666,0.3333]},{t:2500;v:[0.77,0.77]}]}}}">
+      <g fill="none" stroke="none" transform="translate(200,170)translate(-212.4079,-167.4005)" data-px-meta="label:'Group'">
+        <g fill="none" stroke="none" transform="translate(118.1351,118.6524)translate(-992.2895,-100.76)" data-px-meta="label:'Group'">
+          <g transform="translate(992.2895,113.1344)" data-px-meta="effectsHost:{coreId:'_px_2jkdicsh',appliedEffects:{transformBy:{origin:[992.2895,113.1344],scale:{loop:{},keyframes:[{time:0,value:[0.77,0.77],easing:[0.3333,0.6666,0.6666,1]},{time:1250,value:[0.68,0.68],easing:[0.3333,0,0.6666,0.3333]},{time:2500,value:[0.77,0.77]}]}}}}">
             <g class="_px-animated _px_2kho2p20" transform="scale(0.77,0.77)">
-              <g id="_px_2jkdicsh" data-px-label="Planet 1 Scale" fill="none" stroke="none" transform="translate(-992.2895,-113.1344)">
-                <g data-px-label="Planet 1" fill="none" stroke="none" transform="translate(992.2895,113.1344)scale(0.5138,0.5138)translate(-808.2621,-892.4321)">
-                  <g data-px-label="Group 28" fill="none" stroke="none" transform="translate(840.5295,887.49)scale(1.3077,1.3077)translate(-484,-642)">
-                    <ellipse data-px-label="Ellipse 28" fill="#153173" stroke="none" transform="translate(483,642)" rx="9" ry="9"/>
-                    <ellipse data-px-label="Ellipse 32" fill="#42588f" stroke="none" transform="translate(484,642)" rx="9" ry="9"/>
-                    <ellipse data-px-label="Ellipse 34" fill="#7a8db7" stroke="none" transform="translate(485,642)" rx="9" ry="9"/>
+              <g id="_px_2jkdicsh" fill="none" stroke="none" transform="translate(-992.2895,-113.1344)" data-px-meta="label:'Planet 1 Scale'">
+                <g fill="none" stroke="none" transform="translate(992.2895,113.1344)scale(0.5138,0.5138)translate(-808.2621,-892.4321)" data-px-meta="label:'Planet 1'">
+                  <g fill="none" stroke="none" transform="translate(840.5295,887.49)scale(1.3077,1.3077)translate(-484,-642)" data-px-meta="label:'Group 28'">
+                    <ellipse fill="#153173" stroke="none" transform="translate(483,642)" rx="9" ry="9" data-px-meta="label:'Ellipse 28'"/>
+                    <ellipse fill="#42588f" stroke="none" transform="translate(484,642)" rx="9" ry="9" data-px-meta="label:'Ellipse 32'"/>
+                    <ellipse fill="#7a8db7" stroke="none" transform="translate(485,642)" rx="9" ry="9" data-px-meta="label:'Ellipse 34'"/>
                   </g>
                 </g>
               </g>
@@ -1204,16 +1204,16 @@
           </g>
         </g>
       </g>
-      <g data-px-label="Group" fill="none" stroke="none" transform="translate(200,170)translate(-212.4079,-167.4005)">
-        <g data-px-label="Group" fill="none" stroke="none" transform="translate(118.1351,118.6524)translate(-992.2895,-100.76)">
-          <g transform="translate(992.2895,113.1344)" data-px-attrs="elementEffect:{baseId:_px_2jkdicsg;transform:{origin:[992.2895,113.1344];scale:{loop:{keyframesCount:0};kfs:[{t:0;v:[0.77,0.77];e:[0.3333,0.6666,0.6666,1]},{t:1250;v:[0.68,0.68];e:[0.3333,0,0.6666,0.3333]},{t:2500;v:[0.77,0.77]}]}}}">
+      <g fill="none" stroke="none" transform="translate(200,170)translate(-212.4079,-167.4005)" data-px-meta="label:'Group'">
+        <g fill="none" stroke="none" transform="translate(118.1351,118.6524)translate(-992.2895,-100.76)" data-px-meta="label:'Group'">
+          <g transform="translate(992.2895,113.1344)" data-px-meta="effectsHost:{coreId:'_px_2jkdicsg',appliedEffects:{transformBy:{origin:[992.2895,113.1344],scale:{loop:{},keyframes:[{time:0,value:[0.77,0.77],easing:[0.3333,0.6666,0.6666,1]},{time:1250,value:[0.68,0.68],easing:[0.3333,0,0.6666,0.3333]},{time:2500,value:[0.77,0.77]}]}}}}">
             <g class="_px-animated _px_2kho2p20" transform="scale(0.77,0.77)">
-              <g id="_px_2jkdicsg" data-px-label="Planet 1 Scale" fill="none" stroke="none" transform="translate(-992.2895,-113.1344)">
-                <g data-px-label="Planet 1" fill="none" stroke="none" transform="translate(992.2895,113.1344)scale(0.5138,0.5138)translate(-808.2621,-892.4321)">
-                  <g data-px-label="Group 29" fill="none" stroke="none" transform="translate(775.0745,879.5175)rotate(135)scale(1.8622,1.8622)translate(-484,-642)">
-                    <ellipse data-px-label="Ellipse 28" fill="#153173" stroke="none" transform="translate(483,642)" rx="9" ry="9"/>
-                    <ellipse data-px-label="Ellipse 32" fill="#42588f" stroke="none" transform="translate(484,642)" rx="9" ry="9"/>
-                    <ellipse data-px-label="Ellipse 34" fill="#7a8db7" stroke="none" transform="translate(485,642)" rx="9" ry="9"/>
+              <g id="_px_2jkdicsg" fill="none" stroke="none" transform="translate(-992.2895,-113.1344)" data-px-meta="label:'Planet 1 Scale'">
+                <g fill="none" stroke="none" transform="translate(992.2895,113.1344)scale(0.5138,0.5138)translate(-808.2621,-892.4321)" data-px-meta="label:'Planet 1'">
+                  <g fill="none" stroke="none" transform="translate(775.0745,879.5175)rotate(135)scale(1.8622,1.8622)translate(-484,-642)" data-px-meta="label:'Group 29'">
+                    <ellipse fill="#153173" stroke="none" transform="translate(483,642)" rx="9" ry="9" data-px-meta="label:'Ellipse 28'"/>
+                    <ellipse fill="#42588f" stroke="none" transform="translate(484,642)" rx="9" ry="9" data-px-meta="label:'Ellipse 32'"/>
+                    <ellipse fill="#7a8db7" stroke="none" transform="translate(485,642)" rx="9" ry="9" data-px-meta="label:'Ellipse 34'"/>
                   </g>
                 </g>
               </g>
@@ -1221,15 +1221,15 @@
           </g>
         </g>
       </g>
-      <g data-px-label="Group" fill="none" stroke="none" transform="translate(200,170)translate(-212.4079,-167.4005)">
-        <g data-px-label="Group" fill="none" stroke="none" transform="translate(118.1351,118.6524)translate(-992.2895,-100.76)">
-          <g transform="translate(992.2895,113.1344)" data-px-attrs="elementEffect:{baseId:_px_2jkdicsf;transform:{origin:[992.2895,113.1344];scale:{loop:{keyframesCount:0};kfs:[{t:0;v:[0.77,0.77];e:[0.3333,0.6666,0.6666,1]},{t:1250;v:[0.68,0.68];e:[0.3333,0,0.6666,0.3333]},{t:2500;v:[0.77,0.77]}]}}}">
+      <g fill="none" stroke="none" transform="translate(200,170)translate(-212.4079,-167.4005)" data-px-meta="label:'Group'">
+        <g fill="none" stroke="none" transform="translate(118.1351,118.6524)translate(-992.2895,-100.76)" data-px-meta="label:'Group'">
+          <g transform="translate(992.2895,113.1344)" data-px-meta="effectsHost:{coreId:'_px_2jkdicsf',appliedEffects:{transformBy:{origin:[992.2895,113.1344],scale:{loop:{},keyframes:[{time:0,value:[0.77,0.77],easing:[0.3333,0.6666,0.6666,1]},{time:1250,value:[0.68,0.68],easing:[0.3333,0,0.6666,0.3333]},{time:2500,value:[0.77,0.77]}]}}}}">
             <g class="_px-animated _px_2kho2p20" transform="scale(0.77,0.77)">
-              <g id="_px_2jkdicsf" data-px-label="Planet 1 Scale" fill="none" stroke="none" transform="translate(-992.2895,-113.1344)">
-                <g data-px-label="Planet 1" fill="none" stroke="none" transform="translate(992.2895,113.1344)scale(0.5138,0.5138)translate(-808.2621,-892.4321)">
-                  <g data-px-label="Group 30" fill="none" stroke="none" transform="translate(808.8998,880.8343)rotate(90)scale(0.3267,0.3267)translate(-484,-642)">
-                    <ellipse data-px-label="Ellipse 28" fill="#153173" stroke="none" transform="translate(483,642)" rx="9" ry="9"/>
-                    <ellipse data-px-label="Ellipse 34" fill="#7a8db7" stroke="none" transform="translate(483.9217,642)" rx="9" ry="9"/>
+              <g id="_px_2jkdicsf" fill="none" stroke="none" transform="translate(-992.2895,-113.1344)" data-px-meta="label:'Planet 1 Scale'">
+                <g fill="none" stroke="none" transform="translate(992.2895,113.1344)scale(0.5138,0.5138)translate(-808.2621,-892.4321)" data-px-meta="label:'Planet 1'">
+                  <g fill="none" stroke="none" transform="translate(808.8998,880.8343)rotate(90)scale(0.3267,0.3267)translate(-484,-642)" data-px-meta="label:'Group 30'">
+                    <ellipse fill="#153173" stroke="none" transform="translate(483,642)" rx="9" ry="9" data-px-meta="label:'Ellipse 28'"/>
+                    <ellipse fill="#7a8db7" stroke="none" transform="translate(483.9217,642)" rx="9" ry="9" data-px-meta="label:'Ellipse 34'"/>
                   </g>
                 </g>
               </g>
@@ -1237,15 +1237,15 @@
           </g>
         </g>
       </g>
-      <g data-px-label="Group" fill="none" stroke="none" transform="translate(200,170)translate(-212.4079,-167.4005)">
-        <g data-px-label="Group" fill="none" stroke="none" transform="translate(118.1351,118.6524)translate(-992.2895,-100.76)">
-          <g transform="translate(992.2895,113.1344)" data-px-attrs="elementEffect:{baseId:_px_2jkdicse;transform:{origin:[992.2895,113.1344];scale:{loop:{keyframesCount:0};kfs:[{t:0;v:[0.77,0.77];e:[0.3333,0.6666,0.6666,1]},{t:1250;v:[0.68,0.68];e:[0.3333,0,0.6666,0.3333]},{t:2500;v:[0.77,0.77]}]}}}">
+      <g fill="none" stroke="none" transform="translate(200,170)translate(-212.4079,-167.4005)" data-px-meta="label:'Group'">
+        <g fill="none" stroke="none" transform="translate(118.1351,118.6524)translate(-992.2895,-100.76)" data-px-meta="label:'Group'">
+          <g transform="translate(992.2895,113.1344)" data-px-meta="effectsHost:{coreId:'_px_2jkdicse',appliedEffects:{transformBy:{origin:[992.2895,113.1344],scale:{loop:{},keyframes:[{time:0,value:[0.77,0.77],easing:[0.3333,0.6666,0.6666,1]},{time:1250,value:[0.68,0.68],easing:[0.3333,0,0.6666,0.3333]},{time:2500,value:[0.77,0.77]}]}}}}">
             <g class="_px-animated _px_2kho2p20" transform="scale(0.77,0.77)">
-              <g id="_px_2jkdicse" data-px-label="Planet 1 Scale" fill="none" stroke="none" transform="translate(-992.2895,-113.1344)">
-                <g data-px-label="Planet 1" fill="none" stroke="none" transform="translate(992.2895,113.1344)scale(0.5138,0.5138)translate(-808.2621,-892.4321)">
-                  <g data-px-label="Group 31" fill="none" stroke="none" transform="translate(787.3651,851.2555)scale(0.1948,0.1948)translate(-484,-642)">
-                    <ellipse data-px-label="Ellipse 28" fill="#153173" stroke="none" transform="translate(483,642)" rx="9" ry="9"/>
-                    <ellipse data-px-label="Ellipse 34" fill="#7a8db7" stroke="none" transform="translate(483.9217,642)" rx="9" ry="9"/>
+              <g id="_px_2jkdicse" fill="none" stroke="none" transform="translate(-992.2895,-113.1344)" data-px-meta="label:'Planet 1 Scale'">
+                <g fill="none" stroke="none" transform="translate(992.2895,113.1344)scale(0.5138,0.5138)translate(-808.2621,-892.4321)" data-px-meta="label:'Planet 1'">
+                  <g fill="none" stroke="none" transform="translate(787.3651,851.2555)scale(0.1948,0.1948)translate(-484,-642)" data-px-meta="label:'Group 31'">
+                    <ellipse fill="#153173" stroke="none" transform="translate(483,642)" rx="9" ry="9" data-px-meta="label:'Ellipse 28'"/>
+                    <ellipse fill="#7a8db7" stroke="none" transform="translate(483.9217,642)" rx="9" ry="9" data-px-meta="label:'Ellipse 34'"/>
                   </g>
                 </g>
               </g>
@@ -1253,15 +1253,15 @@
           </g>
         </g>
       </g>
-      <g data-px-label="Group" fill="none" stroke="none" transform="translate(200,170)translate(-212.4079,-167.4005)">
-        <g data-px-label="Group" fill="none" stroke="none" transform="translate(118.1351,118.6524)translate(-992.2895,-100.76)">
-          <g transform="translate(992.2895,113.1344)" data-px-attrs="elementEffect:{baseId:_px_2jkdicsd;transform:{origin:[992.2895,113.1344];scale:{loop:{keyframesCount:0};kfs:[{t:0;v:[0.77,0.77];e:[0.3333,0.6666,0.6666,1]},{t:1250;v:[0.68,0.68];e:[0.3333,0,0.6666,0.3333]},{t:2500;v:[0.77,0.77]}]}}}">
+      <g fill="none" stroke="none" transform="translate(200,170)translate(-212.4079,-167.4005)" data-px-meta="label:'Group'">
+        <g fill="none" stroke="none" transform="translate(118.1351,118.6524)translate(-992.2895,-100.76)" data-px-meta="label:'Group'">
+          <g transform="translate(992.2895,113.1344)" data-px-meta="effectsHost:{coreId:'_px_2jkdicsd',appliedEffects:{transformBy:{origin:[992.2895,113.1344],scale:{loop:{},keyframes:[{time:0,value:[0.77,0.77],easing:[0.3333,0.6666,0.6666,1]},{time:1250,value:[0.68,0.68],easing:[0.3333,0,0.6666,0.3333]},{time:2500,value:[0.77,0.77]}]}}}}">
             <g class="_px-animated _px_2kho2p20" transform="scale(0.77,0.77)">
-              <g id="_px_2jkdicsd" data-px-label="Planet 1 Scale" fill="none" stroke="none" transform="translate(-992.2895,-113.1344)">
-                <g data-px-label="Planet 1" fill="none" stroke="none" transform="translate(992.2895,113.1344)scale(0.5138,0.5138)translate(-808.2621,-892.4321)">
-                  <g data-px-label="Group 32" fill="none" stroke="none" transform="translate(837.0585,866.9482)scale(0.1948,0.1948)translate(-484,-642)">
-                    <ellipse data-px-label="Ellipse 28" fill="#153173" stroke="none" transform="translate(483,642)" rx="9" ry="9"/>
-                    <ellipse data-px-label="Ellipse 34" fill="#7a8db7" stroke="none" transform="translate(483.9217,642)" rx="9" ry="9"/>
+              <g id="_px_2jkdicsd" fill="none" stroke="none" transform="translate(-992.2895,-113.1344)" data-px-meta="label:'Planet 1 Scale'">
+                <g fill="none" stroke="none" transform="translate(992.2895,113.1344)scale(0.5138,0.5138)translate(-808.2621,-892.4321)" data-px-meta="label:'Planet 1'">
+                  <g fill="none" stroke="none" transform="translate(837.0585,866.9482)scale(0.1948,0.1948)translate(-484,-642)" data-px-meta="label:'Group 32'">
+                    <ellipse fill="#153173" stroke="none" transform="translate(483,642)" rx="9" ry="9" data-px-meta="label:'Ellipse 28'"/>
+                    <ellipse fill="#7a8db7" stroke="none" transform="translate(483.9217,642)" rx="9" ry="9" data-px-meta="label:'Ellipse 34'"/>
                   </g>
                 </g>
               </g>
@@ -1269,15 +1269,15 @@
           </g>
         </g>
       </g>
-      <g data-px-label="Group" fill="none" stroke="none" transform="translate(200,170)translate(-212.4079,-167.4005)">
-        <g data-px-label="Group" fill="none" stroke="none" transform="translate(118.1351,118.6524)translate(-992.2895,-100.76)">
-          <g transform="translate(992.2895,113.1344)" data-px-attrs="elementEffect:{baseId:_px_2jkdicsc;transform:{origin:[992.2895,113.1344];scale:{loop:{keyframesCount:0};kfs:[{t:0;v:[0.77,0.77];e:[0.3333,0.6666,0.6666,1]},{t:1250;v:[0.68,0.68];e:[0.3333,0,0.6666,0.3333]},{t:2500;v:[0.77,0.77]}]}}}">
+      <g fill="none" stroke="none" transform="translate(200,170)translate(-212.4079,-167.4005)" data-px-meta="label:'Group'">
+        <g fill="none" stroke="none" transform="translate(118.1351,118.6524)translate(-992.2895,-100.76)" data-px-meta="label:'Group'">
+          <g transform="translate(992.2895,113.1344)" data-px-meta="effectsHost:{coreId:'_px_2jkdicsc',appliedEffects:{transformBy:{origin:[992.2895,113.1344],scale:{loop:{},keyframes:[{time:0,value:[0.77,0.77],easing:[0.3333,0.6666,0.6666,1]},{time:1250,value:[0.68,0.68],easing:[0.3333,0,0.6666,0.3333]},{time:2500,value:[0.77,0.77]}]}}}}">
             <g class="_px-animated _px_2kho2p20" transform="scale(0.77,0.77)">
-              <g id="_px_2jkdicsc" data-px-label="Planet 1 Scale" fill="none" stroke="none" transform="translate(-992.2895,-113.1344)">
-                <g data-px-label="Planet 1" fill="none" stroke="none" transform="translate(992.2895,113.1344)scale(0.5138,0.5138)translate(-808.2621,-892.4321)">
-                  <g data-px-label="Group 33" fill="none" stroke="none" transform="translate(838.3663,906.1799)scale(0.1948,0.1948)translate(-484,-642)">
-                    <ellipse data-px-label="Ellipse 28" fill="#153173" stroke="none" transform="translate(483,642)" rx="9" ry="9"/>
-                    <ellipse data-px-label="Ellipse 34" fill="#7a8db7" stroke="none" transform="translate(483.9217,642)" rx="9" ry="9"/>
+              <g id="_px_2jkdicsc" fill="none" stroke="none" transform="translate(-992.2895,-113.1344)" data-px-meta="label:'Planet 1 Scale'">
+                <g fill="none" stroke="none" transform="translate(992.2895,113.1344)scale(0.5138,0.5138)translate(-808.2621,-892.4321)" data-px-meta="label:'Planet 1'">
+                  <g fill="none" stroke="none" transform="translate(838.3663,906.1799)scale(0.1948,0.1948)translate(-484,-642)" data-px-meta="label:'Group 33'">
+                    <ellipse fill="#153173" stroke="none" transform="translate(483,642)" rx="9" ry="9" data-px-meta="label:'Ellipse 28'"/>
+                    <ellipse fill="#7a8db7" stroke="none" transform="translate(483.9217,642)" rx="9" ry="9" data-px-meta="label:'Ellipse 34'"/>
                   </g>
                 </g>
               </g>
@@ -1285,266 +1285,16 @@
           </g>
         </g>
       </g>
-      <g data-px-label="Group" fill="none" stroke="none" transform="translate(200,170)translate(-212.4079,-167.4005)">
-        <g data-px-label="Group" fill="none" stroke="none" transform="translate(118.1351,118.6524)translate(-992.2895,-100.76)">
-          <g transform="translate(992.2895,113.1344)" data-px-attrs="elementEffect:{baseId:_px_2jkdics9;transform:{origin:[992.2895,113.1344];scale:{loop:{keyframesCount:0};kfs:[{t:0;v:[0.77,0.77];e:[0.3333,0.6666,0.6666,1]},{t:1250;v:[0.68,0.68];e:[0.3333,0,0.6666,0.3333]},{t:2500;v:[0.77,0.77]}]}}}">
+      <g fill="none" stroke="none" transform="translate(200,170)translate(-212.4079,-167.4005)" data-px-meta="label:'Group'">
+        <g fill="none" stroke="none" transform="translate(118.1351,118.6524)translate(-992.2895,-100.76)" data-px-meta="label:'Group'">
+          <g transform="translate(992.2895,113.1344)" data-px-meta="effectsHost:{coreId:'_px_2jkdics9',appliedEffects:{transformBy:{origin:[992.2895,113.1344],scale:{loop:{},keyframes:[{time:0,value:[0.77,0.77],easing:[0.3333,0.6666,0.6666,1]},{time:1250,value:[0.68,0.68],easing:[0.3333,0,0.6666,0.3333]},{time:2500,value:[0.77,0.77]}]}}}}">
             <g class="_px-animated _px_2kho2p20" transform="scale(0.77,0.77)">
-              <g id="_px_2jkdics9" data-px-label="Planet 1 Scale" fill="none" stroke="none" transform="translate(-992.2895,-113.1344)">
-                <g data-px-label="Planet 1" fill="none" stroke="none" transform="translate(992.2895,113.1344)scale(0.5138,0.5138)translate(-808.2621,-892.4321)">
-                  <g data-px-label="Group 34" fill="none" stroke="none" transform="translate(771.6724,903.5644)rotate(180)scale(0.1948,0.1948)translate(-484,-642)">
-                    <ellipse data-px-label="Ellipse 28" fill="#153173" stroke="none" transform="translate(483,642)" rx="9" ry="9"/>
-                    <ellipse data-px-label="Ellipse 34" fill="#7a8db7" stroke="none" transform="translate(483.9217,642)" rx="9" ry="9"/>
+              <g id="_px_2jkdics9" fill="none" stroke="none" transform="translate(-992.2895,-113.1344)" data-px-meta="label:'Planet 1 Scale'">
+                <g fill="none" stroke="none" transform="translate(992.2895,113.1344)scale(0.5138,0.5138)translate(-808.2621,-892.4321)" data-px-meta="label:'Planet 1'">
+                  <g fill="none" stroke="none" transform="translate(771.6724,903.5644)rotate(180)scale(0.1948,0.1948)translate(-484,-642)" data-px-meta="label:'Group 34'">
+                    <ellipse fill="#153173" stroke="none" transform="translate(483,642)" rx="9" ry="9" data-px-meta="label:'Ellipse 28'"/>
+                    <ellipse fill="#7a8db7" stroke="none" transform="translate(483.9217,642)" rx="9" ry="9" data-px-meta="label:'Ellipse 34'"/>
                   </g>
-                </g>
-              </g>
-            </g>
-          </g>
-        </g>
-      </g>
-    </g>
-    <g data-px-label="planet 1" transform="translate(314.9253,143.2431)translate(-314.9253,-143.2431)">
-      <g data-px-label="Group" fill="none" stroke="none" transform="translate(200,170)translate(-212.4079,-167.4005)">
-        <g data-px-label="Group 2" fill="none" stroke="none" transform="translate(325.6932,134.1666)translate(-1179.8475,-116.2742)">
-          <g transform="translate(1181.4875,122.2724)" data-px-attrs="elementEffect:{baseId:_px_2jkdics5;transform:{origin:[1181.4875,122.2724];scale:{loop:{keyframesCount:0};kfs:[{t:0;v:[0.77,0.77];e:[0.3333,0.6666,0.6666,1]},{t:1250;v:[0.63,0.63];e:[0.3333,0,0.6666,0.3333]},{t:2500;v:[0.77,0.77]}]}}}">
-            <g class="_px-animated _px_2kho2p1v" transform="scale(0.77,0.77)">
-              <g id="_px_2jkdics5" data-px-label="Planet 2 Scale" fill="none" stroke="none" transform="translate(-1181.4875,-122.2724)">
-                <g data-px-label="Planet 2" fill="none" stroke="none" transform="translate(1181.4875,122.2724)scale(0.3332,0.3332)translate(-802.9195,-892.4327)">
-                  <path data-px-label="Ellipse 33" fill="none" stroke="#134274" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" transform="translate(804.3026,894.4686)scale(1.6418,1.6418)" d="M0,-39C21.539,-39,39,-21.539,39,0C39,21.539,21.539,39,0,39C-21.539,39,-39,21.539,-39,0C-39,-21.539,-21.539,-39,0,-39z"/>
-                </g>
-              </g>
-            </g>
-          </g>
-        </g>
-      </g>
-      <g data-px-label="Group" fill="none" stroke="none" transform="translate(200,170)translate(-212.4079,-167.4005)">
-        <g data-px-label="Group 2" fill="none" stroke="none" transform="translate(325.6932,134.1666)translate(-1179.8475,-116.2742)">
-          <g transform="translate(1181.4875,122.2724)" data-px-attrs="elementEffect:{baseId:_px_2jkdics4;transform:{origin:[1181.4875,122.2724];scale:{loop:{keyframesCount:0};kfs:[{t:0;v:[0.77,0.77];e:[0.3333,0.6666,0.6666,1]},{t:1250;v:[0.63,0.63];e:[0.3333,0,0.6666,0.3333]},{t:2500;v:[0.77,0.77]}]}}}">
-            <g class="_px-animated _px_2kho2p1v" transform="scale(0.77,0.77)">
-              <g id="_px_2jkdics4" data-px-label="Planet 2 Scale" fill="none" stroke="none" transform="translate(-1181.4875,-122.2724)">
-                <g data-px-label="Planet 2" fill="none" stroke="none" transform="translate(1181.4875,122.2724)scale(0.3332,0.3332)translate(-802.9195,-892.4327)">
-                  <path data-px-label="Ellipse 34" fill="#98aeba" stroke="none" transform="translate(804.3026,897.0841)scale(1.6418,1.6418)" d="M0,-35.84C19.794,-35.84,35.84,-19.794,35.84,0C35.84,19.794,19.794,35.84,0,35.84C-19.794,35.84,-35.84,19.794,-35.84,0C-35.84,-19.794,-19.794,-35.84,0,-35.84z"/>
-                </g>
-              </g>
-            </g>
-          </g>
-        </g>
-      </g>
-      <g data-px-label="Group" fill="none" stroke="none" transform="translate(200,170)translate(-212.4079,-167.4005)">
-        <g data-px-label="Group 2" fill="none" stroke="none" transform="translate(325.6932,134.1666)translate(-1179.8475,-116.2742)">
-          <g transform="translate(1181.4875,122.2724)" data-px-attrs="elementEffect:{baseId:_px_2jkdics3;transform:{origin:[1181.4875,122.2724];scale:{loop:{keyframesCount:0};kfs:[{t:0;v:[0.77,0.77];e:[0.3333,0.6666,0.6666,1]},{t:1250;v:[0.63,0.63];e:[0.3333,0,0.6666,0.3333]},{t:2500;v:[0.77,0.77]}]}}}">
-            <g class="_px-animated _px_2kho2p1v" transform="scale(0.77,0.77)">
-              <g id="_px_2jkdics3" data-px-label="Planet 2 Scale" fill="none" stroke="none" transform="translate(-1181.4875,-122.2724)">
-                <g data-px-label="Planet 2" fill="none" stroke="none" transform="translate(1181.4875,122.2724)scale(0.3332,0.3332)translate(-802.9195,-892.4327)">
-                  <path data-px-label="Ellipse 35" fill="#3c6590" stroke="none" transform="translate(804.3026,897.0841)scale(1.6418,1.6418)" d="M0,-36.7199C20.784,-36.7199,37.6326,-20.28,37.6326,0C37.6326,20.28,20.784,36.7199,0,36.7199C-20.784,36.7199,-37.6326,20.28,-37.6326,0C-37.6326,-20.28,-20.784,-36.7199,0,-36.7199z"/>
-                </g>
-              </g>
-            </g>
-          </g>
-        </g>
-      </g>
-      <g data-px-label="Group" fill="none" stroke="none" transform="translate(200.1429,170.6227)translate(-212.4079,-167.4005)">
-        <g data-px-label="Group 2" fill="none" stroke="none" transform="translate(325.6932,134.1666)translate(-1179.8475,-116.2742)">
-          <g transform="translate(1181.4875,122.2724)" data-px-attrs="elementEffect:{baseId:_px_2jkdics2;transform:{origin:[1181.4875,122.2724];scale:{loop:{keyframesCount:0};kfs:[{t:0;v:[0.77,0.77];e:[0.3333,0.6666,0.6666,1]},{t:1250;v:[0.63,0.63];e:[0.3333,0,0.6666,0.3333]},{t:2500;v:[0.77,0.77]}]}}}">
-            <g class="_px-animated _px_2kho2p1v" transform="scale(0.77,0.77)">
-              <g id="_px_2jkdics2" data-px-label="Planet 2 Scale" fill="none" stroke="none" transform="translate(-1181.4875,-122.2724)">
-                <g data-px-label="Planet 2" fill="none" stroke="none" transform="translate(1181.4875,122.2724)scale(0.3332,0.3332)translate(-802.9195,-892.4327)">
-                  <path data-px-label="Ellipse 36" fill="#8295a0" stroke="none" transform="translate(803.9405,889.1064)scale(1.6418,1.6418)" d="M0,-36.4718C20.1429,-36.4718,36.4718,-20.1429,36.4718,0C36.4718,20.1429,20.1429,36.4718,0,36.4718C-20.1429,36.4718,-36.4718,20.1429,-36.4718,0C-36.4718,-20.1429,-20.1429,-36.4718,0,-36.4718z"/>
-                </g>
-              </g>
-            </g>
-          </g>
-        </g>
-      </g>
-      <g data-px-label="Group" fill="none" stroke="none" transform="translate(200,170)translate(-212.4079,-167.4005)">
-        <g data-px-label="Group 2" fill="none" stroke="none" transform="translate(325.6932,134.1666)translate(-1179.8475,-116.2742)">
-          <g transform="translate(1181.4875,122.2724)" data-px-attrs="elementEffect:{baseId:_px_2jkdics1;transform:{origin:[1181.4875,122.2724];scale:{loop:{keyframesCount:0};kfs:[{t:0;v:[0.77,0.77];e:[0.3333,0.6666,0.6666,1]},{t:1250;v:[0.63,0.63];e:[0.3333,0,0.6666,0.3333]},{t:2500;v:[0.77,0.77]}]}}}">
-            <g class="_px-animated _px_2kho2p1v" transform="scale(0.77,0.77)">
-              <g id="_px_2jkdics1" data-px-label="Planet 2 Scale" fill="none" stroke="none" transform="translate(-1181.4875,-122.2724)">
-                <g data-px-label="Planet 2" fill="none" stroke="none" transform="translate(1181.4875,122.2724)scale(0.3332,0.3332)translate(-802.9195,-892.4327)">
-                  <path data-px-label="Ellipse 14" fill="none" stroke="#134274" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" transform="translate(809.2279,893.6477)rotate(9)scale(1.6418,1.6418)" d="M38.923,-16.145C44.925,-14.559,58.08,-5.907,56.973,-0.694C55.309,7.138,35.032,12.952,-2.523,12.952C-40.078,12.952,-64.537,5.794,-64.537,-2.213C-64.537,-6.744,-51.866,-15.897,-44.914,-15.094"/>
-                </g>
-              </g>
-            </g>
-          </g>
-        </g>
-      </g>
-      <g data-px-label="Group" fill="none" stroke="none" transform="translate(200,170)translate(-212.4079,-167.4005)">
-        <g data-px-label="Group 2" fill="none" stroke="none" transform="translate(325.6932,134.1666)translate(-1179.8475,-116.2742)">
-          <g transform="translate(1181.4875,122.2724)" data-px-attrs="elementEffect:{baseId:_px_2jkdics0;transform:{origin:[1181.4875,122.2724];scale:{loop:{keyframesCount:0};kfs:[{t:0;v:[0.77,0.77];e:[0.3333,0.6666,0.6666,1]},{t:1250;v:[0.63,0.63];e:[0.3333,0,0.6666,0.3333]},{t:2500;v:[0.77,0.77]}]}}}">
-            <g class="_px-animated _px_2kho2p1v" transform="scale(0.77,0.77)">
-              <g id="_px_2jkdics0" data-px-label="Planet 2 Scale" fill="none" stroke="none" transform="translate(-1181.4875,-122.2724)">
-                <g data-px-label="Planet 2" fill="none" stroke="none" transform="translate(1181.4875,122.2724)scale(0.3332,0.3332)translate(-802.9195,-892.4327)">
-                  <path data-px-label="Ellipse 15" fill="none" stroke="#134274" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" transform="translate(809.2279,893.6477)rotate(9)scale(1.6418,1.6418)translate(0,3.9649)" d="M39.001,-20.409C46.417,-19.401,66.57,-15.3,66.57,-6.178C66.57,6.267,29.374,12.774,-1.86,13.172C-33.094,13.57,-74.859,7.902,-74.859,-4.543C-74.859,-12.52,-56.802,-17.515,-45.233,-18.991"/>
-                </g>
-              </g>
-            </g>
-          </g>
-        </g>
-      </g>
-      <g data-px-label="Group" fill="none" stroke="none" transform="translate(200,170)translate(-212.4079,-167.4005)">
-        <g data-px-label="Group 2" fill="none" stroke="none" transform="translate(325.6932,134.1666)translate(-1179.8475,-116.2742)">
-          <g transform="translate(1181.4875,122.2724)" data-px-attrs="elementEffect:{baseId:_px_2jkdicrv;transform:{origin:[1181.4875,122.2724];scale:{loop:{keyframesCount:0};kfs:[{t:0;v:[0.77,0.77];e:[0.3333,0.6666,0.6666,1]},{t:1250;v:[0.63,0.63];e:[0.3333,0,0.6666,0.3333]},{t:2500;v:[0.77,0.77]}]}}}">
-            <g class="_px-animated _px_2kho2p1v" transform="scale(0.77,0.77)">
-              <g id="_px_2jkdicrv" data-px-label="Planet 2 Scale" fill="none" stroke="none" transform="translate(-1181.4875,-122.2724)">
-                <g data-px-label="Planet 2" fill="none" stroke="none" transform="translate(1181.4875,122.2724)scale(0.3332,0.3332)translate(-802.9195,-892.4327)">
-                  <path data-px-label="Ellipse 37" fill="none" stroke="#4290dd" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" transform="translate(804.3026,894.4686)scale(1.6418,1.6418)" d="M-39,0C-39,-21.539,-21.539,-39,0,-39C21.539,-39,39.944,-18.238,39,0" style="display:none"/>
-                </g>
-              </g>
-            </g>
-          </g>
-        </g>
-      </g>
-      <g data-px-label="Group" fill="none" stroke="none" transform="translate(200,170)translate(-212.4079,-167.4005)">
-        <g data-px-label="Group 2" fill="none" stroke="none" transform="translate(325.6932,134.1666)translate(-1179.8475,-116.2742)">
-          <g transform="translate(1181.4875,122.2724)" data-px-attrs="elementEffect:{baseId:_px_2jkdicru;transform:{origin:[1181.4875,122.2724];scale:{loop:{keyframesCount:0};kfs:[{t:0;v:[0.77,0.77];e:[0.3333,0.6666,0.6666,1]},{t:1250;v:[0.63,0.63];e:[0.3333,0,0.6666,0.3333]},{t:2500;v:[0.77,0.77]}]}}}">
-            <g class="_px-animated _px_2kho2p1v" transform="scale(0.77,0.77)">
-              <g id="_px_2jkdicru" data-px-label="Planet 2 Scale" fill="none" stroke="none" transform="translate(-1181.4875,-122.2724)">
-                <g data-px-label="Planet 2" fill="none" stroke="none" transform="translate(1181.4875,122.2724)scale(0.3332,0.3332)translate(-802.9195,-892.4327)">
-                  <path data-px-label="Ellipse 38" fill="none" stroke="#134274" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" transform="translate(804.3026,894.4686)scale(1.6418,1.6418)" d="M-39,0C-39,-21.539,-21.539,-39,0,-39C21.539,-39,39.944,-18.238,39,0" style="display:none"/>
-                </g>
-              </g>
-            </g>
-          </g>
-        </g>
-      </g>
-      <g data-px-label="Group" fill="none" stroke="none" transform="translate(200,170)translate(-212.4079,-167.4005)">
-        <g data-px-label="Group 2" fill="none" stroke="none" transform="translate(325.6932,134.1666)translate(-1179.8475,-116.2742)">
-          <g transform="translate(1181.4875,122.2724)" data-px-attrs="elementEffect:{baseId:_px_2jkdicrt;transform:{origin:[1181.4875,122.2724];scale:{loop:{keyframesCount:0};kfs:[{t:0;v:[0.77,0.77];e:[0.3333,0.6666,0.6666,1]},{t:1250;v:[0.63,0.63];e:[0.3333,0,0.6666,0.3333]},{t:2500;v:[0.77,0.77]}]}}}">
-            <g class="_px-animated _px_2kho2p1v" transform="scale(0.77,0.77)">
-              <g id="_px_2jkdicrt" data-px-label="Planet 2 Scale" fill="none" stroke="none" transform="translate(-1181.4875,-122.2724)">
-                <g data-px-label="Planet 2" fill="none" stroke="none" transform="translate(1181.4875,122.2724)scale(0.3332,0.3332)translate(-802.9195,-892.4327)">
-                  <g data-px-label="Group 27" fill="none" stroke="none" transform="translate(809.2408,855.4208)rotate(90)scale(0.8258,0.8258)translate(-484,-642)">
-                    <path data-px-label="Ellipse 28" fill="#153173" stroke="none" transform="translate(483,642)" d="M0,-9C4.97,-9,9,-4.97,9,0C9,4.97,4.97,9,0,9C-4.97,9,-9,4.97,-9,0C-9,-4.97,-4.97,-9,0,-9z"/>
-                    <path data-px-label="Ellipse 32" fill="#42588f" stroke="none" transform="translate(484,642)" d="M0,-9C4.97,-9,9,-4.97,9,0C9,4.97,4.97,9,0,9C-4.97,9,-9,4.97,-9,0C-9,-4.97,-4.97,-9,0,-9z"/>
-                    <path data-px-label="Ellipse 34" fill="#7a8db7" stroke="none" transform="translate(485,642)" d="M0,-9C4.97,-9,9,-4.97,9,0C9,4.97,4.97,9,0,9C-4.97,9,-9,4.97,-9,0C-9,-4.97,-4.97,-9,0,-9z"/>
-                  </g>
-                </g>
-              </g>
-            </g>
-          </g>
-        </g>
-      </g>
-      <g data-px-label="Group" fill="none" stroke="none" transform="translate(200,170)translate(-212.4079,-167.4005)">
-        <g data-px-label="Group 2" fill="none" stroke="none" transform="translate(325.6932,134.1666)translate(-1179.8475,-116.2742)">
-          <g transform="translate(1181.4875,122.2724)" data-px-attrs="elementEffect:{baseId:_px_2jkdicrs;transform:{origin:[1181.4875,122.2724];scale:{loop:{keyframesCount:0};kfs:[{t:0;v:[0.77,0.77];e:[0.3333,0.6666,0.6666,1]},{t:1250;v:[0.63,0.63];e:[0.3333,0,0.6666,0.3333]},{t:2500;v:[0.77,0.77]}]}}}">
-            <g class="_px-animated _px_2kho2p1v" transform="scale(0.77,0.77)">
-              <g id="_px_2jkdicrs" data-px-label="Planet 2 Scale" fill="none" stroke="none" transform="translate(-1181.4875,-122.2724)">
-                <g data-px-label="Planet 2" fill="none" stroke="none" transform="translate(1181.4875,122.2724)scale(0.3332,0.3332)translate(-802.9195,-892.4327)">
-                  <g data-px-label="Group 28" fill="none" stroke="none" transform="translate(840.5295,887.49)scale(1.3077,1.3077)translate(-484,-642)">
-                    <path data-px-label="Ellipse 28" fill="#153173" stroke="none" transform="translate(483,642)" d="M0,-9C4.97,-9,9,-4.97,9,0C9,4.97,4.97,9,0,9C-4.97,9,-9,4.97,-9,0C-9,-4.97,-4.97,-9,0,-9z"/>
-                    <path data-px-label="Ellipse 32" fill="#42588f" stroke="none" transform="translate(484,642)" d="M0,-9C4.97,-9,9,-4.97,9,0C9,4.97,4.97,9,0,9C-4.97,9,-9,4.97,-9,0C-9,-4.97,-4.97,-9,0,-9z"/>
-                    <path data-px-label="Ellipse 34" fill="#7a8db7" stroke="none" transform="translate(485,642)" d="M0,-9C4.97,-9,9,-4.97,9,0C9,4.97,4.97,9,0,9C-4.97,9,-9,4.97,-9,0C-9,-4.97,-4.97,-9,0,-9z"/>
-                  </g>
-                </g>
-              </g>
-            </g>
-          </g>
-        </g>
-      </g>
-      <g data-px-label="Group" fill="none" stroke="none" transform="translate(200,170)translate(-212.4079,-167.4005)">
-        <g data-px-label="Group 2" fill="none" stroke="none" transform="translate(325.6932,134.1666)translate(-1179.8475,-116.2742)">
-          <g transform="translate(1181.4875,122.2724)" data-px-attrs="elementEffect:{baseId:_px_2jkdicrr;transform:{origin:[1181.4875,122.2724];scale:{loop:{keyframesCount:0};kfs:[{t:0;v:[0.77,0.77];e:[0.3333,0.6666,0.6666,1]},{t:1250;v:[0.63,0.63];e:[0.3333,0,0.6666,0.3333]},{t:2500;v:[0.77,0.77]}]}}}">
-            <g class="_px-animated _px_2kho2p1v" transform="scale(0.77,0.77)">
-              <g id="_px_2jkdicrr" data-px-label="Planet 2 Scale" fill="none" stroke="none" transform="translate(-1181.4875,-122.2724)">
-                <g data-px-label="Planet 2" fill="none" stroke="none" transform="translate(1181.4875,122.2724)scale(0.3332,0.3332)translate(-802.9195,-892.4327)">
-                  <g data-px-label="Group 29" fill="none" stroke="none" transform="translate(775.0745,879.5175)rotate(135)scale(1.8622,1.8622)translate(-484,-642)">
-                    <path data-px-label="Ellipse 28" fill="#153173" stroke="none" transform="translate(483,642)" d="M0,-9C4.97,-9,9,-4.97,9,0C9,4.97,4.97,9,0,9C-4.97,9,-9,4.97,-9,0C-9,-4.97,-4.97,-9,0,-9z"/>
-                    <path data-px-label="Ellipse 32" fill="#42588f" stroke="none" transform="translate(484,642)" d="M0,-9C4.97,-9,9,-4.97,9,0C9,4.97,4.97,9,0,9C-4.97,9,-9,4.97,-9,0C-9,-4.97,-4.97,-9,0,-9z"/>
-                    <path data-px-label="Ellipse 34" fill="#7a8db7" stroke="none" transform="translate(485,642)" d="M0,-9C4.97,-9,9,-4.97,9,0C9,4.97,4.97,9,0,9C-4.97,9,-9,4.97,-9,0C-9,-4.97,-4.97,-9,0,-9z"/>
-                  </g>
-                </g>
-              </g>
-            </g>
-          </g>
-        </g>
-      </g>
-      <g data-px-label="Group" fill="none" stroke="none" transform="translate(200,170)translate(-212.4079,-167.4005)">
-        <g data-px-label="Group 2" fill="none" stroke="none" transform="translate(325.6932,134.1666)translate(-1179.8475,-116.2742)">
-          <g transform="translate(1181.4875,122.2724)" data-px-attrs="elementEffect:{baseId:_px_2jkdicrq;transform:{origin:[1181.4875,122.2724];scale:{loop:{keyframesCount:0};kfs:[{t:0;v:[0.77,0.77];e:[0.3333,0.6666,0.6666,1]},{t:1250;v:[0.63,0.63];e:[0.3333,0,0.6666,0.3333]},{t:2500;v:[0.77,0.77]}]}}}">
-            <g class="_px-animated _px_2kho2p1v" transform="scale(0.77,0.77)">
-              <g id="_px_2jkdicrq" data-px-label="Planet 2 Scale" fill="none" stroke="none" transform="translate(-1181.4875,-122.2724)">
-                <g data-px-label="Planet 2" fill="none" stroke="none" transform="translate(1181.4875,122.2724)scale(0.3332,0.3332)translate(-802.9195,-892.4327)">
-                  <g data-px-label="Group 30" fill="none" stroke="none" transform="translate(808.8998,880.8343)rotate(90)scale(0.3267,0.3267)translate(-484,-642)">
-                    <path data-px-label="Ellipse 28" fill="#153173" stroke="none" transform="translate(483,642)" d="M0,-9C4.97,-9,9,-4.97,9,0C9,4.97,4.97,9,0,9C-4.97,9,-9,4.97,-9,0C-9,-4.97,-4.97,-9,0,-9z"/>
-                    <path data-px-label="Ellipse 34" fill="#7a8db7" stroke="none" transform="translate(483.9217,642)" d="M0,-9C4.97,-9,9,-4.97,9,0C9,4.97,4.97,9,0,9C-4.97,9,-9,4.97,-9,0C-9,-4.97,-4.97,-9,0,-9z"/>
-                  </g>
-                </g>
-              </g>
-            </g>
-          </g>
-        </g>
-      </g>
-      <g data-px-label="Group" fill="none" stroke="none" transform="translate(200,170)translate(-212.4079,-167.4005)">
-        <g data-px-label="Group 2" fill="none" stroke="none" transform="translate(325.6932,134.1666)translate(-1179.8475,-116.2742)">
-          <g transform="translate(1181.4875,122.2724)" data-px-attrs="elementEffect:{baseId:_px_2jkdicrp;transform:{origin:[1181.4875,122.2724];scale:{loop:{keyframesCount:0};kfs:[{t:0;v:[0.77,0.77];e:[0.3333,0.6666,0.6666,1]},{t:1250;v:[0.63,0.63];e:[0.3333,0,0.6666,0.3333]},{t:2500;v:[0.77,0.77]}]}}}">
-            <g class="_px-animated _px_2kho2p1v" transform="scale(0.77,0.77)">
-              <g id="_px_2jkdicrp" data-px-label="Planet 2 Scale" fill="none" stroke="none" transform="translate(-1181.4875,-122.2724)">
-                <g data-px-label="Planet 2" fill="none" stroke="none" transform="translate(1181.4875,122.2724)scale(0.3332,0.3332)translate(-802.9195,-892.4327)">
-                  <g data-px-label="Group 31" fill="none" stroke="none" transform="translate(787.3651,851.2555)scale(0.1948,0.1948)translate(-484,-642)">
-                    <path data-px-label="Ellipse 28" fill="#153173" stroke="none" transform="translate(483,642)" d="M0,-9C4.97,-9,9,-4.97,9,0C9,4.97,4.97,9,0,9C-4.97,9,-9,4.97,-9,0C-9,-4.97,-4.97,-9,0,-9z"/>
-                    <path data-px-label="Ellipse 34" fill="#7a8db7" stroke="none" transform="translate(483.9217,642)" d="M0,-9C4.97,-9,9,-4.97,9,0C9,4.97,4.97,9,0,9C-4.97,9,-9,4.97,-9,0C-9,-4.97,-4.97,-9,0,-9z"/>
-                  </g>
-                </g>
-              </g>
-            </g>
-          </g>
-        </g>
-      </g>
-      <g data-px-label="Group" fill="none" stroke="none" transform="translate(200,170)translate(-212.4079,-167.4005)">
-        <g data-px-label="Group 2" fill="none" stroke="none" transform="translate(325.6932,134.1666)translate(-1179.8475,-116.2742)">
-          <g transform="translate(1181.4875,122.2724)" data-px-attrs="elementEffect:{baseId:_px_2jkdicro;transform:{origin:[1181.4875,122.2724];scale:{loop:{keyframesCount:0};kfs:[{t:0;v:[0.77,0.77];e:[0.3333,0.6666,0.6666,1]},{t:1250;v:[0.63,0.63];e:[0.3333,0,0.6666,0.3333]},{t:2500;v:[0.77,0.77]}]}}}">
-            <g class="_px-animated _px_2kho2p1v" transform="scale(0.77,0.77)">
-              <g id="_px_2jkdicro" data-px-label="Planet 2 Scale" fill="none" stroke="none" transform="translate(-1181.4875,-122.2724)">
-                <g data-px-label="Planet 2" fill="none" stroke="none" transform="translate(1181.4875,122.2724)scale(0.3332,0.3332)translate(-802.9195,-892.4327)">
-                  <g data-px-label="Group 32" fill="none" stroke="none" transform="translate(837.0585,866.9482)scale(0.1948,0.1948)translate(-484,-642)">
-                    <path data-px-label="Ellipse 28" fill="#153173" stroke="none" transform="translate(483,642)" d="M0,-9C4.97,-9,9,-4.97,9,0C9,4.97,4.97,9,0,9C-4.97,9,-9,4.97,-9,0C-9,-4.97,-4.97,-9,0,-9z"/>
-                    <path data-px-label="Ellipse 34" fill="#7a8db7" stroke="none" transform="translate(483.9217,642)" d="M0,-9C4.97,-9,9,-4.97,9,0C9,4.97,4.97,9,0,9C-4.97,9,-9,4.97,-9,0C-9,-4.97,-4.97,-9,0,-9z"/>
-                  </g>
-                </g>
-              </g>
-            </g>
-          </g>
-        </g>
-      </g>
-      <g data-px-label="Group" fill="none" stroke="none" transform="translate(200,170)translate(-212.4079,-167.4005)">
-        <g data-px-label="Group 2" fill="none" stroke="none" transform="translate(325.6932,134.1666)translate(-1179.8475,-116.2742)">
-          <g transform="translate(1181.4875,122.2724)" data-px-attrs="elementEffect:{baseId:_px_2jkdicrn;transform:{origin:[1181.4875,122.2724];scale:{loop:{keyframesCount:0};kfs:[{t:0;v:[0.77,0.77];e:[0.3333,0.6666,0.6666,1]},{t:1250;v:[0.63,0.63];e:[0.3333,0,0.6666,0.3333]},{t:2500;v:[0.77,0.77]}]}}}">
-            <g class="_px-animated _px_2kho2p1v" transform="scale(0.77,0.77)">
-              <g id="_px_2jkdicrn" data-px-label="Planet 2 Scale" fill="none" stroke="none" transform="translate(-1181.4875,-122.2724)">
-                <g data-px-label="Planet 2" fill="none" stroke="none" transform="translate(1181.4875,122.2724)scale(0.3332,0.3332)translate(-802.9195,-892.4327)">
-                  <g data-px-label="Group 33" fill="none" stroke="none" transform="translate(838.3663,906.1799)scale(0.1948,0.1948)translate(-484,-642)">
-                    <path data-px-label="Ellipse 28" fill="#153173" stroke="none" transform="translate(483,642)" d="M0,-9C4.97,-9,9,-4.97,9,0C9,4.97,4.97,9,0,9C-4.97,9,-9,4.97,-9,0C-9,-4.97,-4.97,-9,0,-9z"/>
-                    <path data-px-label="Ellipse 34" fill="#7a8db7" stroke="none" transform="translate(483.9217,642)" d="M0,-9C4.97,-9,9,-4.97,9,0C9,4.97,4.97,9,0,9C-4.97,9,-9,4.97,-9,0C-9,-4.97,-4.97,-9,0,-9z"/>
-                  </g>
-                </g>
-              </g>
-            </g>
-          </g>
-        </g>
-      </g>
-      <g data-px-label="Group" fill="none" stroke="none" transform="translate(200,170)translate(-212.4079,-167.4005)">
-        <g data-px-label="Group 2" fill="none" stroke="none" transform="translate(325.6932,134.1666)translate(-1179.8475,-116.2742)">
-          <g transform="translate(1181.4875,122.2724)" data-px-attrs="elementEffect:{baseId:_px_2jkdicrm;transform:{origin:[1181.4875,122.2724];scale:{loop:{keyframesCount:0};kfs:[{t:0;v:[0.77,0.77];e:[0.3333,0.6666,0.6666,1]},{t:1250;v:[0.63,0.63];e:[0.3333,0,0.6666,0.3333]},{t:2500;v:[0.77,0.77]}]}}}">
-            <g class="_px-animated _px_2kho2p1v" transform="scale(0.77,0.77)">
-              <g id="_px_2jkdicrm" data-px-label="Planet 2 Scale" fill="none" stroke="none" transform="translate(-1181.4875,-122.2724)">
-                <g data-px-label="Planet 2" fill="none" stroke="none" transform="translate(1181.4875,122.2724)scale(0.3332,0.3332)translate(-802.9195,-892.4327)">
-                  <g data-px-label="Group 34" fill="none" stroke="none" transform="translate(771.6724,903.5644)rotate(180)scale(0.1948,0.1948)translate(-484,-642)">
-                    <path data-px-label="Ellipse 28" fill="#153173" stroke="none" transform="translate(483,642)" d="M0,-9C4.97,-9,9,-4.97,9,0C9,4.97,4.97,9,0,9C-4.97,9,-9,4.97,-9,0C-9,-4.97,-4.97,-9,0,-9z"/>
-                    <path data-px-label="Ellipse 34" fill="#7a8db7" stroke="none" transform="translate(483.9217,642)" d="M0,-9C4.97,-9,9,-4.97,9,0C9,4.97,4.97,9,0,9C-4.97,9,-9,4.97,-9,0C-9,-4.97,-4.97,-9,0,-9z"/>
-                  </g>
-                </g>
-              </g>
-            </g>
-          </g>
-        </g>
-      </g>
-      <g data-px-label="Group" fill="none" stroke="none" transform="translate(200,170)translate(-212.4079,-167.4005)">
-        <g data-px-label="Group 2" fill="none" stroke="none" transform="translate(325.6932,134.1666)translate(-1179.8475,-116.2742)">
-          <g transform="translate(1181.4875,122.2724)" data-px-attrs="elementEffect:{baseId:_px_2jkdicrj;transform:{origin:[1181.4875,122.2724];scale:{loop:{keyframesCount:0};kfs:[{t:0;v:[0.77,0.77];e:[0.3333,0.6666,0.6666,1]},{t:1250;v:[0.63,0.63];e:[0.3333,0,0.6666,0.3333]},{t:2500;v:[0.77,0.77]}]}}}">
-            <g class="_px-animated _px_2kho2p1v" transform="scale(0.77,0.77)">
-              <g id="_px_2jkdicrj" data-px-label="Planet 2 Scale" fill="none" stroke="none" transform="translate(-1181.4875,-122.2724)">
-                <g data-px-label="Planet 2" fill="none" stroke="none" transform="translate(1181.4875,122.2724)scale(0.3332,0.3332)translate(-802.9195,-892.4327)">
-                  <path data-px-label="Ellipse 16" fill="none" stroke="#134274" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" transform="translate(809.2279,893.6477)rotate(9)scale(1.6418,1.6418)translate(0,3.9649)" d="M39.001,-20.409C56.337,-18.75,76.818,-12.7,76.818,-3.578C76.818,8.867,32.002,17.35,-1.129,17.792C-34.26,18.234,-84.265,10.312,-84.265,-2.133C-84.265,-10.11,-56.843,-18.369,-45.233,-18.991"/>
                 </g>
               </g>
             </g>
@@ -1552,16 +1302,266 @@
         </g>
       </g>
     </g>
-    <g data-px-label="star" fill="none" stroke="none" transform="translate(200,170)translate(-212.4079,-167.4005)">
-      <g data-px-label="Group 3" fill="none" stroke="none" transform="translate(261.2152,66.767)translate(-1145.3695,-48.8746)">
-        <g transform="translate(1129.1046,54.7758),rotate(-3.5342)" data-px-attrs="elementEffect:{baseId:_px_2jkdicri;transform:{origin:[644.3718,73.7904];translate:[484.7328,-19.0146];rotate:-3.5342;scale:{loop:{keyframesCount:0};kfs:[{t:0;v:[1,1]},{t:1250;v:[0.8,0.8]},{t:2500;v:[1,1]}]}}}">
+    <g transform="translate(314.9253,143.2431)translate(-314.9253,-143.2431)" data-px-meta="label:'planet 1'">
+      <g fill="none" stroke="none" transform="translate(200,170)translate(-212.4079,-167.4005)" data-px-meta="label:'Group'">
+        <g fill="none" stroke="none" transform="translate(325.6932,134.1666)translate(-1179.8475,-116.2742)" data-px-meta="label:'Group 2'">
+          <g transform="translate(1181.4875,122.2724)" data-px-meta="effectsHost:{coreId:'_px_2jkdics5',appliedEffects:{transformBy:{origin:[1181.4875,122.2724],scale:{loop:{},keyframes:[{time:0,value:[0.77,0.77],easing:[0.3333,0.6666,0.6666,1]},{time:1250,value:[0.63,0.63],easing:[0.3333,0,0.6666,0.3333]},{time:2500,value:[0.77,0.77]}]}}}}">
+            <g class="_px-animated _px_2kho2p1v" transform="scale(0.77,0.77)">
+              <g id="_px_2jkdics5" fill="none" stroke="none" transform="translate(-1181.4875,-122.2724)" data-px-meta="label:'Planet 2 Scale'">
+                <g fill="none" stroke="none" transform="translate(1181.4875,122.2724)scale(0.3332,0.3332)translate(-802.9195,-892.4327)" data-px-meta="label:'Planet 2'">
+                  <path fill="none" stroke="#134274" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" transform="translate(804.3026,894.4686)scale(1.6418,1.6418)" d="M0,-39C21.539,-39,39,-21.539,39,0C39,21.539,21.539,39,0,39C-21.539,39,-39,21.539,-39,0C-39,-21.539,-21.539,-39,0,-39z" data-px-meta="label:'Ellipse 33'"/>
+                </g>
+              </g>
+            </g>
+          </g>
+        </g>
+      </g>
+      <g fill="none" stroke="none" transform="translate(200,170)translate(-212.4079,-167.4005)" data-px-meta="label:'Group'">
+        <g fill="none" stroke="none" transform="translate(325.6932,134.1666)translate(-1179.8475,-116.2742)" data-px-meta="label:'Group 2'">
+          <g transform="translate(1181.4875,122.2724)" data-px-meta="effectsHost:{coreId:'_px_2jkdics4',appliedEffects:{transformBy:{origin:[1181.4875,122.2724],scale:{loop:{},keyframes:[{time:0,value:[0.77,0.77],easing:[0.3333,0.6666,0.6666,1]},{time:1250,value:[0.63,0.63],easing:[0.3333,0,0.6666,0.3333]},{time:2500,value:[0.77,0.77]}]}}}}">
+            <g class="_px-animated _px_2kho2p1v" transform="scale(0.77,0.77)">
+              <g id="_px_2jkdics4" fill="none" stroke="none" transform="translate(-1181.4875,-122.2724)" data-px-meta="label:'Planet 2 Scale'">
+                <g fill="none" stroke="none" transform="translate(1181.4875,122.2724)scale(0.3332,0.3332)translate(-802.9195,-892.4327)" data-px-meta="label:'Planet 2'">
+                  <path fill="#98aeba" stroke="none" transform="translate(804.3026,897.0841)scale(1.6418,1.6418)" d="M0,-35.84C19.794,-35.84,35.84,-19.794,35.84,0C35.84,19.794,19.794,35.84,0,35.84C-19.794,35.84,-35.84,19.794,-35.84,0C-35.84,-19.794,-19.794,-35.84,0,-35.84z" data-px-meta="label:'Ellipse 34'"/>
+                </g>
+              </g>
+            </g>
+          </g>
+        </g>
+      </g>
+      <g fill="none" stroke="none" transform="translate(200,170)translate(-212.4079,-167.4005)" data-px-meta="label:'Group'">
+        <g fill="none" stroke="none" transform="translate(325.6932,134.1666)translate(-1179.8475,-116.2742)" data-px-meta="label:'Group 2'">
+          <g transform="translate(1181.4875,122.2724)" data-px-meta="effectsHost:{coreId:'_px_2jkdics3',appliedEffects:{transformBy:{origin:[1181.4875,122.2724],scale:{loop:{},keyframes:[{time:0,value:[0.77,0.77],easing:[0.3333,0.6666,0.6666,1]},{time:1250,value:[0.63,0.63],easing:[0.3333,0,0.6666,0.3333]},{time:2500,value:[0.77,0.77]}]}}}}">
+            <g class="_px-animated _px_2kho2p1v" transform="scale(0.77,0.77)">
+              <g id="_px_2jkdics3" fill="none" stroke="none" transform="translate(-1181.4875,-122.2724)" data-px-meta="label:'Planet 2 Scale'">
+                <g fill="none" stroke="none" transform="translate(1181.4875,122.2724)scale(0.3332,0.3332)translate(-802.9195,-892.4327)" data-px-meta="label:'Planet 2'">
+                  <path fill="#3c6590" stroke="none" transform="translate(804.3026,897.0841)scale(1.6418,1.6418)" d="M0,-36.7199C20.784,-36.7199,37.6326,-20.28,37.6326,0C37.6326,20.28,20.784,36.7199,0,36.7199C-20.784,36.7199,-37.6326,20.28,-37.6326,0C-37.6326,-20.28,-20.784,-36.7199,0,-36.7199z" data-px-meta="label:'Ellipse 35'"/>
+                </g>
+              </g>
+            </g>
+          </g>
+        </g>
+      </g>
+      <g fill="none" stroke="none" transform="translate(200.1429,170.6227)translate(-212.4079,-167.4005)" data-px-meta="label:'Group'">
+        <g fill="none" stroke="none" transform="translate(325.6932,134.1666)translate(-1179.8475,-116.2742)" data-px-meta="label:'Group 2'">
+          <g transform="translate(1181.4875,122.2724)" data-px-meta="effectsHost:{coreId:'_px_2jkdics2',appliedEffects:{transformBy:{origin:[1181.4875,122.2724],scale:{loop:{},keyframes:[{time:0,value:[0.77,0.77],easing:[0.3333,0.6666,0.6666,1]},{time:1250,value:[0.63,0.63],easing:[0.3333,0,0.6666,0.3333]},{time:2500,value:[0.77,0.77]}]}}}}">
+            <g class="_px-animated _px_2kho2p1v" transform="scale(0.77,0.77)">
+              <g id="_px_2jkdics2" fill="none" stroke="none" transform="translate(-1181.4875,-122.2724)" data-px-meta="label:'Planet 2 Scale'">
+                <g fill="none" stroke="none" transform="translate(1181.4875,122.2724)scale(0.3332,0.3332)translate(-802.9195,-892.4327)" data-px-meta="label:'Planet 2'">
+                  <path fill="#8295a0" stroke="none" transform="translate(803.9405,889.1064)scale(1.6418,1.6418)" d="M0,-36.4718C20.1429,-36.4718,36.4718,-20.1429,36.4718,0C36.4718,20.1429,20.1429,36.4718,0,36.4718C-20.1429,36.4718,-36.4718,20.1429,-36.4718,0C-36.4718,-20.1429,-20.1429,-36.4718,0,-36.4718z" data-px-meta="label:'Ellipse 36'"/>
+                </g>
+              </g>
+            </g>
+          </g>
+        </g>
+      </g>
+      <g fill="none" stroke="none" transform="translate(200,170)translate(-212.4079,-167.4005)" data-px-meta="label:'Group'">
+        <g fill="none" stroke="none" transform="translate(325.6932,134.1666)translate(-1179.8475,-116.2742)" data-px-meta="label:'Group 2'">
+          <g transform="translate(1181.4875,122.2724)" data-px-meta="effectsHost:{coreId:'_px_2jkdics1',appliedEffects:{transformBy:{origin:[1181.4875,122.2724],scale:{loop:{},keyframes:[{time:0,value:[0.77,0.77],easing:[0.3333,0.6666,0.6666,1]},{time:1250,value:[0.63,0.63],easing:[0.3333,0,0.6666,0.3333]},{time:2500,value:[0.77,0.77]}]}}}}">
+            <g class="_px-animated _px_2kho2p1v" transform="scale(0.77,0.77)">
+              <g id="_px_2jkdics1" fill="none" stroke="none" transform="translate(-1181.4875,-122.2724)" data-px-meta="label:'Planet 2 Scale'">
+                <g fill="none" stroke="none" transform="translate(1181.4875,122.2724)scale(0.3332,0.3332)translate(-802.9195,-892.4327)" data-px-meta="label:'Planet 2'">
+                  <path fill="none" stroke="#134274" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" transform="translate(809.2279,893.6477)rotate(9)scale(1.6418,1.6418)" d="M38.923,-16.145C44.925,-14.559,58.08,-5.907,56.973,-0.694C55.309,7.138,35.032,12.952,-2.523,12.952C-40.078,12.952,-64.537,5.794,-64.537,-2.213C-64.537,-6.744,-51.866,-15.897,-44.914,-15.094" data-px-meta="label:'Ellipse 14'"/>
+                </g>
+              </g>
+            </g>
+          </g>
+        </g>
+      </g>
+      <g fill="none" stroke="none" transform="translate(200,170)translate(-212.4079,-167.4005)" data-px-meta="label:'Group'">
+        <g fill="none" stroke="none" transform="translate(325.6932,134.1666)translate(-1179.8475,-116.2742)" data-px-meta="label:'Group 2'">
+          <g transform="translate(1181.4875,122.2724)" data-px-meta="effectsHost:{coreId:'_px_2jkdics0',appliedEffects:{transformBy:{origin:[1181.4875,122.2724],scale:{loop:{},keyframes:[{time:0,value:[0.77,0.77],easing:[0.3333,0.6666,0.6666,1]},{time:1250,value:[0.63,0.63],easing:[0.3333,0,0.6666,0.3333]},{time:2500,value:[0.77,0.77]}]}}}}">
+            <g class="_px-animated _px_2kho2p1v" transform="scale(0.77,0.77)">
+              <g id="_px_2jkdics0" fill="none" stroke="none" transform="translate(-1181.4875,-122.2724)" data-px-meta="label:'Planet 2 Scale'">
+                <g fill="none" stroke="none" transform="translate(1181.4875,122.2724)scale(0.3332,0.3332)translate(-802.9195,-892.4327)" data-px-meta="label:'Planet 2'">
+                  <path fill="none" stroke="#134274" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" transform="translate(809.2279,893.6477)rotate(9)scale(1.6418,1.6418)translate(0,3.9649)" d="M39.001,-20.409C46.417,-19.401,66.57,-15.3,66.57,-6.178C66.57,6.267,29.374,12.774,-1.86,13.172C-33.094,13.57,-74.859,7.902,-74.859,-4.543C-74.859,-12.52,-56.802,-17.515,-45.233,-18.991" data-px-meta="label:'Ellipse 15'"/>
+                </g>
+              </g>
+            </g>
+          </g>
+        </g>
+      </g>
+      <g fill="none" stroke="none" transform="translate(200,170)translate(-212.4079,-167.4005)" data-px-meta="label:'Group'">
+        <g fill="none" stroke="none" transform="translate(325.6932,134.1666)translate(-1179.8475,-116.2742)" data-px-meta="label:'Group 2'">
+          <g transform="translate(1181.4875,122.2724)" data-px-meta="effectsHost:{coreId:'_px_2jkdicrv',appliedEffects:{transformBy:{origin:[1181.4875,122.2724],scale:{loop:{},keyframes:[{time:0,value:[0.77,0.77],easing:[0.3333,0.6666,0.6666,1]},{time:1250,value:[0.63,0.63],easing:[0.3333,0,0.6666,0.3333]},{time:2500,value:[0.77,0.77]}]}}}}">
+            <g class="_px-animated _px_2kho2p1v" transform="scale(0.77,0.77)">
+              <g id="_px_2jkdicrv" fill="none" stroke="none" transform="translate(-1181.4875,-122.2724)" data-px-meta="label:'Planet 2 Scale'">
+                <g fill="none" stroke="none" transform="translate(1181.4875,122.2724)scale(0.3332,0.3332)translate(-802.9195,-892.4327)" data-px-meta="label:'Planet 2'">
+                  <path fill="none" stroke="#4290dd" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" transform="translate(804.3026,894.4686)scale(1.6418,1.6418)" d="M-39,0C-39,-21.539,-21.539,-39,0,-39C21.539,-39,39.944,-18.238,39,0" style="display:none" data-px-meta="label:'Ellipse 37'"/>
+                </g>
+              </g>
+            </g>
+          </g>
+        </g>
+      </g>
+      <g fill="none" stroke="none" transform="translate(200,170)translate(-212.4079,-167.4005)" data-px-meta="label:'Group'">
+        <g fill="none" stroke="none" transform="translate(325.6932,134.1666)translate(-1179.8475,-116.2742)" data-px-meta="label:'Group 2'">
+          <g transform="translate(1181.4875,122.2724)" data-px-meta="effectsHost:{coreId:'_px_2jkdicru',appliedEffects:{transformBy:{origin:[1181.4875,122.2724],scale:{loop:{},keyframes:[{time:0,value:[0.77,0.77],easing:[0.3333,0.6666,0.6666,1]},{time:1250,value:[0.63,0.63],easing:[0.3333,0,0.6666,0.3333]},{time:2500,value:[0.77,0.77]}]}}}}">
+            <g class="_px-animated _px_2kho2p1v" transform="scale(0.77,0.77)">
+              <g id="_px_2jkdicru" fill="none" stroke="none" transform="translate(-1181.4875,-122.2724)" data-px-meta="label:'Planet 2 Scale'">
+                <g fill="none" stroke="none" transform="translate(1181.4875,122.2724)scale(0.3332,0.3332)translate(-802.9195,-892.4327)" data-px-meta="label:'Planet 2'">
+                  <path fill="none" stroke="#134274" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" transform="translate(804.3026,894.4686)scale(1.6418,1.6418)" d="M-39,0C-39,-21.539,-21.539,-39,0,-39C21.539,-39,39.944,-18.238,39,0" style="display:none" data-px-meta="label:'Ellipse 38'"/>
+                </g>
+              </g>
+            </g>
+          </g>
+        </g>
+      </g>
+      <g fill="none" stroke="none" transform="translate(200,170)translate(-212.4079,-167.4005)" data-px-meta="label:'Group'">
+        <g fill="none" stroke="none" transform="translate(325.6932,134.1666)translate(-1179.8475,-116.2742)" data-px-meta="label:'Group 2'">
+          <g transform="translate(1181.4875,122.2724)" data-px-meta="effectsHost:{coreId:'_px_2jkdicrt',appliedEffects:{transformBy:{origin:[1181.4875,122.2724],scale:{loop:{},keyframes:[{time:0,value:[0.77,0.77],easing:[0.3333,0.6666,0.6666,1]},{time:1250,value:[0.63,0.63],easing:[0.3333,0,0.6666,0.3333]},{time:2500,value:[0.77,0.77]}]}}}}">
+            <g class="_px-animated _px_2kho2p1v" transform="scale(0.77,0.77)">
+              <g id="_px_2jkdicrt" fill="none" stroke="none" transform="translate(-1181.4875,-122.2724)" data-px-meta="label:'Planet 2 Scale'">
+                <g fill="none" stroke="none" transform="translate(1181.4875,122.2724)scale(0.3332,0.3332)translate(-802.9195,-892.4327)" data-px-meta="label:'Planet 2'">
+                  <g fill="none" stroke="none" transform="translate(809.2408,855.4208)rotate(90)scale(0.8258,0.8258)translate(-484,-642)" data-px-meta="label:'Group 27'">
+                    <path fill="#153173" stroke="none" transform="translate(483,642)" d="M0,-9C4.97,-9,9,-4.97,9,0C9,4.97,4.97,9,0,9C-4.97,9,-9,4.97,-9,0C-9,-4.97,-4.97,-9,0,-9z" data-px-meta="label:'Ellipse 28'"/>
+                    <path fill="#42588f" stroke="none" transform="translate(484,642)" d="M0,-9C4.97,-9,9,-4.97,9,0C9,4.97,4.97,9,0,9C-4.97,9,-9,4.97,-9,0C-9,-4.97,-4.97,-9,0,-9z" data-px-meta="label:'Ellipse 32'"/>
+                    <path fill="#7a8db7" stroke="none" transform="translate(485,642)" d="M0,-9C4.97,-9,9,-4.97,9,0C9,4.97,4.97,9,0,9C-4.97,9,-9,4.97,-9,0C-9,-4.97,-4.97,-9,0,-9z" data-px-meta="label:'Ellipse 34'"/>
+                  </g>
+                </g>
+              </g>
+            </g>
+          </g>
+        </g>
+      </g>
+      <g fill="none" stroke="none" transform="translate(200,170)translate(-212.4079,-167.4005)" data-px-meta="label:'Group'">
+        <g fill="none" stroke="none" transform="translate(325.6932,134.1666)translate(-1179.8475,-116.2742)" data-px-meta="label:'Group 2'">
+          <g transform="translate(1181.4875,122.2724)" data-px-meta="effectsHost:{coreId:'_px_2jkdicrs',appliedEffects:{transformBy:{origin:[1181.4875,122.2724],scale:{loop:{},keyframes:[{time:0,value:[0.77,0.77],easing:[0.3333,0.6666,0.6666,1]},{time:1250,value:[0.63,0.63],easing:[0.3333,0,0.6666,0.3333]},{time:2500,value:[0.77,0.77]}]}}}}">
+            <g class="_px-animated _px_2kho2p1v" transform="scale(0.77,0.77)">
+              <g id="_px_2jkdicrs" fill="none" stroke="none" transform="translate(-1181.4875,-122.2724)" data-px-meta="label:'Planet 2 Scale'">
+                <g fill="none" stroke="none" transform="translate(1181.4875,122.2724)scale(0.3332,0.3332)translate(-802.9195,-892.4327)" data-px-meta="label:'Planet 2'">
+                  <g fill="none" stroke="none" transform="translate(840.5295,887.49)scale(1.3077,1.3077)translate(-484,-642)" data-px-meta="label:'Group 28'">
+                    <path fill="#153173" stroke="none" transform="translate(483,642)" d="M0,-9C4.97,-9,9,-4.97,9,0C9,4.97,4.97,9,0,9C-4.97,9,-9,4.97,-9,0C-9,-4.97,-4.97,-9,0,-9z" data-px-meta="label:'Ellipse 28'"/>
+                    <path fill="#42588f" stroke="none" transform="translate(484,642)" d="M0,-9C4.97,-9,9,-4.97,9,0C9,4.97,4.97,9,0,9C-4.97,9,-9,4.97,-9,0C-9,-4.97,-4.97,-9,0,-9z" data-px-meta="label:'Ellipse 32'"/>
+                    <path fill="#7a8db7" stroke="none" transform="translate(485,642)" d="M0,-9C4.97,-9,9,-4.97,9,0C9,4.97,4.97,9,0,9C-4.97,9,-9,4.97,-9,0C-9,-4.97,-4.97,-9,0,-9z" data-px-meta="label:'Ellipse 34'"/>
+                  </g>
+                </g>
+              </g>
+            </g>
+          </g>
+        </g>
+      </g>
+      <g fill="none" stroke="none" transform="translate(200,170)translate(-212.4079,-167.4005)" data-px-meta="label:'Group'">
+        <g fill="none" stroke="none" transform="translate(325.6932,134.1666)translate(-1179.8475,-116.2742)" data-px-meta="label:'Group 2'">
+          <g transform="translate(1181.4875,122.2724)" data-px-meta="effectsHost:{coreId:'_px_2jkdicrr',appliedEffects:{transformBy:{origin:[1181.4875,122.2724],scale:{loop:{},keyframes:[{time:0,value:[0.77,0.77],easing:[0.3333,0.6666,0.6666,1]},{time:1250,value:[0.63,0.63],easing:[0.3333,0,0.6666,0.3333]},{time:2500,value:[0.77,0.77]}]}}}}">
+            <g class="_px-animated _px_2kho2p1v" transform="scale(0.77,0.77)">
+              <g id="_px_2jkdicrr" fill="none" stroke="none" transform="translate(-1181.4875,-122.2724)" data-px-meta="label:'Planet 2 Scale'">
+                <g fill="none" stroke="none" transform="translate(1181.4875,122.2724)scale(0.3332,0.3332)translate(-802.9195,-892.4327)" data-px-meta="label:'Planet 2'">
+                  <g fill="none" stroke="none" transform="translate(775.0745,879.5175)rotate(135)scale(1.8622,1.8622)translate(-484,-642)" data-px-meta="label:'Group 29'">
+                    <path fill="#153173" stroke="none" transform="translate(483,642)" d="M0,-9C4.97,-9,9,-4.97,9,0C9,4.97,4.97,9,0,9C-4.97,9,-9,4.97,-9,0C-9,-4.97,-4.97,-9,0,-9z" data-px-meta="label:'Ellipse 28'"/>
+                    <path fill="#42588f" stroke="none" transform="translate(484,642)" d="M0,-9C4.97,-9,9,-4.97,9,0C9,4.97,4.97,9,0,9C-4.97,9,-9,4.97,-9,0C-9,-4.97,-4.97,-9,0,-9z" data-px-meta="label:'Ellipse 32'"/>
+                    <path fill="#7a8db7" stroke="none" transform="translate(485,642)" d="M0,-9C4.97,-9,9,-4.97,9,0C9,4.97,4.97,9,0,9C-4.97,9,-9,4.97,-9,0C-9,-4.97,-4.97,-9,0,-9z" data-px-meta="label:'Ellipse 34'"/>
+                  </g>
+                </g>
+              </g>
+            </g>
+          </g>
+        </g>
+      </g>
+      <g fill="none" stroke="none" transform="translate(200,170)translate(-212.4079,-167.4005)" data-px-meta="label:'Group'">
+        <g fill="none" stroke="none" transform="translate(325.6932,134.1666)translate(-1179.8475,-116.2742)" data-px-meta="label:'Group 2'">
+          <g transform="translate(1181.4875,122.2724)" data-px-meta="effectsHost:{coreId:'_px_2jkdicrq',appliedEffects:{transformBy:{origin:[1181.4875,122.2724],scale:{loop:{},keyframes:[{time:0,value:[0.77,0.77],easing:[0.3333,0.6666,0.6666,1]},{time:1250,value:[0.63,0.63],easing:[0.3333,0,0.6666,0.3333]},{time:2500,value:[0.77,0.77]}]}}}}">
+            <g class="_px-animated _px_2kho2p1v" transform="scale(0.77,0.77)">
+              <g id="_px_2jkdicrq" fill="none" stroke="none" transform="translate(-1181.4875,-122.2724)" data-px-meta="label:'Planet 2 Scale'">
+                <g fill="none" stroke="none" transform="translate(1181.4875,122.2724)scale(0.3332,0.3332)translate(-802.9195,-892.4327)" data-px-meta="label:'Planet 2'">
+                  <g fill="none" stroke="none" transform="translate(808.8998,880.8343)rotate(90)scale(0.3267,0.3267)translate(-484,-642)" data-px-meta="label:'Group 30'">
+                    <path fill="#153173" stroke="none" transform="translate(483,642)" d="M0,-9C4.97,-9,9,-4.97,9,0C9,4.97,4.97,9,0,9C-4.97,9,-9,4.97,-9,0C-9,-4.97,-4.97,-9,0,-9z" data-px-meta="label:'Ellipse 28'"/>
+                    <path fill="#7a8db7" stroke="none" transform="translate(483.9217,642)" d="M0,-9C4.97,-9,9,-4.97,9,0C9,4.97,4.97,9,0,9C-4.97,9,-9,4.97,-9,0C-9,-4.97,-4.97,-9,0,-9z" data-px-meta="label:'Ellipse 34'"/>
+                  </g>
+                </g>
+              </g>
+            </g>
+          </g>
+        </g>
+      </g>
+      <g fill="none" stroke="none" transform="translate(200,170)translate(-212.4079,-167.4005)" data-px-meta="label:'Group'">
+        <g fill="none" stroke="none" transform="translate(325.6932,134.1666)translate(-1179.8475,-116.2742)" data-px-meta="label:'Group 2'">
+          <g transform="translate(1181.4875,122.2724)" data-px-meta="effectsHost:{coreId:'_px_2jkdicrp',appliedEffects:{transformBy:{origin:[1181.4875,122.2724],scale:{loop:{},keyframes:[{time:0,value:[0.77,0.77],easing:[0.3333,0.6666,0.6666,1]},{time:1250,value:[0.63,0.63],easing:[0.3333,0,0.6666,0.3333]},{time:2500,value:[0.77,0.77]}]}}}}">
+            <g class="_px-animated _px_2kho2p1v" transform="scale(0.77,0.77)">
+              <g id="_px_2jkdicrp" fill="none" stroke="none" transform="translate(-1181.4875,-122.2724)" data-px-meta="label:'Planet 2 Scale'">
+                <g fill="none" stroke="none" transform="translate(1181.4875,122.2724)scale(0.3332,0.3332)translate(-802.9195,-892.4327)" data-px-meta="label:'Planet 2'">
+                  <g fill="none" stroke="none" transform="translate(787.3651,851.2555)scale(0.1948,0.1948)translate(-484,-642)" data-px-meta="label:'Group 31'">
+                    <path fill="#153173" stroke="none" transform="translate(483,642)" d="M0,-9C4.97,-9,9,-4.97,9,0C9,4.97,4.97,9,0,9C-4.97,9,-9,4.97,-9,0C-9,-4.97,-4.97,-9,0,-9z" data-px-meta="label:'Ellipse 28'"/>
+                    <path fill="#7a8db7" stroke="none" transform="translate(483.9217,642)" d="M0,-9C4.97,-9,9,-4.97,9,0C9,4.97,4.97,9,0,9C-4.97,9,-9,4.97,-9,0C-9,-4.97,-4.97,-9,0,-9z" data-px-meta="label:'Ellipse 34'"/>
+                  </g>
+                </g>
+              </g>
+            </g>
+          </g>
+        </g>
+      </g>
+      <g fill="none" stroke="none" transform="translate(200,170)translate(-212.4079,-167.4005)" data-px-meta="label:'Group'">
+        <g fill="none" stroke="none" transform="translate(325.6932,134.1666)translate(-1179.8475,-116.2742)" data-px-meta="label:'Group 2'">
+          <g transform="translate(1181.4875,122.2724)" data-px-meta="effectsHost:{coreId:'_px_2jkdicro',appliedEffects:{transformBy:{origin:[1181.4875,122.2724],scale:{loop:{},keyframes:[{time:0,value:[0.77,0.77],easing:[0.3333,0.6666,0.6666,1]},{time:1250,value:[0.63,0.63],easing:[0.3333,0,0.6666,0.3333]},{time:2500,value:[0.77,0.77]}]}}}}">
+            <g class="_px-animated _px_2kho2p1v" transform="scale(0.77,0.77)">
+              <g id="_px_2jkdicro" fill="none" stroke="none" transform="translate(-1181.4875,-122.2724)" data-px-meta="label:'Planet 2 Scale'">
+                <g fill="none" stroke="none" transform="translate(1181.4875,122.2724)scale(0.3332,0.3332)translate(-802.9195,-892.4327)" data-px-meta="label:'Planet 2'">
+                  <g fill="none" stroke="none" transform="translate(837.0585,866.9482)scale(0.1948,0.1948)translate(-484,-642)" data-px-meta="label:'Group 32'">
+                    <path fill="#153173" stroke="none" transform="translate(483,642)" d="M0,-9C4.97,-9,9,-4.97,9,0C9,4.97,4.97,9,0,9C-4.97,9,-9,4.97,-9,0C-9,-4.97,-4.97,-9,0,-9z" data-px-meta="label:'Ellipse 28'"/>
+                    <path fill="#7a8db7" stroke="none" transform="translate(483.9217,642)" d="M0,-9C4.97,-9,9,-4.97,9,0C9,4.97,4.97,9,0,9C-4.97,9,-9,4.97,-9,0C-9,-4.97,-4.97,-9,0,-9z" data-px-meta="label:'Ellipse 34'"/>
+                  </g>
+                </g>
+              </g>
+            </g>
+          </g>
+        </g>
+      </g>
+      <g fill="none" stroke="none" transform="translate(200,170)translate(-212.4079,-167.4005)" data-px-meta="label:'Group'">
+        <g fill="none" stroke="none" transform="translate(325.6932,134.1666)translate(-1179.8475,-116.2742)" data-px-meta="label:'Group 2'">
+          <g transform="translate(1181.4875,122.2724)" data-px-meta="effectsHost:{coreId:'_px_2jkdicrn',appliedEffects:{transformBy:{origin:[1181.4875,122.2724],scale:{loop:{},keyframes:[{time:0,value:[0.77,0.77],easing:[0.3333,0.6666,0.6666,1]},{time:1250,value:[0.63,0.63],easing:[0.3333,0,0.6666,0.3333]},{time:2500,value:[0.77,0.77]}]}}}}">
+            <g class="_px-animated _px_2kho2p1v" transform="scale(0.77,0.77)">
+              <g id="_px_2jkdicrn" fill="none" stroke="none" transform="translate(-1181.4875,-122.2724)" data-px-meta="label:'Planet 2 Scale'">
+                <g fill="none" stroke="none" transform="translate(1181.4875,122.2724)scale(0.3332,0.3332)translate(-802.9195,-892.4327)" data-px-meta="label:'Planet 2'">
+                  <g fill="none" stroke="none" transform="translate(838.3663,906.1799)scale(0.1948,0.1948)translate(-484,-642)" data-px-meta="label:'Group 33'">
+                    <path fill="#153173" stroke="none" transform="translate(483,642)" d="M0,-9C4.97,-9,9,-4.97,9,0C9,4.97,4.97,9,0,9C-4.97,9,-9,4.97,-9,0C-9,-4.97,-4.97,-9,0,-9z" data-px-meta="label:'Ellipse 28'"/>
+                    <path fill="#7a8db7" stroke="none" transform="translate(483.9217,642)" d="M0,-9C4.97,-9,9,-4.97,9,0C9,4.97,4.97,9,0,9C-4.97,9,-9,4.97,-9,0C-9,-4.97,-4.97,-9,0,-9z" data-px-meta="label:'Ellipse 34'"/>
+                  </g>
+                </g>
+              </g>
+            </g>
+          </g>
+        </g>
+      </g>
+      <g fill="none" stroke="none" transform="translate(200,170)translate(-212.4079,-167.4005)" data-px-meta="label:'Group'">
+        <g fill="none" stroke="none" transform="translate(325.6932,134.1666)translate(-1179.8475,-116.2742)" data-px-meta="label:'Group 2'">
+          <g transform="translate(1181.4875,122.2724)" data-px-meta="effectsHost:{coreId:'_px_2jkdicrm',appliedEffects:{transformBy:{origin:[1181.4875,122.2724],scale:{loop:{},keyframes:[{time:0,value:[0.77,0.77],easing:[0.3333,0.6666,0.6666,1]},{time:1250,value:[0.63,0.63],easing:[0.3333,0,0.6666,0.3333]},{time:2500,value:[0.77,0.77]}]}}}}">
+            <g class="_px-animated _px_2kho2p1v" transform="scale(0.77,0.77)">
+              <g id="_px_2jkdicrm" fill="none" stroke="none" transform="translate(-1181.4875,-122.2724)" data-px-meta="label:'Planet 2 Scale'">
+                <g fill="none" stroke="none" transform="translate(1181.4875,122.2724)scale(0.3332,0.3332)translate(-802.9195,-892.4327)" data-px-meta="label:'Planet 2'">
+                  <g fill="none" stroke="none" transform="translate(771.6724,903.5644)rotate(180)scale(0.1948,0.1948)translate(-484,-642)" data-px-meta="label:'Group 34'">
+                    <path fill="#153173" stroke="none" transform="translate(483,642)" d="M0,-9C4.97,-9,9,-4.97,9,0C9,4.97,4.97,9,0,9C-4.97,9,-9,4.97,-9,0C-9,-4.97,-4.97,-9,0,-9z" data-px-meta="label:'Ellipse 28'"/>
+                    <path fill="#7a8db7" stroke="none" transform="translate(483.9217,642)" d="M0,-9C4.97,-9,9,-4.97,9,0C9,4.97,4.97,9,0,9C-4.97,9,-9,4.97,-9,0C-9,-4.97,-4.97,-9,0,-9z" data-px-meta="label:'Ellipse 34'"/>
+                  </g>
+                </g>
+              </g>
+            </g>
+          </g>
+        </g>
+      </g>
+      <g fill="none" stroke="none" transform="translate(200,170)translate(-212.4079,-167.4005)" data-px-meta="label:'Group'">
+        <g fill="none" stroke="none" transform="translate(325.6932,134.1666)translate(-1179.8475,-116.2742)" data-px-meta="label:'Group 2'">
+          <g transform="translate(1181.4875,122.2724)" data-px-meta="effectsHost:{coreId:'_px_2jkdicrj',appliedEffects:{transformBy:{origin:[1181.4875,122.2724],scale:{loop:{},keyframes:[{time:0,value:[0.77,0.77],easing:[0.3333,0.6666,0.6666,1]},{time:1250,value:[0.63,0.63],easing:[0.3333,0,0.6666,0.3333]},{time:2500,value:[0.77,0.77]}]}}}}">
+            <g class="_px-animated _px_2kho2p1v" transform="scale(0.77,0.77)">
+              <g id="_px_2jkdicrj" fill="none" stroke="none" transform="translate(-1181.4875,-122.2724)" data-px-meta="label:'Planet 2 Scale'">
+                <g fill="none" stroke="none" transform="translate(1181.4875,122.2724)scale(0.3332,0.3332)translate(-802.9195,-892.4327)" data-px-meta="label:'Planet 2'">
+                  <path fill="none" stroke="#134274" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" transform="translate(809.2279,893.6477)rotate(9)scale(1.6418,1.6418)translate(0,3.9649)" d="M39.001,-20.409C56.337,-18.75,76.818,-12.7,76.818,-3.578C76.818,8.867,32.002,17.35,-1.129,17.792C-34.26,18.234,-84.265,10.312,-84.265,-2.133C-84.265,-10.11,-56.843,-18.369,-45.233,-18.991" data-px-meta="label:'Ellipse 16'"/>
+                </g>
+              </g>
+            </g>
+          </g>
+        </g>
+      </g>
+    </g>
+    <g fill="none" stroke="none" transform="translate(200,170)translate(-212.4079,-167.4005)" data-px-meta="label:'star'">
+      <g fill="none" stroke="none" transform="translate(261.2152,66.767)translate(-1145.3695,-48.8746)" data-px-meta="label:'Group 3'">
+        <g transform="translate(1129.1046,54.7758),rotate(-3.5342)" data-px-meta="effectsHost:{coreId:'_px_2jkdicri',appliedEffects:{transformBy:{origin:[644.3718,73.7904],translate:[484.7328,-19.0146],rotate:-3.5342,scale:{loop:{},keyframes:[{time:0,value:[1,1]},{time:1250,value:[0.8,0.8]},{time:2500,value:[1,1]}]}}}}">
           <g class="_px-animated _px_2kho2p1t" transform="scale(1,1)">
-            <g id="_px_2jkdicri" data-px-label="Big star with shine 2" fill="none" stroke="none" transform="translate(-644.3718,-73.7904)">
-              <g data-px-label="star big 2" fill="none" stroke="none" transform="translate(670.6421,76.3866)rotate(15)scale(0.7817,0.7817)translate(-477.5633,-758.646)">
-                <path data-px-label="Path" fill="none" stroke="#ffc716" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" transform="translate(451.3118,757.0363)scale(0.6996,0.6996)" d="M0,0C22.794,-28.913,58.895,-47.302,88,-44"/>
-                <path data-px-label="Path 2" fill="none" stroke="#ffc716" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" transform="translate(453.4104,766.1305)scale(0.6996,0.6996)" d="M0,0C0,0,34.388,-36.537,63,-37"/>
-                <path data-px-label="Path" fill="#9cdbfe" stroke="none" transform="translate(445.227,767.328)translate(-445.227,-767.328)" d="M447.464,777.323C441.862,777.323,437.32,772.781,437.32,767.179C437.32,765.266,437.851,763.476,438.771,761.949L444.465,757.486C444.646,757.431,444.83,757.378,445.015,757.333L444.027,769.469L453.134,775.592C451.516,776.685,449.564,777.323,447.464,777.323z"/>
-                <path data-px-label="Star" fill="none" stroke="#ffc716" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" transform="translate(436.3639,773.16)scale(0.6996,0.6996)" d="M-18.0873,-18.9169L-1.6324,-12.0485L12.4018,-23.0477L10.9544,-5.2757L25.752,4.6726L8.4026,8.788L3.5139,25.9355L-5.7613,10.707L-23.5803,11.3564L-11.9633,-2.1707L-18.0873,-18.9169z" data-px-attrs="shape:{type:star;points:5;innerRadius:12.1586;radius:26.1725;startAngle:316.2843}"/>
+            <g id="_px_2jkdicri" fill="none" stroke="none" transform="translate(-644.3718,-73.7904)" data-px-meta="label:'Big star with shine 2'">
+              <g fill="none" stroke="none" transform="translate(670.6421,76.3866)rotate(15)scale(0.7817,0.7817)translate(-477.5633,-758.646)" data-px-meta="label:'star big 2'">
+                <path fill="none" stroke="#ffc716" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" transform="translate(451.3118,757.0363)scale(0.6996,0.6996)" d="M0,0C22.794,-28.913,58.895,-47.302,88,-44" data-px-meta="label:'Path'"/>
+                <path fill="none" stroke="#ffc716" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" transform="translate(453.4104,766.1305)scale(0.6996,0.6996)" d="M0,0C0,0,34.388,-36.537,63,-37" data-px-meta="label:'Path 2'"/>
+                <path fill="#9cdbfe" stroke="none" transform="translate(445.227,767.328)translate(-445.227,-767.328)" d="M447.464,777.323C441.862,777.323,437.32,772.781,437.32,767.179C437.32,765.266,437.851,763.476,438.771,761.949L444.465,757.486C444.646,757.431,444.83,757.378,445.015,757.333L444.027,769.469L453.134,775.592C451.516,776.685,449.564,777.323,447.464,777.323z" data-px-meta="label:'Path'"/>
+                <path fill="none" stroke="#ffc716" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" transform="translate(436.3639,773.16)scale(0.6996,0.6996)" d="M-18.0873,-18.9169L-1.6324,-12.0485L12.4018,-23.0477L10.9544,-5.2757L25.752,4.6726L8.4026,8.788L3.5139,25.9355L-5.7613,10.707L-23.5803,11.3564L-11.9633,-2.1707L-18.0873,-18.9169z" data-px-meta="label:'Star',appliedEffects:{shape:{preset:{type:'star',points:5,innerRadius:12.1586,radius:26.1725,startAngle:316.2843}}}"/>
               </g>
             </g>
           </g>
@@ -1570,16 +1570,16 @@
     </g>
   </g>
   <g transform="translate(0,-34)" mask="url(#_px_2jkdicrd)">
-    <g data-px-label="Group" fill="none" stroke="none" transform="translate(200,170)translate(-212.4079,-167.4005)">
-      <g data-px-label="Group 3" fill="none" stroke="none" transform="translate(261.2152,66.767)translate(-1145.3695,-48.8746)">
-        <g transform="translate(1129.1046,54.7758),rotate(-3.5342)" data-px-attrs="elementEffect:{baseId:_px_2jkdicra;transform:{origin:[644.3718,73.7904];translate:[484.7328,-19.0146];rotate:-3.5342;scale:{loop:{keyframesCount:0};kfs:[{t:0;v:[1,1]},{t:1250;v:[0.8,0.8]},{t:2500;v:[1,1]}]}}}">
+    <g fill="none" stroke="none" transform="translate(200,170)translate(-212.4079,-167.4005)" data-px-meta="label:'Group'">
+      <g fill="none" stroke="none" transform="translate(261.2152,66.767)translate(-1145.3695,-48.8746)" data-px-meta="label:'Group 3'">
+        <g transform="translate(1129.1046,54.7758),rotate(-3.5342)" data-px-meta="effectsHost:{coreId:'_px_2jkdicra',appliedEffects:{transformBy:{origin:[644.3718,73.7904],translate:[484.7328,-19.0146],rotate:-3.5342,scale:{loop:{},keyframes:[{time:0,value:[1,1]},{time:1250,value:[0.8,0.8]},{time:2500,value:[1,1]}]}}}}">
           <g class="_px-animated _px_2kho2p1t" transform="scale(1,1)">
-            <g id="_px_2jkdicra" data-px-label="Big star with shine 2" fill="none" stroke="none" transform="translate(-644.3718,-73.7904)">
-              <g data-px-label="star big" fill="none" stroke="none" transform="translate(670.6421,76.3866)rotate(15)scale(0.7817,0.7817)translate(-477.5633,-758.646)">
-                <path data-px-label="Path" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" transform="translate(451.3118,757.0363)scale(0.6996,0.6996)" d="M0,0C22.794,-28.913,58.895,-47.302,88,-44"/>
-                <path data-px-label="Path 2" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" transform="translate(453.4104,766.1305)scale(0.6996,0.6996)" d="M0,0C0,0,34.388,-36.537,63,-37"/>
-                <path data-px-label="Path" fill="#ffffff" stroke="none" transform="translate(445.227,767.328)translate(-445.227,-767.328)" d="M447.464,777.323C441.862,777.323,437.32,772.781,437.32,767.179C437.32,765.266,437.851,763.476,438.771,761.949L444.465,757.486C444.646,757.431,444.83,757.378,445.015,757.333L444.027,769.469L453.134,775.592C451.516,776.685,449.564,777.323,447.464,777.323z"/>
-                <path data-px-label="Star" fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" transform="translate(436.3639,773.16)scale(0.6996,0.6996)" d="M-18.0873,-18.9169L-1.6324,-12.0485L12.4018,-23.0477L10.9544,-5.2757L25.752,4.6726L8.4026,8.788L3.5139,25.9355L-5.7613,10.707L-23.5803,11.3564L-11.9633,-2.1707L-18.0873,-18.9169z" data-px-attrs="shape:{type:star;points:5;innerRadius:12.1586;radius:26.1725;startAngle:316.2843}"/>
+            <g id="_px_2jkdicra" fill="none" stroke="none" transform="translate(-644.3718,-73.7904)" data-px-meta="label:'Big star with shine 2'">
+              <g fill="none" stroke="none" transform="translate(670.6421,76.3866)rotate(15)scale(0.7817,0.7817)translate(-477.5633,-758.646)" data-px-meta="label:'star big'">
+                <path fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" transform="translate(451.3118,757.0363)scale(0.6996,0.6996)" d="M0,0C22.794,-28.913,58.895,-47.302,88,-44" data-px-meta="label:'Path'"/>
+                <path fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" transform="translate(453.4104,766.1305)scale(0.6996,0.6996)" d="M0,0C0,0,34.388,-36.537,63,-37" data-px-meta="label:'Path 2'"/>
+                <path fill="#ffffff" stroke="none" transform="translate(445.227,767.328)translate(-445.227,-767.328)" d="M447.464,777.323C441.862,777.323,437.32,772.781,437.32,767.179C437.32,765.266,437.851,763.476,438.771,761.949L444.465,757.486C444.646,757.431,444.83,757.378,445.015,757.333L444.027,769.469L453.134,775.592C451.516,776.685,449.564,777.323,447.464,777.323z" data-px-meta="label:'Path'"/>
+                <path fill="none" stroke="#ffffff" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" transform="translate(436.3639,773.16)scale(0.6996,0.6996)" d="M-18.0873,-18.9169L-1.6324,-12.0485L12.4018,-23.0477L10.9544,-5.2757L25.752,4.6726L8.4026,8.788L3.5139,25.9355L-5.7613,10.707L-23.5803,11.3564L-11.9633,-2.1707L-18.0873,-18.9169z" data-px-meta="label:'Star',appliedEffects:{shape:{preset:{type:'star',points:5,innerRadius:12.1586,radius:26.1725,startAngle:316.2843}}}"/>
               </g>
             </g>
           </g>
