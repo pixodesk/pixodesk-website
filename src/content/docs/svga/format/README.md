@@ -120,7 +120,7 @@ Three ideas cover 90 % of the format:
 The whole format as flattened TypeScript-style typings, with comments. First, the smallest
 document that animates — everything not written in it is a default:
 
-```json
+```json px-player
 {
   "type": "svg", "viewBox": "0 0 100 100",
   "children": [
@@ -724,7 +724,7 @@ Five complete documents, one idea each.
 
 **Self-contained, clock timeline:**
 
-```json
+```json px-player
 {
   "type": "svg",
   "viewBox": "0 0 400 400",
@@ -744,7 +744,7 @@ Five complete documents, one idea each.
 
 **Named definitions + unified transform:**
 
-```json
+```json px-player
 {
   "type": "svg",
   "viewBox": "0 0 600 400",
@@ -791,7 +791,7 @@ by `#id` and the animations it plays by name — [above](#animating-a-pre-render
 
 **Effects** (repeater + animated stroke trim + gradient):
 
-```json
+```json px-player
 {
   "type": "svg",
   "viewBox": "0 0 400 200",
@@ -1446,7 +1446,7 @@ function controlModeTakesOverTrigger(mode: PxControlMode): boolean;
 | Engine rules | `resolveTimelineEngine(engine)`, `isNativeForced(engine)`, `mayUseNativeScrollTimeline(engine)` | ○ how a `timeline.engine` resolves to an engine / to the browser's ScrollTimeline — the players' own decision helpers |
 | Trigger defaults | `PX_TRIGGER_DEFAULTS`, `resolveTrigger(trigger)`| ○ what a missing trigger field means (`startOn` 'load', `outAction` 'continue', threshold 0) — the one resolution every player uses |
 | Time contract | `seekCeilingMs`, `progressSpanMs`, `clampSeekMs`, `timeToProgress`, `progressToTimeMs`, `isValidPlaybackRate`, `PX_RATE_REJECTED`, `createRunClock` + | ○ the one meaning of time, seeking and rate that every engine implements — see `PxAnimatorApi` |
-| Diagnostics | `createDiagnostics(config?, prefix?)` (▪) → `PxDiagnostics`, `PxDiagnosticKind` + `PxDiagnostic`, `PxDiagnosticsConfig` | ● the one channel every player reports through: `onWarn` / `onError` with a `kind` saying who can act, falling back to the console — see `PxEngineCallbacks` |
+| Diagnostics | `createDiagnostics(config?, prefix?)` (▪) → `PxDiagnostics`, `PxDiagnosticCode`, `PxDiagnosticKind` + `PxDiagnostic`, `PxDiagnosticsConfig` | ● the one channel every player reports through: `onWarn` / `onError` with a `code` saying what happened and a `kind` saying who can act, falling back to the console — see `PxEngineCallbacks`. The text is not shipped: `PxDiagnosticCode` is a number, described on the [codes page](../diagnostics.md) |
 | Enum values | `PxTimelineEngineSetting`, `PxTimelineEngine`, `PxGradientType`, `PxUnits`, `PxGradientSpreadMethod`, `PxLoopRepeatAt`, `PxLoopDirection`, `PxStrokeTrimSubPaths`, `PxCloneWithout` (`clone.without` → `'translate'`), `PxMaskType`, `PxPathOverflow`, `PxLengthAdjust`, `PxTextPathMethod`, `PxTextPathSpacing`, `PxFillMode`, `PxPlaybackDirection`, `PxStartOn`, `PxOutAction`, `PxFinishAction`, `PxScrollKind`, `PxScrollAxis`, `PxScrollSource`, `PxScrollPhase`, `PxPinAlign`, `PxAlongPathMode`, `PX_TRANSFORM_PART_KEYS` | ● named values instead of bare strings — each is a const namespace AND the type derived from it, so `PxStartOn.click` and `startOn?: PxStartOn` come from one import |
 | Schema version | `PX_WIRE_SCHEMA_VERSION`, `PX_WIRE_VERSION`, `PX_WIRE_BASELINE_VERSION`, `PX_WIRE_STEPS`, `PX_WIRE_VERSION_KEY`, `PxWireVersionRelation`, `parseWireVersion`, `formatWireVersion`, `readWireVersion`, `compareWireVersion`, `wireVersionAdvice`, `convertWireDocument`, `downgradeWireDocument`, `applyWireSteps`, + `PxWireVersion`, `PxWireVersionStep`, `PxWireConversionResult`, `PxWireStepKind`, `PxWireConversionOptions` | ○ read, compare and convert a document's `animator.version` — [Versioning](#versioning) |
 | Schema release | `schemaFieldUniverse`, `diffFieldUniverse`, `planSchemaRelease`, `releaseLogProblems` | ▪ the field inventory and bump rule behind `scripts/schema-release.mjs` |
