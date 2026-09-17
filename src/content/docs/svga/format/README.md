@@ -76,7 +76,7 @@ Everything the format is, in one small document — a ball that drops with an ea
 The comments mark the two things **added on top of plain SVG** (JSON itself does not allow
 comments, so a real file has none):
 
-```js
+```js px-player
 {
   // The root <svg> element — plain SVG, written as JSON
   "type": "svg",
@@ -888,7 +888,7 @@ and no font file needs to be installed or loaded.
 |---|---|---|
 | `useGlyphs` | boolean | render the text from the glyph outlines in `definitions.fonts` — self-contained, identical on every machine, no font loading |
 
-```js
+```js px-player
 {
   "type": "svg",
   "viewBox": "0 0 400 100",

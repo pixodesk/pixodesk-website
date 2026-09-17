@@ -75,7 +75,7 @@ The complete *SVG + CSS animation* export of a bouncing ball, start option *On l
 as the editor writes it (this is the file the
 [example](https://github.com/pixodesk/pixodesk-svg-animator/blob/main/examples/docs-examples/src/fixtures/ball-css-onload.svg) inlines):
 
-```svg
+```svg px-player
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" id="_px_1" class="px-anim-enabled px-anim-playing" data-px-meta="runtime:{useCssAnimation:true},animator:{timeline:{duration:1000,iterations:'infinite',direction:'alternate',trigger:{startOn:'load',outAction:'pause'}}}">
   <style>@keyframes _px_2 {0% {transform:translate(200px,60px);animation-timing-function:cubic-bezier(0.33,0,0.67,0.33);}
 100% {transform:translate(200px,340px)}}

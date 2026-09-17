@@ -16,7 +16,7 @@ A complete *SVG + CSS animation* export, exactly as the editor writes it: one ci
 the host, its core and every derived copy carry the marks described in
 [Editor meta → derived elements (host / core / part)](/docs/svga/prerendered-svg/data-px-meta#applied-effects-that-create-derived-elements-host--core--part):
 
-```svg
+```svg px-player
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" id="_px_1" class="px-anim-enabled px-anim-playing" data-px-meta="runtime:{useCssAnimation:true},animator:{timeline:{duration:1000,iterations:'infinite',direction:'alternate',trigger:{startOn:'load',outAction:'pause'}}}">
   <style>@keyframes _px_3 {0% {opacity:1;animation-timing-function:cubic-bezier(0.167,0.167,0.833,0.833);}
 100% {opacity:0.2}}

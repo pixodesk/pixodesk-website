@@ -34,7 +34,7 @@ script is the UMD build, copied from the npm package into your site — see
 `bouncing-ball.json` is the whole document — a ball on an eased, alternating bounce. (The
 comments are explanatory; JSON does not allow comments, so the real file has none.)
 
-```js
+```js px-player
 {
   // The root <svg> element — plain SVG, written as JSON
   "type": "svg",

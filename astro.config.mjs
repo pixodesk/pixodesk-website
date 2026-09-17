@@ -8,6 +8,7 @@ import { remarkSvgaDocLinks } from "./src/plugins/remark-svga-doc-links.mjs";
 import { rehypeTableWrap } from "./src/plugins/rehype-table-wrap.mjs";
 import { docsSidebar, docsSidebarIntegration, svgaRedirects } from "./src/plugins/docs-sidebar.mjs";
 import { expressiveCodePxPlayer } from "./src/plugins/expressive-code-px-player.mjs";
+import { pxAnimMonitor } from "./src/plugins/px-anim-monitor.mjs";
 
 export default defineConfig({
     site: 'https://pixodesk.com',
@@ -91,5 +92,6 @@ export default defineConfig({
         }),
         mdx(),
         docsSidebarIntegration(),   // keeps the generated docs sidebar fresh during `astro dev`
+        pxAnimMonitor(),            // dev only: the on-page "how many animations are playing" panel
     ]
 });

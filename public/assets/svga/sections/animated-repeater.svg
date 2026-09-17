@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- Created with Pixodesk SVG (https://pixodesk.com) -->
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 367 756.2680491551458" text-rendering="geometricPrecision" shape-rendering="geometricPrecision" fill="none" class="_px_animate" data-px-meta="animator:{timeline:{duration:6010,iterations:'infinite',trigger:{scrollIntoViewThreshold:0.5}}}">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 367 756.2680491551458" text-rendering="geometricPrecision" shape-rendering="geometricPrecision" fill="none" id="_px_2kr3p34t" data-px-meta="animator:{timeline:{duration:6010,iterations:'infinite',trigger:{scrollIntoViewThreshold:0.5,startOn:'scrollIntoView'}}}">
   <style>@keyframes _px_2k3tok8l {0%, 15.6406% {opacity:0;animation-timing-function:cubic-bezier(0.42,0,1,1);}
 20.7987% {opacity:1;animation-timing-function:cubic-bezier(0.167,0.167,0.833,0.833);}
 55.0749% {opacity:1;animation-timing-function:cubic-bezier(0,0,0.58,1);}
@@ -324,4 +324,18 @@
       <path fill="#ffffff" stroke="none" transform="translate(176.5854,934.6339)scale(1.3835,1.3835)" d="M155.1099,18.8232C156.7163,18.8232,158.0187,20.1256,158.0187,21.732C158.0187,23.3384,156.7163,24.6408,155.1099,24.6408C153.5035,24.6408,152.2011,23.3384,152.2011,21.732C152.2011,20.1256,153.5035,18.8232,155.1099,18.8232zM155.1099,26.0952C158.3241,26.0952,160.9275,27.3969,160.9275,29.0041L160.9275,30.4585L149.2922,30.4585L149.2922,29.0041C149.2922,27.3969,151.8956,26.0952,155.1099,26.0952z"/>
     </g>
   </g>
+<script data-px-script="true"><![CDATA[
+(function() {
+(function startOnScrollIntoView(id, threshold) {
+    const el = document.getElementById(id);
+    if (el) new IntersectionObserver((e) => {e.forEach(i => {
+                    if (i.isIntersecting) el.classList.add("_px_animate", "_px_running");
+            if (i.isIntersecting) el.classList.remove("_px_paused");
+            if (!i.isIntersecting) el.classList.add("_px_paused");
+            if (!i.isIntersecting) el.classList.remove("_px_running");
+    });}, { threshold }).observe(el);
+})("_px_2kr3p34t", 0.5);
+
+})();
+]]></script>
 </svg>
