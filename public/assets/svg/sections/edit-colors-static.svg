@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- Created with Pixodesk SVG (https://pixodesk.com) -->
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 593 608" text-rendering="geometricPrecision" shape-rendering="geometricPrecision" fill="url(#_px_2je3avlk)" stroke="none" data-px-meta="animator:{timeline:{duration:1000,trigger:{scrollIntoViewThreshold:0.5}}}">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 593 608" text-rendering="geometricPrecision" shape-rendering="geometricPrecision" fill="url(#_px_2je3avlk)" stroke="none" data-px-meta="animator:{timeline:{duration:1000,trigger:{offScreen:'continue',visibilityThreshold:0.5}}}">
   <defs>
     <linearGradient id="_px_2je3avlu" x1="-21.2002" y1="-15.3291" x2="45.3219" y2="25.6762" gradientUnits="userSpaceOnUse">
       <stop offset="0%" stop-color="rgba(255,255,255,0)"/>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- Created with Pixodesk SVG (https://pixodesk.com) -->
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 766 430" text-rendering="geometricPrecision" shape-rendering="geometricPrecision" fill="#ffffff" data-px-meta="animator:{timeline:{duration:1000,trigger:{scrollIntoViewThreshold:0.5}}}">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 766 430" text-rendering="geometricPrecision" shape-rendering="geometricPrecision" fill="#ffffff" data-px-meta="animator:{timeline:{duration:1000,trigger:{offScreen:'continue',visibilityThreshold:0.5}}}">
   <defs>
     <path id="_px_svg_1bvb5n30" d="M1260.5608,-597.7939C1318.385,-597.7939,1365.2608,-550.9181,1365.2608,-493.0939C1365.2608,-435.2697,1318.385,-388.3939,1260.5608,-388.3939C1202.7366,-388.3939,1155.8608,-435.2697,1155.8608,-493.0939C1155.8608,-550.9181,1202.7366,-597.7939,1260.5608,-597.7939z"/>
     <path id="_px_svg_1bvb5n2v" d="M540.2128,-464.6471C482.3886,-464.6471,435.5128,-417.7713,435.5128,-359.9471C435.5128,-302.1228,482.3886,-255.2471,540.2128,-255.2471C598.037,-255.2471,644.9128,-302.1228,644.9128,-359.9471C644.9128,-417.7713,598.037,-464.6471,540.2128,-464.6471z"/>

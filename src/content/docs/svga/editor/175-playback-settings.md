@@ -51,18 +51,32 @@ always native-driven.
 
 ## Start trigger
 
-**Start** writes `timeline.trigger.startOn` — what makes the animation begin:
+The trigger has **two independent settings**: what *starts* the animation, and whether it may
+*run* at all. An animation nobody can see does not play, whatever started it.
+
+**Start** writes `timeline.trigger.start` — what makes the animation begin:
 
 | Editor label | Writes | Begins when |
 |---|---|---|
-| “On load” | `load` | the animation is displayed (default) |
-| “When visible” | `scrollIntoView` | it scrolls into view; the **threshold** writes `scrollIntoViewThreshold` — how much of it must be on screen first, from `0` (any part) to `1` (all of it) |
+| “On load” | `load` | the animation is displayed, and visible enough (default) |
 | “On mouse over” | `mouseOver` | the pointer enters it |
-| “On click” | `click` | it is clicked |
-| “Manually from JS” | `programmatic` | never on its own — code calls `play()` |
+| “On click” | `click` | it is clicked; a second click pauses |
+| “Manually from JS” | `none` | never on its own — code calls `play()` |
 
-**When the trigger ends** (pointer leaves, scrolled out of view, a second click) writes
-`timeline.trigger.outAction`: “continue”, “pause”, “reset” or “reverse”.
+There is no “When visible” any more: visibility is not a start event but a permission, and “On
+load” behind the gate below is exactly what it used to mean.
+
+**Off Screen** writes `timeline.trigger.offScreen` — what happens while none of it is on screen:
+“pause” (the default; it resumes where it left off), “continue” (keep running, and start without
+waiting to be seen) or “reset” (back to the start, so it replays on the next entry).
+
+**Visible Threshold** writes `visibilityThreshold` — how much must be on screen before it may run,
+from `0` (any part) to `1` (all of it), `0.5` by default. **Visible Delay** writes
+`visibilityDebounce` — how long that must hold, in milliseconds, so scrolling straight past starts
+nothing.
+
+**On Mouse Out** writes `timeline.trigger.mouseOut` and is read only for “On mouse over”:
+“continue”, “pause”, “reset” or “reverse”.
 
 **Use JS Triggers** only matters for the pre-rendered *SVG + CSS animation* export, and decides
 how the trigger is implemented in that file:

@@ -831,10 +831,20 @@ w[1];if("translateAo"!==r.j){if(0>=u)return y;if(1<=u)return w}return Array.isAr
 
 // Visibility gate (website): the export's own "whenVisible" starts at the first visible pixel and
 // only re-checks on scroll; this starts at 50% in view and pauses when none of it is on screen.
-(function startOnScrollIntoView(anim, id, threshold) {
+(function startOnScrollIntoView(anim, id, threshold, debounce) {
   const el = document.getElementById(id);
-  if (el) new IntersectionObserver((e) => {e.forEach(i => {
-    if (i.isIntersecting) anim.play(); else anim.pause();
-  });}, { threshold }).observe(el);
-})(window.PixodeskAnimator.loadAnimation({"fs":0,"fe":120,"fr":32,"a":[{"a":[{"transform":0},{"transform":1}],"el":["_px_an_2khoh4qd","_px_an_2khoh4qe"],"gr":{"_px_an_2khoh4qg":{"s":[[0,[0.3258,-7.5373]]],"e":[[0,[122.8877,323.3269]]],"h":[[0,0]],"a":[[0,-135]]},"_px_an_2khoh4qh":{"s":[[0,[0.3258,-7.5373]]],"e":[[0,[122.8877,323.3269]]],"h":[[0,0]],"a":[[0,-135]]}},"tr":[{"tp":[["translate",[[0,[224.9291,3.9271]]]],["translate",[[[0,[0.167,0.167,0.833,0.833],[0,0,0,0]],[77.2368,722.1265]],[[94,[0.167,0.167,0.833,0.833],[0,0,0,0]],[545.4389,722.1265]]]],["scale",[[0,[1.0291,1.0291]]]],["anchor",[[0,[506.2319,730.1956]]]]]},{"tp":[["positionX",[[[0,[0.167,0.167,0.833,0.833]],653.3555],[[89,[0.167,0.167,0.833,0.833]],1104.2735],[[94,[0.167,0.167,0.833,0.833]],1128.3774]]],["positionY",[[[0,[0.3333,0.6667,0.6667,1]],1131.4861],[[15,[0.3333,0,0.6667,0.3333]],1110.557],[[47,[0.3333,0.6667,0.6667,1]],1267.9662],[[66,[0.3333,0,0.6667,0.3333]],1176.0754],[[82,[0.3333,0.6667,0.6667,1]],1266.3745],[[89,[0.3333,0,0.6667,0.3333]],1228.7287],[[94,[0.167,0.167,0.833,0.833]],1268.6315]]]]}]}]},{"id":"2khoh4qb","cl":"","st":"none","mo":"pause","so":"pause","l":1,"canRestat":1}), "2khoh4qb", 0.5);]]></script>
+  if (!el) return;
+  let open = false, timer = 0;
+  // Same rule as the Pixodesk exports on this site: opens at the threshold and only after the
+  // dwell, so scrolling straight past starts nothing; closes only at ZERO visibility.
+  function openGate() { timer = 0; if (open) return; open = true; anim.play(); }
+  function closeGate() { if (timer) { clearTimeout(timer); timer = 0; } if (!open) return; open = false; anim.pause(); }
+  const steps = []; for (let s = 0; s <= 20; s++) steps.push(s / 20);
+  new IntersectionObserver((e) => {e.forEach(i => {
+    const r = i.isIntersecting ? i.intersectionRatio : 0;
+    if (r >= threshold) { if (!open && !timer) { timer = debounce > 0 ? setTimeout(openGate, debounce) : (openGate(), 0); } }
+    else if (r <= 0) { closeGate(); }
+    else if (!open && timer) { clearTimeout(timer); timer = 0; }
+  });}, { threshold: steps }).observe(el);
+})(window.PixodeskAnimator.loadAnimation({"fs":0,"fe":120,"fr":32,"a":[{"a":[{"transform":0},{"transform":1}],"el":["_px_an_2khoh4qd","_px_an_2khoh4qe"],"gr":{"_px_an_2khoh4qg":{"s":[[0,[0.3258,-7.5373]]],"e":[[0,[122.8877,323.3269]]],"h":[[0,0]],"a":[[0,-135]]},"_px_an_2khoh4qh":{"s":[[0,[0.3258,-7.5373]]],"e":[[0,[122.8877,323.3269]]],"h":[[0,0]],"a":[[0,-135]]}},"tr":[{"tp":[["translate",[[0,[224.9291,3.9271]]]],["translate",[[[0,[0.167,0.167,0.833,0.833],[0,0,0,0]],[77.2368,722.1265]],[[94,[0.167,0.167,0.833,0.833],[0,0,0,0]],[545.4389,722.1265]]]],["scale",[[0,[1.0291,1.0291]]]],["anchor",[[0,[506.2319,730.1956]]]]]},{"tp":[["positionX",[[[0,[0.167,0.167,0.833,0.833]],653.3555],[[89,[0.167,0.167,0.833,0.833]],1104.2735],[[94,[0.167,0.167,0.833,0.833]],1128.3774]]],["positionY",[[[0,[0.3333,0.6667,0.6667,1]],1131.4861],[[15,[0.3333,0,0.6667,0.3333]],1110.557],[[47,[0.3333,0.6667,0.6667,1]],1267.9662],[[66,[0.3333,0,0.6667,0.3333]],1176.0754],[[82,[0.3333,0.6667,0.6667,1]],1266.3745],[[89,[0.3333,0,0.6667,0.3333]],1228.7287],[[94,[0.167,0.167,0.833,0.833]],1268.6315]]]]}]}]},{"id":"2khoh4qb","cl":"","st":"none","mo":"pause","so":"pause","l":1,"canRestat":1}), "2khoh4qb", 0.5, 150);]]></script>
 </svg>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- Created with Pixodesk SVG (https://pixodesk.com) -->
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 470 465" text-rendering="geometricPrecision" shape-rendering="geometricPrecision" fill="#fbf5f5" stroke="none" data-px-meta="animator:{timeline:{duration:1000,trigger:{scrollIntoViewThreshold:0.5}}}">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 470 465" text-rendering="geometricPrecision" shape-rendering="geometricPrecision" fill="#fbf5f5" stroke="none" data-px-meta="animator:{timeline:{duration:1000,trigger:{offScreen:'continue',visibilityThreshold:0.5}}}">
   <g transform="translate(165.2328,223.8164)rotate(10.7379)scale(1.0607,1.0607)translate(-847.143,-78.301)" data-px-meta="label:'BIRD'">
     <g transform="translate(939.6313,-6.0587)rotate(-14.7945)scale(1.22,1.2299)translate(-937.4152,-407.8057)" data-px-meta="label:'Wing 2'">
       <path fill="#ff1f4a" transform="translate(634.832,293.732)scale(1.5039,1.5039)" d="M165.6639,134.618L174.217,148.497L187.892,108.961L198.7769,118.389L205.233,71.281L212.563,75.3139L223.822,47.583L232.553,50.819L243.352,28.784L250.969,30.242L268.637,3.207L191.386,8.529L133.761,78.505L151.581,103.491L165.6639,134.618z"/>

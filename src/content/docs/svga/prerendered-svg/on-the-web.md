@@ -76,7 +76,7 @@ as the editor writes it (this is the file the
 [example](https://github.com/pixodesk/pixodesk-svg-animator/blob/main/examples/docs-examples/src/fixtures/ball-css-onload.svg) inlines):
 
 ```svg px-player
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" id="_px_1" class="px-anim-enabled px-anim-playing" data-px-meta="runtime:{useCssAnimation:true},animator:{timeline:{duration:1000,iterations:'infinite',direction:'alternate',trigger:{startOn:'load',outAction:'pause'}}}">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" id="_px_1" class="px-anim-enabled px-anim-playing" data-px-meta="runtime:{useCssAnimation:true},animator:{timeline:{duration:1000,iterations:'infinite',direction:'alternate',trigger:{start:'load',offScreen:'pause'}}}">
   <style>@keyframes _px_2 {0% {transform:translate(200px,60px);animation-timing-function:cubic-bezier(0.33,0,0.67,0.33);}
 100% {transform:translate(200px,340px)}}
 .px-anim-enabled ._px_3 { animation: 1000ms _px_2 infinite alternate both; }
@@ -154,13 +154,13 @@ the player library). With *Embed JS Player* switched **on**, the editor inlines 
 `<script data-px-script="true">`, so the file is self-contained.
 
 ```svg
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" id="_px_1" data-px-meta="runtime:{externalJs:true},animator:{timeline:{duration:1000,iterations:'infinite',direction:'alternate',trigger:{startOn:'load',outAction:'pause'}}}">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" id="_px_1" data-px-meta="runtime:{externalJs:true},animator:{timeline:{duration:1000,iterations:'infinite',direction:'alternate',trigger:{start:'load',offScreen:'pause'}}}">
   <ellipse id="ball" fill="#0087ff" transform="translate(200,60)" rx="40" ry="40" data-px-meta="animate:{transform:{keyframes:[{time:0,value:{translate:[200,60]},easing:[0.33,0,0.67,0.33]},{time:1000,value:{translate:[200,340]}}]}}"/>
 <script data-px-script="true">
 //<![CDATA[
 (function() {
 var a = PixodeskAnimator.createAnimator({"data": 
-{"id":"_px_1","type":"svg","animator":{"timeline":{"duration":1000,"trigger":{"startOn":"load","outAction":"pause"},"iterations":"infinite","direction":"alternate"},"definitions":{"animations":{"a0":{"transform":{"keyframes":[{"time":0,"value":{"translate":[200,60]},"easing":[0.33,0,0.67,0.33]},{"time":1000,"value":{"translate":[200,340]}}]}}}},"animateById":{"#ball":["a0"]}}}
+{"id":"_px_1","type":"svg","animator":{"timeline":{"duration":1000,"trigger":{"start":"load","offScreen":"pause"},"iterations":"infinite","direction":"alternate"},"definitions":{"animations":{"a0":{"transform":{"keyframes":[{"time":0,"value":{"translate":[200,60]},"easing":[0.33,0,0.67,0.33]},{"time":1000,"value":{"translate":[200,340]}}]}}}},"animateById":{"#ball":["a0"]}}}
 });
 })();
 //]]>

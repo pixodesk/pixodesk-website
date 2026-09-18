@@ -50,7 +50,7 @@ React package's `PixodeskSvgCssAnimator`, which toggles the play classes for you
 import Ball from './animation.svg';
 import { PixodeskSvgCssAnimator } from '@pixodesk/svg-animator-react';
 
-<PixodeskSvgCssAnimator startOn="mouseOver" outAction="pause" style={{ width: 300, height: 300 }}>
+<PixodeskSvgCssAnimator start="mouseOver" mouseOut="pause" style={{ width: 300, height: 300 }}>
   <Ball />
 </PixodeskSvgCssAnimator>
 ```

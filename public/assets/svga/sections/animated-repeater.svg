@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- Created with Pixodesk SVG (https://pixodesk.com) -->
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 367 756.2680491551458" text-rendering="geometricPrecision" shape-rendering="geometricPrecision" fill="none" id="_px_2kr3p34t" data-px-meta="animator:{timeline:{duration:6010,iterations:'infinite',trigger:{scrollIntoViewThreshold:0.5,startOn:'scrollIntoView'}}}">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 367 756.2680491551458" text-rendering="geometricPrecision" shape-rendering="geometricPrecision" fill="none" id="_px_2kr3p34t" data-px-meta="animator:{timeline:{duration:6010,iterations:'infinite',trigger:{visibilityThreshold:0.5}}}">
   <style>@keyframes _px_2k3tok8l {0%, 15.6406% {opacity:0;animation-timing-function:cubic-bezier(0.42,0,1,1);}
 20.7987% {opacity:1;animation-timing-function:cubic-bezier(0.167,0.167,0.833,0.833);}
 55.0749% {opacity:1;animation-timing-function:cubic-bezier(0,0,0.58,1);}
@@ -326,15 +326,41 @@
   </g>
 <script data-px-script="true"><![CDATA[
 (function() {
-(function startOnScrollIntoView(id, threshold) {
+(function startOnScrollIntoView(id, threshold, debounce) {
     const el = document.getElementById(id);
-    if (el) new IntersectionObserver((e) => {e.forEach(i => {
-                    if (i.isIntersecting) el.classList.add("_px_animate", "_px_running");
-            if (i.isIntersecting) el.classList.remove("_px_paused");
-            if (!i.isIntersecting) el.classList.add("_px_paused");
-            if (!i.isIntersecting) el.classList.remove("_px_running");
-    });}, { threshold }).observe(el);
-})("_px_2kr3p34t", 0.5);
+    if (!el) return;
+    // A target TALLER than the viewport can never reach a high ratio (the ratio is measured
+    // against the TARGET's own size), so normalise by what could possibly be visible.
+    function pxRatio(i) {
+        const t = i.boundingClientRect, v = i.intersectionRect;
+        if (!t || !t.height || !v) return i.intersectionRatio;
+        let vp = Math.min(window.innerHeight || Infinity, i.rootBounds ? i.rootBounds.height : Infinity);
+        if (!isFinite(vp)) vp = t.height;
+        const d = Math.min(t.height, vp);
+        return d > 0 ? v.height / d : i.intersectionRatio;
+    }
+    let open = false, timer = 0;
+    function openGate() {
+        timer = 0; if (open) return; open = true;
+        el.classList.add("_px_animate", "_px_running");
+        el.classList.remove("_px_paused");
+    }
+    function closeGate() {
+        if (timer) { clearTimeout(timer); timer = 0; }
+        if (!open) return; open = false;
+        el.classList.add("_px_paused");
+        el.classList.remove("_px_running");
+    }
+    // Opens at the threshold and only after the dwell, so scrolling straight past starts
+    // nothing; closes only at ZERO visibility, so a graphic on the boundary cannot flap.
+    const steps = []; for (let s = 0; s <= 20; s++) steps.push(s / 20);
+    new IntersectionObserver((e) => {e.forEach(i => {
+        const r = i.isIntersecting ? pxRatio(i) : 0;
+        if (r >= threshold) { if (!open && !timer) { timer = debounce > 0 ? setTimeout(openGate, debounce) : (openGate(), 0); } }
+        else if (r <= 0) { closeGate(); }
+        else if (!open && timer) { clearTimeout(timer); timer = 0; }
+    });}, { threshold: steps }).observe(el);
+})("_px_2kr3p34t", 0.5, 150);
 
 })();
 ]]></script>

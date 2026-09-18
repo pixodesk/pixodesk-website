@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <!-- Created with Pixodesk SVG (https://pixodesk.com) -->
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700" text-rendering="geometricPrecision" shape-rendering="geometricPrecision" id="_px_2knb3bcd" data-px-meta="animator:{timeline:{duration:2000,iterations:'infinite',trigger:{scrollIntoViewThreshold:0.5,startOn:'scrollIntoView'}}}">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 700" text-rendering="geometricPrecision" shape-rendering="geometricPrecision" id="_px_2knb3bcd" data-px-meta="animator:{timeline:{duration:2000,iterations:'infinite',trigger:{visibilityThreshold:0.5}}}">
   <defs>
     <mask id="_px_2knb3bbd" mask-type="alpha">
       <g transform="matrix(1.0314,0.4775,-0.4775,1.0314,-662.4709,-957.7373)">
