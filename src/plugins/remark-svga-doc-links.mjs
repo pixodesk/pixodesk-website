@@ -27,7 +27,7 @@ import { posix } from 'node:path';
 
 const DOCS_DIR = 'src/content/docs/svga';
 // First path segments the sync generates (see GENERATED in scripts/sync-svga-docs.mjs).
-const SYNCED_SEGMENTS = new Set(['player-library', 'format', 'player.md']);
+const SYNCED_SEGMENTS = new Set(['player-library', 'format', 'diagnostics.md', 'player.md']);
 const BASE = '/docs/svga';
 
 // Upstream pages that moved into authored site content: links from the synced

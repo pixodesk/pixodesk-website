@@ -437,6 +437,19 @@ attribute's keyframes:
 }
 ```
 
+**Before it plays, and after a reset, an element shows its static attributes.** An animated
+attribute that has no static value beside it rests on its **first frame** — the player fills
+that value in as if you had written it. So the ellipse below sits at `139, 163` before anyone
+presses play, not at the origin, even though it states no `transform` of its own; and the
+editor always writes the static value out explicitly (`"transform": { "translate": [139, 163] }`
+next to the keyframes), so its files carry it either way. To rest somewhere *other* than the
+first frame, write the static attribute yourself — an authored value is always left alone.
+
+```js
+{ "type": "ellipse", "rx": 64, "ry": 64,
+  "animate": { "translate": { "keyframes": [ { "time": 0, "value": [139, 163] }, { "time": 1000, "value": [139, 310] } ] } } }
+```
+
 That is the usual form: an object with one entry per animated attribute. There are also
 three shorthand forms, all built on **named animations** — animations defined once in
 `definitions.animations` ([below](#definitions--animatordefinitions)) and reused by name:
@@ -933,9 +946,9 @@ says which:
 | `pathData` | path string | the path geometry (inline — no separate element needed) | browser text, glyphs |
 | `startOffset` | number \| `Animated<number>` | where the text starts along the path ([SVG spec](https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/Attribute/startOffset)) | browser text, glyphs |
 | `textLength` | number \| `Animated<number>` | stretch / squeeze the text to this length ([SVG spec](https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/Attribute/textLength)) | browser text, glyphs |
-| `lengthAdjust` | `spacing` · `spacingAndGlyphs` | how `textLength` is reached: by changing the space between glyphs only, or by stretching the glyphs too ([SVG spec](https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/Attribute/lengthAdjust)) | browser text only |
-| `method` | `align` · `stretch` | each glyph is rotated to sit on the path, or the glyphs themselves are bent to follow its curve ([SVG spec](https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/Attribute/method)) | browser text only |
-| `spacing` | `auto` · `exact` | `exact` places glyphs strictly by the SVG layout rules; `auto` lets the renderer adjust the spacing to look better on curves ([SVG spec](https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/Attribute/spacing)) | browser text only |
+| `lengthAdjust` | `spacing` (default) · `spacingAndGlyphs` | how `textLength` is reached: by changing the space between glyphs only, or by stretching the glyphs too ([SVG spec](https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/Attribute/lengthAdjust)) | browser text only |
+| `method` | `align` (default) · `stretch` | each glyph is rotated to sit on the path, or the glyphs themselves are bent to follow its curve ([SVG spec](https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/Attribute/method)) | browser text only |
+| `spacing` | `auto` · `exact` (default) | `exact` places glyphs strictly by the SVG layout rules; `auto` lets the renderer adjust the spacing to look better on curves ([SVG spec](https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/Attribute/spacing)) | browser text only |
 | `pathOverflow` | `extend` (default) · `clip` | glyphs past the end of an open path continue along the tangent, or disappear | browser text, glyphs |
 
 ```js
@@ -962,8 +975,8 @@ same settings; the only difference is which of the two attributes is painted.
 | `start` · `end` | `[x, y]` \| `Animated<[x, y]>` | the line the linear gradient runs along — SVG's `x1`/`y1`/`x2`/`y2` ([SVG `<linearGradient>` spec](https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/Element/linearGradient)) | <!-- px names=start,end -->
 | `center` · `radius` · `focal` | `[x, y]` \| `Animated<[x, y]>` · number \| `Animated<number>` · `[x, y]` \| `Animated<[x, y]>` | the radial gradient's center, radius and focal point — SVG's `cx`/`cy`, `r`, `fx`/`fy` ([SVG `<radialGradient>` spec](https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/Element/radialGradient)) | <!-- px names=center,radius,focal -->
 | `stops` | array of `{ offset, color }` \| `Animated<array of { offset, color }>` | the gradient's color stops — each becomes an SVG [`<stop>` element](https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/Element/stop). When animated, each keyframe's value is the complete stop list — every stop with its position and color at that moment — and every keyframe must have the same number of stops |
-| `gradientUnits` | `objectBoundingBox` · `userSpaceOnUse` | which coordinates `start`, `end`, `center`, `radius`, `focal` are in: positions across the element's own box (`0` = its left / top edge, `1` = its right / bottom edge), or the drawing's own coordinates ([SVG spec](https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/Attribute/gradientUnits)) |
-| `spreadMethod` | `pad` · `reflect` · `repeat` | what to paint beyond the last stop: extend the end color, mirror the gradient back, or start it over ([SVG spec](https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/Attribute/spreadMethod)) |
+| `gradientUnits` | `objectBoundingBox` (default) · `userSpaceOnUse` | which coordinates `start`, `end`, `center`, `radius`, `focal` are in: positions across the element's own box (`0` = its left / top edge, `1` = its right / bottom edge), or the drawing's own coordinates ([SVG spec](https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/Attribute/gradientUnits)) |
+| `spreadMethod` | `pad` (default) · `reflect` · `repeat` | what to paint beyond the last stop: extend the end color, mirror the gradient back, or start it over ([SVG spec](https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/Attribute/spreadMethod)) |
 | `gradientTransform` | string | static only ([SVG spec](https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/Attribute/gradientTransform)) |
 
 ```js
@@ -1039,8 +1052,8 @@ Under the hood the player builds a `<mask>` from it and applies it to this eleme
 | Field | Type | Meaning |
 |---|---|---|
 | `source` | `"#id"` | the element that becomes the mask |
-| `maskType` | `alpha` · `luminance` | how the source's pixels become mask values ([CSS spec](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/mask-type)) |
-| `maskUnits` · `maskContentUnits` | `userSpaceOnUse` · `objectBoundingBox` | SVG's mask coordinate systems ([SVG spec](https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/Attribute/maskUnits), [maskContentUnits](https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/Attribute/maskContentUnits)) | <!-- px names=maskUnits,maskContentUnits -->
+| `maskType` | `alpha` · `luminance` (default) | how the source's pixels become mask values ([CSS spec](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/mask-type)) |
+| `maskUnits` · `maskContentUnits` | `userSpaceOnUse` · `objectBoundingBox` | SVG's mask coordinate systems — omitted, `maskUnits` is `objectBoundingBox` and `maskContentUnits` is `userSpaceOnUse`, as in SVG ([SVG spec](https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/Attribute/maskUnits), [maskContentUnits](https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/Attribute/maskContentUnits)) | <!-- px names=maskUnits,maskContentUnits -->
 | `x` · `y` · `width` · `height` | numbers | the area the mask covers, in user units; leave all four out for SVG's default (`-10%,-10%,120%,120%` — [SVG `<mask>` spec](https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/Element/mask)). A `0` is a real value, not "absent" | <!-- px names=x,y,width,height -->
 
 ```js
@@ -1292,6 +1305,18 @@ knowing where they sit — reach for them over `doc.animator?.…` in a tool of 
 3. **Motion paths** — tangented `transform` keyframes and `autoOrient` are sampled into plain
    `{ translate, rotate }` keyframes.
 4. **Animated `<use>`** — replaced by a `<g>` with a deep clone and fresh ids.
+5. **Rest poses** — an animated property with no static value gets the value of its **first
+   frame** as a plain attribute. At rest — not yet played, or cancelled — a player shows the
+   static document, and a node an effect generated (a `transformBy` wrapper, a mask's inverse
+   chain, a glyph on a path) has no static value of its own: without this step it sits at the
+   identity until something plays. So does a hand-written node animating one individual channel
+   (`translate`, `rotate`, `scale`, `skew`) — the form these very examples use: its pose goes
+   into `transform`, as the parts record the editor writes, because that is the one slot both
+   engines write such a channel to. The value is what the engine itself writes at the first
+   frame, never "the first keyframe" (keyframes may begin before time 0). An authored static
+   value is left alone, and the step never changes the animation — only the frame shown at
+   rest: the engine is run again with the poses in place, and a pose that changes anything it
+   writes, at any point of the iteration, is taken back.
 
 Steps 3–4 run when `engine` is `native`. Pass `native` for **any renderer without live `<use>`
 propagation** (including `react-native-svg`); `js` only for the DOM, which resolves `<use>`
@@ -1348,7 +1373,7 @@ The calls above, and the rest of what you would call directly, in signature form
 <!-- px-check signature pkg=core -->
 ```typescript
 // ○ Run the whole materialization pipeline: effects → loops → motion paths →
-//   <use> instances, in the canonical order. This is exactly what the player
+//   <use> instances → rest poses, in the canonical order. This is exactly what the player
 //   runs internally, so a document flattened here plays identically — the way
 //   to feed a renderer that has no effects support. `resolveTimelineEngine`
 //   turns a document's `timeline.engine` into this argument.
@@ -1444,7 +1469,7 @@ function controlModeTakesOverTrigger(mode: PxControlMode): boolean;
 |---|---|---|
 | Wire types | `PxAnimatedSvgDocument`, `PxNode`, `PxSvgNode`, `PxAnimatorConfig`, `PxTimeline`, `PxTrigger`, `PxElementAnimation`, `PxPropertyAnimation`, `PxKeyframe`, `PxLoop`, `PxBinding`, `PxDefinitions`, `PxEffects`, `PxTransformParts`, `PxBezierPath`, `PxGlyph`, `PxGlyphFont`, `PxAnimationDefinition`, `PxScroll`, `PxScrollRangePoint`, `PxVec2`, `PxTransformValue` | ● the shapes in [Schema at a glance](#schema-at-a-glance) |
 | Player API types | `PxAnimatorApi<TRoot>`, `PxPlaybackApi<TRoot>`, `PxEngineCallbacks`, `PxPlatformAdapter` | ● platform-neutral; the web fixes `TRoot` to `Element`. `PxEngineCallbacks` is what an engine takes — the lifecycle on top of `PxDiagnosticsConfig` |
-| Component contract | `PxAnimatorHandle`, `PxAnimatorCallbacks`, `PxControlProps`, `PxControlMode`, `resolveControlMode(props)`, `controlModeTakesOverTrigger(mode)` | ● what the React / Vue / React Native components share: the imperative handle, the callback set, the props that pick a mode and the one rule that picks it — [the API at a glance](../library/README.md#the-api-at-a-glance) |
+| Component contract | `PxAnimatorHandle`, `PxAnimatorCallbacks`, `PxControlProps`, `PxControlMode`, `resolveControlMode(props)`, `controlModeTakesOverTrigger(mode)`, `prepareDocumentForRender(doc)` (▪), `renderPxTree(node, factory)` (▪), `PxElementFactory` (▪), `PxElementSpec` (▪) | ● what the React / Vue / React Native components share: the imperative handle, the callback set, the props that pick a mode and the one rule that picks it — [the API at a glance](../library/README.md#the-api-at-a-glance). `renderPxTree` is THE renderer of every DOM player: it makes each decision about a document — tags, attribute names and values, sanitization, styles, text — and a player supplies only a `PxElementFactory`, "create an element from this finished `PxElementSpec`" (a DOM node, a React element, a Vue vnode). `prepareDocumentForRender` is the document it is given: materialized, then fresh ids |
 | Engine rules | `resolveTimelineEngine(engine)`, `isNativeForced(engine)`, `mayUseNativeScrollTimeline(engine)` | ○ how a `timeline.engine` resolves to an engine / to the browser's ScrollTimeline — the players' own decision helpers |
 | Trigger defaults | `PX_TRIGGER_DEFAULTS`, `resolveTrigger(trigger)`| ○ what a missing trigger field means (`start` 'load', `offScreen` 'pause', `mouseOut` 'continue', threshold 0.5, debounce 150 ms) — the one resolution every player uses |
 | Time contract | `seekCeilingMs`, `progressSpanMs`, `clampSeekMs`, `timeToProgress`, `progressToTimeMs`, `isValidPlaybackRate`, `PX_RATE_REJECTED`, `createRunClock` + | ○ the one meaning of time, seeking and rate that every engine implements — see `PxAnimatorApi` |
@@ -1458,13 +1483,13 @@ function controlModeTakesOverTrigger(mode: PxControlMode): boolean;
 | Timeline shape | `flattenAnimatorTimeline`, `nestAnimatorTimeline` | ○ nested `timeline` object ⇄ the flat runtime view |
 | Playback override | `PxTimelinePatch`, `PxPlaybackOverride`, `PxAnimatorConfigPatch`, `PxAnimatorConfigMergeResult`, `PxTimelineShortcuts` | ● the `timeline` override as every player takes it, and the companion types of the three merge functions above |
 | Keyframe forms | `keyframeValue`, `keyframeEasing`, `PxNormalizedKeyframe`, `PxNormalizedPropertyAnimation`, `PxAnyKeyframe` | ▪ read a keyframe in either its wire or its runtime (`t` / `v` / `e`) form; is what `normalizeBindings` hands the engines — bare id + merged animation, from a binding or a node alike |
-| Schema toolkit | `px`, `schemaKeys`, `describeSchema` — plus one schema value per wire type: `PxAnimatedSvgDocumentSchema`, `PxNodeSchema`, `PxNodeBaseSchema`, `PxSvgNodeRootSchema`, `PxAnimatorConfigSchema`, `PxTimelineSchema`, `PxTriggerSchema`, `PxElementAnimationSchema`, `PxPropertyAnimationSchema`, `PxKeyframeSchema`, `PxKeyframeValueSchema`, `PxAttrValueSchema`, `PxTransformPartsSchema`, `PxBezierPathSchema`, `PxLoopSchema`, `PxDefinitionsSchema`, `PxEffectsSchema`, `PxClipPathEffectSchema`, `PxCloneEffectSchema`, `PxRepeaterEffectSchema`, `PxRetimeEffectSchema`, `PxMaskedByEffectSchema`, `PxTransformByEffectSchema`, `PxTextEffectSchema`, `PxTextPathEffectSchema`, `PxStrokeTrimEffectSchema`, `PxFillGradientEffectSchema`, `PxGradientStopSchema`, `PxScrollSchema`, `PxScrollRangeSchema`, `PxScrollRangePointSchema`, `PxTransformValueSchema` | ○ the validator the format is written in |
+| Schema toolkit | `px`, `schemaKeys`, `describeSchema` — plus one schema value per wire type: `PxAnimatedSvgDocumentSchema`, `PxNodeSchema`, `PxNodeBaseSchema`, `PxSvgNodeRootSchema`, `PxAnimatorConfigSchema`, `PxTimelineSchema`, `PxTimeTimelineSchema`, `PxTriggerSchema`, `PxElementAnimationSchema`, `PxPropertyAnimationSchema`, `PxKeyframeSchema`, `PxKeyframeValueSchema`, `PxAttrValueSchema`, `PxTransformPartsSchema`, `PxBezierPathSchema`, `PxLoopSchema`, `PxDefinitionsSchema`, `PxEffectsSchema`, `PxClipPathEffectSchema`, `PxCloneEffectSchema`, `PxRepeaterEffectSchema`, `PxRetimeEffectSchema`, `PxMaskedByEffectSchema`, `PxTransformByEffectSchema`, `PxTextEffectSchema`, `PxTextPathEffectSchema`, `PxStrokeTrimEffectSchema`, `PxFillGradientEffectSchema`, `PxGradientStopSchema`, `PxScrollSchema`, `PxScrollRangeSchema`, `PxScrollRangePointSchema`, `PxTransformValueSchema` | ○ the validator the format is written in |
 | Pipeline stages | `normalizeBindings` (○), `calcAnimationValues` (○), `interpolateValue`, `materializeMotionPathInPropAnim`, `mergeStaticTransformIntoAnimDef` | ▪ stages of `materializeAllInTree`; call the pipeline instead |
 | Effect harness | `diffInEffect` | ▪ the editor's "equal in effect" comparison |
 | Text & paths | `materializeGlyphText`, `layoutGlyphTextChars`, `createPathSampler`, `extendedPathForBrowser`, `materializeGlyphTextAlongPath` | ▪ glyph-text and text-on-path materialization |
 | Node props | `toDomProps` (○), `sanitizeAttributeValue`, `PX_CSS_ONLY_STYLE_PROPS`, `PX_DISALLOWED_SVG_TAGS_LOWER` | ▪ shared normalization and sanitization rules |
 | Scroll math | `isScrollTimeline`, `scrollViewProgress`, `scrollOffsetProgress`, `scrollPhaseInterval`, `scrollResolveAxis`, `scrollTotalDurationMs` | ▪ scroll-driven playback internals |
-| Maths & strings | `cubicBezier`, `subdivideCubicBezier`, `bezierToSvgPath`, `splitEasing`, `reverseEasing`, `clamp`, `toRGBA`, `composeTransformParts`, `camelCaseToKebabWordIfNeeded`, `kebabToCamelCaseWord`, `PX_COLOR_ATTR_NAMES`, `PX_STYLE_ATTR_NAMES`, `PX_PCT_BASED_ATTR_NAMES`, `PX_TRANSFORM_FN_NAMES`, `deepClone`, `generateUniqueId`, `PX_DEFAULT_DURATION_MS`, `PX_LOOP_JUMP_SHIFT_MS` | ▪ helpers shared with the editor |
+| Maths & strings | `cubicBezier`, `subdivideCubicBezier`, `bezierToSvgPath`, `splitEasing`, `reverseEasing`, `clamp`, `toRGBA`, `composeTransformParts`, `camelCaseToKebabWordIfNeeded`, `kebabToCamelCaseWord`, `PX_COLOR_ATTR_NAMES`, `PX_STYLE_ATTR_NAMES`, `PX_PCT_BASED_ATTR_NAMES`, `PX_TRANSFORM_FN_NAMES`, `deepClone`, `generateUniqueId`, `PX_DEFAULT_DURATION_MS`, `PX_DEFAULT_ITERATIONS`, `PX_LOOP_JUMP_SHIFT_MS` | ▪ helpers shared with the editor |
 | Schema toolkit types | `PxSchema`, `PxSchemaDesc`, `PxInfer`, `PxValidationContext`, `PxRemoveIndex` | ○ the types you build a schema with — see the toolkit above |
 | Companion types | `PxMaterializeAllOptions`, `PxCreateElement`, `PxGlyphCharBox`, `PxAnimatable` | ▪ argument and result shapes of the functions above |
 | Attribute names | `PX_ANIM_ATTR_NAME`, `PX_ANIM_SRC_ATTR_NAME`, `PX_TEXT_CONTENT_ATTR` | ▪ reserved keys — see [Nodes](#nodes) |

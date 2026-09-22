@@ -16,6 +16,9 @@
 //
 //   upstream library/…         -> svga/player-library/…  /docs/svga/player-library/…
 //   upstream format/…          -> svga/format/…          /docs/svga/format
+//   upstream diagnostics.md    -> svga/diagnostics.md    /docs/svga/diagnostics
+//                                 (generated from the player's PxDiagnosticCode enum;
+//                                  every library page links to it as the "codes page")
 //
 // Only those generated paths (GENERATED) are wiped and rewritten. Everything
 // else under svga/ is authored and never touched — notably editor/ (the manual,
@@ -43,7 +46,7 @@ const SLUG_BASE = 'docs/svga';
 const SEGMENT_MAP = { library: 'player-library' };
 
 // Everything the sync owns under TARGET; wiped before each run.
-const GENERATED = ['player-library', 'format', 'player.md' /* legacy, wiped */];
+const GENERATED = ['player-library', 'format', 'diagnostics.md', 'player.md' /* legacy, wiped */];
 
 // Upstream folders that intentionally do NOT sync: start/ lives on in the
 // editor manual (svga/editor), prerendered-svg/ is authored on the site.
@@ -106,7 +109,9 @@ function deriveDescription(body) {
   const paragraph = body
     .split(/\n\s*\n/)
     .map((block) => block.trim())
-    .find((block) => block && !/^[#>|`\[!-]/.test(block) && !block.startsWith('**On this page'));
+    // Prose only: not a heading, quote, table, fence, link line, HTML comment (the generated
+    // codes page opens with one) or the GitHub-only contents line.
+    .find((block) => block && !/^[#>|`\[!<-]/.test(block) && !block.startsWith('**On this page'));
   if (!paragraph) return undefined;
   let text = paragraph
     .replace(/\[([^\]]*)\]\([^)]*\)/g, '$1')

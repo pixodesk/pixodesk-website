@@ -2,7 +2,7 @@
  * Builds the docs sidebar from the per-app content folders:
  *
  *   src/content/docs/svga/editor — Pixodesk SVG Animator: the editor manual
- *   src/content/docs/svga/{player-library,format,player.md}
+ *   src/content/docs/svga/{player-library,format,diagnostics.md,player.md}
  *                                — the synced player docs (scripts/sync-svga-docs.mjs)
  *   src/content/docs/svga/prerendered-svg — authored (moved out of the player repo)
  *   src/content/docs/2d-lottie   — Pixodesk Lottie Animator
@@ -36,14 +36,15 @@ export const SUPER_SECTIONS = {
 };
 
 /** The big top-level section titles (always open, styled large). */
-export const SECTION_LABELS = ['Editor', 'Player Library', 'JSON Format', 'Pre-rendered SVG File'];
+export const SECTION_LABELS = ['Editor', 'Player Library', 'JSON Format', 'Diagnostic Codes', 'Pre-rendered SVG File'];
 
-// [folder, section label, file order] for the synced player docs. 'Format' is a
-// single page: its section carries the page's `##` headings directly.
-// Unlisted files still appear, alphabetically last.
+// [folder — or ONE synced page at the svga root —, section label, file order] for the
+// synced player docs. A single-page section ('Format', the codes page) carries the page's
+// `##` headings directly. Unlisted files still appear, alphabetically last.
 const PLAYER_SECTIONS = [
     ['player-library', 'Player Library', ['README.md', 'installation.md', 'web-player.md', 'react.md', 'vue.md', 'react-native.md', 'playback-and-triggers.md', 'troubleshooting.md']],
     ['format', 'JSON Format', ['README.md']],
+    ['diagnostics.md', 'Diagnostic Codes', ['diagnostics.md']],
     ['prerendered-svg', 'Pre-rendered SVG File', ['README.md', 'on-the-web.md', 'static-sites-and-cms.md', 'data-px-meta.md']],
 ];
 const PLAYER_SECTION_BASE_ORDER = 210; // after the Editor section (10)
@@ -116,10 +117,12 @@ function editorSection() {
  *  `yarn sync:svga-docs` run). */
 function playerSections() {
     const result = [];
-    PLAYER_SECTIONS.forEach(([folder, label, order], index) => {
-        const dir = path.join(SVGA_ROOT, folder);
-        if (!fs.existsSync(dir)) return;
-        const files = fs.readdirSync(dir).filter((f) => f.endsWith('.md'));
+    PLAYER_SECTIONS.forEach(([entry, label, order], index) => {
+        // A folder of pages, or one page sitting at the svga root (diagnostics.md).
+        const isRootPage = entry.endsWith('.md');
+        const dir = isRootPage ? SVGA_ROOT : path.join(SVGA_ROOT, entry);
+        if (!fs.existsSync(path.join(SVGA_ROOT, entry))) return;
+        const files = isRootPage ? [entry] : fs.readdirSync(dir).filter((f) => f.endsWith('.md'));
         const orderedFiles = [
             ...order.filter((f) => files.includes(f)),
             ...files.filter((f) => !order.includes(f)).sort(),
