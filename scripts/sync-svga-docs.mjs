@@ -14,8 +14,8 @@
 // The synced sections live DIRECTLY under src/content/docs/svga, next to the
 // authored editor/ manual, so the disk layout matches the URLs:
 //
-//   upstream get-started/…     -> svga/get-started/…      /docs/svga/get-started
 //   upstream library/…         -> svga/player-library/…  /docs/svga/player-library/…
+//                                 (library/get-started.md is shown as its own sidebar section)
 //   upstream format/…          -> svga/format/…          /docs/svga/format
 //   upstream diagnostics.md    -> svga/diagnostics.md    /docs/svga/diagnostics
 //                                 (generated from the player's PxDiagnosticCode enum;
@@ -23,8 +23,9 @@
 //
 // Only those generated paths (GENERATED) are wiped and rewritten. Everything
 // else under svga/ is authored and never touched — notably editor/ (the manual,
-// which also absorbed the former upstream start/ pages) and prerendered-svg/
-// (moved out of the player repo and authored here). Upstream folders listed in
+// which also absorbed the former upstream start/ pages), prerendered-svg/
+// (moved out of the player repo and authored here) and get-started.md (the
+// site's own four-step start page). Upstream folders listed in
 // SKIPPED_UPSTREAM are ignored silently.
 //
 // The player docs are plain GitHub-flavoured markdown; Starlight needs frontmatter
@@ -47,7 +48,7 @@ const SLUG_BASE = 'docs/svga';
 const SEGMENT_MAP = { library: 'player-library' };
 
 // Everything the sync owns under TARGET; wiped before each run.
-const GENERATED = ['get-started', 'player-library', 'format', 'diagnostics.md', 'player.md' /* legacy, wiped */];
+const GENERATED = ['player-library', 'format', 'diagnostics.md', 'player.md' /* legacy, wiped */];
 
 // Upstream folders that intentionally do NOT sync: start/ lives on in the
 // editor manual (svga/editor), prerendered-svg/ is authored on the site.

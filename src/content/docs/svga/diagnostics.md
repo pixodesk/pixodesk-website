@@ -1,5 +1,5 @@
 ---
-title: "Diagnostic codes"
+title: "Player diagnostic codes"
 slug: "docs/svga/diagnostics"
 description: "Every warning and error a player reports carries a number, not a sentence. The player ships the number; the words are here. That keeps the library small,…"
 ---

@@ -1,15 +1,18 @@
 /**
  * Builds the docs sidebar from the per-app content folders:
  *
+ *   src/content/docs/svga/get-started.md — authored: the site's four-step start page
  *   src/content/docs/svga/editor — Pixodesk SVG Animator: the editor manual
- *   src/content/docs/svga/{get-started,player-library,format,diagnostics.md,player.md}
+ *   src/content/docs/svga/{player-library,format,diagnostics.md,player.md}
  *                                — the synced player docs (scripts/sync-svga-docs.mjs)
  *   src/content/docs/svga/prerendered-svg — authored (moved out of the player repo)
  *   src/content/docs/2d-lottie   — Pixodesk Lottie Animator
  *
  * The SVG Animator sidebar is organised into big top-level sections (always
  * open, large titles — see SECTION_LABELS and the styling in
- * starlight/Sidebar.astro): Editor · Get Started · Player Library · Format · Pre-rendered SVG.
+ * starlight/Sidebar.astro), in the order a reader needs them: the two Get Started
+ * pages, the Editor manual, the two ways to play (Player Library, Pre-rendered SVG),
+ * then the references (Player JSON Format, Player Diagnostic Codes) — see SECTIONS.
  * Inside Editor, vector/ and animation/ remain
  * nested always-open sub-sections (SUPER_SECTIONS).
  *
@@ -36,19 +39,20 @@ export const SUPER_SECTIONS = {
 };
 
 /** The big top-level section titles (always open, styled large). */
-export const SECTION_LABELS = ['Editor', 'Get Started', 'Player Library', 'JSON Format', 'Diagnostic Codes', 'Pre-rendered SVG File'];
+export const SECTION_LABELS = ['Get Started', 'Get Started with Player Library', 'Editor', 'Player Library', 'Pre-rendered SVG File', 'Player JSON Format', 'Player Diagnostic Codes'];
 
-// [folder — or ONE synced page at the svga root —, section label, file order] for the
-// synced player docs. A single-page section ('Get Started', 'Format', the codes page) carries the
-// page's `##` headings directly. Unlisted files still appear, alphabetically last.
-const PLAYER_SECTIONS = [
-    ['get-started', 'Get Started', ['README.md']],
-    ['player-library', 'Player Library', ['README.md', 'installation.md', 'web-player.md', 'react.md', 'nextjs.md', 'vue.md', 'nuxt.md', 'react-native.md', 'playback-and-triggers.md', 'troubleshooting.md']],
-    ['format', 'JSON Format', ['README.md']],
-    ['diagnostics.md', 'Diagnostic Codes', ['diagnostics.md']],
-    ['prerendered-svg', 'Pre-rendered SVG File', ['README.md', 'on-the-web.md', 'static-sites-and-cms.md', 'data-px-meta.md']],
+// [entry, section label, sidebar order, file order]: `entry` is a folder under svga/ or ONE
+// page (its path under svga/). A single-page section carries the page's `##` headings
+// directly. A page listed on its own is left out of its folder's section. Unlisted files of
+// a folder still appear, alphabetically last. The Editor section (editorSection) is order 10.
+const SECTIONS = [
+    ['get-started.md',                'Get Started',                     1,   ['get-started.md']],
+    ['player-library/get-started.md', 'Get Started with Player Library', 5,   ['get-started.md']],
+    ['player-library',                'Player Library',                  210, ['README.md', 'installation.md', 'web-player.md', 'react.md', 'nextjs.md', 'vue.md', 'nuxt.md', 'react-native.md', 'playback-and-triggers.md', 'troubleshooting.md']],
+    ['prerendered-svg',               'Pre-rendered SVG File',           220, ['README.md', 'on-the-web.md', 'static-sites-and-cms.md', 'data-px-meta.md']],
+    ['format',                        'Player JSON Format',              230, ['README.md']],
+    ['diagnostics.md',                'Player Diagnostic Codes',         240, ['diagnostics.md']],
 ];
-const PLAYER_SECTION_BASE_ORDER = 210; // after the Editor section (10)
 
 /** Same rules as github-slugger (the heading-id algorithm Starlight uses). */
 export function headingSlug(text) {
@@ -114,16 +118,20 @@ function editorSection() {
     }];
 }
 
-/** The player docs as big top-level sections (empty until the first
- *  `yarn sync:svga-docs` run). */
+/** The big top-level sections other than Editor: the synced player docs (empty until the
+ *  first `yarn sync:svga-docs` run) and the authored pages listed in SECTIONS. */
 function playerSections() {
     const result = [];
-    PLAYER_SECTIONS.forEach(([entry, label, order], index) => {
-        // A folder of pages, or one page sitting at the svga root (diagnostics.md).
-        const isRootPage = entry.endsWith('.md');
-        const dir = isRootPage ? SVGA_ROOT : path.join(SVGA_ROOT, entry);
+    // Pages that are sections of their own, so their folder's section skips them.
+    const ownPages = new Set(SECTIONS.map(([entry]) => entry).filter((entry) => entry.endsWith('.md')));
+    SECTIONS.forEach(([entry, label, sectionOrder, order]) => {
+        // A folder of pages, or one page given by its path under svga/.
+        const isOnePage = entry.endsWith('.md');
+        const dir = isOnePage ? SVGA_ROOT : path.join(SVGA_ROOT, entry);
         if (!fs.existsSync(path.join(SVGA_ROOT, entry))) return;
-        const files = isRootPage ? [entry] : fs.readdirSync(dir).filter((f) => f.endsWith('.md'));
+        const files = isOnePage
+            ? [entry]
+            : fs.readdirSync(dir).filter((f) => f.endsWith('.md') && !ownPages.has(`${entry}/${f}`));
         const orderedFiles = [
             ...order.filter((f) => files.includes(f)),
             ...files.filter((f) => !order.includes(f)).sort(),
@@ -137,7 +145,7 @@ function playerSections() {
             ? [{ label: 'Overview', link: `/${sections[0].slug}` }, ...sections[0].items]
             : sections.map((s) => ({ label: shortLabel(s.label), link: `/${s.slug}` }));
         result.push({
-            order: PLAYER_SECTION_BASE_ORDER + index * 10,
+            order: sectionOrder,
             group: { label, collapsed: false, items },
         });
     });

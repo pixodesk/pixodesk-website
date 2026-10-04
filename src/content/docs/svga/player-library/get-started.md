@@ -1,6 +1,6 @@
 ---
-title: "Get started — from the editor to your app"
-slug: "docs/svga/get-started"
+title: "Get started with the player library"
+slug: "docs/svga/player-library/get-started"
 description: "The shortest path from a blank canvas to an animation playing in your page or app: make the animation in the editor, save it as a JSON file, put the file…"
 ---
 
@@ -12,7 +12,7 @@ package, render the file with it. Nothing to configure.
 the editor  ──save──▶  animation.json  ──import──▶  <PixodeskSvgAnimator doc={animation} />
 ```
 
-Everything on this page has a longer version — the [library documentation](../library/README.md)
+Everything on this page has a longer version — the [library documentation](./README.md)
 for every player and option, the [format documentation](../format/README.md) for the file itself.
 You do not need either to get the first animation playing.
 
@@ -60,7 +60,7 @@ A plain page without a bundler keeps it next to the HTML file instead (see
 `doc={animation}` (a string field is not the literal the document type expects). Cast it once —
 `animation as PxAnimatedSvgDocument`, the type comes from the package you installed — and make
 sure `"resolveJsonModule": true` is in your `tsconfig.json`; both are spelled out in
-[Installing the players › TypeScript](../library/installation.md#typescript).
+[Installing the players › TypeScript](./installation.md#typescript).
 
 ## 3. Install the player and render the file
 
@@ -103,7 +103,7 @@ The component renders the document's `<svg>` and fills the element around it, so
 element.
 
 **Next.js:** the same component; mark the file that uses it as a client component with
-`'use client';` on its first line. Details: [Next.js](../library/nextjs.md).
+`'use client';` on its first line. Details: [Next.js](./nextjs.md).
 
 ## Vue
 
@@ -127,7 +127,7 @@ import animation from './animation.json';
 </template>
 ```
 
-**Nuxt:** nothing more to do — the component is SSR-safe. Details: [Nuxt](../library/nuxt.md).
+**Nuxt:** nothing more to do — the component is SSR-safe. Details: [Nuxt](./nuxt.md).
 
 ## Plain HTML
 
@@ -186,7 +186,7 @@ the page, plays from disk.
 > **Example:** [`examples/get-started/html-create-animator`](https://github.com/pixodesk/pixodesk-svg-animator/tree/main/examples/get-started/html-create-animator) — the complete project.
 
 `createAnimator` returns the player, so you can call `animator.play()`, `animator.pause()` and
-the rest ([the playback API](../library/web-player.md#the-playback-api)). With `src` it fetches
+the rest ([the playback API](./web-player.md#the-playback-api)). With `src` it fetches
 the file itself:
 
 ```html
@@ -240,7 +240,7 @@ does not run it), parse it, hand it over as `doc`:
 ## React Native
 
 🧪 *In development* — the API may still change; see
-[React Native](../library/react-native.md) for what is supported.
+[React Native](./react-native.md) for what is supported.
 
 > **Example:** [`examples/get-started/react-native`](https://github.com/pixodesk/pixodesk-svg-animator/tree/main/examples/get-started/react-native) — the complete project.
 
@@ -250,7 +250,7 @@ npx expo install react-native-svg react-native-reanimated   # if your app does n
 ```
 
 Reanimated needs its Babel plugin — one line in `babel.config.js`, spelled out in
-[React Native › Install](../library/react-native.md#install).
+[React Native › Install](./react-native.md#install).
 
 ```tsx
 // components/Hero.tsx
@@ -278,12 +278,12 @@ page shows the new animation; refresh if it does not.
 - **Start it on click, hover or scroll into view, loop it, set its length** — these are saved in
   the file: [playback settings in the editor](https://pixodesk.com/docs/svga/editor/playback-settings).
   To change them for one place in your app without touching the file, pass them to the player:
-  [Playback settings & triggers](../library/playback-and-triggers.md).
+  [Playback settings & triggers](./playback-and-triggers.md).
 - **Play, pause, jump to a time from your code** — the handle every player gives you:
-  [React](../library/react.md#imperative-api-apiref) · [Vue](../library/vue.md) ·
-  [Web player](../library/web-player.md#the-playback-api).
+  [React](./react.md#imperative-api-apiref) · [Vue](./vue.md) ·
+  [Web player](./web-player.md#the-playback-api).
 - **No JavaScript at all** — save a pre-rendered SVG instead of JSON and drop the file into any
   page or CMS: [Pre-rendered SVG](https://pixodesk.com/docs/svga/prerendered-svg).
-- **Everything else** — [Library documentation](../library/README.md), the players and their
+- **Everything else** — [Library documentation](./README.md), the players and their
   options; [Format documentation](../format/README.md), what is in the file.
 
