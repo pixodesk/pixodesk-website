@@ -30,7 +30,8 @@ snapshots — see [Save, File Format](/docs/svga/editor/save).
 
 **JSON** fits code: React, Vue, React Native, or vanilla JavaScript that needs runtime control.
 **A pre-rendered SVG** fits a file you drop into a CMS or static site with minimal setup — and
-that you need **once per page** ([read more](/docs/svga/prerendered-svg/on-the-web#one-copy-of-a-file-per-page)).
+that appears **once per page** — the same file inlined twice clashes, different files do not
+([read more](/docs/svga/prerendered-svg/on-the-web#the-same-file-twice-on-one-page)).
 
 | Situation | Pick |
 |---|---|
@@ -48,8 +49,8 @@ that you need **once per page** ([read more](/docs/svga/prerendered-svg/on-the-w
 | Format | Advantages | Limitations |
 |---|---|---|
 | **JSON** | • Every animation type on every browser<br>• full runtime control (play, pause, jump to any point, reverse, change speed)<br>• clean per-instance rendering, no id conflicts<br>• SSR-safe | You install a player package and add a few lines of code — the `.json` file does nothing on its own, unlike a pre-rendered SVG you can simply paste in |
-| **SVG + CSS** | • No library, smallest file<br>• no `<script>`, so it works inline and through SVGR<br>• starts on load or on hover (`:hover`)<br>• drop-in icon replacement | • Only what CSS `@keyframes` can express — see *What each engine can animate* below<br>• path morphing only between same-structure paths, and not in older browsers<br>• no runtime API — playback is controlled with CSS classes<br>• **id conflicts if inlined twice** ([one copy per page](/docs/svga/prerendered-svg/on-the-web#one-copy-of-a-file-per-page)) |
-| **SVG + CSS + JS triggers** | Same as above plus click and scroll-into-view triggers, out actions and reset-on-finish — a few inline lines, no library | • Same CSS limits<br>• no precise control (no jumping to a time, no reverse, no speed change)<br>• the `<script>` prevents SVGR use<br>• **id conflicts if inlined twice** ([one copy per page](/docs/svga/prerendered-svg/on-the-web#one-copy-of-a-file-per-page)) |
+| **SVG + CSS** | • No library, smallest file<br>• no `<script>`, so it works inline and through SVGR<br>• starts on load or on hover (`:hover`)<br>• drop-in icon replacement | • Only what CSS `@keyframes` can express — see *What each engine can animate* below<br>• path morphing only between same-structure paths, and not in older browsers<br>• no runtime API — playback is controlled with CSS classes<br>• **id conflicts if inlined twice** ([one copy per page](/docs/svga/prerendered-svg/on-the-web#the-same-file-twice-on-one-page)) |
+| **SVG + CSS + JS triggers** | Same as above plus click and scroll-into-view triggers, out actions and reset-on-finish — a few inline lines, no library | • Same CSS limits<br>• no precise control (no jumping to a time, no reverse, no speed change)<br>• the `<script>` prevents SVGR use<br>• **id conflicts if inlined twice** ([one copy per page](/docs/svga/prerendered-svg/on-the-web#the-same-file-twice-on-one-page)) |
 | **SVG + JS animation** | • Every animation type<br>• full runtime control<br>• self-contained | • Embeds the player (25–38 KB)<br>• the `<script>` prevents SVGR use<br>• possible id conflicts if inlined twice |
 
 ## What each engine can animate

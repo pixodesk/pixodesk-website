@@ -2,14 +2,14 @@
  * Builds the docs sidebar from the per-app content folders:
  *
  *   src/content/docs/svga/editor — Pixodesk SVG Animator: the editor manual
- *   src/content/docs/svga/{player-library,format,diagnostics.md,player.md}
+ *   src/content/docs/svga/{get-started,player-library,format,diagnostics.md,player.md}
  *                                — the synced player docs (scripts/sync-svga-docs.mjs)
  *   src/content/docs/svga/prerendered-svg — authored (moved out of the player repo)
  *   src/content/docs/2d-lottie   — Pixodesk Lottie Animator
  *
  * The SVG Animator sidebar is organised into big top-level sections (always
  * open, large titles — see SECTION_LABELS and the styling in
- * starlight/Sidebar.astro): Editor · Player Library · Format · Pre-rendered SVG.
+ * starlight/Sidebar.astro): Editor · Get Started · Player Library · Format · Pre-rendered SVG.
  * Inside Editor, vector/ and animation/ remain
  * nested always-open sub-sections (SUPER_SECTIONS).
  *
@@ -36,13 +36,14 @@ export const SUPER_SECTIONS = {
 };
 
 /** The big top-level section titles (always open, styled large). */
-export const SECTION_LABELS = ['Editor', 'Player Library', 'JSON Format', 'Diagnostic Codes', 'Pre-rendered SVG File'];
+export const SECTION_LABELS = ['Editor', 'Get Started', 'Player Library', 'JSON Format', 'Diagnostic Codes', 'Pre-rendered SVG File'];
 
 // [folder — or ONE synced page at the svga root —, section label, file order] for the
-// synced player docs. A single-page section ('Format', the codes page) carries the page's
-// `##` headings directly. Unlisted files still appear, alphabetically last.
+// synced player docs. A single-page section ('Get Started', 'Format', the codes page) carries the
+// page's `##` headings directly. Unlisted files still appear, alphabetically last.
 const PLAYER_SECTIONS = [
-    ['player-library', 'Player Library', ['README.md', 'installation.md', 'web-player.md', 'react.md', 'vue.md', 'react-native.md', 'playback-and-triggers.md', 'troubleshooting.md']],
+    ['get-started', 'Get Started', ['README.md']],
+    ['player-library', 'Player Library', ['README.md', 'installation.md', 'web-player.md', 'react.md', 'nextjs.md', 'vue.md', 'nuxt.md', 'react-native.md', 'playback-and-triggers.md', 'troubleshooting.md']],
     ['format', 'JSON Format', ['README.md']],
     ['diagnostics.md', 'Diagnostic Codes', ['diagnostics.md']],
     ['prerendered-svg', 'Pre-rendered SVG File', ['README.md', 'on-the-web.md', 'static-sites-and-cms.md', 'data-px-meta.md']],

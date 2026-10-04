@@ -33,18 +33,20 @@ Each of the three works with every flavour:
 static frame: no script runs inside an image, and the page cannot reach in to add the play
 classes. Inline the file instead.
 
-### One copy of a file per page
+### The same file twice on one page
 
-> ⚠️ **Inline each `.svg` file only once per page.** Every element in a pre-rendered SVG has an
-> id (`id="_px_…"`), and its masks, gradients, clip paths and JS bindings refer to those ids.
-> If you inline the same file twice, the same ids appear twice on the page — the second copy's
-> mask or gradient then resolves to the first copy's, and things break in ways that are hard
-> to spot.
+> ⚠️ **Don't inline the SAME `.svg` file twice on one page.** Different animation files on one
+> page are fine — as many as you like. The problem is only a **duplicate**: the same file,
+> pasted or included into the page a second time.
 >
-> Need the same animation several times on one page? Either **export a separate file for each
-> place** — every export from the editor gets its own element ids, so the copies don't clash —
-> or use the **JSON format**, where the player gives every instance fresh ids for you, so any
-> number of copies coexist.
+> Why: every element in a pre-rendered SVG has a fixed id (`id="_px_…"`), and its masks,
+> gradients, clip paths and JS bindings refer to those ids. Two copies of the same file put the
+> same ids on the page twice, so the second copy's mask or gradient finds the first copy's
+> instead, and things break in ways that are hard to spot.
+>
+> Need the same animation in several places on one page? Either **export a separate file for
+> each place** — every export from the editor gets its own element ids, so the copies don't
+> clash — or use the **JSON format**, where the player gives every copy fresh ids for you.
 
 ## Which flavour?
 

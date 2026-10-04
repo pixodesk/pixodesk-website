@@ -14,6 +14,7 @@
 // The synced sections live DIRECTLY under src/content/docs/svga, next to the
 // authored editor/ manual, so the disk layout matches the URLs:
 //
+//   upstream get-started/…     -> svga/get-started/…      /docs/svga/get-started
 //   upstream library/…         -> svga/player-library/…  /docs/svga/player-library/…
 //   upstream format/…          -> svga/format/…          /docs/svga/format
 //   upstream diagnostics.md    -> svga/diagnostics.md    /docs/svga/diagnostics
@@ -46,7 +47,7 @@ const SLUG_BASE = 'docs/svga';
 const SEGMENT_MAP = { library: 'player-library' };
 
 // Everything the sync owns under TARGET; wiped before each run.
-const GENERATED = ['player-library', 'format', 'diagnostics.md', 'player.md' /* legacy, wiped */];
+const GENERATED = ['get-started', 'player-library', 'format', 'diagnostics.md', 'player.md' /* legacy, wiped */];
 
 // Upstream folders that intentionally do NOT sync: start/ lives on in the
 // editor manual (svga/editor), prerendered-svg/ is authored on the site.

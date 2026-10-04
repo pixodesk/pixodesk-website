@@ -130,18 +130,20 @@ platform that filters pasted HTML.
 | **Wix** | *Embed HTML* element → paste the SVG markup (runs in an iframe) |
 | **Framer / Notion / others** | an embed / code block that accepts raw HTML |
 
-## Before you publish — four things to check
+## Before you publish — several things to check
 
 - **Content Security Policy (CSP).** Inlined scripts (JS-triggers / JS-animation flavours)
   count as inline scripts; if your site's CSP forbids them, use the CSS flavour, or JSON with the player loaded
   from your own origin.
-- ⚠️ **One copy of a file per page.** Inlining the same file twice duplicates its ids and breaks
-  masks, gradients and bindings. Export a separate file for each place (every export gets its own ids) or use
-  JSON, where the player gives every instance fresh ids ([read more](/docs/svga/prerendered-svg/on-the-web#one-copy-of-a-file-per-page)).
+- ⚠️ **Don't inline the same file twice on one page.** Different files are fine; a duplicate of the
+  same file repeats its ids and breaks masks, gradients and bindings. For the same animation in two
+  places, export a separate file for each (every export gets its own ids) or use JSON, where the player
+  gives every copy fresh ids ([read more](/docs/svga/prerendered-svg/on-the-web#the-same-file-twice-on-one-page)).
 - **Sizing.** Keep the `viewBox`, remove fixed `width`/`height` if you want the SVG to scale
   with its container, and size the container with CSS.
-- **Animations further down the page.** For an animation the visitor has to scroll to, use
-  the *When visible* start trigger (`scrollIntoView`): it waits until the animation scrolls
-  into view. Otherwise the animation plays while it is still off screen, and by the time the
-  visitor reaches it, it is already over.
+- **Animations further down the page.** An animation the visitor has to scroll to should wait
+  until it is on screen, or it plays while nobody sees it and is over by the time the visitor
+  gets there. Keep the default trigger — *On load* with *Off Screen: pause* — and export as
+  *SVG + CSS animation + JS triggers* (or JSON). The pure *SVG + CSS* flavour cannot see
+  scrolling, so it starts as soon as the page loads.
 

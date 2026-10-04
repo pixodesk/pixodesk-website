@@ -82,6 +82,19 @@
     padding-top: calc(var(--sl-custom-menu-height) + var(--sl-nav-height)) !important;
 }
 
+/* Anchor jumps (a sidebar or "On this page" link) stop BELOW everything pinned to the top: the
+   site menu, then Starlight's header, then (narrow screens) the "On this page" bar. Starlight's
+   own padding counts only its header, so a heading used to land under the site menu. */
+html {
+    scroll-padding-top: calc(var(--sl-custom-menu-height) + var(--sl-nav-height) + var(--sl-mobile-toc-height) + 1rem) !important;
+}
+
+@media (min-width: 72em) {
+    html {
+        scroll-padding-top: calc(var(--sl-custom-menu-height) + var(--sl-nav-height) + 1rem) !important;
+    }
+}
+
 /* Starlight's mobile "On this page" bar hangs right below its (now pushed-down) header. */
 mobile-starlight-toc nav {
     top: calc(var(--sl-custom-menu-height) + var(--sl-nav-height)) !important;

@@ -59,7 +59,9 @@ const superLabels = JSON.stringify([...Object.values(SUPER_SECTIONS), ...SECTION
 </style>
 
 <script>
-    const TOP_OFFSET = 96;   // px from the viewport top at which a heading counts as "reached" (below the sticky header)
+    // px from the viewport top at which a heading counts as "reached": where an anchor jump puts it
+    // (the page's scroll padding, below the pinned menu and header), plus a little slack.
+    const topOffset = (): number => (parseFloat(getComputedStyle(document.documentElement).scrollPaddingTop) || 96) + 8;
 
     /** Super-sections are always open: mark them, open them, ignore clicks on their summary. */
     function pinSuperSections() {
@@ -132,7 +134,7 @@ const superLabels = JSON.stringify([...Object.values(SUPER_SECTIONS), ...SECTION
         const update = () => {
             let current: HTMLElement | undefined;
             for (const h of headings) {
-                if (h.getBoundingClientRect().top <= TOP_OFFSET) current = h; else break;
+                if (h.getBoundingClientRect().top <= topOffset()) current = h; else break;
             }
             const atBottom = window.innerHeight + window.scrollY >= document.documentElement.scrollHeight - 2;
             if (atBottom) current = headings[headings.length - 1];

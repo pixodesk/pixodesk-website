@@ -79,8 +79,9 @@ the animation from code.
 **Pre-rendered SVG** is a normal `.svg` file with the animation built in. Drop it into any
 page, CMS or static-site generator and it plays — no library needed for the CSS flavour. It is
 the simplest option and the right one for most icons, loaders and decorative animation. Its
-one rule: **inline each file only once per page** — its element ids are fixed, so a second copy
-collides with the first ([read more](/docs/svga/prerendered-svg/on-the-web#one-copy-of-a-file-per-page)). For several instances of one animation, use JSON.
+one rule: **don't inline the same file twice on one page** — different files are fine, but a
+duplicate of the same file repeats its fixed element ids and collides with the first copy
+([read more](/docs/svga/prerendered-svg/on-the-web#the-same-file-twice-on-one-page)). For several copies of one animation, use JSON.
 
 Both JSON and animated SVG have the same features, and the editor converts between them at any time
 (**File → Save as JSON / Save as SVG**), so the choice is never final.

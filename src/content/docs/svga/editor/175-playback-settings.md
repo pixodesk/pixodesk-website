@@ -63,8 +63,9 @@ The trigger has **two independent settings**: what *starts* the animation, and w
 | “On click” | `click` | it is clicked; a second click pauses |
 | “Manually from JS” | `none` | never on its own — code calls `play()` |
 
-There is no “When visible” any more: visibility is not a start event but a permission, and “On
-load” behind the gate below is exactly what it used to mean.
+**To start an animation when it scrolls into view**, choose “On load” and leave **Off Screen**
+on “pause” (both are the defaults). The animation then waits until enough of it is on screen,
+plays, pauses when it scrolls away, and carries on when it comes back.
 
 **Off Screen** writes `timeline.trigger.offScreen` — what happens while none of it is on screen:
 “pause” (the default; it resumes where it left off), “continue” (keep running, and start without
@@ -76,15 +77,14 @@ from `0` (any part) to `1` (all of it), `0.5` by default. **Visible Delay** writ
 nothing.
 
 **On Mouse Out** writes `timeline.trigger.mouseOut` and is read only for “On mouse over”:
-“continue”, “pause”, “reset” or “reverse”.
+“pause” (the default), “continue”, “reset” or “reverse”.
 
 **Use JS Triggers** only matters for the pre-rendered *SVG + CSS animation* export, and decides
 how the trigger is implemented in that file:
 
 - With **Use JS Triggers** switched **off**, the file contains no script at all. “On load” works, and
-  “On mouse over” works through CSS `:hover`. “On click” and “When visible” (start when
-  scrolled into view) cannot be done in pure CSS, so the export **falls back to “On load”**
-  for them.
+  “On mouse over” works through CSS `:hover`. “On click” and waiting until the animation is
+  on screen cannot be done in pure CSS, so the export **starts it as soon as it is shown**.
 - With **Use JS Triggers** switched **on**, the export adds a few lines of inline script (no library),
   and the file behaves exactly as this panel says: whichever **Start** trigger you chose, the
   action **when the trigger ends**, and **Reset on finish** all work.
