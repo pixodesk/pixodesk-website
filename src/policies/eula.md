@@ -35,7 +35,7 @@ In this EULA the expressions below shall have the meaning assigned to them in th
 This EULA applies to any licenses granted to You by Pixodesk LIMITED for the use of the Pixodesk SVG application.
 By purchasing a License for the Pixodesk SVG application and/or downloading and using the Pixodesk SVG application, You enter into this EULA with Pixodesk LIMITED.
 You acknowledge that this EULA may be modified from time to time without prior notice to You. Such modifications will be effective upon posting on 
-<https://pixodesk.com/app/svg/eula.html>.
+<https://pixodesk.com/app/svg/eula>.
 
 
 ### SCOPE OF LICENSE
@@ -87,7 +87,7 @@ Pixodesk LIMITED cannot access the Pixodesk SVG application installed in Your ch
 All bug reports and log files are anonymous but You are responsible for not adding any data in them that you believe is sensitive or which may contain personal data prior to providing any log files or other technical information to Pixodesk. 
 All bug reports and log files will be given to You for review before submitting to Pixodesk.
 
-Pixodesk SVG application is not collecting any personal data. Privacy Policy can be found at <https://pixodesk.com/app/svg/privacy-policy.html>.
+Pixodesk SVG application is not collecting any personal data. Privacy Policy can be found at <https://pixodesk.com/app/svg/privacy-policy>.
 
 
 ### WARRANTY DISCLAMER

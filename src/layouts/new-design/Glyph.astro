@@ -1,0 +1,7 @@
+---
+/** One line glyph from glyphs.ts, sized by the class you pass (default 1em). */
+import { GLYPHS, type GlyphName } from "./glyphs";
+interface Props { name: GlyphName; class?: string }
+const { name, class: cls = "h-4 w-4" } = Astro.props;
+---
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" class={cls} aria-hidden="true"><Fragment set:html={GLYPHS[name]} /></svg>

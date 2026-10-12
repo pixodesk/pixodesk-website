@@ -1,0 +1,228 @@
+---
+// New-design preview of /svg-animator (plan §4). The current page stays at /svg-animator.
+import "../../styles/tailwind.css";
+import "../../styles/global.scss";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Section from "../../layouts/Section.astro";
+import FeatureSection from "../../layouts/new-design/FeatureSection.astro";
+import StatCard from "../../layouts/new-design/StatCard.astro";
+import LogoSvgaFill from "../../layouts/LogoSvgaFill.astro";
+import PreviewBanner from "../../layouts/new-design/PreviewBanner.astro";
+import HeroNew from "../../layouts/new-design/HeroNew.astro";
+import DemoFrame from "../../layouts/new-design/DemoFrame.astro";
+import CodeTabs from "../../layouts/new-design/CodeTabs.astro";
+import SourceExcerpt from "../../layouts/new-design/SourceExcerpt.astro";
+import ProofCaption from "../../layouts/new-design/ProofCaption.astro";
+import StartBand from "../../layouts/new-design/StartBand.astro";
+
+import girlOnBike from "../../../public/assets/svga/hero/girl-on-bike.svg?raw";
+import catAndButterfly from "../../../public/assets/svga/sections/cat-and-butterfly.svg?raw";
+import birdTwitting from "../../../public/assets/svga/sections/bird-twitting-svga.svg?raw";
+import jarWithHearts from "../../../public/assets/svga/sections/jar-with-hearts.svg?raw";
+import envelopeOpen from "../../../public/assets/svga/sections/envelope-open.svg?raw";
+import autoAnimate from "../../../public/assets/lottie/sections/auto-animate.svg?raw";
+import easing from "../../../public/assets/lottie/sections/easing.svg?raw";
+import eiffelTowerAnim from "../../../public/assets/svga/sections/Eiffel-tower-anim.svg?raw";
+import animatedIcons from "../../../public/assets/svga/sections/animated-icons.svg?raw";
+import vectorTextAnim from "../../../public/assets/svga/sections/vector-text-anim.svg?raw";
+import animatedRepeater from "../../../public/assets/svga/sections/animated-repeater.svg?raw";
+
+const description = "Pixodesk SVG Animator: draw and animate in a desktop editor, save one .svg that plays in every browser with no library — or JSON for the React, Vue and plain-HTML player when your code needs control.";
+
+// TODO(owner): the exact status wording and the "notify me" channel are decisions listed in the plan, §6.
+const status = "Desktop app coming to the Mac App Store and Microsoft Store. The browser demo, the player library and the docs are available today.";
+
+const tabs = [
+  {
+    id: "svg", label: "Pre-rendered SVG", hint: "no code — paste the file", glyph: "file" as const, lang: "html" as const,
+    note: "Save as <b>SVG + CSS animation</b> and paste the file into the page. The animation is CSS inside the file; it starts on load, on hover, on click or when scrolled into view — whichever you chose in the editor. Astro, Jekyll, Hugo, WordPress, Shopify and Webflow inline it at build time.",
+    code: `<!-- index.html — the file the editor saved, pasted where the logo goes -->
+<div class="logo">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400"
+       class="px-anim-enabled px-anim-playing">
+    <style>
+      @keyframes _px_2 { 0% { transform: translate(200px, 60px) } 100% { transform: translate(200px, 340px) } }
+      .px-anim-enabled ._px_3 { animation: 1000ms _px_2 infinite alternate both; }
+    </style>
+    <ellipse id="ball" class="px-anim-element _px_3" fill="#0087ff" rx="40" ry="40" />
+  </svg>
+</div>`,
+    docs: { label: "Pre-rendered SVG on the web", href: "/docs/svga/prerendered-svg/on-the-web" },
+  },
+  {
+    id: "react", label: "React", hint: "component + ref", glyph: "code" as const, lang: "tsx" as const,
+    note: "Save as <b>JSON</b>, install one package, render the file. The component plays the document's own trigger and gives you play, pause and seek through a ref.",
+    code: `// npm install @pixodesk/svg-animator-react
+import { PixodeskSvgAnimator } from '@pixodesk/svg-animator-react';
+import animation from './animation.json';
+
+export function Hero() {
+  return (
+    <div style={{ width: 300, height: 300 }}>
+      <PixodeskSvgAnimator doc={animation} autoplay />
+    </div>
+  );
+}`,
+    docs: { label: "Get started with the player library", href: "/docs/svga/player-library/get-started" },
+  },
+  {
+    id: "vue", label: "Vue", hint: "component + ref", glyph: "code" as const, lang: "vue" as const,
+    note: "The same component for Vue 3.",
+    code: `<!-- npm install @pixodesk/svg-animator-vue -->
+<script setup>
+import { PixodeskSvgAnimator } from '@pixodesk/svg-animator-vue';
+import animation from './animation.json';
+</script>
+
+<template>
+  <div style="width: 300px; height: 300px">
+    <PixodeskSvgAnimator :doc="animation" autoplay />
+  </div>
+</template>`,
+    docs: { label: "Vue component", href: "/docs/svga/player-library/vue" },
+  },
+  {
+    id: "html", label: "Plain HTML", hint: "one script tag, no build", glyph: "browser" as const, lang: "html" as const,
+    note: "No bundler: one script file copied out of the npm package, and an element that names the JSON file.",
+    code: `<div data-px-animation-src="animation.json" style="width: 300px; height: 300px"></div>
+
+<script src="js/pixodesk-svg-animator.umd.min.js"></script>
+<script>PixodeskAnimator.loadTagAnimators();</script>`,
+    docs: { label: "Web player", href: "/docs/svga/player-library/web-player" },
+  },
+];
+
+const C = "text-cyan-200"; const V = "text-violet-200";
+const b = (t: string) => `<b class="${C}">${t}</b>`;
+const v = (t: string) => `<b class="${V}">${t}</b>`;
+
+const stats = [
+  { figure: "0 KB", label: "of JavaScript library", chips: ["SVG + CSS flavour"], text: `A <code>&lt;style&gt;</code> with keyframes inside an ordinary SVG. ${b("The browser plays it")} — nothing to load, nothing to update.` },
+  { figure: "4", label: "triggers, saved in the file", chips: ["load", "hover", "click", "scroll into view"], text: `Chosen once in the editor; honoured by ${b("every export")} and by the player. Out-actions and reset included.` },
+  { figure: "1", label: "file for every browser", chips: ["Chrome", "Safari", "Firefox", "Edge"], text: `Paste it in a static site, a CMS or a React app. Need control from code? ${v("Save JSON")} and use the player.` },
+];
+
+const features = [
+  { title: "Auto-animate", line: `You set the states. ${b("The keyframes are written for you.")}`, schema: "autoAnimate" as const, html: autoAnimate, file: "", bg: "bg-custom-gradient-violet", caption: false, facts: [
+    { icon: "pin" as const, lead: "Pin where it is", text: `Press ${b("Pin")} and the object's position, size and colour are fixed at this moment.` },
+    { icon: "clock" as const, lead: "Jump ahead, move it", text: `Drag the playhead to ${v("1 s")}, drop the ball at the bottom. That is the whole instruction.` },
+    { icon: "keyframe" as const, lead: "Two keyframes, one motion path", text: `They appear on the timeline by themselves — <i>with the path between them</i>. Edit either later.` },
+  ] },
+  { title: "Easing", line: `Timing is what makes motion feel real. ${b("Pick it, or draw it.")}`, schema: "easing" as const, html: easing, file: "", bg: "bg-custom-gradient-navy", caption: false, facts: [
+    { icon: "curve" as const, lead: "Presets that feel right", text: `${b("gravity › fall")} for a drop, ${b("bounce")} for a landing, ${b("ease in-out")} for almost everything else.` },
+    { icon: "handles" as const, lead: "Drag the handles", text: `Two control points. Pull one and watch the curve — your own easing in five seconds.` },
+    { icon: "chart" as const, lead: "See it before you play it", text: `Velocity and acceleration charts under the curve show <i>where it speeds up</i> and where it hangs.` },
+  ] },
+  { title: "Animated vector text", line: `Your fonts, on any path, ${b("moving")}.`, schema: "textPath" as const, html: vectorTextAnim, file: "/assets/svga/sections/vector-text-anim.svg", bg: "bg-custom-gradient-indigo", caption: true, facts: [
+    { icon: "font" as const, lead: "Your own TTF", text: `The brand font, as live text — or converted to outlines when it must not travel with the file.` },
+    { icon: "path" as const, lead: "Text follows a line, a wave, a circle", text: `Animate the ${b("start")} and the ${b("offset")} and the words slide along it.` },
+    { icon: "transform" as const, lead: "Rotate, flip, scale", text: `The whole word — or each glyph on its own.` },
+  ] },
+  { title: "Patterns, markers and spray — animated", line: `One shape becomes hundreds. ${b("Then they all move.")}`, schema: "patternMarkerSpray" as const, html: eiffelTowerAnim, file: "/assets/svga/sections/Eiffel-tower-anim.svg", bg: "bg-custom-gradient-violet", caption: true, facts: [
+    { icon: "pattern" as const, lead: "A pattern that breathes", text: `Animate the tile's colour, scale or shape; the <i>whole fill</i> follows.` },
+    { icon: "marker" as const, lead: "Copies along a path", text: `Arrows on a route, leaves on a branch — placed by the path, animated together.` },
+    { icon: "spray" as const, lead: "Particles without plug-ins", text: `Stars, snow, bubbles: scattered copies with their own motion, ${b("still plain SVG")}.` },
+  ] },
+  { title: "Repeater", line: `Draw one. Get a ring, a row, a grid — ${b("and animate them as one")}.`, schema: "repeater" as const, html: animatedRepeater, file: "/assets/svga/sections/animated-repeater.svg", bg: "bg-custom-gradient-navy", caption: true, facts: [
+    { icon: "clone" as const, lead: "Count, spacing, rotation", text: `Parameters, not copies. Change the number and the layout rebuilds.` },
+    { icon: "move" as const, lead: "Animate the whole set from one place", text: `Position, scale, rotation, origin — ${v("one keyframe row")} for all clones.` },
+    { icon: "sync" as const, lead: "Edit the source, every clone follows", text: `Change the petal and all ${b("eight")} change with it.` },
+  ] },
+  { title: "Animated icons", line: `The usual icon motions, in minutes, as a ${b("drop-in SVG")}.`, schema: "iconMotion" as const, html: animatedIcons, file: "/assets/svga/sections/animated-icons.svg", bg: "bg-custom-gradient-indigo", caption: true, facts: [
+    { icon: "trim" as const, lead: "Lines that draw themselves", text: `Trim path and dash array — the classic icon reveal.` },
+    { icon: "rotate" as const, lead: "Spin, grow, tilt, fade", text: `Rotate, scale, skew and opacity, each with its own easing.` },
+    { icon: "export" as const, lead: "Swap it for the static icon", text: `Export as ${b("SVG + CSS")} — same size, same markup, now it moves on hover.` },
+  ] },
+];
+
+const madeWith = [
+  { html: birdTwitting, file: "/assets/svga/sections/bird-twitting-svga.svg" },
+  { html: jarWithHearts, file: "/assets/svga/sections/jar-with-hearts.svg" },
+  { html: envelopeOpen, file: "/assets/svga/sections/envelope-open.svg" },
+];
+---
+
+<BaseLayout title="SVG Animator" description={description} canonical="/svg-animator" noindex>
+  <section class="hero-section relative w-full bg-custom-gradient-violet pt-navDouble text-white">
+    <PreviewBanner compare="/svg-animator" />
+    <HeroNew
+      title="# From Static to Motion: <br/>Advanced <span class='text-curstom-gradient-orange'>SVG Animation</span> Application"
+      lines={[
+        "Draw and animate in the desktop editor. Save one <code>.svg</code> that plays in every browser with no library — or JSON for the player when your code needs control.",
+      ]}
+      status={status}
+      buttons={[
+        { title: "Try it in the browser", link: "#demo", primary: true },
+        { title: "Get started — docs", link: "/docs/svga/get-started" },
+        { title: "npm i @pixodesk/svg-animator-react", link: "https://www.npmjs.com/package/@pixodesk/svg-animator-react", mono: true, external: true },
+      ]}
+    >
+      <div class="relative w-full"><div class="relative z-10 mx-auto w-full max-w-custom-narrow"><div class="mx-auto w-3/5 py-pxPage" set:html={girlOnBike} /></div></div>
+      <ProofCaption file="/assets/svga/hero/girl-on-bike.svg" />
+    </HeroNew>
+  </section>
+
+  <DemoFrame src="/app/demo/index.html?svga" app="SVG Animator" title="Try it now, in the browser"
+    lines={["Create, modify and animate SVG in the restricted browser demo. Saving and export are in the desktop app."]}>
+    <LogoSvgaFill />
+  </DemoFrame>
+
+  <section id="ways" class="scroll-mt-24">
+    <Section bgColor="bg-custom-gradient-indigo" color="text-base-bright" standard>
+      <h2 class="text-center">Three ways to put it on your site</h2>
+      <p class="mx-auto mb-8 max-w-custom-narrow text-center text-custom-grey-400">Same editor, same animation. Pick the file by how much control your page needs — none, some, or all of it from code.</p>
+      <CodeTabs name="ways" tabs={tabs} />
+      <p class="mt-6 text-center text-sm text-custom-grey-400">Also exports Lottie JSON, GIF, MP4, WebM and still images. <a class="text-cyan-300 underline" href="/docs/svga/editor/choosing-a-format">Which file to save, with pros and cons →</a></p>
+    </Section>
+  </section>
+
+  <section>
+    <Section bgColor="bg-custom-gradient-navy" color="text-base-bright" standard>
+      <h2 class="text-center">What you get in the file</h2>
+      <p class="mx-auto mb-8 max-w-custom-narrow text-center text-custom-grey-400">The cat is a real export, inlined into this page. On the right: the first lines of that same file, as any text editor shows them.</p>
+      <div class="grid grid-cols-1 items-start gap-8 md:grid-cols-2">
+        <div><div class="mx-auto w-full max-w-md" set:html={catAndButterfly} /><ProofCaption file="/assets/svga/sections/cat-and-butterfly.svg" /></div>
+        <div><SourceExcerpt file="/assets/svga/sections/cat-and-butterfly.svg" /></div>
+      </div>
+    </Section>
+  </section>
+
+  <section>
+    <Section bgColor="bg-custom-gradient-indigo" color="text-base-bright" standard>
+      <div class="grid max-w-custom-standard grid-cols-1 gap-5 md:grid-cols-3">
+        {stats.map((p) => <StatCard figure={p.figure} label={p.label} chips={p.chips} text={p.text} />)}
+      </div>
+    </Section>
+  </section>
+
+  {features.map((f, i) => <FeatureSection title={f.title} line={f.line} schema={f.schema} facts={f.facts} html={f.html} file={f.file} caption={f.caption} flip={i % 2 === 1} bg={f.bg} />)}
+
+  <section>
+    <Section bgColor="bg-custom-gradient-violet" color="text-base-bright" standard>
+      <h2 class="text-center">Made with it</h2>
+      <p class="mx-auto mb-8 max-w-custom-narrow text-center text-custom-grey-400">Drawn, animated and saved in SVG Animator; each one is the file you see.</p>
+      <div class="grid grid-cols-1 gap-8 md:grid-cols-3">
+        {madeWith.map((m) => (
+          <div class="rounded-2xl border border-white/10 bg-white/[.04] p-6"><div class="[&_svg]:max-h-[40vh]" set:html={m.html} /><ProofCaption file={m.file} /></div>
+        ))}
+      </div>
+    </Section>
+  </section>
+
+  <section>
+    <Section bgColor="bg-custom-gradient-indigo" color="text-base-bright" standard>
+      <StartBand
+        title="Start here"
+        text="The demo and the docs are open today; the player is on npm; the desktop app is on its way to the stores."
+        links={[
+          { label: "Try the demo", href: "#demo", primary: true },
+          { label: "Get started — docs", href: "/docs/svga/get-started" },
+          { label: "Player library", href: "/docs/svga/player-library" },
+          { label: "npm i @pixodesk/svg-animator-react", href: "https://www.npmjs.com/package/@pixodesk/svg-animator-react", mono: true, external: true },
+          { label: "GitHub", href: "https://github.com/pixodesk/pixodesk-svg-animator", external: true },
+          { label: "Tell me when the app ships", href: "mailto:support@pixodesk.com?subject=SVG%20Animator%20release" },
+        ]}
+      />
+    </Section>
+  </section>
+</BaseLayout>

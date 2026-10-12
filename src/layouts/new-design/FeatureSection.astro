@@ -1,0 +1,32 @@
+---
+/**
+ * One feature: the illustration (a real export, with its proof caption) on one side; on the other the title, one line,
+ * a mechanism schematic (schemas.ts) and the facts as glyph rows — no bullet paragraphs.
+ */
+import Section from "../Section.astro";
+import Border from "../Border.astro";
+import Schema from "./Schema.astro";
+import Facts, { type FactItem } from "./Facts.astro";
+import ProofCaption from "./ProofCaption.astro";
+import type { SchemaKind } from "./schemas";
+interface Props { title: string; line?: string; schema?: SchemaKind; facts: FactItem[]; file?: string; img?: boolean; html?: string; flip?: boolean; bg?: string; caption?: boolean }
+const { title, line, schema, facts, file, img = false, html, flip = false, bg = "bg-custom-gradient-navy", caption = true } = Astro.props;
+---
+<section>
+  <Section bgColor={bg} color="text-base-bright" page>
+    <Border>
+      <div class="grid grid-cols-1 items-center gap-10 md:grid-cols-2 md:gap-14">
+        <div class={flip ? "order-1 md:order-2" : "order-1"}>
+          <div class="flex justify-center [&_svg]:max-h-[50vh]">{img ? <img src={file} alt={title} /> : <Fragment set:html={html} />}</div>
+          {caption && file && <ProofCaption file={file} />}
+        </div>
+        <div class={flip ? "order-2 md:order-1" : "order-2"}>
+          <h2 class="!pb-1">{title}</h2>
+          {line && <p class="text-custom-grey-200" set:html={line} />}
+          {schema && <div class="mt-5 rounded-xl border border-white/10 bg-black/30 p-2 text-white"><Schema kind={schema} /></div>}
+          <Facts items={facts} />
+        </div>
+      </div>
+    </Border>
+  </Section>
+</section>

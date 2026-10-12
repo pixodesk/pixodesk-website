@@ -1,0 +1,26 @@
+---
+/** Hero with the title, one or two plain-text lines (paragraphs, not headings), an optional status pill, buttons and store buttons; the art goes in the slot. */
+import { marked } from "marked";
+import StoreButtons from "../StoreButtons.astro";
+import type { Button } from "../../types/types";
+import { BTN_MONO, BTN_PRIMARY, BTN_SECONDARY } from "./buttons";
+interface HeroButton extends Button { primary?: boolean; mono?: boolean; external?: boolean }
+interface Props { title: string; lines?: string[]; status?: string; buttons?: HeroButton[]; storeButtons?: Button[] }
+const { title, lines = [], status, buttons = [], storeButtons } = Astro.props;
+const pad = { paddingLeft: "var(--sl-nav-pad-x)", paddingRight: "var(--sl-nav-pad-x)" };
+const cls = (b: HeroButton) => (b.mono ? BTN_MONO : b.primary ? BTN_PRIMARY : BTN_SECONDARY);
+---
+<div class="relative z-0 flex w-full flex-col items-center pt-pyPage">
+  <div class="z-20 mx-auto max-w-custom-narrow text-center" style={pad}>
+    <div set:html={marked(title)} />
+    {lines.map((l) => <p class="mb-2 text-lg leading-relaxed text-custom-grey-200" set:html={marked.parseInline(l)} />)}
+    {status && <p class="mt-4 inline-block rounded-full border border-amber-300/40 bg-amber-300/10 px-4 py-1 text-sm text-amber-100" set:html={marked.parseInline(status)} />}
+    {buttons.length > 0 && (
+      <div class="mt-6 flex flex-wrap justify-center gap-3">
+        {buttons.map((b) => <a href={b.link} class={cls(b)} target={b.external ? "_blank" : undefined} rel={b.external ? "noopener" : undefined}>{b.title}</a>)}
+      </div>
+    )}
+    {storeButtons && <div class="mt-6"><StoreButtons storeButtons={storeButtons} /></div>}
+  </div>
+  <div class="relative mx-auto my-0 w-full"><slot /></div>
+</div>

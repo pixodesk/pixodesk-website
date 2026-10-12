@@ -1,0 +1,21 @@
+---
+/**
+ * "What you get in the file": the first lines of a real export from public/ (editor bookkeeping attributes stripped,
+ * long lines cut), highlighted, with the honest footer — total size, and whether a script is inside and how big.
+ */
+import fs from "node:fs";
+import { fileURLToPath } from "node:url";
+import { Code } from "astro:components";
+interface Props { file: string; lines?: number; width?: number }
+const { file, lines = 16, width = 96 } = Astro.props;
+const abs = fileURLToPath(new URL(`../../../public${file}`, import.meta.url));
+const raw = fs.readFileSync(abs, "utf8");
+const bytes = fs.statSync(abs).size;
+const scripts = [...raw.matchAll(/<script[^>]*>([\s\S]*?)<\/script>/g)].map((m) => m[1].length);
+const clean = raw.replace(/\s+data-px-meta="[^"]*"/g, "").replace(/<script[\s\S]*?<\/script>\s*/g, "");
+const excerpt = clean.split("\n").filter((l) => l.trim()).slice(0, lines).map((l) => (l.length > width ? l.slice(0, width) + " …" : l)).join("\n") + "\n…";
+const kb = (n: number) => `${(n / 1024).toFixed(1)} KB`;
+const scriptNote = scripts.length === 0 ? "no script" : scripts.every((n) => n < 4096) ? `${scripts.length} trigger script of ${kb(scripts.reduce((a, b) => a + b, 0))} — no library` : `embedded player script, ${kb(scripts.reduce((a, b) => a + b, 0))}`;
+---
+<div class="overflow-hidden rounded-lg border border-white/10 text-[12px] [&_pre]:overflow-x-auto [&_pre]:p-4"><Code code={excerpt} lang="xml" theme="github-dark" /></div>
+<p class="mt-2 font-mono text-xs text-slate-400">{clean.split("\n").length} lines · {kb(bytes)} on disk · {scriptNote} · <a class="underline hover:text-white" href={file} target="_blank" rel="noopener">whole file</a></p>

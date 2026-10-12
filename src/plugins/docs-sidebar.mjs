@@ -176,7 +176,7 @@ export function svgaRedirects() {
         // Old flat Lottie slugs.
         '/docs/lottie': '/docs/2d-lottie',
         '/docs/add-lottie-animation-to-your-project': '/docs/2d-lottie/add-lottie-animation-to-your-project',
-        '/docs/lottie-features': '/docs/2d-lottie/lottie-features',
+        // '/docs/lottie-features': '/docs/2d-lottie/lottie-features' — the page is a draft; restore when it is published
         // Introduction is the app home.
         '/docs/introduction': '/docs/svga',
     };

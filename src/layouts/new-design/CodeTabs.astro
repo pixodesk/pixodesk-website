@@ -1,0 +1,37 @@
+---
+/** Tabbed code samples (React / Vue / HTML / SVG …), highlighted at build time by Astro's Code component; a few lines of script switch the tabs. */
+import { Code } from "astro:components";
+import Glyph from "./Glyph.astro";
+import type { GlyphName } from "./glyphs";
+interface Tab { id: string; label: string; hint?: string; glyph?: GlyphName; lang: "tsx" | "vue" | "html" | "xml" | "bash"; code: string; note?: string; docs?: { label: string; href: string } }
+interface Props { tabs: Tab[]; name: string }
+const { tabs, name } = Astro.props;
+---
+<div data-code-tabs>
+  <div role="tablist" class="mb-4 grid grid-cols-2 gap-2 md:grid-cols-4">
+    {tabs.map((t, i) => (
+      <button type="button" role="tab" id={`${name}-tab-${t.id}`} aria-controls={`${name}-panel-${t.id}`} aria-selected={i === 0 ? "true" : "false"} data-tab={t.id}
+        class="flex items-center gap-3 rounded-xl border border-white/10 bg-white/[.04] p-3 text-left text-custom-grey-400 transition hover:bg-white/[.08] hover:text-white aria-selected:border-cyan-300/50 aria-selected:bg-cyan-400/10 aria-selected:text-white">
+        {t.glyph && <span class="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-lg border border-white/10 bg-black/30 text-cyan-200"><Glyph name={t.glyph} class="h-[18px] w-[18px]" /></span>}
+        <span><span class="block text-sm font-semibold leading-tight">{t.label}</span>{t.hint && <span class="block text-xs leading-snug opacity-80">{t.hint}</span>}</span>
+      </button>
+    ))}
+  </div>
+  {tabs.map((t, i) => (
+    <div role="tabpanel" id={`${name}-panel-${t.id}`} aria-labelledby={`${name}-tab-${t.id}`} data-panel={t.id} hidden={i !== 0}>
+      {t.note && <p class="mb-3 text-sm text-custom-grey-200" set:html={t.note} />}
+      <div class="overflow-hidden rounded-lg border border-white/10 text-[13px] [&_pre]:overflow-x-auto [&_pre]:p-4"><Code code={t.code} lang={t.lang} theme="github-dark" /></div>
+      {t.docs && <p class="mt-3 text-sm"><a class="text-cyan-300 underline" href={t.docs.href}>{t.docs.label} →</a></p>}
+    </div>
+  ))}
+</div>
+<script>
+  document.querySelectorAll<HTMLElement>("[data-code-tabs]").forEach((root) => {
+    const tabs = root.querySelectorAll<HTMLButtonElement>("[role=tab]");
+    const panels = root.querySelectorAll<HTMLElement>("[role=tabpanel]");
+    tabs.forEach((btn) => btn.addEventListener("click", () => {
+      tabs.forEach((b) => b.setAttribute("aria-selected", String(b === btn)));
+      panels.forEach((p) => { p.hidden = p.dataset.panel !== btn.dataset.tab; });
+    }));
+  });
+</script>

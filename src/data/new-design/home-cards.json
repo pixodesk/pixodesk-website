@@ -1,0 +1,44 @@
+[
+  {
+    "card": {
+      "icon": true,
+      "title": "SVG Editor",
+      "subtitle": "Free · static graphics",
+      "description": "Icons, logos and illustrations as clean SVG — only your tags and styles in the file. Free on Mac and Windows.",
+      "status": "Free",
+      "format": ".svg",
+      "export": ".png .jpeg .webp .gif",
+      "button": { "title": "Explore", "link": "/new-design/svg-editor" }
+    },
+    "bgClass": "text-cyan-400",
+    "iconBg": "border-cyan-500/20 text-cyan-400 bg-cyan-500/5 group-hover:border-cyan-400 group-hover:shadow-[0_0_20px_rgba(34,211,238,0.2)]"
+  },
+  {
+    "card": {
+      "icon": true,
+      "title": "Lottie Animator",
+      "subtitle": "Subscription · native apps",
+      "description": "Animations for iOS, Android, React Native, Windows and the web as standard Lottie JSON — plays in every Lottie player.",
+      "status": "$4.99/mo or $29.99/yr",
+      "format": "Lottie .json",
+      "export": "animated .svg .gif .webm .mp4 <br/> static .png .jpeg .webp",
+      "button": { "title": "Explore", "link": "/new-design/animator" }
+    },
+    "bgClass": "text-indigo-400",
+    "iconBg": "border-indigo-500/20 text-indigo-400 bg-indigo-500/5 group-hover:border-indigo-400 group-hover:shadow-[0_0_20px_rgba(129,140,248,0.2)]"
+  },
+  {
+    "card": {
+      "icon": true,
+      "title": "SVG Animator",
+      "subtitle": "Coming soon · web animation",
+      "description": "Animations for web pages: one .svg with the CSS animation inside, no library — or JSON for the React / Vue / HTML player when your code needs control.",
+      "status": "Coming soon — demo, docs and player available",
+      "format": ".svg · .json",
+      "export": "animated .gif .webm .mp4 <br/> static .png .jpeg .webp",
+      "button": { "title": "Explore", "link": "/new-design/svg-animator" }
+    },
+    "bgClass": "text-purple-400",
+    "iconBg": "border-purple-500/20 text-purple-400 bg-purple-500/5 group-hover:border-purple-400 group-hover:shadow-[0_0_20px_rgba(168,85,247,0.2)]"
+  }
+]

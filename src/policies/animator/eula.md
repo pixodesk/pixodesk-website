@@ -30,7 +30,7 @@ In this EULA the expressions below shall have the meaning assigned to them in th
 This EULA applies to any licenses granted to You by Pixodesk LIMITED for the use of the Pixodesk Animator application.
 By purchasing a License for the Pixodesk Animator application and/or downloading and using the Pixodesk Animator application, You enter into this EULA with Pixodesk LIMITED.
 You acknowledge that this EULA may be modified from time to time without prior notice to You. Such modifications will be effective upon posting on 
-<https://pixodesk.com/app/animator/eula.html>.
+<https://pixodesk.com/app/animator/eula>.
 
 
 ### SCOPE OF LICENSE
@@ -82,7 +82,7 @@ Pixodesk LIMITED cannot access the Pixodesk Animator application installed in Yo
 All bug reports and log files are anonymous but You are responsible for not adding any data in them that you believe is sensitive or which may contain personal data prior to providing any log files or other technical information to Pixodesk. 
 All bug reports and log files will be given to You for review before submitting to Pixodesk.
 
-Pixodesk Animator application is not collecting any personal data. Privacy Policy can be found at <https://pixodesk.com/app/animator/privacy-policy.html>.
+Pixodesk Animator application is not collecting any personal data. Privacy Policy can be found at <https://pixodesk.com/app/animator/privacy-policy>.
 
 
 ### WARRANTY DISCLAMER

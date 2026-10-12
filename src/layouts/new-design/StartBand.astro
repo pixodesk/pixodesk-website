@@ -1,0 +1,15 @@
+---
+/** The closing "Start here" band: a title, a line and a row of buttons (primary / secondary / mono). */
+import { BTN_MONO, BTN_PRIMARY, BTN_SECONDARY } from "./buttons";
+interface Link { label: string; href: string; primary?: boolean; mono?: boolean; external?: boolean }
+interface Props { title: string; text?: string; links: Link[] }
+const { title, text, links } = Astro.props;
+const cls = (l: Link) => (l.mono ? BTN_MONO : l.primary ? BTN_PRIMARY : BTN_SECONDARY);
+---
+<div class="rounded-2xl border border-white/10 bg-white/[.04] p-6 text-center md:p-10">
+  <h2 class="!pb-2">{title}</h2>
+  {text && <p class="mx-auto mb-6 max-w-custom-narrow text-custom-grey-400" set:html={text} />}
+  <div class="flex flex-wrap justify-center gap-3">
+    {links.map((l) => <a href={l.href} class={cls(l)} target={l.external ? "_blank" : undefined} rel={l.external ? "noopener" : undefined}>{l.label}</a>)}
+  </div>
+</div>

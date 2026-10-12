@@ -1,0 +1,160 @@
+---
+// New-design preview of /animator — Lottie Animator (plan §4). The current page stays at /animator.
+import "../../styles/tailwind.css";
+import "../../styles/global.scss";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Section from "../../layouts/Section.astro";
+import FeatureSection from "../../layouts/new-design/FeatureSection.astro";
+import StatCard from "../../layouts/new-design/StatCard.astro";
+import AllDevices from "../../layouts/All-devices.astro";
+import Logo2DFill from "../../layouts/Logo2DFill.astro";
+import content from "../../data/2d-animator/lottie-index-text-content";
+import PreviewBanner from "../../layouts/new-design/PreviewBanner.astro";
+import HeroNew from "../../layouts/new-design/HeroNew.astro";
+import DemoFrame from "../../layouts/new-design/DemoFrame.astro";
+import FlowDiagram from "../../layouts/new-design/FlowDiagram.astro";
+import ProofCaption from "../../layouts/new-design/ProofCaption.astro";
+import StartBand from "../../layouts/new-design/StartBand.astro";
+
+import cityOutline from "../../../public/assets/lottie/hero/city-outline.svg?raw";
+import planeAndBanner from "../../../public/assets/lottie/hero/plane-and-banner-only.svg?raw";
+import planeAndBannerWind from "../../../public/assets/lottie/hero/plane-and-banner-wind.svg?raw";
+import yoga from "../../../public/assets/lottie/sections/yoga-bright.svg?raw";
+import autoAnimate from "../../../public/assets/lottie/sections/auto-animate.svg?raw";
+import easing from "../../../public/assets/lottie/sections/easing.svg?raw";
+import animatedIconsWatch from "../../../public/assets/lottie/sections/animated-icons-watch.svg?raw";
+import splashScreen from "../../../public/assets/lottie/sections/splash-screen.svg?raw";
+import devices from "../../../public/assets/lottie/sections/devices.svg?raw";
+
+const description = "Pixodesk Lottie Animator: draw and animate in a desktop editor, save standard Lottie JSON and play it with the Lottie players on iOS, Android, React Native, Windows and the web.";
+const storeButtons = content.sections.section_00.storeButtons;
+
+const players = [
+  { label: "lottie-web", href: "https://github.com/airbnb/lottie-web" },
+  { label: "lottie-ios", href: "https://github.com/airbnb/lottie-ios" },
+  { label: "lottie-android", href: "https://github.com/airbnb/lottie-android" },
+  { label: "lottie-react-native", href: "https://github.com/lottie-react-native/lottie-react-native" },
+  { label: "Windows Community Toolkit", href: "https://learn.microsoft.com/en-us/windows/communitytoolkit/animation" },
+];
+
+const C = "text-cyan-200"; const V = "text-violet-200";
+const b = (t: string) => `<b class="${C}">${t}</b>`;
+const v = (t: string) => `<b class="${V}">${t}</b>`;
+
+const stats = [
+  { figure: "1", label: "standard Lottie file", chips: ["lottie-web", "lottie-ios", "lottie-android", "lottie-react-native", "Windows"], text: `What you save is the Lottie JSON the players already know. ${b("Nothing proprietary")} on their side, no plug-in.` },
+  { figure: "2", label: "ways to animate", chips: ["keyframes", "auto-animate"], text: `Classic watch-and-diamond keyframes — or ${b("pin two states")} and let the app write them.` },
+  { figure: "7", label: "export formats", chips: ["Lottie", "SVG", "GIF", "MP4", "WebM", "PNG", "JPEG"], text: `One document: animated for the app or the site, a video for the deck, a still for the store listing.` },
+];
+
+const features = [
+  { title: "Create, animate, export — one app", line: `A vector editor and an animator ${b("in the same window")}.`, schema: "createAnimateExport" as const, html: yoga, file: "/assets/lottie/sections/yoga-bright.svg", bg: "bg-custom-gradient-indigo", facts: [
+    { icon: "pen" as const, lead: "Draw it, or bring it", text: `SVG, raster images and your own TTF fonts come in; animations from the ${v("Lottie community")} open and can be changed.` },
+    { icon: "blocks" as const, lead: "Build scenes from blocks", text: `Reusable animation blocks — a character, a loader, a logo reveal — composed into one scene.` },
+    { icon: "export" as const, lead: "One document, many files", text: `Lottie JSON for the app, SVG for the site, ${b("MP4 and GIF")} for everyone else.` },
+  ] },
+  { title: "Auto-animate", line: `You set the states. ${b("The keyframes are written for you.")}`, schema: "autoAnimate" as const, html: autoAnimate, file: "/assets/lottie/sections/auto-animate.svg", bg: "bg-custom-gradient-violet", facts: [
+    { icon: "pin" as const, lead: "Pin where it is", text: `Press ${b("Pin")} and the object's position, size and colour are fixed at this moment.` },
+    { icon: "clock" as const, lead: "Jump ahead, move it", text: `Drag the playhead to ${v("1 s")}, move the object. That is the whole instruction.` },
+    { icon: "keyframe" as const, lead: "Keyframes and the motion path appear", text: `On the timeline, by themselves — <i>edit either later</i>.` },
+  ] },
+  { title: "Easing", line: `Timing is what makes motion feel real. ${b("Pick it, or draw it.")}`, schema: "easing" as const, html: easing, file: "/assets/lottie/sections/easing.svg", bg: "bg-custom-gradient-navy", facts: [
+    { icon: "curve" as const, lead: "Presets that feel right", text: `${b("gravity › fall")} for a drop, ${b("bounce")} for a landing, ${b("ease in-out")} for almost everything else.` },
+    { icon: "handles" as const, lead: "Drag the handles", text: `Two control points. Pull one and watch the curve — your own easing in five seconds.` },
+    { icon: "chart" as const, lead: "A mini chart on every segment", text: `Velocity and acceleration, right on the timeline, so you see <i>where it speeds up</i> before you play it.` },
+  ] },
+  { title: "Animated icons", line: `From static to alive, ${b("for apps and sites")}.`, schema: "iconMotion" as const, html: animatedIconsWatch, file: "/assets/lottie/sections/animated-icons-watch.svg", bg: "bg-custom-gradient-indigo", facts: [
+    { icon: "trim" as const, lead: "Lines that draw themselves", text: `Trim path and dash array — the classic icon reveal.` },
+    { icon: "rotate" as const, lead: "Spin, grow, tilt, fade", text: `Rotate, scale, skew and opacity, each with its own easing; grid and snapping keep the drawing precise.` },
+    { icon: "export" as const, lead: "One Lottie file per icon", text: `Plays in the app at any size — ${b("no @2x, no @3x")}, no re-export per platform.` },
+  ] },
+  { title: "Splash screens", line: `The first thing the user sees, ${b("moving")}.`, schema: "splash" as const, html: splashScreen, file: "/assets/lottie/sections/splash-screen.svg", bg: "bg-custom-gradient-violet", facts: [
+    { icon: "phone" as const, lead: "Logo or title, animated", text: `The launch screen, drawn in vector and timed on the same timeline as everything else.` },
+    { icon: "scale" as const, lead: "One file, every screen size", text: `Lottie scales; phones, tablets and desktops get the ${b("same file")}.` },
+    { icon: "play" as const, lead: "Short and smooth", text: `Half a second of motion with proper easing beats a static logo — and weighs a few kilobytes.` },
+  ] },
+];
+---
+
+<BaseLayout title="Lottie Animator" description={description} canonical="/animator" noindex>
+  <section class="hero-section relative bg-custom-gradient-violet pt-navDouble text-base-bright">
+    <PreviewBanner compare="/animator" />
+    <HeroNew
+      title={content.sections.section_00.title}
+      lines={["Draw and animate in the desktop editor, save standard Lottie JSON, and play it with the Lottie players — on iOS, Android, React Native, Windows and the web."]}
+      storeButtons={storeButtons}
+      buttons={[
+        { title: "Try it in the browser", link: "#demo", primary: true },
+        { title: "Docs", link: "/docs/2d-lottie" },
+        { title: "Tutorials", link: "/animator/tutorials" },
+      ]}
+    >
+      <div class="relative w-full overflow-hidden">
+        <div class="relative mx-auto max-w-custom-narrow" set:html={planeAndBanner} />
+        <div class="absolute inset-0 z-0 opacity-20"><div set:html={planeAndBannerWind} /></div>
+        <div class="absolute inset-x-0 bottom-0 z-0"><div set:html={cityOutline} /></div>
+      </div>
+    </HeroNew>
+  </section>
+
+  <DemoFrame src="/app/demo/index.html?2da" app="Lottie Animator" title="Try it now, in the browser"
+    lines={["Create, modify and animate in the restricted browser demo. Saving and export are in the desktop app."]}>
+    <Logo2DFill />
+  </DemoFrame>
+
+  <section>
+    <Section bgColor="bg-custom-gradient-indigo" color="text-base-bright" standard>
+      <h2 class="text-center">Where it plays</h2>
+      <p class="mx-auto mb-8 max-w-custom-narrow text-center text-custom-grey-400">You save one Lottie file. The platform's own Lottie player renders it — the same libraries thousands of apps already ship.</p>
+      <FlowDiagram highlight="lottie" />
+      <p class="mt-6 text-center text-sm text-custom-grey-400">Players: {players.map((p, i) => <><a class="text-cyan-300 underline" href={p.href} target="_blank" rel="noopener">{p.label}</a>{i < players.length - 1 ? " · " : ""}</>)} — <a class="underline" href="/animator/lottie-animation">how to add a Lottie animation to your project →</a></p>
+    </Section>
+  </section>
+
+  <section>
+    <Section bgColor="bg-custom-gradient-violet" color="text-base-bright" standard>
+      <div class="grid max-w-custom-standard grid-cols-1 gap-5 md:grid-cols-3">
+        {stats.map((p) => <StatCard figure={p.figure} label={p.label} chips={p.chips} text={p.text} />)}
+      </div>
+    </Section>
+  </section>
+
+  <section>
+    <Section bgColor="bg-custom-gradient-navy" color="text-base-bright" standard>
+      <h2 class="text-center">See it done in four minutes</h2>
+      <p class="mx-auto mb-8 max-w-custom-narrow text-center text-custom-grey-400">Basic shapes to a finished animation. Three more tutorials cover the pen and node tools, boolean operations and a full scene.</p>
+      <div class="mx-auto aspect-video w-full max-w-custom-narrow overflow-hidden rounded-xl border border-white/10">
+        <iframe class="h-full w-full" src="https://www.youtube.com/embed/HUxIvVPYv9A" title="Basic shapes tutorial — Pixodesk Lottie Animator" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <p class="mt-6 text-center"><a class="text-cyan-300 underline" href="/animator/tutorials">All tutorials →</a></p>
+    </Section>
+  </section>
+
+  {features.map((f, i) => <FeatureSection title={f.title} line={f.line} schema={f.schema} facts={f.facts} html={f.html} file={f.file} flip={i % 2 === 1} bg={f.bg} />)}
+
+  <section>
+    <Section bgColor="bg-base-bright" color="text-base-dark-blue" firstOfType>
+      <AllDevices title={content.sections.section_08.title} subTitle="One Lottie file, every screen: phones, tablets, desktops and the web.">
+        <div class="mx-auto w-full max-w-custom-standard"><div set:html={devices} /><ProofCaption file="/assets/lottie/sections/devices.svg" light /></div>
+      </AllDevices>
+    </Section>
+  </section>
+
+  <section>
+    <Section bgColor="bg-custom-gradient-indigo" color="text-base-bright" standard>
+      <StartBand
+        title="Start here"
+        text="$4.99 a month or $29.99 a year, through the stores. The browser demo and the tutorials are free."
+        links={[
+          { label: "Microsoft Store", href: storeButtons?.[0]?.link ?? "/animator/download", primary: true, external: true },
+          { label: "Mac App Store", href: storeButtons?.[1]?.link ?? "/animator/download", primary: true, external: true },
+          { label: "Try the demo", href: "#demo" },
+          { label: "Docs", href: "/docs/2d-lottie" },
+          { label: "Tutorials", href: "/animator/tutorials" },
+          { label: "All features", href: "/animator/features" },
+          { label: "Pricing", href: "/pricing" },
+        ]}
+      />
+    </Section>
+  </section>
+</BaseLayout>

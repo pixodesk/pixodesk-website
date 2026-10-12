@@ -7,12 +7,14 @@
     "sync:svga-docs:github": "rm -rf .tmp-svga-docs && mkdir -p .tmp-svga-docs && curl -fsSL https://github.com/pixodesk/pixodesk-svg-animator/archive/refs/heads/main.tar.gz | tar -xz -C .tmp-svga-docs --strip-components=2 pixodesk-svg-animator-main/docs && node scripts/sync-svga-docs.mjs .tmp-svga-docs && rm -rf .tmp-svga-docs",
     "dev": "astro dev --host 127.0.0.1",
     "dev:80": "astro dev --host 0.0.0.0 --port 80",
-    "build": "astro build",
+    "build": "astro build && node scripts/check-links.mjs",
     "preview": "astro preview",
     "astro": "astro",
     "test": "playwright test",
     "test:ui": "playwright test --ui",
-    "docs:check-images": "node scripts/check-docs-images.mjs"
+    "docs:check-images": "node scripts/check-docs-images.mjs",
+    "check:links": "node scripts/check-links.mjs",
+    "check:links:online": "node scripts/check-links.mjs --online"
   },
   "dependencies": {
     "@astrojs/mdx": "^4.3.13",

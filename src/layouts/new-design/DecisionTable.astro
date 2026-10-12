@@ -1,0 +1,25 @@
+---
+/** "Which app do I need?" — one row per need; the whole row links to the app page. `light` = colours for a bright section. */
+interface Row { need: string; app: string; href: string; get: string; price: string }
+interface Props { rows: Row[]; light?: boolean }
+const { rows, light = false } = Astro.props;
+const line = light ? "border-slate-900/10" : "border-white/10";
+const head = light ? "bg-slate-900/5 text-slate-500" : "bg-white/[.06] text-slate-400";
+const hover = light ? "hover:bg-slate-900/5" : "hover:bg-white/[.05]";
+const need = light ? "text-slate-900" : "text-white";
+const get = light ? "text-slate-700" : "text-custom-grey-200";
+const price = light ? "text-slate-500" : "text-custom-grey-400";
+const app = light ? "text-blue-700" : "text-cyan-200";
+const cols = "md:grid-cols-[1.4fr_.8fr_1.4fr_.7fr]";
+---
+<div class={`overflow-hidden rounded-2xl border text-sm ${line}`}>
+  <div class={`hidden gap-4 px-5 py-3 font-mono text-[11px] uppercase tracking-widest md:grid ${cols} ${head}`}><div>I need…</div><div>App</div><div>You get</div><div>Price</div></div>
+  {rows.map((r) => (
+    <a href={r.href} class={`grid grid-cols-1 gap-1 border-t px-5 py-4 no-underline md:gap-4 ${cols} ${line} ${hover}`}>
+      <div class={`font-medium ${need}`} set:html={r.need} />
+      <div class={`font-bold ${app}`}>{r.app} →</div>
+      <div class={get} set:html={r.get} />
+      <div class={price}>{r.price}</div>
+    </a>
+  ))}
+</div>

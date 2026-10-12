@@ -1,0 +1,54 @@
+---
+/**
+ * "How it fits together": draw → one file → it plays. `highlight` rings the branch that matters on the page
+ * (svg = pre-rendered SVG, player = JSON + player library, lottie = Lottie players) and dims the others a little.
+ */
+interface Props { highlight?: "svg" | "player" | "lottie" }
+const { highlight } = Astro.props;
+const dim = (k: string) => (highlight && highlight !== k ? "opacity-50" : "");
+const ring = (k: string, color: string) => (highlight === k ? `ring-2 ${color}` : "");
+const files = [
+  { k: "svg", label: ".svg", text: "pre-rendered: the CSS or JS animation is inside the file", ring: "ring-cyan-400", color: "text-cyan-300" },
+  { k: "player", label: ".json", text: "Pixodesk animation for the player library", ring: "ring-indigo-400", color: "text-indigo-300" },
+  { k: "lottie", label: "Lottie .json · .lottie", text: "standard Lottie", ring: "ring-purple-400", color: "text-purple-300" },
+];
+const plays = [
+  { k: "svg", title: "Any web page or CMS", text: "paste the SVG — no code, no library; starts on load, hover, click or scroll", href: "/docs/svga/prerendered-svg", ring: "ring-cyan-400" },
+  { k: "player", title: "React · Vue · plain HTML", text: "the player library from npm — play, pause and seek from code", href: "/docs/svga/player-library/get-started", ring: "ring-indigo-400" },
+  { k: "lottie", title: "iOS · Android · React Native · Windows", text: "the Lottie players", href: "/docs/2d-lottie/add-lottie-animation-to-your-project", ring: "ring-purple-400" },
+];
+const node = "rounded-2xl border border-white/10 bg-white/[.04] p-5";
+const step = "mr-2 inline-flex h-7 w-7 items-center justify-center rounded-full bg-white text-sm font-bold text-black";
+---
+<div class="grid grid-cols-1 items-stretch gap-3 md:grid-cols-[1fr_auto_1fr_auto_1.35fr]">
+  <div class={node}>
+    <h3 class="!pb-2 flex items-center text-xl"><span class={step}>1</span>Draw and animate</h3>
+    <p class="text-sm text-custom-grey-200">In the desktop editor: shapes, paths, text, images and your own fonts. Keyframes, auto-animate, easing curves and the start trigger — all saved in the document.</p>
+    <p class="mt-3 font-mono text-[11px] uppercase tracking-widest text-slate-400">SVG Editor · SVG Animator · Lottie Animator</p>
+  </div>
+  <div class="flex items-center justify-center text-white/40"><svg class="rotate-90 md:rotate-0" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16M14 6l6 6-6 6" /></svg></div>
+  <div class={node}>
+    <h3 class="!pb-2 flex items-center text-xl"><span class={step}>2</span>Save one file</h3>
+    <ul class="space-y-2">
+      {files.map((f) => (
+        <li class={`rounded-lg border border-white/10 bg-black/30 px-3 py-2 text-sm ${dim(f.k)} ${ring(f.k, f.ring)}`}>
+          <span class={`font-mono font-bold ${f.color}`}>{f.label}</span> <span class="text-custom-grey-200">— {f.text}</span>
+        </li>
+      ))}
+    </ul>
+  </div>
+  <div class="flex items-center justify-center text-white/40"><svg class="rotate-90 md:rotate-0" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12h16M14 6l6 6-6 6" /></svg></div>
+  <div class={node}>
+    <h3 class="!pb-2 flex items-center text-xl"><span class={step}>3</span>It plays</h3>
+    <ul class="space-y-2">
+      {plays.map((p) => (
+        <li class={`${dim(p.k)}`}>
+          <a href={p.href} class={`block rounded-lg border border-white/10 bg-black/30 px-3 py-2 no-underline transition hover:bg-white/10 ${ring(p.k, p.ring)}`}>
+            <span class="block text-sm font-semibold text-white">{p.title}</span>
+            <span class="block text-xs text-custom-grey-200">{p.text}</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+</div>

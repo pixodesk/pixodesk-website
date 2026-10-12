@@ -15,9 +15,9 @@ the JSON format with a player is available too.
 |---|---|---|
 | **Astro** | `import svg from './animation.svg?raw';` then `<Fragment set:html={svg} />` | use the React or Vue component with the `client:load` directive, which tells Astro to run it in the browser (an “island”, in Astro's own terms) |
 | **Gatsby** | `gatsby-plugin-react-svg` (CSS flavour) or `dangerouslySetInnerHTML` with the raw file | React component |
-| **Jekyll** | `{% include_relative assets/animation.svg %}` | use the player library [`@pixodesk/svg-animator-web`](https://www.npmjs.com/package/@pixodesk/svg-animator-web): it ships a single `.js` file (the “UMD” build) that you copy to your site and load with a plain `<script>` tag — [how to get the file](/docs/svga/player-library/installation#the-three-builds--esm-cjs-and-umd), [example below](#vanilla-javascript-on-any-static-page) |
-| **Hugo** | `{{ readFile "static/animation.svg" \| safeHTML }}` | use the player library [`@pixodesk/svg-animator-web`](https://www.npmjs.com/package/@pixodesk/svg-animator-web): it ships a single `.js` file (the “UMD” build) that you copy to your site and load with a plain `<script>` tag — [how to get the file](/docs/svga/player-library/installation#the-three-builds--esm-cjs-and-umd), [example below](#vanilla-javascript-on-any-static-page) |
-| **11ty (Eleventy)** | `{% include "animation.svg" %}` | use the player library [`@pixodesk/svg-animator-web`](https://www.npmjs.com/package/@pixodesk/svg-animator-web): it ships a single `.js` file (the “UMD” build) that you copy to your site and load with a plain `<script>` tag — [how to get the file](/docs/svga/player-library/installation#the-three-builds--esm-cjs-and-umd), [example below](#vanilla-javascript-on-any-static-page) |
+| **Jekyll** | `{% include_relative assets/animation.svg %}` | use the player library [`@pixodesk/svg-animator-web`](https://www.npmjs.com/package/@pixodesk/svg-animator-web): it ships a single `.js` file (the “UMD” build) that you copy to your site and load with a plain `<script>` tag — [how to get the file](/docs/svga/player-library/installation#builds--esm-cjs-and-umd), [example below](#vanilla-javascript-on-any-static-page) |
+| **Hugo** | `{{ readFile "static/animation.svg" \| safeHTML }}` | use the player library [`@pixodesk/svg-animator-web`](https://www.npmjs.com/package/@pixodesk/svg-animator-web): it ships a single `.js` file (the “UMD” build) that you copy to your site and load with a plain `<script>` tag — [how to get the file](/docs/svga/player-library/installation#builds--esm-cjs-and-umd), [example below](#vanilla-javascript-on-any-static-page) |
+| **11ty (Eleventy)** | `{% include "animation.svg" %}` | use the player library [`@pixodesk/svg-animator-web`](https://www.npmjs.com/package/@pixodesk/svg-animator-web): it ships a single `.js` file (the “UMD” build) that you copy to your site and load with a plain `<script>` tag — [how to get the file](/docs/svga/player-library/installation#builds--esm-cjs-and-umd), [example below](#vanilla-javascript-on-any-static-page) |
 | **Docusaurus / MDX** | import the CSS flavour as a component (SVGR is built in) — [example below](#docusaurus--mdx) | React component |
 
 The rows above use two different ways of putting the file into the page, and they are not
@@ -90,7 +90,7 @@ recommends for bringing a file's raw text into a page.
 
 Application frameworks that render on the client — Next.js, Nuxt, SvelteKit, Angular — are a
 different case: there the JSON format with a player is the natural fit. See
-[React → Next.js](/docs/svga/player-library/react#nextjs) and [Vue → Nuxt](/docs/svga/player-library/vue#nuxt).
+[React → Next.js](/docs/svga/player-library/nextjs) and [Vue → Nuxt](/docs/svga/player-library/nuxt).
 
 ### Vanilla JavaScript on any static page
 
@@ -107,7 +107,7 @@ animation, one call:
 
 The `pixodesk-svg-animator.umd.min.js` file in the first `<script>` tag is the player itself —
 one `.js` file you copy out of the npm package and put on your own site;
-[Installing the players (overview)](/docs/svga/player-library/installation#the-three-builds--esm-cjs-and-umd)
+[Installing the players (overview)](/docs/svga/player-library/installation#builds--esm-cjs-and-umd)
 shows exactly how. Everything you can do with the player from here — controlling playback,
 reacting to events — is described in [Web player](/docs/svga/player-library/web-player).
 

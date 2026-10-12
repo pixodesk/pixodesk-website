@@ -1,0 +1,142 @@
+---
+// New-design preview of the home page (plan: site-improvement-plan.2026-10-11.md §4). The current page stays at /.
+import "../../styles/tailwind.css";
+import "../../styles/global.scss";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Section from "../../layouts/Section.astro";
+import ListApp from "../../layouts/ListApp.astro";
+import FeatureSection from "../../layouts/new-design/FeatureSection.astro";
+import LogoSVGFill from "../../layouts/LogoSvgFill.astro";
+import Logo2DFill from "../../layouts/Logo2DFill.astro";
+import LogoSvgaFill from "../../layouts/LogoSvgaFill.astro";
+import PreviewBanner from "../../layouts/new-design/PreviewBanner.astro";
+import HeroNew from "../../layouts/new-design/HeroNew.astro";
+import FlowDiagram from "../../layouts/new-design/FlowDiagram.astro";
+import DecisionTable from "../../layouts/new-design/DecisionTable.astro";
+import ProofCaption from "../../layouts/new-design/ProofCaption.astro";
+import StartBand from "../../layouts/new-design/StartBand.astro";
+import type { AppDescription } from "../../types/types";
+import homeCards from "../../data/new-design/home-cards.json";
+
+import astronaut from "../../../public/assets/index/hero/px-astronaut.svg?raw";
+import editColors from "../../../public/assets/index/sections/px-edit-color-anim.svg?raw";
+import girlOnBike from "../../../public/assets/index/sections/all-platforms-girl-on-bike.svg?raw";
+import mangoJuice from "../../../public/assets/svg/sections/mango-juice.svg?raw";
+
+const description = "Pixodesk makes desktop editors for vector graphics and animation — SVG Editor (free), SVG Animator and Lottie Animator — and the players that run the result on any web page or in any app.";
+
+// The three app cards (ListApp shape) live in JSON: the Astro compiler rejects an object key named `export` in frontmatter.
+const cards: Array<{ card: AppDescription; bgClass: string; iconBg: string }> = homeCards;
+
+const decisions = [
+  { need: "Static icons, logos or illustrations for a site or an app", app: "SVG Editor", href: "/new-design/svg-editor", get: "clean <code>.svg</code>; PNG, JPEG, WebP, GIF", price: "Free" },
+  { need: "An animation on a web page, with no library to load", app: "SVG Animator", href: "/new-design/svg-animator", get: "one <code>.svg</code> with the CSS animation inside — starts on load, hover, click or scroll", price: "Coming soon" },
+  { need: "An animation my React, Vue or JavaScript code controls", app: "SVG Animator", href: "/new-design/svg-animator#ways", get: "<code>.json</code> + the player library from npm: play, pause, seek", price: "Coming soon" },
+  { need: "An animation inside an iOS, Android, React Native or desktop app", app: "Lottie Animator", href: "/new-design/animator", get: "Lottie <code>.json</code> / <code>.lottie</code> for the Lottie players", price: "$4.99/mo" },
+];
+
+const b = (t: string) => `<b class="text-cyan-200">${t}</b>`;
+const tools = [
+  { title: "Shape Builder", line: `Simple shapes in, ${b("finished artwork out")}.`, schema: "shapeBuilder" as const, file: "/assets/index/sections/px-shape-builder.svg", img: true, bg: "bg-custom-gradient-navy", facts: [
+    { icon: "union" as const, lead: "Click the regions", text: `Union, subtract, intersect — by ${b("clicking the overlaps")} on the canvas.` },
+    { icon: "star" as const, lead: "The logo you couldn't draw directly", text: `A crescent, a ring, a cut-out letter: <i>seconds</i>.` },
+  ] },
+  { title: "Edit colours", line: `One colour, ${b("every element that uses it")}.`, schema: "editColors" as const, file: "/assets/index/sections/px-edit-color-anim.svg", html: editColors, bg: "bg-custom-gradient-violet", facts: [
+    { icon: "sync" as const, lead: "Try a theme in seconds", text: `Change the swatch once and <i>watch the design follow</i> — the animation on the left is doing exactly that.` },
+    { icon: "clone" as const, lead: "Keep the variations", text: `Light, dark, brand — each saved as its own file.` },
+  ] },
+  { title: "Gradients and opacity", line: `Depth ${b("without raster images")}.`, schema: "gradient" as const, file: "/assets/svg/sections/mango-juice.svg", html: mangoJuice, bg: "bg-custom-gradient-indigo", facts: [
+    { icon: "gradient" as const, lead: "Linear and radial, any stops", text: `Dragged on the canvas, not typed into a panel.` },
+    { icon: "opacity" as const, lead: "Light, shadow, glass — still vector", text: `Opacity per shape; the file stays ${b("a few kilobytes")}.` },
+  ] },
+];
+---
+
+<BaseLayout title="SVG & Lottie Animations" description={description} canonical="/" noindex>
+  <section class="hero-section w-full bg-custom-gradient-indigo pt-navSingle text-white">
+    <PreviewBanner compare="/" />
+    <HeroNew
+      title="# Create and Animate <span class='text-gradient-morph' data-text='SVG and Lottie'>SVG and Lottie</span>"
+      lines={[
+        "Desktop editors for vector graphics and animation — and the players that run the result on any web page or in any app.",
+        "For designers who want clean files, and developers who want to ship them.",
+      ]}
+      buttons={[
+        { title: "Download SVG Editor — free", link: "/svg-editor/download", primary: true },
+        { title: "See how it works ↓", link: "#how" },
+      ]}
+    >
+      <div class="relative mx-auto my-8 w-full max-w-custom-narrowest">
+        <div class="relative z-10 mx-auto w-full max-w-custom-narrowest"><div class="-mt-4" set:html={astronaut} /></div>
+        <div class="absolute inset-0 z-0">
+          <img src="/assets/index/hero/px-apps-screenshot-1400.jpg" alt="Pixodesk desktop apps" class="mx-auto w-full pt-4 opacity-90"
+            style="clip-path: polygon(0.1995% 28.3611%, 12.2437% 28.3611%, 12.2437% 6.6564%, 87.9342% 6.6564%, 87.9342% 29.0879%, 99.9075% 29.0879%, 99.9075% 100.1964%, 0.0883% 100.1964%, 0.1995% 28.3611%);" />
+        </div>
+      </div>
+    </HeroNew>
+
+    <div class="relative z-10 -mt-8" style={{ paddingLeft: "var(--sl-nav-pad-x)", paddingRight: "var(--sl-nav-pad-x)" }}>
+      <p class="text-center text-sm text-custom-grey-400">Three apps. Pick by what you need to end up with.</p>
+      <div class="mb-16 flex flex-col items-center justify-center">
+        <div class="grid max-w-custom-standard grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+          {cards.map((c, i) => (
+            <ListApp bgClass={c.bgClass} iconFill="text-white" card={c.card} iconBg={c.iconBg}>
+              {i === 0 ? <LogoSVGFill /> : i === 1 ? <Logo2DFill /> : <LogoSvgaFill />}
+            </ListApp>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="how" class="scroll-mt-24">
+    <Section bgColor="bg-custom-gradient-violet" color="text-base-bright" standard>
+      <h2 class="text-center">How it fits together</h2>
+      <p class="mx-auto mb-8 max-w-custom-narrow text-center text-custom-grey-400">You draw and animate once. The editor saves one file. That file plays wherever you put it — without the editor, and in two of three cases without any library.</p>
+      <FlowDiagram />
+      <div class="mx-auto mt-14 max-w-custom-narrow">
+        <div set:html={girlOnBike} />
+        <ProofCaption file="/assets/index/sections/all-platforms-girl-on-bike.svg" note="everything moving on this page is a file one of these editors saved — open any of them" />
+      </div>
+    </Section>
+  </section>
+
+  <section>
+    <Section bgColor="bg-base-bright" color="text-base-dark-blue" standard>
+      <h2 class="text-center">Which app do I need?</h2>
+      <p class="mx-auto mb-8 max-w-custom-narrow text-center">Start from the result, not from the tool.</p>
+      <DecisionTable rows={decisions} light />
+      <p class="mt-6 text-center text-sm text-slate-500">All three are desktop apps for macOS and Windows, installed and updated through the Mac App Store and the Microsoft Store. Files move between them.</p>
+    </Section>
+  </section>
+
+  <section>
+    <Section bgColor="bg-custom-gradient-navy" color="text-base-bright" firstOfType>
+      <h2 class="text-center">The same drawing tools in all three apps</h2>
+      <p class="mx-auto max-w-custom-narrow text-center text-custom-grey-400">Whatever you animate later, you draw it here first. Three of the tools, each shown by a file the tool made — and how it works.</p>
+    </Section>
+  </section>
+  {tools.map((t, i) => <FeatureSection title={t.title} line={t.line} schema={t.schema} facts={t.facts} file={t.file} img={t.img} html={t.html} flip={i % 2 === 1} bg={t.bg} />)}
+  <section>
+    <Section bgColor="bg-custom-gradient-indigo" color="text-base-bright" firstOfType>
+      <p class="text-center"><a class="text-cyan-300 underline" href="/svg-editor/features">All drawing features →</a></p>
+    </Section>
+  </section>
+
+  <section>
+    <Section bgColor="bg-custom-gradient-indigo" color="text-base-bright" standard>
+      <StartBand
+        title="Start here"
+        text="Nothing to sign up for. The free editor installs in a minute; the demos run in the browser; the docs take you from a blank canvas to an animation on your page."
+        links={[
+          { label: "Download SVG Editor — free", href: "/svg-editor/download", primary: true },
+          { label: "Try the SVG Animator demo", href: "/new-design/svg-animator#demo" },
+          { label: "Try the Lottie Animator demo", href: "/new-design/animator#demo" },
+          { label: "Get started — docs", href: "/docs/svga/get-started" },
+          { label: "npm i @pixodesk/svg-animator-react", href: "https://www.npmjs.com/package/@pixodesk/svg-animator-react", mono: true, external: true },
+          { label: "Pricing", href: "/pricing" },
+        ]}
+      />
+    </Section>
+  </section>
+</BaseLayout>

@@ -1,0 +1,10 @@
+---
+/** A thin bar at the top of every /new-design page: links to the current page and the other previews. Remove when the design ships. */
+interface Props { compare: string }
+const { compare } = Astro.props;
+const previews = [["/new-design/", "home"], ["/new-design/svg-animator", "SVG Animator"], ["/new-design/animator", "Lottie Animator"], ["/new-design/svg-editor", "SVG Editor"]];
+---
+<div class="w-full border-b border-amber-300/30 bg-amber-400/10 px-4 py-1.5 text-center font-mono text-[11px] text-amber-100 md:text-xs">
+  new design preview — <a class="underline" href={compare}>current page</a> · previews:
+  {previews.map(([href, label]) => <a class={`ml-2 underline ${Astro.url.pathname.replace(/\/$/, "") === href.replace(/\/$/, "") ? "text-white" : ""}`} href={href}>{label}</a>)}
+</div>

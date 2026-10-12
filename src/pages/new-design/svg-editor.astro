@@ -1,0 +1,127 @@
+---
+// New-design preview of /svg-editor (plan §4). The current page stays at /svg-editor.
+import "../../styles/tailwind.css";
+import "../../styles/global.scss";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Section from "../../layouts/Section.astro";
+import FeatureSection from "../../layouts/new-design/FeatureSection.astro";
+import StatCard from "../../layouts/new-design/StatCard.astro";
+import LogoSVGFill from "../../layouts/LogoSvgFill.astro";
+import content from "../../data/svg/svg-index-text-content";
+import PreviewBanner from "../../layouts/new-design/PreviewBanner.astro";
+import HeroNew from "../../layouts/new-design/HeroNew.astro";
+import DemoFrame from "../../layouts/new-design/DemoFrame.astro";
+import SourceExcerpt from "../../layouts/new-design/SourceExcerpt.astro";
+import ProofCaption from "../../layouts/new-design/ProofCaption.astro";
+import StartBand from "../../layouts/new-design/StartBand.astro";
+
+import birdTwitting from "../../../public/assets/svg/sections/bird-twitting-svg.svg?raw";
+import editColorsStatic from "../../../public/assets/svg/sections/edit-colors-static.svg?raw";
+import mangoJuice from "../../../public/assets/svg/sections/mango-juice.svg?raw";
+import vectorText from "../../../public/assets/svg/sections/vector-text.svg?raw";
+import eiffelTower from "../../../public/assets/svg/sections/Eiffel-tower.svg?raw";
+
+const description = "Pixodesk SVG Editor: a free desktop vector editor for macOS and Windows that saves clean SVG — only your tags and styles in the file — and exports PNG, JPEG, WebP and GIF.";
+const storeButtons = content.sections.section_00.storeButtons;
+
+const C = "text-cyan-200"; const V = "text-violet-200";
+const b = (t: string) => `<b class="${C}">${t}</b>`;
+const v = (t: string) => `<b class="${V}">${t}</b>`;
+
+const stats = [
+  { figure: "Free", label: "on both stores", chips: ["Mac App Store", "Microsoft Store"], text: `No account, no trial clock, no watermark. Installed and updated by the store.` },
+  { figure: "100%", label: "your SVG", chips: ["your elements", "your styles", "nothing proprietary"], text: `What you drew is what is in the file — ready to ${b("paste, inline or optimise")}.` },
+  { figure: "3", label: "apps, one toolset", chips: ["SVG Editor", "SVG Animator", "Lottie Animator"], text: `A file drawn here opens in both animators ${v("when it has to move")}.` },
+];
+
+const features = [
+  { title: "Shape Builder", line: `Simple shapes in, ${b("finished artwork out")}.`, schema: "shapeBuilder" as const, html: birdTwitting, file: "/assets/svg/sections/bird-twitting-svg.svg", bg: "bg-custom-gradient-navy", facts: [
+    { icon: "union" as const, lead: "Click the regions", text: `Union, subtract, intersect — by ${b("clicking the overlaps")} on the canvas, not by stacking boolean operations.` },
+    { icon: "path" as const, lead: "One clean path", text: `No leftover groups, no hidden shapes under the result.` },
+    { icon: "star" as const, lead: "The logo you couldn't draw directly", text: `A crescent, a ring, a cut-out letter: <i>seconds</i>.` },
+  ] },
+  { title: "Edit colours", line: `One colour, ${b("every element that uses it")}.`, schema: "editColors" as const, html: editColorsStatic, file: "/assets/svg/sections/edit-colors-static.svg", bg: "bg-custom-gradient-violet", facts: [
+    { icon: "palette" as const, lead: "One swatch, all its users", text: `Shared colours are tracked across the whole document, groups included.` },
+    { icon: "sync" as const, lead: "Try a theme in seconds", text: `Change the swatch once and <i>watch the design follow</i>.` },
+    { icon: "clone" as const, lead: "Keep the variations", text: `Save each theme as its own file — ${v("light, dark, brand")}.` },
+  ] },
+  { title: "Gradients and opacity", line: `Depth ${b("without raster images")}.`, schema: "gradient" as const, html: mangoJuice, file: "/assets/svg/sections/mango-juice.svg", bg: "bg-custom-gradient-indigo", facts: [
+    { icon: "gradient" as const, lead: "Linear and radial, any stops", text: `Dragged on the canvas, not typed into a panel.` },
+    { icon: "opacity" as const, lead: "Opacity per shape", text: `Light, shadow and glass — layered, ${b("still vector")}.` },
+    { icon: "compress" as const, lead: "Still a small file", text: `A gradient is three lines of SVG; the glass is one attribute.` },
+  ] },
+  { title: "Vector text", line: `Your fonts, ${b("on any path")}.`, schema: "vectorText" as const, html: vectorText, file: "/assets/svg/sections/vector-text.svg", bg: "bg-custom-gradient-navy", facts: [
+    { icon: "font" as const, lead: "Import TTF fonts", text: `Style, size and kerning as live text.` },
+    { icon: "outline" as const, lead: "To outlines when needed", text: `When the font must not travel with the file — ${b("one command")}.` },
+    { icon: "path" as const, lead: "On any path", text: `Lines, waves, circles — the text bends with the shape.` },
+  ] },
+  { title: "Patterns, markers, spray and repeater", line: `One shape ${b("becomes hundreds")}.`, schema: "patternMarkerSpray" as const, html: eiffelTower, file: "/assets/svg/sections/Eiffel-tower.svg", bg: "bg-custom-gradient-violet", facts: [
+    { icon: "pattern" as const, lead: "Your own patterns", text: `Or the presets, recoloured and resized.` },
+    { icon: "marker" as const, lead: "Markers along a path, spray across an area", text: `Bubbles, stars, snow, textures — ${b("one click")} each.` },
+    { icon: "clone" as const, lead: "Repeater", text: `Clones with spacing, rotation and count as parameters; change the source and ${v("every copy follows")}.` },
+  ] },
+];
+---
+
+<BaseLayout title="SVG Editor" description={description} canonical="/svg-editor" noindex>
+  <section class="hero-section relative w-full bg-custom-gradient-violet pt-navDouble text-white">
+    <PreviewBanner compare="/svg-editor" />
+    <HeroNew
+      title={content.sections.section_00.title}
+      lines={["A desktop vector editor that saves clean SVG — icons, logos, illustrations and responsive web graphics — and exports PNG, JPEG, WebP and GIF. Free."]}
+      storeButtons={storeButtons}
+      buttons={[
+        { title: "Try it in the browser", link: "#demo", primary: true },
+        { title: "All features", link: "/svg-editor/features" },
+      ]}
+    >
+      <div class="relative flex w-full flex-col items-center">
+        <div class="relative z-10 w-1/4 items-center py-8"><img src="/assets/svg/hero/bird-origami.svg" alt="Origami bird drawn in Pixodesk SVG Editor" /></div>
+      </div>
+    </HeroNew>
+  </section>
+
+  <DemoFrame src="/app/demo/index.html?svg" app="SVG Editor" title="Try it now, in the browser"
+    lines={["Create and modify SVG in the restricted browser demo. Saving and export are in the desktop app — which is free."]}>
+    <LogoSVGFill />
+  </DemoFrame>
+
+  <section>
+    <Section bgColor="bg-custom-gradient-violet" color="text-base-bright" standard>
+      <div class="grid max-w-custom-standard grid-cols-1 gap-5 md:grid-cols-3">
+        {stats.map((p) => <StatCard figure={p.figure} label={p.label} chips={p.chips} text={p.text} />)}
+      </div>
+    </Section>
+  </section>
+
+  <section>
+    <Section bgColor="bg-custom-gradient-navy" color="text-base-bright" standard>
+      <h2 class="text-center">What you get in the file</h2>
+      <p class="mx-auto mb-8 max-w-custom-narrow text-center text-custom-grey-400">The text on the left is a real export, inlined into this page. On the right: the first lines of that same file.</p>
+      <div class="grid grid-cols-1 items-start gap-8 md:grid-cols-2">
+        <div><div class="mx-auto w-full max-w-md" set:html={vectorText} /><ProofCaption file="/assets/svg/sections/vector-text.svg" /></div>
+        <div><SourceExcerpt file="/assets/svg/sections/vector-text.svg" /></div>
+      </div>
+    </Section>
+  </section>
+
+  {features.map((f, i) => <FeatureSection title={f.title} line={f.line} schema={f.schema} facts={f.facts} html={f.html} file={f.file} flip={i % 2 === 1} bg={f.bg} />)}
+
+  <section>
+    <Section bgColor="bg-custom-gradient-indigo" color="text-base-bright" standard>
+      <StartBand
+        title="Start here"
+        text="Free on both stores. When a drawing has to move, open it in SVG Animator (web) or Lottie Animator (native apps)."
+        links={[
+          { label: "Microsoft Store", href: storeButtons?.[0]?.link ?? "/svg-editor/download", primary: true, external: true },
+          { label: "Mac App Store", href: storeButtons?.[1]?.link ?? "/svg-editor/download", primary: true, external: true },
+          { label: "Try the demo", href: "#demo" },
+          { label: "All features", href: "/svg-editor/features" },
+          { label: "Release notes", href: "/svg-editor/releases" },
+          { label: "SVG Animator", href: "/new-design/svg-animator" },
+          { label: "Lottie Animator", href: "/new-design/animator" },
+        ]}
+      />
+    </Section>
+  </section>
+</BaseLayout>

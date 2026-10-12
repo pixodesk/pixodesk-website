@@ -127,8 +127,8 @@ svg.classList.remove('px-anim-enabled', 'px-anim-playing'); // reset to the star
 
 This is exactly what the React and Vue `PixodeskSvgCssAnimator` components do for you — they
 wrap an SVGR / `vite-svg-loader` import in a `<div>` and toggle these classes on hover, click or
-scroll-into-view. See [React → CSS-flavour SVGs](/docs/svga/player-library/react#css-flavour-svgs--pixodesksvgcssanimator)
-and [Vue → CSS-flavour SVGs](/docs/svga/player-library/vue#css-flavour-svgs--pixodesksvgcssanimator).
+scroll-into-view. See [React → CSS-flavour SVGs](/docs/svga/player-library/react#css-flavor-svgs--pixodesksvgcssanimator)
+and [Vue → CSS-flavour SVGs](/docs/svga/player-library/vue#css-flavor-svgs--pixodesksvgcssanimator).
 
 ## Flavour 2 — SVG + CSS animation + JS triggers
 
@@ -187,7 +187,7 @@ The player does not have to live inside the file at all. Switch the editor's *Em
 option **off** and the exported file contains only the drawing and the animation data; your
 page then loads the player library,
 [`@pixodesk/svg-animator-web`](https://www.npmjs.com/package/@pixodesk/svg-animator-web), as a
-normal script ([how to host it on your own site](/docs/svga/player-library/installation#the-three-builds--esm-cjs-and-umd)).
+normal script ([how to host it on your own site](/docs/svga/player-library/installation#builds--esm-cjs-and-umd)).
 Do this when several exported files sit on one page: they all use that one copy of the player
 instead of each file carrying its own.
 

@@ -1,0 +1,11 @@
+---
+/** A mechanism schematic from schemas.ts as a responsive inline SVG. Static at rest; hover or tap plays it (SMIL, user-started). */
+import { SCHEMAS, type SchemaKind } from "./schemas";
+interface Props { kind: SchemaKind }
+const { kind } = Astro.props;
+const uid = "s" + Math.random().toString(36).slice(2, 7);
+---
+<div class="relative">
+  <svg id={uid} viewBox="0 0 520 160" class="h-auto w-full cursor-pointer" font-family="inherit" aria-hidden="true"><Fragment set:html={SCHEMAS[kind](uid)} /></svg>
+  <span class="pointer-events-none absolute right-1 top-1 rounded-full border border-white/15 bg-black/40 px-2 py-0.5 font-mono text-[10px] text-slate-300">▶ hover to play</span>
+</div>
