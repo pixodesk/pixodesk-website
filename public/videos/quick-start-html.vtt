@@ -1,0 +1,53 @@
+WEBVTT
+
+1
+00:00:00.267 --> 00:00:01.730
+Here's a simple web page.
+
+2
+00:00:05.467 --> 00:00:07.818
+It works, but it feels a little static.
+
+3
+00:00:08.367 --> 00:00:11.632
+First, copy the player library into the project.
+
+4
+00:00:17.667 --> 00:00:20.854
+Now let's make the animation. It only takes a minute.
+
+5
+00:00:21.400 --> 00:00:24.482
+In Pixodesk SVG Animator, draw a circle.
+
+6
+00:00:25.000 --> 00:00:30.982
+Turn on Auto mode, then drag the ball down and back up. The keyframes are created for you.
+
+7
+00:00:31.500 --> 00:00:35.000
+Add gravity easing for a natural bounce, and loop it.
+
+8
+00:00:40.267 --> 00:00:43.349
+Save it as JSON, straight into the project.
+
+9
+00:00:48.200 --> 00:00:52.066
+Back in the project, the animation file is already there.
+
+10
+00:00:53.600 --> 00:00:55.115
+Add the player library.
+
+11
+00:01:01.967 --> 00:01:04.919
+Then add one element that names the animation file.
+
+12
+00:01:15.100 --> 00:01:18.182
+Reload the page, and the ball bounces.
+
+13
+00:01:20.700 --> 00:01:23.835
+That's all it takes: one script, one element.

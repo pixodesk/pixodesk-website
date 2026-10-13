@@ -4,11 +4,11 @@
  * long lines cut), highlighted, with the honest footer — total size, and whether a script is inside and how big.
  */
 import fs from "node:fs";
-import { fileURLToPath } from "node:url";
+import { publicFile } from "./publicFile";
 import { Code } from "astro:components";
 interface Props { file: string; lines?: number; width?: number }
 const { file, lines = 16, width = 96 } = Astro.props;
-const abs = fileURLToPath(new URL(`../../../public${file}`, import.meta.url));
+const abs = publicFile(file);
 const raw = fs.readFileSync(abs, "utf8");
 const bytes = fs.statSync(abs).size;
 const scripts = [...raw.matchAll(/<script[^>]*>([\s\S]*?)<\/script>/g)].map((m) => m[1].length);

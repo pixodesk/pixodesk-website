@@ -1,0 +1,52 @@
+---
+/**
+ * One tutorial video recorded from a script: kf `yarn website:videos` writes public/videos/<name>.{mp4,vtt,poster.png}.
+ * The box rests at 0.96× while the play button shows (full size on hover/focus) and stays full size after the first play.
+ * Before the first play: the poster under a frosted-glass play button (a rounded pane) with the duration; one click plays
+ * and hands over to the native controls (the button never comes back). Nothing moves until hover (site rule: nothing
+ * animates on load); `preload="none"` keeps the page light; captions are a track the visitor can turn on.
+ * Without JavaScript the video simply shows its native controls.
+ */
+import { videoDuration } from "./videoDuration";
+interface Props { name: string; title: string }
+const { name, title } = Astro.props;
+const src = `/videos/${name}`;
+const duration = videoDuration(name);
+---
+{/* a little smaller while the play button shows (full size on hover/focus); full size for good after the first play (data-started) */}
+<div class="relative mx-auto w-full max-w-custom-standard scale-[.96] overflow-hidden rounded-xl border border-white/10 bg-black shadow-[0_30px_80px_rgba(0,0,0,.35)] transition-transform duration-500 ease-out focus-within:scale-100 hover:scale-100 data-[started]:scale-100 motion-reduce:transition-none" data-video>
+  <video class="block aspect-[16/10] w-full" controls playsinline preload="none" poster={`${src}.poster.png`}>
+    <source src={`${src}.mp4`} type="video/mp4" />
+    <track kind="captions" src={`${src}.vtt`} srclang="en" label="English" />
+  </video>
+  <button type="button" data-video-play aria-label={`Play the video: ${title}${duration ? ` (${duration})` : ""}`}
+    class="group absolute inset-0 hidden cursor-pointer items-center justify-center bg-gradient-to-b from-black/10 via-black/25 to-black/45 focus-visible:outline-none">
+    <span class="flex flex-col items-center gap-5">
+      <span class="relative">
+        <span class="relative grid h-[88px] w-[128px] place-items-center rounded-[24px] bg-white/[.05] shadow-[0_14px_44px_rgba(0,0,0,.25),inset_0_1px_0_rgba(255,255,255,.35)] ring-1 ring-white/35 backdrop-blur-[6px] backdrop-saturate-150 transition duration-300 ease-out group-hover:scale-[1.08] group-focus-visible:ring-2 group-focus-visible:ring-white motion-reduce:transition-none motion-reduce:group-hover:scale-100 md:h-[118px] md:w-[172px] md:rounded-[30px]">
+          <svg viewBox="0 0 24 24" aria-hidden="true" class="ml-[4%] h-14 w-14 fill-white drop-shadow-[0_3px_8px_rgba(0,0,0,.3)] md:h-[76px] md:w-[76px]">
+            <path d="M8 5.14v13.72a1 1 0 0 0 1.52.85l10.9-6.86a1 1 0 0 0 0-1.7L9.52 4.29A1 1 0 0 0 8 5.14Z" />
+          </svg>
+        </span>
+      </span>
+      <span class="rounded-full bg-black/40 px-3.5 py-1 text-sm font-medium tracking-wide text-white/90 ring-1 ring-white/15 backdrop-blur-sm">
+        Watch{duration && <span class="text-white/60"> · {duration}</span>}
+      </span>
+    </span>
+  </button>
+</div>
+<script>
+  // Before the first play: the big button instead of the native controls; after it (from the button or any other
+  // way), the native controls only.
+  document.querySelectorAll<HTMLElement>("[data-video]").forEach((box) => {
+    const video = box.querySelector("video");
+    const button = box.querySelector<HTMLButtonElement>("[data-video-play]");
+    if (!video || !button) return;
+    video.controls = false;
+    button.classList.replace("hidden", "flex");
+    // the button goes, the native controls come, and the box stays full size (data-started) from now on
+    const handOver = () => { button.remove(); video.controls = true; box.setAttribute("data-started", ""); };
+    button.addEventListener("click", () => { handOver(); void video.play(); });
+    video.addEventListener("play", handOver, { once: true });
+  });
+</script>

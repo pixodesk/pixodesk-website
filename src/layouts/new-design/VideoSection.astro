@@ -1,0 +1,26 @@
+---
+/**
+ * A section of tutorial videos: heading, lines, then one VideoPlayer — or, for several videos, TabStrip tabs
+ * (label + hint + the video's length) over one player per tab; switching pauses the hidden one.
+ */
+import TabStrip from "./TabStrip.astro";
+import VideoPlayer from "./VideoPlayer.astro";
+import type { TabInfo } from "./tabs";
+import { videoDuration } from "./videoDuration";
+interface VideoTab extends TabInfo { name: string }
+interface Props { videos: VideoTab[]; title: string; lines: string[]; id?: string; bg?: string }
+const { videos, title, lines, id = "video", bg = "bg-custom-gradient-indigo" } = Astro.props;
+const tabs = videos.map((v) => ({ ...v, hint: [v.hint, videoDuration(v.name)].filter(Boolean).join(" · ") }));
+---
+<section id={id} class={`scroll-mt-24 ${bg} px-pxPage pb-pxPage pt-pxPage text-white`}>
+  <h2 class="text-center">{title}</h2>
+  {lines.map((l) => <p class="mx-auto max-w-custom-narrow text-center text-custom-grey-400" set:html={l} />)}
+  <div class="mx-auto mt-6 w-full max-w-custom-standard" data-tabs>
+    {tabs.length > 1 && <TabStrip tabs={tabs} name={id} />}
+    {tabs.map((v, i) => (
+      <div role="tabpanel" id={`${id}-panel-${v.id}`} aria-labelledby={`${id}-tab-${v.id}`} data-panel={v.id} hidden={i !== 0}>
+        <VideoPlayer name={v.name} title={tabs.length > 1 ? `${title} — ${v.label}` : title} />
+      </div>
+    ))}
+  </div>
+</section>

@@ -10,6 +10,7 @@ import LogoSvgaFill from "../../layouts/LogoSvgaFill.astro";
 import PreviewBanner from "../../layouts/new-design/PreviewBanner.astro";
 import HeroNew from "../../layouts/new-design/HeroNew.astro";
 import DemoFrame from "../../layouts/new-design/DemoFrame.astro";
+import VideoSection from "../../layouts/new-design/VideoSection.astro";
 import CodeTabs from "../../layouts/new-design/CodeTabs.astro";
 import SourceExcerpt from "../../layouts/new-design/SourceExcerpt.astro";
 import ProofCaption from "../../layouts/new-design/ProofCaption.astro";
@@ -33,22 +34,6 @@ const description = "Pixodesk SVG Animator: draw and animate in a desktop editor
 const status = "Desktop app coming to the Mac App Store and Microsoft Store. The browser demo, the player library and the docs are available today.";
 
 const tabs = [
-  {
-    id: "svg", label: "Pre-rendered SVG", hint: "no code — paste the file", glyph: "file" as const, lang: "html" as const,
-    note: "Save as <b>SVG + CSS animation</b> and paste the file into the page. The animation is CSS inside the file; it starts on load, on hover, on click or when scrolled into view — whichever you chose in the editor. Astro, Jekyll, Hugo, WordPress, Shopify and Webflow inline it at build time.",
-    code: `<!-- index.html — the file the editor saved, pasted where the logo goes -->
-<div class="logo">
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400"
-       class="px-anim-enabled px-anim-playing">
-    <style>
-      @keyframes _px_2 { 0% { transform: translate(200px, 60px) } 100% { transform: translate(200px, 340px) } }
-      .px-anim-enabled ._px_3 { animation: 1000ms _px_2 infinite alternate both; }
-    </style>
-    <ellipse id="ball" class="px-anim-element _px_3" fill="#0087ff" rx="40" ry="40" />
-  </svg>
-</div>`,
-    docs: { label: "Pre-rendered SVG on the web", href: "/docs/svga/prerendered-svg/on-the-web" },
-  },
   {
     id: "react", label: "React", hint: "component + ref", glyph: "code" as const, lang: "tsx" as const,
     note: "Save as <b>JSON</b>, install one package, render the file. The component plays the document's own trigger and gives you play, pause and seek through a ref.",
@@ -83,13 +68,36 @@ import animation from './animation.json';
   },
   {
     id: "html", label: "Plain HTML", hint: "one script tag, no build", glyph: "browser" as const, lang: "html" as const,
-    note: "No bundler: one script file copied out of the npm package, and an element that names the JSON file.",
-    code: `<div data-px-animation-src="animation.json" style="width: 300px; height: 300px"></div>
+    note: "No bundler: copy the player library into your site with <b>one command</b>, then load it with a script tag and name the JSON file on an element.",
+    code: `<!-- npx @pixodesk/svg-animator-web copy-player-library -->
+<div data-px-animation-src="animation.json" style="width: 300px; height: 300px"></div>
 
-<script src="js/pixodesk-svg-animator.umd.min.js"></script>
+<script src="pixodesk-svg-animator.umd.min.js"></script>
 <script>PixodeskAnimator.loadTagAnimators();</script>`,
     docs: { label: "Web player", href: "/docs/svga/player-library/web-player" },
   },
+  {
+    id: "svg", label: "Pre-rendered SVG", hint: "no code — inline the file", glyph: "file" as const, lang: "html" as const,
+    note: "Save as <b>SVG + CSS animation</b> and put the file's markup in the page: your framework inlines it when the site is built (Astro, Next.js, Hugo, Eleventy…), or paste it. No build step? An <b>&lt;iframe&gt;</b> shows it too, though the page cannot reach into it. Not an <b>&lt;img&gt;</b> — an image runs no triggers.",
+    code: `<!-- Astro, src/pages/index.astro: the file inlined when the site is built -->
+---
+import ball from '../assets/ball.svg?raw';
+---
+<div class="ball" set:html={ball} />
+
+<!-- no build step: the file in its own frame -->
+<iframe src="ball.svg" width="300" height="300" title="A bouncing ball" style="border: none"></iframe>`,
+    docs: { label: "Pre-rendered SVG on the web", href: "/docs/svga/prerendered-svg/on-the-web" },
+  },
+];
+
+// The quick-start videos (kf `yarn website:videos`), tabbed in the same order as the code tabs below.
+const videoTabs = [
+  { id: "react", label: "React", hint: "Vite + React", glyph: "code" as const, name: "quick-start-react" },
+  { id: "vue", label: "Vue", hint: "Vite + Vue", glyph: "code" as const, name: "quick-start-vue" },
+  { id: "html", label: "Plain HTML", hint: "static page", glyph: "browser" as const, name: "quick-start-html" },
+  { id: "svg-astro", label: "Pre-rendered SVG (in Astro)", hint: "inlined at build", glyph: "file" as const, name: "quick-start-svg-astro" },
+  { id: "svg-iframe", label: "Pre-rendered SVG (in iframe)", hint: "no build step", glyph: "file" as const, name: "quick-start-svg-iframe" },
 ];
 
 const C = "text-cyan-200"; const V = "text-violet-200";
@@ -161,6 +169,10 @@ const madeWith = [
       <ProofCaption file="/assets/svga/hero/girl-on-bike.svg" />
     </HeroNew>
   </section>
+
+  {/* Watch first (zero effort, shows how fast it is), then the demo right below to try the same steps. */}
+  <VideoSection title="Watch it first: from the editor to your app" videos={videoTabs}
+    lines={[`Draw a ball, save it into your project, add ${b("one component, one script or the SVG itself")} — and it bounces. Then try the same editor yourself, just below.`]} />
 
   <DemoFrame src="/app/demo/index.html?svga" app="SVG Animator" title="Try it now, in the browser"
     lines={["Create, modify and animate SVG in the restricted browser demo. Saving and export are in the desktop app."]}>

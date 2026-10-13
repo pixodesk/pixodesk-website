@@ -4,13 +4,13 @@
  * its size on disk, and a link to the file itself in public/.
  */
 import fs from "node:fs";
-import { fileURLToPath } from "node:url";
+import { publicFile } from "./publicFile";
 interface Props { file: string; app?: string; note?: string; align?: string; light?: boolean }
 const { file, app, note, align = "text-center", light = false } = Astro.props;
 let size = "";
 let madeIn = app ?? "";
 try {
-  const abs = fileURLToPath(new URL(`../../../public${file}`, import.meta.url));
+  const abs = publicFile(file);
   const bytes = fs.statSync(abs).size;
   size = bytes >= 100 * 1024 ? `${Math.round(bytes / 1024)} KB` : `${(bytes / 1024).toFixed(1)} KB`;
   if (!madeIn) {
