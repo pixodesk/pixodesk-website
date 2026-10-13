@@ -11,6 +11,7 @@ import content from "../../data/svg/svg-index-text-content";
 import PreviewBanner from "../../layouts/new-design/PreviewBanner.astro";
 import HeroNew from "../../layouts/new-design/HeroNew.astro";
 import DemoFrame from "../../layouts/new-design/DemoFrame.astro";
+import VideoSection from "../../layouts/new-design/VideoSection.astro";
 import SourceExcerpt from "../../layouts/new-design/SourceExcerpt.astro";
 import ProofCaption from "../../layouts/new-design/ProofCaption.astro";
 import StartBand from "../../layouts/new-design/StartBand.astro";
@@ -80,6 +81,10 @@ const features = [
       </div>
     </HeroNew>
   </section>
+
+  {/* Watch first (zero effort, shows how fast it is), then the demo right below to try the same steps. */}
+  <VideoSection title="Watch it first: an icon in under a minute" videos={[{ id: "icon", label: "Weather icon", name: "quick-start-svg-editor" }]}
+    lines={[`Circles and a rectangle, ${b("united into one shape")}, a soft gradient, saved as clean SVG — and on the page it is just an image. Then try the same editor yourself, just below.`]} />
 
   <DemoFrame src="/app/demo/index.html?svg" app="SVG Editor" title="Try it now, in the browser"
     lines={["Create and modify SVG in the restricted browser demo. Saving and export are in the desktop app — which is free."]}>

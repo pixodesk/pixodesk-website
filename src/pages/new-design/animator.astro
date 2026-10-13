@@ -12,6 +12,7 @@ import content from "../../data/2d-animator/lottie-index-text-content";
 import PreviewBanner from "../../layouts/new-design/PreviewBanner.astro";
 import HeroNew from "../../layouts/new-design/HeroNew.astro";
 import DemoFrame from "../../layouts/new-design/DemoFrame.astro";
+import VideoSection from "../../layouts/new-design/VideoSection.astro";
 import FlowDiagram from "../../layouts/new-design/FlowDiagram.astro";
 import ProofCaption from "../../layouts/new-design/ProofCaption.astro";
 import StartBand from "../../layouts/new-design/StartBand.astro";
@@ -39,6 +40,14 @@ const players = [
 
 const C = "text-cyan-200"; const V = "text-violet-200";
 const b = (t: string) => `<b class="${C}">${t}</b>`;
+
+// The Lottie quick-start videos (kf `yarn website:videos`), one per popular player library.
+const videoTabs = [
+  { id: "lottie-react", label: "React (lottie-react)", hint: "Lottie JSON", glyph: "code" as const, name: "quick-start-lottie-react" },
+  { id: "dotlottie-react", label: "React (dotlottie-react)", hint: ".lottie file", glyph: "code" as const, name: "quick-start-dotlottie-react" },
+  { id: "lottie-web", label: "Plain HTML (lottie-web)", hint: "static page", glyph: "browser" as const, name: "quick-start-lottie-web" },
+  { id: "dotlottie-web", label: "JavaScript (dotlottie-web)", hint: "canvas, Vite", glyph: "code" as const, name: "quick-start-dotlottie-web" },
+];
 const v = (t: string) => `<b class="${V}">${t}</b>`;
 
 const stats = [
@@ -96,6 +105,10 @@ const features = [
       </div>
     </HeroNew>
   </section>
+
+  {/* Watch first (zero effort, shows how fast it is), then the demo right below to try the same steps. */}
+  <VideoSection title="Watch it first: from the editor to your app" videos={videoTabs}
+    lines={[`Draw a ball, save it as ${b("Lottie JSON or .lottie")}, play it with the library you already use — and it bounces. Then try the same editor yourself, just below.`]} />
 
   <DemoFrame src="/app/demo/index.html?2da" app="Lottie Animator" title="Try it now, in the browser"
     lines={["Create, modify and animate in the restricted browser demo. Saving and export are in the desktop app."]}>

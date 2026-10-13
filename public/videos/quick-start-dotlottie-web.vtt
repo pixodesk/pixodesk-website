@@ -1,0 +1,57 @@
+WEBVTT
+
+1
+00:00:00.267 --> 00:00:02.801
+Here's a simple web page, built with Vite.
+
+2
+00:00:06.533 --> 00:00:09.276
+It works, but it feels a little static.
+
+3
+00:00:09.800 --> 00:00:12.229
+First, install the dotLottie player.
+
+4
+00:00:17.900 --> 00:00:20.904
+Now let's make the animation. It only takes a minute.
+
+5
+00:00:21.433 --> 00:00:24.516
+In Pixodesk Lottie Animator, draw a circle.
+
+6
+00:00:25.033 --> 00:00:30.937
+Turn on Auto mode, then drag the ball down and back up. The keyframes are created for you.
+
+7
+00:00:31.467 --> 00:00:34.131
+Add gravity easing for a natural bounce.
+
+8
+00:00:37.333 --> 00:00:40.834
+Save it as a dotLottie file, into the public folder.
+
+9
+00:00:45.867 --> 00:00:49.733
+Back in the project, the animation file is already there.
+
+10
+00:00:51.267 --> 00:00:52.808
+Add a canvas to the page.
+
+11
+00:00:58.233 --> 00:00:59.330
+Import the player.
+
+12
+00:01:02.133 --> 00:01:05.320
+Then start it on the canvas, with the animation file.
+
+13
+00:01:21.600 --> 00:01:24.552
+Reload the page, and the ball bounces.
+
+14
+00:01:27.100 --> 00:01:30.992
+That's all it takes: one canvas, a few lines.

@@ -1,0 +1,53 @@
+WEBVTT
+
+1
+00:00:00.267 --> 00:00:01.782
+Here's a simple web page.
+
+2
+00:00:05.500 --> 00:00:08.191
+It works, but it feels a little static.
+
+3
+00:00:08.733 --> 00:00:11.163
+The lottie-web player is already in the folder.
+
+4
+00:00:11.700 --> 00:00:15.383
+Now let's make the animation. It only takes a minute.
+
+5
+00:00:15.900 --> 00:00:18.643
+In Pixodesk Lottie Animator, draw a circle.
+
+6
+00:00:19.167 --> 00:00:25.697
+Turn on Auto mode, then drag the ball down and back up. The keyframes are created for you.
+
+7
+00:00:26.200 --> 00:00:28.864
+Add gravity easing for a natural bounce.
+
+8
+00:00:32.067 --> 00:00:35.698
+Save it as Lottie JSON, straight into the project.
+
+9
+00:00:40.733 --> 00:00:43.920
+Back in the project, the animation file is already there.
+
+10
+00:00:45.467 --> 00:00:48.131
+Load the player, and start the animation.
+
+11
+00:01:01.667 --> 00:01:03.208
+Then add one element for it.
+
+12
+00:01:13.533 --> 00:01:16.433
+Reload the page, and the ball bounces.
+
+13
+00:01:18.967 --> 00:01:21.396
+That's all it takes: one script, one call.
