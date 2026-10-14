@@ -17,5 +17,5 @@ With no other prop, nothing plays until you say so.
 Then every command is a plain call: play, pause, back to the start, and the speed, even backwards.
 
 5
-00:01:08.100 --> 00:01:14.840
+00:01:07.767 --> 00:01:14.506
 apiRef works in every mode, next to autoplay or the props, and never changes which one is in charge.

@@ -9,9 +9,9 @@ The player tells you what happens: start, pause, finish, and any problem.
 Callbacks sit next to the file. When the intro finishes, the page moves on.
 
 3
-00:00:32.100 --> 00:00:42.444
-Problems arrive the same way. onWarn: it still plays. onError: it will not. Each comes with a code, and who can fix it.
+00:00:32.100 --> 00:00:44.848
+Problems arrive the same way. A broken effect is a warning: it still plays. A missing file is an error: it will not. Each has a code, and says who can fix it.
 
 4
-00:01:02.367 --> 00:01:05.319
+00:01:12.333 --> 00:01:15.285
 Handle them in code, and the console stays quiet.

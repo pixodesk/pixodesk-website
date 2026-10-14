@@ -9,5 +9,5 @@ Our app opens straight on its home screen. Let's give it a splash screen.
 A splash screen plays once, then hands over: onFinish switches to the app.
 
 3
-00:00:31.767 --> 00:00:36.599
+00:00:29.900 --> 00:00:34.733
 The animation decides how long the splash lasts. No timers.
