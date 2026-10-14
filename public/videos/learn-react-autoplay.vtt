@@ -1,0 +1,21 @@
+WEBVTT
+
+1
+00:00:00.267 --> 00:00:04.916
+Our cat animation is already in the project, as cat.json.
+
+2
+00:00:06.433 --> 00:00:12.624
+With autoplay, the file decides: this one plays as soon as it is on screen.
+
+3
+00:00:23.033 --> 00:00:27.135
+A prop overrides the file's trigger: this copy waits for the pointer.
+
+4
+00:00:40.167 --> 00:00:44.033
+Or its timing: the same file, three times faster.
+
+5
+00:00:55.900 --> 00:01:00.733
+One file, three behaviours, and the file itself never changes.

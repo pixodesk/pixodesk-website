@@ -1,0 +1,25 @@
+WEBVTT
+
+1
+00:00:00.267 --> 00:00:03.898
+Two React props put your state in charge of the animation.
+
+2
+00:00:05.433 --> 00:00:07.575
+Keep whether it plays in React state.
+
+3
+00:00:10.800 --> 00:00:13.386
+Pass it to play, and a button flips it.
+
+4
+00:00:30.600 --> 00:00:33.682
+For scrubbing, keep the progress in state too.
+
+5
+00:00:36.967 --> 00:00:40.415
+Bind progress to a slider, and dragging scrubs it.
+
+6
+00:00:59.933 --> 00:01:07.039
+Set both, and progress wins: controlled time beats play, and play beats autoplay.

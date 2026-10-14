@@ -1,0 +1,17 @@
+WEBVTT
+
+1
+00:00:00.267 --> 00:00:04.655
+When an animation starts is part of the file, and this is where you choose it.
+
+2
+00:00:05.200 --> 00:00:08.648
+Set it to start on hover, then open the Preview to try it.
+
+3
+00:00:12.167 --> 00:00:15.902
+Or on click: a click starts it, the next one pauses it.
+
+4
+00:00:19.233 --> 00:00:24.301
+Save the file, and every player and every export starts it the same way.

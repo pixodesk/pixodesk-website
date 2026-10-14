@@ -1,0 +1,17 @@
+WEBVTT
+
+1
+00:00:00.267 --> 00:00:06.118
+The player tells you what happens: start, pause, finish, and any problem.
+
+2
+00:00:07.667 --> 00:00:13.309
+Callbacks sit next to the file. When the intro finishes, the page moves on.
+
+3
+00:00:32.100 --> 00:00:42.444
+Problems arrive the same way. onWarn: it still plays. onError: it will not. Each comes with a code, and who can fix it.
+
+4
+00:01:02.367 --> 00:01:05.319
+Handle them in code, and the console stays quiet.

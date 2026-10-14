@@ -1,0 +1,75 @@
+---
+// New-design preview: the SVG Animator learning gallery — short narrated videos by area (Player in React, on the web,
+// triggers, pre-rendered SVG, the editor's exports, real interfaces). Recorded from scripts: kf `yarn website:videos` (generated scripts:
+// kf/app/tests/video/learn/generate-learn-videos.mjs). A video is listed once its file is published.
+import "../../../styles/tailwind.css";
+import "../../../styles/global.scss";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import PreviewBanner from "../../../layouts/new-design/PreviewBanner.astro";
+import VideoPlayer from "../../../layouts/new-design/VideoPlayer.astro";
+import { videoDuration } from "../../../layouts/new-design/videoDuration";
+
+interface Video { name: string; title: string; line: string }
+interface Category { id: string; title: string; line: string; videos: Video[] }
+
+const categories: Category[] = [
+  { id: "react", title: "The player in React", line: "One component, three ways to drive it — and a handle for everything else.", videos: [
+    { name: "learn-react-autoplay", title: "Autoplay: the file decides, or you override it", line: "One cat file mounted three times: as the file says, waiting for the pointer, three times faster." },
+    { name: "learn-react-props", title: "React state in charge", line: "Bind play to state and progress to a slider; controlled time beats play, which beats autoplay." },
+    { name: "learn-react-apiref", title: "apiRef: the player in your hands", line: "Play, pause, restart, double speed and reverse from your own buttons, with a live time readout." },
+  ] },
+  { id: "web", title: "The player on the web", line: "No framework: createAnimator and its playback calls.", videos: [
+    { name: "learn-web-api", title: "Scrub, jump, change speed", line: "A frame slider, a jump to 5 s, and 0.5× to 2× speed — the same calls every player has." },
+    { name: "learn-web-events", title: "Events, and when something goes wrong", line: "onFinish moves the page on; onWarn and onError report a typo in the file with a code and who can fix it." },
+  ] },
+  { id: "triggers", title: "Triggers and behaviour", line: "When it starts, and what happens when the pointer leaves or the page scrolls away.", videos: [
+    { name: "learn-triggers-editor", title: "Set the trigger in the editor", line: "Start on hover or on click, tried in the Preview — the file carries it to every player and export." },
+    { name: "learn-triggers-start", title: "When does it start?", line: "On load, on hover, on click — and none of them until it is half on screen." },
+    { name: "learn-triggers-behaviour", title: "When the pointer leaves, when it scrolls away", line: "Pause, reset or carry on: mouseOut and offScreen, side by side." },
+  ] },
+  { id: "prerendered", title: "Pre-rendered SVG", line: "The file is the animation — no library at all.", videos: [
+    { name: "learn-prerendered-flavours", title: "Which file: CSS, CSS + script, or JS?", line: "The same ball saved three ways — the smallest file that does what you need, and what each one can do." },
+    { name: "learn-prerendered-control", title: "No library: just two classes", line: "Play, pause and reset a pasted SVG + CSS file by adding and removing two classes." },
+  ] },
+  { id: "editor", title: "From the editor", line: "One document, every place it can go.", videos: [
+    { name: "learn-editor-export", title: "One animation, every format", line: "Lottie JSON or dotLottie, a video, a GIF or a still image — exported from the same document." },
+  ] },
+  { id: "ui", title: "In real interfaces (React)", line: "Where animation earns its place in an app.", videos: [
+    { name: "learn-ui-loader", title: "Waiting, made pleasant", line: "A looping loader while data loads, and a ring that follows the upload's real progress." },
+    { name: "learn-ui-splash", title: "A splash screen", line: "Plays once, then onFinish hands over to the app — the animation decides how long." },
+    { name: "learn-ui-icons", title: "Animated icons", line: "A heart that pops on click and a bell that rings on hover — the trigger lives in the file." },
+    { name: "learn-ui-success", title: "Success feedback", line: "A check that plays once, the moment the form is sent." },
+    { name: "learn-ui-hero", title: "A hero illustration", line: "Plays while you can see it, pauses when you scroll past — no scroll code." },
+  ] },
+];
+const total = categories.reduce((n, c) => n + c.videos.length, 0);
+---
+<BaseLayout title="SVG Animator — learn" description="Short narrated videos: the Pixodesk player in React and on the web, triggers, pre-rendered SVG, the editor's exports and animation in real interfaces." canonical="/svg-animator" noindex>
+  <section class="relative w-full bg-custom-gradient-violet pt-navDouble text-white">
+    <PreviewBanner compare="/svg-animator" />
+    <div class="mx-auto max-w-custom-standard px-pxPage pb-12 pt-8 text-center">
+      <h1>Learn SVG Animator</h1>
+      <p class="mx-auto mt-3 max-w-custom-narrow text-custom-grey-200">{total} short videos, each about one thing. The animation files are already made — these are about using them.</p>
+      <nav class="mt-6 flex flex-wrap justify-center gap-2 text-sm">
+        {categories.map((c) => <a class="rounded-full border border-white/15 bg-white/[.06] px-3 py-1 text-custom-grey-200 hover:bg-white/[.12]" href={`#${c.id}`}>{c.title}</a>)}
+      </nav>
+    </div>
+  </section>
+  {categories.map((c, i) => (
+    <section id={c.id} class={`scroll-mt-24 px-pxPage py-pxPage text-white ${i % 2 ? "bg-custom-gradient-navy" : "bg-custom-gradient-indigo"}`}>
+      <div class="mx-auto max-w-custom-standard">
+        <h2 class="text-center">{c.title}</h2>
+        <p class="mx-auto mb-8 max-w-custom-narrow text-center text-custom-grey-400">{c.line}</p>
+        <div class="grid grid-cols-1 gap-x-8 gap-y-10 md:grid-cols-2">
+          {c.videos.map((v) => (
+            <article>
+              <VideoPlayer name={v.name} title={v.title} />
+              <h3 class="mt-3 text-lg font-semibold">{v.title}<span class="ml-2 text-sm font-normal text-custom-grey-400">{videoDuration(v.name)}</span></h3>
+              <p class="mt-1 text-sm text-custom-grey-400">{v.line}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  ))}
+</BaseLayout>

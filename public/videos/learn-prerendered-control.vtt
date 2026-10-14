@@ -1,0 +1,21 @@
+WEBVTT
+
+1
+00:00:00.267 --> 00:00:06.850
+A pre-rendered SVG with CSS animation, pasted into the page. It needs no library at all.
+
+2
+00:00:08.367 --> 00:00:16.360
+This SVG plays while its root has two classes: px-anim-enabled and px-anim-playing.
+
+3
+00:00:29.633 --> 00:00:33.317
+Remove px-anim-playing, and it pauses where it is.
+
+4
+00:00:47.467 --> 00:00:52.534
+Remove px-anim-enabled too, and it is back on its first frame.
+
+5
+00:01:06.500 --> 00:01:11.202
+Any script, any framework: add and remove two classes.

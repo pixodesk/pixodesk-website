@@ -1,0 +1,21 @@
+WEBVTT
+
+1
+00:00:00.267 --> 00:00:03.663
+For buttons and in-depth control, use apiRef.
+
+2
+00:00:05.200 --> 00:00:07.316
+apiRef hands you the player itself.
+
+3
+00:00:10.600 --> 00:00:14.100
+With no other prop, nothing plays until you say so.
+
+4
+00:00:23.833 --> 00:00:32.375
+Then every command is a plain call: play, pause, back to the start, and the speed, even backwards.
+
+5
+00:01:08.100 --> 00:01:14.840
+apiRef works in every mode, next to autoplay or the props, and never changes which one is in charge.

@@ -1,0 +1,17 @@
+WEBVTT
+
+1
+00:00:00.267 --> 00:00:04.159
+Small icons that react make an interface feel alive.
+
+2
+00:00:05.700 --> 00:00:10.193
+Animated icons carry their trigger in the file: the heart plays on click.
+
+3
+00:00:22.233 --> 00:00:27.432
+And the bell rings on hover. In code, both are just autoplay.
+
+4
+00:00:41.767 --> 00:00:45.267
+Change the trigger in the editor, and the code stays the same.

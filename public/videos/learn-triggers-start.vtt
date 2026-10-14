@@ -1,0 +1,25 @@
+WEBVTT
+
+1
+00:00:00.267 --> 00:00:02.461
+The same ball, four ways to start.
+
+2
+00:00:04.000 --> 00:00:07.553
+On load: it starts as soon as the page shows it.
+
+3
+00:00:17.633 --> 00:00:20.037
+On hover: it waits for the pointer.
+
+4
+00:00:32.767 --> 00:00:36.450
+On click: a click starts it, the next one pauses it.
+
+5
+00:00:49.167 --> 00:00:53.816
+And they all wait until they are half on screen, so this one starts when you scroll to it.
+
+6
+00:01:10.567 --> 00:01:16.523
+Set the start in the editor, and every player honours it. Or override it here.

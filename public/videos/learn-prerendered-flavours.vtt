@@ -1,0 +1,21 @@
+WEBVTT
+
+1
+00:00:00.267 --> 00:00:05.648
+The same ball, saved from the editor three ways. Which file do you need?
+
+2
+00:00:07.167 --> 00:00:15.500
+SVG plus CSS: the smallest file, and no script at all. It plays on load, or on hover.
+
+3
+00:00:29.767 --> 00:00:36.271
+With the editor's small trigger script inside, it can also start on click, or when scrolled into view.
+
+4
+00:00:51.467 --> 00:00:59.173
+SVG plus JS carries the player itself: every kind of animation, and the full playback API.
+
+5
+00:01:11.067 --> 00:01:16.448
+Pick the smallest file that does what you need. The editor tells you which one can.

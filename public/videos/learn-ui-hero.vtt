@@ -1,0 +1,13 @@
+WEBVTT
+
+1
+00:00:00.267 --> 00:00:03.610
+Illustrations that move only while you can see them.
+
+2
+00:00:05.133 --> 00:00:13.466
+A hero illustration in a long page. The file already says: start when half visible, pause off screen.
+
+3
+00:00:33.200 --> 00:00:37.850
+No scroll code: autoplay, and the file handles the rest.

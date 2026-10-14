@@ -1,0 +1,17 @@
+WEBVTT
+
+1
+00:00:00.267 --> 00:00:03.663
+Two kinds of waiting, two ways to animate it.
+
+2
+00:00:05.200 --> 00:00:08.282
+While data loads, show a looping animation.
+
+3
+00:00:24.700 --> 00:00:28.383
+When you know the progress, drive the animation with it.
+
+4
+00:00:41.500 --> 00:00:45.993
+The same player: autoplay for a loop, progress for a percentage.
