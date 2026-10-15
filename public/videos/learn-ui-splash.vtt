@@ -1,13 +1,17 @@
 WEBVTT
 
 1
-00:00:00.267 --> 00:00:04.603
-Our app opens straight on its home screen. Let's give it a splash screen.
+00:00:00.267 --> 00:00:07.921
+This video shows a splash screen made with an animation. It plays once when the app opens, and then hands over to the app.
 
 2
-00:00:06.133 --> 00:00:12.168
-A splash screen plays once, then hands over: onFinish switches to the app.
+00:00:08.467 --> 00:00:16.774
+Right now, the app opens straight on its home screen. Let's show the splash animation first, and switch to the home screen when it finishes.
 
 3
-00:00:29.900 --> 00:00:34.733
-The animation decides how long the splash lasts. No timers.
+00:00:35.333 --> 00:00:42.439
+The splash file plays once. When it finishes, on finish sets ready, and the app shows its home screen.
+
+4
+00:00:43.667 --> 00:00:49.309
+So, the animation decides how long the splash lasts. There is no timer to keep in step with it.

@@ -1,17 +1,33 @@
 WEBVTT
 
 1
-00:00:00.267 --> 00:00:06.118
-The player tells you what happens: start, pause, finish, and any problem.
+00:00:00.267 --> 00:00:09.749
+This video shows how the web player tells your code what happens. It reports when an animation finishes, and every problem it meets, so the page can react.
 
 2
-00:00:07.667 --> 00:00:13.309
-Callbacks sit next to the file. When the intro finishes, the page moves on.
+00:00:10.267 --> 00:00:14.969
+Let's start with an intro animation, and show the welcome section when it finishes.
 
 3
-00:00:32.100 --> 00:00:44.848
-Problems arrive the same way. A broken effect is a warning: it still plays. A missing file is an error: it will not. Each has a code, and says who can fix it.
+00:00:32.167 --> 00:00:39.063
+When the intro finishes, the on finish callback shows the welcome section. The animation decides when.
 
 4
-00:01:12.333 --> 00:01:15.285
-Handle them in code, and the console stays quiet.
+00:00:40.300 --> 00:00:47.405
+Problems arrive the same way, through callbacks. First, a small function that lists each problem on the page.
+
+5
+00:01:00.667 --> 00:01:04.768
+Each problem has a code, and a kind that says who can fix it.
+
+6
+00:01:06.000 --> 00:01:13.497
+Now two more players, both reporting to that function. One file has a broken effect, and the other file is missing.
+
+7
+00:01:30.667 --> 00:01:42.814
+The broken effect is a warning, so that ball still plays. The missing file is an error, so nothing plays there. Each one shows its code and kind, the document or the host page.
+
+8
+00:01:44.033 --> 00:01:53.777
+So, the player tells your code when it finishes, and reports every problem with a code and a kind. Handle them in your code, and the console stays quiet.

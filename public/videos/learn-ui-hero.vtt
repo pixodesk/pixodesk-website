@@ -1,13 +1,25 @@
 WEBVTT
 
 1
-00:00:00.267 --> 00:00:03.610
-Illustrations that move only while you can see them.
+00:00:00.267 --> 00:00:07.764
+This video shows an illustration in a long page that plays only while it can be seen. It needs no scroll code.
 
 2
-00:00:05.133 --> 00:00:13.466
-A hero illustration in a long page. The file already says: start when half visible, pause off screen.
+00:00:08.300 --> 00:00:10.782
+Let's put the ball in the middle of the story.
 
 3
-00:00:34.100 --> 00:00:38.750
-No scroll code: autoplay, and the file handles the rest.
+00:00:18.733 --> 00:00:26.021
+It is below the fold. Its file says start on load and pause off screen, so it waits until you scroll to it.
+
+4
+00:00:27.267 --> 00:00:30.010
+Let's scroll down to it, and then past it.
+
+5
+00:00:40.033 --> 00:00:46.616
+It plays while half of it is on screen, pauses when it scrolls away, and picks up again when it comes back.
+
+6
+00:00:47.833 --> 00:00:54.521
+So, autoplay and the settings in the file handle the scrolling. There is no scroll code at all.
