@@ -3,50 +3,131 @@
  * One tutorial video recorded from a script: kf `yarn website:videos` writes public/videos/<name>.{mp4,vtt,poster.png}.
  * The box rests at 0.96× while the play button shows (full size on hover/focus) and stays full size after the first play.
  * Before the first play: the poster under a frosted-glass play button (a rounded pane) with the duration; one click plays
- * and hands over to the native controls (the button never comes back). Nothing moves until hover (site rule: nothing
+ * and hands over to the native controls (the button comes back only when an enlarged video is closed). One video plays at a time: starting one pauses
+ * the others on the page. Nothing moves until hover (site rule: nothing
  * animates on load); `preload="none"` keeps the page light; captions are a track the visitor can turn on.
  * Without JavaScript the video simply shows its native controls.
+ * `compact` (gallery tiles): a smaller play button — about two thirds, not scaled with the tile (it would look lost).
+ * `expand` (gallery tiles): playing enlarges the video over the page (32 px side margins, a close button at the top);
+ * Escape, the close button or a real scroll (> SCROLL_TOLERANCE_PX) close it: it stops, rewinds, and its tile shows the
+ * poster and the play button again.
  */
 import { videoDuration } from "./videoDuration";
-interface Props { name: string; title: string }
-const { name, title } = Astro.props;
+interface Props { name: string; title: string; expand?: boolean; compact?: boolean }
+const { name, title, expand = false, compact = false } = Astro.props;
+// the play button's size: full for the big page videos, a compromise for gallery tiles (full class strings for Tailwind)
+const pane = compact ? "h-[64px] w-[64px] rounded-[18px] md:h-[76px] md:w-[76px] md:rounded-[20px]" : "h-[84px] w-[84px] rounded-[22px] md:h-[112px] md:w-[112px] md:rounded-[28px]";
+const icon = compact ? "h-9 w-9 md:h-11 md:w-11" : "h-12 w-12 md:h-[66px] md:w-[66px]";
+const label = compact ? "px-3 py-0.5 text-xs" : "px-3.5 py-1 text-sm";
 const src = `/videos/${name}`;
 const duration = videoDuration(name);
 ---
+{/* the slot keeps the tile's height while the video is enlarged */}
+<div data-video-slot>
 {/* a little smaller while the play button shows (full size on hover/focus); full size for good after the first play (data-started) */}
-<div class="relative mx-auto w-full max-w-custom-standard scale-[.96] overflow-hidden rounded-xl border border-white/10 bg-black shadow-[0_30px_80px_rgba(0,0,0,.35)] transition-transform duration-500 ease-out focus-within:scale-100 hover:scale-100 data-[started]:scale-100 motion-reduce:transition-none" data-video>
+<div class="relative mx-auto w-full max-w-custom-standard scale-[.96] overflow-hidden rounded-xl border border-white/10 bg-black shadow-[0_30px_80px_rgba(0,0,0,.35)] transition-transform duration-500 ease-out focus-within:scale-100 hover:scale-100 data-[started]:scale-100 motion-reduce:transition-none" data-video data-expand={expand ? "" : undefined}>
   <video class="block aspect-[16/10] w-full" controls playsinline preload="none" poster={`${src}.poster.png`}>
     <source src={`${src}.mp4`} type="video/mp4" />
     <track kind="captions" src={`${src}.vtt`} srclang="en" label="English" />
   </video>
   <button type="button" data-video-play aria-label={`Play the video: ${title}${duration ? ` (${duration})` : ""}`}
     class="group absolute inset-0 hidden cursor-pointer items-center justify-center bg-gradient-to-b from-black/10 via-black/25 to-black/45 focus-visible:outline-none">
-    <span class="flex flex-col items-center gap-5">
+    <span class={`flex flex-col items-center ${compact ? "gap-3" : "gap-5"}`}>
       <span class="relative">
-        <span class="relative grid h-[88px] w-[128px] place-items-center rounded-[24px] bg-white/[.05] shadow-[0_14px_44px_rgba(0,0,0,.25),inset_0_1px_0_rgba(255,255,255,.35)] ring-1 ring-white/35 backdrop-blur-[6px] backdrop-saturate-150 transition duration-300 ease-out group-hover:scale-[1.08] group-focus-visible:ring-2 group-focus-visible:ring-white motion-reduce:transition-none motion-reduce:group-hover:scale-100 md:h-[118px] md:w-[172px] md:rounded-[30px]">
-          <svg viewBox="0 0 24 24" aria-hidden="true" class="ml-[4%] h-14 w-14 fill-white drop-shadow-[0_3px_8px_rgba(0,0,0,.3)] md:h-[76px] md:w-[76px]">
+        <span class={`relative grid ${pane} place-items-center bg-white/[.05] shadow-[0_14px_44px_rgba(0,0,0,.25),inset_0_1px_0_rgba(255,255,255,.35)] ring-1 ring-white/35 backdrop-blur-[6px] backdrop-saturate-150 transition duration-300 ease-out group-hover:scale-[1.08] group-focus-visible:ring-2 group-focus-visible:ring-white motion-reduce:transition-none motion-reduce:group-hover:scale-100 `}>
+          <svg viewBox="0 0 24 24" aria-hidden="true" class={`ml-[4%] ${icon} fill-white drop-shadow-[0_3px_8px_rgba(0,0,0,.3)]`}>
             <path d="M8 5.14v13.72a1 1 0 0 0 1.52.85l10.9-6.86a1 1 0 0 0 0-1.7L9.52 4.29A1 1 0 0 0 8 5.14Z" />
           </svg>
         </span>
       </span>
-      <span class="rounded-full bg-black/40 px-3.5 py-1 text-sm font-medium tracking-wide text-white/90 ring-1 ring-white/15 backdrop-blur-sm">
+      <span class={`rounded-full bg-black/40 ${label} font-medium tracking-wide text-white/90 ring-1 ring-white/15 backdrop-blur-sm`}>
         Watch{duration && <span class="text-white/60"> · {duration}</span>}
       </span>
     </span>
   </button>
 </div>
+</div>
+<style>
+  /* enlarged: centred over the page, 32 px side margins, room for the close button above */
+  [data-video][data-expanded] {
+    position: fixed;
+    z-index: 101;
+    left: 50%;
+    top: calc(50% + 20px);
+    width: min(calc(100vw - 64px), calc((100vh - 112px) * 1.6));
+    max-width: none;
+    translate: -50% -50%;
+  }
+</style>
 <script>
   // Before the first play: the big button instead of the native controls; after it (from the button or any other
-  // way), the native controls only.
+  // way), the native controls only. One video plays at a time.
+  const videos = Array.from(document.querySelectorAll<HTMLVideoElement>("[data-video] video"));
+
+  /** A scroll smaller than this (an accidental nudge) keeps the video enlarged. */
+  const SCROLL_TOLERANCE_PX = 150;
+  const expandsOnPlay = (box: HTMLElement) => box.hasAttribute("data-expand");
+  let enlarged: { box: HTMLElement; slot: HTMLElement; startY: number } | undefined;
+  let overlay: { backdrop: HTMLElement; close: HTMLButtonElement } | undefined;
+  /** Back to the tile's first look: stopped, rewound, poster + play button. */
+  const resets = new Map<HTMLElement, () => void>();
+
+  function makeOverlay() {
+    const backdrop = document.createElement("div");
+    backdrop.style.cssText = "position:fixed;inset:0;z-index:100;background:rgba(5,8,20,.86);backdrop-filter:blur(6px)";
+    const close = document.createElement("button");
+    close.type = "button";
+    close.setAttribute("aria-label", "Close the video");
+    close.style.cssText = "position:fixed;top:14px;right:32px;z-index:102;width:40px;height:40px;display:grid;place-items:center;border-radius:50%;background:rgba(255,255,255,.14);color:#fff;cursor:pointer";
+    close.innerHTML = '<svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor" aria-hidden="true"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>';
+    close.addEventListener("click", shrink);
+    return { backdrop, close };
+  }
+  function enlarge(box: HTMLElement) {
+    if (enlarged?.box === box) return;
+    shrink();
+    const slot = box.parentElement;
+    if (!slot) return;
+    slot.style.height = `${slot.offsetHeight}px`;
+    box.setAttribute("data-expanded", "");
+    overlay ??= makeOverlay();
+    document.body.append(overlay.backdrop, overlay.close);
+    enlarged = { box, slot, startY: window.scrollY };
+  }
+  function shrink() {
+    if (!enlarged) return;
+    enlarged.box.removeAttribute("data-expanded");
+    enlarged.slot.style.height = "";
+    resets.get(enlarged.box)?.();
+    overlay?.backdrop.remove();
+    overlay?.close.remove();
+    enlarged = undefined;
+  }
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape") shrink(); });
+  window.addEventListener("scroll", () => {
+    if (enlarged && Math.abs(window.scrollY - enlarged.startY) > SCROLL_TOLERANCE_PX) shrink();
+  }, { passive: true });
+
   document.querySelectorAll<HTMLElement>("[data-video]").forEach((box) => {
     const video = box.querySelector("video");
     const button = box.querySelector<HTMLButtonElement>("[data-video-play]");
     if (!video || !button) return;
     video.controls = false;
     button.classList.replace("hidden", "flex");
-    // the button goes, the native controls come, and the box stays full size (data-started) from now on
-    const handOver = () => { button.remove(); video.controls = true; box.setAttribute("data-started", ""); };
+    // playing: the button goes, the native controls come, and the box is full size (data-started)
+    const handOver = () => { button.classList.replace("flex", "hidden"); video.controls = true; box.setAttribute("data-started", ""); };
+    resets.set(box, () => {
+      video.pause();
+      video.load();   // rewinds and shows the poster again
+      video.controls = false;
+      button.classList.replace("hidden", "flex");
+      box.removeAttribute("data-started");
+    });
     button.addEventListener("click", () => { handOver(); void video.play(); });
-    video.addEventListener("play", handOver, { once: true });
+    video.addEventListener("play", handOver);
+    video.addEventListener("play", () => {
+      for (const other of videos) if (other !== video && !other.paused) other.pause();
+      if (expandsOnPlay(box)) enlarge(box);
+    });
   });
 </script>

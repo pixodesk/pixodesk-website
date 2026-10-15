@@ -1,21 +1,89 @@
 WEBVTT
 
 1
-00:00:00.267 --> 00:00:03.663
-For buttons and in-depth control, use apiRef.
+00:00:00.267 --> 00:00:20.982
+This video shows the third way to control the player. It is imperative control, with the API ref property. Unlike the previous video, your code doesn't describe a state. It calls the player directly, one command at a time, and some things, like speed, work only this way.
 
 2
-00:00:05.200 --> 00:00:07.316
-apiRef hands you the player itself.
+00:00:21.500 --> 00:00:25.392
+First, we need a handle to the player. Let's create a ref for it.
 
 3
-00:00:10.600 --> 00:00:14.100
-With no other prop, nothing plays until you say so.
+00:00:30.933 --> 00:00:36.001
+The ref starts empty. It will hold the player once the player is on the page.
 
 4
-00:00:23.833 --> 00:00:32.375
-Then every command is a plain call: play, pause, back to the start, and the speed, even backwards.
+00:00:37.233 --> 00:00:41.126
+Now let's add the player in a card, and pass it that ref.
 
 5
-00:01:07.767 --> 00:01:14.506
-apiRef works in every mode, next to autoplay or the props, and never changes which one is in charge.
+00:00:52.900 --> 00:01:00.554
+The API ref property fills the ref with the player. There is no autoplay here, so nothing plays until we call it.
+
+6
+00:01:01.800 --> 00:01:07.939
+Now the commands. Let's add a Play button and a Pause button, each calling the player.
+
+7
+00:01:20.500 --> 00:01:24.079
+Each button calls one method on the player, play or pause.
+
+8
+00:01:25.300 --> 00:01:27.991
+Let's press Play, and then Pause.
+
+9
+00:01:32.533 --> 00:01:36.713
+It plays, and then stops right where it was, until the next call.
+
+10
+00:01:37.933 --> 00:01:43.315
+To jump back to the beginning, we set the time to zero. Let's add a Restart button.
+
+11
+00:01:53.133 --> 00:01:57.679
+Set current time takes milliseconds, so zero is the very start.
+
+12
+00:01:58.900 --> 00:02:01.303
+Let's press Play, and then Restart.
+
+13
+00:02:05.500 --> 00:02:08.086
+It jumps back to the start, and keeps playing.
+
+14
+00:02:09.333 --> 00:02:13.879
+To show any moment, let's add a slider that sets the player's progress.
+
+15
+00:02:25.333 --> 00:02:30.218
+Set current progress takes a number from zero to one, and the player jumps there.
+
+16
+00:02:31.467 --> 00:02:32.512
+Let's drag it.
+
+17
+00:02:37.800 --> 00:02:41.536
+Each move of the slider is one call, and the ball follows it.
+
+18
+00:02:42.767 --> 00:02:48.409
+Speed is a command too. Let's add a button for double speed, and one that plays backwards.
+
+19
+00:03:03.300 --> 00:03:09.596
+Set playback rate changes the speed. Two is twice as fast, and minus one plays in reverse.
+
+20
+00:03:10.833 --> 00:03:16.476
+Let's press Play, then double speed, then Reverse, and finally Pause.
+
+21
+00:03:22.367 --> 00:03:28.610
+Twice as fast, and then backwards. Each button is one call, and the player does exactly that.
+
+22
+00:03:29.833 --> 00:03:40.805
+So, with the API ref property, your code commands the player directly. Play, pause, jump to any moment, and change the speed, each with a single call.

@@ -13,14 +13,14 @@ interface Video { name: string; title: string; line: string }
 interface Category { id: string; title: string; line: string; videos: Video[] }
 
 const categories: Category[] = [
-  { id: "react", title: "The player in React", line: "One component, three ways to drive it — and a handle for everything else.", videos: [
-    { name: "learn-react-autoplay", title: "Autoplay: the file decides, or you override it", line: "One cat file mounted three times: as the file says, waiting for the pointer, three times faster." },
-    { name: "learn-react-props", title: "React state in charge", line: "Bind play to state and progress to a slider; controlled time beats play, which beats autoplay." },
-    { name: "learn-react-apiref", title: "apiRef: the player in your hands", line: "Play, pause, restart, double speed and reverse from your own buttons, with a live time readout." },
+  { id: "react", title: "The player in React", line: "Three ways to control the player, from the simplest to full control: autoplay, React state and apiRef.", videos: [
+    { name: "learn-react-autoplay", title: "1. The simplest way: autoplay", line: "One line of code, playing as set up in the editor — and properties that override it: start on hover or click, reset when the pointer leaves, play just once." },
+    { name: "learn-react-props", title: "2. Declarative control: React state", line: "Play, restart and progress bound to React state — Play and Pause buttons, a Restart that gives the player a new key, and a slider that picks the moment." },
+    { name: "learn-react-apiref", title: "3. Imperative control: apiRef", line: "Play, pause, restart, a slider for any moment, double speed and reverse — each one a single call on the player." },
   ] },
   { id: "web", title: "The player on the web", line: "No framework: createAnimator and its playback calls.", videos: [
-    { name: "learn-web-api", title: "Scrub, jump, change speed", line: "A frame slider, a jump to 5 s, and 0.5× to 2× speed — the same calls every player has." },
-    { name: "learn-web-events", title: "Events, and when something goes wrong", line: "onFinish moves the page on; onWarn and onError report a typo in the file with a code and who can fix it." },
+    { name: "learn-web-api", title: "Scrub, jump, change speed", line: "A frame slider, a jump to 0.5 s, and 0.5× to 2× speed — the same calls every player has." },
+    { name: "learn-web-events", title: "Events, and when something goes wrong", line: "onFinish moves the page on; onWarn reports a broken effect, onError a missing file — each with a code and who can fix it." },
   ] },
   { id: "triggers", title: "Triggers and behaviour", line: "When it starts, and what happens when the pointer leaves or the page scrolls away.", videos: [
     { name: "learn-triggers-editor", title: "Set the trigger in the editor", line: "Start on hover or on click, tried in the Preview — the file carries it to every player and export." },
@@ -60,10 +60,10 @@ const total = categories.reduce((n, c) => n + c.videos.length, 0);
       <div class="mx-auto max-w-custom-standard">
         <h2 class="text-center">{c.title}</h2>
         <p class="mx-auto mb-8 max-w-custom-narrow text-center text-custom-grey-400">{c.line}</p>
-        <div class="grid grid-cols-1 gap-x-8 gap-y-10 md:grid-cols-2">
+        <div class="grid grid-cols-1 gap-x-6 gap-y-8 md:grid-cols-2 lg:grid-cols-3">
           {c.videos.map((v) => (
             <article>
-              <VideoPlayer name={v.name} title={v.title} />
+              <VideoPlayer name={v.name} title={v.title} expand compact />
               <h3 class="mt-3 text-lg font-semibold">{v.title}<span class="ml-2 text-sm font-normal text-custom-grey-400">{videoDuration(v.name)}</span></h3>
               <p class="mt-1 text-sm text-custom-grey-400">{v.line}</p>
             </article>

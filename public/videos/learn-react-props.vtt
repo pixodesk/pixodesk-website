@@ -1,25 +1,81 @@
 WEBVTT
 
 1
-00:00:00.267 --> 00:00:03.898
-Two React props put your state in charge of the animation.
+00:00:00.267 --> 00:00:16.645
+This video shows the second way to control the player. It is declarative control, with properties. Unlike the previous video, there is no autoplay here, so nothing plays by itself. Your React state decides, and the player follows.
 
 2
-00:00:05.433 --> 00:00:07.575
-Keep whether it plays in React state.
+00:00:17.167 --> 00:00:22.104
+Let's start with play and pause, and keep that decision in React state.
 
 3
-00:00:10.800 --> 00:00:13.386
-Pass it to play, and a button flips it.
+00:00:28.033 --> 00:00:31.116
+Playing starts as false, so the animation waits.
 
 4
-00:00:30.600 --> 00:00:33.682
-For scrubbing, keep the progress in state too.
+00:00:32.333 --> 00:00:39.334
+Now let's add the player in a card, with a Play button that sets that state, and a Pause button while it plays.
 
 5
-00:00:36.967 --> 00:00:40.415
-Bind progress to a slider, and dragging scrubs it.
+00:00:57.533 --> 00:01:04.064
+The play property follows the state. It's false, so the player waits at the start, and the Play button shows.
 
 6
-00:00:59.933 --> 00:01:07.039
-Set both, and progress wins: controlled time beats play, and play beats autoplay.
+00:01:05.300 --> 00:01:08.043
+Let's press Play, and then Pause.
+
+7
+00:01:13.233 --> 00:01:22.925
+Each click sets the state, and the player follows. It plays, and then pauses right where it was, and the button always shows what comes next.
+
+8
+00:01:24.167 --> 00:01:30.410
+Restarting needs one more piece of state, a number that changes. Let's keep a round in state.
+
+9
+00:01:36.600 --> 00:01:38.063
+Round starts at zero.
+
+10
+00:01:39.300 --> 00:01:44.237
+Now let's pass it to the player as its key, and add a Restart button that counts it up.
+
+11
+00:01:55.667 --> 00:02:02.459
+When the key changes, React builds the player again, from the start. That is our restart.
+
+12
+00:02:03.700 --> 00:02:06.286
+Let's press Play, and then Restart.
+
+13
+00:02:10.433 --> 00:02:15.527
+It starts again from the beginning, and keeps playing, because playing is still true.
+
+14
+00:02:16.767 --> 00:02:25.910
+Besides whether it plays, a property can also set which moment it shows. Let's keep that position in state too. It's the progress, from zero to one.
+
+15
+00:02:32.300 --> 00:02:35.696
+Progress starts at zero, the very beginning.
+
+16
+00:02:36.933 --> 00:02:42.001
+Now let's add a second card, with a player bound to it, and a slider that changes it.
+
+17
+00:02:57.733 --> 00:03:03.924
+The progress property follows the state, so the player shows exactly that moment, and stays there.
+
+18
+00:03:05.167 --> 00:03:06.682
+Let's drag the slider.
+
+19
+00:03:12.367 --> 00:03:21.274
+As the slider moves, the state changes, and the ball moves with it. There is no play or pause, just the moment you ask for.
+
+20
+00:03:22.500 --> 00:03:35.875
+So, with properties bound to state, your component declares what the player does. It says whether it plays, when it starts again, or which moment it shows. React updates the state, and the player follows.

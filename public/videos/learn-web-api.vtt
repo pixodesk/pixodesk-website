@@ -1,21 +1,21 @@
 WEBVTT
 
 1
-00:00:00.267 --> 00:00:05.361
-No framework: the web player, and our cat file in the public folder.
+00:00:00.267 --> 00:00:05.334
+No framework: the web player, and our ball file in the public folder.
 
 2
-00:00:06.900 --> 00:00:10.453
+00:00:06.867 --> 00:00:10.419
 createAnimator puts the animation into any element.
 
 3
-00:00:21.033 --> 00:00:25.788
+00:00:20.767 --> 00:00:25.521
 A slider jumps to any moment: progress, from zero to one.
 
 4
-00:00:45.867 --> 00:00:50.569
+00:00:44.867 --> 00:00:49.569
 Or go straight to a time, in milliseconds, and play at any speed.
 
 5
-00:01:18.767 --> 00:01:24.514
+00:01:17.100 --> 00:01:22.847
 Time, progress and speed: the same calls work in every Pixodesk player.
