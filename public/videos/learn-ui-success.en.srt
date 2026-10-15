@@ -1,0 +1,31 @@
+1
+00:00:00,267 --> 00:00:07,555
+This video shows a success animation that confirms an action. It plays once, the moment the action is done.
+
+2
+00:00:08,100 --> 00:00:11,000
+Let's keep in state whether the form was sent.
+
+3
+00:00:17,533 --> 00:00:19,362
+Sent starts as false.
+
+4
+00:00:20,600 --> 00:00:25,589
+Now the Subscribe button, and the check that replaces it once the form is sent.
+
+5
+00:00:37,467 --> 00:00:39,609
+Until then, the button shows.
+
+6
+00:00:40,833 --> 00:00:42,479
+Let's press Subscribe.
+
+7
+00:00:45,200 --> 00:00:52,096
+The check appears. Its file says start on load and play once, so it plays right away, just once.
+
+8
+00:00:53,333 --> 00:00:59,629
+So, one line of code, and the moment feels finished. The file says how the animation plays.

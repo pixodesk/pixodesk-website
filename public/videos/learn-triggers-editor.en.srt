@@ -1,0 +1,47 @@
+1
+00:00:00,267 --> 00:00:09,357
+This video shows where the trigger of an animation lives. It is part of the file, set here in the editor, and every player follows it.
+
+2
+00:00:09,900 --> 00:00:13,792
+The trigger is in the settings of the document. Let's scroll down to it.
+
+3
+00:00:16,533 --> 00:00:21,836
+Start is set to on load, so the animation plays as soon as it is on the page.
+
+4
+00:00:23,067 --> 00:00:27,220
+Let's make it start on mouse over instead, and open the preview to try it.
+
+5
+00:00:30,700 --> 00:00:36,238
+The preview plays the file exactly as a player would. Nothing moves, because it waits for the pointer.
+
+6
+00:00:37,467 --> 00:00:39,818
+Let's point at it, and then move away.
+
+7
+00:00:44,133 --> 00:00:48,600
+It plays while the pointer is over it, and pauses when the pointer leaves.
+
+8
+00:00:49,833 --> 00:00:54,300
+A click can start it too. Let's switch the start to on click.
+
+9
+00:00:56,967 --> 00:01:00,545
+Now a click starts it, and the next click pauses it.
+
+10
+00:01:01,767 --> 00:01:03,099
+Let's click it twice.
+
+11
+00:01:07,500 --> 00:01:10,635
+The first click plays it, and the second one pauses it.
+
+12
+00:01:11,867 --> 00:01:20,200
+So, the trigger is part of the file. Set it once in the editor, and every player and every export starts the same way.

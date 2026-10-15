@@ -1,0 +1,15 @@
+1
+00:00:00,267 --> 00:00:07,921
+This video shows a splash screen made with an animation. It plays once when the app opens, and then hands over to the app.
+
+2
+00:00:08,467 --> 00:00:16,774
+Right now, the app opens straight on its home screen. Let's show the splash animation first, and switch to the home screen when it finishes.
+
+3
+00:00:35,333 --> 00:00:42,439
+The splash file plays once. When it finishes, on finish sets ready, and the app shows its home screen.
+
+4
+00:00:43,667 --> 00:00:49,309
+So, the animation decides how long the splash lasts. There is no timer to keep in step with it.

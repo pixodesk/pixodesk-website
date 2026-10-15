@@ -1,0 +1,55 @@
+1
+00:00:00,267 --> 00:00:10,402
+This video compares the three kinds of pre-rendered SVG files the editor can save. They hold the same ball, and you pick the smallest file that does what you need.
+
+2
+00:00:10,933 --> 00:00:14,512
+Let's put the first one on the page, the CSS file.
+
+3
+00:00:26,433 --> 00:00:36,020
+It is the smallest, just over one kilobyte, with no script at all. CSS alone can start it on load, or on hover, as here.
+
+4
+00:00:37,267 --> 00:00:38,364
+Let's point at it.
+
+5
+00:00:42,167 --> 00:00:44,361
+It plays while the pointer is over it.
+
+6
+00:00:45,600 --> 00:00:50,093
+The second file adds a small script from the editor. Let's add it.
+
+7
+00:01:03,267 --> 00:01:08,361
+With the script, it can also start on click, or when it scrolls into view.
+
+8
+00:01:09,600 --> 00:01:10,593
+Let's click it.
+
+9
+00:01:13,600 --> 00:01:15,585
+One click, and it plays.
+
+10
+00:01:16,833 --> 00:01:20,726
+The third file carries the player itself. Let's add it.
+
+11
+00:01:33,533 --> 00:01:44,217
+It is the largest, about sixty kilobytes, because the player is inside. It plays every kind of animation, and gives you the full playback API.
+
+12
+00:01:45,467 --> 00:01:46,616
+Let's click it too.
+
+13
+00:01:49,600 --> 00:01:53,649
+It plays on click as well, driven by the player inside the file.
+
+14
+00:01:54,867 --> 00:02:04,924
+So, pick the smallest file that does what you need. CSS for load and hover, CSS with the script for click and scroll, and the player inside for everything else.

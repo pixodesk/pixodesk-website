@@ -1,0 +1,63 @@
+1
+00:00:00,267 --> 00:00:11,604
+This video shows how to control a pre-rendered SVG with no library at all. Its CSS animation plays and pauses with two classes, and any script can set them.
+
+2
+00:00:12,133 --> 00:00:16,182
+First, let's put the file into the page, so a script can reach it.
+
+3
+00:00:28,500 --> 00:00:34,639
+The markup of the file goes into the ball element. Nothing moves yet, because the animation is not enabled.
+
+4
+00:00:35,867 --> 00:00:40,412
+Now the Play button. It adds two classes to the file's root.
+
+5
+00:00:51,100 --> 00:00:54,783
+One class turns the animation on, and the other lets it run.
+
+6
+00:00:56,000 --> 00:00:57,202
+Let's press Play.
+
+7
+00:01:00,200 --> 00:01:02,943
+Both classes are on, so it plays.
+
+8
+00:01:04,167 --> 00:01:07,745
+The Pause button removes only the playing class. Let's add it.
+
+9
+00:01:16,567 --> 00:01:20,067
+The animation stays on, but it stops where it is.
+
+10
+00:01:21,300 --> 00:01:23,834
+Let's press Play, and then Pause.
+
+11
+00:01:27,667 --> 00:01:29,417
+It stops right where it was.
+
+12
+00:01:30,667 --> 00:01:33,801
+The Reset button removes both classes. Let's add it.
+
+13
+00:01:44,600 --> 00:01:50,556
+Without the enabled class, the animation is off, and the file shows its first frame.
+
+14
+00:01:51,800 --> 00:01:54,203
+Let's press Play, and then Reset.
+
+15
+00:01:58,100 --> 00:01:59,693
+It jumps back to the first frame.
+
+16
+00:02:00,933 --> 00:02:10,781
+So, a pre-rendered SVG needs no library. Two classes on its root play it, pause it, and reset it, from any script or framework.

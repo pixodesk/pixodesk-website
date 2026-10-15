@@ -1,0 +1,47 @@
+1
+00:00:00,267 --> 00:00:10,768
+This video shows the ways to export an animation from the editor. One document can become a Lottie file, a video, a GIF, or a still image.
+
+2
+00:00:11,300 --> 00:00:13,181
+Let's open the export dialog.
+
+3
+00:00:17,567 --> 00:00:21,250
+Every format is a tab here, with a preview of the result.
+
+4
+00:00:22,467 --> 00:00:26,751
+First, Lottie. Let's choose the dot Lottie file type.
+
+5
+00:00:29,267 --> 00:00:34,700
+Lottie JSON, or the smaller dot Lottie, is for apps that already play Lottie.
+
+6
+00:00:35,933 --> 00:00:37,527
+Next, a video.
+
+7
+00:00:40,133 --> 00:00:43,216
+A video is for presentations and social posts.
+
+8
+00:00:44,433 --> 00:00:46,184
+Then a GIF.
+
+9
+00:00:48,633 --> 00:00:52,578
+A GIF plays in email and chat, where a video would not.
+
+10
+00:00:53,800 --> 00:00:55,916
+And finally, a still image.
+
+11
+00:00:58,367 --> 00:01:02,154
+A still image is for a store page, or a thumbnail.
+
+12
+00:01:03,400 --> 00:01:09,539
+So, one document becomes every format you need. Change it once, and export again.

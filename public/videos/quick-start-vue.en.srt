@@ -1,0 +1,51 @@
+1
+00:00:00,267 --> 00:00:01,730
+Here's a simple Vue app.
+
+2
+00:00:05,467 --> 00:00:07,818
+It works, but it feels a little static.
+
+3
+00:00:08,367 --> 00:00:10,613
+First, install the Vue player.
+
+4
+00:00:16,267 --> 00:00:19,401
+Now let's make the animation. It only takes a minute.
+
+5
+00:00:19,933 --> 00:00:23,486
+In Pixodesk SVG Animator, draw a circle.
+
+6
+00:00:24,000 --> 00:00:30,531
+Turn on Auto mode, then drag the ball down and back up. The keyframes are created for you.
+
+7
+00:00:31,033 --> 00:00:34,481
+Add gravity easing for a natural bounce, and loop it.
+
+8
+00:00:39,800 --> 00:00:42,830
+Save it as JSON, straight into the project.
+
+9
+00:00:47,700 --> 00:00:51,566
+Back in the project, the animation file is already there.
+
+10
+00:00:53,100 --> 00:00:55,294
+Import the player and the animation.
+
+11
+00:01:02,400 --> 00:01:05,535
+Then add the player component, set to autoplay.
+
+12
+00:01:16,100 --> 00:01:19,130
+Reload the page, and the ball bounces.
+
+13
+00:01:21,667 --> 00:01:24,462
+That's all it takes: one file, one component.

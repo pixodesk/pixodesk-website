@@ -1,0 +1,35 @@
+1
+00:00:00,267 --> 00:00:04,551
+Let's draw a weather icon in Pixodesk SVG Editor.
+
+2
+00:00:05,100 --> 00:00:07,686
+First, the sun: a circle.
+
+3
+00:00:08,200 --> 00:00:11,491
+Then a cloud, from three circles and a rectangle.
+
+4
+00:00:15,300 --> 00:00:18,252
+Select them, and unite them into one shape.
+
+5
+00:00:18,767 --> 00:00:20,700
+A soft gradient gives it depth.
+
+6
+00:00:23,600 --> 00:00:26,787
+Save it as SVG, into your project.
+
+7
+00:00:32,833 --> 00:00:35,237
+On the page, it's just an image.
+
+8
+00:00:43,867 --> 00:00:47,759
+Sharp at any size, and the file is clean SVG.
+
+9
+00:00:49,800 --> 00:00:52,700
+That's all: an icon in under a minute.

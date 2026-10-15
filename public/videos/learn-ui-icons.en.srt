@@ -1,0 +1,39 @@
+1
+00:00:00,267 --> 00:00:09,070
+This video shows animated icons that react to the user. Each trigger is saved in its file, so the code only says autoplay.
+
+2
+00:00:09,600 --> 00:00:11,298
+Let's add a heart to the post.
+
+3
+00:00:19,000 --> 00:00:22,135
+Its file says start on click, so it waits.
+
+4
+00:00:23,367 --> 00:00:24,307
+Let's click it.
+
+5
+00:00:26,300 --> 00:00:28,442
+One click, and it plays once.
+
+6
+00:00:29,667 --> 00:00:31,417
+Next, a bell.
+
+7
+00:00:39,700 --> 00:00:44,794
+Its file says start on mouse over, and reset when the pointer leaves.
+
+8
+00:00:46,033 --> 00:00:48,515
+Let's point at it, and move away.
+
+9
+00:00:51,033 --> 00:00:55,500
+It rings while the pointer is over it, and resets when the pointer leaves.
+
+10
+00:00:56,733 --> 00:01:02,271
+So, each icon carries its own trigger. Change it in the editor, and the code stays the same.

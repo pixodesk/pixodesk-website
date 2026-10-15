@@ -1,0 +1,51 @@
+1
+00:00:00,267 --> 00:00:01,860
+Here's a simple React app.
+
+2
+00:00:05,600 --> 00:00:08,291
+It works, but it feels a little static.
+
+3
+00:00:08,833 --> 00:00:11,837
+First, install the dotLottie React player.
+
+4
+00:00:17,133 --> 00:00:19,824
+Now let's make the animation. It only takes a minute.
+
+5
+00:00:20,367 --> 00:00:23,162
+In Pixodesk Lottie Animator, draw a circle.
+
+6
+00:00:23,667 --> 00:00:30,197
+Turn on Auto mode, then drag the ball down and back up. The keyframes are created for you.
+
+7
+00:00:30,700 --> 00:00:33,129
+Add gravity easing for a natural bounce.
+
+8
+00:00:36,567 --> 00:00:39,858
+Save it as a dotLottie file, into the public folder.
+
+9
+00:00:44,900 --> 00:00:48,087
+Back in the project, the animation file is already there.
+
+10
+00:00:49,633 --> 00:00:50,730
+Import the player.
+
+11
+00:00:54,333 --> 00:00:58,879
+Then add it with the animation file, set to loop and play.
+
+12
+00:01:10,300 --> 00:01:13,330
+Reload the page, and the ball bounces.
+
+13
+00:01:15,867 --> 00:01:18,662
+That's all it takes: one file, one component.

@@ -1,0 +1,51 @@
+1
+00:00:00,267 --> 00:00:01,808
+Here's a simple React app.
+
+2
+00:00:05,533 --> 00:00:08,276
+It works, but it feels a little static.
+
+3
+00:00:08,800 --> 00:00:11,047
+First, install the React player.
+
+4
+00:00:16,333 --> 00:00:19,468
+Now let's make the animation. It only takes a minute.
+
+5
+00:00:20,000 --> 00:00:23,265
+In Pixodesk SVG Animator, draw a circle.
+
+6
+00:00:23,767 --> 00:00:29,749
+Turn on Auto mode, then drag the ball down and back up. The keyframes are created for you.
+
+7
+00:00:30,267 --> 00:00:33,715
+Add gravity easing for a natural bounce, and loop it.
+
+8
+00:00:39,033 --> 00:00:41,933
+Save it as JSON, straight into the project.
+
+9
+00:00:46,800 --> 00:00:50,483
+Back in the project, the animation file is already there.
+
+10
+00:00:52,000 --> 00:00:54,194
+Import the player and the animation.
+
+11
+00:00:59,633 --> 00:01:02,768
+Then add the player component, set to autoplay.
+
+12
+00:01:15,467 --> 00:01:18,549
+Reload the page, and the ball bounces.
+
+13
+00:01:21,067 --> 00:01:23,810
+That's all it takes: one file, one component.

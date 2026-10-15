@@ -1,0 +1,93 @@
+WEBVTT
+
+1
+00:00:00.267 --> 00:00:14.059
+This video shows the simplest way to play an animation in React, called autoplay. The animation plays just as it was set up in the editor, and a property can override that when you need. Either way, it takes one line.
+
+2
+00:00:14.600 --> 00:00:22.802
+Our animation is already in the project, as ball.json, made in the editor. Let's open it there, and look at its settings.
+
+3
+00:00:27.000 --> 00:00:31.885
+It starts on load, and repeats forever. Those settings are saved in the file.
+
+4
+00:00:33.167 --> 00:00:36.954
+Let's see how they look in the file itself, in our code editor.
+
+5
+00:00:39.133 --> 00:00:51.907
+It's plain JSON. Under animator, there is the same timeline, starting on load and repeating forever. Below it are the shapes, the shadows and the ball, with their keyframes.
+
+6
+00:00:53.167 --> 00:00:55.230
+Now, back to our app.
+
+7
+00:00:56.167 --> 00:00:59.615
+Let's add one line that puts the animation on the page.
+
+8
+00:01:07.800 --> 00:01:18.092
+That's all it takes. The file goes into the doc property. Autoplay means it plays exactly as the file says, so it starts on load and repeats forever.
+
+9
+00:01:19.333 --> 00:01:28.528
+Now, to change that behaviour without touching the file, I can override it with a property. Let's add a second component that starts only when the pointer is over it.
+
+10
+00:01:37.033 --> 00:01:43.120
+One property does it. Start, set to mouse over, replaces the start setting saved in the file.
+
+11
+00:01:44.367 --> 00:01:46.718
+Let's point at it, and then move away.
+
+12
+00:01:51.467 --> 00:01:58.520
+It plays while the pointer is over it, and pauses when the pointer leaves. Pausing is the default.
+
+13
+00:01:59.767 --> 00:02:08.805
+To go back to the start when the pointer leaves, the timeline property can say so. Let's add a third component that does that.
+
+14
+00:02:22.267 --> 00:02:32.219
+The timeline property overrides any part of the timeline saved in the file. Here, it starts on mouse over, and resets on mouse out.
+
+15
+00:02:33.467 --> 00:02:35.896
+Let's point at it, and move away again.
+
+16
+00:02:39.733 --> 00:02:43.782
+This time, when the pointer leaves, it jumps back to the start.
+
+17
+00:02:45.000 --> 00:02:49.598
+A click can start it too. Let's add a fourth component that starts on click.
+
+18
+00:02:57.800 --> 00:03:02.450
+Start, set to click, turns each click into play or pause.
+
+19
+00:03:03.667 --> 00:03:05.809
+Let's click it, and then click it again.
+
+20
+00:03:10.700 --> 00:03:13.835
+The first click plays it, and the second one pauses it.
+
+21
+00:03:15.067 --> 00:03:24.210
+The same works for repeating. The file says repeat forever, but this time I want it to play just once. Let's add a fifth component that overrides that.
+
+22
+00:03:33.300 --> 00:03:41.607
+Iterations, set to one, replaces the repeat setting saved in the file. Now it plays once, and stops.
+
+23
+00:03:42.833 --> 00:04:00.179
+So, one line puts the animation on the page. Autoplay follows the settings saved in the file, and properties override them wherever you need. They can change when it starts, what happens when the pointer leaves, and how often it repeats. The file itself never changes.

@@ -1,0 +1,39 @@
+1
+00:00:00,267 --> 00:00:09,801
+This video shows what an animation does when you look away. When the pointer leaves, or when the page scrolls it out of view, its trigger decides.
+
+2
+00:00:10,333 --> 00:00:16,629
+Let's add three balls that start on mouse over, each with a different choice for when the pointer leaves.
+
+3
+00:00:34,633 --> 00:00:39,126
+Mouse out can pause it, reset it to the start, or let it continue.
+
+4
+00:00:40,367 --> 00:00:42,796
+Let's point at each one, and move away.
+
+5
+00:00:50,167 --> 00:00:55,966
+The first one pauses, the second one goes back to the start, and the third one carries on.
+
+6
+00:00:57,200 --> 00:01:04,149
+Scrolling away works the same way. Let's add three more balls, each with a different choice for when it leaves the screen.
+
+7
+00:01:26,200 --> 00:01:31,189
+Off screen can pause it, let it continue, or reset it when it comes back.
+
+8
+00:01:32,433 --> 00:01:34,314
+Let's scroll them away, and back.
+
+9
+00:01:41,033 --> 00:01:48,086
+When they come back, the first one picks up where it paused, the second one kept going, and the third one starts over.
+
+10
+00:01:49,333 --> 00:01:57,640
+So, the trigger also says what happens when you look away. Set it in the editor, or override it with the timeline property, as here.

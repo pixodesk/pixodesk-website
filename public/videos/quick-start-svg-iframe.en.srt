@@ -1,0 +1,43 @@
+1
+00:00:00,267 --> 00:00:01,808
+Here's a simple web page.
+
+2
+00:00:05,533 --> 00:00:08,433
+It works, but it feels a little static.
+
+3
+00:00:08,967 --> 00:00:13,068
+Let's add an animation. No library, no install.
+
+4
+00:00:13,600 --> 00:00:17,153
+In Pixodesk SVG Animator, draw a circle.
+
+5
+00:00:17,667 --> 00:00:23,649
+Turn on Auto mode, then drag the ball down and back up. The keyframes are created for you.
+
+6
+00:00:24,167 --> 00:00:27,667
+Add gravity easing for a natural bounce, and loop it.
+
+7
+00:00:32,933 --> 00:00:38,288
+Save it as SVG, next to the page. The animation is inside the file.
+
+8
+00:00:43,167 --> 00:00:46,563
+Back in the project, the SVG is already there.
+
+9
+00:00:48,100 --> 00:00:49,484
+Show it in an iframe.
+
+10
+00:00:59,367 --> 00:01:01,665
+Reload, and the ball bounces.
+
+11
+00:01:04,200 --> 00:01:07,152
+That's all: one file, one tag.
