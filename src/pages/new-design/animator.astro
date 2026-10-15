@@ -58,29 +58,29 @@ const stats = [
 
 const features = [
   { title: "Create, animate, export — one app", line: `A vector editor and an animator ${b("in the same window")}.`, schema: "createAnimateExport" as const, html: yoga, file: "/assets/lottie/sections/yoga-bright.svg", bg: "bg-custom-gradient-indigo", facts: [
-    { icon: "pen" as const, lead: "Draw it, or bring it", text: `SVG, raster images and your own TTF fonts come in; animations from the ${v("Lottie community")} open and can be changed.` },
+    { icon: "download" as const, lead: "Start from someone else's animation", text: `Open a Lottie file from ${v("LottieFiles or IconScout")} and change it.` },
     { icon: "blocks" as const, lead: "Build scenes from blocks", text: `Reusable animation blocks — a character, a loader, a logo reveal — composed into one scene.` },
     { icon: "export" as const, lead: "One document, many files", text: `Lottie JSON for the app, SVG for the site, ${b("MP4 and GIF")} for everyone else.` },
   ] },
   { title: "Auto-animate", line: `You set the states. ${b("The keyframes are written for you.")}`, schema: "autoAnimate" as const, html: autoAnimate, file: "/assets/lottie/sections/auto-animate.svg", bg: "bg-custom-gradient-violet", facts: [
-    { icon: "pin" as const, lead: "Pin where it is", text: `Press ${b("Pin")} and the object's position, size and colour are fixed at this moment.` },
-    { icon: "clock" as const, lead: "Jump ahead, move it", text: `Drag the playhead to ${v("1 s")}, move the object. That is the whole instruction.` },
-    { icon: "keyframe" as const, lead: "Keyframes and the motion path appear", text: `On the timeline, by themselves — <i>edit either later</i>.` },
+    { icon: "pin" as const, lead: "Pose to pose", text: `Pin each key moment first; refine timing and easing ${b("afterwards")}.` },
+    { icon: "move" as const, lead: "Several properties in one move", text: `Position, size, rotation, colour, shape: ${v("one change")} records them all.` },
+    { icon: "keyframe" as const, lead: "Ordinary keyframes in the file", text: `Pins are a working mode; what is saved is keyframes you can edit later.` },
   ] },
   { title: "Easing", line: `Timing is what makes motion feel real. ${b("Pick it, or draw it.")}`, schema: "easing" as const, html: easing, file: "/assets/lottie/sections/easing.svg", bg: "bg-custom-gradient-navy", facts: [
-    { icon: "curve" as const, lead: "Presets that feel right", text: `${b("gravity › fall")} for a drop, ${b("bounce")} for a landing, ${b("ease in-out")} for almost everything else.` },
-    { icon: "handles" as const, lead: "Drag the handles", text: `Two control points. Pull one and watch the curve — your own easing in five seconds.` },
-    { icon: "chart" as const, lead: "A mini chart on every segment", text: `Velocity and acceleration, right on the timeline, so you see <i>where it speeds up</i> before you play it.` },
+    { icon: "curve" as const, lead: "A real bounce", text: `${b("Gravity fall")} on the way down, ${b("gravity rise")} on the way up — keyframe after keyframe.` },
+    { icon: "chart" as const, lead: "A mini chart on every segment", text: `Velocity on the timeline itself, so you see <i>where it speeds up</i> before you play it.` },
+    { icon: "handles" as const, lead: "The rule of thumb", text: `${v("Out")} for things that arrive, ${v("in")} for things that leave, ${v("in-out")} for moves that stay in view.` },
   ] },
-  { title: "Animated icons", line: `From static to alive, ${b("for apps and sites")}.`, schema: "iconMotion" as const, html: animatedIconsWatch, file: "/assets/lottie/sections/animated-icons-watch.svg", bg: "bg-custom-gradient-indigo", facts: [
-    { icon: "trim" as const, lead: "Lines that draw themselves", text: `Trim path and dash array — the classic icon reveal.` },
-    { icon: "rotate" as const, lead: "Spin, grow, tilt, fade", text: `Rotate, scale, skew and opacity, each with its own easing; grid and snapping keep the drawing precise.` },
+  { title: "Animated icons", line: `From static to alive, ${b("for apps and sites")}.`, schema: "iconMotionLottie" as const, html: animatedIconsWatch, file: "/assets/lottie/sections/animated-icons-watch.svg", bg: "bg-custom-gradient-indigo", facts: [
+    { icon: "trim" as const, lead: "Spinners from one ring", text: `Trim Path Start and End at 0 and 20 %, animate Offset: ${b("a dash that travels")} around.` },
     { icon: "export" as const, lead: "One Lottie file per icon", text: `Plays in the app at any size — ${b("no @2x, no @3x")}, no re-export per platform.` },
+    { icon: "move" as const, lead: "Pixel-precise", text: `Grid and snapping keep small icons ${v("crisp")}.` },
   ] },
   { title: "Splash screens", line: `The first thing the user sees, ${b("moving")}.`, schema: "splash" as const, html: splashScreen, file: "/assets/lottie/sections/splash-screen.svg", bg: "bg-custom-gradient-violet", facts: [
-    { icon: "phone" as const, lead: "Logo or title, animated", text: `The launch screen, drawn in vector and timed on the same timeline as everything else.` },
-    { icon: "scale" as const, lead: "One file, every screen size", text: `Lottie scales; phones, tablets and desktops get the ${b("same file")}.` },
-    { icon: "play" as const, lead: "Short and smooth", text: `Half a second of motion with proper easing beats a static logo — and weighs a few kilobytes.` },
+    { icon: "phone" as const, lead: "Native players", text: `lottie-ios, lottie-android, lottie-react-native, Windows and lottie-web play ${b("the same file")}.` },
+    { icon: "scale" as const, lead: "Sharp on every screen", text: `Vector: phones, tablets and desktops at any density.` },
+    { icon: "play" as const, lead: "Timed before you export", text: `Logo, title and transition with real easing, previewed on ${v("one timeline")}.` },
   ] },
 ];
 ---

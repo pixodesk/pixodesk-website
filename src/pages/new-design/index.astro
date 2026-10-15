@@ -36,18 +36,20 @@ const decisions = [
 ];
 
 const b = (t: string) => `<b class="text-cyan-200">${t}</b>`;
+const v = (t: string) => `<b class="text-violet-200">${t}</b>`;
+const manual = (label: string, href: string) => ({ label: `${label} in the manual`, href });
 const tools = [
-  { title: "Shape Builder", line: `Simple shapes in, ${b("finished artwork out")}.`, schema: "shapeBuilder" as const, file: "/assets/index/sections/px-shape-builder.svg", img: true, bg: "bg-custom-gradient-navy", facts: [
-    { icon: "union" as const, lead: "Click the regions", text: `Union, subtract, intersect — by ${b("clicking the overlaps")} on the canvas.` },
-    { icon: "star" as const, lead: "The logo you couldn't draw directly", text: `A crescent, a ring, a cut-out letter: <i>seconds</i>.` },
+  { title: "Shape Builder", line: `Overlap simple shapes, ${b("keep the parts you want")}.`, schema: "shapeBuilder" as const, file: "/assets/index/sections/px-shape-builder.svg", img: true, bg: "bg-custom-gradient-navy", docs: manual("Shape Builder", "/docs/svga/editor/object-creation-tools#shape-builder"), facts: [
+    { icon: "union" as const, lead: "Shapes you can't draw in one go", text: `A crescent, a ring, a cut-out letter: overlap circles and rectangles, ${b("pick the regions")}.` },
+    { icon: "path" as const, lead: "An ordinary path as the result", text: `Edit its nodes, recolour it — or ${v("animate it")} in the two animators.` },
   ] },
-  { title: "Edit colours", line: `One colour, ${b("every element that uses it")}.`, schema: "editColors" as const, file: "/assets/index/sections/px-edit-color-anim.svg", html: editColors, bg: "bg-custom-gradient-violet", facts: [
-    { icon: "sync" as const, lead: "Try a theme in seconds", text: `Change the swatch once and <i>watch the design follow</i> — the animation on the left is doing exactly that.` },
-    { icon: "clone" as const, lead: "Keep the variations", text: `Light, dark, brand — each saved as its own file.` },
+  { title: "Edit colours", line: `One colour, ${b("every element that uses it")}.`, schema: "editColors" as const, file: "/assets/index/sections/px-edit-color-anim.svg", html: editColors, bg: "bg-custom-gradient-violet", docs: manual("Used Colors", "/docs/svga/editor/color#used-colors"), facts: [
+    { icon: "sync" as const, lead: "A theme change in one click", text: `The whole drawing, not shape by shape — the illustration is doing exactly that.` },
+    { icon: "palette" as const, lead: "Nothing gets missed", text: `Fills, strokes and ${b("gradient stops")} using the colour change together.` },
   ] },
-  { title: "Gradients and opacity", line: `Depth ${b("without raster images")}.`, schema: "gradient" as const, file: "/assets/svg/sections/mango-juice.svg", html: mangoJuice, bg: "bg-custom-gradient-indigo", facts: [
-    { icon: "gradient" as const, lead: "Linear and radial, any stops", text: `Dragged on the canvas, not typed into a panel.` },
-    { icon: "opacity" as const, lead: "Light, shadow, glass — still vector", text: `Opacity per shape; the file stays ${b("a few kilobytes")}.` },
+  { title: "Gradients and opacity", line: `Light and shadow, ${b("still vector")}.`, schema: "gradient" as const, file: "/assets/svg/sections/mango-juice.svg", html: mangoJuice, bg: "bg-custom-gradient-indigo", docs: manual("Gradients", "/docs/svga/editor/color#linear-and-radial-gradients"), facts: [
+    { icon: "gradient" as const, lead: "Dragged on the canvas", text: `Press <b>G</b> and move the handles; ${b("any number of stops")}, each with its own alpha.` },
+    { icon: "opacity" as const, lead: "Three opacities that multiply", text: `Colour alpha, fill or stroke opacity, object opacity: fade one colour, one fill or ${v("a whole group")}.` },
   ] },
 ];
 ---
@@ -116,7 +118,7 @@ const tools = [
       <p class="mx-auto max-w-custom-narrow text-center text-custom-grey-400">Whatever you animate later, you draw it here first. Three of the tools, each shown by a file the tool made — and how it works.</p>
     </Section>
   </section>
-  {tools.map((t, i) => <FeatureSection title={t.title} line={t.line} schema={t.schema} facts={t.facts} file={t.file} img={t.img} html={t.html} flip={i % 2 === 1} bg={t.bg} />)}
+  {tools.map((t, i) => <FeatureSection title={t.title} line={t.line} schema={t.schema} facts={t.facts} file={t.file} img={t.img} html={t.html} flip={i % 2 === 1} bg={t.bg} docs={t.docs} />)}
   <section>
     <Section bgColor="bg-custom-gradient-indigo" color="text-base-bright" firstOfType>
       <p class="text-center"><a class="text-cyan-300 underline" href="/svg-editor/features">All drawing features →</a></p>

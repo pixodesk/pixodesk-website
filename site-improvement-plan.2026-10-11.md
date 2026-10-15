@@ -69,7 +69,7 @@ Effort: S = an hour or two, M = half a day to a day, L = several days. Status: *
 | **1** | **A story and one primary action per landing page**: what → for whom → how it fits together → proof → start here. Hero, cards, illustrations, colours kept. | all four | L | **done** in `/new-design/*` |
 | **2** | **Developer path on `/svg-animator`**: code tabs (pre-rendered SVG · React · Vue · plain HTML), `npm install`, GitHub, Get Started link, an honest status line with a button that works today. | `/svg-animator`, `/` | M | **done**; status wording = placeholder (§8) |
 | **3** | **Illustrations as proof**: "made in … · 35 KB · view file" under every animation, computed from the real file. | all four | S–M | **done** (two Lottie-made assets on the SVGA page uncaptioned, F3) |
-| **4** | **"How it fits together" diagram** + per-feature mechanism schematics. | `/`, app pages | M | **done** (FlowDiagram + 12 schematics with hover-to-play) |
+| **4** | **"How it fits together" diagram** + per-feature mechanism schematics. | `/`, app pages | M | **done** (FlowDiagram + schematics; reworked 2026-10-15 as storyboards — `feature-sections-review.2026-10-15.md`) |
 | **5** | **Replace the generic capability blocks** with a *"Which app do I need?"* table on `/` and three specific proof points per app page. | all four | M | **done** (DecisionTable; StatCards) |
 | **6** | **Freshness and consistency**: release notes from the real history, one SVG Animator status everywhere, one product name per app. | releases, `/`, pricing, download | S–M | **decide** |
 | **7** | **Weight**: demo click-to-load with a poster; heaviest animations loaded near the viewport or re-exported lighter; Lighthouse before/after. | `/animator`, `/svg-animator`, `/` | M | **part** — click-to-load done; animation loading + Lighthouse open |
@@ -96,7 +96,7 @@ The same four devices on every feature, so nothing is one-off and the pages do n
 
 | Device | What it is | Component |
 |---|---|---|
-| **Mechanism schematic** | a small diagram of *how* the feature works (pin → move → keyframes; the four easing curves; two circles → union / subtract / intersect; one petal → eight clones; text riding a wave). Static at rest; **hover or tap plays it** — SMIL `<animate>` elements inside the SVG with `begin="<svgId>.mouseover;<svgId>.click"`, `fill="freeze"`, `restart="whenNotActive"`. User-started, so the site rule "nothing animates on load" holds. A "▶ hover to play" chip sits in the corner. | `Schema.astro` + `schemas.ts` (12 kinds: autoAnimate, easing, textPath, patternMarkerSpray, repeater, iconMotion, shapeBuilder, editColors, gradient, vectorText, splash, createAnimateExport) |
+| **Mechanism schematic** | a small scene that **acts out how the tool is used** in the app's own vocabulary (cursor, region mesh, handles, swatch row, timeline with playhead and diamonds) + **numbered steps** in HTML with the real controls (`<b>` UI names, `<kbd>` keys) that light up in sync. One SMIL clock per scene (`<uid>t`, `begin="indefinite"`); every track spans the whole story and ends on the element's own attributes, so a scene that never plays shows the **result**. Plays once when ≥ 50 % in view (the site's animation rule), again on **Replay** or a click on the scene; reduced motion → no autoplay. Review and rationale: `feature-sections-review.2026-10-15.md`. | `Schema.astro` + `schemas.ts` (14 kinds: shapeBuilder, editColors, gradient, vectorText, textPath, autoAnimate, easing, patternMarkerSpray(+Animated), repeater, iconMotion(+Lottie), splash, createAnimateExport) |
 | **Fact rows** | three facts per feature instead of bullets: a glyph tile, a bold lead of a few words, one line with the key phrase coloured (`<b class="text-cyan-200">`; violet `text-violet-200` for a second accent; `<i>` for a nuance). | `Facts.astro`, `Glyph.astro` + `glyphs.ts` (40 line glyphs) |
 | **Stat cards** | the page's three proof points as figures, not paragraphs, with chips naming the concrete things. | `StatCard.astro` |
 | **Proof captions** | "made in … · 35.2 KB · view file" under every illustration; app detected from the file (`"st":"none"`/lottie → Lottie Animator; `@keyframes`/`px-anim` → SVG Animator; else SVG Editor), size from disk. | `ProofCaption.astro` |
@@ -134,11 +134,13 @@ testimonials (need real ones), naming and pricing decisions.
   ("Unexpected ':'") → the home cards live in `src/data/new-design/home-cards.json`. Relative asset paths from
   YAML (`../assets/...`) break under `/new-design/` → always root-relative `/assets/...`. `ProofCaption` and
   `SourceExcerpt` resolve `public/` through `new URL("../../../public" + file, import.meta.url)`, which works
-  in dev and build. No animation may start on load (README rule) → schematics animate on hover/click only.
+  in dev and build. No animation may start on load (README rule) → schematics start when scrolled into view, or on Replay.
 - **Adding a feature:** a `FeatureSection` with `schema` from `SchemaKind`, three `facts` (`icon` from
   `GlyphName`), `html` (a `?raw` import of the real export) + `file` (its public path) for the caption. A new
-  schematic = one builder in `schemas.ts` (use `three`/`four` for the box layouts, `on(uid)` for the hover
-  trigger); a new glyph = one entry in `glyphs.ts` (24×24, stroke paths).
+  schematic = one builder in `schemas.ts` returning `{ total, steps, svg }` — `story(uid, total)` gives the clock and
+  the tracks (`a` attribute, `t` transform, `show`), plus `cursor`, `ripple`, `keys`, `pop`, `chip`; check every
+  scene on a contact sheet before the page (paused at several times + at rest). `FeatureSection` takes an optional
+  `docs` link ("… in the manual"). A new glyph = one entry in `glyphs.ts` (24×24, stroke paths).
 - **Promoting a preview to the live page:** move the page over the old one, drop `PreviewBanner`, `noindex`
   and `canonical`, keep `description`; delete the old page's unused YAML sections and imports; re-run the link
   check; add `description` to the remaining old pages via the new `BaseLayout` props.

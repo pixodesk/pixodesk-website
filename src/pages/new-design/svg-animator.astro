@@ -110,36 +110,37 @@ const stats = [
   { figure: "1", label: "file for every browser", chips: ["Chrome", "Safari", "Firefox", "Edge"], text: `Paste it in a static site, a CMS or a React app. Need control from code? ${v("Save JSON")} and use the player.` },
 ];
 
+const manual = (label: string, href: string) => ({ label: `${label} in the manual`, href });
 const features = [
-  { title: "Auto-animate", line: `You set the states. ${b("The keyframes are written for you.")}`, schema: "autoAnimate" as const, html: autoAnimate, file: "", bg: "bg-custom-gradient-violet", caption: false, facts: [
-    { icon: "pin" as const, lead: "Pin where it is", text: `Press ${b("Pin")} and the object's position, size and colour are fixed at this moment.` },
-    { icon: "clock" as const, lead: "Jump ahead, move it", text: `Drag the playhead to ${v("1 s")}, drop the ball at the bottom. That is the whole instruction.` },
-    { icon: "keyframe" as const, lead: "Two keyframes, one motion path", text: `They appear on the timeline by themselves — <i>with the path between them</i>. Edit either later.` },
+  { title: "Auto-animate", line: `You set the states. ${b("The keyframes are written for you.")}`, schema: "autoAnimate" as const, html: autoAnimate, file: "", bg: "bg-custom-gradient-violet", caption: false, docs: manual("Auto animation", "/docs/svga/editor/animation#auto-animation"), facts: [
+    { icon: "pin" as const, lead: "Pose to pose", text: `Pin each key moment first; refine timing and easing ${b("afterwards")}.` },
+    { icon: "move" as const, lead: "Several properties in one move", text: `Position, size, rotation, colour, shape: ${v("one change")} records them all.` },
+    { icon: "keyframe" as const, lead: "Ordinary keyframes in the file", text: `Pins are a working mode; what is saved is keyframes you can edit later.` },
   ] },
-  { title: "Easing", line: `Timing is what makes motion feel real. ${b("Pick it, or draw it.")}`, schema: "easing" as const, html: easing, file: "", bg: "bg-custom-gradient-navy", caption: false, facts: [
-    { icon: "curve" as const, lead: "Presets that feel right", text: `${b("gravity › fall")} for a drop, ${b("bounce")} for a landing, ${b("ease in-out")} for almost everything else.` },
-    { icon: "handles" as const, lead: "Drag the handles", text: `Two control points. Pull one and watch the curve — your own easing in five seconds.` },
-    { icon: "chart" as const, lead: "See it before you play it", text: `Velocity and acceleration charts under the curve show <i>where it speeds up</i> and where it hangs.` },
+  { title: "Easing", line: `Timing is what makes motion feel real. ${b("Pick it, or draw it.")}`, schema: "easing" as const, html: easing, file: "", bg: "bg-custom-gradient-navy", caption: false, docs: manual("Easing and charts", "/docs/svga/editor/easing-charts"), facts: [
+    { icon: "curve" as const, lead: "A real bounce", text: `${b("Gravity fall")} on the way down, ${b("gravity rise")} on the way up — keyframe after keyframe.` },
+    { icon: "chart" as const, lead: "The rule of thumb", text: `${v("Out")} for things that arrive, ${v("in")} for things that leave, ${v("in-out")} for moves that stay in view.` },
+    { icon: "handles" as const, lead: "Exact values when you need them", text: `Type outX, outY, inX and inY to copy an easing from CSS or another tool.` },
   ] },
-  { title: "Animated vector text", line: `Your fonts, on any path, ${b("moving")}.`, schema: "textPath" as const, html: vectorTextAnim, file: "/assets/svga/sections/vector-text-anim.svg", bg: "bg-custom-gradient-indigo", caption: true, facts: [
-    { icon: "font" as const, lead: "Your own TTF", text: `The brand font, as live text — or converted to outlines when it must not travel with the file.` },
-    { icon: "path" as const, lead: "Text follows a line, a wave, a circle", text: `Animate the ${b("start")} and the ${b("offset")} and the words slide along it.` },
-    { icon: "transform" as const, lead: "Rotate, flip, scale", text: `The whole word — or each glyph on its own.` },
+  { title: "Animated vector text", line: `Your fonts, on any path, ${b("moving")}.`, schema: "textPath" as const, html: vectorTextAnim, file: "/assets/svga/sections/vector-text-anim.svg", bg: "bg-custom-gradient-indigo", caption: true, docs: manual("Text along a path", "/docs/svga/editor/animation-techniques#text-along-a-path"), facts: [
+    { icon: "path" as const, lead: "Animate the path too", text: `Move its nodes with auto-pin and ${b("the text follows")} the moving curve.` },
+    { icon: "rotate" as const, lead: "Around a circle", text: `On a closed path, Offset 0 → 100 % is ${v("one orbit")}.` },
+    { icon: "font" as const, lead: "Letter by letter", text: `Text to Bezier Shape makes each letter a path — animate them one by one.` },
   ] },
-  { title: "Patterns, markers and spray — animated", line: `One shape becomes hundreds. ${b("Then they all move.")}`, schema: "patternMarkerSpray" as const, html: eiffelTowerAnim, file: "/assets/svga/sections/Eiffel-tower-anim.svg", bg: "bg-custom-gradient-violet", caption: true, facts: [
-    { icon: "pattern" as const, lead: "A pattern that breathes", text: `Animate the tile's colour, scale or shape; the <i>whole fill</i> follows.` },
-    { icon: "marker" as const, lead: "Copies along a path", text: `Arrows on a route, leaves on a branch — placed by the path, animated together.` },
-    { icon: "spray" as const, lead: "Particles without plug-ins", text: `Stars, snow, bubbles: scattered copies with their own motion, ${b("still plain SVG")}.` },
+  { title: "Patterns, markers and spray — animated", line: `One shape becomes hundreds. ${b("Then they all move.")}`, schema: "patternMarkerSprayAnimated" as const, html: eiffelTowerAnim, file: "/assets/svga/sections/Eiffel-tower-anim.svg", bg: "bg-custom-gradient-violet", caption: true, docs: manual("Patterns", "/docs/svga/editor/patterns"), facts: [
+    { icon: "pattern" as const, lead: "A fill that flows", text: `Animate the tile's translation, rotation or scale: ${b("the whole fill")} moves.` },
+    { icon: "marker" as const, lead: "Markers ride the path", text: `Arrowheads and dots stay on the nodes while the path moves.` },
+    { icon: "spray" as const, lead: "Particles without plug-ins", text: `Animate the original: every sprayed copy moves, each at ${v("its own size, angle and opacity")}.` },
   ] },
-  { title: "Repeater", line: `Draw one. Get a ring, a row, a grid — ${b("and animate them as one")}.`, schema: "repeater" as const, html: animatedRepeater, file: "/assets/svga/sections/animated-repeater.svg", bg: "bg-custom-gradient-navy", caption: true, facts: [
-    { icon: "clone" as const, lead: "Count, spacing, rotation", text: `Parameters, not copies. Change the number and the layout rebuilds.` },
-    { icon: "move" as const, lead: "Animate the whole set from one place", text: `Position, scale, rotation, origin — ${v("one keyframe row")} for all clones.` },
-    { icon: "sync" as const, lead: "Edit the source, every clone follows", text: `Change the petal and all ${b("eight")} change with it.` },
+  { title: "Repeater", line: `Draw one. Get a ring, a row, a grid — ${b("and animate them as one")}.`, schema: "repeater" as const, html: animatedRepeater, file: "/assets/svga/sections/animated-repeater.svg", bg: "bg-custom-gradient-navy", caption: true, docs: manual("Repeater", "/docs/svga/editor/object-creation-tools#repeater"), facts: [
+    { icon: "sync" as const, lead: "Edit the source, every copy follows", text: `Restyle the original petal and all ${b("eight")} change with it.` },
+    { icon: "clone" as const, lead: "Circle and Line presets", text: `A radial array or a straight row in one click; add or remove one copy at a time.` },
+    { icon: "move" as const, lead: "One keyframe row for the whole set", text: `Position, scale, rotation and origin — ${v("animated from one place")}.` },
   ] },
-  { title: "Animated icons", line: `The usual icon motions, in minutes, as a ${b("drop-in SVG")}.`, schema: "iconMotion" as const, html: animatedIcons, file: "/assets/svga/sections/animated-icons.svg", bg: "bg-custom-gradient-indigo", caption: true, facts: [
-    { icon: "trim" as const, lead: "Lines that draw themselves", text: `Trim path and dash array — the classic icon reveal.` },
-    { icon: "rotate" as const, lead: "Spin, grow, tilt, fade", text: `Rotate, scale, skew and opacity, each with its own easing.` },
-    { icon: "export" as const, lead: "Swap it for the static icon", text: `Export as ${b("SVG + CSS")} — same size, same markup, now it moves on hover.` },
+  { title: "Animated icons", line: `The usual icon motions, in minutes, as a ${b("drop-in SVG")}.`, schema: "iconMotion" as const, html: animatedIcons, file: "/assets/svga/sections/animated-icons.svg", bg: "bg-custom-gradient-indigo", caption: true, docs: manual("Trim stroke", "/docs/svga/editor/animation-techniques#trim-stroke-draw-on"), facts: [
+    { icon: "trim" as const, lead: "Spinners from one ring", text: `Trim Start and End at 0 and 20 %, animate Offset: ${b("a dash that travels")} around.` },
+    { icon: "export" as const, lead: "A drop-in replacement", text: `Save as ${b("SVG + CSS")} and paste it where the static icon was; the trigger is saved in the file.` },
+    { icon: "move" as const, lead: "Pixel-precise", text: `Grid and snapping keep small icons ${v("crisp")}.` },
   ] },
 ];
 
@@ -207,7 +208,7 @@ const madeWith = [
     </Section>
   </section>
 
-  {features.map((f, i) => <FeatureSection title={f.title} line={f.line} schema={f.schema} facts={f.facts} html={f.html} file={f.file} caption={f.caption} flip={i % 2 === 1} bg={f.bg} />)}
+  {features.map((f, i) => <FeatureSection title={f.title} line={f.line} schema={f.schema} facts={f.facts} html={f.html} file={f.file} caption={f.caption} flip={i % 2 === 1} bg={f.bg} docs={f.docs} />)}
 
   <section>
     <Section bgColor="bg-custom-gradient-violet" color="text-base-bright" standard>

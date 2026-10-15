@@ -1,11 +1,65 @@
 ---
-/** A mechanism schematic from schemas.ts as a responsive inline SVG. Static at rest; hover or tap plays it (SMIL, user-started). */
-import { SCHEMAS, type SchemaKind } from "./schemas";
+/**
+ * A mechanism schematic from schemas.ts: the scene (inline SVG, SMIL on one clock) + its numbered steps as HTML.
+ * Plays once when ≥ 50 % in view (not under reduced motion), again on Replay or a click on the scene; the step that
+ * matches the scene's moment is highlighted. Before playing, the scene shows the result.
+ */
+import { SCHEMAS, SCENE_W, SCENE_H, type SchemaKind } from "./schemas";
 interface Props { kind: SchemaKind }
 const { kind } = Astro.props;
+const def = SCHEMAS[kind];
 const uid = "s" + Math.random().toString(36).slice(2, 7);
+const cols = def.steps.length === 3 ? "sm:grid-cols-3" : "sm:grid-cols-2";
 ---
-<div class="relative">
-  <svg id={uid} viewBox="0 0 520 160" class="h-auto w-full cursor-pointer" font-family="inherit" aria-hidden="true"><Fragment set:html={SCHEMAS[kind](uid)} /></svg>
-  <span class="pointer-events-none absolute right-1 top-1 rounded-full border border-white/15 bg-black/40 px-2 py-0.5 font-mono text-[10px] text-slate-300">▶ hover to play</span>
+<div class="px-schema mt-5 overflow-hidden rounded-xl border border-white/10 bg-black/30 text-white" data-px-schema data-total={def.total}>
+  <svg id={uid} viewBox={`0 0 ${SCENE_W} ${SCENE_H}`} class="block h-auto w-full cursor-pointer p-2" font-family="inherit" aria-hidden="true"><Fragment set:html={def.svg(uid)} /></svg>
+  <div class="border-t border-white/10 px-3 pb-3 pt-2">
+    <div class="mb-2 flex items-center justify-between">
+      <span class="text-[11px] font-semibold uppercase tracking-wider text-slate-400">How it works</span>
+      <button type="button" data-replay class="rounded-full border border-white/15 bg-white/5 px-2.5 py-0.5 font-mono text-[11px] text-slate-200 hover:border-cyan-300/60 focus-visible:outline focus-visible:outline-2 focus-visible:outline-cyan-300">↻ Replay</button>
+    </div>
+    <ol class={`grid grid-cols-1 gap-1.5 ${cols}`}>
+      {def.steps.map((s, i) => (
+        <li data-at={s.at} class="px-step flex gap-2 rounded-lg border border-transparent px-2 py-1.5 text-[13.5px] leading-snug text-custom-grey-200 transition-colors duration-300">
+          <span class="px-step-n mt-px inline-flex h-5 w-5 shrink-0 items-center justify-center rounded-full border border-white/25 text-[11px] font-semibold text-slate-300 transition-colors duration-300">{i + 1}</span>
+          <span set:html={s.text} />
+        </li>
+      ))}
+    </ol>
+  </div>
 </div>
+
+<style>
+  .px-step[data-active] { border-color: rgb(103 232 249 / 0.35); background: rgb(103 232 249 / 0.08); color: #fff; }
+  .px-step[data-active] .px-step-n { border-color: #67e8f9; background: #67e8f9; color: #0b1220; }
+  .px-step :global(b) { color: #fff; font-weight: 600; }
+  .px-step :global(kbd) { display: inline-block; margin: 0 1px; padding: 0 5px; border: 1px solid rgb(148 163 184 / 0.6); border-radius: 4px; background: #e2e8f0; color: #0f172a; font: 600 11px/1.5 ui-monospace, SFMono-Regular, Menlo, monospace; }
+</style>
+
+<script>
+  // One controller per schematic: the SMIL clock (`[data-clock]`) drives the scene, timers light the steps.
+  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  for (const root of document.querySelectorAll<HTMLElement>("[data-px-schema]")) {
+    const clock = root.querySelector("[data-clock]");
+    if (!(clock instanceof SVGAnimationElement)) continue;
+    const steps = Array.from(root.querySelectorAll<HTMLElement>("[data-at]"));
+    const total = Number(root.dataset.total);
+    let timers: Array<number> = [];
+    const light = (active: HTMLElement | undefined) => steps.forEach((s) => (s === active ? s.setAttribute("data-active", "") : s.removeAttribute("data-active")));
+    const play = () => {
+      timers.forEach((t) => window.clearTimeout(t));
+      timers = steps.map((s) => window.setTimeout(() => light(s), Number(s.dataset.at) * 1000));
+      timers.push(window.setTimeout(() => light(undefined), total * 1000 + 400));
+      clock.beginElement();
+    };
+    root.querySelector("[data-replay]")?.addEventListener("click", play);
+    root.querySelector("svg")?.addEventListener("click", play);
+    if (reduced) continue;
+    const seen = new IntersectionObserver((entries) => {
+      if (!entries.some((e) => e.isIntersecting)) return;
+      seen.disconnect();
+      play();
+    }, { threshold: 0.5 });
+    seen.observe(root);
+  }
+</script>

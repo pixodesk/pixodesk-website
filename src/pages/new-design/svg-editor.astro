@@ -35,31 +35,32 @@ const stats = [
   { figure: "3", label: "apps, one toolset", chips: ["SVG Editor", "SVG Animator", "Lottie Animator"], text: `A file drawn here opens in both animators ${v("when it has to move")}.` },
 ];
 
+const manual = (label: string, href: string) => ({ label: `${label} in the manual`, href });
 const features = [
-  { title: "Shape Builder", line: `Simple shapes in, ${b("finished artwork out")}.`, schema: "shapeBuilder" as const, html: birdTwitting, file: "/assets/svg/sections/bird-twitting-svg.svg", bg: "bg-custom-gradient-navy", facts: [
-    { icon: "union" as const, lead: "Click the regions", text: `Union, subtract, intersect — by ${b("clicking the overlaps")} on the canvas, not by stacking boolean operations.` },
-    { icon: "path" as const, lead: "One clean path", text: `No leftover groups, no hidden shapes under the result.` },
-    { icon: "star" as const, lead: "The logo you couldn't draw directly", text: `A crescent, a ring, a cut-out letter: <i>seconds</i>.` },
+  { title: "Shape Builder", line: `Overlap simple shapes, ${b("keep the parts you want")}.`, schema: "shapeBuilder" as const, html: birdTwitting, file: "/assets/svg/sections/bird-twitting-svg.svg", bg: "bg-custom-gradient-navy", docs: manual("Shape Builder", "/docs/svga/editor/object-creation-tools#shape-builder"), facts: [
+    { icon: "union" as const, lead: "Shapes you can't draw in one go", text: `A crescent, a ring, a cut-out letter: overlap circles and rectangles, ${b("pick the regions")}.` },
+    { icon: "star" as const, lead: "The classic booleans, one click each", text: `<b>All</b>, <b>Subtract</b>, <b>Intersect</b> and <b>Exclude</b> pick the regions for you.` },
+    { icon: "path" as const, lead: "An ordinary path as the result", text: `Edit its nodes, recolour it, ${v("reuse it")} — like the bird, built from circles.` },
   ] },
-  { title: "Edit colours", line: `One colour, ${b("every element that uses it")}.`, schema: "editColors" as const, html: editColorsStatic, file: "/assets/svg/sections/edit-colors-static.svg", bg: "bg-custom-gradient-violet", facts: [
-    { icon: "palette" as const, lead: "One swatch, all its users", text: `Shared colours are tracked across the whole document, groups included.` },
-    { icon: "sync" as const, lead: "Try a theme in seconds", text: `Change the swatch once and <i>watch the design follow</i>.` },
-    { icon: "clone" as const, lead: "Keep the variations", text: `Save each theme as its own file — ${v("light, dark, brand")}.` },
+  { title: "Edit colours", line: `One colour, ${b("every element that uses it")}.`, schema: "editColors" as const, html: editColorsStatic, file: "/assets/svg/sections/edit-colors-static.svg", bg: "bg-custom-gradient-violet", docs: manual("Used Colors", "/docs/svga/editor/color#used-colors"), facts: [
+    { icon: "sync" as const, lead: "A theme change in one click", text: `Recolour the whole drawing at once, not shape by shape.` },
+    { icon: "palette" as const, lead: "Nothing gets missed", text: `Fills, strokes and ${b("gradient stops")} using the colour change together.` },
+    { icon: "click" as const, lead: "Reuse with a click", text: `Select a shape, click a swatch: the document's own colours, ${v("no HEX codes copied")}.` },
   ] },
-  { title: "Gradients and opacity", line: `Depth ${b("without raster images")}.`, schema: "gradient" as const, html: mangoJuice, file: "/assets/svg/sections/mango-juice.svg", bg: "bg-custom-gradient-indigo", facts: [
-    { icon: "gradient" as const, lead: "Linear and radial, any stops", text: `Dragged on the canvas, not typed into a panel.` },
-    { icon: "opacity" as const, lead: "Opacity per shape", text: `Light, shadow and glass — layered, ${b("still vector")}.` },
-    { icon: "compress" as const, lead: "Still a small file", text: `A gradient is three lines of SVG; the glass is one attribute.` },
+  { title: "Gradients and opacity", line: `Light and shadow, ${b("still vector")}.`, schema: "gradient" as const, html: mangoJuice, file: "/assets/svg/sections/mango-juice.svg", bg: "bg-custom-gradient-indigo", docs: manual("Gradients", "/docs/svga/editor/color#linear-and-radial-gradients"), facts: [
+    { icon: "gradient" as const, lead: "Dragged on the canvas", text: `Press <b>G</b> and move the handles; ${b("any number of stops")}, each with its own alpha.` },
+    { icon: "opacity" as const, lead: "Three opacities that multiply", text: `Colour alpha, fill or stroke opacity, object opacity: fade one colour, one fill or ${v("a whole group")}.` },
+    { icon: "scale" as const, lead: "Sharp at any size", text: `Light and shadow drawn in vector — no raster image to blur when it scales.` },
   ] },
-  { title: "Vector text", line: `Your fonts, ${b("on any path")}.`, schema: "vectorText" as const, html: vectorText, file: "/assets/svg/sections/vector-text.svg", bg: "bg-custom-gradient-navy", facts: [
-    { icon: "font" as const, lead: "Import TTF fonts", text: `Style, size and kerning as live text.` },
-    { icon: "outline" as const, lead: "To outlines when needed", text: `When the font must not travel with the file — ${b("one command")}.` },
-    { icon: "path" as const, lead: "On any path", text: `Lines, waves, circles — the text bends with the shape.` },
+  { title: "Vector text", line: `Your fonts, ${b("on any path")}.`, schema: "vectorText" as const, html: vectorText, file: "/assets/svg/sections/vector-text.svg", bg: "bg-custom-gradient-navy", docs: manual("Text", "/docs/svga/editor/text#text-objects"), facts: [
+    { icon: "font" as const, lead: "Live text until you decide", text: `Size, letter and word spacing, decoration and case stay editable.` },
+    { icon: "outline" as const, lead: "Outlines when the font can't travel", text: `Text to Bezier Shape: ${b("one path per letter")}, fill and stroke kept.` },
+    { icon: "path" as const, lead: "Re-flows with the path", text: `Edit the path's nodes and the text follows the new curve.` },
   ] },
-  { title: "Patterns, markers, spray and repeater", line: `One shape ${b("becomes hundreds")}.`, schema: "patternMarkerSpray" as const, html: eiffelTower, file: "/assets/svg/sections/Eiffel-tower.svg", bg: "bg-custom-gradient-violet", facts: [
-    { icon: "pattern" as const, lead: "Your own patterns", text: `Or the presets, recoloured and resized.` },
-    { icon: "marker" as const, lead: "Markers along a path, spray across an area", text: `Bubbles, stars, snow, textures — ${b("one click")} each.` },
-    { icon: "clone" as const, lead: "Repeater", text: `Clones with spacing, rotation and count as parameters; change the source and ${v("every copy follows")}.` },
+  { title: "Patterns, markers, spray and repeater", line: `One shape ${b("becomes hundreds")}.`, schema: "patternMarkerSpray" as const, html: eiffelTower, file: "/assets/svg/sections/Eiffel-tower.svg", bg: "bg-custom-gradient-violet", docs: manual("Spray and Repeater", "/docs/svga/editor/object-creation-tools#spray"), facts: [
+    { icon: "pattern" as const, lead: "Your tile or the library's", text: `Recolour, rotate and scale the tile per object; edit it once and ${v("every user updates")}.` },
+    { icon: "spray" as const, lead: "Hundreds of copies, still light", text: `Sprayed copies are clones of one original — ${b("change it, all follow")}.` },
+    { icon: "clone" as const, lead: "Repeater", text: `Rows, rings and grids with Copies, Rotation and Scale as numbers — press <b>Y</b>.` },
   ] },
 ];
 ---
@@ -110,7 +111,7 @@ const features = [
     </Section>
   </section>
 
-  {features.map((f, i) => <FeatureSection title={f.title} line={f.line} schema={f.schema} facts={f.facts} html={f.html} file={f.file} flip={i % 2 === 1} bg={f.bg} />)}
+  {features.map((f, i) => <FeatureSection title={f.title} line={f.line} schema={f.schema} facts={f.facts} html={f.html} file={f.file} flip={i % 2 === 1} bg={f.bg} docs={f.docs} />)}
 
   <section>
     <Section bgColor="bg-custom-gradient-indigo" color="text-base-bright" standard>
