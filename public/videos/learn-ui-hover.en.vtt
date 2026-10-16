@@ -1,0 +1,41 @@
+WEBVTT
+
+1
+00:00:00.267 --> 00:00:08.652
+This video shows button icons that react to the pointer. The icon plays forward when you point at the button, and back when you leave.
+
+2
+00:00:09.200 --> 00:00:15.156
+Our file dialog needs three buttons. Let's write one button that plays its icon on hover.
+
+3
+00:00:47.967 --> 00:00:56.874
+The API ref property gives us the player commands. On mouse enter, it plays forward. On mouse leave, it plays backward.
+
+4
+00:00:58.100 --> 00:01:01.548
+Now let's use it for Delete, Cancel, and OK.
+
+5
+00:01:17.700 --> 00:01:26.294
+Each button passes its own icon file, its label, and its style. The icons stand still until someone points at them.
+
+6
+00:01:27.533 --> 00:01:30.067
+Let's point at Delete, and then move away.
+
+7
+00:01:32.833 --> 00:01:37.431
+The lid opens while the pointer is over the button, and closes when it leaves.
+
+8
+00:01:38.667 --> 00:01:40.182
+The same works for the other two.
+
+9
+00:01:45.367 --> 00:01:53.700
+The cross wiggles, and the tick draws itself again. Each icon has two states, at rest and pointed at.
+
+10
+00:01:54.933 --> 00:02:03.580
+So, a small component turns any icon file into a hover effect. Forward when the pointer arrives, and backward when it leaves.

@@ -1,0 +1,25 @@
+WEBVTT
+
+1
+00:00:00.267 --> 00:00:09.357
+This video shows an animation that follows a background job. It moves while the job runs, and stops the moment the job is done.
+
+2
+00:00:09.900 --> 00:00:18.494
+Our page shows a nightly data run, and a hook already tells us whether it is running. Let's add the flow of records, tied to that.
+
+3
+00:00:29.867 --> 00:00:37.756
+Play, set to running, plays the animation while the job runs. The file repeats, so the records keep flowing.
+
+4
+00:00:39.000 --> 00:00:40.881
+Let's wait for the job to finish.
+
+5
+00:00:43.900 --> 00:00:50.849
+Running turns false, so play turns false, and the flow stops where it was. The header says the run succeeded.
+
+6
+00:00:52.067 --> 00:00:59.172
+So, one property ties the animation to the job. It plays while the job runs, and stops when it is done.

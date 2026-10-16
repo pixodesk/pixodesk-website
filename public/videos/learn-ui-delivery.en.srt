@@ -1,0 +1,23 @@
+1
+00:00:00,267 --> 00:00:09,018
+This video shows an order tracker with a courier who rides while the order is on the way. One line plays it, and the file itself says how.
+
+2
+00:00:09,567 --> 00:00:16,855
+Our tracker shows the order, its steps, and who is bringing it. Let's add the courier, riding at the top.
+
+3
+00:00:28,200 --> 00:00:35,932
+Autoplay plays it as the file says. It starts as soon as it is on screen and repeats forever, so the courier keeps riding.
+
+4
+00:00:37,167 --> 00:00:43,854
+The file also says to rest when nobody can see it. Let's scroll down to the order details, and back up.
+
+5
+00:00:51,200 --> 00:00:58,697
+It pauses while the tracker is off screen, and carries on when it comes back. Nothing in the code handles the scrolling.
+
+6
+00:00:59,933 --> 00:01:06,229
+So, one line plays the courier, and the settings saved in the file decide when it plays and when it rests.

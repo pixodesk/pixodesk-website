@@ -1,0 +1,33 @@
+WEBVTT
+
+1
+00:00:00.267 --> 00:00:08.574
+This video shows a weather card with animated icons. The data picks the icon for each day, and one component plays them all.
+
+2
+00:00:09.100 --> 00:00:18.582
+Our card shows the weather now, and five days ahead. We have three icon files. Let's put them in one object, named by the kind of sky.
+
+3
+00:00:24.700 --> 00:00:30.447
+Sunny, partly, and rain. The forecast data uses the same words.
+
+4
+00:00:31.667 --> 00:00:34.201
+Next, the big icon for the weather right now.
+
+5
+00:00:45.533 --> 00:00:53.527
+Autoplay plays it as the file says, repeating forever. These files were saved at a calm, slow pace.
+
+6
+00:00:54.767 --> 00:00:59.521
+Now one icon for every day of the forecast, picked by its sky.
+
+7
+00:01:08.600 --> 00:01:14.687
+Each day looks up its file by the word in the data. Five players, from one line of code.
+
+8
+00:01:15.933 --> 00:01:23.221
+So, the data chooses the file, and one component plays any of them. A new kind of sky is just one more file.

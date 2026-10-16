@@ -1,0 +1,23 @@
+1
+00:00:00,267 --> 00:00:10,350
+This video shows how to keep people company while a search runs. An animation plays for as long as the wait lasts, and the first results appear under it.
+
+2
+00:00:10,867 --> 00:00:18,259
+Our flight search keeps in state whether the search is still running. While it runs, let's show a plane above the results.
+
+3
+00:00:31,300 --> 00:00:40,652
+The plane shows only while searching is true. Its file repeats forever, so it flies for as long as the search takes, however long that is.
+
+4
+00:00:41,900 --> 00:00:44,199
+Now let's wait for the search to finish.
+
+5
+00:00:47,133 --> 00:00:52,279
+Searching turns false, so the plane goes away, and the results stay where they were.
+
+6
+00:00:53,500 --> 00:01:01,049
+So, a looping animation covers a wait of any length. One condition in your code decides how long it stays.

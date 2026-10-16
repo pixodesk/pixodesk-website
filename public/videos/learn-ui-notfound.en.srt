@@ -1,0 +1,23 @@
+1
+00:00:00,267 --> 00:00:09,801
+This video shows a friendly page for a missing link, with a boat on a moving sea. It is two animations, layered with a few lines of styles.
+
+2
+00:00:10,333 --> 00:00:15,871
+Our page already says what happened, and offers a way back. Let's add the sea at the bottom.
+
+3
+00:00:25,167 --> 00:00:29,764
+The sea file repeats forever. The style pins it to the bottom of the scene.
+
+4
+00:00:31,000 --> 00:00:33,299
+Now the boat, on top of the sea.
+
+5
+00:00:43,633 --> 00:00:51,966
+The boat is a second file, drawn over the sea. Each one plays on its own, and together they read as one picture.
+
+6
+00:00:53,200 --> 00:01:00,697
+So, two small files and a few lines of styles. Layers let each part move in its own way.

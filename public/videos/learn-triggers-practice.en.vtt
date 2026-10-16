@@ -1,0 +1,65 @@
+WEBVTT
+
+1
+00:00:00.267 --> 00:00:11.003
+This video shows which trigger fits which job in a real interface. Each file keeps its own trigger, so the code is the same short line every time.
+
+2
+00:00:11.533 --> 00:00:17.437
+Let's start with an order tracker. The courier should ride whenever the tracker is on screen.
+
+3
+00:00:29.800 --> 00:00:37.088
+Its file starts on load and pauses off screen. It plays as soon as it is seen, and rests while it is hidden.
+
+4
+00:00:38.333 --> 00:00:43.819
+Next, a Delete button. Its bin should open only while you point at it.
+
+5
+00:00:54.467 --> 00:00:59.169
+Its file starts on mouse over, and plays backward when the pointer leaves.
+
+6
+00:01:00.400 --> 00:01:02.882
+Let's point at it, and move away.
+
+7
+00:01:05.933 --> 00:01:10.165
+The lid opens on hover, and closes as the pointer leaves.
+
+8
+00:01:11.400 --> 00:01:13.385
+A like button should answer a click.
+
+9
+00:01:24.367 --> 00:01:26.953
+Its file starts on click and plays once.
+
+10
+00:01:28.200 --> 00:01:28.931
+Let's click it.
+
+11
+00:01:31.333 --> 00:01:34.076
+One click, one small reward.
+
+12
+00:01:35.300 --> 00:01:40.368
+A reminder should catch the eye once, when you reach it, and then stay quiet.
+
+13
+00:01:53.600 --> 00:02:01.437
+Its file starts on load and plays once. It waits until it is seen, plays, and stays on its last frame.
+
+14
+00:02:02.667 --> 00:02:07.552
+And sometimes the app itself knows the state, like a payment step that is already done.
+
+15
+00:02:21.033 --> 00:02:28.975
+Its file says none, so it never plays by itself. Progress, set to one, shows the finished stage.
+
+16
+00:02:30.200 --> 00:02:41.302
+So, pick the trigger by the job. On load for things that live on the page, mouse over for buttons, click for answers, once for a nudge, and none when your code decides.

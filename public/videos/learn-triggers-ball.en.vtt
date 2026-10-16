@@ -1,0 +1,97 @@
+WEBVTT
+
+1
+00:00:00.267 --> 00:00:09.801
+This video tries every trigger on one bouncing ball. A trigger decides when an animation plays by itself, and what it does when you look away.
+
+2
+00:00:10.333 --> 00:00:13.416
+Let's start with the four ways to start, in a list.
+
+3
+00:00:20.800 --> 00:00:23.543
+Load, mouse over, click, and none.
+
+4
+00:00:24.767 --> 00:00:28.267
+Now one ball for each, labelled with its start.
+
+5
+00:00:47.767 --> 00:00:56.753
+Start, set on each component, replaces the start saved in the file. Only the first one plays right away, because it starts on load.
+
+6
+00:00:58.000 --> 00:01:00.952
+Let's point at the second one, and move away.
+
+7
+00:01:04.367 --> 00:01:08.912
+It plays while the pointer is over it, and pauses when the pointer leaves.
+
+8
+00:01:10.133 --> 00:01:12.667
+Now let's click the third one, twice.
+
+9
+00:01:16.100 --> 00:01:19.235
+The first click plays it, and the second one pauses it.
+
+10
+00:01:20.467 --> 00:01:24.359
+The last one has no trigger at all. Let's point at it, and click it.
+
+11
+00:01:27.600 --> 00:01:35.097
+None never plays by itself. It waits for your code, with play, progress, or the player commands.
+
+12
+00:01:36.333 --> 00:01:42.368
+Mouse over has a second half, what happens when the pointer leaves. Let's list the four choices.
+
+13
+00:01:50.433 --> 00:01:54.299
+Pause, reset, reverse, and continue.
+
+14
+00:01:55.533 --> 00:01:59.817
+Now four balls that start on mouse over, one for each choice.
+
+15
+00:02:20.800 --> 00:02:25.502
+The timeline property sets both halves of the trigger, the start and the leave.
+
+16
+00:02:26.733 --> 00:02:29.685
+Let's point at each one, and move away.
+
+17
+00:02:40.100 --> 00:02:47.754
+Pause stops where it is. Reset jumps back to the start. Reverse plays back to the start, and continue keeps going.
+
+18
+00:02:49.000 --> 00:02:52.553
+Scrolling away has its own three choices. Let's list them.
+
+19
+00:02:58.500 --> 00:03:01.504
+Pause, continue, and reset.
+
+20
+00:03:02.733 --> 00:03:06.730
+Now three balls, one for each, with room to scroll below them.
+
+21
+00:03:25.200 --> 00:03:31.992
+Off screen says what happens while the ball cannot be seen. They all start on load, as the file says.
+
+22
+00:03:33.233 --> 00:03:35.715
+Let's scroll them away, and back.
+
+23
+00:03:42.633 --> 00:03:49.033
+Pause picks up where it stopped. Continue kept going while it was hidden, and reset starts over.
+
+24
+00:03:50.267 --> 00:03:58.913
+So, a trigger is two decisions. When it starts, on load, mouse over, click, or none, and what it does when you look away.

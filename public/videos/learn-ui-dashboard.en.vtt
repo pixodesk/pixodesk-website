@@ -1,0 +1,25 @@
+WEBVTT
+
+1
+00:00:00.267 --> 00:00:10.115
+This video shows icons that play once when a list comes into view, and then stay as they are. It suits things you see once, like a tip or a reminder.
+
+2
+00:00:10.633 --> 00:00:19.332
+Our dashboard has a list further down, with a tip, a reminder, and a reply. Let's give each item its animated icon.
+
+3
+00:00:28.567 --> 00:00:35.672
+Autoplay plays each file as it says. These files play once, and only start when they can be seen.
+
+4
+00:00:36.900 --> 00:00:38.650
+Let's scroll down to the list.
+
+5
+00:00:45.200 --> 00:00:50.346
+Each icon draws itself once as the list appears, and then stays, finished.
+
+6
+00:00:51.567 --> 00:01:00.318
+So, an icon that plays once and stays is a setting in its file. Autoplay follows it, and starts it when the list comes into view.

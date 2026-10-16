@@ -1,0 +1,23 @@
+1
+00:00:00,267 --> 00:00:10,010
+This video shows an animated background behind the text of a landing page. A grid of dots glows under drifting lights, and the text stays on top.
+
+2
+00:00:10,533 --> 00:00:16,672
+Our landing hero has a title, a line of text, and a button. Let's put the animation behind them.
+
+3
+00:00:27,667 --> 00:00:34,772
+It comes first in the hero, so the text is drawn over it. The file repeats forever, so the lights keep drifting.
+
+4
+00:00:36,000 --> 00:00:38,064
+Let's look at the styles that place it.
+
+5
+00:00:40,833 --> 00:00:49,166
+The backdrop fills the whole hero, behind everything else. The file itself is set to cover its box, like a background image.
+
+6
+00:00:50,433 --> 00:00:58,427
+So, an animation can be a background like any image. One line puts it in, and a few styles keep it behind your content.

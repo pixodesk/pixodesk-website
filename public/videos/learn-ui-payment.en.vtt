@@ -1,0 +1,33 @@
+WEBVTT
+
+1
+00:00:00.267 --> 00:00:10.951
+This video shows the stages of a payment, each with its own animated icon. The state of a stage decides whether its icon moves or stands still.
+
+2
+00:00:11.500 --> 00:00:19.154
+Our checkout lists three stages. The first one is done, so let's give it its icon, standing still on its last frame.
+
+3
+00:00:28.200 --> 00:00:35.149
+Progress, set to one, shows the end of the animation and holds it there. A finished stage stays calm.
+
+4
+00:00:36.367 --> 00:00:40.755
+The second stage is running right now, so its icon should move.
+
+5
+00:00:50.567 --> 00:00:58.665
+Autoplay plays it as the file says, and the file repeats the scan. So it keeps scanning while the stage runs.
+
+6
+00:00:59.900 --> 00:01:06.404
+The last stage has not started yet. Let's show its icon half way, without motion.
+
+7
+00:01:16.300 --> 00:01:25.600
+Progress, set to a half, shows the middle of the animation, and the style for the next stage fades it. Only the running stage draws the eye.
+
+8
+00:01:26.833 --> 00:01:36.368
+So, one component shows every stage. Progress holds a still frame for the stages that wait or are done, and autoplay moves the one that runs.

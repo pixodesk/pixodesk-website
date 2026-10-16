@@ -1,0 +1,41 @@
+WEBVTT
+
+1
+00:00:00.267 --> 00:00:08.521
+This video shows a meditation screen in a wellness app. The figure breathes while the session runs, and holds still when you pause.
+
+2
+00:00:09.067 --> 00:00:17.556
+Our session screen has a title, a breathing hint, and the time left. Let's keep in state whether the session is paused.
+
+3
+00:00:23.933 --> 00:00:25.814
+Paused starts as false.
+
+4
+00:00:27.033 --> 00:00:30.769
+Now the figure, playing only while the session is not paused.
+
+5
+00:00:40.400 --> 00:00:48.106
+Play, set to not paused, plays it right now. The file repeats, so the figure keeps breathing.
+
+6
+00:00:49.333 --> 00:00:52.781
+Let's add the buttons that pause and resume the session.
+
+7
+00:01:06.033 --> 00:01:12.668
+One button shows at a time. Pause session while it runs, and Resume session while it is paused.
+
+8
+00:01:13.900 --> 00:01:15.964
+Let's pause, and then resume.
+
+9
+00:01:21.167 --> 00:01:25.869
+It holds still on pause, and carries on from the same moment on resume.
+
+10
+00:01:27.100 --> 00:01:34.989
+So, one property follows your state. The figure breathes while the session runs, and waits while the session waits.
