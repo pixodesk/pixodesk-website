@@ -17,20 +17,20 @@ is not here, go to [Still stuck?](#still-stuck) at the end.
 setting in the editor). `click` and `mouseOver` wait for the user; `none` waits for you to call
 `play()`. Even `load` waits until enough of the animation is on screen, and pauses while it is
 scrolled out of view (`offScreen: 'pause'`, the default). In React/Vue/React Native, remember that
-`autoplay` is the only mode that uses the document's trigger — with `play`, `pause`, `progress`
+`playAsSaved` is the only mode that uses the document's trigger — with `play`, `pause`, `progress`
 or `time` the trigger is ignored. Passing `apiRef` does **not** change the mode.
 
-**React / Vue component with no control prop.** With none of `autoplay` / `play` / `pause` /
+**React / Vue component with no control prop.** With none of `playAsSaved` / `play` / `pause` /
 `progress` / `time` set, the component deliberately renders the first frame and does
-nothing. Add `autoplay`. `apiRef` on its own is such a case: the ref is a handle, not an
+nothing. Add `playAsSaved`. `apiRef` on its own is such a case: the ref is a handle, not an
 instruction, so nothing moves until you call `play()` on it.
 
-**`loadTagAnimators()` ran before the elements existed.** Call it after the DOM is ready (end of
+**`createSvgAnimationPlayersFromPage()` ran before the elements existed.** Call it after the DOM is ready (end of
 `<body>`, `DOMContentLoaded`), and call it again after inserting content dynamically — it only
-creates animators for elements that do not have an animator yet.
+creates players for elements that do not have a player yet.
 
-**`createAnimator({ src })` — the file did not load.** Look in the console: the player logs
-`createAnimator: failed to load "…"` or `invalid animation document format`. The JSON must have
+**`createSvgAnimationPlayer({ src })` — the file did not load.** Look in the console: the player logs
+`createSvgAnimationPlayer: failed to load "…"` or `invalid animation document format`. The JSON must have
 `"type": "svg"` at the root. Calls made before the load finishes are queued, so `play()` is
 not lost — a network or CORS error is the usual cause.
 
@@ -40,25 +40,27 @@ reach on a small viewport. Inside an `<iframe>`, visibility is measured relative
 
 ## React
 
-**The animation restarts when the parent re-renders.** The animator is recreated only when the
-`doc` *content* changes (the comparison is deep), so a re-created but identical object is fine.
+**The animation restarts when the parent re-renders.** The player is recreated only when the
+`doc` *content* changes (the comparison is deep — Vue and React Native compare the same way), so a
+re-created but identical object is fine.
 Restarts usually come from a `doc` that really is different each render — for example built
 inline with a changing value. Build the document once (module level or `useMemo`).
 
 **Console: `setAttribute: No elements found for selector "#…"` on unmount.** Cosmetic — a
 late frame after teardown. Safe to ignore.
 
-**`onCancel` / `onRemove` / `onStop` fire when I pass a different `doc`.** Expected: a new
-document means a new animator; the old one is thrown away and reports it on its way out.
+**`onCancel` / `onDestroy` / `onStop` fire when I pass a different `doc`.** Expected: a new
+document means a new player; the old one is thrown away and reports it on its way out.
 
 **Next.js: "useRef is not a function" / hooks error.** The component must be used from a client
 component — add `'use client'` at the top of the file that renders it.
 
 ## TypeScript
 
-**`Type '…' is not assignable to type 'PxAnimatedSvgDocument'` when importing JSON.** Cast
-once: `const doc = animation as PxAnimatedSvgDocument;` — JSON imports are typed structurally
-and a string field such as `"engine": "auto"` widens to `string`. Enable `resolveJsonModule`.
+**A JSON import is flagged on `doc`.** It shouldn't be: `doc` is typed `PxDocumentInput`,
+which is exactly the shape a JSON import produces — so first enable `"resolveJsonModule"` in
+`tsconfig.json` and update the player packages. Only `PxDocument` (the strict type,
+for documents built in code) rejects a JSON import's widened strings.
 
 ## React Native
 
@@ -78,12 +80,17 @@ yourself.
 
 ## Playback behavior
 
-**It holds the last frame — I want it to reset.** Set `timeline.trigger.finish: "reset"`
-in the file, or `fillMode: 'none'` (see [Playback settings](./playback-and-triggers.md#timing)).
-For one mount only, pass the same thing as an override:
-`timeline={{ trigger: { finish: 'reset' } }}`.
+**It holds the last frame — I want it to reset.** Set `timeline.finish: "reset"` — the
+animation CANCELS at its natural end and snaps back to the start state. Its sibling
+`timeline.fillMode` answers a different question: what shows AT REST around a run —
+`fillMode: 'none'` also ends on the static SVG, but only because nothing is held; during a
+`delay` it shows the raw attributes too, and it never actively resets. Rule of thumb:
+want a snap-back at the end → `finish: 'reset'`; want the end pose held → leave `finish`
+alone and let `fillMode` (default `forwards`) hold it
+(see [Playback settings](./playback-and-triggers.md#timing)).
+For one mount only, pass the same thing as an override: `timeline={{ finish: 'reset' }}`.
 
-**How do I play backwards?** `animator.setPlaybackRate(-1); animator.play();` — also as a
+**How do I play backwards?** `player.setPlaybackRate(-1); player.play();` — also as a
 trigger out action (`mouseOut: 'reverse'`).
 
 **Jumping to a time while playing.** `setCurrentTime(ms)` works while playing (the animation

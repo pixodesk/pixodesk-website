@@ -15,12 +15,12 @@ npm install @pixodesk/svg-animator-vue
 
 ```vue
 <script setup lang="ts">
-import { PixodeskSvgAnimator } from '@pixodesk/svg-animator-vue';
+import { SvgAnimationPlayer } from '@pixodesk/svg-animator-vue';
 import animation from './animation.json';
 </script>
 
 <template>
-  <PixodeskSvgAnimator :doc="animation" autoplay />
+  <SvgAnimationPlayer :doc="animation" playAsSaved />
 </template>
 ```
 
@@ -31,26 +31,26 @@ component itself — see the props table); the SVG keeps its proportions.
 ## Control modes
 
 Several control modes, plus a template ref that is not one. Set more than one control prop and the
-highest-priority one wins — `progress` / `time` → `play` / `pause` → `autoplay` — and the
+highest-priority one wins — `progress` / `time` → `play` / `pause` → `playAsSaved` — and the
 component warns, naming both props and the winner. The ref is available in every mode and never
 changes which one you are in. React, Vue and React Native all resolve this the same way, from one
 rule in core.
 
 ### Autoplay
 
-> **Example:** [`vue/autoplay`](../../examples/docs-examples/src/cases/vue/autoplay/) — `pnpm example:docs`, then open `#vue/autoplay`.
+> **Example:** [`vue/play-as-saved`](../../examples/docs-examples/src/cases/vue/play-as-saved/) — `pnpm example:docs`, then open `#vue/play-as-saved`.
 
 The simplest mode: the component starts the animation the way the file says it should — on
 load, on hover, on click, or when scrolled into view.
 
 ```vue
 <script setup lang="ts">
-import { PixodeskSvgAnimator } from '@pixodesk/svg-animator-vue';
+import { SvgAnimationPlayer } from '@pixodesk/svg-animator-vue';
 import animation from './animation.json';
 </script>
 
 <template>
-  <PixodeskSvgAnimator :doc="animation" autoplay />
+  <SvgAnimationPlayer :doc="animation" playAsSaved />
 </template>
 ```
 
@@ -69,45 +69,53 @@ walkthrough. The component renders exactly that frame and never plays on its own
 ```vue
 <script setup lang="ts">
 import { ref } from 'vue';
-import { PixodeskSvgAnimator } from '@pixodesk/svg-animator-vue';
+import { SvgAnimationPlayer } from '@pixodesk/svg-animator-vue';
 import animation from './animation.json';
 const time = ref(0);
 </script>
 
 <template>
-  <PixodeskSvgAnimator :doc="animation" :time="time" />
+  <SvgAnimationPlayer :doc="animation" :time="time" />
   <input type="range" min="0" max="2000" v-model.number="time" />
 
   <!-- a fixed frame by FRACTION of the whole timeline — that is `progress`, not `time`
        (`time` is milliseconds, so `:time="0.5"` would be half a millisecond in) -->
-  <PixodeskSvgAnimator :doc="animation" :progress="0.5" />
+  <SvgAnimationPlayer :doc="animation" :progress="0.5" />
 </template>
 ```
 
-Changing the value moves the existing animator to the new time — nothing is recreated.
+Changing the value moves the existing player to the new time — nothing is recreated.
 
-### Declarative play / pause
+### Declarative playback — `play`, `pause`, `playMode`, `completeIteration`
 
 > **Example:** [`vue/declarative`](../../examples/docs-examples/src/cases/vue/declarative/) — `pnpm example:docs`, then open `#vue/declarative`.
 
-Drive playback from your own state with two booleans — handy when play/pause is already part
-of your component's state (a toggle, a visibility flag) and you would rather not hold a ref.
+**`play` names a state, not a command.** On a ONE-SHOT document (a single pass) it is a POSE
+switch — `false` the start pose, `true` the finish pose; a change moves there per `playMode`
+(`'forwards'` default: plays there, snaps back; `'both'`: plays both ways — the hover toggle;
+`'backwards'`; `'none'`), always from the current frame, and a mount renders the pose without
+animating. On a LOOPING document (`iterations` > 1 or `'infinite'`) it is a RUN switch — `false`
+snaps to rest, or finishes the current iteration first with `completeIteration`. `pause` freezes
+the current frame immediately and only means something while `play` is true. The rule is shared
+with the React and React Native components (`resolveDeclarativePlayback` in core); a misplaced
+modifier warns and changes nothing. One-shot verbs (`playOnce()`, `finish()`) live on the
+template ref.
 
 ```vue
 <script setup lang="ts">
 import { ref } from 'vue';
-import { PixodeskSvgAnimator } from '@pixodesk/svg-animator-vue';
+import { SvgAnimationPlayer } from '@pixodesk/svg-animator-vue';
 import animation from './animation.json';
-const paused = ref(false);
+const hovered = ref(false);
 </script>
 
 <template>
-  <PixodeskSvgAnimator :doc="animation" play :pause="paused" />
-  <button @click="paused = !paused">Toggle</button>
+  <!-- the trash-can lid: opens on hover, plays BACK closed on leave, from wherever it is -->
+  <div @mouseenter="hovered = true" @mouseleave="hovered = false">
+    <SvgAnimationPlayer :doc="animation" :play="hovered" playMode="both" />
+  </div>
 </template>
 ```
-
-`play && !pause` plays; `pause` pauses; `play === false` holds where it is.
 
 ### Imperative API (template ref)
 
@@ -118,29 +126,32 @@ The component exposes the playback API on its template ref, so it is available i
 ```vue
 <script setup lang="ts">
 import { ref } from 'vue';
-import { PixodeskSvgAnimator, type VueAnimatorApi } from '@pixodesk/svg-animator-vue';
+import { SvgAnimationPlayer, type PxAnimationPlayerHandle } from '@pixodesk/svg-animator-vue';
 import animation from './animation.json';
-const animator = ref<VueAnimatorApi | null>(null);
+const player = ref<PxAnimationPlayerHandle | null>(null);
 </script>
 
 <template>
-  <PixodeskSvgAnimator :doc="animation" ref="animator" />
-  <button @click="animator?.play()">Play</button>
-  <button @click="animator?.pause()">Pause</button>
-  <button @click="animator?.setPlaybackRate(-1)">Reverse</button>
+  <SvgAnimationPlayer :doc="animation" ref="player" />
+  <button @click="player?.play()">Play</button>
+  <button @click="player?.pause()">Pause</button>
+  <button @click="player?.setPlaybackRate(-1)">Reverse</button>
 </template>
 ```
 
-The ref holds core's `PxAnimatorHandle` under this package's name — the same type as
-`ReactAnimatorApi` and `RnAnimatorApi`, so they cannot drift apart:
+The ref holds core's `PxAnimationPlayerHandle` — the one handle name every framework package
+exports, so the three cannot drift apart:
 
 <!-- px-check signature pkg=vue -->
 ```typescript
-interface VueAnimatorApi {
+interface PxAnimationPlayerHandle {
     isPlaying(): boolean;
     play(): void; pause(): void; cancel(): void; finish(): void;
+    playOnce(): void;                      // ONE fresh pass from the start, whatever `iterations` say
     setPlaybackRate(rate: number): void;   // 1 normal, 2 double, negative = reverse; 0 is rejected
                                            //   with a warning — use pause()
+    getDuration(): number | null;          // ONE pass of the content window, ms — the slider
+                                           //   maximum nobody hard-codes (× iterations = the run)
     getCurrentTime(): number | null;       // ms from the start of the whole run, every iteration included
     setCurrentTime(time: number): void;    // seek, ms; clamped to the run
     getCurrentProgress(): number | null;   // the same position as 0–1 of the whole run — the read
@@ -149,7 +160,7 @@ interface VueAnimatorApi {
 }
 ```
 
-With none of `autoplay` / `progress` / `time` / `play` / `pause` set, the first frame renders
+With none of `playAsSaved` / `progress` / `time` / `play` / `pause` set, the first frame renders
 statically and the ref is your only control.
 
 ## Playback overrides
@@ -161,7 +172,7 @@ shaped exactly like the file's own `animator` block and deep-merges it over what
 ```vue
 <template>
   <!-- The file loops twice and starts on load; here it loops forever and waits for play(). -->
-  <PixodeskSvgAnimator
+  <SvgAnimationPlayer
     :doc="animation"
     :timeline="{ iterations: 'infinite', trigger: { start: 'none' } }"
     ref="anim"
@@ -172,7 +183,7 @@ shaped exactly like the file's own `animator` block and deep-merges it over what
 Objects merge key by key, values replace, and `null` **deletes** a key so the default its
 absence means comes back (`:timeline="{ delay: null }"`).
 
-`duration`, `delay`, `iterations` and `start` are also plain props, because `:duration="2000"`
+`inTime`, `outTime`, `playDuration`, `delay`, `iterations` and `start` are also plain props, because `:out-time="2000"`
 reads better than a nested object; a prop wins over the same key inside `timeline`. To ignore the
 file's playback settings entirely and start from the player's defaults, add `resetTimeline`.
 
@@ -190,19 +201,29 @@ inheritance cover those:
 
 <!-- px-check signature pkg=vue -->
 ```typescript
-const PixodeskSvgAnimator: DefineComponent<{
-    doc: PxAnimatedSvgDocument;           // required — the animation, as saved by the editor
+const SvgAnimationPlayer: DefineComponent<{
+    doc: PxDocumentInput;                 // required — the animation; a .json import passes as-is
 
     // Playback override — the document's `timeline` block, deep-merged (Playback overrides above)
     timeline?: PxTimelinePatch | string;  // a JSON string is accepted too
     resetTimeline?: boolean;              // start from the player's defaults, `timeline` on top
-    duration?: number; delay?: number;    // shortcuts, ms: one iteration, and the wait before it
+    inTime?: number;                      // ▸ timeline.inTime — the content window's start, ms
+    outTime?: number;                     // ▸ timeline.outTime — …and its end (one pass plays the window)
+    playDuration?: number;                // ▸ timeline.playDuration — the window in wall ms (slower / faster)
+    delay?: number;                       // ▸ timeline.delay — the wait before the first pass, ms
     iterations?: number | 'infinite';     // 'infinite' never stops
     start?: 'load' | 'mouseOver' | 'click' | 'none';
+    offScreen?: PxOffScreenAction;        // ▸ timeline.trigger.offScreen
+    mouseOut?: PxMouseOutAction;          // ▸ timeline.trigger.mouseOut (for start: 'mouseOver')
+    visibilityThreshold?: number;         // ▸ timeline.trigger.visibilityThreshold (0–1)
+    visibilityDebounce?: number;          // ▸ timeline.trigger.visibilityDebounce (ms)
 
     // Control — the highest-priority one that is set picks the mode (Control modes above)
-    autoplay?: boolean;                   // start the way the file says — the editor's Start setting
-    play?: boolean; pause?: boolean;      // play now, whatever the trigger says / hold; false resumes
+    playAsSaved?: boolean;                   // start the way the file says — the editor's Start setting
+    play?: boolean; pause?: boolean;      // the STATE (one-shot: which pose; loop: running) / freeze now
+    playMode?: PxPlayMode | `${PxPlayMode}`; // one-shot: which pose changes PLAY vs snap —
+                                          //   'forwards' (default) | 'backwards' | 'both' | 'none'
+    completeIteration?: boolean;          // loop: play=false finishes the CURRENT iteration, then rests
     progress?: number; time?: number;     // a frame at 0–1 of the whole run / at this ms
 
     // Diagnostics stay PROPS, not events: an event handler always exists, which would silence
@@ -214,22 +235,23 @@ const PixodeskSvgAnimator: DefineComponent<{
 }>;
 ```
 
-Anything else you put on `<PixodeskSvgAnimator>` — `class`, `style`, any attribute — ends up on
+Anything else you put on `<SvgAnimationPlayer>` — `class`, `style`, any attribute — ends up on
 the `<svg>` element it renders (standard Vue attribute inheritance). So to set the animation's
 size, either put `style="width: 300px; height: 300px"` on the component itself, or give those
 dimensions to the element that contains it — the SVG keeps its proportions either way.
 
 ## Events
 
-<!-- px-check emits PixodeskSvgAnimator pkg=vue -->
+<!-- px-check emits SvgAnimationPlayer pkg=vue -->
 | Event | When |
 |---|---|
+| `ready` | the player exists and the SVG is rendered — once, asynchronously; the push twin of `isReady()` |
 | `play` | the animation started playing — for the first time, or resumed after a pause |
 | `pause` | playback paused at the current frame — via the `pause` prop, the API's `pause()`, or a trigger's *out action* |
 | `cancel` | playback stopped and the animation went back to its start state |
 | `finish` | the animation reached its end — it played all its iterations, or `finish()` was called. Does not fire when playback is stopped early |
-| `remove` | the animator was thrown away: the component unmounted, or you passed a different `doc` and a new animator was built for it |
-| `stop` | fires *in addition to* whichever of `pause`, `cancel`, `finish` or `remove` just fired. Listen to this one event when you only care that the animation is no longer playing, whatever the reason |
+| `destroy` | the player was thrown away: the component unmounted, or you passed a different `doc` and a new player was built for it |
+| `stop` | "no longer playing, whatever the reason": fires *in addition to* whichever of `pause`, `cancel`, `finish` or `destroy` just fired |
 
 `onWarn` and `onError` are **props**, not events. With an event, Vue would treat the message as
 handled even when nobody listens, so it would never reach the console. As props, leaving them
@@ -243,60 +265,64 @@ you know what a document has to say and tolerate it, `muteWarn` keeps it out of 
 
 ```vue
 <script setup lang="ts">
-import { PixodeskSvgAnimator } from '@pixodesk/svg-animator-vue';
+import { SvgAnimationPlayer } from '@pixodesk/svg-animator-vue';
 import animation from './animation.json';
 const onDone = () => console.log('finished');
 const onStop = () => console.log('stopped');
 </script>
 
 <template>
-  <PixodeskSvgAnimator :doc="animation" autoplay @finish="onDone" @stop="onStop" />
+  <SvgAnimationPlayer :doc="animation" playAsSaved @finish="onDone" @stop="onStop" />
 </template>
 ```
 
-Passing a different `doc` throws the old animator away and builds a new one; the old instance
-emits `cancel`, `remove` and `stop` on its way out.
+Passing a different `doc` throws the old player away and builds a new one; the old instance
+emits `cancel`, `destroy` and `stop` on its way out.
 
-## CSS-flavor SVGs — `PixodeskSvgCssAnimator`
+## CSS-flavor SVGs — `SvgCssAnimationPlayer`
 
 > **Example:** [`vue/css-loader`](../../examples/docs-examples/src/cases/vue/css-loader/) — `pnpm example:docs`, then open `#vue/css-loader`.
 
 For a **pre-rendered SVG + CSS animation** file imported with
 [`vite-svg-loader`](https://github.com/jpkleemans/vite-svg-loader) (or any loader that yields a
 component), this wrapper adds hover / click / scroll triggers. It renders a `<div>` of its own
-around your SVG component — that is what `PixodeskSvgCssAnimator` becomes on the page — and
+around your SVG component — that is what `SvgCssAnimationPlayer` becomes on the page — and
 starts, pauses or resets the animation by switching the file's CSS classes on that `<div>`:
 
 ```vue
 <script setup>
-import { PixodeskSvgCssAnimator } from '@pixodesk/svg-animator-vue';
+import { SvgCssAnimationPlayer } from '@pixodesk/svg-animator-vue';
 import AnimationSvg from './animation.svg';   // vite-svg-loader
 </script>
 
 <template>
-  <PixodeskSvgCssAnimator start="mouseOver" mouseOut="pause" style="width: 400px; height: 400px">
+  <SvgCssAnimationPlayer start="mouseOver" mouseOut="pause" style="width: 400px; height: 400px">
     <AnimationSvg />
-  </PixodeskSvgCssAnimator>
+  </SvgCssAnimationPlayer>
 </template>
 ```
 
 <!-- px-check signature pkg=vue -->
 ```typescript
 // The SVG goes in the default slot; every other attribute (class, style, …) lands on the wrapper div.
-const PixodeskSvgCssAnimator: DefineComponent<{
+const SvgCssAnimationPlayer: DefineComponent<{
     start?: PxTriggerStart;               // 'load' (default) | 'mouseOver' | 'click'
+    offScreen?: PxOffScreenAction;        // ▸ timeline.trigger.offScreen
+    mouseOut?: PxMouseOutAction;          // ▸ timeline.trigger.mouseOut (for start: 'mouseOver')
+    visibilityThreshold?: number;         // ▸ timeline.trigger.visibilityThreshold (0–1)
+    visibilityDebounce?: number;          // ▸ timeline.trigger.visibilityDebounce (ms)
                                           //   — 'none' does nothing here (no play())
     offScreen?: PxOffScreenAction;        // 'pause' (default) | 'continue' | 'reset' — what happens
                                           //   while nobody can see it, whatever started it
     mouseOut?: PxMouseOutAction;          // 'continue' (default) | 'pause' | 'reset' — 'reverse' is
                                           //   accepted but acts as 'continue'
-    visibilityThreshold?: number;         // 0–1 of the SVG on screen before it may run; default 0.5
+    visibilityThreshold?: number;         // 0–1 of the SVG on screen before it may run; default 0.5; 0 = any visible pixel
     visibilityDebounce?: number;          // ms it must hold first; default 150
 }>;
 ```
 
 > ⚠️ **Don't put the SAME SVG file on a page twice.** You can have as many
-> `<PixodeskSvgCssAnimator>` on a page as you like, each with a *different* file. What does not
+> `<SvgCssAnimationPlayer>` on a page as you like, each with a *different* file. What does not
 > work is the *same* file twice: the imported component is the file's markup, element ids
 > included, so two copies share the same ids and their masks and gradients cross over. To show
 > one animation several times, use the JSON component instead — the player gives every copy
@@ -307,17 +333,17 @@ scripts should be inlined as raw HTML, or use JSON.
 
 ## API reference
 
-Everything is spelled out above: `PixodeskSvgAnimator` under [Props](#props) and [Events](#events),
-the handle under [Imperative API](#imperative-api-template-ref), `PixodeskSvgCssAnimator` under
-[CSS-flavor SVGs](#css-flavor-svgs--pixodesksvgcssanimator). Modes, highest priority wins:
-`progress` / `time` → `play` / `pause` → `autoplay` → static — the same rule as React and React
-Native, conflicts warned the same way; any change to `doc` or to an override prop re-creates the
-player. The callbacks and diagnostics are the shape every player shares —
+Everything is spelled out above: `SvgAnimationPlayer` under [Props](#props) and [Events](#events),
+the handle under [Imperative API](#imperative-api-template-ref), `SvgCssAnimationPlayer` under
+[CSS-flavor SVGs](#css-flavor-svgs--svgcssanimationplayer). Modes, highest priority wins:
+`progress` / `time` → `play` / `pause` → `playAsSaved` → static — the same rule as React and React
+Native, conflicts warned the same way; a change to `doc`'s content (compared deeply) or to an override
+prop re-creates the player. The callbacks and diagnostics are the shape every player shares —
 [the API at a glance](./README.md#the-api-at-a-glance).
 
 <!-- px-check exports @pixodesk/svg-animator-vue -->
-The package exports the components, the handle type `VueAnimatorApi`, and the document type
-`PxAnimatedSvgDocument` (for casting a JSON import — [TypeScript](./installation.md#typescript));
+The package exports the components, the handle type `PxAnimationPlayerHandle`, and the document type
+`PxDocument` (for casting a JSON import — [TypeScript](./installation.md#typescript));
 nothing else.
 
 ## Example
@@ -327,5 +353,5 @@ Every section above links to its running example in
 page, and they are all collected in one app: a list of every example down the side, with the
 selected one running next to it. Run `pnpm example:docs` from the repository root to open it,
 then pick an example from the list — or jump straight to one by its address in the URL, like
-`#vue/autoplay`. Each example has a test that runs on every build.
+`#vue/play-as-saved`. Each example has a test that runs on every build.
 

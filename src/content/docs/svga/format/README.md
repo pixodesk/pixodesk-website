@@ -57,6 +57,7 @@ only.
 | **L0 — plain SVG** | the element object itself: `{type, ...attributes, children}` | the drawing — elements and their SVG attributes, exactly as in any SVG; values are plain strings | the browser |
 | **L1 — typed values** | the same SVG attributes as L0 — the layer changes their values, not their place | values become typed instead of strings: numbers (`opacity: 0.5`), arrays (`translate: [96.8, 46.8]`), objects (`transform: { translate, rotate, scale }`). Units are never written — each property has one fixed, implied unit. A value written this way is exactly what a keyframe of L2 holds | the player |
 | **L2 — animated attributes** | `node.animate`, one entry per animated attribute name | keyframes for any attribute; the element itself and its place in the tree are untouched — delete every `animate` key and a valid static SVG remains | the player |
+| **L2 compiled — the low layer** | the same `node.animate` entries, spelled `{ kind, keyframes }` | the explicit form the player lowers every entry to before it plays: values typed by `kind`, easings resolved, loops expanded, a motion path sampled (or kept for the frame loop) — nothing left to resolve. An entry is all authored or all compiled — [Compiled animation](#compiled-animation--the-low-layer) | the player writes it; the editor reads it, never writes it |
 | **L3 — player effects** | `node.effects` | effects — short descriptions of masks, gradients, copies and other effects ([see more](#player-effects)), which the player expands into plain elements and attributes when the file loads | the player |
 | **L4 — editor meta** | `node.meta` | everything only the editor needs — labels, shape presets, the sources of applied effects; the player ignores this key entirely — [Editor meta and applied effects](#editor-meta-and-applied-effects) | the editor |
 | **L5 — pre-rendered SVG** | unlike the layers above, this one is not a part of the JSON document — it is a separate `.svg` file the editor produces on export | the same document, converted into an ordinary SVG file: the animation travels as CSS or a script inside it, and the editor data as `data-px-meta` attributes — [Meta in pre-rendered SVG](https://pixodesk.com/docs/svga/prerendered-svg/data-px-meta) | depends on the flavor: a CSS-animation file is played by the browser alone; a JS-animation file is played by the player embedded in it |
@@ -83,7 +84,7 @@ comments, so a real file has none):
   "viewBox": "0 0 400 400",
 
   // ADDED: the playback settings — how long, how many times, what starts it
-  "animator": { "timeline": { "duration": 1000, "iterations": "infinite", "trigger": { "start": "load" } } },
+  "animator": { "timeline": { "outTime": 1000, "iterations": "infinite", "trigger": { "start": "load" } } },
 
   "children": [
     {
@@ -113,7 +114,7 @@ A few ideas cover most of the format:
    element's `animate` key, filed by the attribute's name. The static attribute itself stays
    where it is, so if you remove every `animate`, a valid static SVG remains.
 3. **One place for playback settings** — the root `animator` object holds everything about
-   how the document plays: duration, loops, what starts it.
+   how the document plays: the content window, loops, what starts it.
 
 ### Schema at a glance
 
@@ -140,7 +141,7 @@ write or transform documents in TypeScript rather than by hand:
 <!-- px-check off the TypeScript spelling of the blocks below, prose -->
 | Import this | to type this part of the document |
 |---|---|
-| `PxAnimatedSvgDocument` | the whole file |
+| `PxDocument` | the whole file |
 | `PxNode` | any element in `children`; `PxSvgNode` is the root `<svg>`, which adds the document keys |
 | `PxAnimatorConfig` | the `animator` block as a whole |
 | `PxTimeline` | `animator.timeline` — what advances the playhead |
@@ -158,14 +159,14 @@ write or transform documents in TypeScript rather than by hand:
 | `PxAlongPathMode` · `PxLoopRepeatAt` · `PxLoopDirection` | a property animation's `alongPathMode`, and its `loop.repeatAt` / `loop.direction` |
 | `PxStrokeTrimSubPaths` · `PxCloneWithout` · `PxMaskType` · `PxUnits` · `PxGradientType` · `PxGradientSpreadMethod` · `PxPathOverflow` · `PxLengthAdjust` · `PxTextPathMethod` · `PxTextPathSpacing` | the effects' selectors: `strokeTrim.subPaths`, `clone.without`, `maskedBy.maskType`, the mask and gradient units, a gradient's `type` and `spreadMethod`, and `textPath`'s `pathOverflow` / `lengthAdjust` / `method` / `spacing` |
 
-<!-- px-check schema-block SVG_JSON=PxAnimatedSvgDocumentSchema NODE=PxNodeSchema ANIMATE=PxPropertyAnimationSchema EFFECTS=PxEffectsSchema GRADIENT=PxFillGradientEffectSchema -->
+<!-- px-check schema-block SVG_JSON=PxDocumentSchema NODE=PxNodeSchema ANIMATE=PxPropertyAnimationSchema EFFECTS=PxEffectsSchema GRADIENT=PxFillGradientEffectSchema -->
 ```typescript
-// PxAnimatedSvgDocument
+// PxDocument
 // Self-contained document: has children — player renders SVG tree and animates it
 // Bind-by-id document: no children — player animates a pre-existing SVG DOM via animator.bindings
 // The root <svg> is a NODE too (every node key applies), plus:
 interface SVG_JSON extends NODE {
-    type: 'svg';        // document root marker
+    type: 'svg' | string;   // the root tag: 'svg', or an HTML tag ('div') around svg children
     id?: string;        // DOM id; in a bind-by-id document it locates the pre-rendered element
     viewBox?: string;   // internal coordinate space, e.g. "0 0 700 380"
     width?: number | string;   // rendered size; a string may carry CSS units, e.g. "100%"
@@ -186,17 +187,23 @@ interface SVG_JSON extends NODE {
                                                    // 'native' = browser only; 'js' = the player's own loop (+ own scroll measurement)
                 frameRate?: number;                // target fps for the player's own frame loop ('js', or 'auto' after
                                                    // falling back to it); uncapped when absent, ignored by WAAPI/RN
-                duration?: number;                 // length of ONE iteration, ms (default 1000); keyframe times are absolute offsets
+                inTime?: number;                   // the content WINDOW's start, ms (default 0); keyframe times are absolute content ms
+                outTime?: number;                  // …and its end. The editor always writes it; absent = the max keyframe time (else 1000)
+                playDuration?: number;             // wall ms one pass of the window takes; default outTime − inTime (no remap)
                 delay?: number;                    // wait before start, ms (default 0); negative = skip ahead, e.g. -500 starts from the 0.5 s frame
                 iterations?: number | 'infinite';  // repeat count (default 1); composes with per-property loop (loop-within-loop)
-                fillMode?: 'forwards' | 'backwards' | 'both' | 'none';                  // CSS animation-fill-mode; default 'forwards' holds final state
+                fillMode?: 'forwards' | 'backwards' | 'both' | 'none';                  // CSS animation-fill-mode; default 'forwards' holds final state.
+                                                   // Combines with `finish` below: `finish: 'reset'` wins at the natural
+                                                   // end (the run is cancelled); otherwise fillMode decides what the end shows
+                finish?: 'hold' | 'reset';         // after a NATURAL finish (default 'hold' — the end shows what fillMode
+                                                   // says); 'reset' cancels back to the start state, overriding fillMode.
+                                                   // Next to fillMode because both answer "what is shown after the end" (§13);
+                                                   // named for its occasion, and to stay clear of the onFinish CALLBACK
                 direction?: 'normal' | 'reverse' | 'alternate' | 'alternate-reverse';  // default 'normal'
                 trigger?: {
                     start?: 'load' | 'mouseOver' | 'click' | 'none';       // what STARTS it; default 'load'; 'none' waits for play()
                     offScreen?: 'pause' | 'continue' | 'reset';            // while nobody can see it; default 'pause'
                     mouseOut?: 'continue' | 'pause' | 'reset' | 'reverse'; // when the pointer leaves; default 'continue'; read for start 'mouseOver'
-                    finish?: 'hold' | 'reset';        // after a NATURAL finish; default 'hold' (keep end state per `fillMode`).
-                                                      // Named for its occasion like its siblings, and to stay clear of the onFinish CALLBACK
                     visibilityThreshold?: number;     // how much must be on screen before it may run: 0 = any part, 1 = all of it; default 0.5
                     visibilityDebounce?: number;      // and for how long, ms; default 150, so scrolling straight past starts nothing
                 };
@@ -204,7 +211,8 @@ interface SVG_JSON extends NODE {
             | {
                 type: 'scroll' | 'view';           // scrubbed: the scroll container's offset ('scroll') or the SVG's
                                                    // journey through the viewport ('view'); no trigger/delay slots exist here
-                duration?: number;                 // the keyframe span the scroll range maps onto, ms
+                inTime?: number;                   // the content WINDOW's start, ms (default 0)
+                outTime?: number;                  // …and its end — the keyframe span the scroll range maps onto
                 iterations?: number;               // finite only — 'infinite' cannot map onto a range
                 engine?: 'auto' | 'native' | 'js';  // as above — 'auto'/'native' try the browser's ScrollTimeline, 'js' measures itself
                 frameRate?: number;                // target fps for the player's own frame loop ('js', or 'auto' after
@@ -244,8 +252,6 @@ interface SVG_JSON extends NODE {
             }>;
         };
 
-        debugGlobalName?: string;  // debug helper: exposes the animator as window[debugGlobalName]
-
         version?: string;          // "a.b.c" — the schema the file was written for: a = generation,
                                    // b = player schema (this release reads 1.2), c = editor extension
                                    // (meta.*, ignored by the player) — see Versioning. Written by the
@@ -270,7 +276,7 @@ interface SVG_JSON extends NODE {
 interface NODE {
     type: string;       // SVG element tag: "rect", "g", "path", "ellipse", "use", …
     id?: string;        // DOM id; required for href="#id" refs or as a binding's target
-    [camelCaseDomKey: string]: any; // SVG attrs by camelCase DOM name — cx, cy, r, fill, strokeWidth, fontSize, transform, … (kebab-case is accepted too); pass-through
+    [camelCaseDomKey: string]: unknown; // SVG attrs by camelCase DOM name — cx, cy, r, fill, strokeWidth, fontSize, transform, … (kebab-case is accepted too); pass-through
     domType?: string;   // the `type` ATTRIBUTE of the few elements that have one (feTurbulence, …):
                         // `type` is taken by the tag name, so the attribute travels here
     textContent?: string; // text content for <text>/<tspan>
@@ -279,7 +285,7 @@ interface NODE {
     // reference definitions.animations by name (rarely used), and can be mixed in an array
     animate?: Record<string, ANIMATE> | string | Array<string | Record<string, ANIMATE>>;
     effects?: EFFECTS;  // see "Player effects" below; JSON-only — the pre-rendered SVG export materializes these
-    meta?: any;         // editor-only (label, shape, …); not rendered, ignored by the player
+    meta?: unknown;     // editor-only (label, shape, …); not rendered, ignored by the player
     children?: Array<NODE>; // recursive; <g>, <defs>, <symbol>, <text>, <use>, …
 }
 
@@ -301,7 +307,7 @@ interface EFFECTS {
                         retime?: { start?, stretch?: number, timeCrop?: [inMs, outMs] } };  // retime is PURE timing
     fillGradient?:    GRADIENT;               // paints the fill …
     strokeGradient?:  GRADIENT;               // … or the stroke; same settings
-    textPath?:        { pathData: string /*inline SVG d*/, pathOverflow?, lengthAdjust?, method?, spacing?, startOffset?, textLength? };
+    textPath?:        { pathData: string | Animated /*inline SVG d, static or keyframed {pathData}*/, pathOverflow?, lengthAdjust?, method?, spacing?, startOffset?, textLength? };
     text?:            { useGlyphs?: boolean };  // render text from embedded glyph outlines (definitions.fonts)
 }
 
@@ -330,7 +336,7 @@ interface ANIMATE {
     value?: any;                              // optional static baseline (rarely needed — the node's own attribute is the baseline)
     autoOrient?: boolean;                     // translate-only: rotate element to face the path tangent
     alongPathMode?: 'sampled' | 'offsetPath'; // transform-only: how a motion path is rendered — pre-sampled keyframes (default) or CSS offset-path
-    // pre-processes keyframes to fill the timeline duration by repeating a segment
+    // pre-processes keyframes to fill the timeline window by repeating a segment
     // true → default: repeat last segment, cycling forward
     // independent of timeline.iterations; composes as loop-within-loop
     loop?: boolean | {
@@ -342,16 +348,39 @@ interface ANIMATE {
 }
 ```
 
+### HTML around SVG
+
+The root may be an HTML element instead of `svg`: a small page — headings, text, layout — with one or more
+`svg` drawings inside it. Elements are **HTML outside `<svg>` and SVG inside it**: the player creates them in the
+matching namespace, a node without `type` is a `div` outside and a `g` inside. The animator, bindings and
+`animate` work the same; animate HTML elements through properties that apply to them (CSS ones in `style`).
+Tags that load or run other content (`script`, `iframe`, `object`, `embed`, `link`, `meta`, `base`, `frame`) are
+never rendered.
+
+```json
+{
+  "type": "div",
+  "style": { "textAlign": "center" },
+  "animator": { "timeline": { "outTime": 1000 } },
+  "children": [
+    { "type": "h1", "textContent": "Hello, world!" },
+    { "type": "svg", "viewBox": "0 0 400 400", "width": 300, "height": 300,
+      "children": [{ "type": "circle", "cx": 200, "cy": 60, "r": 40,
+        "animate": { "cy": { "keyframes": [{ "time": 0, "value": 60 }, { "time": 1000, "value": 320 }] } } }] }
+  ]
+}
+```
+
 ### The document root
 
-<!-- px-check schema PxAnimatedSvgDocumentSchema -->
+<!-- px-check schema PxDocumentSchema -->
 | Field | Type | Meaning |
 |---|---|---|
-| `type` | always the string `"svg"` | required — marks the root element of the document |
+| `type` | string — usually `"svg"` | required — the root element's tag. `"svg"` for a drawing; an HTML tag such as `"div"` for a page that wraps one or more `svg` children (see [HTML around SVG](#html-around-svg)) |
 | `id` | string | the element's identifier — it becomes the DOM id, and other elements and effects reference the element by it ([documents without `children`](#animating-a-pre-rendered-svg) rely on these references) |
 | `viewBox` | string | the drawing's coordinate space, exactly as in SVG — e.g. `"0 0 700 380"` means "the drawing spans 700 × 380 units" |
 | `width` · `height` | number or string | how big the drawing appears on the page — the same `width` / `height` you would put on an `<svg>` tag. Write a plain number (`400`) for pixels, or a string for anything with a unit: `"32px"`, `"100%"` | <!-- px names=width,height -->
-| `animator` | object | the playback settings — duration, loops, trigger, etc — see [Playback settings](../library/playback-and-triggers.md) and [Definitions](#definitions--animatordefinitions) |
+| `animator` | object | the playback settings — the window, loops, trigger, etc — see [Playback settings](../library/playback-and-triggers.md) and [Definitions](#definitions--animatordefinitions) |
 | `children` | array of element objects | the nested SVG children tree |
 | `animate` · `effects` · `style` · `meta` · `textContent` · `domType` | as on any node | the root `<svg>` is a node too — every [node key](#nodes) applies to it | <!-- px names=animate,effects,style,meta,textContent,domType -->
 | any SVG attribute | string or number | any other key is passed through to the rendered `<svg>` as an SVG attribute (`fill`, `style`, …) | <!-- px skip -->
@@ -538,7 +567,7 @@ all the way to the next keyframe.
 
 ##### Per-property loops
 
-A property can repeat part of its own keyframes to fill the timeline's `duration`, independently of
+A property can repeat part of its own keyframes to fill the timeline's window (`outTime`), independently of
 the document's `iterations`:
 
 ```json
@@ -590,7 +619,17 @@ static `transform` on the same element — put a fixed placement on a wrapping `
 And since all parts share one set of keyframes, they run on one schedule; to give each part
 its own timing, use the [`transformBy` effect](#8--transformby).
 
-The per-key form (`animate: { translate, rotate, scale }` — used in the examples below) is also accepted; both produce the same composed `transform` string at render. A static `transform` attribute **composes under** the animated transform (CSS's own precedence, applied at read): partial keyframe parts inherit the static parts they don't set, and a single per-key channel next to a static transform keeps that static — `transform: {rotate: 45}` + an animated `translate` slides the element *while it stays rotated*. The one remaining last-write-wins case: several per-key channels animated at once on one node — compose those by nesting `<g>`s instead.
+A static `transform` attribute **composes under** the animated transform (CSS's own
+precedence, applied at read): partial keyframe parts inherit the static parts they don't set,
+so `transform: {rotate: 45}` + keyframes animating only `translate` slides the element *while
+it stays rotated*.
+
+> **Deprecated:** the per-key form (`animate: { translate: {…} }`, one channel per part) is
+> still READ — files migrated from older versions carry it — but it is no longer the way to
+> write documents, and the player warns about it
+> ([PX1107](../diagnostics.md)): two per-key channels on one node are last-write-wins,
+> each writing the whole `transform`. Spell the pose as `animate.transform` record keyframes;
+> parts that need their own timing belong in the [`transformBy` effect](#8--transformby).
 
 ### Motion along a path
 
@@ -630,6 +669,44 @@ editor get this right automatically:
 
 Morphing runs on the player's frame loop (`engine: 'auto'` switches to it automatically).
 
+### Compiled animation — the low layer
+
+Before it plays a document, the player LOWERS every `animate` entry to its **compiled** form, and
+the result stays a valid document of this format — the same keyframe keys, the values typed by a
+`kind`, and nothing left to resolve:
+
+```js
+"fill": { "keyframes": [ { "time": 0, "value": "#ff0000", "easing": "smooth" }, { "time": 400, "value": "#0000ff" } ], "loop": true }   // authored
+"fill": { "kind": "color", "keyframes": [ { "time": 0, "value": [1, 0, 0, 1], "easing": [0.42, 0, 0.58, 1] }, … ] }                    // compiled
+```
+
+- **All authored or all compiled.** An entry with a `kind` is compiled through and through; an entry
+  without one is authored. A compiled kind with authored values (`"kind": "color"` holding `"#ff0000"`)
+  is not valid.
+- **Explicit.** `time` is required; `easing` is a resolved curve, never a name; there is no `loop`
+  (it is expanded into keyframes over the window). Times are content ms, like the authored ones.
+- **Per engine.** For the native engine a motion path is sampled into plain `transform` keyframes;
+  for the frame loop it keeps its tangents and `autoOrient`, and is evaluated each frame.
+- **Who writes it.** The player, in `prepareDocument`'s `plain` stage. The editor reads a compiled
+  entry back as its authored form and never writes one.
+
+<!-- px-check off compiled kinds, prose -->
+| `kind` | `value` | Extra |
+|---|---|---|
+| `number` | a number | `unit` — the unit every authored value carried (`"20%"` → `20` with `"unit": "%"`) |
+| `percent` | a 0..1 number, written as a percentage (`offset-distance`) | |
+| `rotate`, `skew` | a number (degrees) | |
+| `color` | `[r, g, b, a]`, every channel 0..1 — always four | |
+| `path` | `{ "paths": [ { "v", "i", "o", "c" } ] }` — the parsed bezier paths of `d` | |
+| `transform` | a parts record | keyframe `tangentIn` / `tangentOut` and `autoOrient` — a motion path the frame loop evaluates |
+| `numberList`, `translate`, `scale` | an array of numbers | |
+| `discrete` | a string — switches at the half, never blends (`url(#a)`, `none`, …) | |
+
+`isCompiledAnimation(entry)` tells the two forms apart; `PxAnyPropertyAnimationSchema` validates an
+entry of either form (`PxAnyPropertyAnimation`), `PxCompiledAnimationSchema` the compiled one alone
+(`PxCompiledAnimation`, its keyframes `PxCompiledKeyframe`). A compiled colour is a `PxRgba`
+(`PxRgbaSchema`), a resolved easing a `PxCubicBezier` (`PxCubicBezierSchema`). Schema 1.6 added this layer.
+
 ### Definitions — `animator.definitions`
 
 `animator.definitions` is where things are **defined once, under a name, and used in many
@@ -668,12 +745,12 @@ of **bindings**, each saying which element (`target`, by `#id`) plays which of t
 (`animateWith`). You will normally never write such a document yourself; the editor generates it.
 
 ```js
-import { createAnimator } from '@pixodesk/svg-animator-web';
+import { createSvgAnimationPlayer } from '@pixodesk/svg-animator-web';
 
-createAnimator({ container: '#box', doc: {   // an empty <div id="box"> on the page
+createSvgAnimationPlayer({ container: '#box', doc: {   // an empty <div id="box"> on the page
   type: 'svg', id: '_px_root',
   animator: {
-    timeline: { duration: 2000 },
+    timeline: { outTime: 2000 },
     definitions: { animations: {
       fadeIn: { opacity: { keyframes: [ { time: 0, value: 0 }, { time: 2000, value: 1 } ] } },
       warm:   { fill:    { keyframes: [ { time: 0, value: '#0087ff' }, { time: 2000, value: '#ff3b30' } ] } },
@@ -703,7 +780,7 @@ each property has one fixed unit that is always understood:
 <!-- px-check off units, prose -->
 | Value | Unit |
 |---|---|
-| time (`time`, `timeline.duration`, `timeline.delay`, `retime.start`) | milliseconds |
+| time (`time`, `timeline.inTime` / `outTime` / `playDuration`, `timeline.delay`, `retime.start`) | milliseconds |
 | lengths, coordinates, `fontSize` in px | plain numbers in the drawing's coordinates (the `viewBox` space) — no unit is written |
 | `rotate`, `skew`, angles | degrees |
 | `opacity`, trim `range` / `offset`, stop `offset`, `visibilityThreshold` | a share of the whole, from `0` (none) to `1` (all) |
@@ -729,7 +806,7 @@ a document.
   is not an error and is not reported; one whose value is an object is.
 
 To check a generated document before it ships, call `validateDocument(doc)` — see
-[Validating a document](#validating-a-document). It returns the same problem strings, `[]` when
+[Validating a document](#validating-a-document). Its `errors` are the same problem strings, empty when
 the document is sound. [SCHEMA.json](../../SCHEMA.json) is a JSON Schema generated from the same
 runtime schemas (`node scripts/gen-schema-json.mjs`), for tools that validate JSON themselves.
 
@@ -744,14 +821,14 @@ Complete documents, one idea each.
   "type": "svg",
   "viewBox": "0 0 400 400",
   "animator": {
-    "timeline": { "duration": 1000, "iterations": "infinite",
+    "timeline": { "outTime": 1000, "iterations": "infinite",
                   "trigger": { "start": "load" } }
   },
   "children": [
     { "type": "ellipse", "fill": "#007fff85", "rx": 64, "ry": 64,
-      "animate": { "translate": { "keyframes": [
-        { "time": 0,    "value": [139, 163] },
-        { "time": 1000, "value": [139, 310] }
+      "animate": { "transform": { "keyframes": [
+        { "time": 0,    "value": { "translate": [139, 163] } },
+        { "time": 1000, "value": { "translate": [139, 310] } }
       ] } } }
   ]
 }
@@ -764,7 +841,7 @@ Complete documents, one idea each.
   "type": "svg",
   "viewBox": "0 0 600 400",
   "animator": {
-    "timeline": { "duration": 2000, "direction": "alternate", "iterations": "infinite" },
+    "timeline": { "outTime": 2000, "direction": "alternate", "iterations": "infinite" },
     "definitions": {
       "easings": { "smooth": [0.42, 0, 0.58, 1] },
       "animations": { "fadeIn": { "opacity": { "keyframes": [
@@ -791,7 +868,7 @@ by `#id` and the animations it plays by name — [above](#animating-a-pre-render
   "type": "svg",
   "id": "heroSvg",
   "animator": {
-    "timeline": { "duration": 3000, "iterations": "infinite" },
+    "timeline": { "outTime": 3000, "iterations": "infinite" },
     "definitions": { "animations": {
       "spin":     { "rotate": { "keyframes": [ { "time": 0, "value": 0 }, { "time": 3000, "value": 360 } ] } },
       "spinBack": { "rotate": { "keyframes": [ { "time": 0, "value": 0 }, { "time": 3000, "value": -360 } ] } }
@@ -810,7 +887,7 @@ by `#id` and the animations it plays by name — [above](#animating-a-pre-render
 {
   "type": "svg",
   "viewBox": "0 0 400 200",
-  "animator": { "timeline": { "duration": 1000 } },
+  "animator": { "timeline": { "outTime": 1000 } },
   "children": [
     { "type": "path", "d": "M20,100C60,20,140,20,180,100", "stroke": "#000000", "fill": "none",
       "effects": {
@@ -831,14 +908,14 @@ by `#id` and the animations it plays by name — [above](#animating-a-pre-render
   "type": "svg",
   "viewBox": "0 0 400 400",
   "animator": {
-    "timeline": { "type": "view", "duration": 3000,
+    "timeline": { "type": "view", "outTime": 3000,
                   "range": { "start": { "phase": "entry", "fraction": 0 },
                              "end":   { "phase": "exit",  "fraction": 1 } } }
   },
   "children": [
     { "type": "rect", "width": 80, "height": 80, "fill": "#10b981",
-      "animate": { "translate": { "keyframes": [
-        { "time": 0, "value": [0, 0] }, { "time": 3000, "value": [320, 0] } ] } } }
+      "animate": { "transform": { "keyframes": [
+        { "time": 0, "value": { "translate": [0, 0] } }, { "time": 3000, "value": { "translate": [320, 0] } } ] } } }
   ]
 }
 ```
@@ -908,7 +985,7 @@ and no font file needs to be installed or loaded.
   "type": "svg",
   "viewBox": "0 0 400 100",
   "animator": {
-    "timeline": { "duration": 1000 },
+    "timeline": { "outTime": 1000 },
     "definitions": {
       // The outlines the text is drawn from — one entry per letter used
       // (paths shortened here; the editor writes the real ones)
@@ -943,13 +1020,17 @@ says which:
 <!-- px-check schema PxTextPathEffectSchema -->
 | Field | Type | Meaning | Applies to |
 |---|---|---|---|
-| `pathData` | path string | the path geometry (inline — no separate element needed) | browser text, glyphs |
+| `pathData` | path string \| `Animated<path string>` | the path geometry (inline — no separate element needed). Animated: each keyframe's value is `{ "pathData": "M…" }`, every keyframe with the same points, like an animated `d` | browser text, glyphs |
 | `startOffset` | number \| `Animated<number>` | where the text starts along the path ([SVG spec](https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/Attribute/startOffset)) | browser text, glyphs |
 | `textLength` | number \| `Animated<number>` | stretch / squeeze the text to this length ([SVG spec](https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/Attribute/textLength)) | browser text, glyphs |
 | `lengthAdjust` | `spacing` (default) · `spacingAndGlyphs` | how `textLength` is reached: by changing the space between glyphs only, or by stretching the glyphs too ([SVG spec](https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/Attribute/lengthAdjust)) | browser text only |
 | `method` | `align` (default) · `stretch` | each glyph is rotated to sit on the path, or the glyphs themselves are bent to follow its curve ([SVG spec](https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/Attribute/method)) | browser text only |
 | `spacing` | `auto` · `exact` (default) | `exact` places glyphs strictly by the SVG layout rules; `auto` lets the renderer adjust the spacing to look better on curves ([SVG spec](https://developer.mozilla.org/en-US/docs/Web/SVG/Reference/Attribute/spacing)) | browser text only |
-| `pathOverflow` | `extend` (default) · `clip` | glyphs past the end of an open path continue along the tangent, or disappear | browser text, glyphs |
+| `pathOverflow` | `extend` (default) · `clip` | glyphs past the end of an open path continue along the tangent, or disappear. Browser text falls back to `clip` while `pathData` animates | browser text, glyphs |
+
+A **moving path** (animated `pathData`) works everywhere for glyph text — each glyph is
+re-placed on the path as it bends. Browser text follows it only with the frame loop
+(`engine: 'auto'` switches for you); CSS exports keep the first keyframe's path.
 
 ```js
 { "type": "text", "fill": "#111", "fontSize": 18,
@@ -1245,7 +1326,7 @@ React Native player produce identical values from the same document.
 
 Usually **no** — install a [player](../library/installation.md) instead; each depends on the core and
 re-exports what you need. Install the core directly when you work with **documents rather
-than playback**: validating them, transforming them, flattening them for a renderer of your
+than playback**: validating them, transforming them, materializing them for a renderer of your
 own, or computing values at a given time without rendering anything.
 
 ```bash
@@ -1254,58 +1335,131 @@ npm install @pixodesk/svg-animator-core
 
 ### Validating a document
 
-Validate a document before it reaches a player — in a build step, a test, or a tool that
-accepts files from users:
+ONE call answers everything (review §15): `validateDocument(doc)` checks the whole document —
+the wire schema, every node's `effects` bucket, the glyph-font and easing references, the
+version stamp — and returns a `PxValidationResult`:
 
 ```ts
-import { isPxDocument, isValidPxDocument,
-         PxAnimatedSvgDocumentSchema, type PxValidationContext } from '@pixodesk/svg-animator-core';
+// Check a generated document before it ships — a build step, a test, a tool taking user files
+import { validateDocument, isPxDocument } from '@pixodesk/svg-animator-core';   // also exported by the web player
 import { readFile } from 'node:fs/promises';
 
 const json = JSON.parse(await readFile('animation.json', 'utf8'));   // Node — or fetch() in a browser
 
-isPxDocument(json);        // cheap shallow gate — is this a Pixodesk document at all?
-isValidPxDocument(json);    // { valid, errors } — full schema
+if (!isPxDocument(json)) throw new Error('not a Pixodesk document');  // the cheap shallow gate
 
-// per-field diagnostics
-const ctx: PxValidationContext = { errors: [], warnings: [], strict: true };
-if (!PxAnimatedSvgDocumentSchema.isValid(json, ctx, [])) console.error(ctx.errors);
-// → ["children[0].effects.strokeTrim.range: no union member matched for value 5"]
+const { valid, errors, findings } = validateDocument(json);
+if (!valid) throw new Error(errors.join('\n'));    // "path: what is wrong", one line per problem
+
+// Code that must BRANCH on what went wrong reads `findings`, never the text — the structured
+// twin of `errors`: one PxValidationFinding per line, with a PxValidationFindingKind and the
+// path as segments: { kind, path: ['children', '[0]', …], reason, message, expected?, memberFindings? }
+const writtenByNewerVersion = findings.some(f => f.kind === PxValidationFindingKind.unknownKey);
 ```
+
+The kinds are `unknownKey` (a key the schema does not declare — only reported under `strict`),
+`typeMismatch`, `invalidValue` (a `literal` / `enum` miss, or an unparseable version stamp), `missingValue`,
+`missingReference` (a glyph font face or easing name with no definition) and `unionMismatch`.
+A failed union is ONE `unionMismatch` finding: the best-matching member's own diagnosis sits
+nested in its `memberFindings`, so an extra key met while trying a union member describes a
+malformed value and never counts as the document's own unknown key.
 
 <!-- px-check off validation modes, prose -->
 | Mode | Question it answers | Unknown keys |
 |---|---|---|
-| default | *is this document usable?* — what the players accept | ignored (forward-compatible) |
-| `strict: true` | *is this document exactly well-formed?* | reported as errors |
+| `validateDocument(doc)` — strict, the default | *is this document exactly well-formed?* — before you ship | reported as errors |
+| `validateDocument(doc, { strict: false })` | *is this document usable?* — what a reader accepts | tolerated (forward-compatible: an unknown key usually means a newer writer) |
 
-Use the default in production readers and `strict` in tests and tooling.
-`validateDocument(doc)` checks the whole document strictly and returns problem strings (`path: what is wrong`), empty when sound; `validateNodeEffects(doc)` checks just the `effects` buckets and returns warning strings.
+These two are the whole public checking surface for a DOCUMENT — `validateDocument` and the
+`isPxDocument` guard. The narrower checkers it is built from (per-part walkers) live on
+`@pixodesk/svg-animator-core/internal` for the players and the editor.
+
+#### Casting a value with its schema
+
+Every schema can also turn an unchecked value into a typed one — the way to read any part of a
+document without guessing its type:
 
 ```ts
-// Check a generated document before it ships
-import { validateDocument } from '@pixodesk/svg-animator-core';   // also exported by the web player
+import { PxKeyframeSchema, PxSchemaCastError } from '@pixodesk/svg-animator-core';
 
-const problems = validateDocument(doc);   // [] when the document is sound
-if (problems.length) throw new Error(problems.join('\n'));
+PxKeyframeSchema.is(value);          // a type guard: true narrows `value` to a keyframe
+PxKeyframeSchema.cast(value);        // the keyframe, or throws PxSchemaCastError naming each problem's path
+PxKeyframeSchema.castOrNull(value);  // the keyframe, or null
+const { value: kf, problems } = PxKeyframeSchema.castOrFix(value);   // a repaired copy + what was repaired
 ```
+
+- **`castOrFix` checks in one visit** and builds a NEW value: declared fields are checked and
+  repaired (to the schema's default, or dropped), undeclared keys are kept as they are — it is as
+  forgiving as a reader — and `problems` lists every repair (`PxCastResult`). The input is never
+  modified.
+- **Checked values are stamped.** Every object and array `castOrFix` builds remembers which
+  schemas it satisfies, so `is` / `cast` / `castOrNull` on it answer at once instead of walking it
+  again. The stamp is invisible to `JSON.stringify` and `Object.keys`; a copy, a clone or a saved
+  file loses it and is simply checked again. Passing a stamped value to `castOrFix` returns it as it
+  is, and an edited copy only re-checks what changed.
+- `prepareDocument` runs `castOrFix` over the whole document in its `checked` stage (below), so
+  every part of a prepared document casts for free.
+- To walk a schema itself, `describeSchema(schema)` returns its structure (`PxSchemaDesc`: an
+  object's fields, an array's item, a union's members, …). Each part is a `PxAnySchema` — a schema
+  of some value — so a walker stays typed all the way down.
 
 ### Reading a document
 
 `getAnimatorConfig(doc)`, `getChildren(doc)`, `getBindings(doc)` and `getDefinitions(doc)` read
 the `animator` block, the element tree, the bindings and the definitions of a document without
 knowing where they sit — reach for them over `doc.animator?.…` in a tool of your own.
+`getAnimatorConfig` returns the block as the players read it, a `PxAnimatorRuntimeConfig`: `timeline`
+folded into top-level `duration`, `trigger`, `iterations` and the rest. That flat shape is not
+something to write — a file's `animator` is a `PxAnimatorConfig`, and `nestAnimatorTimeline` turns
+the flat shape back into one.
 
-### Flattening a document
+### Preparing a document
 
-`materializeAllInTree(doc, engine)` turns a document into a flat tree any renderer can walk:
+`prepareDocument(doc, options?)` is the one call that lowers a document as far as you need —
+always in this order — and remembers how far it got:
+
+<!-- px-check off stage ladder, prose -->
+| Stage (`PxDocStage`) | What is done |
+|---|---|
+| `current` | migrated to the schema this build reads — [Versioning](#versioning) |
+| `checked` | checked and repaired against the schema in one visit, every part stamped — see [Casting a value with its schema](#casting-a-value-with-its-schema); `onProblems` receives what was repaired |
+| `resolved` | the animator config's runtime view computed once and attached: `getAnimatorConfig` on the result is a plain read |
+| `plain` (the default) | materialized for an engine — [Materializing a document](#materializing-a-document), below — what the Web Animations API or the frame loop consumes directly |
+
+- **The input is never changed.** The result is a new document stamped with its stage
+  (`documentStage(doc)`); the stamp is invisible to `JSON.stringify` and `Object.keys`, and a
+  saved or cloned copy loses it.
+- **Prepared once, trusted after.** Preparing a document that already reached the stage (for the
+  same engine) returns it unchanged — passing a prepared document on and preparing it again "just
+  in case" costs nothing. The result's type, `PxPreparedDocument`, says it was prepared.
+- **Edits start over.** The stamp is trusted only while the document keeps the animator config it
+  was prepared with; an edited copy is a new object and is prepared afresh.
+- `freshIds: true` mints new ids on the result — needed before putting the same animation on a
+  page twice.
+
+```ts
+import { prepareDocument, documentStage, getAnimatorConfig } from '@pixodesk/svg-animator-core';
+import doc from './bouncing-ball.json';
+
+const ready = prepareDocument(doc, { freshIds: true });   // current → checked → resolved → plain
+documentStage(ready);                                      // 'plain'
+getAnimatorConfig(ready)?.duration;                        // a property read — nothing re-derived
+prepareDocument(ready) === ready;                          // true: trusted, nothing redone
+```
+
+### Materializing a document
+
+`materializeAllInTree(doc, engine)` — the `plain` step of `prepareDocument` — expands every
+indirection into plain nodes and plain keyframes, a tree any renderer can walk:
 
 1. **Effects** — every `node.effects` becomes real nodes, wrappers and defs.
-2. **Loops** — each property's `loop` is expanded into explicit keyframes.
-3. **Motion paths** — tangented `transform` keyframes and `autoOrient` are sampled into plain
-   `{ translate, rotate }` keyframes.
-4. **Animated `<use>`** — replaced by a `<g>` with a deep clone and fresh ids.
-5. **Rest poses** — an animated property with no static value gets the value of its **first
+2. **Animations** — every `animate` entry is lowered to its [compiled form](#compiled-animation--the-low-layer):
+   values typed by kind, easings resolved, each `loop` expanded into explicit keyframes, the static
+   `transform` composed under the animated one, and a motion path (tangented `transform` keyframes,
+   `autoOrient`) sampled into plain `{ translate, rotate }` keyframes — or, for the frame loop, kept
+   to be evaluated each frame.
+3. **Animated `<use>`** — replaced by a `<g>` with a deep clone and fresh ids.
+4. **Rest poses** — an animated property with no static value gets the value of its **first
    frame** as a plain attribute. At rest — not yet played, or cancelled — a player shows the
    static document, and a node an effect generated (a `transformBy` wrapper, a mask's inverse
    chain, a glyph on a path) has no static value of its own: without this step it sits at the
@@ -1318,7 +1472,7 @@ knowing where they sit — reach for them over `doc.animator?.…` in a tool of 
    rest: the engine is run again with the poses in place, and a pose that changes anything it
    writes, at any point of the iteration, is taken back.
 
-Steps 3–4 run when `engine` is `native`. Pass `native` for **any renderer without live `<use>`
+Step 3 runs when `engine` is `native`, as does the sampling in step 2. Pass `native` for **any renderer without live `<use>`
 propagation** (including `react-native-svg`); `js` only for the DOM, which resolves `<use>`
 natively.
 
@@ -1327,11 +1481,11 @@ import { materializeAllInTree, generateNewIds, calcAnimationValues,
          normalizeBindings, PxTimelineEngine } from '@pixodesk/svg-animator-core';
 import doc from './bouncing-ball.json';
 
-const flat = generateNewIds(materializeAllInTree(doc, PxTimelineEngine.native));
+const plain = generateNewIds(materializeAllInTree(doc, PxTimelineEngine.native));
 
 // values at any time, no renderer involved
-for (const binding of normalizeBindings(flat, PxTimelineEngine.js) ?? []) {
-  const values = calcAnimationValues(binding.animate, 500);   // t = 500 ms
+for (const binding of normalizeBindings(plain, PxTimelineEngine.js) ?? []) {
+  const values = calcAnimationValues(binding.channels, 500);   // t = 500 ms
   console.log(binding.id, values);   // → ball { transform: 'translate(200,129.65)' }   (the bouncing ball, half-way down)
 }
 ```
@@ -1339,14 +1493,24 @@ for (const binding of normalizeBindings(flat, PxTimelineEngine.js) ?? []) {
 This is exactly how the React Native player precomputes its tracks and how the web frame loop
 renders each tick.
 
+`normalizeBindings` hands back each element as a `PxNormalizedBinding`: its id and its
+`channels` (`PxRuntimeAnimation`) — one compiled animation (`PxCompiledAnimation`) per animated
+property, shifted from content ms into window ms. An authored entry (an unprepared document, the
+pre-rendered builds) is compiled there. What a property's values ARE is decided once and carried
+as its `kind` (`PxValueKind`): a colour as RGBA numbers (`PxRgba`), `d` as bezier paths
+(`PxPathValue`), `transform` as a parts record, a number with its unit (`"20%"` → `"80%"` blends and
+stays a percentage); a value that fits no blendable kind (`url(#a)` → `url(#b)`) switches at the
+halfway point instead of blending. Easings are resolved (`PxCubicBezier`); each keyframe is a
+`PxCompiledKeyframe`, typed by its kind.
+
 ### Writing your own player
 
-Implement `PxPlatformAdapter` and hand it to `createAdapterAnimator`; the engine
+Implement `PxPlatformAdapter` and hand it to `createAdapterSvgAnimationPlayer`; the engine
 handles timing, delay, direction, iterations, fill, playback rate and the lifecycle callbacks,
 then calls you with plain attribute writes:
 
 ```ts
-import { createAdapterAnimator, materializeAllInTree, generateNewIds,
+import { createAdapterSvgAnimationPlayer, materializeAllInTree, generateNewIds,
          PxTimelineEngine, type PxPlatformAdapter } from '@pixodesk/svg-animator-core';
 import doc from './bouncing-ball.json';
 
@@ -1357,7 +1521,7 @@ const adapter: PxPlatformAdapter = {
   setAttribute: (id, attrName, value) => { /* apply to your element */ },
 };
 
-const api = createAdapterAnimator(flatDoc, adapter, { onFinish: () => console.log('done') });
+const api = createAdapterSvgAnimationPlayer(flatDoc, adapter, { onFinish: () => console.log('done') });
 api.play();
 ```
 
@@ -1372,34 +1536,64 @@ The calls above, and the rest of what you would call directly, in signature form
 
 <!-- px-check signature pkg=core -->
 ```typescript
+// ○ The one lowering pipeline — current → resolved → plain — stamped on the result; a document
+//   that already reached the stage comes back unchanged (see Preparing a document).
+function prepareDocument(doc: PxDocument, options?: PxPrepareOptions): PxPreparedDocument;
+function documentStage(doc: PxDocument): PxDocStage | undefined;   // undefined = a raw document
+
+interface PxPrepareOptions {
+    stage?: PxDocStage;          // 'current' | 'checked' | 'resolved' | 'plain' (the default)
+    engine?: PxTimelineEngine;   // what `plain` materializes for; default: the document's own
+    freshIds?: boolean;          // mint new ids on the result
+    onProblems?: (problems: ReadonlyArray<PxValidationFinding>) => void;   // what `checked` repaired
+}
+
 // ○ Run the whole materialization pipeline: effects → loops → motion paths →
 //   <use> instances → rest poses, always in this order. This is exactly what the player
-//   runs internally, so a document flattened here plays identically — the way
+//   runs internally, so a document materialized here plays identically — the way
 //   to feed a renderer that has no effects support. `resolveTimelineEngine`
 //   turns a document's `timeline.engine` into this argument.
 function materializeAllInTree(
-    doc: PxAnimatedSvgDocument,
+    doc: PxDocument,
     engine: 'native' | 'js',
     options?: { motionPath?: MotionPathMaterializationOptions },
-): PxAnimatedSvgDocument;
+): PxDocument;
 
 // ○ One stage of it: `node.effects` → plain renderable nodes (+ generated defs).
 function materializeNodeEffects(root: PxNode): ApplyResult;
 
-// ● The whole-document check: the strict wire schema (undeclared keys included)
-//   plus every `effects` bucket. Returns human-readable problems (`path: what is
-//   wrong`), empty when the document is sound; never throws. Every player runs the
-//   same check on load and prints the problems as one console warning — call this
-//   before shipping a document instead of relying on the console.
-function validateDocument(doc: unknown, options?: { strict?: boolean }): Array<string>;
+// ● The cheap shallow gate — "is this a Pixodesk document at all?" (a type guard). With
+//   `validateDocument` below, the whole public checking surface (review §15).
+function isPxDocument(doc: unknown): boolean;   // a type guard: true narrows to PxDocument
+
+// ● THE whole-document check (review §15 — the ONE public answer): the wire schema (undeclared
+//   keys included under strict), every `effects` bucket, the glyph-font and easing references
+//   and the version stamp. Answers `{ valid, errors, findings }`: problem lines
+//   (`path: what is wrong`) and their structured twins; never throws. Every player runs the
+//   same check on load and prints the problems as one console warning — call this before
+//   shipping a document instead of relying on the console.
+function validateDocument(doc: unknown, options?: { strict?: boolean }): PxValidationResult;
 //   `strict` (default true) rejects keys the schema does not declare — right before you ship.
 //   `{ strict: false }` tolerates them, which is what a READER wants: an unknown key usually
-//   means a newer writer — worth a warning, never a refusal.
+//   means a newer writer — worth a warning, never a refusal. The narrower checkers live on
+//   the `/internal` entry.
 
-// ○ Check every `node.effects` bucket against the schema, depth-first. Returns
-//   human-readable warnings (each prefixed with the node's path) and never
-//   throws; the players run this on load and log whatever comes back.
-function validateNodeEffects(root: PxNode, options?: { strict?: boolean }): Array<string>;
+// ── Declarative playback plumbing (review §10) — what the React / Vue / React Native
+// components are built FROM, public for anyone building a component of their own. ●
+// `PxPlayMode` is the user-facing half: which pose changes PLAY vs snap (`fillMode`'s
+// spellings — `forwards` plays there and snaps back (the default), `backwards` snaps there
+// and plays back, `both` plays both ways, `none` snaps both ways).
+//
+// ○ The shared rule itself: `resolvePlaybackWorld(iterations)` says what `play` drives — a
+//   POSE on a one-shot document (`PxPlaybackWorld.oneShot`) or a RUN on a looping one;
+//   `resolveDeclarativePlayback(args: PxDeclarativeArgs)` turns a props change
+//   (`PxDeclarativeProps`) into ordered `PxDeclarativeAction`s plus usage warnings;
+//   `applyDeclarativeAction(api: PxDeclarativeTarget, action, ctx: PxDeclarativeRunContext)`
+//   executes one action with the boundary guards; `createIterationStopWatcher` lands a loop's
+//   deferred stop (`completeIteration`) on the iteration boundary; and
+//   `composeApiExtras(api: PxPlayOnceTarget, cfg: PxPlayOnceConfig, raf)` completes any engine
+//   or handle with the COMPOSED members — the one-pass `playOnce()` and `getDuration()`. `PxEngineAnimationPlayerApi` is what an engine
+//   constructs — the full api minus the composed `playOnce`.
 
 // ● Per-instance playback override, shared by every player. `patch` is a
 //   deep-partial of the document's `animator` block; objects merge key by key,
@@ -1408,10 +1602,10 @@ function validateNodeEffects(root: PxNode, options?: { strict?: boolean }): Arra
 //   untouched subtree by reference. Warnings say what could not be applied
 //   (e.g. clock-only keys aimed at a scroll timeline).
 function applyAnimatorConfig(
-    doc: PxAnimatedSvgDocument,
+    doc: PxDocument,
     patch: PxAnimatorConfigPatch,
     options?: { resetTimeline?: boolean },   // start from the player's defaults; keeps
-): { doc: PxAnimatedSvgDocument; warnings: Array<string> };   // definitions/bindings
+): { doc: PxDocument; warnings: Array<string> };   // definitions/bindings
 
 // ○ The same merge one level down, on the config object itself.
 function mergeAnimatorConfig(
@@ -1427,22 +1621,23 @@ function foldTimelineOverride(
     shortcuts: PxTimelineShortcuts,
 ): PxAnimatorConfigPatch | undefined;
 
-// ○ The schema version — see Versioning, below.
-const PX_WIRE_SCHEMA_VERSION: '1.2';                                    // the schema this build reads
+// ○ The schema version this build reads, parsed — see Versioning, below.
+//   `formatWireVersion(PX_WIRE_VERSION)` gives the "a.b.c" string back.
+const PX_WIRE_VERSION: PxWireVersion;
 function readWireVersion(doc: unknown): PxWireVersion | undefined;          // animator.version (or meta.animator.version)
 function convertWireDocument(doc: unknown): PxWireConversionResult;     // up to this schema; never refuses, never mutates
 function downgradeWireDocument(doc: unknown, target: PxWireVersion): PxWireDowngradeResult;   // all or nothing
 
 // ○ Deep-clone a document with fresh ids and internal references rewritten —
 //   what you need before putting the same animation on a page twice.
-function generateNewIds(doc: PxAnimatedSvgDocument): PxAnimatedSvgDocument;
+function generateNewIds(doc: PxDocument): PxDocument;
 
 // ○ Playback on a non-DOM target: implement the adapter, get the frame-loop engine.
-function createAdapterAnimator(
-    doc: PxAnimatedSvgDocument,
+function createAdapterSvgAnimationPlayer(
+    doc: PxDocument,
     adapter: PxPlatformAdapter,
     callbacks?: PxEngineCallbacks,
-): PxAnimatorApi;
+): PxAnimationPlayerApi;
 
 interface PxPlatformAdapter {
     isConnected(): boolean;                                     // is the target still mounted
@@ -1454,7 +1649,7 @@ interface PxPlatformAdapter {
 //   wins:
 //     1. `progress` or `time` set  → you control the position
 //     2. `play` or `pause` set     → you control playing and pausing
-//     3. `autoplay` set            → the document's own trigger
+//     3. `playAsSaved` set            → the document's own trigger
 //     4. nothing set               → static: the first frame, nothing plays
 //   If you set props from more than one line, the result includes a ready-made
 //   warning to show. `apiRef` never changes the result: it is a handle for calling
@@ -1462,7 +1657,7 @@ interface PxPlatformAdapter {
 function resolveControlMode(props: PxControlProps): PxResolvedControlMode;
 
 // ● True when that mode has to take the document's own trigger over — every mode
-//   except `autoplay`, INCLUDING `static`: a component given no control props at
+//   except `playAsSaved`, INCLUDING `static`: a component given no control props at
 //   all renders the first frame and waits, so it forces `start: 'none'`.
 function controlModeTakesOverTrigger(mode: PxControlMode): boolean;
 ```
@@ -1472,31 +1667,34 @@ function controlModeTakesOverTrigger(mode: PxControlMode): boolean;
 <!-- px-check exports @pixodesk/svg-animator-core -->
 | Group | Identifiers | Audience · what it is for |
 |---|---|---|
-| Wire types | `PxAnimatedSvgDocument`, `PxNode`, `PxSvgNode`, `PxAnimatorConfig`, `PxTimeline`, `PxTrigger`, `PxElementAnimation`, `PxPropertyAnimation`, `PxKeyframe`, `PxLoop`, `PxBinding`, `PxDefinitions`, `PxEffects`, `PxTransformParts`, `PxBezierPath`, `PxGlyph`, `PxGlyphFont`, `PxAnimationDefinition`, `PxScroll`, `PxScrollRangePoint`, `PxVec2`, `PxTransformValue` | ● the shapes in [Schema at a glance](#schema-at-a-glance) |
-| Player API types | `PxAnimatorApi<TRoot>`, `PxPlaybackApi<TRoot>`, `PxEngineCallbacks`, `PxPlatformAdapter` | ● platform-neutral; the web fixes `TRoot` to `Element`. `PxEngineCallbacks` is what an engine takes — the lifecycle on top of `PxDiagnosticsConfig` |
-| Component contract | `PxAnimatorHandle`, `PxAnimatorCallbacks`, `PxControlProps`, `PxControlMode`, `resolveControlMode(props)`, `controlModeTakesOverTrigger(mode)`, `prepareDocumentForRender(doc)` (▪), `renderPxTree(node, factory)` (▪), `PxElementFactory` (▪), `PxElementSpec` (▪) | ● what the React / Vue / React Native components share: the imperative handle, the callback set, the props that pick a mode and the one rule that picks it — [the API at a glance](../library/README.md#the-api-at-a-glance). `renderPxTree` is THE renderer of every DOM player: it makes each decision about a document — tags, attribute names and values, sanitization, styles, text — and a player supplies only a `PxElementFactory`, "create an element from this finished `PxElementSpec`" (a DOM node, a React element, a Vue vnode). `prepareDocumentForRender` is the document it is given: materialized, then fresh ids |
+| Wire types | `PxDocument`, `PxDocumentInput`, `toPxDocument(doc)` (○), `PxNode`, `PxSvgNode`, `PxAnimatorConfig`, `PxTimeline`, `PxTrigger`, `PxElementAnimation`, `PxPropertyAnimation`, `PxKeyframe`, `PxLoop`, `PxBinding`, `PxDefinitions`, `PxEffects`, `PxTransformParts`, `PxBezierPath`, `PxGlyph`, `PxGlyphFont`, `PxAnimationDefinition`, `PxScroll`, `PxScrollRangePoint`, `PxVec2`, `PxTransformValue` | ● the shapes in [Schema at a glance](#schema-at-a-glance) |
+| Player API types | `PxAnimationPlayerApi<TRoot>`, `PxEngineAnimationPlayerApi<TRoot>` (○), `PxEngineCallbacks`, `PxPlatformAdapter` | ● platform-neutral; the web fixes `TRoot` to `Element`. `PxEngineCallbacks` is what an engine takes — the lifecycle on top of `PxDiagnosticsConfig` |
+| Component contract | `PxAnimationPlayerHandle`, `PxAnimationPlayerCallbacks`, `PxControlProps`, `PxControlMode`, `resolveControlMode(props)`, `controlModeTakesOverTrigger(mode)`, `PxPlayMode`, `resolveDeclarativePlayback(args)` (○), `PxDeclarativeAction` (○), `PxDeclarativeProps` (○), `PxDeclarativeArgs` (○), `PxDeclarativeTarget` (○), `PxDeclarativeRunContext` (○), `applyDeclarativeAction(api, action, ctx)` (○), `createIterationStopWatcher(api, passMs, raf, onStopped?)` (○), `resolvePlaybackWorld(iterations)` (○), `PxPlaybackWorld` (○), `composeApiExtras(api, cfg, raf)` (○), `PxPlayOnceConfig` (○), `PxPlayOnceTarget` (○), `prepareDocumentForRender(doc)` (▪), `renderPxTree(node, factory)` (▪), `PxElementFactory` (▪), `PxElementSpec` (▪) | ● what the React / Vue / React Native components share: the imperative handle, the callback set, the props that pick a mode and the one rule that picks it — [the API at a glance](../library/README.md#the-api-at-a-glance). `renderPxTree` is THE renderer of every DOM player: it makes each decision about a document — tags, attribute names and values, sanitization, styles, text — and a player supplies only a `PxElementFactory`, "create an element from this finished `PxElementSpec`" (a DOM node, a React element, a Vue vnode). `prepareDocumentForRender` is the document it is given: materialized, then fresh ids |
 | Engine rules | `resolveTimelineEngine(engine)`, `isNativeForced(engine)`, `mayUseNativeScrollTimeline(engine)` | ○ how a `timeline.engine` resolves to an engine / to the browser's ScrollTimeline — the players' own decision helpers |
 | Trigger defaults | `PX_TRIGGER_DEFAULTS`, `resolveTrigger(trigger)`| ○ what a missing trigger field means (`start` 'load', `offScreen` 'pause', `mouseOut` 'pause', threshold 0.5, debounce 150 ms) — the one resolution every player uses |
-| Time contract | `seekCeilingMs`, `progressSpanMs`, `clampSeekMs`, `timeToProgress`, `progressToTimeMs`, `isValidPlaybackRate`, `PX_RATE_REJECTED`, `createRunClock` + | ○ the one meaning of time, seeking and rate that every engine implements — see `PxAnimatorApi` |
+| Time contract | `seekCeilingMs`, `progressSpanMs`, `clampSeekMs`, `timeToProgress`, `progressToTimeMs`, `isValidPlaybackRate`, `PX_RATE_REJECTED`, `createRunClock` + | ○ the one meaning of time, seeking and rate that every engine implements — see `PxAnimationPlayerApi` |
 | Diagnostics | `createDiagnostics(config?, prefix?)` (▪) → `PxDiagnostics`, `PxDiagnosticCode`, `PxDiagnosticKind` + `PxDiagnostic`, `PxDiagnosticsConfig` | ● the one channel every player reports through: `onWarn` / `onError` with a `code` saying what happened and a `kind` saying who can act, falling back to the console — see `PxEngineCallbacks`. The text is not shipped: `PxDiagnosticCode` is a number, described on the [codes page](../diagnostics.md) |
 | Enum values | `PxTimelineEngineSetting`, `PxTimelineEngine`, `PxGradientType`, `PxUnits`, `PxGradientSpreadMethod`, `PxLoopRepeatAt`, `PxLoopDirection`, `PxStrokeTrimSubPaths`, `PxCloneWithout` (`clone.without` → `'translate'`), `PxMaskType`, `PxPathOverflow`, `PxLengthAdjust`, `PxTextPathMethod`, `PxTextPathSpacing`, `PxFillMode`, `PxPlaybackDirection`, `PxTriggerStart`, `PxOffScreenAction`, `PxMouseOutAction`, `PxFinishAction`, `PxScrollKind`, `PxScrollAxis`, `PxScrollSource`, `PxScrollPhase`, `PxPinAlign`, `PxAlongPathMode`, `PX_TRANSFORM_PART_KEYS` | ● named values instead of bare strings — each is a const namespace AND the type derived from it, so `PxTriggerStart.click` and `start?: PxTriggerStart` come from one import |
-| Schema version | `PX_WIRE_SCHEMA_VERSION`, `PX_WIRE_VERSION`, `PX_WIRE_BASELINE_VERSION`, `PX_WIRE_STEPS`, `PX_WIRE_VERSION_KEY`, `PxWireVersionRelation`, `parseWireVersion`, `formatWireVersion`, `readWireVersion`, `compareWireVersion`, `wireVersionAdvice`, `convertWireDocument`, `downgradeWireDocument`, `applyWireSteps`, + `PxWireVersion`, `PxWireVersionStep`, `PxWireConversionResult`, `PxWireStepKind`, `PxWireConversionOptions` | ○ read, compare and convert a document's `animator.version` — [Versioning](#versioning) |
+| Schema version | `PX_WIRE_VERSION`, `PX_WIRE_BASELINE_VERSION`, `PX_WIRE_STEPS`, `PX_WIRE_VERSION_KEY`, `PxWireVersionRelation`, `parseWireVersion`, `formatWireVersion`, `readWireVersion`, `compareWireVersion`, `wireVersionAdvice`, `convertWireDocument`, `downgradeWireDocument`, `applyWireSteps`, + `PxWireVersion`, `PxWireVersionStep`, `PxWireConversionResult`, `PxWireStepKind`, `PxWireConversionOptions` | ○ read, compare and convert a document's `animator.version` — [Versioning](#versioning). `PX_WIRE_SCHEMA_VERSION` (▪) is the bump-site string behind `PX_WIRE_VERSION`, moved to `/internal` (review §16) |
 | Schema release | `schemaFieldUniverse`, `diffFieldUniverse`, `planSchemaRelease`, `releaseLogProblems` | ▪ the field inventory and bump rule behind `scripts/schema-release.mjs` |
-| Diagnostics | `diagnoseDocument(doc)` (○) → (`{ problems }`), `reportDocumentDiagnostics(doc, where)`, `PX_UNKNOWN_KEY_ERROR` | ▪ the load-time check every player runs; call `validateDocument` instead |
-| Validation | `isPxDocument`, `isValidPxDocument`| ○ a cheap "is this a Pixodesk document" gate / the pass-fail form of `validateDocument`, NON-strict, with every message it can name |
-| Document accessors | `getAnimatorConfig`, `getChildren`, `getBindings`, `getDefinitions` | ○ read a document without knowing its internals |
-| Timeline shape | `flattenAnimatorTimeline`, `nestAnimatorTimeline` | ○ nested `timeline` object ⇄ the flat runtime view |
+| Diagnostics | `diagnoseDocument(doc)` → (`{ problems }`), `reportDocumentDiagnostics(doc, where)`, `PX_UNKNOWN_KEY_ERROR`, `PX_VALIDATION_ROOT_SEGMENT` | ▪ the load-time check every player runs; call `validateDocument` instead |
+| Validation | `isPxDocument`, `validateDocument(doc, options?)` → `PxValidationResult` | ● the shallow guard, and THE one deep check: `{ valid, errors, findings }` (review §15). `isValidPxDocument`, `validateNodeEffects`, `validateDeprecatedTransformChannels`, `validateEasingRefs`, `validateVersionStamp` (▪) moved to `/internal` |
+| Document accessors | `getAnimatorConfig`, `getChildren`, `getBindings`, `getDefinitions` | ○ read a document without knowing its internals. `legacyAnimatorOf` (▪) is the raw config at the pre-rendered SVG's `meta.animator` address — unchecked: cast it with `PxAnimatorConfigSchema` |
+| Timeline shape | `nestAnimatorTimeline`, `PxAnimatorRuntimeConfig` | ○ the runtime view (`PxAnimatorRuntimeConfig`, what `getAnimatorConfig` returns) → the nested `timeline` object. The other direction, `resolveAnimatorTimeline` (▪), moved to `/internal` (review §17a): read the view through `getAnimatorConfig` / `prepareDocument` |
+| Preparing | `prepareDocument`, `documentStage`, `PxDocStage`, + `PxPrepareOptions`, `PxPreparedDocument` | ○ the one lowering pipeline, current → checked → resolved → plain, stamped on the result — [Preparing a document](#preparing-a-document). `carryPrep` (▪) re-stamps a doc a player derived from a prepared one; `reportDocumentProblems` (▪) turns what `checked` repaired into a player's warnings (`effectsShape` inside `effects`, else `documentRepaired`) |
 | Playback override | `PxTimelinePatch`, `PxPlaybackOverride`, `PxAnimatorConfigPatch`, `PxAnimatorConfigMergeResult`, `PxTimelineShortcuts` | ● the `timeline` override as every player takes it, and the companion types of the three merge functions above |
-| Keyframe forms | `keyframeValue`, `keyframeEasing`, `PxNormalizedKeyframe`, `PxNormalizedPropertyAnimation`, `PxAnyKeyframe` | ▪ read a keyframe in either its wire or its runtime (`t` / `v` / `e`) form; is what `normalizeBindings` hands the engines — bare id + merged animation, from a binding or a node alike |
-| Schema toolkit | `px`, `schemaKeys`, `describeSchema` — plus one schema value per wire type: `PxAnimatedSvgDocumentSchema`, `PxNodeSchema`, `PxNodeBaseSchema`, `PxSvgNodeRootSchema`, `PxAnimatorConfigSchema`, `PxTimelineSchema`, `PxTimeTimelineSchema`, `PxTriggerSchema`, `PxElementAnimationSchema`, `PxPropertyAnimationSchema`, `PxKeyframeSchema`, `PxKeyframeValueSchema`, `PxAttrValueSchema`, `PxTransformPartsSchema`, `PxBezierPathSchema`, `PxLoopSchema`, `PxDefinitionsSchema`, `PxEffectsSchema`, `PxClipPathEffectSchema`, `PxCloneEffectSchema`, `PxRepeaterEffectSchema`, `PxRetimeEffectSchema`, `PxMaskedByEffectSchema`, `PxTransformByEffectSchema`, `PxTextEffectSchema`, `PxTextPathEffectSchema`, `PxStrokeTrimEffectSchema`, `PxFillGradientEffectSchema`, `PxGradientStopSchema`, `PxScrollSchema`, `PxScrollRangeSchema`, `PxScrollRangePointSchema`, `PxTransformValueSchema` | ○ the validator the format is written in |
-| Pipeline stages | `normalizeBindings` (○), `calcAnimationValues` (○), `interpolateValue`, `materializeMotionPathInPropAnim`, `mergeStaticTransformIntoAnimDef` | ▪ stages of `materializeAllInTree`; call the pipeline instead |
+| No-driver patch | `suppressTriggerStart(patch?)` | ○ `trigger.start` forced to `'none'` on top of a caller's override — what every player applies when `playAsSaved` is absent (the components' non-`playAsSaved` control modes use the same helper) |
+| Compiled animation | `PxCompiledAnimation`, `PxCompiledKeyframe`, `PxAnyPropertyAnimation`, `isCompiledAnimation(entry)`, `PxCompiledAnimationSchema`, `PxAnyPropertyAnimationSchema`, `PxRgba`, `PxRgbaSchema`, `PxCubicBezier`, `PxCubicBezierSchema`, `PxPathValue` | ○ the format's low layer — [Compiled animation](#compiled-animation--the-low-layer). `compileAnimation`, `compileAnimationDefinition`, `compileAnimationsInTree`, `PxCompileContext` (▪) lower authored entries to it; `toAuthoredAnimation`, `authorCompiledAnimations` (▪) read it back as the authored form (the editor's read path); `anyPropertyAnimationSchemaOf` (▪) builds the entry union around a widened authored schema (the editor's); `PxNormalizedPathValueSchema` (▪) casts a compiled `d` value (`{paths}`) |
+| Runtime channels | `PxNormalizedBinding`, `PxRuntimeAnimation`, `PxValueKind` | ○ what `normalizeBindings` hands the engines: compiled animations in window ms — see [Materializing a document](#materializing-a-document). `channelKindOf` (▪) is the one place a property's value kind is decided; `mapChannelKeyframes` (▪) runs keyframe work with the blend of the channel's kind (`PxChannelLerp` ▪); `movesAlongPath` (▪) says whether a compiled `transform` is a motion path the frame loop evaluates |
+| Schema toolkit | `px`, `schemaKeys`, `describeSchema` — plus one schema value per wire type: `PxDocumentSchema`, `PxNodeSchema`, `PxNodeBaseSchema`, `PxSvgNodeRootSchema`, `PxAnimatorConfigSchema`, `PxTimelineSchema`, `PxTimeTimelineSchema`, `PxTriggerSchema`, `PxElementAnimationSchema`, `PxPropertyAnimationSchema`, `PxKeyframeSchema`, `PxKeyframeValueSchema`, `PxAttrValueSchema`, `PxTransformPartsSchema`, `PxBezierPathSchema`, `PxLoopSchema`, `PxDefinitionsSchema`, `PxEffectsSchema`, `PxClipPathEffectSchema`, `PxCloneEffectSchema`, `PxRepeaterEffectSchema`, `PxRetimeEffectSchema`, `PxMaskedByEffectSchema`, `PxTransformByEffectSchema`, `PxTextEffectSchema`, `PxTextPathEffectSchema`, `PxStrokeTrimEffectSchema`, `PxFillGradientEffectSchema`, `PxGradientStopSchema`, `PxScrollSchema`, `PxScrollRangeSchema`, `PxScrollRangePointSchema`, `PxTransformValueSchema` | ○ the validator the format is written in |
+| Pipeline stages | `normalizeBindings` (○), `calcAnimationValues` (○), `materializeMotionPathInPropAnim`, `mergeStaticTransformIntoAnimDef` | ▪ stages of `materializeAllInTree`; call the pipeline instead. `calcAnimationValues(channels, ms, segments?)` takes an optional motion-path segment table (`createMotionPathSegments`, `MotionPathSegments` ▪) that its owner — an animator, one pass — keeps, so each curve segment is built once; there is no module-level cache |
 | Effect harness | `diffInEffect` | ▪ the editor's "equal in effect" comparison |
 | Text & paths | `materializeGlyphText`, `layoutGlyphTextChars`, `createPathSampler`, `extendedPathForBrowser`, `materializeGlyphTextAlongPath` | ▪ glyph-text and text-on-path materialization |
 | Node props | `toDomProps` (○), `sanitizeAttributeValue`, `PX_CSS_ONLY_STYLE_PROPS`, `PX_DISALLOWED_SVG_TAGS_LOWER` | ▪ shared normalization and sanitization rules |
 | Scroll math | `isScrollTimeline`, `scrollViewProgress`, `scrollOffsetProgress`, `scrollPhaseInterval`, `scrollResolveAxis`, `scrollTotalDurationMs` | ▪ scroll-driven playback internals |
-| Maths & strings | `cubicBezier`, `subdivideCubicBezier`, `bezierToSvgPath`, `splitEasing`, `reverseEasing`, `clamp`, `toRGBA`, `composeTransformParts`, `camelCaseToKebabWordIfNeeded`, `kebabToCamelCaseWord`, `PX_COLOR_ATTR_NAMES`, `PX_STYLE_ATTR_NAMES`, `PX_PCT_BASED_ATTR_NAMES`, `PX_TRANSFORM_FN_NAMES`, `deepClone`, `generateUniqueId`, `PX_DEFAULT_DURATION_MS`, `PX_DEFAULT_ITERATIONS`, `PX_DEFAULT_UNITS_PER_EM`, `PX_LOOP_JUMP_SHIFT_MS` | ▪ helpers shared with the editor |
-| Schema toolkit types | `PxSchema`, `PxSchemaDesc`, `PxInfer`, `PxValidationContext`, `PxRemoveIndex` | ○ the types you build a schema with — see the toolkit above |
-| Companion types | `PxMaterializeAllOptions`, `PxCreateElement`, `PxGlyphCharBox`, `PxAnimatable` | ▪ argument and result shapes of the functions above |
+| Maths & strings | `cubicBezier`, `subdivideCubicBezier`, `bezierToSvgPath`, `splitEasing`, `reverseEasing`, `clamp`, `toRGBA`, `composeTransformParts`, `camelCaseToKebabWordIfNeeded`, `kebabToCamelCaseWord`, `PX_COLOR_ATTR_NAMES`, `PX_STYLE_ATTR_NAMES`, `PX_PCT_BASED_ATTR_NAMES`, `PX_TRANSFORM_FN_NAMES`, `deepClone`, `deepEquals`, `generateUniqueId`, `PX_DEFAULT_DURATION_MS`, `PX_DEFAULT_ITERATIONS`, `PX_DEFAULT_UNITS_PER_EM`, `PX_LOOP_JUMP_SHIFT_MS` | ▪ helpers shared with the editor |
+| Schema toolkit types | `PxSchema`, `PxAnySchema`, `PxSchemaDesc`, `PxInfer`, `PxValidationContext`, `PxValidationFinding`, `PxValidationFindingKind`, `PxRemoveIndex` | ○ the types you build a schema with — see the toolkit above. `PxAnySchema` is "a schema of some value" (lists, constraints, `describeSchema`). `findings` on the context is the structured twin of `errors`: a `kind` (unknown key, type mismatch, invalid value, missing value, union mismatch) and a `path` per line, for code that must branch on what went wrong rather than read it |
+| Companion types | `PxMaterializeAllOptions`, `PxGlyphCharBox`, `PxAnimatable`, `GlyphTextNode`, `GlyphFactory`, `GlyphPathProps`, `GlyphPaint`, `GlyphMotion`, `GlyphVisibility`, `GlyphFontsInput` | ▪ argument and result shapes of the functions above. The glyph materializer reads a `GlyphTextNode` (layout typed, paint carried as the caller's own type) and builds through the caller's `GlyphFactory` |
 | Attribute names | `PX_ANIM_ATTR_NAME`, `PX_ANIM_SRC_ATTR_NAME`, `PX_TEXT_CONTENT_ATTR` | ▪ reserved keys — see [Nodes](#nodes) |
 
 ### Versioning
@@ -1520,8 +1718,9 @@ A string `"a.b.c"`:
 | `b` | player schema revision. A player at `a.b` reads files of the same `a` and any `b` up to its own |
 | `c` | editor extension — covers `meta.*` only. The player ignores it |
 
-This release reads schema **`1.2`** (`PX_WIRE_SCHEMA_VERSION`). The editor stamps every file it
-saves (`"1.2.1"` today); the player never writes the stamp.
+This release reads schema **`1.6`** (`PX_WIRE_VERSION`, parsed; `formatWireVersion` gives the
+string back). The editor stamps every file it saves (`"1.6.1"` today); the player never writes
+the stamp.
 
 - **Not a gate.** A version gap on its own never refuses a file or warns. The player does not
   read the stamp when it plays a file — it checks the document against the schema it ships.

@@ -11,7 +11,7 @@ ships the number; the words are here. That keeps the library small, and gives ea
 diagnostic a stable identity you can switch on in code and search for.
 
 ```js
-createAnimator({
+createSvgAnimationPlayer({
   src: '/animation.json',
   container: '#stage',
   onWarn:  d => console.log(d.code, d.data),   // 1204, ['#missing']
@@ -45,6 +45,8 @@ A code is permanent: numbers are never reused, and a retired one stays listed.
 | <a id="px1103"></a>**1103** | An SVG tag that can execute or load remote content was dropped from the rendered tree. | the tag name |
 | <a id="px1104"></a>**1104** | The browser will not animate these attributes, so the document fell back to the frame loop. | the attribute names |
 | <a id="px1105"></a>**1105** | A bind-by-id document carries no `animator.bindings`, so nothing is animated. | — |
+| <a id="px1107"></a>**1107** | A transform part is animated as its own `animate` channel (`animate.translate`, …) — the deprecated spelling: several on one node are last-write-wins. Spell it `animate.transform` (record keyframes), or `effects.transformBy` for independently-timed parts. | the channel(s) and the node |
+| <a id="px1108"></a>**1108** | A document value did not match the schema and was repaired before playing — replaced by the schema's default, or dropped when nothing could be kept. The document plays; the value is not what was written. | the problem, with its path |
 | <a id="px1106"></a>**1106** | A binding names no element, or names animations that `definitions.animations` does not have. | the binding |
 
 ## The mount: elements the player could not find
@@ -83,6 +85,8 @@ A code is permanent: numbers are never reused, and a retired one stays listed.
 | Code | What it means | Data |
 |---|---|---|
 | <a id="px1501"></a>**1501** | Props from more than one control mode were set at once. The higher-priority mode wins and the other props are ignored — see the control-mode rule. | which props conflicted, and which won |
+| <a id="px1502"></a>**1502** | A declarative playback modifier was set where it cannot apply — `pause` without `play`, `playMode` on a looping document, `completeIteration` on a single-pass one. Ignored. | the explanation |
+| <a id="px1503"></a>**1503** | An imperative write call (`play()`, `pause()`, `playOnce()`, …) landed while a declarative driver (`play`/`pause` or `progress`/`time` props) owns playback. The call is applied, and the next prop change reasserts the props. | the call |
 
 ## React Native
 

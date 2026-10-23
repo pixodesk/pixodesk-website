@@ -198,10 +198,10 @@ control in a variable of its own, where scripts on your page cannot see it. So t
 plays fine, but your code has no way to pause it or jump around in it. If you need that
 control, you have two options:
 
-- reach it through the **page registry**: the player lists every animator on the page, so
-  `window.__pixodeskSvgAnimators.getAll()[0].pause()` works from your page or the console without
+- reach it through the **page registry**: it lists every player on the page, so
+  `window.__pixodeskSvgAnimationPlayers.getAll()[0].pause()` works from your page or the console without
   touching the exported file (experimental — see
-  [Every animator on the page](/docs/svga/player-library/web-player#every-animator-on-the-page-experimental)).
+  [Every player on the page](/docs/svga/player-library/web-player#every-player-on-the-page-experimental)).
   Pair it with the *Manually from JS* start option when you want your code to decide when it begins;
 - or — simpler, and recommended — use the [JSON format](/docs/svga/player-library/web-player) instead:
   controlling the animation from code is exactly what it is made for.

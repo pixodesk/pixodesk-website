@@ -30,28 +30,29 @@ browser consumer stays self-contained.
 The web player ships in several builds, and your tooling picks the right one by itself:
 
 - **ESM** — for a bundler (Vite, webpack, Rollup, esbuild) or any modern setup:
-  `import { createAnimator } from '@pixodesk/svg-animator-web'`. Nothing to configure after
+  `import { createSvgAnimationPlayer } from '@pixodesk/svg-animator-web'`. Nothing to configure after
   `npm install`; this is what the React and Vue packages use internally, and what every snippet
   in [Web player](./web-player.md) assumes.
 - **CJS** — for Node.js and older tooling that uses `require()`. Selected automatically through
   the package's `exports` map; you never reference the file by name.
 - **UMD** — for pages **without a build step**: plain HTML, CMS templates, code blocks. One
-  self-contained file, `pixodesk-svg-animator.umd.min.js`, that exposes a `PixodeskAnimator` global from a
+  self-contained file, `pixodesk-svg-animator.umd.min.js`, that exposes a `Pixodesk.SvgAnimator` global from a
   `<script>` tag. The rest of this section is about this build, because it is the only one
   you have to handle by hand.
 
 **Host it yourself.** We publish only to [npm](https://www.npmjs.com/package/@pixodesk/svg-animator-web)
 and [GitHub](https://github.com/pixodesk/pixodesk-svg-animator); we do not recommend loading
 the player from a third-party CDN, since that puts a file you did not verify between your
-page and your users. Get the file from the npm package and serve it alongside your site:
+page and your users. Copy the file into your site with the package's own command — no install,
+no project needed:
 
 ```bash
-npm install @pixodesk/svg-animator-web
-cp node_modules/@pixodesk/svg-animator-web/dist/pixodesk-svg-animator.umd.min.js ./js/
+npx @pixodesk/svg-animator-web copy-player-library js
 ```
 
-No project to install into? `npm pack @pixodesk/svg-animator-web` downloads the exact package
-tarball; the file is at `package/dist/pixodesk-svg-animator.umd.min.js` inside it.
+It puts `pixodesk-svg-animator.umd.min.js` into `./js` (leave the folder out for the current
+folder) and prints the tags that load it. The copy's first line names its version; run the
+command again to update it, and it tells you which version it replaced.
 
 Then load it with a relative path, like any other script of yours:
 
@@ -66,10 +67,10 @@ Then load it with a relative path, like any other script of yours:
 <script>
 
   // declarative
-  PixodeskAnimator.loadTagAnimators(); 
+  Pixodesk.SvgAnimator.createSvgAnimationPlayersFromPage(); 
 
   // programmatic
-  const a = PixodeskAnimator.createAnimator({ src: '/bouncing-ball.json', container: '#box' });
+  const a = Pixodesk.SvgAnimator.create({ src: '/bouncing-ball.json', container: '#box', playAsSaved: true });
   
 </script>
 ```
@@ -86,33 +87,35 @@ Files in `dist/`:
 |---|---|
 | `index.js` · `index.cjs` (+ `.min` variants) | ESM / CJS entry for bundlers |
 | `index.d.ts` | TypeScript types |
-| `pixodesk-svg-animator.umd.js` · `pixodesk-svg-animator.umd.min.js` | the full player as a `<script>` global (`PixodeskAnimator`) |
+| `pixodesk-svg-animator.umd.js` · `pixodesk-svg-animator.umd.min.js` | the full player as a `<script>` global (`Pixodesk.SvgAnimator`) |
 | `index.prerendered*.umd*.js` | trimmed builds the **editor** inlines into *SVG + JS animation* exports — you never load these yourself |
 
 ## TypeScript
 
-Every package ships types. Importing a JSON file gives you a plain object; if your `tsconfig`
-complains about the shape, cast it once:
+Every package ships types, and `doc` accepts a `.json` import as-is:
 
 ```ts
-import type { PxAnimatedSvgDocument } from '@pixodesk/svg-animator-react'; // or -vue, -web, -rn, -core
-import _animation from './animation.json';
-const animation = _animation as PxAnimatedSvgDocument;
+import animation from './animation.json';
+// <SvgAnimationPlayer doc={animation} /> — no cast: `doc` is typed `PxDocumentInput`,
+// the shape a JSON import produces; values are validated at runtime.
 ```
 
 Importing a `.json` file at all requires `"resolveJsonModule": true` in your `tsconfig.json`,
-under `compilerOptions`. Every package exports the same `PxAnimatedSvgDocument`, so import it
+under `compilerOptions`. Every package also exports the strict `PxDocument` — the
+type to use when you BUILD a document in code (literal unions, autocomplete) — and
+`toPxDocument(animation)`, which names the one narrowing from a JSON import to that
+strict type when an advanced API asks for it (values are validated at runtime); import it
 from the one you installed.
 
 Other types you may want by name:
 
-- `PxTagAnimatorOptions` — the options `loadTagAnimators` takes.
-- `PxPrerenderedAnimatorOptions` — the options the pre-rendered builds take.
-- `PxAnimatorHandle` — the handle the components give you through `apiRef`.
-- `PxPlaybackApi` — the smaller set of methods a pre-rendered player offers.
+- `PxPageAnimationPlayerOptions` — the options `createSvgAnimationPlayersFromPage` takes.
+- `PxPrerenderedAnimationPlayerOptions` — the options the pre-rendered builds take.
+- `PxAnimationPlayerHandle` — the handle the components give you through `apiRef` (every framework
+  package exports this one name).
 - `PxPlaybackOverride` — the playback override every player accepts.
 
-Hearing back from it: `PxAnimatorCallbacks` is the single callback shape — the playback lifecycle
+Hearing back from it: `PxAnimationPlayerCallbacks` is the single callback shape — the playback lifecycle
 plus `onWarn` / `onError` — and `PxDiagnosticsConfig` is the diagnostics half of it on its own. A
 handler receives a `PxDiagnostic`, whose `kind` is a `PxDiagnosticKind` saying who can act on it,
 and `PxDiagnostics` is the channel object a player reports through.

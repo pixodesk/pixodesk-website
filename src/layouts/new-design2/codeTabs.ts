@@ -15,13 +15,13 @@ export const SVGA_TABS: Array<CodeTab> = [
   { ...place(PlaceKey.react), hint: "component + ref", lang: "tsx",
     note: "Save as <b>JSON</b>, install one package, render the file. The component plays the document's own trigger and gives you play, pause and seek through a ref.",
     code: `// npm install @pixodesk/svg-animator-react
-import { PixodeskSvgAnimator } from '@pixodesk/svg-animator-react';
+import { SvgAnimationPlayer } from '@pixodesk/svg-animator-react';
 import animation from './animation.json';
 
 export function Hero() {
   return (
     <div style={{ width: 300, height: 300 }}>
-      <PixodeskSvgAnimator doc={animation} autoplay />
+      <SvgAnimationPlayer doc={animation} playAsSaved />
     </div>
   );
 }`,
@@ -30,13 +30,13 @@ export function Hero() {
     note: "The same component for Vue 3.",
     code: `<!-- npm install @pixodesk/svg-animator-vue -->
 <script setup>
-import { PixodeskSvgAnimator } from '@pixodesk/svg-animator-vue';
+import { SvgAnimationPlayer } from '@pixodesk/svg-animator-vue';
 import animation from './animation.json';
 </script>
 
 <template>
   <div style="width: 300px; height: 300px">
-    <PixodeskSvgAnimator :doc="animation" autoplay />
+    <SvgAnimationPlayer :doc="animation" playAsSaved />
   </div>
 </template>`,
     docs: { label: "Vue component", href: "/docs/svga/player-library/vue" } },
@@ -45,13 +45,13 @@ import animation from './animation.json';
     code: `// npm install @pixodesk/svg-animator-rn
 // npx expo install react-native-svg react-native-reanimated
 import { View } from 'react-native';
-import { PixodeskSvgAnimator } from '@pixodesk/svg-animator-rn';
+import { SvgAnimationPlayer } from '@pixodesk/svg-animator-rn';
 import animation from './animation.json';
 
 export function Hero() {
   return (
     <View style={{ width: 300, height: 300 }}>
-      <PixodeskSvgAnimator doc={animation} autoplay />
+      <SvgAnimationPlayer doc={animation} playAsSaved />
     </View>
   );
 }`,
@@ -64,7 +64,7 @@ export function Hero() {
 <!-- or the Pixodesk JSON, with the web player (npx @pixodesk/svg-animator-web copy-player-library) -->
 <div data-px-animation-src="animation.json" style="width: 300px; height: 300px"></div>
 <script src="pixodesk-svg-animator.umd.min.js"></script>
-<script>PixodeskAnimator.loadTagAnimators();</script>`,
+<script>Pixodesk.SvgAnimator.createSvgAnimationPlayersFromPage();</script>`,
     docs: { label: "Pre-rendered SVG on the web", href: "/docs/svga/prerendered-svg/on-the-web" } },
 ];
 

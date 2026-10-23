@@ -27,7 +27,7 @@
  *   pre-rendered SVG + JS (2D export)  the Lottie Animator's SVG export: an <svg> with a plain
  *                                      embedded <script> (no data-px-*) writing attributes per frame
  *   lightweight JSON + Pixodesk player FIRST CHOICE: the player's own page-wide registry —
- *                                      `globalThis.__pixodeskAnimators` (`getAll()` with
+ *                                      `globalThis.__pixodeskSvgAnimationPlayers` (older players: `__pixodeskSvgAnimators`, `__pixodeskAnimators`; `getAll()` with
  *                                      `isPlaying()` / `getRootElement()`, `subscribe()` for the
  *                                      play/pause events) — in every reachable document that has
  *                                      it. Where the registry is absent (an older player build)
@@ -103,8 +103,8 @@ interface LottieGlobal { getRegisteredAnimations?: () => Array<LottieItem> }
 
 interface FrameState { at: number; playing: boolean }
 
-/** The player's page-wide registry (`@pixodesk/svg-animator-web`: `getAllAnimators()`),
- *  as it hangs off `globalThis.__pixodeskAnimators` in a document that loaded the player. */
+/** The player's page-wide registry (`@pixodesk/svg-animator-web`: `getAllSvgAnimationPlayers()`),
+ *  as it hangs off `globalThis.__pixodeskSvgAnimationPlayers` in a document that loaded the player. */
 interface PxRegistryAnimator { isReady(): boolean; isPlaying(): boolean; getRootElement(): Element | null }
 interface PxRegistry { getAll(): ReadonlyArray<PxRegistryAnimator>; subscribe(listener: () => void): () => void }
 
@@ -214,10 +214,23 @@ function stateFor(doc: Document): DocState {
     return st;
 }
 
+/** The player's registry globals, newest first: the site also serves files that embed an OLDER player
+ *  (pre-rendered SVG + JS exports keep the player they were exported with), and this monitor must see them all. */
+const REGISTRY_GLOBALS = ['__pixodeskSvgAnimationPlayers', '__pixodeskSvgAnimators', '__pixodeskAnimators'];
+
 /** The player's registry in this document, if the player that built it has one. */
 function registryOf(doc: Document): PxRegistry | undefined {
-    const reg = (doc.defaultView as (Window & { __pixodeskAnimators?: PxRegistry }) | null)?.__pixodeskAnimators;
-    return reg && typeof reg.getAll === 'function' ? reg : undefined;
+    const win = doc.defaultView;
+    if (!win) return undefined;
+    for (const name of REGISTRY_GLOBALS) {
+        const reg: unknown = Reflect.get(win, name);
+        if (isRegistry(reg)) return reg;
+    }
+    return undefined;
+}
+
+function isRegistry(value: unknown): value is PxRegistry {
+    return typeof value === 'object' && value !== null && 'getAll' in value && typeof value.getAll === 'function';
 }
 
 /** Which player a sandboxed `srcdoc` frame runs, from the markup the host gave it. */
