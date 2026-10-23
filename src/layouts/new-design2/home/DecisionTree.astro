@@ -1,0 +1,77 @@
+---
+/**
+ * "Which app do I need?" as a decision tree (owner, 2026-10-17: dark, engaging, a few big words lead to the forks; the details are
+ * optional, small): Your graphic → Static → SVG Editor; → Animated → Lottie / SVG / Both → 2D Animator / SVG Animator / Animator Studio.
+ * Glowing wires join the nodes (Wires + src/scripts/wired-diagram.ts: drawn from the nodes' positions, so the same markup works as a row of
+ * columns on desktop and as a column on phones); hovering a choice lights its path. App names, links, prices, logos and accents:
+ * catalogue + apps.ts.
+ */
+import LogoSVGFill from "../../LogoSvgFill.astro";
+import Logo2DFill from "../../Logo2DFill.astro";
+import LogoSvgaFill from "../../LogoSvgaFill.astro";
+import Wires from "./Wires.astro";
+import Marked from "./Marked.astro";
+import { FileExt, type Text, ext } from "./marks";
+import DiagramStyles from "./DiagramStyles.astro";
+import { PITCHES, STUDIO } from "../apps";
+import { AppKey, appInfo } from "../catalogue";
+
+const STUDIO_ID = "studio";
+const STUDIO_FILES: Array<Text> = ["every format above"];
+// an app node: its name, then one small line — price · the files it makes (its pitch's chips, marked)
+const app = (key: AppKey) => { const p = PITCHES.find((x) => x.key === key); if (!p) throw new Error(`no pitch for ${key}`); return { id: String(key), key, name: appInfo(key).name, page: appInfo(key).page, price: p.price, files: p.chips, accent: p.accent }; };
+const apps = [app(AppKey.svgEditor), app(AppKey.animator2d), app(AppKey.svgAnimator),
+  { id: STUDIO_ID, key: null, name: STUDIO.name, page: STUDIO.page, price: STUDIO.price, files: STUDIO_FILES, accent: STUDIO.accent }];
+const appById = (id: string) => { const a = apps.find((x) => x.id === id); if (!a) throw new Error(`no app ${id}`); return a; };
+// the forks: a big word, an optional line, and where it leads (the area names place them in the grid)
+const forks: Array<{ id: string; label: string; sub: Text; area: string; deep?: boolean }> = [
+  { id: "static", label: "Static", sub: "icons, logos, illustrations", area: "fs" },
+  { id: "animated", label: "Animated", sub: "it moves", area: "fa" },
+  { id: "lottie", label: "Lottie", sub: "native apps — iOS, Android, React Native, Windows", area: "fl", deep: true },
+  { id: "svg", label: "SVG", sub: ["the web — pure ", ext(FileExt.svg), ", our player, the most features"], area: "fv", deep: true },
+  { id: "both", label: "Both", sub: "stay flexible — every format", area: "fb", deep: true },
+];
+const leaves = [
+  { app: String(AppKey.svgEditor), area: "ae", deep: false }, { app: String(AppKey.animator2d), area: "al", deep: true },
+  { app: String(AppKey.svgAnimator), area: "av", deep: true }, { app: STUDIO_ID, area: "ab", deep: true },
+];
+// the wires: parent → child
+const EDGES = [["root", "static"], ["root", "animated"], ["static", String(AppKey.svgEditor)], ["animated", "lottie"], ["animated", "svg"], ["animated", "both"],
+  ["lottie", String(AppKey.animator2d)], ["svg", String(AppKey.svgAnimator)], ["both", STUDIO_ID]];
+---
+<DiagramStyles />
+<section class="dg-section">
+  <div class="dg-head">
+    <h2>Which app do I need?</h2>
+    <p>Follow the fork that fits — the details are optional.</p>
+  </div>
+  <div class="tree" data-diagram data-edges={JSON.stringify(EDGES)}>
+    <Wires id="tree-wire" />
+    <div class="dg-node dg-root" data-node="root" style="grid-area: rt"><b>Your graphic</b><span>what will it be?</span></div>
+    {forks.map((f) => <div class:list={["dg-node", "dg-fork", f.deep && "deep"]} data-node={f.id} style={`grid-area: ${f.area}`}><b>{f.label}</b><span><Marked text={f.sub} chips /></span></div>)}
+    {leaves.map((l) => { const a = appById(l.app); return (
+      <a class:list={["dg-node", "dg-app", l.deep && "deep"]} href={a.page} data-node={a.id} style={`grid-area: ${l.area}; --accent: ${a.accent}`}>
+        <span class="dg-logo">
+          {a.key === AppKey.svgEditor && <LogoSVGFill />}{a.key === AppKey.animator2d && <Logo2DFill />}{a.key === AppKey.svgAnimator && <LogoSvgaFill />}
+          {a.key === null && <span class="dg-mark">✦</span>}
+        </span>
+        <span class="dg-text"><span class="dg-name">{a.name}</span><span class="dg-sub files"><b class="dg-price">{a.price}</b>{a.files.map((f) => <> · <Marked text={f} chips /></>)}</span></span>
+        <span class="dg-go">→</span>
+      </a>
+    ); })}
+  </div>
+</section>
+
+<style>
+  .tree { position: relative; display: grid; max-width: 1240px; margin: 0 auto; column-gap: 72px; row-gap: 16px; align-items: center;
+    grid-template-columns: 190px 200px 230px minmax(0, 1fr);
+    grid-template-areas: "rt fs .  ae" "rt fa fl al" "rt fa fv av" "rt fa fb ab"; }
+  @media (max-width: 1023px) {
+    .tree { grid-template-columns: minmax(0, 1fr); row-gap: 28px; max-width: 520px;
+      grid-template-areas: "rt" "fs" "ae" "fa" "fl" "al" "fv" "av" "fb" "ab"; }
+    /* the second-level forks and their apps step in, so the column still reads as branches */
+    .deep { margin-left: 26px; }
+  }
+  /* the files line wraps (its chips never get cut off) */
+  .dg-sub.files { white-space: normal; }
+</style>

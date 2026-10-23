@@ -1,0 +1,52 @@
+---
+// New-design preview: the SVG Animator learning gallery — short narrated videos by area (Player in React, on the web,
+// triggers, pre-rendered SVG, the editor's exports, real interfaces). Recorded from scripts: kf `yarn website:videos` (generated scripts:
+// kf/app/tests/video/learn/generate-learn-videos.mjs). A video is listed once its file is published. The list: layouts/new-design2/videos.ts;
+// each card's title opens the video's article page (transcript + screenshots; owner, 2026-10-18).
+import "../../../styles/tailwind.css";
+import "../../../styles/global.scss";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import PreviewBanner from "../../../layouts/new-design/PreviewBanner.astro";
+import VideoPlayer from "../../../layouts/new-design/VideoPlayer.astro";
+import { videoDuration } from "../../../layouts/new-design/videoDuration";
+import { LEARN, LEARN_CATEGORIES, articleHref } from "../../../layouts/new-design2/videos";
+import { hasArticle } from "../../../layouts/new-design2/videoArticles";
+
+const categories = LEARN_CATEGORIES;
+const total = categories.reduce((n, c) => n + c.videos.length, 0);
+---
+<BaseLayout title="SVG Animator — learn" description="Short narrated videos: the Pixodesk player in React and on the web, triggers, pre-rendered SVG, the editor's exports and animation in real interfaces." canonical="/svg-animator" noindex>
+  <section class="relative w-full bg-custom-gradient-violet pt-navDouble text-white">
+    <PreviewBanner compare="/svg-animator" />
+    <div class="mx-auto max-w-custom-standard px-pxPage pb-12 pt-8 text-center">
+      <h1>{LEARN.title}</h1>
+      <p class="mx-auto mt-3 max-w-custom-narrow text-custom-grey-200">{total} short videos, each about one thing. The animation files are already made — these are about using them.</p>
+      <nav class="mt-6 flex flex-wrap justify-center gap-2 text-sm">
+        {categories.map((c) => <a class="rounded-full border border-white/15 bg-white/[.06] px-3 py-1 text-custom-grey-200 hover:bg-white/[.12]" href={`#${c.id}`}>{c.title}</a>)}
+      </nav>
+    </div>
+  </section>
+  {categories.map((c, i) => (
+    <section id={c.id} class={`scroll-mt-24 px-pxPage py-pxPage text-white ${i % 2 ? "bg-custom-gradient-navy" : "bg-custom-gradient-indigo"}`}>
+      <div class="mx-auto max-w-custom-standard">
+        <h2 class="text-center">{c.title}</h2>
+        <p class="mx-auto mb-8 max-w-custom-narrow text-center text-custom-grey-400">{c.line}</p>
+        <div class="grid grid-cols-1 gap-x-6 gap-y-8 md:grid-cols-2 lg:grid-cols-3">
+          {c.videos.map((v) => (
+            <article>
+              <VideoPlayer name={v.name} title={v.title} expand compact />
+              <h3 class="mt-3 text-lg font-semibold">{hasArticle(v.name)
+                ? <a class="underline decoration-white/30 underline-offset-4 hover:decoration-white" href={articleHref(v.name)}>{v.title}</a>
+                : v.title}<span class="ml-2 text-sm font-normal text-custom-grey-400">{videoDuration(v.name)}</span></h3>
+              <p class="mt-1 text-sm text-custom-grey-400">{v.line}</p>
+              <p class="mt-2 flex flex-wrap gap-x-5 text-sm">
+                {hasArticle(v.name) && <a class="text-cyan-300 underline underline-offset-2 hover:text-cyan-200" href={articleHref(v.name)}>Transcript →</a>}
+                <a class="text-cyan-300 underline underline-offset-2 hover:text-cyan-200" href={v.docs}>In the docs →</a>
+              </p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  ))}
+</BaseLayout>

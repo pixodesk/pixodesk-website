@@ -1,51 +1,99 @@
 1
-00:00:00,267 --> 00:00:01,912
-Here's a simple React app.
+00:00:00,267 --> 00:00:11,316
+This video shows how to put an animation from Pixodesk 2D Animator into a React app, as a Lottie file. It takes one package, one file and one component.
 
 2
-00:00:05,633 --> 00:00:08,324
-It works, but it feels a little static.
+00:00:12,533 --> 00:00:14,884
+Let's start with the app as it is.
 
 3
-00:00:08,867 --> 00:00:11,610
-First, install lottie-react.
+00:00:19,033 --> 00:00:21,463
+A heading, and nothing that moves yet.
 
 4
-00:00:16,167 --> 00:00:19,171
-Now let's make the animation. It only takes a minute.
+00:00:22,700 --> 00:00:28,186
+To play Lottie files, the app needs a Lottie player. Let's install lottie react.
 
 5
-00:00:19,700 --> 00:00:22,782
-In Pixodesk Lottie Animator, draw a circle.
+00:00:33,767 --> 00:00:36,065
+Lottie react is in, one package.
 
 6
-00:00:23,300 --> 00:00:29,282
-Turn on Auto mode, then drag the ball down and back up. The keyframes are created for you.
+00:00:37,300 --> 00:00:43,204
+Now for the animation itself. Let's switch to the editor, where a football is already drawn.
 
 7
-00:00:29,800 --> 00:00:32,229
-Add gravity easing for a natural bounce.
+00:00:44,733 --> 00:00:47,476
+It's a vector drawing, standing still.
 
 8
-00:00:35,667 --> 00:00:39,298
-Save it as Lottie JSON, straight into the project.
+00:00:48,700 --> 00:00:51,443
+To make it move, let's switch on Auto mode.
 
 9
-00:00:44,333 --> 00:00:48,617
-Back in the project, the animation file is already there.
+00:00:53,933 --> 00:00:57,381
+With Auto mode on, every change becomes a keyframe.
 
 10
-00:00:50,167 --> 00:00:52,361
-Import the player and the animation.
+00:00:58,600 --> 00:01:02,100
+Half a second in, let's drag the ball down to the floor.
 
 11
-00:00:57,333 --> 00:01:00,677
-Then add the Lottie component, set to play and loop.
+00:01:05,233 --> 00:01:08,917
+A keyframe appears on the timeline, holding the new position.
 
 12
-00:01:12,300 --> 00:01:15,382
-Reload the page, and the ball bounces.
+00:01:10,133 --> 00:01:12,197
+At one second, let's bring it back up.
 
 13
-00:01:17,900 --> 00:01:20,643
-That's all it takes: one file, one component.
+00:01:15,533 --> 00:01:19,034
+Now it falls and rises again, in one second.
+
+14
+00:01:20,267 --> 00:01:26,797
+A real ball speeds up as it falls, and slows down as it rises. Let's set that easing.
+
+15
+00:01:33,933 --> 00:01:38,113
+Gravity easing, falling and rising, makes the bounce feel natural.
+
+16
+00:01:39,333 --> 00:01:45,577
+The animation is ready. Let's save it as Lottie JSON, straight into the project.
+
+17
+00:01:50,700 --> 00:01:52,764
+Now, back to our app.
+
+18
+00:01:54,300 --> 00:01:57,644
+The animation file is already there, next to the code.
+
+19
+00:01:58,867 --> 00:02:02,550
+Let's import the Lottie component, and the animation file.
+
+20
+00:02:11,467 --> 00:02:16,534
+The component comes from lottie react, the animation from the JSON file.
+
+21
+00:02:17,767 --> 00:02:20,065
+Then, let's place it on the page.
+
+22
+00:02:30,733 --> 00:02:37,368
+Its source is the animation. Autoplay starts it when the page loads, and loop repeats it.
+
+23
+00:02:38,600 --> 00:02:41,082
+Let's reload the page, and watch.
+
+24
+00:02:46,200 --> 00:02:50,536
+There it is. The ball bounces, right inside the React app.
+
+25
+00:02:52,567 --> 00:03:01,474
+So, one package, one Lottie file saved from the editor, and one component. That's all it takes to bring an animation into a React app.

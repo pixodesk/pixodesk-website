@@ -1,0 +1,54 @@
+{
+  "name": "learn-ui-wellness",
+  "blocks": [
+    {
+      "kind": "text",
+      "t": 0.27,
+      "text": "This video shows a meditation screen in a wellness app. The figure breathes while the session runs, and holds still when you pause. Our session screen has a title, a breathing hint, and the time left. Let's keep in state whether the session is paused."
+    },
+    {
+      "kind": "shot",
+      "t": 24.08,
+      "src": "/videos/articles/learn-ui-wellness/01.webp",
+      "alt": "Paused starts as false."
+    },
+    {
+      "kind": "text",
+      "t": 23.93,
+      "text": "Paused starts as false. Now the figure, playing only while the session is not paused."
+    },
+    {
+      "kind": "shot",
+      "t": 40.55,
+      "src": "/videos/articles/learn-ui-wellness/02.webp",
+      "alt": "Play, set to not paused, plays it right now. The file repeats, so the figure keeps breathing."
+    },
+    {
+      "kind": "text",
+      "t": 40.4,
+      "text": "Play, set to not paused, plays it right now. The file repeats, so the figure keeps breathing. Let's add the buttons that pause and resume the session."
+    },
+    {
+      "kind": "shot",
+      "t": 66.18,
+      "src": "/videos/articles/learn-ui-wellness/03.webp",
+      "alt": "One button shows at a time. Pause session while it runs, and Resume session while it is paused."
+    },
+    {
+      "kind": "text",
+      "t": 66.03,
+      "text": "One button shows at a time. Pause session while it runs, and Resume session while it is paused. Let's pause, and then resume."
+    },
+    {
+      "kind": "shot",
+      "t": 81.32,
+      "src": "/videos/articles/learn-ui-wellness/04.webp",
+      "alt": "It holds still on pause, and carries on from the same moment on resume."
+    },
+    {
+      "kind": "text",
+      "t": 81.17,
+      "text": "It holds still on pause, and carries on from the same moment on resume. So, one property follows your state. The figure breathes while the session runs, and waits while the session waits."
+    }
+  ]
+}

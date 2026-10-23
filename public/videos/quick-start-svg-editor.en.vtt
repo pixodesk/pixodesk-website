@@ -1,37 +1,93 @@
 WEBVTT
 
 1
-00:00:00.267 --> 00:00:04.551
-Let's draw a weather icon in Pixodesk SVG Editor.
+00:00:00.267 --> 00:00:09.122
+This video shows how to draw an icon in Pixodesk SVG Editor, from a few simple shapes, and use it on a web page as an ordinary image.
 
 2
-00:00:05.100 --> 00:00:07.686
-First, the sun: a circle.
+00:00:10.367 --> 00:00:13.319
+Let's start with the background, a square tile.
 
 3
-00:00:08.200 --> 00:00:11.491
-Then a cloud, from three circles and a rectangle.
+00:00:16.733 --> 00:00:19.528
+A rectangle, nearly as big as the canvas.
 
 4
-00:00:15.300 --> 00:00:18.252
-Select them, and unite them into one shape.
+00:00:20.767 --> 00:00:24.267
+Icons look friendlier with soft corners, so let's round them.
 
 5
-00:00:18.767 --> 00:00:20.700
-A soft gradient gives it depth.
+00:00:28.067 --> 00:00:31.149
+One corner radius rounds all four corners.
 
 6
-00:00:23.600 --> 00:00:26.787
-Save it as SVG, into your project.
+00:00:32.367 --> 00:00:34.561
+Then, let's paint it sky blue.
 
 7
-00:00:32.833 --> 00:00:35.237
-On the page, it's just an image.
+00:00:36.867 --> 00:00:39.270
+Its fill colour is now sky blue.
 
 8
-00:00:43.867 --> 00:00:47.759
-Sharp at any size, and the file is clean SVG.
+00:00:40.500 --> 00:00:44.183
+Next, the sun, an orange circle in the top corner.
 
 9
-00:00:49.800 --> 00:00:52.700
-That's all: an icon in under a minute.
+00:00:49.900 --> 00:00:53.035
+Holding Shift while drawing keeps it a perfect circle.
+
+10
+00:00:54.267 --> 00:01:00.771
+The cloud is built from simple shapes. Three white circles, and a rectangle for a flat bottom.
+
+11
+00:01:09.133 --> 00:01:12.581
+Four overlapping shapes, in the outline of a cloud.
+
+12
+00:01:13.800 --> 00:01:17.065
+Let's select all four, and unite them into one shape.
+
+13
+00:01:21.300 --> 00:01:24.644
+Unite merges them into a single path, the cloud.
+
+14
+00:01:25.867 --> 00:01:27.930
+A soft gradient gives it some depth.
+
+15
+00:01:33.233 --> 00:01:36.420
+A linear gradient, from white to light blue.
+
+16
+00:01:37.667 --> 00:01:43.100
+The icon is ready. Let's save it as SVG, into the web project.
+
+17
+00:01:48.233 --> 00:01:50.428
+Now, the page itself.
+
+18
+00:01:51.967 --> 00:01:55.859
+A heading, and the icon file, already next to the page.
+
+19
+00:01:57.100 --> 00:02:00.000
+Let's add the icon as an ordinary image.
+
+20
+00:02:07.033 --> 00:02:12.885
+An image tag, pointing at the SVG file. A still icon needs nothing more.
+
+21
+00:02:14.133 --> 00:02:15.466
+Let's open the page.
+
+22
+00:02:19.600 --> 00:02:24.354
+There it is. It stays sharp at any size, because it is vector.
+
+23
+00:02:26.400 --> 00:02:33.897
+So, a few simple shapes, united and coloured, saved as a clean SVG file, and used like any other image.

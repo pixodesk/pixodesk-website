@@ -1,0 +1,131 @@
+{
+  "name": "learn-triggers-ball",
+  "blocks": [
+    {
+      "kind": "text",
+      "t": 0.27,
+      "text": "This video tries every trigger on one bouncing ball. A trigger decides when an animation plays by itself, and what it does when you look away. Let's start with the four ways to start, in a list."
+    },
+    {
+      "kind": "shot",
+      "t": 20.95,
+      "src": "/videos/articles/learn-triggers-ball/01.webp",
+      "alt": "Load, mouse over, click, and none."
+    },
+    {
+      "kind": "text",
+      "t": 20.8,
+      "text": "Load, mouse over, click, and none. Now one ball for each, labelled with its start."
+    },
+    {
+      "kind": "shot",
+      "t": 47.92,
+      "src": "/videos/articles/learn-triggers-ball/02.webp",
+      "alt": "Start, set on each component, replaces the start saved in the file. Only the first one plays right away, because it starts on load."
+    },
+    {
+      "kind": "text",
+      "t": 47.77,
+      "text": "Start, set on each component, replaces the start saved in the file. Only the first one plays right away, because it starts on load. Let's point at the second one, and move away."
+    },
+    {
+      "kind": "shot",
+      "t": 64.52,
+      "src": "/videos/articles/learn-triggers-ball/03.webp",
+      "alt": "It plays while the pointer is over it, and pauses when the pointer leaves."
+    },
+    {
+      "kind": "text",
+      "t": 64.37,
+      "text": "It plays while the pointer is over it, and pauses when the pointer leaves. Now let's click the third one, twice."
+    },
+    {
+      "kind": "shot",
+      "t": 76.25,
+      "src": "/videos/articles/learn-triggers-ball/04.webp",
+      "alt": "The first click plays it, and the second one pauses it."
+    },
+    {
+      "kind": "text",
+      "t": 76.1,
+      "text": "The first click plays it, and the second one pauses it. The last one has no trigger at all. Let's point at it, and click it."
+    },
+    {
+      "kind": "shot",
+      "t": 87.75,
+      "src": "/videos/articles/learn-triggers-ball/05.webp",
+      "alt": "None never plays by itself. It waits for your code, with play, progress, or the player commands."
+    },
+    {
+      "kind": "text",
+      "t": 87.6,
+      "text": "None never plays by itself. It waits for your code, with play, progress, or the player commands. Mouse over has a second half, what happens when the pointer leaves. Let's list the four choices."
+    },
+    {
+      "kind": "shot",
+      "t": 110.58,
+      "src": "/videos/articles/learn-triggers-ball/06.webp",
+      "alt": "Pause, reset, reverse, and continue."
+    },
+    {
+      "kind": "text",
+      "t": 110.43,
+      "text": "Pause, reset, reverse, and continue. Now four balls that start on mouse over, one for each choice."
+    },
+    {
+      "kind": "shot",
+      "t": 140.95,
+      "src": "/videos/articles/learn-triggers-ball/07.webp",
+      "alt": "The timeline property sets both halves of the trigger, the start and the leave."
+    },
+    {
+      "kind": "text",
+      "t": 140.8,
+      "text": "The timeline property sets both halves of the trigger, the start and the leave. Let's point at each one, and move away."
+    },
+    {
+      "kind": "shot",
+      "t": 160.25,
+      "src": "/videos/articles/learn-triggers-ball/08.webp",
+      "alt": "Pause stops where it is. Reset jumps back to the start. Reverse plays back to the start, and continue keeps going."
+    },
+    {
+      "kind": "text",
+      "t": 160.1,
+      "text": "Pause stops where it is. Reset jumps back to the start. Reverse plays back to the start, and continue keeps going. Scrolling away has its own three choices. Let's list them."
+    },
+    {
+      "kind": "shot",
+      "t": 178.65,
+      "src": "/videos/articles/learn-triggers-ball/09.webp",
+      "alt": "Pause, continue, and reset."
+    },
+    {
+      "kind": "text",
+      "t": 178.5,
+      "text": "Pause, continue, and reset. Now three balls, one for each, with room to scroll below them."
+    },
+    {
+      "kind": "shot",
+      "t": 205.35,
+      "src": "/videos/articles/learn-triggers-ball/10.webp",
+      "alt": "Off screen says what happens while the ball cannot be seen. They all start on load, as the file says."
+    },
+    {
+      "kind": "text",
+      "t": 205.2,
+      "text": "Off screen says what happens while the ball cannot be seen. They all start on load, as the file says. Let's scroll them away, and back."
+    },
+    {
+      "kind": "shot",
+      "t": 222.78,
+      "src": "/videos/articles/learn-triggers-ball/11.webp",
+      "alt": "Pause picks up where it stopped. Continue kept going while it was hidden, and reset starts over."
+    },
+    {
+      "kind": "text",
+      "t": 222.63,
+      "text": "Pause picks up where it stopped. Continue kept going while it was hidden, and reset starts over. So, a trigger is two decisions. When it starts, on load, mouse over, click, or none, and what it does when you look away."
+    }
+  ]
+}

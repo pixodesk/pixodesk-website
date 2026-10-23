@@ -1,0 +1,46 @@
+---
+/** The closing band: each app's own links (stores, demo, docs). */
+import Section from "../../Section.astro";
+import StartBand from "../../new-design/StartBand.astro";
+import lottieContent from "../../../data/2d-animator/lottie-index-text-content";
+import svgContent from "../../../data/svg/svg-index-text-content";
+import { AppKey, Slug, appInfo, sectionInfo } from "../catalogue";
+interface Props { app: AppKey; bg: string }
+const { app, bg } = Astro.props;
+const tryIt = `#${Slug.tryIt}`;
+const lottieStores = lottieContent.sections.section_00.storeButtons;
+const svgStores = svgContent.sections.section_00.storeButtons;
+const band = app === AppKey.svgAnimator
+  ? { text: "The demo and the docs are open today; the player is on npm; the desktop app is on its way to the stores.", links: [
+      { label: "Try the demo", href: tryIt, primary: true },
+      { label: "Learn: 21 short videos", href: "/new-design2/svg-animator/learn" },
+      { label: "Get started — docs", href: "/docs/svga/get-started" },
+      { label: "npm i @pixodesk/svg-animator-react", href: "https://www.npmjs.com/package/@pixodesk/svg-animator-react", mono: true, external: true },
+      { label: "GitHub", href: "https://github.com/pixodesk/pixodesk-svg-animator", external: true },
+      { label: "Tell me when the app ships", href: "mailto:support@pixodesk.com?subject=SVG%20Animator%20release" },
+    ] }
+  : app === AppKey.animator2d
+    ? { text: "$4.99 a month or $29.99 a year, through the stores. The browser demo and the tutorials are free.", links: [
+        { label: "Microsoft Store", href: lottieStores?.[0]?.link ?? "/animator/download", primary: true, external: true },
+        { label: "Mac App Store", href: lottieStores?.[1]?.link ?? "/animator/download", primary: true, external: true },
+        { label: "Try the demo", href: tryIt },
+        { label: "Docs", href: "/docs/2d-lottie" },
+        { label: "Tutorials", href: "/animator/tutorials" },
+        { label: "All features", href: "/animator/features" },
+        { label: "Pricing", href: "/pricing" },
+      ] }
+    : { text: `Free on both stores. When a drawing has to move, open it in ${appInfo(AppKey.svgAnimator).name} (web) or ${appInfo(AppKey.animator2d).name} (native apps).`, links: [
+        { label: "Microsoft Store", href: svgStores?.[0]?.link ?? "/svg-editor/download", primary: true, external: true },
+        { label: "Mac App Store", href: svgStores?.[1]?.link ?? "/svg-editor/download", primary: true, external: true },
+        { label: "Try the demo", href: tryIt },
+        { label: "All features", href: "/svg-editor/features" },
+        { label: "Release notes", href: "/svg-editor/releases" },
+        { label: appInfo(AppKey.svgAnimator).name, href: appInfo(AppKey.svgAnimator).page },
+        { label: appInfo(AppKey.animator2d).name, href: appInfo(AppKey.animator2d).page },
+      ] };
+---
+<section id={Slug.start} class="scroll-mt-24">
+  <Section bgColor={bg} color="text-base-bright" standard>
+    <StartBand title={sectionInfo(Slug.start).title} text={band.text} links={band.links} />
+  </Section>
+</section>

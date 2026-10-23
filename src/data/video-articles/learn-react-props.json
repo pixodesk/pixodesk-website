@@ -1,0 +1,120 @@
+{
+  "name": "learn-react-props",
+  "blocks": [
+    {
+      "kind": "text",
+      "t": 0.27,
+      "text": "This video shows how to control the player from React state, with properties. There is no autoplay, so nothing plays by itself. Your state decides, and the player follows. First, the player. It is one package from npm."
+    },
+    {
+      "kind": "shot",
+      "t": 21.62,
+      "src": "/videos/articles/learn-react-props/01.webp",
+      "alt": "That adds the player to the project."
+    },
+    {
+      "kind": "text",
+      "t": 21.47,
+      "text": "That adds the player to the project. Let's start with play and pause, and keep that decision in React state."
+    },
+    {
+      "kind": "shot",
+      "t": 36.15,
+      "src": "/videos/articles/learn-react-props/02.webp",
+      "alt": "Playing starts as false, so the animation waits."
+    },
+    {
+      "kind": "text",
+      "t": 36,
+      "text": "Playing starts as false, so the animation waits. Now let's add the player in a card, with a Play button that sets that state, and a Pause button while it plays."
+    },
+    {
+      "kind": "shot",
+      "t": 66.75,
+      "src": "/videos/articles/learn-react-props/03.webp",
+      "alt": "The play property follows the state. It's false, so the player waits at the start, and the Play button shows."
+    },
+    {
+      "kind": "text",
+      "t": 66.6,
+      "text": "The play property follows the state. It's false, so the player waits at the start, and the Play button shows. Let's press Play, and then Pause."
+    },
+    {
+      "kind": "shot",
+      "t": 82.42,
+      "src": "/videos/articles/learn-react-props/04.webp",
+      "alt": "Each click sets the state, and the player follows. It plays, and then pauses right where it was, and the button always shows what comes next."
+    },
+    {
+      "kind": "text",
+      "t": 82.27,
+      "text": "Each click sets the state, and the player follows. It plays, and then pauses right where it was, and the button always shows what comes next. Restarting needs a number that changes on every press. Let's count the restarts in state."
+    },
+    {
+      "kind": "shot",
+      "t": 105.05,
+      "src": "/videos/articles/learn-react-props/05.webp",
+      "alt": "The count starts at zero."
+    },
+    {
+      "kind": "text",
+      "t": 104.9,
+      "text": "The count starts at zero. Now let's pass it to the player as its key, and add a Restart button that counts up."
+    },
+    {
+      "kind": "shot",
+      "t": 124.68,
+      "src": "/videos/articles/learn-react-props/06.webp",
+      "alt": "When the key changes, React builds the player again, from the start. That is our restart."
+    },
+    {
+      "kind": "text",
+      "t": 124.53,
+      "text": "When the key changes, React builds the player again, from the start. That is our restart. Let's press Play, and then Restart."
+    },
+    {
+      "kind": "shot",
+      "t": 138.22,
+      "src": "/videos/articles/learn-react-props/07.webp",
+      "alt": "It starts again from the beginning, and keeps playing, because playing is still true."
+    },
+    {
+      "kind": "text",
+      "t": 138.07,
+      "text": "It starts again from the beginning, and keeps playing, because playing is still true. Besides whether it plays, a property can also set which moment it shows. Let's keep that position in state too. It's the progress, from zero to one."
+    },
+    {
+      "kind": "shot",
+      "t": 160.82,
+      "src": "/videos/articles/learn-react-props/08.webp",
+      "alt": "Progress starts at zero, the very beginning."
+    },
+    {
+      "kind": "text",
+      "t": 160.67,
+      "text": "Progress starts at zero, the very beginning. Now let's add a second card, with a player bound to it, and a slider that changes it."
+    },
+    {
+      "kind": "shot",
+      "t": 185.62,
+      "src": "/videos/articles/learn-react-props/09.webp",
+      "alt": "The progress property follows the state, so the player shows exactly that moment, and stays there."
+    },
+    {
+      "kind": "text",
+      "t": 185.47,
+      "text": "The progress property follows the state, so the player shows exactly that moment, and stays there. Let's drag the slider."
+    },
+    {
+      "kind": "shot",
+      "t": 200.18,
+      "src": "/videos/articles/learn-react-props/10.webp",
+      "alt": "As the slider moves, the state changes, and the ball moves with it. There is no play or pause, just the moment you ask for."
+    },
+    {
+      "kind": "text",
+      "t": 200.03,
+      "text": "As the slider moves, the state changes, and the ball moves with it. There is no play or pause, just the moment you ask for. So, with properties bound to state, your component declares what the player does. It says whether it plays, when it starts again, or which moment it shows. React updates the state, and the player follows."
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+---
+/** Once per page: every card's CSS (scoped by the generator to `.rui-<id>`), the fit wrapper, and the client script. */
+import { realUiCards } from "./realUi";
+const css = realUiCards.map((c) => c.css).join("\n");
+---
+<style is:global set:html={css}></style>
+<style is:global>
+  /* a player box stands for the component's own <svg>: the player's svg fills it */
+  .rui [data-rui-player] > svg { display: block; width: 100%; height: 100%; }
+  /* player-driven feature art (the burst, auto-animate, easing): the box sets the size — no 50vh cap from the feature layout */
+  [data-rui-card] > [data-rui-player] > svg { max-height: none !important; }
+  /* the fit wrapper: the card at its designed width, scaled down as a whole on narrow screens (the script sets the scale) */
+  .rui-fit { position: relative; width: 100%; }
+  .rui-fit-inner { position: absolute; left: 50%; top: 0; width: max-content; transform: translateX(-50%); transform-origin: top center; }
+  .rui-fit:not([data-rui-sized]) > .rui-fit-inner { position: relative; left: auto; transform: none; margin: 0 auto; }
+  /* contain: the box keeps its own height (a bento tile); the card is centred both ways */
+  .rui-fit.rui-contain { height: 100%; overflow: hidden; }
+  .rui-fit.rui-contain > .rui-fit-inner { top: 50%; transform-origin: center center; }
+  /* fill: the card takes the box's whole size, unscaled (the page restyles its parts to fill it) */
+  .rui-fit.rui-fill { height: 100%; }
+  .rui-fit.rui-fill > .rui-fit-inner { position: absolute; inset: 0; width: auto; transform: none; }
+  .rui-fit.rui-fill .rui, .rui-fit.rui-fill .rui-main { width: 100%; height: 100%; margin: 0; }
+  /* the light surface a card sits on (cards look like screenshots of an app) */
+  .rui-stage { border-radius: 16px; background: #e9edf3; padding: 16px; }
+  @media (min-width: 768px) { .rui-stage { padding: 24px; } }
+  .rui-video { max-width: 320px; margin: 24px auto 0; }
+  /* `hidden` wins over a card's own display rule (the second status line, the Resume button) */
+  .rui [hidden] { display: none !important; }
+  /* the site's reset leaves some defaults the cards relied on in the videos */
+  .rui b, .rui strong { font-weight: 700; }
+  .rui h1, .rui h2, .rui h3 { font-weight: 700; line-height: 1.25; }
+</style>
+<script>
+  import "../../scripts/real-ui";
+  // `data-play-in-view` in the markup: its CSS animations run only on screen
+  import { playInViewAll } from "../../scripts/play-in-view";
+  playInViewAll();
+</script>

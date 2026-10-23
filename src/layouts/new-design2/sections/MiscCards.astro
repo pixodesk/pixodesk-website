@@ -1,0 +1,29 @@
+---
+/** Feature sections without art yet (the Misc group): a card each — the catalogue header, the line, the facts, the manual link. */
+import Section from "../../Section.astro";
+import Facts from "../../new-design/Facts.astro";
+import SectionHead from "../SectionHead.astro";
+import { featureFor } from "../features";
+import { showsManual, type AppKey, type Slug } from "../catalogue";
+interface Props { slugs: Array<Slug>; app: AppKey; bg: string }
+const { slugs, app, bg } = Astro.props;
+const cards = slugs.map((slug) => {
+  const f = featureFor(slug, app);
+  if (!f) throw new Error(`feature ${slug} has no content for ${app}`);
+  return { slug, f };
+});
+---
+<section>
+  <Section bgColor={bg} color="text-base-bright" standard>
+    <div class="mx-auto grid max-w-custom-standard grid-cols-1 gap-6 md:grid-cols-2">
+      {cards.map(({ slug, f }) => (
+        <article id={slug} class="scroll-mt-24 rounded-2xl border border-white/10 bg-white/[.04] p-6">
+          <SectionHead slug={slug} app={app} />
+          <p class="text-custom-grey-200" set:html={f.line} />
+          <Facts items={f.facts} />
+          {showsManual(app) && f.docs && <p class="mt-5 text-sm"><a class="text-cyan-300 underline underline-offset-2 hover:text-cyan-200" href={f.docs.href}>{f.docs.label} →</a></p>}
+        </article>
+      ))}
+    </div>
+  </Section>
+</section>

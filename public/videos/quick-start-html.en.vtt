@@ -1,53 +1,109 @@
 WEBVTT
 
 1
-00:00:00.267 --> 00:00:01.730
-Here's a simple web page.
+00:00:00.267 --> 00:00:11.761
+This video shows how to put an animation from Pixodesk SVG Animator on a plain web page. It takes one script and one element, with no build step.
 
 2
-00:00:05.467 --> 00:00:07.818
-It works, but it feels a little static.
+00:00:13.000 --> 00:00:15.299
+Let's start with the page as it is.
 
 3
-00:00:08.367 --> 00:00:11.632
-First, copy the player library into the project.
+00:00:19.433 --> 00:00:21.837
+A heading, and nothing that moves yet.
 
 4
-00:00:17.667 --> 00:00:20.854
-Now let's make the animation. It only takes a minute.
+00:00:23.067 --> 00:00:28.761
+To play animations, the page needs the Pixodesk player. Let's copy it into the project.
 
 5
-00:00:21.400 --> 00:00:24.482
-In Pixodesk SVG Animator, draw a circle.
+00:00:35.800 --> 00:00:38.882
+One command copied the player script into the folder.
 
 6
-00:00:25.000 --> 00:00:30.982
-Turn on Auto mode, then drag the ball down and back up. The keyframes are created for you.
+00:00:40.100 --> 00:00:45.481
+Now for the animation itself. Let's switch to the editor, where a football is already drawn.
 
 7
-00:00:31.500 --> 00:00:35.000
-Add gravity easing for a natural bounce, and loop it.
+00:00:47.000 --> 00:00:49.743
+It's a vector drawing, standing still.
 
 8
-00:00:40.267 --> 00:00:43.349
-Save it as JSON, straight into the project.
+00:00:50.967 --> 00:00:53.631
+To make it move, let's switch on Auto mode.
 
 9
-00:00:48.200 --> 00:00:52.066
-Back in the project, the animation file is already there.
+00:00:56.133 --> 00:00:59.581
+With Auto mode on, every change becomes a keyframe.
 
 10
-00:00:53.600 --> 00:00:55.115
-Add the player library.
+00:01:00.800 --> 00:01:04.300
+Half a second in, let's drag the ball down to the floor.
 
 11
-00:01:01.967 --> 00:01:04.919
-Then add one element that names the animation file.
+00:01:07.400 --> 00:01:10.900
+A keyframe appears on the timeline, holding the new position.
 
 12
-00:01:15.100 --> 00:01:18.182
-Reload the page, and the ball bounces.
+00:01:12.133 --> 00:01:13.884
+At one second, let's bring it back up.
 
 13
-00:01:20.700 --> 00:01:23.835
-That's all it takes: one script, one element.
+00:01:17.200 --> 00:01:20.491
+Now it falls and rises again, in one second.
+
+14
+00:01:21.733 --> 00:01:28.238
+A real ball speeds up as it falls, and slows down as it rises. Let's set that easing.
+
+15
+00:01:35.367 --> 00:01:39.546
+Gravity easing, falling and rising, makes the bounce feel natural.
+
+16
+00:01:40.767 --> 00:01:44.058
+One bounce is not enough, so let's loop the animation.
+
+17
+00:01:47.533 --> 00:01:51.687
+Loop is saved with the file, so the animation repeats forever.
+
+18
+00:01:53.900 --> 00:01:58.733
+The animation is ready. Let's save it as JSON, next to the page.
+
+19
+00:02:03.700 --> 00:02:05.999
+Now, back to our page.
+
+20
+00:02:07.533 --> 00:02:11.034
+The animation file is already there, next to the page.
+
+21
+00:02:12.267 --> 00:02:15.062
+Let's load the player, at the end of the page.
+
+22
+00:02:23.600 --> 00:02:28.798
+The script tag loads the player, and one call finds every animation on the page.
+
+23
+00:02:30.033 --> 00:02:33.586
+Then, let's add an element that names the animation file.
+
+24
+00:02:43.133 --> 00:02:50.578
+Its data attribute points at the file. The player plays it as the file says, starting on load and repeating forever.
+
+25
+00:02:51.800 --> 00:02:54.464
+Let's reload the page, and watch.
+
+26
+00:02:59.600 --> 00:03:03.492
+There it is. The ball bounces, on a plain web page.
+
+27
+00:03:05.533 --> 00:03:15.225
+So, one copied script, one file saved from the editor, and one element. That's all it takes to bring an animation onto a web page.

@@ -1,0 +1,32 @@
+{
+  "name": "learn-ui-notfound",
+  "blocks": [
+    {
+      "kind": "text",
+      "t": 0.27,
+      "text": "This video shows a friendly page for a missing link, with a boat on a moving sea. It is two animations, layered with a few lines of styles. Our page already says what happened, and offers a way back. Let's add the sea at the bottom."
+    },
+    {
+      "kind": "shot",
+      "t": 25.32,
+      "src": "/videos/articles/learn-ui-notfound/01.webp",
+      "alt": "The sea file repeats forever. The style pins it to the bottom of the scene."
+    },
+    {
+      "kind": "text",
+      "t": 25.17,
+      "text": "The sea file repeats forever. The style pins it to the bottom of the scene. Now the boat, on top of the sea."
+    },
+    {
+      "kind": "shot",
+      "t": 43.78,
+      "src": "/videos/articles/learn-ui-notfound/02.webp",
+      "alt": "The boat is a second file, drawn over the sea. Each one plays on its own, and together they read as one picture."
+    },
+    {
+      "kind": "text",
+      "t": 43.63,
+      "text": "The boat is a second file, drawn over the sea. Each one plays on its own, and together they read as one picture. So, two small files and a few lines of styles. Layers let each part move in its own way."
+    }
+  ]
+}

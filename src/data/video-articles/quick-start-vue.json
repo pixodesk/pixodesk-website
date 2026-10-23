@@ -1,0 +1,164 @@
+{
+  "name": "quick-start-vue",
+  "blocks": [
+    {
+      "kind": "text",
+      "t": 0.27,
+      "text": "This video shows how to put an animation from Pixodesk SVG Animator into a Vue app. It takes one package, one file and one component. Let's start with the app as it is."
+    },
+    {
+      "kind": "shot",
+      "t": 18.88,
+      "src": "/videos/articles/quick-start-vue/01.webp",
+      "alt": "A heading, and nothing that moves yet."
+    },
+    {
+      "kind": "text",
+      "t": 18.73,
+      "text": "A heading, and nothing that moves yet. To play animations, the app needs the Pixodesk player. Let's install it."
+    },
+    {
+      "kind": "shot",
+      "t": 34.05,
+      "src": "/videos/articles/quick-start-vue/02.webp",
+      "alt": "The Vue player is in, one package."
+    },
+    {
+      "kind": "text",
+      "t": 33.9,
+      "text": "The Vue player is in, one package. Now for the animation itself. Let's switch to the editor, where a football is already drawn."
+    },
+    {
+      "kind": "shot",
+      "t": 44.58,
+      "src": "/videos/articles/quick-start-vue/03.webp",
+      "alt": "It's a vector drawing, standing still."
+    },
+    {
+      "kind": "text",
+      "t": 44.43,
+      "text": "It's a vector drawing, standing still. To make it move, let's switch on Auto mode."
+    },
+    {
+      "kind": "shot",
+      "t": 53.48,
+      "src": "/videos/articles/quick-start-vue/04.webp",
+      "alt": "With Auto mode on, every change becomes a keyframe."
+    },
+    {
+      "kind": "text",
+      "t": 53.33,
+      "text": "With Auto mode on, every change becomes a keyframe. Half a second in, let's drag the ball down to the floor."
+    },
+    {
+      "kind": "shot",
+      "t": 64.45,
+      "src": "/videos/articles/quick-start-vue/05.webp",
+      "alt": "A keyframe appears on the timeline, holding the new position."
+    },
+    {
+      "kind": "text",
+      "t": 64.3,
+      "text": "A keyframe appears on the timeline, holding the new position. At one second, let's bring it back up."
+    },
+    {
+      "kind": "shot",
+      "t": 74.78,
+      "src": "/videos/articles/quick-start-vue/06.webp",
+      "alt": "Now it falls and rises again, in one second."
+    },
+    {
+      "kind": "text",
+      "t": 74.63,
+      "text": "Now it falls and rises again, in one second. A real ball speeds up as it falls, and slows down as it rises. Let's set that easing."
+    },
+    {
+      "kind": "shot",
+      "t": 93.58,
+      "src": "/videos/articles/quick-start-vue/07.webp",
+      "alt": "Gravity easing, falling and rising, makes the bounce feel natural."
+    },
+    {
+      "kind": "text",
+      "t": 93.43,
+      "text": "Gravity easing, falling and rising, makes the bounce feel natural. One bounce is not enough, so let's loop the animation."
+    },
+    {
+      "kind": "shot",
+      "t": 105.75,
+      "src": "/videos/articles/quick-start-vue/08.webp",
+      "alt": "Loop is saved with the file, so the animation repeats forever."
+    },
+    {
+      "kind": "text",
+      "t": 105.6,
+      "text": "Loop is saved with the file, so the animation repeats forever."
+    },
+    {
+      "kind": "shot",
+      "t": 111.62,
+      "src": "/videos/articles/quick-start-vue/09.webp",
+      "alt": "The animation is ready. Let's save it as JSON, straight into the project."
+    },
+    {
+      "kind": "text",
+      "t": 111.47,
+      "text": "The animation is ready. Let's save it as JSON, straight into the project."
+    },
+    {
+      "kind": "shot",
+      "t": 121.22,
+      "src": "/videos/articles/quick-start-vue/10.webp",
+      "alt": "Now, back to our app."
+    },
+    {
+      "kind": "text",
+      "t": 121.07,
+      "text": "Now, back to our app."
+    },
+    {
+      "kind": "shot",
+      "t": 124.82,
+      "src": "/videos/articles/quick-start-vue/11.webp",
+      "alt": "The animation file is already there, next to the code."
+    },
+    {
+      "kind": "text",
+      "t": 124.67,
+      "text": "The animation file is already there, next to the code. Let's import the player, and the animation file."
+    },
+    {
+      "kind": "shot",
+      "t": 144.15,
+      "src": "/videos/articles/quick-start-vue/12.webp",
+      "alt": "The component comes from the package, the animation from the JSON file."
+    },
+    {
+      "kind": "text",
+      "t": 144,
+      "text": "The component comes from the package, the animation from the JSON file. Then, let's place the player in the template."
+    },
+    {
+      "kind": "shot",
+      "t": 161.58,
+      "src": "/videos/articles/quick-start-vue/13.webp",
+      "alt": "The doc property takes the animation. Autoplay means it plays as the file says, starting on load and repeating forever."
+    },
+    {
+      "kind": "text",
+      "t": 161.43,
+      "text": "The doc property takes the animation. Autoplay means it plays as the file says, starting on load and repeating forever. Let's reload the page, and watch."
+    },
+    {
+      "kind": "shot",
+      "t": 179.85,
+      "src": "/videos/articles/quick-start-vue/14.webp",
+      "alt": "There it is. The ball bounces, right inside the Vue app."
+    },
+    {
+      "kind": "text",
+      "t": 179.7,
+      "text": "There it is. The ball bounces, right inside the Vue app. So, one package, one file saved from the editor, and one component. That's all it takes to bring an animation into a Vue app."
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+---
+/**
+ * File formats (owner, 2026-10-17: ONE section for every file the app opens and saves, imports and exports — was "File format" +
+ * "Export & import"; last in Use): the diagram (ExportGraph: the app's own format in and out, imports and exports dotted), then
+ * on the SVG Animator's page what is inside its files (FileExamples) — and the manual.
+ */
+import PlainSection from "./PlainSection.astro";
+import ExportGraph from "./ExportGraph.astro";
+import FileExamples from "./FileExamples.astro";
+import { AppKey, Slug, showsManual } from "../catalogue";
+import { b, manual } from "../text";
+interface Props { app: AppKey; bg: string }
+const { app, bg } = Astro.props;
+const lead = `${b("Its own format")} opens and saves; everything else comes in by import and goes out by export.`;
+const docs = [manual("Save", "/docs/svga/editor/save#file-formats-which-one-to-save"), manual("Export", "/docs/svga/editor/export")];
+const inside = app === AppKey.svgAnimator ? { title: "Inside the files", line: "The same bouncing ball in every format the SVG Animator saves — each plays here, next to its first lines." } : undefined;
+---
+<PlainSection slug={Slug.fileFormat} app={app} bg={bg} lead={lead}>
+  <ExportGraph app={app} />
+  {inside && (
+    <div class="mx-auto mt-16 max-w-custom-standard">
+      <p class="text-center text-lg font-semibold text-white">{inside.title}</p>
+      <p class="mb-6 mt-1 text-center text-sm text-custom-grey-400">{inside.line}</p>
+      <FileExamples />
+    </div>
+  )}
+  {showsManual(app) && <p class="mt-10 flex flex-wrap justify-center gap-x-6 text-sm">{docs.map((d) => <a class="text-cyan-300 underline underline-offset-2 hover:text-cyan-200" href={d.href}>{d.label} →</a>)}</p>}
+</PlainSection>

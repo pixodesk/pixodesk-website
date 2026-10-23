@@ -1,0 +1,22 @@
+---
+/** Try it: the app's browser demo (click to load), the catalogue header on top. */
+import DemoFrame from "../../new-design/DemoFrame.astro";
+import LogoSvgaFill from "../../LogoSvgaFill.astro";
+import Logo2DFill from "../../Logo2DFill.astro";
+import LogoSVGFill from "../../LogoSvgFill.astro";
+import SectionHead from "../SectionHead.astro";
+import { AppKey, Slug, appInfo, sectionInfo } from "../catalogue";
+interface Props { app: AppKey }
+const { app } = Astro.props;
+const demo = app === AppKey.svgAnimator
+  ? { src: "/app/demo/index.html?svga", line: "Create, modify and animate SVG in the restricted browser demo. Saving and export are in the desktop app." }
+  : app === AppKey.animator2d
+    ? { src: "/app/demo/index.html?2da", line: "Create, modify and animate in the restricted browser demo. Saving and export are in the desktop app." }
+    : { src: "/app/demo/index.html?svg", line: "Create and modify SVG in the restricted browser demo. Saving and export are in the desktop app — which is free." };
+---
+<DemoFrame id={Slug.tryIt} src={demo.src} app={appInfo(app).name} title={sectionInfo(Slug.tryIt).title} lines={[demo.line]}>
+  <SectionHead slot="head" slug={Slug.tryIt} app={app} center />
+  {app === AppKey.svgAnimator && <LogoSvgaFill />}
+  {app === AppKey.animator2d && <Logo2DFill />}
+  {app === AppKey.svgEditor && <LogoSVGFill />}
+</DemoFrame>

@@ -1,0 +1,125 @@
+---
+/**
+ * "How it fits together" as a diagram (owner, 2026-10-17: like the decision tree, then "more stuff": static vs animated SVG, the animated
+ * SVG flavours, React, Vue…). Draw → Save → Play → Ship:
+ * - editors (catalogue + apps.ts) → the files they save (main wires) and export (WireKind.secondary: faint), per the app's export list;
+ * - Animated SVG = a group of its flavours (docs: choosing a format) — WireKind.inner links the group to them;
+ * - files → what plays them (the browser, our player, Lottie players: players.ts) → where they run.
+ * Wires and tracing: Wires + src/scripts/wired-diagram.ts; the shared look: DiagramStyles.
+ */
+import LogoSVGFill from "../../LogoSvgFill.astro";
+import Logo2DFill from "../../Logo2DFill.astro";
+import LogoSvgaFill from "../../LogoSvgaFill.astro";
+import Glyph from "../../new-design/Glyph.astro";
+import Wires from "./Wires.astro";
+import DiagramStyles from "./DiagramStyles.astro";
+import { pitchOf } from "../apps";
+import { AppKey, appInfo } from "../catalogue";
+import { LOTTIE_PLAYERS, pxPackages } from "../players";
+import { WireKind } from "../../../scripts/wired-diagram";
+import Marked from "./Marked.astro";
+import { FileExt, type Text, ext, joined, pkg, stacked } from "./marks";
+import { ANIMATED_SVG, BROWSER, PLACES, PX_JSON, PlaceKey, SVG_FLAVOURS } from "../diagramNodes";
+
+enum N { staticSvg = "static-svg", lottie = "lottie", media = "media", pxPlayer = "px-player", lottiePlayers = "lottie-players" }
+const P = PlaceKey;
+interface Box { id: string; label: string; sub: Text; area: string; href?: string }
+// the marked words (Marked.astro): extensions
+const SVG = ext(FileExt.svg), JSON_FILE = ext(FileExt.json);
+
+// the SVG Animator first: its Pixodesk JSON tops the files (owner, 2026-10-18: JSON over SVG, React on top)
+const editors = [AppKey.svgAnimator, AppKey.svgEditor, AppKey.animator2d].map((key, i) => ({ id: String(key), key, name: appInfo(key).name, page: appInfo(key).page, line: pitchOf(key).tagline, accent: pitchOf(key).accent, area: `e${i + 1}` }));
+const [svgEditor, svgAnimator, animator2d] = editors.map((e) => e.id);
+const files: Array<Box> = [
+  { id: N.staticSvg, label: "Static SVG", sub: [SVG, " — icons, logos, illustrations"], area: "fs" },
+  { ...PX_JSON, area: "fj" },
+  { id: N.lottie, label: "Lottie", sub: joined([JSON_FILE, ext(FileExt.lottie)]), area: "fl", href: "/docs/2d-lottie/lottie-features" },
+  { id: N.media, label: "Images & video", sub: joined([FileExt.png, FileExt.jpeg, FileExt.webp, FileExt.gif, FileExt.mp4, FileExt.webm].map(ext), " "), area: "fm", href: "/docs/svga/editor/export" },
+];
+// Animated SVG = a group of its flavours (shared with the SVG Animator's "Where it plays": diagramNodes.ts)
+const animated: Box = { ...ANIMATED_SVG, area: "fa" };
+const flavours: Array<Box> = SVG_FLAVOURS.map((f) => ({ ...f, area: "" }));
+const plays: Array<Box> = [
+  { ...BROWSER, area: "pb" },
+  { id: N.pxPlayer, label: "Pixodesk player", sub: stacked(pxPackages().map(pkg)), area: "pp", href: "/docs/svga/player-library/get-started" },
+  { id: N.lottiePlayers, label: "Lottie players", sub: joined(LOTTIE_PLAYERS.map((p) => pkg(p.label)), " "), area: "pl", href: "/docs/2d-lottie/add-lottie-animation-to-your-project" },
+];
+const places = [P.react, P.vue, P.rn, P.web, P.ios, P.android, P.windows, P.anywhere].map((k, i) => ({ ...PLACES[k], area: `d${i + 1}` }));
+const EDGES: Array<[string, string, WireKind?]> = [
+  // saves
+  [svgEditor, N.staticSvg], [svgAnimator, animated.id], [svgAnimator, PX_JSON.id], [animator2d, N.lottie],
+  // exports (the app's export list per editor)
+  [svgEditor, N.lottie, WireKind.secondary], [svgEditor, N.media, WireKind.secondary], [svgAnimator, N.lottie, WireKind.secondary], [svgAnimator, N.media, WireKind.secondary],
+  [animator2d, animated.id, WireKind.secondary], [animator2d, PX_JSON.id, WireKind.secondary], [animator2d, N.media, WireKind.secondary],
+  ...flavours.map((f): [string, string, WireKind] => [animated.id, f.id, WireKind.inner]),
+  // what plays each file
+  [N.staticSvg, BROWSER.id], ...flavours.map((f): [string, string] => [f.id, BROWSER.id]), [PX_JSON.id, N.pxPlayer], [N.lottie, N.lottiePlayers], [N.media, P.anywhere],
+  // where it runs
+  [BROWSER.id, P.web],
+  ...[P.web, P.react, P.vue, P.rn].map((p): [string, string] => [N.pxPlayer, p]),
+  ...[P.web, P.react, P.vue, P.rn, P.ios, P.android, P.windows].map((p): [string, string] => [N.lottiePlayers, p]),
+];
+const steps = [{ word: "Draw", sub: "in a desktop editor", area: "h1" }, { word: "Save", sub: "one file", area: "h2" }, { word: "Play", sub: "how it plays", area: "h3" }, { word: "Ship", sub: "where it lives", area: "h4" }];
+const Tag = (b: Box) => (b.href ? "a" : "div");
+---
+<DiagramStyles />
+<section id="how" class="dg-section scroll-mt-24">
+  <div class="dg-head">
+    <h2>How it fits together</h2>
+    <p>Draw once, save one file, play it anywhere — no editor needed to play it.</p>
+    <p class="legend"><span class="key"></span>saves<span class="key secondary"></span>also exports<span class="hint">· hover to trace:</span><span class="key traced"></span>connected<span class="key limited"></span>through an export, limited</p>
+  </div>
+  <div class="flow" data-diagram data-edges={JSON.stringify(EDGES)}>
+    <Wires id="flow-wire" />
+    {steps.map((s) => <p class="dg-step" style={`grid-area: ${s.area}`}><b>{s.word}</b><span>{s.sub}</span></p>)}
+    {editors.map((e) => (
+      <a class="dg-node dg-app" href={e.page} data-node={e.id} style={`grid-area: ${e.area}; --accent: ${e.accent}`}>
+        <span class="dg-logo">{e.key === AppKey.svgEditor && <LogoSVGFill />}{e.key === AppKey.svgAnimator && <LogoSvgaFill />}{e.key === AppKey.animator2d && <Logo2DFill />}</span>
+        <span class="dg-text"><span class="dg-name">{e.name}</span><span class="dg-sub">{e.line}</span></span>
+        <span class="dg-go">→</span>
+      </a>
+    ))}
+    {[...files, ...plays].map((f) => { const T = Tag(f); return <T class="dg-node dg-fork" href={f.href} data-node={f.id} style={`grid-area: ${f.area}`}><b>{f.label}</b><span><Marked text={f.sub} /></span></T>; })}
+    <div class="dg-node dg-group" data-node={animated.id} style={`grid-area: ${animated.area}`}>
+      <a class="dg-group-head" href={animated.href}><b>{animated.label}</b><span><Marked text={animated.sub} /></span></a>
+      {flavours.map((f) => <a class="dg-node dg-fork dg-mini" href={f.href} data-node={f.id}><b>{f.label}</b><span><Marked text={f.sub} /></span></a>)}
+    </div>
+    {places.map((p) => (
+      <div class="dg-node dg-place" data-node={p.id} style={`grid-area: ${p.area}`}>
+        <span class="dg-glyph"><Glyph name={p.glyph} class="h-5 w-5" /></span>
+        <span class="dg-text"><span class="dg-pname">{p.label}</span><span class="dg-sub"><Marked text={p.sub} /></span></span>
+      </div>
+    ))}
+  </div>
+</section>
+
+<style>
+  .legend { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; font-size: 12.5px; }
+  .key { display: inline-block; width: 26px; margin: 0 7px 0 16px; border-top: 2px dashed #818cf8; }
+  .key:first-child { margin-left: 0; }
+  .key.secondary { border-top: 2px dotted rgba(165, 180, 252, .55); }
+  .key.traced { border-top: 2px solid rgb(var(--traced)); }
+  .key.limited { border-top: 2px dashed #818cf8; opacity: .45; }
+  .hint { margin-left: 8px; color: #64748b; }
+
+  /* the gutters are columns of their own, sized for the wires they carry (the widest fans: editors → files, players → places) */
+  .flow { position: relative; display: grid; max-width: 1280px; margin: 0 auto; row-gap: 12px; align-items: center;
+    grid-template-columns: minmax(0, 1.15fr) clamp(48px, 6vw, 92px) minmax(0, 1fr) clamp(36px, 4vw, 60px) minmax(0, .95fr) clamp(64px, 8.5vw, 124px) minmax(0, .8fr);
+    grid-template-areas: "h1 . h2 . h3 . h4" "e1 . fj . pp . d1" "e1 . fa . pp . d2" "e1 . fa . pb . d3" "e1 . fa . pb . d4" "e2 . fs . pb . d5" "e3 . fl . pl . d6" "e3 . fl . pl . d7" ". . fm . . . d8"; }
+  /* phones: one column, so every wire runs down the middle, behind the cards */
+  @media (max-width: 1099px) {
+    .flow { grid-template-columns: minmax(0, 1fr); row-gap: 16px; max-width: 520px;
+      grid-template-areas: "h1" "e1" "e2" "e3" "h2" "fj" "fa" "fs" "fl" "fm" "h3" "pp" "pb" "pl" "h4" "d1" "d2" "d3" "d4" "d5" "d6" "d7" "d8"; }
+  }
+
+  /* compact app rows */
+  .dg-app { grid-template-columns: 38px minmax(0, 1fr) 26px; gap: 12px; padding: 10px 12px; }
+  .dg-logo { width: 38px; height: 38px; }
+  .dg-name { font-size: 16px; }
+  .dg-go { width: 26px; height: 26px; }
+  .dg-fork { padding: 10px 16px; }
+  .dg-fork b { font-size: 21px; }
+
+  /* Animated SVG: a group of its flavours — DiagramStyles' dg-group */
+
+</style>

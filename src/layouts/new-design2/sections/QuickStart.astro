@@ -1,0 +1,22 @@
+---
+/** Quick start: each app's quick-start videos (kf `yarn website:videos`), the catalogue header on top. */
+import VideoSection from "../../new-design/VideoSection.astro";
+import SectionHead from "../SectionHead.astro";
+import { AppKey, Slug, sectionInfo } from "../catalogue";
+import { b } from "../text";
+import { LEARN, QUICK_STARTS, articleHref } from "../videos";
+import { hasArticle } from "../videoArticles";
+interface Props { app: AppKey; bg: string }
+const { app, bg } = Astro.props;
+// the tabs (layouts/new-design2/videos.ts); each links to its video's article page when it has one
+const ARTICLE_LINK = "Read it: transcript and steps";
+const tabs = QUICK_STARTS[app].map((v) => ({ ...v, article: hasArticle(v.name) ? { label: ARTICLE_LINK, href: articleHref(v.name) } : undefined }));
+const content = app === AppKey.svgAnimator
+  ? { line: `Animate a ball, save it into your project, add ${b("one component, one script or the SVG itself")} — and it bounces. Then try the same editor yourself, just below.`, more: { label: "More videos: the player, triggers and real interfaces", href: LEARN.page } }
+  : app === AppKey.animator2d
+    ? { line: `Animate a ball, save it as ${b("Lottie JSON or .lottie")}, play it with the library you already use — and it bounces. Then try the same editor yourself, just below.` }
+    : { line: `A rounded tile, a sun, a cloud of circles ${b("united into one shape")}, a soft gradient, saved as clean SVG — and on the page it is just an image. Then try the same editor yourself, just below.` };
+---
+<VideoSection id={Slug.quickStart} title={sectionInfo(Slug.quickStart).title} videos={tabs} lines={[content.line]} more={content.more} bg={bg}>
+  <SectionHead slot="head" slug={Slug.quickStart} app={app} center />
+</VideoSection>

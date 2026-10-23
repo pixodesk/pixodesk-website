@@ -1,0 +1,43 @@
+{
+  "name": "learn-web-events",
+  "blocks": [
+    {
+      "kind": "text",
+      "t": 0.27,
+      "text": "This video shows how the web player tells your code what happens. It reports when an animation finishes, and every problem it meets, so the page can react. Let's start with an intro animation, and show the welcome section when it finishes."
+    },
+    {
+      "kind": "shot",
+      "t": 32.32,
+      "src": "/videos/articles/learn-web-events/01.webp",
+      "alt": "When the intro finishes, the on finish callback shows the welcome section. The animation decides when."
+    },
+    {
+      "kind": "text",
+      "t": 32.17,
+      "text": "When the intro finishes, the on finish callback shows the welcome section. The animation decides when. Problems arrive the same way, through callbacks. First, a small function that lists each problem on the page."
+    },
+    {
+      "kind": "shot",
+      "t": 60.82,
+      "src": "/videos/articles/learn-web-events/02.webp",
+      "alt": "Each problem has a code, and a kind that says who can fix it."
+    },
+    {
+      "kind": "text",
+      "t": 60.67,
+      "text": "Each problem has a code, and a kind that says who can fix it. Now two more players, both reporting to that function. One file has a broken effect, and the other file is missing."
+    },
+    {
+      "kind": "shot",
+      "t": 90.82,
+      "src": "/videos/articles/learn-web-events/03.webp",
+      "alt": "The broken effect is a warning, so that ball still plays. The missing file is an error, so nothing plays there. Each one shows its code and kind, the document or the host page."
+    },
+    {
+      "kind": "text",
+      "t": 90.67,
+      "text": "The broken effect is a warning, so that ball still plays. The missing file is an error, so nothing plays there. Each one shows its code and kind, the document or the host page. So, the player tells your code when it finishes, and reports every problem with a code and a kind. Handle them in your code, and the console stays quiet."
+    }
+  ]
+}

@@ -2,13 +2,14 @@
 /**
  * The browser demo, click-to-load: a poster card with the app logo (slot) and a button; the editor's iframe is created
  * only on click, so the page does not load a whole editor for every visitor. Phones get a note instead of the frame.
+ * Slot `head`: optional, replaces the title (new-design2: the catalogue's header).
  */
 import { BTN_PRIMARY } from "./buttons";
 interface Props { src: string; app: string; title: string; lines: string[]; id?: string }
 const { src, app, title, lines, id = "demo" } = Astro.props;
 ---
 <section id={id} class="scroll-mt-24 bg-custom-gradient-navy px-pxPage pb-[120px] pt-pxPage text-white">
-  <h2 class="text-center">{title}</h2>
+  {Astro.slots.has("head") ? <slot name="head" /> : <h2 class="text-center">{title}</h2>}
   {lines.map((l) => <p class="text-center text-custom-grey-400" set:html={l} />)}
   <div class="mx-auto mt-6 w-full max-w-custom-wide" data-demo data-src={src} data-title={`${app} — browser demo`}>
     <div class="flex h-[40vh] flex-col items-center justify-center gap-4 rounded-md border border-white/10 bg-custom-gradient-diagonal-navy md:h-[60vh]">

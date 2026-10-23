@@ -1,16 +1,16 @@
----
-// New-design preview: the SVG Animator learning gallery — short narrated videos by area (Player in React, on the web,
-// triggers, pre-rendered SVG, the editor's exports, real interfaces). Recorded from scripts: kf `yarn website:videos` (generated scripts:
-// kf/app/tests/video/learn/generate-learn-videos.mjs). A video is listed once its file is published.
-import "../../../styles/tailwind.css";
-import "../../../styles/global.scss";
-import BaseLayout from "../../../layouts/BaseLayout.astro";
-import PreviewBanner from "../../../layouts/new-design/PreviewBanner.astro";
-import VideoPlayer from "../../../layouts/new-design/VideoPlayer.astro";
-import { videoDuration } from "../../../layouts/new-design/videoDuration";
+/**
+ * The website's scripted videos (kf `yarn website:videos`, recorded from kf app/tests/video/scripts): ONE list for the pages that
+ * show them — the learn gallery (svg-animator/learn) and each app's Quick start section — and for their article pages
+ * (/new-design2/videos/<name>: the video, its transcript and screenshots; owner, 2026-10-18 — data by kf
+ * tests/video/video-article.mjs into src/data/video-articles/<name>.json, read in videoArticles.ts).
+ */
+import type { GlyphName } from "../new-design/glyphs";
+import { AppKey, Slug, appInfo, sectionHref } from "./catalogue";
 
-interface Video { name: string; title: string; line: string; docs: string }
-interface Category { id: string; title: string; line: string; videos: Video[] }
+// ── the learn gallery (SVG Animator) ──
+export const LEARN = { title: "Learn SVG Animator", page: "/new-design2/svg-animator/learn" };
+export interface LearnVideo { name: string; title: string; line: string; docs: string }
+export interface LearnCategory { id: string; title: string; line: string; videos: Array<LearnVideo> }
 
 // where each video's topic is written up in the docs (the link under the card)
 const DOCS = {
@@ -19,7 +19,7 @@ const DOCS = {
   triggers: "/docs/svga/player-library/playback-and-triggers", editorTriggers: "/docs/svga/editor/animation#playback-and-triggers",
   prerendered: "/docs/svga/prerendered-svg/on-the-web", exporting: "/docs/svga/editor/export",
 };
-const categories: Category[] = [
+export const LEARN_CATEGORIES: Array<LearnCategory> = [
   { id: "react", title: "The player in React", line: "Three ways to control the player, from the simplest to full control: autoplay, React state and apiRef.", videos: [
     { name: "learn-react-autoplay", title: "1. The simplest way: autoplay", line: "One line of code, playing as set up in the editor — and properties that override it: start on hover or click, reset when the pointer leaves, play just once.", docs: DOCS.autoplay },
     { name: "learn-react-props", title: "2. Declarative control: React state", line: "Play, restart and progress bound to React state — Play and Pause buttons, a Restart that gives the player a new key, and a slider that picks the moment.", docs: DOCS.state },
@@ -53,35 +53,36 @@ const categories: Category[] = [
     { name: "learn-ui-background", title: "An animated background", line: "A glowing dot grid behind a landing page, covering its box like an image.", docs: DOCS.react },
   ] },
 ];
-const total = categories.reduce((n, c) => n + c.videos.length, 0);
----
-<BaseLayout title="SVG Animator — learn" description="Short narrated videos: the Pixodesk player in React and on the web, triggers, pre-rendered SVG, the editor's exports and animation in real interfaces." canonical="/svg-animator" noindex>
-  <section class="relative w-full bg-custom-gradient-violet pt-navDouble text-white">
-    <PreviewBanner compare="/svg-animator" />
-    <div class="mx-auto max-w-custom-standard px-pxPage pb-12 pt-8 text-center">
-      <h1>Learn SVG Animator</h1>
-      <p class="mx-auto mt-3 max-w-custom-narrow text-custom-grey-200">{total} short videos, each about one thing. The animation files are already made — these are about using them.</p>
-      <nav class="mt-6 flex flex-wrap justify-center gap-2 text-sm">
-        {categories.map((c) => <a class="rounded-full border border-white/15 bg-white/[.06] px-3 py-1 text-custom-grey-200 hover:bg-white/[.12]" href={`#${c.id}`}>{c.title}</a>)}
-      </nav>
-    </div>
-  </section>
-  {categories.map((c, i) => (
-    <section id={c.id} class={`scroll-mt-24 px-pxPage py-pxPage text-white ${i % 2 ? "bg-custom-gradient-navy" : "bg-custom-gradient-indigo"}`}>
-      <div class="mx-auto max-w-custom-standard">
-        <h2 class="text-center">{c.title}</h2>
-        <p class="mx-auto mb-8 max-w-custom-narrow text-center text-custom-grey-400">{c.line}</p>
-        <div class="grid grid-cols-1 gap-x-6 gap-y-8 md:grid-cols-2 lg:grid-cols-3">
-          {c.videos.map((v) => (
-            <article>
-              <VideoPlayer name={v.name} title={v.title} expand compact />
-              <h3 class="mt-3 text-lg font-semibold">{v.title}<span class="ml-2 text-sm font-normal text-custom-grey-400">{videoDuration(v.name)}</span></h3>
-              <p class="mt-1 text-sm text-custom-grey-400">{v.line}</p>
-              <p class="mt-2 text-sm"><a class="text-cyan-300 underline underline-offset-2 hover:text-cyan-200" href={v.docs}>In the docs →</a></p>
-            </article>
-          ))}
-        </div>
-      </div>
-    </section>
-  ))}
-</BaseLayout>
+
+// ── the Quick start sections: one tab per video ──
+export interface QuickStartVideo { id: string; label: string; hint?: string; glyph?: GlyphName; name: string }
+export const QUICK_STARTS: Record<AppKey, Array<QuickStartVideo>> = {
+  [AppKey.svgAnimator]: [
+    { id: "react", label: "React", hint: "Vite + React", glyph: "code", name: "quick-start-react" },
+    { id: "vue", label: "Vue", hint: "Vite + Vue", glyph: "code", name: "quick-start-vue" },
+    { id: "html", label: "Plain HTML", hint: "static page", glyph: "browser", name: "quick-start-html" },
+    { id: "svg-astro", label: "Pre-rendered SVG (in Astro)", hint: "inlined at build", glyph: "file", name: "quick-start-svg-astro" },
+    { id: "svg-iframe", label: "Pre-rendered SVG (in iframe)", hint: "no build step", glyph: "file", name: "quick-start-svg-iframe" },
+  ],
+  // one per popular Lottie player library
+  [AppKey.animator2d]: [
+    { id: "lottie-react", label: "React (lottie-react)", hint: "Lottie JSON", glyph: "code", name: "quick-start-lottie-react" },
+    { id: "dotlottie-react", label: "React (dotlottie-react)", hint: ".lottie file", glyph: "code", name: "quick-start-dotlottie-react" },
+    { id: "lottie-web", label: "Plain HTML (lottie-web)", hint: "static page", glyph: "browser", name: "quick-start-lottie-web" },
+    { id: "dotlottie-web", label: "JavaScript (dotlottie-web)", hint: "canvas, Vite", glyph: "code", name: "quick-start-dotlottie-web" },
+  ],
+  [AppKey.svgEditor]: [{ id: "icon", label: "Weather icon", name: "quick-start-svg-editor" }],
+};
+
+// ── the article pages ──
+/** An article page's context: its title, an optional line, where the video is listed (the way back), the docs. */
+export interface VideoArticleInfo { name: string; title: string; line?: string; listedAt: { label: string; href: string }; docs?: string }
+const APP_KEYS = [AppKey.svgAnimator, AppKey.animator2d, AppKey.svgEditor];
+export const VIDEO_ARTICLE_INFOS: Array<VideoArticleInfo> = [
+  ...LEARN_CATEGORIES.flatMap((c) => c.videos.map((v) => ({ name: v.name, title: v.title, line: v.line, docs: v.docs,
+    listedAt: { label: `${LEARN.title} · ${c.title}`, href: `${LEARN.page}#${c.id}` } }))),
+  ...APP_KEYS.flatMap((app) => QUICK_STARTS[app].map((v) => ({ name: v.name, title: `Quick start: ${v.label}`, line: v.hint,
+    listedAt: { label: `${appInfo(app).name} · Quick start`, href: sectionHref(Slug.quickStart, app) } }))),
+];
+/** The article page of a video. */
+export const articleHref = (name: string): string => `/new-design2/videos/${name}`;

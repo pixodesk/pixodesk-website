@@ -1,0 +1,142 @@
+{
+  "name": "learn-react-autoplay",
+  "blocks": [
+    {
+      "kind": "text",
+      "t": 0.27,
+      "text": "This video shows autoplay, the simplest way to play an animation in React. One line puts it on the page, and it plays just as it was set up in the editor. One more property changes any of that. Our animation is already in the project, as ball.json, made in the editor. Let's open it there, and look at its settings."
+    },
+    {
+      "kind": "shot",
+      "t": 25.28,
+      "src": "/videos/articles/learn-react-autoplay/01.webp",
+      "alt": "It starts on load, and repeats forever. Those settings are saved in the file."
+    },
+    {
+      "kind": "text",
+      "t": 25.13,
+      "text": "It starts on load, and repeats forever. Those settings are saved in the file. Let's see how they look in the file itself, in our code editor."
+    },
+    {
+      "kind": "shot",
+      "t": 37.42,
+      "src": "/videos/articles/learn-react-autoplay/02.webp",
+      "alt": "It's plain JSON. Under animator, there is the same timeline, starting on load and repeating forever. Below it are the shapes, the shadows and the ball, with their keyframes."
+    },
+    {
+      "kind": "text",
+      "t": 37.27,
+      "text": "It's plain JSON. Under animator, there is the same timeline, starting on load and repeating forever. Below it are the shapes, the shadows and the ball, with their keyframes. Now, back to our app. First, the player. It is one package from npm."
+    },
+    {
+      "kind": "shot",
+      "t": 63.75,
+      "src": "/videos/articles/learn-react-autoplay/03.webp",
+      "alt": "That adds the player to the project."
+    },
+    {
+      "kind": "text",
+      "t": 63.6,
+      "text": "That adds the player to the project. Let's add one line that puts the animation on the page."
+    },
+    {
+      "kind": "shot",
+      "t": 78.85,
+      "src": "/videos/articles/learn-react-autoplay/04.webp",
+      "alt": "That's all it takes. The file goes into the doc property. Autoplay means it plays exactly as the file says, so it starts on load and repeats forever."
+    },
+    {
+      "kind": "text",
+      "t": 78.7,
+      "text": "That's all it takes. The file goes into the doc property. Autoplay means it plays exactly as the file says, so it starts on load and repeats forever. Now, to change that behaviour without touching the file, I can override it with a property. Let's add a second component that starts only when the pointer is over it."
+    },
+    {
+      "kind": "shot",
+      "t": 108.75,
+      "src": "/videos/articles/learn-react-autoplay/05.webp",
+      "alt": "One property does it. Start, set to mouse over, replaces the start setting saved in the file."
+    },
+    {
+      "kind": "text",
+      "t": 108.6,
+      "text": "One property does it. Start, set to mouse over, replaces the start setting saved in the file. Let's point at it, and then move away."
+    },
+    {
+      "kind": "shot",
+      "t": 124.15,
+      "src": "/videos/articles/learn-react-autoplay/06.webp",
+      "alt": "It plays while the pointer is over it, and pauses when the pointer leaves. Pausing is the default."
+    },
+    {
+      "kind": "text",
+      "t": 124,
+      "text": "It plays while the pointer is over it, and pauses when the pointer leaves. Pausing is the default. To go back to the start when the pointer leaves, the timeline property can say so. Let's add a third component that does that."
+    },
+    {
+      "kind": "shot",
+      "t": 151.88,
+      "src": "/videos/articles/learn-react-autoplay/07.webp",
+      "alt": "The timeline property overrides any part of the timeline saved in the file. Here, it starts on mouse over, and resets on mouse out."
+    },
+    {
+      "kind": "text",
+      "t": 151.73,
+      "text": "The timeline property overrides any part of the timeline saved in the file. Here, it starts on mouse over, and resets on mouse out. Let's point at it, and move away again."
+    },
+    {
+      "kind": "shot",
+      "t": 169.25,
+      "src": "/videos/articles/learn-react-autoplay/08.webp",
+      "alt": "This time, when the pointer leaves, it jumps back to the start."
+    },
+    {
+      "kind": "text",
+      "t": 169.1,
+      "text": "This time, when the pointer leaves, it jumps back to the start. A click can start it too. Let's add a fourth component that starts on click."
+    },
+    {
+      "kind": "shot",
+      "t": 188.68,
+      "src": "/videos/articles/learn-react-autoplay/09.webp",
+      "alt": "Start, set to click, turns each click into play or pause."
+    },
+    {
+      "kind": "text",
+      "t": 188.53,
+      "text": "Start, set to click, turns each click into play or pause. Let's click it, and then click it again."
+    },
+    {
+      "kind": "shot",
+      "t": 201.35,
+      "src": "/videos/articles/learn-react-autoplay/10.webp",
+      "alt": "The first click plays it, and the second one pauses it."
+    },
+    {
+      "kind": "text",
+      "t": 201.2,
+      "text": "The first click plays it, and the second one pauses it. The same works for repeating. The file says repeat forever, but this time I want it to play just once. Let's add a fifth component that overrides that."
+    },
+    {
+      "kind": "shot",
+      "t": 226.08,
+      "src": "/videos/articles/learn-react-autoplay/11.webp",
+      "alt": "Iterations, set to one, replaces the repeat setting saved in the file. Now it plays once, and stops."
+    },
+    {
+      "kind": "text",
+      "t": 225.93,
+      "text": "Iterations, set to one, replaces the repeat setting saved in the file. Now it plays once, and stops. Let's reload the page, and watch them all together."
+    },
+    {
+      "kind": "shot",
+      "t": 248.48,
+      "src": "/videos/articles/learn-react-autoplay/12.webp",
+      "alt": "Each one follows its own settings. Autoplay keeps going. Mouse over plays only under the pointer, and reset jumps back when it leaves. Click waits for a click, and once stops after one bounce."
+    },
+    {
+      "kind": "text",
+      "t": 248.33,
+      "text": "Each one follows its own settings. Autoplay keeps going. Mouse over plays only under the pointer, and reset jumps back when it leaves. Click waits for a click, and once stops after one bounce. So, one line puts the animation on the page. Autoplay follows the settings saved in the file, and properties override them wherever you need. They can change when it starts, what happens when the pointer leaves, and how often it repeats. The file itself never changes."
+    }
+  ]
+}

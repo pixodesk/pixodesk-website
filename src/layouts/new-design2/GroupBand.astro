@@ -1,0 +1,15 @@
+---
+/** A group's opening band, from the catalogue: its name, one line, and chips to its sections on this app's page. */
+import { groupInfo, sectionsFor, type AppKey, type GroupKey } from "./catalogue";
+interface Props { group: GroupKey; app: AppKey }
+const { group, app } = Astro.props;
+const g = groupInfo(group);
+const sections = sectionsFor(app).filter((s) => s.group === group);
+---
+<div id={g.key} class="scroll-mt-24 border-y border-white/10 bg-[#05030d] px-pxPage py-8 text-center text-white">
+  <p class="text-curstom-gradient-orange text-3xl font-bold tracking-wide md:text-4xl">{g.name}</p>
+  {g.line && <p class="mx-auto mt-2 max-w-custom-narrow text-custom-grey-400">{g.line}</p>}
+  <nav class="mt-4 flex flex-wrap justify-center gap-2" aria-label={`${g.name}: sections`}>
+    {sections.map((s) => <a class="rounded-full border border-white/15 bg-white/[.04] px-3 py-1 text-sm text-custom-grey-200 no-underline hover:bg-white/10" href={`#${s.slug}`}>{s.title}</a>)}
+  </nav>
+</div>

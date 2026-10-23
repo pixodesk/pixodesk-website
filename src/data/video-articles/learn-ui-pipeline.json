@@ -1,0 +1,32 @@
+{
+  "name": "learn-ui-pipeline",
+  "blocks": [
+    {
+      "kind": "text",
+      "t": 0.27,
+      "text": "This video shows an animation that follows a background job. It moves while the job runs, and stops the moment the job is done. Our page shows a nightly data run, and a hook already tells us whether it is running. Let's add the flow of records, tied to that."
+    },
+    {
+      "kind": "shot",
+      "t": 30.02,
+      "src": "/videos/articles/learn-ui-pipeline/01.webp",
+      "alt": "Play, set to running, plays the animation while the job runs. The file repeats, so the records keep flowing."
+    },
+    {
+      "kind": "text",
+      "t": 29.87,
+      "text": "Play, set to running, plays the animation while the job runs. The file repeats, so the records keep flowing. Let's wait for the job to finish."
+    },
+    {
+      "kind": "shot",
+      "t": 44.05,
+      "src": "/videos/articles/learn-ui-pipeline/02.webp",
+      "alt": "Running turns false, so play turns false, and the flow stops where it was. The header says the run succeeded."
+    },
+    {
+      "kind": "text",
+      "t": 43.9,
+      "text": "Running turns false, so play turns false, and the flow stops where it was. The header says the run succeeded. So, one property ties the animation to the job. It plays while the job runs, and stops when it is done."
+    }
+  ]
+}

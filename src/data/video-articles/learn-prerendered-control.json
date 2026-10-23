@@ -1,0 +1,87 @@
+{
+  "name": "learn-prerendered-control",
+  "blocks": [
+    {
+      "kind": "text",
+      "t": 0.27,
+      "text": "This video shows how to control a pre-rendered SVG with no library at all. Its CSS animation plays and pauses with two classes, and any script can set them. First, let's put the file into the page, so a script can reach it."
+    },
+    {
+      "kind": "shot",
+      "t": 28.65,
+      "src": "/videos/articles/learn-prerendered-control/01.webp",
+      "alt": "The markup of the file goes into the ball element. Nothing moves yet, because the animation is not enabled."
+    },
+    {
+      "kind": "text",
+      "t": 28.5,
+      "text": "The markup of the file goes into the ball element. Nothing moves yet, because the animation is not enabled. Now the Play button. It adds two classes to the file's root."
+    },
+    {
+      "kind": "shot",
+      "t": 51.25,
+      "src": "/videos/articles/learn-prerendered-control/02.webp",
+      "alt": "One class turns the animation on, and the other lets it run."
+    },
+    {
+      "kind": "text",
+      "t": 51.1,
+      "text": "One class turns the animation on, and the other lets it run. Let's press Play."
+    },
+    {
+      "kind": "shot",
+      "t": 60.35,
+      "src": "/videos/articles/learn-prerendered-control/03.webp",
+      "alt": "Both classes are on, so it plays."
+    },
+    {
+      "kind": "text",
+      "t": 60.2,
+      "text": "Both classes are on, so it plays. The Pause button removes only the playing class. Let's add it."
+    },
+    {
+      "kind": "shot",
+      "t": 76.72,
+      "src": "/videos/articles/learn-prerendered-control/04.webp",
+      "alt": "The animation stays on, but it stops where it is."
+    },
+    {
+      "kind": "text",
+      "t": 76.57,
+      "text": "The animation stays on, but it stops where it is. Let's press Play, and then Pause."
+    },
+    {
+      "kind": "shot",
+      "t": 87.82,
+      "src": "/videos/articles/learn-prerendered-control/05.webp",
+      "alt": "It stops right where it was."
+    },
+    {
+      "kind": "text",
+      "t": 87.67,
+      "text": "It stops right where it was. The Reset button removes both classes. Let's add it."
+    },
+    {
+      "kind": "shot",
+      "t": 104.75,
+      "src": "/videos/articles/learn-prerendered-control/06.webp",
+      "alt": "Without the enabled class, the animation is off, and the file shows its first frame."
+    },
+    {
+      "kind": "text",
+      "t": 104.6,
+      "text": "Without the enabled class, the animation is off, and the file shows its first frame. Let's press Play, and then Reset."
+    },
+    {
+      "kind": "shot",
+      "t": 118.25,
+      "src": "/videos/articles/learn-prerendered-control/07.webp",
+      "alt": "It jumps back to the first frame."
+    },
+    {
+      "kind": "text",
+      "t": 118.1,
+      "text": "It jumps back to the first frame. So, a pre-rendered SVG needs no library. Two classes on its root play it, pause it, and reset it, from any script or framework."
+    }
+  ]
+}

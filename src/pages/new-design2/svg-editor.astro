@@ -1,0 +1,16 @@
+---
+// Prototype 2 of /svg-editor. The sections, their order, titles and cross-links come from the new-design2 catalogue
+// (layouts/new-design2/catalogue.ts; content in features.ts and sections/) — shared with the SVG Animator and 2D Animator pages.
+// /new-design/svg-editor stays as it is, to compare against.
+import "../../styles/tailwind.css";
+import "../../styles/global.scss";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import AppPage from "../../layouts/new-design2/AppPage.astro";
+import { AppKey } from "../../layouts/new-design2/catalogue";
+
+const description = "Pixodesk SVG Editor: a free desktop vector editor for macOS and Windows that saves clean SVG — only your tags and styles in the file — and exports PNG, JPEG, WebP and GIF.";
+---
+
+<BaseLayout title="SVG Editor" description={description} canonical="/svg-editor" noindex>
+  <AppPage app={AppKey.svgEditor} />
+</BaseLayout>

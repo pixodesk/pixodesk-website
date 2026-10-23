@@ -1,0 +1,12 @@
+---
+/** Use cases: the learn videos' cards as one bento, each captioned with its playback pattern (SVG Animator). */
+import RealUiBento from "../RealUiBento.astro";
+import PlainSection from "./PlainSection.astro";
+import { Slug, type AppKey } from "../catalogue";
+interface Props { app: AppKey; bg: string }
+const { app, bg } = Astro.props;
+---
+<PlainSection slug={Slug.useCases} app={app} bg={bg}
+  lead="Draw it, animate it, drop it into React, Vue or plain HTML. Every animation here is a Pixodesk file of a few KB, played by the same open-source player.">
+  <RealUiBento />
+</PlainSection>

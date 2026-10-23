@@ -1,0 +1,120 @@
+{
+  "name": "learn-web-api",
+  "blocks": [
+    {
+      "kind": "text",
+      "t": 0.27,
+      "text": "This video shows the web player in plain JavaScript, with no framework. One call puts the animation on the page, and a few more control it. First, the player. It is one package from npm."
+    },
+    {
+      "kind": "shot",
+      "t": 19.55,
+      "src": "/videos/articles/learn-web-api/01.webp",
+      "alt": "That adds the player to the project."
+    },
+    {
+      "kind": "text",
+      "t": 19.4,
+      "text": "That adds the player to the project. Before any code, let's look at the page itself."
+    },
+    {
+      "kind": "shot",
+      "t": 28.15,
+      "src": "/videos/articles/learn-web-api/02.webp",
+      "alt": "It has an empty box with the id scene, a slider with the id progress, and four buttons. Jump and Play have ids too, and each speed button keeps its number in a data attribute."
+    },
+    {
+      "kind": "text",
+      "t": 28,
+      "text": "It has an empty box with the id scene, a slider with the id progress, and four buttons. Jump and Play have ids too, and each speed button keeps its number in a data attribute. Now, the script. Let's create a player that fills the box."
+    },
+    {
+      "kind": "shot",
+      "t": 56.42,
+      "src": "/videos/articles/learn-web-api/03.webp",
+      "alt": "Create animator takes the address of the file and the element to fill. With nothing else, the file decides, so it starts on load and repeats forever."
+    },
+    {
+      "kind": "text",
+      "t": 56.27,
+      "text": "Create animator takes the address of the file and the element to fill. With nothing else, the file decides, so it starts on load and repeats forever. Next, the slider. Let's make it move the player to any moment."
+    },
+    {
+      "kind": "shot",
+      "t": 83.88,
+      "src": "/videos/articles/learn-web-api/04.webp",
+      "alt": "On every move, the player pauses, and set current progress moves it to that point, from zero to one."
+    },
+    {
+      "kind": "text",
+      "t": 83.73,
+      "text": "On every move, the player pauses, and set current progress moves it to that point, from zero to one. Let's drag it."
+    },
+    {
+      "kind": "shot",
+      "t": 98.22,
+      "src": "/videos/articles/learn-web-api/05.webp",
+      "alt": "The ball follows the slider exactly."
+    },
+    {
+      "kind": "text",
+      "t": 98.07,
+      "text": "The ball follows the slider exactly. While the ball plays, the slider stays where it was. Let's make it follow the animation too."
+    },
+    {
+      "kind": "shot",
+      "t": 121.32,
+      "src": "/videos/articles/learn-web-api/06.webp",
+      "alt": "On every frame, get current progress reads where the player is, and the slider shows it."
+    },
+    {
+      "kind": "text",
+      "t": 121.17,
+      "text": "On every frame, get current progress reads where the player is, and the slider shows it. Now the Jump and Play buttons. Jump goes to an exact time, and Play starts from there."
+    },
+    {
+      "kind": "shot",
+      "t": 145.98,
+      "src": "/videos/articles/learn-web-api/07.webp",
+      "alt": "Set current time takes milliseconds, so five hundred is the bottom of the bounce. Play starts it from wherever it is."
+    },
+    {
+      "kind": "text",
+      "t": 145.83,
+      "text": "Set current time takes milliseconds, so five hundred is the bottom of the bounce. Play starts it from wherever it is. Let's stop it with the slider, jump to the bottom, and play from there."
+    },
+    {
+      "kind": "shot",
+      "t": 163.45,
+      "src": "/videos/articles/learn-web-api/08.webp",
+      "alt": "The jump lands on the bottom of the bounce, and play carries on from there. The slider follows along."
+    },
+    {
+      "kind": "text",
+      "t": 163.3,
+      "text": "The jump lands on the bottom of the bounce, and play carries on from there. The slider follows along. Speed is one more call. Let's wire up the speed buttons."
+    },
+    {
+      "kind": "shot",
+      "t": 188.45,
+      "src": "/videos/articles/learn-web-api/09.webp",
+      "alt": "Each speed button reads its number from its data attribute, and calls set playback rate with it."
+    },
+    {
+      "kind": "text",
+      "t": 188.3,
+      "text": "Each speed button reads its number from its data attribute, and calls set playback rate with it. Let's try double speed, and then half speed."
+    },
+    {
+      "kind": "shot",
+      "t": 202.65,
+      "src": "/videos/articles/learn-web-api/10.webp",
+      "alt": "Twice as fast, then half as fast. The player keeps its place, and only the speed changes."
+    },
+    {
+      "kind": "text",
+      "t": 202.5,
+      "text": "Twice as fast, then half as fast. The player keeps its place, and only the speed changes. So, without any framework, one call creates the player, and a few more control it. Progress, time, play and speed each take one call. The web player guide in the docs lists every one of them."
+    }
+  ]
+}

@@ -1,0 +1,131 @@
+{
+  "name": "learn-react-apiref",
+  "blocks": [
+    {
+      "kind": "text",
+      "t": 0.27,
+      "text": "This video shows imperative control. Your code calls the player directly, one command at a time, through the API ref property. Some things, like speed, work only this way. First, the player. It is one package from npm."
+    },
+    {
+      "kind": "shot",
+      "t": 24.35,
+      "src": "/videos/articles/learn-react-apiref/01.webp",
+      "alt": "That adds the player to the project."
+    },
+    {
+      "kind": "text",
+      "t": 24.2,
+      "text": "That adds the player to the project. First, we need a handle to the player. Let's create a ref for it."
+    },
+    {
+      "kind": "shot",
+      "t": 37.32,
+      "src": "/videos/articles/learn-react-apiref/02.webp",
+      "alt": "The ref starts empty, and it holds the player once the player is on the page. Its type is the player's API, imported next to the component."
+    },
+    {
+      "kind": "text",
+      "t": 37.17,
+      "text": "The ref starts empty, and it holds the player once the player is on the page. Its type is the player's API, imported next to the component. Now let's add the player in a card, and pass it that ref."
+    },
+    {
+      "kind": "shot",
+      "t": 63.85,
+      "src": "/videos/articles/learn-react-apiref/03.webp",
+      "alt": "The API ref property fills the ref with the player. There is no autoplay here, so nothing plays until we call it."
+    },
+    {
+      "kind": "text",
+      "t": 63.7,
+      "text": "The API ref property fills the ref with the player. There is no autoplay here, so nothing plays until we call it. Now the commands. Let's add a Play button and a Pause button, each calling the player."
+    },
+    {
+      "kind": "shot",
+      "t": 88.92,
+      "src": "/videos/articles/learn-react-apiref/04.webp",
+      "alt": "Each button calls one method on the player, play or pause."
+    },
+    {
+      "kind": "text",
+      "t": 88.77,
+      "text": "Each button calls one method on the player, play or pause. Let's press Play, and then Pause."
+    },
+    {
+      "kind": "shot",
+      "t": 100.95,
+      "src": "/videos/articles/learn-react-apiref/05.webp",
+      "alt": "It plays, and then stops right where it was, until the next call."
+    },
+    {
+      "kind": "text",
+      "t": 100.8,
+      "text": "It plays, and then stops right where it was, until the next call. To jump back to the beginning, we set the time to zero. Let's add a Restart button."
+    },
+    {
+      "kind": "shot",
+      "t": 123.92,
+      "src": "/videos/articles/learn-react-apiref/06.webp",
+      "alt": "Set current time takes milliseconds, so zero is the very start."
+    },
+    {
+      "kind": "text",
+      "t": 123.77,
+      "text": "Set current time takes milliseconds, so zero is the very start. Let's play it, pause it on the floor, and then press Restart."
+    },
+    {
+      "kind": "shot",
+      "t": 137.42,
+      "src": "/videos/articles/learn-react-apiref/07.webp",
+      "alt": "It jumps back to the start, up in the air, and waits there for the next call."
+    },
+    {
+      "kind": "text",
+      "t": 137.27,
+      "text": "It jumps back to the start, up in the air, and waits there for the next call. To show any moment, let's add a slider that sets the player's progress."
+    },
+    {
+      "kind": "shot",
+      "t": 159.15,
+      "src": "/videos/articles/learn-react-apiref/08.webp",
+      "alt": "Set current progress takes a number from zero to one, and the player jumps there."
+    },
+    {
+      "kind": "text",
+      "t": 159,
+      "text": "Set current progress takes a number from zero to one, and the player jumps there. Let's drag it."
+    },
+    {
+      "kind": "shot",
+      "t": 171.58,
+      "src": "/videos/articles/learn-react-apiref/09.webp",
+      "alt": "Each move of the slider is one call, and the ball follows it."
+    },
+    {
+      "kind": "text",
+      "t": 171.43,
+      "text": "Each move of the slider is one call, and the ball follows it. Speed is a command too. Let's add a button for double speed, and one that plays backwards."
+    },
+    {
+      "kind": "shot",
+      "t": 198.22,
+      "src": "/videos/articles/learn-react-apiref/10.webp",
+      "alt": "Set playback rate changes the speed. Two is twice as fast, and minus one plays in reverse."
+    },
+    {
+      "kind": "text",
+      "t": 198.07,
+      "text": "Set playback rate changes the speed. Two is twice as fast, and minus one plays in reverse. Let's press Play, then double speed, then Reverse, and finally Pause. Watch the spin."
+    },
+    {
+      "kind": "shot",
+      "t": 221.02,
+      "src": "/videos/articles/learn-react-apiref/11.webp",
+      "alt": "Twice as fast, and then backwards, spinning the other way. Each button is one call, and the player does exactly that."
+    },
+    {
+      "kind": "text",
+      "t": 220.87,
+      "text": "Twice as fast, and then backwards, spinning the other way. Each button is one call, and the player does exactly that. So, with the API ref property, your code commands the player directly. Play, pause, jump to any moment, and change the speed, each with a single call."
+    }
+  ]
+}

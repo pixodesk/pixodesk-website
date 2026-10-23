@@ -1,0 +1,38 @@
+---
+/** The wires layer of a diagram (src/scripts/wired-diagram.ts draws into it): a cyan → violet → pink gradient, light flowing along. */
+interface Props { id: string }
+const { id } = Astro.props;
+---
+<svg class="wires" aria-hidden="true" style={`--wire: url(#${id})`}>
+  <defs>
+    <linearGradient id={id} gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="1200" y2="0">
+      <stop offset="0" stop-color="#67e8f9" /><stop offset="0.5" stop-color="#818cf8" /><stop offset="1" stop-color="#f472b6" />
+    </linearGradient>
+  </defs>
+</svg>
+
+<style is:global>
+  svg.wires { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; pointer-events: none; }
+  svg.wires path { fill: none; stroke-linecap: round; transition: opacity .25s, stroke-width .25s; }
+  svg.wires path.base { stroke: rgba(255, 255, 255, .14); stroke-width: 2; }
+  svg.wires path.flow { stroke: var(--wire); stroke-width: 2.4; stroke-dasharray: 6 12; opacity: .55; animation: wires-flow 1.6s linear infinite; }
+  /* off screen every wire is paused (src/scripts/play-in-view.ts, called by wired-diagram.ts) */
+  /* a secondary route (WireKind.secondary): faint dots, flowing only when traced */
+  svg.wires path.base.secondary { stroke: rgba(255, 255, 255, .06); stroke-width: 1.5; }
+  svg.wires path.flow.secondary { stroke-width: 1.6; stroke-dasharray: 2 7; opacity: .35; animation-play-state: paused; }
+  svg.wires path.flow.secondary:is(.lit, .limited) { animation-play-state: running; }
+  /* tracing — connected: gold; only through a secondary route (limited): its usual colour, half way; not connected: steps back */
+  svg.wires path.flow.lit { stroke: rgb(var(--traced)); opacity: 1; stroke-width: 3.2; filter: drop-shadow(0 0 6px rgb(var(--traced) / .75)); }
+  svg.wires path.flow.limited { opacity: .7; }
+  [data-diagram].tracing svg.wires path.flow:not(.lit, .limited) { opacity: .04; }
+  [data-diagram].tracing svg.wires path.base { opacity: .25; }
+  [data-diagram].tracing [data-node].limited { opacity: .9; }
+  [data-diagram].tracing [data-node]:not(.lit, .limited) { opacity: .2; }
+  @keyframes wires-flow { to { stroke-dashoffset: -36; } }
+  @media (prefers-reduced-motion: reduce) { svg.wires path.flow { animation: none; } }
+</style>
+
+<script>
+  import { wireAll } from "../../../scripts/wired-diagram";
+  wireAll();
+</script>

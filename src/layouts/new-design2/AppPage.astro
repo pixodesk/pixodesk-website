@@ -1,0 +1,66 @@
+---
+/**
+ * An app's page body, built from the catalogue (order, groups) — the pages themselves only name their app.
+ * - A group band opens each group that has one.
+ * - Feature sections with art alternate their side; text-only features (no art yet) run together as one grid of cards.
+ * - OWN_SECTION: features with a full-width section of their own (their text still comes from features.ts).
+ * - Backgrounds cycle; the demo keeps its own.
+ */
+import RealUiStyles from "./RealUiStyles.astro";
+import GroupBand from "./GroupBand.astro";
+import Hero from "./sections/Hero.astro";
+import QuickStart from "./sections/QuickStart.astro";
+import TryIt from "./sections/TryIt.astro";
+import UseCases from "./sections/UseCases.astro";
+import Frameworks from "./sections/Frameworks.astro";
+import WhereItPlays from "./sections/WhereItPlays.astro";
+import FileFormat from "./sections/FileFormat.astro";
+import StartHere from "./sections/StartHere.astro";
+import Feature from "./sections/Feature.astro";
+import MiscCards from "./sections/MiscCards.astro";
+import Triggers from "./sections/Triggers.astro";
+import WideFeature from "./sections/WideFeature.astro";
+import { GroupKey, Slug, groupInfo, sectionsFor, type AppKey } from "./catalogue";
+import { featureFor } from "./features";
+interface Props { app: AppKey }
+const { app } = Astro.props;
+
+const BGS = ["bg-custom-gradient-violet", "bg-custom-gradient-navy", "bg-custom-gradient-indigo"];
+enum ItemKind { band = "band", section = "section", feature = "feature", cards = "cards" }
+type Item = { kind: ItemKind.band; group: GroupKey } | { kind: ItemKind.section; slug: Slug; bg: string } | { kind: ItemKind.feature; slug: Slug; bg: string; flip: boolean } | { kind: ItemKind.cards; slugs: Array<Slug>; bg: string };
+
+const OWN_SECTION: Set<Slug> = new Set([Slug.triggers, Slug.shapeMorph]);
+const items: Array<Item> = [];
+let group: GroupKey | undefined, n = 0, features = 0;
+for (const s of sectionsFor(app)) {
+  if (s.group !== group) { group = s.group; if (groupInfo(group).band) items.push({ kind: ItemKind.band, group }); }
+  const f = featureFor(s.slug, app);
+  const last = items[items.length - 1];
+  if (OWN_SECTION.has(s.slug)) items.push({ kind: ItemKind.section, slug: s.slug, bg: BGS[n++ % BGS.length] });
+  else if (f && !f.art) {
+    // consecutive text-only features share one grid
+    if (last?.kind === ItemKind.cards) last.slugs.push(s.slug); else items.push({ kind: ItemKind.cards, slugs: [s.slug], bg: BGS[n++ % BGS.length] });
+  } else if (f) items.push({ kind: ItemKind.feature, slug: s.slug, bg: BGS[n++ % BGS.length], flip: features++ % 2 === 1 });
+  else items.push({ kind: ItemKind.section, slug: s.slug, bg: BGS[n++ % BGS.length] });
+}
+---
+{/* the cards' styles and the player script (src/scripts/real-ui.ts): the animated art and the hero play through it */}
+<RealUiStyles />
+{items.map((it) => {
+  if (it.kind === ItemKind.band) return <GroupBand group={it.group} app={app} />;
+  if (it.kind === ItemKind.feature) return <Feature slug={it.slug} app={app} bg={it.bg} flip={it.flip} />;
+  if (it.kind === ItemKind.cards) return <MiscCards slugs={it.slugs} app={app} bg={it.bg} />;
+  switch (it.slug) {
+    case Slug.hero: return <Hero app={app} />;
+    case Slug.quickStart: return <QuickStart app={app} bg={it.bg} />;
+    case Slug.tryIt: return <TryIt app={app} />;
+    case Slug.useCases: return <UseCases app={app} bg={it.bg} />;
+    case Slug.frameworks: return <Frameworks app={app} bg={it.bg} />;
+    case Slug.whereItPlays: return <WhereItPlays app={app} bg={it.bg} />;
+    case Slug.fileFormat: return <FileFormat app={app} bg={it.bg} />;
+    case Slug.triggers: return <Triggers app={app} bg={it.bg} />;
+    case Slug.shapeMorph: return <WideFeature slug={it.slug} app={app} bg={it.bg} />;
+    case Slug.start: return <StartHere app={app} bg={it.bg} />;
+    default: throw new Error(`section ${it.slug} has no content for ${app}`);
+  }
+})}

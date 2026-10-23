@@ -4,7 +4,7 @@
 // Replay). Every track ends on the element's own attributes, so a scene that never plays shows the RESULT.
 // Review: feature-sections-review.2026-10-15.md (website root).
 export type SchemaKind =
-  | "shapeBuilder" | "editColors" | "gradient" | "vectorText" | "textPath" | "autoAnimate" | "easing"
+  | "shapeBuilder" | "editColors" | "gradient" | "vectorText" | "textPath" | "autoAnimate" | "easing" | "easingPresets"
   | "patternMarkerSpray" | "patternMarkerSprayAnimated" | "repeater" | "iconMotion" | "iconMotionLottie" | "splash"
   | "createAnimateExport";
 
@@ -57,7 +57,8 @@ function story(uid: string, total: number): Story {
 }
 
 // ── furniture ────────────────────────────────────────────────────────────────────────────────────────────────────
-const canvas = (x: number, y: number, w: number, h: number) => `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="10" fill="${CANVAS}" stroke="rgba(255,255,255,.14)"/>`;
+// `sx-canvas`: new-design2's SchemaCards hides it and draws one equal-width panel per card instead
+const canvas = (x: number, y: number, w: number, h: number) => `<rect class="sx-canvas" x="${x}" y="${y}" width="${w}" height="${h}" rx="10" fill="${CANVAS}" stroke="rgba(255,255,255,.14)"/>`;
 const text = (x: number, y: number, t: string, o: { size?: number; color?: string; anchor?: string; weight?: number; extra?: string } = {}) =>
   `<text x="${f(x)}" y="${f(y)}" font-size="${o.size ?? 12}" fill="${o.color ?? "currentColor"}" text-anchor="${o.anchor ?? "middle"}"${o.weight ? ` font-weight="${o.weight}"` : ""}${o.extra ?? ""}>${t}</text>`;
 /** A small rounded label; `inner` = animations for the whole chip */
@@ -317,7 +318,25 @@ function autoAnimate(): SchemaDef {
   };
 }
 
-function easing(): SchemaDef {
+/** The editor's easing presets (kf EasingUtil.getEasingRows): the rows this scene shows, cubic-bezier control points per column. */
+const PRESET_ROWS: Array<Array<Array<number> | null>> = [
+  [[0, 0, 1, 1], null, null],                                                    // linear (one preset)
+  [[0.33333, 0, 0.66667, 0.33333], [0.33333, 0.66667, 0.66667, 1], null],       // gravity: fall, rise
+  [[0.42, 0, 1, 1], [0, 0, 0.58, 1], [0.42, 0, 0.58, 1]],                        // ease: in, out, in-out
+];
+/** The editor's velocity mini chart for a preset (EasingTable: dy/dx along the curve, an area under the line), fitted to a cell. */
+function velocityMini(c: Array<number>, x: number, y: number, w: number, h: number): string {
+  const b = (t: number, p1: number, p2: number) => 3 * (1 - t) ** 2 * t * p1 + 3 * (1 - t) * t * t * p2 + t ** 3;
+  const d = (t: number, p1: number, p2: number) => 3 * (1 - t) ** 2 * p1 + 6 * (1 - t) * t * (p2 - p1) + 3 * t * t * (1 - p2);
+  const pts: Array<P> = [];
+  for (let i = 0; i <= 24; i++) { const t = i / 24, dx = d(t, c[0], c[2]); if (Math.abs(dx) > 1e-6) pts.push([b(t, c[0], c[2]), d(t, c[1], c[3]) / dx]); }
+  const vmax = Math.max(...pts.map((q) => q[1]));
+  const at = (q: P): string => `${f(x + q[0] * w)} ${f(y + h - (q[1] / vmax) * h)}`;
+  const line = `M${pts.map(at).join("L")}`;
+  return `<path d="${line}L${f(x + w)} ${f(y + h)}L${f(x)} ${f(y + h)}Z" fill="${CYAN}" fill-opacity=".22"/><path d="${line}" fill="none" stroke="${CYAN}" stroke-width="1.2" stroke-linejoin="round"/>`;
+}
+
+function easing(presetCharts = false): SchemaDef {
   const total = 8.2;
   const ox = 34, oy = 160, W = 136, H = 128;
   const P = (x: number, y: number) => `${f(ox + x * W)} ${f(oy - y * H)}`;
@@ -340,7 +359,14 @@ function easing(): SchemaDef {
 <path d="M${P(0, 0)}L${P(IO[0], IO[1])}M${P(1, 1)}L${P(IO[2], IO[3])}" stroke="${VIOLET}" stroke-width="1.5">${morph([[1.0, `M${P(0, 0)}L${P(LIN[0], LIN[1])}M${P(1, 1)}L${P(LIN[2], LIN[3])}`], [1.3, `M${P(0, 0)}L${P(GRAV[0], GRAV[1])}M${P(1, 1)}L${P(GRAV[2], GRAV[3])}`], [3.3, `M${P(0, 0)}L${P(GRAV[0], GRAV[1])}M${P(1, 1)}L${P(GRAV[2], GRAV[3])}`], [4.0, `M${P(0, 0)}L${P(IO[0], IO[1])}M${P(1, 1)}L${P(IO[2], IO[3])}`]])}</path>
 ${[[0, 1], [2, 3]].map(([i, j]) => `<circle cx="${f(ox + IO[i] * W)}" cy="${f(oy - IO[j] * H)}" r="5" fill="${VIOLET}">${S.a("cx", [[1.0, f(ox + LIN[i] * W)], [1.3, f(ox + GRAV[i] * W)], [3.3, f(ox + GRAV[i] * W)], [4.0, f(ox + IO[i] * W)]])}${S.a("cy", [[1.0, f(oy - LIN[j] * H)], [1.3, f(oy - GRAV[j] * H)], [3.3, f(oy - GRAV[j] * H)], [4.0, f(oy - IO[j] * H)]])}</circle>`).join("")}`;
       const rows = ["linear", "gravity", "ease"], cols = ["in", "out", "in-out"];
-      const grid = `${canvas(200, 10, 132, 176)}${cols.map((c, i) => text(252 + i * 30, 30, c, { size: 10.5, color: MUTED })).join("")}${rows.map((r, j) => text(208, 56 + j * 34, r, { size: 10.5, color: MUTED, anchor: "start" }) + cols.map((_, i) => `<rect x="${240 + i * 30}" y="${40 + j * 34}" width="24" height="24" rx="4" fill="rgba(255,255,255,.06)" stroke="rgba(255,255,255,.2)"/>`).join("")).join("")}
+      // presetCharts (new-design2): each cell shows the editor's own velocity mini chart, and only the presets the editor has
+      const cell = (i: number, j: number) => {
+        const box = `<rect x="${240 + i * 30}" y="${40 + j * 34}" width="24" height="24" rx="4" fill="rgba(255,255,255,.06)" stroke="rgba(255,255,255,.2)"/>`;
+        if (!presetCharts) return box;
+        const c = PRESET_ROWS[j][i];
+        return c ? box + velocityMini(c, 243 + i * 30, 44 + j * 34, 18, 16) : "";
+      };
+      const grid = `${canvas(200, 10, 132, 176)}${cols.map((c, i) => text(252 + i * 30, 30, c, { size: 10.5, color: MUTED })).join("")}${rows.map((r, j) => text(208, 56 + j * 34, r, { size: 10.5, color: MUTED, anchor: "start" }) + cols.map((_, i) => cell(i, j)).join("")).join("")}
 <rect x="238" y="72" width="28" height="28" rx="5" fill="none" stroke="${CYAN}" stroke-width="2" opacity="0">${S.a("opacity", [[0.85, 0], [0.95, 1], [3.2, 1], [3.3, 0]])}</rect>`;
       const ball = (keysY: Array<Key>) => `<circle cx="374" cy="160" r="9" fill="${ORANGE}">${S.a("cy", keysY)}</circle>`;
       const lane = `${canvas(340, 10, 170, 176)}<path d="M374 26V170" stroke="rgba(255,255,255,.12)"/><path d="M410 30V170H504" stroke="rgba(255,255,255,.3)" fill="none"/>${text(457, 182, "velocity", { size: 10.5, color: MUTED })}
@@ -500,8 +526,62 @@ function createAnimateExport(): SchemaDef {
   };
 }
 
+// ── mini scenes: one small clock-driven scene inside a diagram node (src/scripts/mini-scenes.ts plays them) ────────────────
+export const MINI_W = 100, MINI_H = 64;
+export interface MiniScene { total: number; svg: (uid: string) => string }
+/** The start triggers, one scene each (new-design2 Triggers diagram, owner 2026-10-17); at rest each shows its end state. */
+export enum TriggerScene { load = "load", visible = "visible", hover = "hover", click = "click", js = "js" }
+const miniFrame = `<rect x="1" y="1" width="${MINI_W - 2}" height="${MINI_H - 2}" rx="9" fill="${CANVAS}" stroke="rgba(255,255,255,.14)"/>`;
+const sk = (x: number, y: number, w: number) => `<rect x="${x}" y="${y}" width="${w}" height="5" rx="2.5" fill="rgba(255,255,255,.16)"/>`;
+const HEART = "M0 26C-40 0-28-34 0-16 28-34 40 0 0 26z";
+export const TRIGGER_SCENES: Record<TriggerScene, MiniScene> = {
+  // the page appears, the spinner turns
+  [TriggerScene.load]: { total: 2.4, svg: (uid) => {
+    const S = story(uid, 2.4);
+    return S.clock + miniFrame + `<g>${S.show(0.15)}${sk(10, 14, 36)}${sk(10, 24, 24)}${sk(10, 40, 30)}</g>`
+      + `<circle cx="72" cy="32" r="13" fill="none" stroke="rgba(255,255,255,.12)" stroke-width="4.5"/>`
+      + `<circle cx="72" cy="32" r="13" fill="none" stroke="${CYAN}" stroke-width="4.5" stroke-linecap="round" stroke-dasharray="28 200">${S.t("rotate", [[0.2, "0 72 32"], [2.2, "720 72 32", "lin"]])}</circle>`;
+  } },
+  // the page scrolls, the chart comes in and grows
+  [TriggerScene.visible]: { total: 2.4, svg: (uid) => {
+    const S = story(uid, 2.4);
+    const bars = [[56, 16], [67, 26], [78, 34]].map(([x, h]) =>
+      `<rect x="${x}" y="${52 - h}" width="8" height="${h}" rx="1.5" fill="${VIOLET}">${S.a("height", [[0.8, 0], [1.4, h, "out"]])}${S.a("y", [[0.8, 52], [1.4, 52 - h, "out"]])}</rect>`).join("");
+    return S.clock + miniFrame + `<clipPath id="${uid}vp"><rect x="8" y="6" width="84" height="52" rx="6"/></clipPath>`
+      + `<rect x="8" y="6" width="84" height="52" rx="6" fill="rgba(0,0,0,.25)" stroke="rgba(255,255,255,.18)"/>`
+      + `<g clip-path="url(#${uid}vp)"><g>${S.t("translate", [[0.1, "0 46"], [0.7, "0 0", "out"]])}${sk(14, 12, 30)}${sk(14, 22, 20)}${bars}</g></g>`
+      + `<rect x="88" y="10" width="2.5" height="16" rx="1.25" fill="rgba(255,255,255,.35)">${S.t("translate", [[0.1, "0 0"], [0.7, "0 24", "out"]])}</rect>`;
+  } },
+  // the card lifts and glows while the pointer is on it, settles when it leaves
+  [TriggerScene.hover]: { total: 2.6, svg: (uid) => {
+    const S = story(uid, 2.6);
+    const lift = S.t("translate", [[0.6, "0 0"], [0.85, "0 -4", "out"], [1.7, "0 -4"], [1.95, "0 0"]]);
+    return S.clock + miniFrame + `<g>${lift}<rect x="18" y="12" width="64" height="40" rx="7" fill="#22304f" stroke="rgba(255,255,255,.2)"/>`
+      + `<rect x="18" y="12" width="64" height="40" rx="7" fill="none" stroke="${CYAN}" stroke-width="2" opacity="0">${S.a("opacity", [[0.6, 0], [0.75, 1], [1.7, 1], [1.85, 0]])}</rect>`
+      + `${sk(26, 20, 26)}${sk(26, 30, 40)}<circle cx="70" cy="43" r="4" fill="${CYAN}" opacity=".7"/></g>`
+      + cursor(S, [[0.1, 60, 70], [0.55, 62, 38], [1.6, 62, 38], [2.1, 92, 70]]);
+  } },
+  // a click fills the heart, the next click empties it
+  [TriggerScene.click]: { total: 2.6, svg: (uid) => {
+    const S = story(uid, 2.6);
+    return S.clock + miniFrame + `<g transform="translate(50 31) scale(.42)"><g>${S.t("scale", [[0.6, "1 1"], [0.75, "1.25 1.25", "out"], [0.9, "1 1"]])}`
+      + `<path d="${HEART}" fill="${PINK}" opacity="0">${S.a("opacity", [[0.6, 0], [0.66, 1], [1.5, 1], [1.56, 0]])}</path>`
+      + `<path d="${HEART}" fill="none" stroke="${PINK}" stroke-width="5" stroke-linejoin="round"/></g></g>`
+      + ripple(S, 52, 35, 0.6) + ripple(S, 52, 35, 1.5) + cursor(S, [[0.1, 40, 70], [0.5, 52, 35], [1.6, 52, 35], [2.1, 84, 70]]);
+  } },
+  // play() is called, the check draws itself
+  [TriggerScene.js]: { total: 2.0, svg: (uid) => {
+    const S = story(uid, 2.0);
+    const circ = 2 * Math.PI * 12;
+    return S.clock + miniFrame + pop(S, 30, 32, 0.1, chip(8, 22, 44, "play()", "", { color: CYAN }))
+      + `<path d="M56 32h8m-4-4 4 4-4 4" fill="none" stroke="${LINE}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>`
+      + `<circle cx="80" cy="32" r="12" fill="none" stroke="${CYAN}" stroke-width="3.5" stroke-linecap="round" stroke-dasharray="${f(circ)}" stroke-dashoffset="0" transform="rotate(-90 80 32)">${S.a("stroke-dashoffset", [[0.4, f(circ)], [0.9, 0]])}</circle>`
+      + `<path d="M74.5 32.5l4 4 7-8" fill="none" stroke="${CYAN}" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="18" stroke-dashoffset="0">${S.a("stroke-dashoffset", [[0.9, 18], [1.15, 0, "out"]])}</path>`;
+  } },
+};
+
 export const SCHEMAS: Record<SchemaKind, SchemaDef> = {
   shapeBuilder: shapeBuilder(), editColors: editColors(), gradient: gradient(), vectorText: vectorText(), textPath: textPath(),
-  autoAnimate: autoAnimate(), easing: easing(), patternMarkerSpray: patternMarkerSpray(false), patternMarkerSprayAnimated: patternMarkerSpray(true),
+  autoAnimate: autoAnimate(), easing: easing(), easingPresets: easing(true), patternMarkerSpray: patternMarkerSpray(false), patternMarkerSprayAnimated: patternMarkerSpray(true),
   repeater: repeater(), iconMotion: iconMotion(true), iconMotionLottie: iconMotion(false), splash: splash(), createAnimateExport: createAnimateExport(),
 };

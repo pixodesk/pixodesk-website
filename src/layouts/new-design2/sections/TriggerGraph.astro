@@ -1,0 +1,100 @@
+---
+/**
+ * Triggers as a diagram (owner, 2026-10-17: like the home's diagrams): When should it play → the trigger to pick (the editor's start
+ * options, kf TExportConfig `getSvgAnimationStartTypeChoices`, with its mouse-out / out-of-view choices) → where in a UI it typically
+ * goes. Each trigger shows its mini scene (schemas.ts TRIGGER_SCENES; plays in view and on hover: src/scripts/mini-scenes.ts).
+ * Wires and tracing: home/Wires + src/scripts/wired-diagram.ts; the look: home/DiagramStyles.
+ */
+import Glyph from "../../new-design/Glyph.astro";
+import type { GlyphName } from "../../new-design/glyphs";
+import Wires from "../home/Wires.astro";
+import DiagramStyles from "../home/DiagramStyles.astro";
+import Marked from "../home/Marked.astro";
+import { type Text, tech } from "../home/marks";
+import { pitchOf } from "../apps";
+import { AppKey } from "../catalogue";
+import { MINI_H, MINI_W, TRIGGER_SCENES, TriggerScene } from "../../new-design/schemas";
+
+enum N {
+  needNow = "need-now", needSeen = "need-seen", needPointer = "need-pointer", needTap = "need-tap", needApp = "need-app",
+  load = "on-load", visible = "when-visible", hover = "on-mouse-over", click = "on-click", js = "from-js",
+  loaders = "ui-loaders", hero = "ui-hero", stories = "ui-stories", counters = "ui-counters", cards = "ui-cards", buttons = "ui-buttons", toggles = "ui-toggles", appStates = "ui-app-states",
+}
+interface Box { id: string; label: string; sub: Text; area: string }
+const OUT_CHOICES = "continue, pause or reset";
+const needs: Array<Box> = [
+  { id: N.needNow, label: "Right away", sub: "as soon as the page opens", area: "n1" },
+  { id: N.needSeen, label: "When seen", sub: "as it scrolls into view", area: "n2" },
+  { id: N.needPointer, label: "On the pointer", sub: "while the mouse is over it", area: "n3" },
+  { id: N.needTap, label: "On a tap", sub: "tap to play, tap again to pause", area: "n4" },
+  { id: N.needApp, label: "When your app says", sub: "after a step, a result, a change", area: "n5" },
+];
+const triggers: Array<Box & { scene: TriggerScene }> = [
+  { id: N.load, label: "On load", sub: "starts at once, even off-screen", area: "t1", scene: TriggerScene.load },
+  { id: N.visible, label: "When visible", sub: `out of view: ${OUT_CHOICES}`, area: "t2", scene: TriggerScene.visible },
+  { id: N.hover, label: "On mouse over", sub: `mouse out: ${OUT_CHOICES}`, area: "t3", scene: TriggerScene.hover },
+  { id: N.click, label: "On click", sub: "click plays, click again pauses", area: "t4", scene: TriggerScene.click },
+  { id: N.js, label: "Manually from JS", sub: ["your code calls ", tech("play()"), " and ", tech("pause()")], area: "t5", scene: TriggerScene.js },
+];
+const uid = () => "m" + Math.random().toString(36).slice(2, 7);
+const places: Array<Box & { glyph: GlyphName }> = [
+  { id: N.loaders, glyph: "sync", label: "Loaders & spinners", sub: "waiting, saving, syncing", area: "p1" },
+  { id: N.hero, glyph: "star", label: "Hero & logo intros", sub: "the first screen", area: "p2" },
+  { id: N.stories, glyph: "image", label: "Illustrations", sub: "down a long page", area: "p3" },
+  { id: N.counters, glyph: "chart", label: "Counters & charts", sub: "numbers that count up", area: "p4" },
+  { id: N.cards, glyph: "apps", label: "Cards & links", sub: "a lift, a glow, a nudge", area: "p5" },
+  { id: N.buttons, glyph: "cursor", label: "Buttons & menu icons", sub: "menu, arrows, close", area: "p6" },
+  { id: N.toggles, glyph: "click", label: "Toggles", sub: "like, bookmark, play / pause", area: "p7" },
+  { id: N.appStates, glyph: "check", label: "Success, errors, onboarding", sub: "after your app does something", area: "p8" },
+];
+const EDGES: Array<[string, string]> = [
+  [N.needNow, N.load], [N.needSeen, N.visible], [N.needPointer, N.hover], [N.needTap, N.click], [N.needApp, N.js],
+  [N.load, N.loaders], [N.load, N.hero],
+  [N.visible, N.hero], [N.visible, N.stories], [N.visible, N.counters],
+  [N.hover, N.cards], [N.hover, N.buttons],
+  [N.click, N.buttons], [N.click, N.toggles],
+  [N.js, N.appStates],
+];
+const steps = [{ word: "When", sub: "should it play?", area: "h1" }, { word: "Trigger", sub: "set in the editor", area: "h2" }, { word: "Where", sub: "typically in your UI", area: "h3" }];
+const accent = pitchOf(AppKey.svgAnimator).accent;
+---
+<DiagramStyles />
+<div class="triggers" data-diagram data-edges={JSON.stringify(EDGES)}>
+  <Wires id="trigger-wire" />
+  {steps.map((s) => <p class="dg-step" style={`grid-area: ${s.area}`}><b>{s.word}</b><span>{s.sub}</span></p>)}
+  {needs.map((n) => <div class="dg-node dg-fork" data-node={n.id} style={`grid-area: ${n.area}`}><b>{n.label}</b><span><Marked text={n.sub} /></span></div>)}
+  {triggers.map((t) => (
+    <div class="dg-node dg-fork dg-accent trig" data-node={t.id} style={`grid-area: ${t.area}; --accent: ${accent}`}>
+      <div class="trig-text"><b>{t.label}</b><span><Marked text={t.sub} /></span></div>
+      <svg class="mini" data-mini-scene viewBox={`0 0 ${MINI_W} ${MINI_H}`} font-family="inherit" aria-hidden="true"><Fragment set:html={TRIGGER_SCENES[t.scene].svg(uid())} /></svg>
+    </div>
+  ))}
+  {places.map((p) => (
+    <div class="dg-node dg-place" data-node={p.id} style={`grid-area: ${p.area}`}>
+      <span class="dg-glyph"><Glyph name={p.glyph} class="h-5 w-5" /></span>
+      <span class="dg-text"><span class="dg-pname">{p.label}</span><span class="dg-sub"><Marked text={p.sub} /></span></span>
+    </div>
+  ))}
+</div>
+
+<style>
+  /* the gutters are columns of their own, the widest for the fan into the places */
+  .triggers { position: relative; display: grid; max-width: 1160px; margin: 8px auto 0; row-gap: 12px; align-items: center; color: #fff;
+    grid-template-columns: minmax(0, 1fr) clamp(40px, 5vw, 72px) minmax(0, 1fr) clamp(56px, 7vw, 104px) minmax(0, .95fr);
+    grid-template-areas: "h1 . h2 . h3" "n1 . t1 . p1" "n1 . t1 . p2" "n2 . t2 . p3" "n2 . t2 . p4" "n3 . t3 . p5" "n3 . t3 . p6" "n4 . t4 . p7" "n5 . t5 . p8"; }
+  /* phones: one column, every wire down the middle */
+  @media (max-width: 1023px) {
+    .triggers { grid-template-columns: minmax(0, 1fr); row-gap: 14px; max-width: 520px;
+      grid-template-areas: "h1" "n1" "n2" "n3" "n4" "n5" "h2" "t1" "t2" "t3" "t4" "t5" "h3" "p1" "p2" "p3" "p4" "p5" "p6" "p7" "p8"; }
+  }
+  .dg-fork { padding: 10px 16px; }
+  .dg-fork b { font-size: 20px; }
+  /* a trigger: its words, its mini scene on the right */
+  .dg-fork.trig { display: grid; grid-template-columns: minmax(0, 1fr) 92px; align-items: center; gap: 12px; padding: 8px 8px 8px 16px; }
+  .trig-text { display: flex; flex-direction: column; gap: 6px; min-width: 0; }
+  .mini { display: block; width: 92px; height: auto; }
+</style>
+
+<script>
+  import "../../../scripts/mini-scenes";
+</script>

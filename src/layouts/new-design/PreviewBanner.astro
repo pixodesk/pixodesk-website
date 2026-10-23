@@ -1,10 +1,20 @@
 ---
-/** A thin bar at the top of every /new-design page: links to the current page and the other previews. Remove when the design ships. */
+/** A thin bar at the top of every preview page: links to the current page and to the previews of both designs (/new-design/,
+ *  /new-design2/). Remove when the design ships. */
 interface Props { compare: string }
 const { compare } = Astro.props;
-const previews = [["/new-design/", "home"], ["/new-design/svg-animator", "SVG Animator"], ["/new-design/svg-animator/learn", "Learn SVG Animator"], ["/new-design/animator", "Lottie Animator"], ["/new-design/svg-editor", "SVG Editor"]];
+const groups: Array<[string, Array<[string, string]>]> = [
+  ["design 1", [["/new-design/", "home"], ["/new-design/svg-animator", "SVG Animator"], ["/new-design/animator", "Lottie Animator"], ["/new-design/svg-editor", "SVG Editor"]]],
+  ["design 2", [["/new-design2/", "home"], ["/new-design2/svg-animator", "SVG Animator"], ["/new-design2/svg-animator/learn", "Learn SVG Animator"], ["/new-design2/animator", "Lottie Animator"], ["/new-design2/svg-editor", "SVG Editor"], ["/new-design2/animator-studio", "Animator Studio"]]],
+];
+const here = Astro.url.pathname.replace(/\/$/, "");
 ---
 <div class="w-full border-b border-amber-300/30 bg-amber-400/10 px-4 py-1.5 text-center font-mono text-[11px] text-amber-100 md:text-xs">
-  new design preview — <a class="underline" href={compare}>current page</a> · previews:
-  {previews.map(([href, label]) => <a class={`ml-2 underline ${Astro.url.pathname.replace(/\/$/, "") === href.replace(/\/$/, "") ? "text-white" : ""}`} href={href}>{label}</a>)}
+  new design preview — <a class="underline" href={compare}>current page</a>
+  {groups.map(([name, links]) => (
+    <span class="ml-3 inline-block">
+      · {name}:
+      {links.map(([href, label]) => <a class={`ml-2 underline ${here === href.replace(/\/$/, "") ? "text-white" : ""}`} href={href}>{label}</a>)}
+    </span>
+  ))}
 </div>

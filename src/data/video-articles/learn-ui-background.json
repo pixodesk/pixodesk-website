@@ -1,0 +1,32 @@
+{
+  "name": "learn-ui-background",
+  "blocks": [
+    {
+      "kind": "text",
+      "t": 0.27,
+      "text": "This video shows an animated background behind the text of a landing page. A grid of dots glows under drifting lights, and the text stays on top. Our landing hero has a title, a line of text, and a button. Let's put the animation behind them."
+    },
+    {
+      "kind": "shot",
+      "t": 27.82,
+      "src": "/videos/articles/learn-ui-background/01.webp",
+      "alt": "It comes first in the hero, so the text is drawn over it. The file repeats forever, so the lights keep drifting."
+    },
+    {
+      "kind": "text",
+      "t": 27.67,
+      "text": "It comes first in the hero, so the text is drawn over it. The file repeats forever, so the lights keep drifting. Let's look at the styles that place it."
+    },
+    {
+      "kind": "shot",
+      "t": 40.98,
+      "src": "/videos/articles/learn-ui-background/02.webp",
+      "alt": "The backdrop fills the whole hero, behind everything else. The file itself is set to cover its box, like a background image."
+    },
+    {
+      "kind": "text",
+      "t": 40.83,
+      "text": "The backdrop fills the whole hero, behind everything else. The file itself is set to cover its box, like a background image. So, an animation can be a background like any image. One line puts it in, and a few styles keep it behind your content."
+    }
+  ]
+}

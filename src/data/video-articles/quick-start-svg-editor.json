@@ -1,0 +1,131 @@
+{
+  "name": "quick-start-svg-editor",
+  "blocks": [
+    {
+      "kind": "text",
+      "t": 0.27,
+      "text": "This video shows how to draw an icon in Pixodesk SVG Editor, from a few simple shapes, and use it on a web page as an ordinary image. Let's start with the background, a square tile."
+    },
+    {
+      "kind": "shot",
+      "t": 16.88,
+      "src": "/videos/articles/quick-start-svg-editor/01.webp",
+      "alt": "A rectangle, nearly as big as the canvas."
+    },
+    {
+      "kind": "text",
+      "t": 16.73,
+      "text": "A rectangle, nearly as big as the canvas. Icons look friendlier with soft corners, so let's round them."
+    },
+    {
+      "kind": "shot",
+      "t": 28.22,
+      "src": "/videos/articles/quick-start-svg-editor/02.webp",
+      "alt": "One corner radius rounds all four corners."
+    },
+    {
+      "kind": "text",
+      "t": 28.07,
+      "text": "One corner radius rounds all four corners. Then, let's paint it sky blue."
+    },
+    {
+      "kind": "shot",
+      "t": 37.02,
+      "src": "/videos/articles/quick-start-svg-editor/03.webp",
+      "alt": "Its fill colour is now sky blue."
+    },
+    {
+      "kind": "text",
+      "t": 36.87,
+      "text": "Its fill colour is now sky blue. Next, the sun, an orange circle in the top corner."
+    },
+    {
+      "kind": "shot",
+      "t": 50.05,
+      "src": "/videos/articles/quick-start-svg-editor/04.webp",
+      "alt": "Holding Shift while drawing keeps it a perfect circle."
+    },
+    {
+      "kind": "text",
+      "t": 49.9,
+      "text": "Holding Shift while drawing keeps it a perfect circle. The cloud is built from simple shapes. Three white circles, and a rectangle for a flat bottom."
+    },
+    {
+      "kind": "shot",
+      "t": 69.28,
+      "src": "/videos/articles/quick-start-svg-editor/05.webp",
+      "alt": "Four overlapping shapes, in the outline of a cloud."
+    },
+    {
+      "kind": "text",
+      "t": 69.13,
+      "text": "Four overlapping shapes, in the outline of a cloud. Let's select all four, and unite them into one shape."
+    },
+    {
+      "kind": "shot",
+      "t": 81.45,
+      "src": "/videos/articles/quick-start-svg-editor/06.webp",
+      "alt": "Unite merges them into a single path, the cloud."
+    },
+    {
+      "kind": "text",
+      "t": 81.3,
+      "text": "Unite merges them into a single path, the cloud. A soft gradient gives it some depth."
+    },
+    {
+      "kind": "shot",
+      "t": 93.38,
+      "src": "/videos/articles/quick-start-svg-editor/07.webp",
+      "alt": "A linear gradient, from white to light blue."
+    },
+    {
+      "kind": "text",
+      "t": 93.23,
+      "text": "A linear gradient, from white to light blue. The icon is ready. Let's save it as SVG, into the web project."
+    },
+    {
+      "kind": "shot",
+      "t": 108.38,
+      "src": "/videos/articles/quick-start-svg-editor/08.webp",
+      "alt": "Now, the page itself."
+    },
+    {
+      "kind": "text",
+      "t": 108.23,
+      "text": "Now, the page itself."
+    },
+    {
+      "kind": "shot",
+      "t": 112.12,
+      "src": "/videos/articles/quick-start-svg-editor/09.webp",
+      "alt": "A heading, and the icon file, already next to the page."
+    },
+    {
+      "kind": "text",
+      "t": 111.97,
+      "text": "A heading, and the icon file, already next to the page. Let's add the icon as an ordinary image."
+    },
+    {
+      "kind": "shot",
+      "t": 127.18,
+      "src": "/videos/articles/quick-start-svg-editor/10.webp",
+      "alt": "An image tag, pointing at the SVG file. A still icon needs nothing more."
+    },
+    {
+      "kind": "text",
+      "t": 127.03,
+      "text": "An image tag, pointing at the SVG file. A still icon needs nothing more. Let's open the page."
+    },
+    {
+      "kind": "shot",
+      "t": 139.75,
+      "src": "/videos/articles/quick-start-svg-editor/11.webp",
+      "alt": "There it is. It stays sharp at any size, because it is vector."
+    },
+    {
+      "kind": "text",
+      "t": 139.6,
+      "text": "There it is. It stays sharp at any size, because it is vector. So, a few simple shapes, united and coloured, saved as a clean SVG file, and used like any other image."
+    }
+  ]
+}

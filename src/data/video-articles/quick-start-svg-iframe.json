@@ -1,0 +1,142 @@
+{
+  "name": "quick-start-svg-iframe",
+  "blocks": [
+    {
+      "kind": "text",
+      "t": 0.27,
+      "text": "This video shows how to put an animation from Pixodesk SVG Animator on a web page, as a single SVG file in an iframe. There is no library, no install, and no build step. Let's start with the page as it is."
+    },
+    {
+      "kind": "shot",
+      "t": 20.85,
+      "src": "/videos/articles/quick-start-svg-iframe/01.webp",
+      "alt": "A heading, and nothing that moves yet."
+    },
+    {
+      "kind": "text",
+      "t": 20.7,
+      "text": "A heading, and nothing that moves yet. The animation comes first. Let's switch to the editor, where a football is already drawn."
+    },
+    {
+      "kind": "shot",
+      "t": 31.95,
+      "src": "/videos/articles/quick-start-svg-iframe/02.webp",
+      "alt": "It's a vector drawing, standing still."
+    },
+    {
+      "kind": "text",
+      "t": 31.8,
+      "text": "It's a vector drawing, standing still. To make it move, let's switch on Auto mode."
+    },
+    {
+      "kind": "shot",
+      "t": 41.25,
+      "src": "/videos/articles/quick-start-svg-iframe/03.webp",
+      "alt": "With Auto mode on, every change becomes a keyframe."
+    },
+    {
+      "kind": "text",
+      "t": 41.1,
+      "text": "With Auto mode on, every change becomes a keyframe. Half a second in, let's drag the ball down to the floor."
+    },
+    {
+      "kind": "shot",
+      "t": 52.52,
+      "src": "/videos/articles/quick-start-svg-iframe/04.webp",
+      "alt": "A keyframe appears on the timeline, holding the new position."
+    },
+    {
+      "kind": "text",
+      "t": 52.37,
+      "text": "A keyframe appears on the timeline, holding the new position. At one second, let's bring it back up."
+    },
+    {
+      "kind": "shot",
+      "t": 62.82,
+      "src": "/videos/articles/quick-start-svg-iframe/05.webp",
+      "alt": "Now it falls and rises again, in one second."
+    },
+    {
+      "kind": "text",
+      "t": 62.67,
+      "text": "Now it falls and rises again, in one second. A real ball speeds up as it falls, and slows down as it rises. Let's set that easing."
+    },
+    {
+      "kind": "shot",
+      "t": 82.18,
+      "src": "/videos/articles/quick-start-svg-iframe/06.webp",
+      "alt": "Gravity easing, falling and rising, makes the bounce feel natural."
+    },
+    {
+      "kind": "text",
+      "t": 82.03,
+      "text": "Gravity easing, falling and rising, makes the bounce feel natural. One bounce is not enough, so let's loop the animation."
+    },
+    {
+      "kind": "shot",
+      "t": 94.65,
+      "src": "/videos/articles/quick-start-svg-iframe/07.webp",
+      "alt": "Loop is saved with the file, so the animation repeats forever."
+    },
+    {
+      "kind": "text",
+      "t": 94.5,
+      "text": "Loop is saved with the file, so the animation repeats forever."
+    },
+    {
+      "kind": "shot",
+      "t": 101.02,
+      "src": "/videos/articles/quick-start-svg-iframe/08.webp",
+      "alt": "The animation is ready. Let's save it as SVG, next to the page."
+    },
+    {
+      "kind": "text",
+      "t": 100.87,
+      "text": "The animation is ready. Let's save it as SVG, next to the page."
+    },
+    {
+      "kind": "shot",
+      "t": 110.88,
+      "src": "/videos/articles/quick-start-svg-iframe/09.webp",
+      "alt": "The animation is written into the SVG file itself, as CSS."
+    },
+    {
+      "kind": "text",
+      "t": 110.73,
+      "text": "The animation is written into the SVG file itself, as CSS. Now, back to our page."
+    },
+    {
+      "kind": "shot",
+      "t": 120.25,
+      "src": "/videos/articles/quick-start-svg-iframe/10.webp",
+      "alt": "The SVG file is already there, next to the page."
+    },
+    {
+      "kind": "text",
+      "t": 120.1,
+      "text": "The SVG file is already there, next to the page. Let's show the file in an iframe."
+    },
+    {
+      "kind": "shot",
+      "t": 135.45,
+      "src": "/videos/articles/quick-start-svg-iframe/11.webp",
+      "alt": "The iframe opens the SVG as its own document, and its animation runs there."
+    },
+    {
+      "kind": "text",
+      "t": 135.3,
+      "text": "The iframe opens the SVG as its own document, and its animation runs there. Let's reload the page, and watch."
+    },
+    {
+      "kind": "shot",
+      "t": 149.62,
+      "src": "/videos/articles/quick-start-svg-iframe/12.webp",
+      "alt": "There it is. The ball bounces, with no library on the page."
+    },
+    {
+      "kind": "text",
+      "t": 149.47,
+      "text": "There it is. The ball bounces, with no library on the page. So, one SVG file saved from the editor, and one iframe tag. That's all it takes, with no library and no build step."
+    }
+  ]
+}

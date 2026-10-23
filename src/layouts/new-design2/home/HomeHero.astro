@@ -1,0 +1,87 @@
+---
+/**
+ * The home's opening (owner, 2026-10-17: the "three doors" variant kept): a headline, then one tall card per app showing that app's own
+ * hero art (played by the site's player),
+ * what it is for, the files it makes, its price, and the way in; under them a wide card: Animator Studio = both animators in one app,
+ * shown as their badges (owner, 2026-10-17), with the studio's space station. Every card links to its page.
+ */
+import CosmicSection from "./CosmicSection.astro";
+import { PITCHES, STUDIO, pitchOf } from "../apps";
+import { AppKey, appInfo } from "../catalogue";
+import Marked from "./Marked.astro";
+const doors = PITCHES.map((p) => ({ ...p, app: appInfo(p.key) }));
+---
+<CosmicSection first>
+  <div class="head">
+    <h1>Create and Animate <span class="text-gradient-morph" data-text="SVG and Lottie" data-play-in-view>SVG and Lottie</span></h1>
+    <p>Desktop editors for vector graphics and animation, with players that run the result on any web page or in any app. Clean files for designers, ready to ship for developers.</p>
+  </div>
+  <div class="doors">
+    {doors.map((d) => (
+      <a class="door" href={d.app.page} style={`--accent: ${d.accent}`} data-rui-card={`door-${d.key}`} data-rui-behaviour="{}">
+        <div class="art"><div data-rui-player={`door-${d.key}`} data-rui-src={d.art.src} style={`aspect-ratio: ${d.art.ratio}`} /></div>
+        <div class="body">
+          <p class="tagline">{d.tagline}</p>
+          <h2>{d.app.name}</h2>
+          <p class="line"><Marked text={d.line} chips /></p>
+          <p class="chips">{d.chips.map((c, i) => <>{i > 0 && <span class="sep">·</span>}<Marked text={c} chips /></>)}</p>
+          <p class="foot"><span class="price">{d.price}</span><span class="go">Open {d.app.name} →</span></p>
+        </div>
+      </a>
+    ))}
+  </div>
+  <a class="studio" href={STUDIO.page} style={`--accent: ${STUDIO.accent}`} data-rui-card="door-studio" data-rui-behaviour="{}">
+    <div class="studio-body">
+      <h2>{STUDIO.name}</h2>
+      {/* the apps in it, highlighted: a simple background per name (like the file chips) */}
+      <p class="includes">
+        {STUDIO.includes.map((k, i) => <>
+          {i > 0 && <span class="joiner">{STUDIO.joiner}</span>}
+          <span class="app-name" style={`--accent: ${pitchOf(k).accent}`}>{appInfo(k).name}</span>
+        </>)}
+        <span class="joiner">{STUDIO.inOneApp}</span>
+      </p>
+      <p class="line">{STUDIO.line}</p>
+      <p class="foot"><span class="price">{STUDIO.price}</span><span class="go">Open {STUDIO.name} →</span></p>
+    </div>
+    <div class="studio-art"><div data-rui-player="door-studio" data-rui-src={STUDIO.art.src} style={`aspect-ratio: ${STUDIO.art.ratio}`} /></div>
+  </a>
+</CosmicSection>
+
+<style>
+  .head { max-width: 860px; margin: 0 auto; padding: 0 16px; text-align: center; }
+  .head h1 { font-size: clamp(34px, 5vw, 64px); line-height: 1.08; font-weight: 800; letter-spacing: -0.02em; }
+  .head p { margin-top: 14px; font-size: 18px; color: #cbd5e1; }
+  .doors { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; max-width: 1440px; margin: 44px auto 0; padding: 0 20px; }
+  @media (max-width: 1024px) { .doors { grid-template-columns: 1fr; max-width: 640px; } }
+  .door { display: flex; flex-direction: column; border-radius: 22px; overflow: hidden; text-decoration: none; color: #fff;
+    background: linear-gradient(160deg, rgba(28, 39, 71, .78), rgba(10, 16, 32, .88)); border: 1px solid rgba(255, 255, 255, .12);
+    box-shadow: 0 0 0 1px color-mix(in srgb, var(--accent) 18%, transparent), 0 24px 60px -30px color-mix(in srgb, var(--accent) 60%, transparent);
+    transition: transform .25s ease, box-shadow .25s ease; }
+  .door:hover { transform: translateY(-6px); box-shadow: 0 0 0 1px color-mix(in srgb, var(--accent) 60%, transparent), 0 30px 70px -28px color-mix(in srgb, var(--accent) 80%, transparent); }
+  /* one height for every card's art (the tallest hero's ratio), so the cards' text lines up */
+  .art { aspect-ratio: 2880 / 1600; display: flex; align-items: center; padding: 14px 10px 0; background: radial-gradient(ellipse at 50% 70%, color-mix(in srgb, var(--accent) 22%, transparent), transparent 70%); }
+  .art > div { width: 100%; }
+  .body { padding: 18px 22px 22px; display: flex; flex-direction: column; flex: 1; }
+  .tagline { font: 600 12px/1.4 system-ui, sans-serif; letter-spacing: .18em; text-transform: uppercase; color: var(--accent); }
+  .body h2 { margin: 4px 0 6px; font-size: 26px; font-weight: 800; padding: 0; }
+  .line { color: #cbd5e1; font-size: 15px; line-height: 1.5; }
+  .chips { margin-top: 12px; font-size: 14px; line-height: 1.7; color: #cbd5e1; }
+  .sep { margin: 0 8px; color: #64748b; }
+  .foot { margin-top: auto; padding-top: 18px; display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+  .price { font-weight: 700; color: #f8fafc; }
+  .go { border-radius: 999px; padding: 7px 14px; font-weight: 700; font-size: 14px; color: #0b1020; background: var(--accent); }
+  .studio { display: grid; grid-template-columns: minmax(0, 6fr) minmax(0, 6fr); align-items: center; gap: 10px; max-width: 1400px; margin: 22px auto 0; border-radius: 22px; overflow: hidden;
+    text-decoration: none; color: #fff; background: linear-gradient(120deg, rgba(40, 30, 10, .55), rgba(10, 16, 32, .9) 45%); border: 1px solid rgba(255, 255, 255, .12);
+    box-shadow: 0 0 0 1px color-mix(in srgb, var(--accent) 22%, transparent), 0 24px 60px -30px color-mix(in srgb, var(--accent) 60%, transparent); transition: transform .25s ease, box-shadow .25s ease; }
+  .studio:hover { transform: translateY(-6px); box-shadow: 0 0 0 1px color-mix(in srgb, var(--accent) 60%, transparent), 0 30px 70px -28px color-mix(in srgb, var(--accent) 80%, transparent); }
+  .doors + .studio { width: calc(100% - 40px); }
+  @media (max-width: 1024px) { .studio { grid-template-columns: 1fr; max-width: 640px; } .doors + .studio { width: calc(100% - 40px); } }
+  .studio-body { padding: 26px 28px; display: flex; flex-direction: column; gap: 2px; }
+  .studio-body h2 { margin: 4px 0 6px; font-size: 30px; font-weight: 800; padding: 0; }
+  .studio-art { padding: 10px 10px 0; }
+  .studio-art > div { width: 100%; }
+  .includes { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 2px 0 12px; font-size: 17px; }
+  .app-name { padding: 2px 9px; border-radius: 7px; font-weight: 700; color: var(--accent); background: color-mix(in srgb, var(--accent) 16%, transparent); }
+  .joiner { color: #cbd5e1; }
+</style>

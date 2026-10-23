@@ -1,0 +1,75 @@
+---
+/** Each app's hero (titles kept as they were — owner, 2026-10-17); the preview banner compares with the design-1 page. */
+import HeroNew from "../../new-design/HeroNew.astro";
+import PreviewBanner from "../../new-design/PreviewBanner.astro";
+import ProofCaption from "../../new-design/ProofCaption.astro";
+import HeroBackdrop from "./HeroBackdrop.astro";
+import lottieContent from "../../../data/2d-animator/lottie-index-text-content";
+import svgContent from "../../../data/svg/svg-index-text-content";
+import { AppKey, Slug } from "../catalogue";
+interface Props { app: AppKey }
+const { app } = Astro.props;
+const tryIt = `#${Slug.tryIt}`;
+---
+<section class="hero-section relative w-full bg-custom-gradient-violet pt-navDouble text-white">
+  {app === AppKey.svgAnimator && <>
+    <PreviewBanner compare="/new-design/svg-animator" />
+    <HeroNew
+      title="# From Static to Motion: <br/>Advanced <span class='text-curstom-gradient-orange'>SVG Animation</span> Application"
+      lines={["Draw and animate in the desktop editor. Save one <code>.svg</code> that plays in every browser with no library — or JSON for the player when your code needs control."]}
+      buttons={[
+        { title: "Try it in the browser", link: tryIt, primary: true },
+        { title: "Get started — docs", link: "/docs/svga/get-started" },
+        { title: "npm i @pixodesk/svg-animator-react", link: "https://www.npmjs.com/package/@pixodesk/svg-animator-react", mono: true, external: true },
+      ]}
+    >
+      {/* the astronaut over the editor: a JSON file played by the site's player (src/scripts/real-ui.ts) */}
+      <HeroBackdrop src="/assets/svga/hero/space-bg.svg">
+        <div class="relative z-10 mx-auto w-full max-w-custom-standard px-4 pt-10" data-rui-card="hero" data-rui-behaviour="{}">
+          <div class="w-full" style="aspect-ratio: 2880 / 1550" data-rui-player="hero" data-rui-src="/assets/svga/hero/astronaut.json" />
+        </div>
+      </HeroBackdrop>
+      <ProofCaption file="/assets/svga/hero/astronaut.json" app="SVG Animator" />
+    </HeroNew>
+  </>}
+  {app === AppKey.animator2d && <>
+    <PreviewBanner compare="/new-design/animator" />
+    <HeroNew
+      title={lottieContent.sections.section_00.title}
+      lines={["Draw and animate in the desktop editor, save standard Lottie JSON, and play it with the Lottie players — on iOS, Android, React Native, Windows and the web."]}
+      storeButtons={lottieContent.sections.section_00.storeButtons}
+      buttons={[
+        { title: "Try it in the browser", link: tryIt, primary: true },
+        { title: "Docs", link: "/docs/2d-lottie" },
+        { title: "Tutorials", link: "/animator/tutorials" },
+      ]}
+    >
+      {/* the astronaut over the Lottie editor, played like the SVG Animator's hero */}
+      <HeroBackdrop src="/assets/lottie/hero/space-bg.svg">
+        <div class="relative z-10 mx-auto w-full max-w-custom-standard px-4 pt-10" data-rui-card="hero" data-rui-behaviour="{}">
+          <div class="w-full" style="aspect-ratio: 2880 / 1400" data-rui-player="hero" data-rui-src="/assets/lottie/hero/astronaut.json" />
+        </div>
+      </HeroBackdrop>
+    </HeroNew>
+  </>}
+  {app === AppKey.svgEditor && <>
+    <PreviewBanner compare="/new-design/svg-editor" />
+    <HeroNew
+      title={svgContent.sections.section_00.title}
+      lines={["A desktop vector editor that saves clean SVG — icons, logos, illustrations and responsive web graphics — and exports PNG, JPEG, WebP and GIF. Free."]}
+      storeButtons={svgContent.sections.section_00.storeButtons}
+      buttons={[
+        { title: "Try it in the browser", link: tryIt, primary: true },
+        { title: "All features", link: "/svg-editor/features" },
+      ]}
+    >
+      {/* still (a static-SVG editor): the SVG Editor with a glass rocket on its canvas, the astronaut at the foot of the stairs on the
+          keyboard (kf scratch hero-svg-editor.mjs --static), shown by the same player as the other heroes */}
+      <HeroBackdrop src="/assets/svg/hero/space-bg.svg">
+        <div class="relative z-10 mx-auto w-full max-w-custom-standard px-4 pt-10" data-rui-card="hero" data-rui-behaviour="{}">
+          <div class="w-full" style="aspect-ratio: 2880 / 1400" data-rui-player="hero" data-rui-src="/assets/svg/hero/rocket.json" />
+        </div>
+      </HeroBackdrop>
+    </HeroNew>
+  </>}
+</section>

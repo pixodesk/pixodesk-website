@@ -1,0 +1,56 @@
+---
+/**
+ * "How it works" as a row of small cards with one short title each (owner, 2026-10-16: instead of the lengthy steps).
+ * A card is either one panel of a schematic (`kind`, schemas.ts — the scene cropped to `view`) or its own scene (`svg`); each runs on
+ * its own clock; the row plays once when ≥ 50 % in view (not under reduced motion) and again on a click. Before playing, each card
+ * shows the result.
+ * A panel cut from a schematic (`kind`): the card draws the panel itself, the same width in every card, and hides the
+ * schematic's own (`sx-canvas`, sized to its content) — `view` = that panel's bounds.
+ */
+import { SCHEMAS, type SchemaKind } from "../new-design/schemas";
+export interface SchemaCard { title: string; view: [number, number, number, number]; svg?: (uid: string) => string }
+interface Props { kind?: SchemaKind; cards: Array<SchemaCard> }
+const { kind, cards } = Astro.props;
+const scene = (c: SchemaCard, uid: string) => (c.svg ? c.svg(uid) : kind ? SCHEMAS[kind].svg(uid) : "");
+const base = "c" + Math.random().toString(36).slice(2, 7);
+---
+<div class="sc-row" data-schema-cards title="Click to replay" style={`grid-template-columns: repeat(${cards.length}, minmax(0, 1fr))`}>
+  {cards.map((c, i) => {
+    // clipped to the panel: a card wider than its panel would otherwise show the neighbours' edges
+    const svg = (
+      <svg viewBox={c.view.join(" ")} font-family="inherit" aria-hidden="true">
+        <defs><clipPath id={`${base}${i}clip`}><rect x={c.view[0]} y={c.view[1]} width={c.view[2]} height={c.view[3]} /></clipPath></defs>
+        <g clip-path={`url(#${base}${i}clip)`}><Fragment set:html={scene(c, `${base}${i}`)} /></g>
+      </svg>
+    );
+    return (
+      <figure class="sc-card">
+        {c.svg ? svg : <div class="sc-panel">{svg}</div>}
+        <figcaption>{c.title}</figcaption>
+      </figure>
+    );
+  })}
+</div>
+
+<style>
+  .sc-row { display: grid; gap: 12px; margin-top: 22px; cursor: pointer; }
+  .sc-card { margin: 0; overflow: hidden; border-radius: 12px; border: 1px solid rgb(255 255 255 / 0.1); background: rgb(0 0 0 / 0.3); }
+  .sc-card svg { display: block; width: 100%; height: 150px; padding: 8px 6px 4px; }
+  /* its own scene (`svg`): as tall as its view, the same padding all round — no letterbox above and below (owner) */
+  .sc-card > svg { height: auto; padding: 6px; }
+  .sc-panel { margin: 8px 6px 4px; border-radius: 10px; border: 1px solid rgb(255 255 255 / 0.14); background: #172036; }
+  .sc-panel svg { height: 136px; padding: 4px; }
+  .sc-panel :global(.sx-canvas) { display: none; }
+  .sc-card figcaption { border-top: 1px solid rgb(255 255 255 / 0.1); padding: 7px 8px 8px; text-align: center; font: 600 12.5px/1.3 system-ui, sans-serif; color: #cbd5e1; }
+  @media (max-width: 480px) { .sc-row { gap: 8px; } .sc-panel svg { height: 96px; } .sc-card figcaption { font-size: 11px; } }
+</style>
+
+<script>
+  import { onceInView } from "../../scripts/play-in-view";
+  for (const row of document.querySelectorAll<HTMLElement>("[data-schema-cards]")) {
+    const clocks = Array.from(row.querySelectorAll("[data-clock]")).filter((c): c is SVGAnimationElement => c instanceof SVGAnimationElement);
+    const play = () => clocks.forEach((c) => c.beginElement());
+    row.addEventListener("click", play);
+    onceInView(row, play);
+  }
+</script>

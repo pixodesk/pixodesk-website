@@ -1,53 +1,109 @@
 WEBVTT
 
 1
-00:00:00.267 --> 00:00:01.808
-Here's a simple React app.
+00:00:00.267 --> 00:00:10.611
+This video shows how to put an animation from Pixodesk SVG Animator into a React app. It takes one package, one file and one component.
 
 2
-00:00:05.533 --> 00:00:08.276
-It works, but it feels a little static.
+00:00:11.833 --> 00:00:13.949
+Let's start with the app as it is.
 
 3
-00:00:08.800 --> 00:00:11.047
-First, install the React player.
+00:00:18.067 --> 00:00:20.496
+A heading, and nothing that moves yet.
 
 4
-00:00:16.333 --> 00:00:19.468
-Now let's make the animation. It only takes a minute.
+00:00:21.733 --> 00:00:27.115
+To play animations, the app needs the Pixodesk player. Let's install it.
 
 5
-00:00:20.000 --> 00:00:23.265
-In Pixodesk SVG Animator, draw a circle.
+00:00:33.400 --> 00:00:35.699
+The React player is in, one package.
 
 6
-00:00:23.767 --> 00:00:29.749
-Turn on Auto mode, then drag the ball down and back up. The keyframes are created for you.
+00:00:36.933 --> 00:00:42.785
+Now for the animation itself. Let's switch to the editor, where a football is already drawn.
 
 7
-00:00:30.267 --> 00:00:33.715
-Add gravity easing for a natural bounce, and loop it.
+00:00:44.333 --> 00:00:46.763
+It's a vector drawing, standing still.
 
 8
-00:00:39.033 --> 00:00:41.933
-Save it as JSON, straight into the project.
+00:00:48.000 --> 00:00:50.691
+To make it move, let's switch on Auto mode.
 
 9
-00:00:46.800 --> 00:00:50.483
-Back in the project, the animation file is already there.
+00:00:53.200 --> 00:00:56.936
+With Auto mode on, every change becomes a keyframe.
 
 10
-00:00:52.000 --> 00:00:54.194
-Import the player and the animation.
+00:00:58.167 --> 00:01:01.458
+Half a second in, let's drag the ball down to the floor.
 
 11
-00:00:59.633 --> 00:01:02.768
-Then add the player component, set to autoplay.
+00:01:04.567 --> 00:01:08.302
+A keyframe appears on the timeline, holding the new position.
 
 12
-00:01:15.467 --> 00:01:18.549
-Reload the page, and the ball bounces.
+00:01:09.533 --> 00:01:11.649
+At one second, let's bring it back up.
 
 13
-00:01:21.067 --> 00:01:23.810
-That's all it takes: one file, one component.
+00:01:14.933 --> 00:01:18.799
+Now it falls and rises again, in one second.
+
+14
+00:01:20.033 --> 00:01:26.564
+A real ball speeds up as it falls, and slows down as it rises. Let's set that easing.
+
+15
+00:01:33.700 --> 00:01:38.245
+Gravity easing, falling and rising, makes the bounce feel natural.
+
+16
+00:01:39.467 --> 00:01:42.654
+One bounce is not enough, so let's loop the animation.
+
+17
+00:01:46.133 --> 00:01:50.313
+Loop is saved with the file, so the animation repeats forever.
+
+18
+00:01:52.500 --> 00:01:57.646
+The animation is ready. Let's save it as JSON, straight into the project.
+
+19
+00:02:02.600 --> 00:02:04.298
+Now, back to our app.
+
+20
+00:02:05.833 --> 00:02:09.125
+The animation file is already there, next to the code.
+
+21
+00:02:10.367 --> 00:02:13.919
+Let's import the player, and the animation file.
+
+22
+00:02:21.800 --> 00:02:26.502
+The component comes from the package, the animation from the JSON file.
+
+23
+00:02:27.733 --> 00:02:30.424
+Then, let's place the player on the page.
+
+24
+00:02:39.833 --> 00:02:49.316
+The doc property takes the animation. Autoplay means it plays as the file says, starting on load and repeating forever.
+
+25
+00:02:50.533 --> 00:02:53.015
+Let's reload the page, and watch.
+
+26
+00:02:58.133 --> 00:03:01.999
+There it is. The ball bounces, right inside the React app.
+
+27
+00:03:04.033 --> 00:03:13.333
+So, one package, one file saved from the editor, and one component. That's all it takes to bring an animation into a React app.

@@ -40,5 +40,12 @@ export const GLYPHS = {
   apps: '<rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><path d="M17.5 14v7M14 17.5h7"/>',
   check: '<path d="M20 6L9 17l-5-5"/>',
   play: '<path d="M6 4l14 8-14 8z"/>',
+  // platforms (line drawings of the marks, for the home's "How it fits together")
+  react: '<ellipse cx="12" cy="12" rx="10" ry="4"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(120 12 12)"/><circle cx="12" cy="12" r="1.6" fill="currentColor"/>',
+  vue: '<path d="M2 4l10 17L22 4h-4.5L12 13.5 6.5 4z"/><path d="M6.5 4h3.5l2 3.5L14 4h3.5"/>',
+  apple: '<path d="M12 7.5c-1-.7-2.1-1-3.2-1C6.1 6.5 4 8.8 4 12.4 4 16.5 6.7 21 9 21c1.1 0 1.8-.7 3-.7s1.9.7 3 .7c1.9 0 3.6-2.7 4.4-4.8-1.8-.8-2.9-2.4-2.9-4.3 0-1.7.9-3.1 2.3-3.9-.9-1.1-2.2-1.6-3.6-1.6-1.2 0-2.2.4-3.2 1.1z"/><path d="M12.2 6.3c0-1.8 1.3-3.2 3-3.3 0 1.8-1.3 3.2-3 3.3z"/>',
+  android: '<path d="M4 18a8 8 0 0 1 16 0z"/><path d="M7.4 11.3L5.6 8.4M16.6 11.3l1.8-2.9"/><circle cx="9" cy="14.6" r=".9" fill="currentColor"/><circle cx="15" cy="14.6" r=".9" fill="currentColor"/>',
+  windows: '<path d="M3 5.6l7.5-1.1v7H3zM12.5 4.2L21 3v8.5h-8.5zM3 13.5h7.5v7L3 19.4zM12.5 13.5H21V21l-8.5-1.2z"/>',
+  image: '<rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.5"/><path d="M21 16l-5-5-9 9"/>',
 } as const;
 export type GlyphName = keyof typeof GLYPHS;

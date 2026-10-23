@@ -1,0 +1,12 @@
+---
+/** Frameworks — the SVG Editor's ways into a page, as code tabs (codeTabs.ts). The animators' code tabs live in Where it plays (owner, 2026-10-17). */
+import CodeTabs from "../../new-design/CodeTabs.astro";
+import PlainSection from "./PlainSection.astro";
+import { Slug, type AppKey } from "../catalogue";
+import { SVG_TABS } from "../codeTabs";
+interface Props { app: AppKey; bg: string }
+const { app, bg } = Astro.props;
+---
+<PlainSection slug={Slug.frameworks} app={app} bg={bg} lead="What you save is plain SVG: it goes wherever an image goes.">
+  <CodeTabs name={Slug.frameworks} tabs={SVG_TABS} />
+</PlainSection>

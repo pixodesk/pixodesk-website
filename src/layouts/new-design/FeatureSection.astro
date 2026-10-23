@@ -2,6 +2,8 @@
 /**
  * One feature: the illustration (a real export, with its proof caption) on one side; on the other the title, one line,
  * a mechanism schematic (scene + steps, schemas.ts), the facts as glyph rows and a link to the manual.
+ * Slot `below-art`: optional content under the illustration (new-design2: the schematic's panels as cards).
+ * Slot `head`: optional, replaces the title (new-design2: the catalogue's header — group, title, subtitle, app tabs).
  */
 import Section from "../Section.astro";
 import Border from "../Border.astro";
@@ -19,9 +21,10 @@ const { title, line, schema, facts, file, img = false, html, flip = false, bg = 
         <div class={flip ? "order-1 md:order-2" : "order-1"}>
           <div class="flex justify-center [&_svg]:max-h-[50vh]">{img ? <img src={file} alt={title} /> : <Fragment set:html={html} />}</div>
           {caption && file && <ProofCaption file={file} />}
+          <slot name="below-art" />
         </div>
         <div class={flip ? "order-2 md:order-1" : "order-2"}>
-          <h2 class="!pb-1">{title}</h2>
+          {Astro.slots.has("head") ? <slot name="head" /> : <h2 class="!pb-1">{title}</h2>}
           {line && <p class="text-custom-grey-200" set:html={line} />}
           {schema && <Schema kind={schema} />}
           <Facts items={facts} />

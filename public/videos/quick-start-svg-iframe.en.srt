@@ -1,43 +1,95 @@
 1
-00:00:00,267 --> 00:00:01,808
-Here's a simple web page.
+00:00:00,267 --> 00:00:13,041
+This video shows how to put an animation from Pixodesk SVG Animator on a web page, as a single SVG file in an iframe. There is no library, no install, and no build step.
 
 2
-00:00:05,533 --> 00:00:08,433
-It works, but it feels a little static.
+00:00:14,267 --> 00:00:16,565
+Let's start with the page as it is.
 
 3
-00:00:08,967 --> 00:00:13,068
-Let's add an animation. No library, no install.
+00:00:20,700 --> 00:00:23,051
+A heading, and nothing that moves yet.
 
 4
-00:00:13,600 --> 00:00:17,153
-In Pixodesk SVG Animator, draw a circle.
+00:00:24,300 --> 00:00:30,256
+The animation comes first. Let's switch to the editor, where a football is already drawn.
 
 5
-00:00:17,667 --> 00:00:23,649
-Turn on Auto mode, then drag the ball down and back up. The keyframes are created for you.
+00:00:31,800 --> 00:00:34,229
+It's a vector drawing, standing still.
 
 6
-00:00:24,167 --> 00:00:27,667
-Add gravity easing for a natural bounce, and loop it.
+00:00:35,467 --> 00:00:38,601
+To make it move, let's switch on Auto mode.
 
 7
-00:00:32,933 --> 00:00:38,288
-Save it as SVG, next to the page. The animation is inside the file.
+00:00:41,100 --> 00:00:44,731
+With Auto mode on, every change becomes a keyframe.
 
 8
-00:00:43,167 --> 00:00:46,563
-Back in the project, the SVG is already there.
+00:00:45,967 --> 00:00:49,258
+Half a second in, let's drag the ball down to the floor.
 
 9
-00:00:48,100 --> 00:00:49,484
-Show it in an iframe.
+00:00:52,367 --> 00:00:56,050
+A keyframe appears on the timeline, holding the new position.
 
 10
-00:00:59,367 --> 00:01:01,665
-Reload, and the ball bounces.
+00:00:57,267 --> 00:00:59,383
+At one second, let's bring it back up.
 
 11
-00:01:04,200 --> 00:01:07,152
-That's all: one file, one tag.
+00:01:02,667 --> 00:01:06,820
+Now it falls and rises again, in one second.
+
+12
+00:01:08,067 --> 00:01:14,911
+A real ball speeds up as it falls, and slows down as it rises. Let's set that easing.
+
+13
+00:01:22,033 --> 00:01:26,683
+Gravity easing, falling and rising, makes the bounce feel natural.
+
+14
+00:01:27,900 --> 00:01:31,035
+One bounce is not enough, so let's loop the animation.
+
+15
+00:01:34,500 --> 00:01:38,653
+Loop is saved with the file, so the animation repeats forever.
+
+16
+00:01:40,867 --> 00:01:45,752
+The animation is ready. Let's save it as SVG, next to the page.
+
+17
+00:01:50,733 --> 00:01:55,331
+The animation is written into the SVG file itself, as CSS.
+
+18
+00:01:56,567 --> 00:01:58,552
+Now, back to our page.
+
+19
+00:02:00,100 --> 00:02:03,653
+The SVG file is already there, next to the page.
+
+20
+00:02:04,900 --> 00:02:07,042
+Let's show the file in an iframe.
+
+21
+00:02:15,300 --> 00:02:20,786
+The iframe opens the SVG as its own document, and its animation runs there.
+
+22
+00:02:22,033 --> 00:02:24,332
+Let's reload the page, and watch.
+
+23
+00:02:29,467 --> 00:02:34,012
+There it is. The ball bounces, with no library on the page.
+
+24
+00:02:36,033 --> 00:02:44,340
+So, one SVG file saved from the editor, and one iframe tag. That's all it takes, with no library and no build step.

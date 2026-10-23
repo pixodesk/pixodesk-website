@@ -1,0 +1,151 @@
+---
+/**
+ * The learn videos' cards as one dark bento (owner's pick of the collages, 2026-10-16; "one app" and "overlapping" removed):
+ * tiles of different sizes, each card fitted to its tile, a caption with its playback pattern and size.
+ * Every card is live (the same generated cards as the gallery); the bento is drawn on a fixed canvas and scaled as a whole.
+ */
+import RealUiCard from "./RealUiCard.astro";
+import { realUiCard } from "./realUi";
+const size = (id: string) => { const kb = realUiCard(id).kbGz; return `${kb < 1 ? "< 1" : Math.round(kb)} KB`; };
+/* kind = the type of example, a title at the top (owner, 2026-10-16); caption = the playback pattern: what starts it, then what it does —
+   taken from each card's code and file */
+const bento = [
+  { id: "flight", area: "1 / 1 / 3 / 3", kind: "Wait", pattern: "load", flow: "loop" },
+  { id: "wellness", area: "1 / 3 / 3 / 4", kind: "Pause / resume", pattern: "play / pause", flow: "loop, hold on pause" },
+  { id: "weather", area: "1 / 4 / 2 / 5", kind: "Live data", pattern: "data", flow: "the state picks the file, loop" },
+  { id: "hover", area: "2 / 4 / 3 / 5", kind: "Mouse in / out", pattern: "hover", flow: "start → end → start" },
+  { id: "payment", area: "3 / 1 / 4 / 3", kind: "Steps", pattern: "progress", flow: "done: end, now: loop, next: middle" },
+  { id: "notfound", area: "3 / 3 / 4 / 5", fill: true, kind: "Error page", pattern: "load", flow: "loop" },
+  { id: "pipeline", area: "4 / 1 / 5 / 3", kind: "Progress", pattern: "play while running", flow: "loop, stop in place" },
+  { id: "dashboard", area: "4 / 3 / 5 / 4", kind: "Appear once", pattern: "load", flow: "once, start → end, hold" },
+  { id: "background", area: "4 / 4 / 5 / 5", fill: true, kind: "Background", pattern: "load", flow: "loop" },
+];
+---
+<div class="rui-fit" data-rui-fit><div class="rui-fit-inner">
+  <div class="hc-bento hc-dark">
+    {bento.map((t) => (
+      <div class={`hc-tile ${t.fill ? "hc-bleed" : ""}`} style={`grid-area: ${t.area}`}>
+        <span class="hc-kind">{t.kind}</span>
+        {t.fill ? <RealUiCard id={t.id} fill /> : <RealUiCard id={t.id} contain />}
+        <span class="hc-chip"><b>{t.pattern}</b> {t.flow} <i>· {size(t.id)}</i></span>
+      </div>
+    ))}
+  </div>
+</div></div>
+<style>
+  .hc-bento { display: grid; width: 1200px; grid-template-columns: repeat(4, 1fr); grid-template-rows: repeat(4, 260px); gap: 14px; }
+  /* shiny borders: a gradient line (the border-box layer under a padding-box fill), a soft corner glow, a coloured halo */
+  .hc-tile {
+    --edge: linear-gradient(140deg, rgba(103, 232, 249, .8), rgba(129, 140, 248, .35) 32%, rgba(255, 255, 255, .06) 58%, rgba(236, 72, 153, .6));
+    position: relative; overflow: hidden; border-radius: 22px; border: 1px solid transparent; padding: 34px 10px 30px;
+    background: linear-gradient(160deg, #111a2e 0%, #0a1020 100%) padding-box, var(--edge) border-box;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, .08), 0 18px 50px -22px rgba(56, 189, 248, .45);
+    transition: box-shadow .25s ease;
+  }
+  .hc-tile:nth-child(even) { --edge: linear-gradient(320deg, rgba(167, 139, 250, .75), rgba(56, 189, 248, .3) 35%, rgba(255, 255, 255, .06) 60%, rgba(103, 232, 249, .65)); }
+  /* edge to edge: the card fills the whole tile (owner: the 404 waves, the dotted background) */
+  .hc-tile.hc-bleed { padding: 0; }
+  .hc-tile::after { content: ""; position: absolute; inset: 0; border-radius: inherit; pointer-events: none; background: radial-gradient(120% 70% at 0% 0%, rgba(103, 232, 249, .1), transparent 60%); }
+  .hc-tile:hover { box-shadow: inset 0 1px 0 rgba(255, 255, 255, .14), 0 0 0 1px rgba(103, 232, 249, .3), 0 26px 64px -18px rgba(99, 102, 241, .6); }
+  /* the type of example, top left: small caps in the edge's cyan → violet */
+  .hc-kind { position: absolute; z-index: 1; left: 16px; top: 12px; font: 700 11.5px/1 system-ui, sans-serif; letter-spacing: .12em; text-transform: uppercase;
+    background: linear-gradient(90deg, #67e8f9, #a78bfa); -webkit-background-clip: text; background-clip: text; color: transparent; }
+  .hc-chip { position: absolute; z-index: 1; left: 12px; bottom: 9px; max-width: calc(100% - 24px); border-radius: 10px; border: 1px solid rgba(255, 255, 255, .1); background: rgba(8, 13, 26, .72); backdrop-filter: blur(6px); padding: 3px 10px; font: 500 11.5px/1.35 system-ui, sans-serif; color: #cbd5e1; }
+  .hc-chip b { font-weight: 700; color: #67e8f9; }
+  .hc-chip i { font-style: normal; color: #64748b; }
+
+</style>
+<style is:global>
+  /* no box inside the tile — the tile is the surface; each card's own frame, background, shadow and margin go,
+     and its content is fitted straight into the tile (owner, 2026-10-16) */
+  .hc-bento .rui-main, .hc-bento .rui-dashboard .feed { background: transparent !important; box-shadow: none !important; border-radius: 0 !important; margin: 0 !important; }
+  /* the 404, edge to edge: its deep blue fills the tile, the waves run the full width, the boat sized by the tile */
+  .hc-bento .rui-fill .rui-notfound .rui-main { display: flex; flex-direction: column; background: linear-gradient(180deg, #0c1528 0%, #10213f 65%, #163259 100%) !important; }
+  .hc-bento .rui-fill .rui-notfound .message { padding: 30px 20px 0; gap: 3px; }
+  .hc-bento .rui-fill .rui-notfound .message h1 { font-size: 21px; }
+  .hc-bento .rui-fill .rui-notfound .message p, .hc-bento .rui-fill .rui-notfound .message button { display: none; }
+  .hc-bento .rui-fill .rui-notfound .scene { position: relative; flex: 1; height: auto; }
+  .hc-bento .rui-fill .rui-notfound .sea { position: absolute; left: -30%; right: auto; bottom: 0; width: 160%; height: auto; aspect-ratio: 2500 / 600; }
+  .hc-bento .rui-fill .rui-notfound .boat { position: absolute; left: 50%; bottom: 4%; width: auto; height: 118%; aspect-ratio: 2 / 1; margin: 0; transform: translateX(-50%); }
+  /* the dotted background, edge to edge: the dots cover the tile, the text sized for it */
+  .hc-bento .rui-fill .rui-background .rui-main { background: #0b1220 !important; }
+  .hc-bento .rui-fill .rui-background .copy { max-width: none; padding: 36px 18px 20px; gap: 8px; }
+  .hc-bento .rui-fill .rui-background .copy h1 { font-size: 21px; }
+  .hc-bento .rui-fill .rui-background .copy p { font-size: 12.5px; }
+  .hc-bento .rui-fill .rui-background .copy button { padding: 6px 12px; font-size: 12px; }
+  /* the light cards' text and parts in a dark theme (the weather, 404, pipeline and background cards are dark already) */
+  .hc-dark .rui-fit-inner .rui-main, .hc-dark .rui-dashboard { color: #e2e8f0; }
+  .hc-dark .rui-flight .rui-main { background: #0f172a; box-shadow: none; }
+  .hc-dark .rui-flight .status span, .hc-dark .rui-flight .stops { color: #94a3b8; }
+  .hc-dark .rui-flight .flight { border-color: #1e293b; background: #111c33; }
+  .hc-dark .rui-flight .flight button { background: #38bdf8; color: #0b1220; }
+  .hc-dark .rui-wellness .rui-main { background: linear-gradient(180deg, #2b1a10, #1c120c); box-shadow: none; }
+  .hc-dark .rui-wellness .session, .hc-dark .rui-wellness p { color: #fdba74; }
+  .hc-dark .rui-wellness h2, .hc-dark .rui-wellness .time { color: #ffedd5; }
+  .hc-dark .rui-hover .rui-main { background: #0f172a; box-shadow: none; }
+  .hc-dark .rui-hover .file i { background: #3f1d22; color: #fca5a5; }
+  .hc-dark .rui-hover .file small { color: #94a3b8; }
+  .hc-dark .rui-hover .act { background: #1e293b; border-color: #334155; color: #e2e8f0; }
+  .hc-dark .rui-hover .act:hover { background: #312e81; border-color: #4f46e5; color: #e0e7ff; }
+  .hc-dark .rui-hover .danger:hover { background: #3f1d22; border-color: #7f1d1d; color: #fca5a5; }
+  .hc-dark .rui-hover .ok, .hc-dark .rui-hover .ok:hover { background: #38bdf8; border-color: #38bdf8; color: #0b1220; }
+  /* the dialog's icons are drawn in black: on dark buttons they take the button's text colour */
+  .hc-dark .rui-hover .icon svg [stroke]:not([stroke="none"]) { stroke: currentColor !important; }
+  .hc-dark .rui-payment .rui-main { background: #0f172a; box-shadow: none; }
+  .hc-dark .rui-payment .order { background: #0b1222; border-right-color: #1e293b; }
+  .hc-dark .rui-payment .total { border-top-color: #1e293b; }
+  .hc-dark .rui-payment .item small, .hc-dark .rui-payment .steps li small { color: #94a3b8; }
+  .hc-dark .rui-payment .icon { background: #1e293b; border-color: #334155; }
+  .hc-dark .rui-payment .done .icon { background: #052e2b; border-color: #065f46; }
+  .hc-dark .rui-payment .steps .done small { color: #4ade80; }
+  .hc-dark .rui-payment .next .icon { background: #1e293b; }
+  .hc-dark .rui-payment .next b { color: #64748b; }
+  .hc-dark .rui-dashboard .feed { background: #0f172a; box-shadow: none; }
+  .hc-dark .rui-dashboard .item { border-top-color: #1e293b; }
+  .hc-dark .rui-dashboard .item small { color: #fb923c; }
+  .hc-dark .rui-dashboard .item p { color: #94a3b8; }
+  .hc-dark .rui-dashboard .feed a { color: #60a5fa; }
+
+  /* only the animated part, bigger (owner, 2026-10-17: the rest of a card is decoration around its animation) */
+  /* Wait: the sky in the tiles' slate; the plane plain white (owner), the banner in the site's cyan, no shadows or blur */
+  .hc-dark .rui-flight .sky { background: linear-gradient(180deg, #111c33, #0f172a); border-block: 1px solid #1e293b; }
+  .hc-bento .rui-flight .sky [filter] { filter: none; }
+  .hc-bento .rui-flight .sky path[filter][fill] { fill: #ffffff; }
+  .hc-bento .rui-flight .sky g[filter] path { fill: #67e8f9; }
+  .hc-bento .rui-flight .sky g[stroke] { stroke: rgb(255 255 255 / .2); }
+  .hc-bento .rui-flight .sky path[fill-opacity] { display: none; }
+  /* Steps: the three steps side by side (the checkout header and the order are context) */
+  .hc-bento .rui-payment .head, .hc-bento .rui-payment .order { display: none; }
+  .hc-bento .rui-payment .rui-main { width: 580px; }
+  .hc-bento .rui-payment .body { display: block; }
+  .hc-bento .rui-payment .steps { grid-template-columns: repeat(3, 1fr); gap: 12px; padding: 0; }
+  .hc-bento .rui-payment .steps li { grid-template-columns: 1fr; justify-items: center; gap: 10px; padding: 14px 10px; text-align: center; border: 1px solid #1e293b; }
+  .hc-bento .rui-payment .steps li > span { grid-column: 1; }
+  .hc-bento .rui-payment .icon { width: 84px; height: 84px; padding: 6px; }
+  .hc-bento .rui-payment .steps li b { font-size: 15px; }
+  .hc-bento .rui-payment .steps li small { font-size: 13px; }
+  .hc-dark .rui-payment .running { background: rgb(56 189 248 / .1); border-color: rgb(103 232 249 / .45); color: #e2e8f0; }
+  .hc-dark .rui-payment .steps .running small { color: #67e8f9; }
+  /* Mouse in / out: the three buttons, stacked (the file row is context) */
+  .hc-bento .rui-hover .file, .hc-bento .rui-hover .space { display: none; }
+  .hc-bento .rui-hover .rui-main { width: 230px; padding: 0; overflow: visible; }
+  .hc-bento .rui-hover .actions { flex-direction: column; gap: 10px; }
+  .hc-bento .rui-hover .act { height: 52px; gap: 12px; padding: 0 18px 0 12px; border-radius: 10px; font-size: 16px; }
+  .hc-bento .rui-hover .icon { width: 36px; height: 36px; }
+  /* Appear once: the three icons, one short label each (the header, titles and sentences are context) */
+  .hc-bento .rui-dashboard .feed header, .hc-bento .rui-dashboard .item b, .hc-bento .rui-dashboard .item p { display: none; }
+  .hc-bento .rui-dashboard .feed { width: 240px; }
+  .hc-bento .rui-dashboard .item { grid-template-columns: 52px 1fr; gap: 16px; padding: 3px 4px; border-top: 0; }
+  .hc-bento .rui-dashboard .icon { width: 52px; height: 52px; }
+  .hc-bento .rui-dashboard .item small { font-size: 14px; letter-spacing: .06em; }
+  /* its icons were drawn on a light plate: the plate a warm dark tint (the labels' orange), the navy outline light */
+  .hc-dark .rui-dashboard .icon { background: rgb(251 146 60 / .12); box-shadow: inset 0 0 0 1px rgb(251 146 60 / .28); }
+  .hc-bento .rui-dashboard .icon svg [stroke="#003a73"] { stroke: #cbd5e1; }
+  .hc-bento .rui-dashboard .icon svg [fill="#003a73"] { fill: #cbd5e1; }
+  /* Progress: the flow, the step names and the bar (the job header and the captions are context) */
+  .hc-bento .rui-pipeline .head { display: none; }
+  .hc-bento .rui-pipeline .flow { margin: 0 auto 6px; }
+  .hc-bento .rui-pipeline .names { margin: 0 20px 12px; font-size: 0; }
+  .hc-bento .rui-pipeline .names b { font-size: 15px; }
+  .hc-bento .rui-pipeline .bar { margin: 0 20px; }
+</style>

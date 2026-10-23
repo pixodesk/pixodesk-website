@@ -1,0 +1,54 @@
+{
+  "name": "learn-ui-hover",
+  "blocks": [
+    {
+      "kind": "text",
+      "t": 0.27,
+      "text": "This video shows button icons that react to the pointer. The icon plays forward when you point at the button, and back when you leave. Our file dialog needs three buttons. Let's write one button that plays its icon on hover."
+    },
+    {
+      "kind": "shot",
+      "t": 48.12,
+      "src": "/videos/articles/learn-ui-hover/01.webp",
+      "alt": "The API ref property gives us the player commands. On mouse enter, it plays forward. On mouse leave, it plays backward."
+    },
+    {
+      "kind": "text",
+      "t": 47.97,
+      "text": "The API ref property gives us the player commands. On mouse enter, it plays forward. On mouse leave, it plays backward. Now let's use it for Delete, Cancel, and OK."
+    },
+    {
+      "kind": "shot",
+      "t": 77.85,
+      "src": "/videos/articles/learn-ui-hover/02.webp",
+      "alt": "Each button passes its own icon file, its label, and its style. The icons stand still until someone points at them."
+    },
+    {
+      "kind": "text",
+      "t": 77.7,
+      "text": "Each button passes its own icon file, its label, and its style. The icons stand still until someone points at them. Let's point at Delete, and then move away."
+    },
+    {
+      "kind": "shot",
+      "t": 92.98,
+      "src": "/videos/articles/learn-ui-hover/03.webp",
+      "alt": "The lid opens while the pointer is over the button, and closes when it leaves."
+    },
+    {
+      "kind": "text",
+      "t": 92.83,
+      "text": "The lid opens while the pointer is over the button, and closes when it leaves. The same works for the other two."
+    },
+    {
+      "kind": "shot",
+      "t": 105.52,
+      "src": "/videos/articles/learn-ui-hover/04.webp",
+      "alt": "The cross wiggles, and the tick draws itself again. Each icon has two states, at rest and pointed at."
+    },
+    {
+      "kind": "text",
+      "t": 105.37,
+      "text": "The cross wiggles, and the tick draws itself again. Each icon has two states, at rest and pointed at. So, a small component turns any icon file into a hover effect. Forward when the pointer arrives, and backward when it leaves."
+    }
+  ]
+}

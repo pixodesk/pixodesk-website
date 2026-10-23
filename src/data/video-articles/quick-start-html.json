@@ -1,0 +1,164 @@
+{
+  "name": "quick-start-html",
+  "blocks": [
+    {
+      "kind": "text",
+      "t": 0.27,
+      "text": "This video shows how to put an animation from Pixodesk SVG Animator on a plain web page. It takes one script and one element, with no build step. Let's start with the page as it is."
+    },
+    {
+      "kind": "shot",
+      "t": 19.58,
+      "src": "/videos/articles/quick-start-html/01.webp",
+      "alt": "A heading, and nothing that moves yet."
+    },
+    {
+      "kind": "text",
+      "t": 19.43,
+      "text": "A heading, and nothing that moves yet. To play animations, the page needs the Pixodesk player. Let's copy it into the project."
+    },
+    {
+      "kind": "shot",
+      "t": 35.95,
+      "src": "/videos/articles/quick-start-html/02.webp",
+      "alt": "One command copied the player script into the folder."
+    },
+    {
+      "kind": "text",
+      "t": 35.8,
+      "text": "One command copied the player script into the folder. Now for the animation itself. Let's switch to the editor, where a football is already drawn."
+    },
+    {
+      "kind": "shot",
+      "t": 47.15,
+      "src": "/videos/articles/quick-start-html/03.webp",
+      "alt": "It's a vector drawing, standing still."
+    },
+    {
+      "kind": "text",
+      "t": 47,
+      "text": "It's a vector drawing, standing still. To make it move, let's switch on Auto mode."
+    },
+    {
+      "kind": "shot",
+      "t": 56.28,
+      "src": "/videos/articles/quick-start-html/04.webp",
+      "alt": "With Auto mode on, every change becomes a keyframe."
+    },
+    {
+      "kind": "text",
+      "t": 56.13,
+      "text": "With Auto mode on, every change becomes a keyframe. Half a second in, let's drag the ball down to the floor."
+    },
+    {
+      "kind": "shot",
+      "t": 67.55,
+      "src": "/videos/articles/quick-start-html/05.webp",
+      "alt": "A keyframe appears on the timeline, holding the new position."
+    },
+    {
+      "kind": "text",
+      "t": 67.4,
+      "text": "A keyframe appears on the timeline, holding the new position. At one second, let's bring it back up."
+    },
+    {
+      "kind": "shot",
+      "t": 77.35,
+      "src": "/videos/articles/quick-start-html/06.webp",
+      "alt": "Now it falls and rises again, in one second."
+    },
+    {
+      "kind": "text",
+      "t": 77.2,
+      "text": "Now it falls and rises again, in one second. A real ball speeds up as it falls, and slows down as it rises. Let's set that easing."
+    },
+    {
+      "kind": "shot",
+      "t": 95.52,
+      "src": "/videos/articles/quick-start-html/07.webp",
+      "alt": "Gravity easing, falling and rising, makes the bounce feel natural."
+    },
+    {
+      "kind": "text",
+      "t": 95.37,
+      "text": "Gravity easing, falling and rising, makes the bounce feel natural. One bounce is not enough, so let's loop the animation."
+    },
+    {
+      "kind": "shot",
+      "t": 107.68,
+      "src": "/videos/articles/quick-start-html/08.webp",
+      "alt": "Loop is saved with the file, so the animation repeats forever."
+    },
+    {
+      "kind": "text",
+      "t": 107.53,
+      "text": "Loop is saved with the file, so the animation repeats forever."
+    },
+    {
+      "kind": "shot",
+      "t": 114.05,
+      "src": "/videos/articles/quick-start-html/09.webp",
+      "alt": "The animation is ready. Let's save it as JSON, next to the page."
+    },
+    {
+      "kind": "text",
+      "t": 113.9,
+      "text": "The animation is ready. Let's save it as JSON, next to the page."
+    },
+    {
+      "kind": "shot",
+      "t": 123.85,
+      "src": "/videos/articles/quick-start-html/10.webp",
+      "alt": "Now, back to our page."
+    },
+    {
+      "kind": "text",
+      "t": 123.7,
+      "text": "Now, back to our page."
+    },
+    {
+      "kind": "shot",
+      "t": 127.68,
+      "src": "/videos/articles/quick-start-html/11.webp",
+      "alt": "The animation file is already there, next to the page."
+    },
+    {
+      "kind": "text",
+      "t": 127.53,
+      "text": "The animation file is already there, next to the page. Let's load the player, at the end of the page."
+    },
+    {
+      "kind": "shot",
+      "t": 143.75,
+      "src": "/videos/articles/quick-start-html/12.webp",
+      "alt": "The script tag loads the player, and one call finds every animation on the page."
+    },
+    {
+      "kind": "text",
+      "t": 143.6,
+      "text": "The script tag loads the player, and one call finds every animation on the page. Then, let's add an element that names the animation file."
+    },
+    {
+      "kind": "shot",
+      "t": 163.28,
+      "src": "/videos/articles/quick-start-html/13.webp",
+      "alt": "Its data attribute points at the file. The player plays it as the file says, starting on load and repeating forever."
+    },
+    {
+      "kind": "text",
+      "t": 163.13,
+      "text": "Its data attribute points at the file. The player plays it as the file says, starting on load and repeating forever. Let's reload the page, and watch."
+    },
+    {
+      "kind": "shot",
+      "t": 179.75,
+      "src": "/videos/articles/quick-start-html/14.webp",
+      "alt": "There it is. The ball bounces, on a plain web page."
+    },
+    {
+      "kind": "text",
+      "t": 179.6,
+      "text": "There it is. The ball bounces, on a plain web page. So, one copied script, one file saved from the editor, and one element. That's all it takes to bring an animation onto a web page."
+    }
+  ]
+}

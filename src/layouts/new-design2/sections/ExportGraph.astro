@@ -1,0 +1,65 @@
+---
+/**
+ * The File formats section's diagram (owner, 2026-10-17): In → the app (a circle, no column header — like Where it plays) → Out, per app. The app's OWN format opens and saves (solid wires,
+ * on both sides); everything else comes in by import or goes out by export (dotted: WireKind.secondary) — the formats per app: fileFormats.ts.
+ * Wires and tracing: home/Wires + src/scripts/wired-diagram.ts; the look: home/DiagramStyles; the extensions: home/marks.
+ */
+import Wires from "../home/Wires.astro";
+import DiagramStyles from "../home/DiagramStyles.astro";
+import Marked from "../home/Marked.astro";
+import type { Text } from "../home/marks";
+import { type Format, FORMATS_PER_APP } from "../fileFormats";
+import { pitchOf } from "../apps";
+import { AppKey, appInfo } from "../catalogue";
+import { WireKind } from "../../../scripts/wired-diagram";
+interface Props { app: AppKey }
+const { app } = Astro.props;
+
+interface Box { id: string; label: string; sub: Text }
+const APP_NODE = "app";
+const { own, bringIn, sendOut } = FORMATS_PER_APP[app];
+const box = (f: Format, side: "in" | "out"): Box => ({ id: `${side}-${f.key}`, label: f.label, sub: side === "in" ? f.subIn ?? f.sub : f.sub });
+// the own formats first on both sides, so they face each other
+const inputs = [...own, ...bringIn].map((f) => box(f, "in"));
+const outputs = [...own, ...sendOut].map((f) => box(f, "out"));
+const EDGES: Array<[string, string, WireKind?]> = [
+  ...own.map((f): [string, string] => [box(f, "in").id, APP_NODE]),
+  ...bringIn.map((f): [string, string, WireKind] => [box(f, "in").id, APP_NODE, WireKind.secondary]),
+  ...own.map((f): [string, string] => [APP_NODE, box(f, "out").id]),
+  ...sendOut.map((f): [string, string, WireKind] => [APP_NODE, box(f, "out").id, WireKind.secondary]),
+];
+// the grid: as many rows as the longer side, both sides from the top; the app across them all
+const rows = Math.max(inputs.length, outputs.length);
+const inArea = (i: number) => `i${i}`, outArea = (i: number) => `o${i}`;
+const areas = ["h1 . . . h3", ...Array.from({ length: rows }, (_, r) => `${r < inputs.length ? inArea(r) : "."} . ap . ${r < outputs.length ? outArea(r) : "."}`)].map((r) => `"${r}"`).join(" ");
+const areasStacked = ["h1", ...inputs.map((_, i) => inArea(i)), "ap", "h3", ...outputs.map((_, i) => outArea(i))].map((r) => `"${r}"`).join(" ");
+const steps = [{ word: "In", sub: "open or import", area: "h1" }, { word: "Out", sub: "save or export", area: "h3" }];
+const pitch = pitchOf(app);
+// the own formats' boxes are tinted in the app's colour (dg-accent): they open and save natively (owner)
+const ownIds = new Set(own.flatMap((f) => [box(f, "in").id, box(f, "out").id]));
+const nodeClass = (n: Box) => ["dg-node", "dg-fork", ownIds.has(n.id) && "dg-accent"];
+---
+<DiagramStyles />
+<p class="legend" style={`--accent: ${pitch.accent}`}><span class="swatch"></span><span class="key"></span>its own format: opens and saves<span class="key secondary"></span>imported · exported</p>
+<div class="io" data-diagram data-edges={JSON.stringify(EDGES)} style={`--areas: ${areas}; --areas-stacked: ${areasStacked}`}>
+  <Wires id="io-wire" />
+  {steps.map((s) => <p class="dg-step" style={`grid-area: ${s.area}`}><b>{s.word}</b><span>{s.sub}</span></p>)}
+  {inputs.map((n, i) => <div class:list={nodeClass(n)} data-node={n.id} style={`grid-area: ${inArea(i)}; --accent: ${pitch.accent}`}><b>{n.label}</b><span><Marked text={n.sub} /></span></div>)}
+  <div class="dg-node dg-root" data-node={APP_NODE} style="grid-area: ap"><b>{appInfo(app).name}</b><span>{pitch.tagline}</span></div>
+  {outputs.map((n, i) => <div class:list={nodeClass(n)} data-node={n.id} style={`grid-area: ${outArea(i)}; --accent: ${pitch.accent}`}><b>{n.label}</b><span><Marked text={n.sub} /></span></div>)}
+</div>
+
+<style>
+  .legend { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 4px 0; margin: -8px 0 22px; font-size: 12.5px; color: #94a3b8; }
+  .key { display: inline-block; width: 26px; margin: 0 7px 0 16px; border-top: 2px dashed #818cf8; }
+  .swatch { display: inline-block; width: 22px; height: 14px; margin-right: 6px; border-radius: 4px; border: 1px solid color-mix(in srgb, var(--accent) 50%, transparent);
+    background: linear-gradient(160deg, color-mix(in srgb, var(--accent) 24%, rgba(15, 23, 42, .85)), rgba(15, 23, 42, .85) 70%); }
+  .swatch + .key { margin-left: 0; }
+  .key.secondary { border-top: 2px dotted rgba(165, 180, 252, .55); }
+  /* the gutters are columns of their own; the app spans every row */
+  .io { position: relative; display: grid; max-width: 1100px; margin: 0 auto; row-gap: 12px; align-items: center; color: #fff;
+    grid-template-columns: minmax(0, 1fr) clamp(48px, 7vw, 110px) minmax(0, .9fr) clamp(48px, 7vw, 110px) minmax(0, 1fr); grid-template-areas: var(--areas); }
+  @media (max-width: 1023px) { .io { grid-template-columns: minmax(0, 1fr); row-gap: 14px; max-width: 520px; grid-template-areas: var(--areas-stacked); } }
+  .dg-fork { padding: 10px 16px; }
+  .dg-fork b { font-size: 17px; }   /* "Pre-rendered animated SVG" on one line */
+</style>

@@ -1,0 +1,17 @@
+---
+/** A small line with its marked words (marks.ts): extensions and packages = green code chips, mechanisms = a paler green;
+ *  `chips`: every mark a chip (the app cards: extensions and CSS / JS alike). */
+import type { Text } from "./marks";
+interface Props { text: Text; chips?: boolean }
+const { text, chips = false } = Astro.props;
+const parts = typeof text === "string" ? [text] : text;
+---
+{parts.map((p) => (typeof p === "string" ? p : <span class:list={["mk", `mk-${p.kind}`, p.block && "mk-block", chips && "mk-chip"]}>{p.text}</span>))}
+
+<style>
+  /* two classes: outweigh the nodes' own `.dg-fork span` (scoped styles add no weight here) */
+  .mk { white-space: nowrap; }
+  .mk.mk-ext, .mk.mk-pkg, .mk.mk-chip { display: inline-block; line-height: 1.35; padding: 1px 6px; margin: 1px 0; border-radius: 6px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .92em; font-weight: 700; color: #22c55e; background: rgba(103, 232, 249, .12); }
+  .mk.mk-tech { font-weight: 600; color: #a7dfb9; }
+  .mk.mk-block { display: block; width: fit-content; margin: 3px 0; }
+</style>

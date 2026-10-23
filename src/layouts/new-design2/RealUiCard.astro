@@ -1,0 +1,16 @@
+---
+/**
+ * One "In real interfaces" card, live: its markup from the learn video, scaled down as a whole when the box is
+ * narrower than the card was designed (the UI inside keeps its proportions). `contain`: the box has its own height
+ * (a bento tile) — the card scales to fit both and sits centred. The players start when the card nears the screen
+ * (src/scripts/real-ui.ts); styles come from RealUiStyles on the page.
+ */
+import { behaviourOf, realUiCard } from "./realUi";
+interface Props { id: string; class?: string; contain?: boolean; fill?: boolean }
+const { id, class: cls = "", contain = false, fill = false } = Astro.props;
+const card = realUiCard(id);
+---
+{/* fill: no scaling — the card is laid out at the box's own size (the page restyles it to fill, e.g. the bento's 404) */}
+<div class={`rui-fit ${contain ? "rui-contain" : ""} ${fill ? "rui-fill" : ""} ${cls}`} data-rui-card={card.id} data-rui-behaviour={behaviourOf(card)} data-rui-contain={contain ? "" : undefined} data-rui-fill={fill ? "" : undefined}>
+  <div class="rui-fit-inner" set:html={card.html} />
+</div>

@@ -1,0 +1,19 @@
+---
+/** A feature section with its art (features.ts), the catalogue header in place of the title. */
+import FeatureSection from "../../new-design/FeatureSection.astro";
+import SchemaCards from "../SchemaCards.astro";
+import SectionHead from "../SectionHead.astro";
+import { featureFor } from "../features";
+import { sectionInfo, showsManual, type AppKey, type Slug } from "../catalogue";
+interface Props { slug: Slug; app: AppKey; bg: string; flip: boolean }
+const { slug, app, bg, flip } = Astro.props;
+const f = featureFor(slug, app);
+if (!f?.art) throw new Error(`feature ${slug} has no art for ${app}`);
+const art = f.art;
+---
+<div id={slug} class="scroll-mt-24">
+  <FeatureSection title={sectionInfo(slug).title} line={f.line} schema={art.schema} facts={f.facts} html={art.html} file={art.file} caption={!!art.file} flip={flip} bg={bg} docs={showsManual(app) ? f.docs : undefined}>
+    <SectionHead slot="head" slug={slug} app={app} />
+    {art.cards && <SchemaCards slot="below-art" kind={art.cards.kind} cards={art.cards.items} />}
+  </FeatureSection>
+</div>

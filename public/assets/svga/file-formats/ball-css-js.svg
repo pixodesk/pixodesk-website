@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" id="_px_3fo9cii8" data-px-meta="runtime:{useCssAnimation:true,useJsTriggers:true},animator:{version:'1.4.1',timeline:{outTime:1000,trigger:{start:'load',offScreen:'pause',visibilityThreshold:0.5,visibilityDebounce:150},iterations:'infinite',direction:'normal'}}">
+  <style>@keyframes _px_3fo9cii9 {0% {transform:translate(200px,60px);animation-timing-function:cubic-bezier(0.33,0,0.67,0.33);}
+50% {transform:translate(200px,320px);animation-timing-function:cubic-bezier(0.33,0.67,0.67,1);}
+99%, 100% {transform:translate(200px,60px)}}
+.px-anim-enabled ._px_3fo9ciia { animation: 1000ms _px_3fo9cii9 infinite forwards; }
+.px-anim-enabled.px-anim-playing .px-anim-element {animation-play-state: running !important;}
+.px-anim-enabled:not(.px-anim-playing) .px-anim-element {animation-play-state: paused;}</style>
+  <ellipse id="ball" class="px-anim-element _px_3fo9ciia" fill="#2a7fff" transform="translate(200,60)" rx="40" ry="40" data-px-meta="animate:{transform:{keyframes:[{time:0,value:{translate:[200,60]},easing:[0.33,0,0.67,0.33]},{time:500,value:{translate:[200,320]},easing:[0.33,0.67,0.67,1]},{time:990,value:{translate:[200,60]}}]}}"/>
+<script data-px-script="true">
+//<![CDATA[
+(function() {
+  function init(el) {
+    var threshold = 0.5;
+    var debounce = 150;
+    var steps = []; for (var s = 0; s <= 20; s++) steps.push(s / 20);
+    function pxRatio(i) {
+      var t = i.boundingClientRect, v = i.intersectionRect;
+      if (!t || !t.height || !v) return i.intersectionRatio;
+      var vp = Math.min(window.innerHeight || Infinity, i.rootBounds ? i.rootBounds.height : Infinity);
+      if (!isFinite(vp)) vp = t.height;
+      var d = Math.min(t.height, vp);
+      return d > 0 ? v.height / d : i.intersectionRatio;
+    }
+    var finished = false;
+    el.addEventListener("animationend", function() { finished = true; });
+    var open = false, timer = 0;
+    function pxOpen() {
+      timer = 0; if (open) return; open = true;
+      if (finished) { finished = false; el.classList.remove("px-anim-enabled", "px-anim-playing"); el.getBoundingClientRect(); }
+      el.classList.add("px-anim-enabled", "px-anim-playing");
+    }
+    function pxClose() {
+      if (timer) { clearTimeout(timer); timer = 0; }
+      if (!open) return; open = false; el.classList.remove("px-anim-playing");
+    }
+    new IntersectionObserver(function(e) { e.forEach(function(i) {
+      var r = i.isIntersecting ? pxRatio(i) : 0;
+      if (r > 0 && r >= threshold) { if (!open && !timer) { timer = debounce > 0 ? setTimeout(pxOpen, debounce) : (pxOpen(), 0); } }
+      else if (r <= 0) { pxClose(); }
+      else if (!open && timer) { clearTimeout(timer); timer = 0; }
+    }); }, { threshold: steps }).observe(el);
+  }
+  var el = document.currentScript.closest('svg');
+  (el ? [el] : document.querySelectorAll("#_px_3fo9cii8")).forEach(init);
+})();
+//]]>
+</script>
+</svg>

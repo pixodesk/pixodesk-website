@@ -1,0 +1,15 @@
+---
+/** A plain catalogue section: its anchor, a background, the catalogue header (centred), an optional lead line, then the content. */
+import Section from "../../Section.astro";
+import SectionHead from "../SectionHead.astro";
+import type { AppKey, Slug } from "../catalogue";
+interface Props { slug: Slug; app: AppKey; bg: string; lead?: string }
+const { slug, app, bg, lead } = Astro.props;
+---
+<section id={slug} class="scroll-mt-24">
+  <Section bgColor={bg} color="text-base-bright" standard>
+    <SectionHead slug={slug} app={app} center />
+    {lead && <p class="mx-auto mb-8 max-w-custom-narrow text-center text-custom-grey-400" set:html={lead} />}
+    <slot />
+  </Section>
+</section>

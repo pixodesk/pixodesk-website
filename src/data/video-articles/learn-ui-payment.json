@@ -1,0 +1,43 @@
+{
+  "name": "learn-ui-payment",
+  "blocks": [
+    {
+      "kind": "text",
+      "t": 0.27,
+      "text": "This video shows the stages of a payment, each with its own animated icon. The state of a stage decides whether its icon moves or stands still. Our checkout lists three stages. The first one is done, so let's give it its icon, standing still on its last frame."
+    },
+    {
+      "kind": "shot",
+      "t": 28.35,
+      "src": "/videos/articles/learn-ui-payment/01.webp",
+      "alt": "Progress, set to one, shows the end of the animation and holds it there. A finished stage stays calm."
+    },
+    {
+      "kind": "text",
+      "t": 28.2,
+      "text": "Progress, set to one, shows the end of the animation and holds it there. A finished stage stays calm. The second stage is running right now, so its icon should move."
+    },
+    {
+      "kind": "shot",
+      "t": 50.72,
+      "src": "/videos/articles/learn-ui-payment/02.webp",
+      "alt": "Autoplay plays it as the file says, and the file repeats the scan. So it keeps scanning while the stage runs."
+    },
+    {
+      "kind": "text",
+      "t": 50.57,
+      "text": "Autoplay plays it as the file says, and the file repeats the scan. So it keeps scanning while the stage runs. The last stage has not started yet. Let's show its icon half way, without motion."
+    },
+    {
+      "kind": "shot",
+      "t": 76.45,
+      "src": "/videos/articles/learn-ui-payment/03.webp",
+      "alt": "Progress, set to a half, shows the middle of the animation, and the style for the next stage fades it. Only the running stage draws the eye."
+    },
+    {
+      "kind": "text",
+      "t": 76.3,
+      "text": "Progress, set to a half, shows the middle of the animation, and the style for the next stage fades it. Only the running stage draws the eye. So, one component shows every stage. Progress holds a still frame for the stages that wait or are done, and autoplay moves the one that runs."
+    }
+  ]
+}

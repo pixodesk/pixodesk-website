@@ -1,0 +1,153 @@
+{
+  "name": "quick-start-svg-astro",
+  "blocks": [
+    {
+      "kind": "text",
+      "t": 0.27,
+      "text": "This video shows how to put an animation from Pixodesk SVG Animator into an Astro site, as a single SVG file. There is no library, and nothing to install. Let's start with the site as it is."
+    },
+    {
+      "kind": "shot",
+      "t": 20.02,
+      "src": "/videos/articles/quick-start-svg-astro/01.webp",
+      "alt": "A heading, and nothing that moves yet."
+    },
+    {
+      "kind": "text",
+      "t": 19.87,
+      "text": "A heading, and nothing that moves yet. The animation comes first. Let's switch to the editor, where a football is already drawn."
+    },
+    {
+      "kind": "shot",
+      "t": 31.12,
+      "src": "/videos/articles/quick-start-svg-astro/02.webp",
+      "alt": "It's a vector drawing, standing still."
+    },
+    {
+      "kind": "text",
+      "t": 30.97,
+      "text": "It's a vector drawing, standing still. To make it move, let's switch on Auto mode."
+    },
+    {
+      "kind": "shot",
+      "t": 40.12,
+      "src": "/videos/articles/quick-start-svg-astro/03.webp",
+      "alt": "With Auto mode on, every change becomes a keyframe."
+    },
+    {
+      "kind": "text",
+      "t": 39.97,
+      "text": "With Auto mode on, every change becomes a keyframe. Half a second in, let's drag the ball down to the floor."
+    },
+    {
+      "kind": "shot",
+      "t": 51.28,
+      "src": "/videos/articles/quick-start-svg-astro/04.webp",
+      "alt": "A keyframe appears on the timeline, holding the new position."
+    },
+    {
+      "kind": "text",
+      "t": 51.13,
+      "text": "A keyframe appears on the timeline, holding the new position. At one second, let's bring it back up."
+    },
+    {
+      "kind": "shot",
+      "t": 61.48,
+      "src": "/videos/articles/quick-start-svg-astro/05.webp",
+      "alt": "Now it falls and rises again, in one second."
+    },
+    {
+      "kind": "text",
+      "t": 61.33,
+      "text": "Now it falls and rises again, in one second. A real ball speeds up as it falls, and slows down as it rises. Let's set that easing."
+    },
+    {
+      "kind": "shot",
+      "t": 80.12,
+      "src": "/videos/articles/quick-start-svg-astro/06.webp",
+      "alt": "Gravity easing, falling and rising, makes the bounce feel natural."
+    },
+    {
+      "kind": "text",
+      "t": 79.97,
+      "text": "Gravity easing, falling and rising, makes the bounce feel natural. One bounce is not enough, so let's loop the animation."
+    },
+    {
+      "kind": "shot",
+      "t": 92.85,
+      "src": "/videos/articles/quick-start-svg-astro/07.webp",
+      "alt": "Loop is saved with the file, so the animation repeats forever."
+    },
+    {
+      "kind": "text",
+      "t": 92.7,
+      "text": "Loop is saved with the file, so the animation repeats forever."
+    },
+    {
+      "kind": "shot",
+      "t": 99.22,
+      "src": "/videos/articles/quick-start-svg-astro/08.webp",
+      "alt": "The animation is ready. Let's save it as SVG, into the project's assets."
+    },
+    {
+      "kind": "text",
+      "t": 99.07,
+      "text": "The animation is ready. Let's save it as SVG, into the project's assets."
+    },
+    {
+      "kind": "shot",
+      "t": 110.05,
+      "src": "/videos/articles/quick-start-svg-astro/09.webp",
+      "alt": "The animation is written into the SVG file itself, as CSS."
+    },
+    {
+      "kind": "text",
+      "t": 109.9,
+      "text": "The animation is written into the SVG file itself, as CSS. Now, back to our page."
+    },
+    {
+      "kind": "shot",
+      "t": 121.25,
+      "src": "/videos/articles/quick-start-svg-astro/10.webp",
+      "alt": "The SVG file is already there, in the assets folder."
+    },
+    {
+      "kind": "text",
+      "t": 121.1,
+      "text": "The SVG file is already there, in the assets folder. Let's import the SVG file, as text."
+    },
+    {
+      "kind": "shot",
+      "t": 134.95,
+      "src": "/videos/articles/quick-start-svg-astro/11.webp",
+      "alt": "The raw suffix gives us the file's markup, as a string."
+    },
+    {
+      "kind": "text",
+      "t": 134.8,
+      "text": "The raw suffix gives us the file's markup, as a string. Then, let's put that markup into the page."
+    },
+    {
+      "kind": "shot",
+      "t": 148.88,
+      "src": "/videos/articles/quick-start-svg-astro/12.webp",
+      "alt": "Set HTML inlines the SVG when the site is built, so its animation runs right in the page."
+    },
+    {
+      "kind": "text",
+      "t": 148.73,
+      "text": "Set HTML inlines the SVG when the site is built, so its animation runs right in the page. Let's reload the page, and watch."
+    },
+    {
+      "kind": "shot",
+      "t": 165.42,
+      "src": "/videos/articles/quick-start-svg-astro/13.webp",
+      "alt": "There it is. The ball bounces, and the page loads no player at all."
+    },
+    {
+      "kind": "text",
+      "t": 165.27,
+      "text": "There it is. The ball bounces, and the page loads no player at all. So, one SVG file saved from the editor, inlined when the site is built. That's all it takes, with no library at all."
+    }
+  ]
+}

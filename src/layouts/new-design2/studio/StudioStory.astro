@@ -1,0 +1,116 @@
+---
+/**
+ * Animator Studio — "One project" (owner, 2026-10-18: show, don't say, why both editors in one app): one animation through a growing
+ * brief, stop by stop, inside one Studio frame; a light runs along the track and wakes each stop (plays only in view: play-in-view).
+ * - Each stop: the ask, the editor(s) — a hand-off names the Export dialog tab it goes through (kf ExportDialog: "Lottie",
+ *   "Pixodesk JSON/SVG"; TExportConfig getExportTypesFor) — the file and where it plays (diagramNodes PLACES).
+ * - In Studio a file opens in the editor of its format (kf StudioAppFactory).
+ * - Phones: the track runs down the left; the stops still wake in turn, without the moving light.
+ */
+import LogoSvgaFill from "../../LogoSvgaFill.astro";
+import Logo2DFill from "../../Logo2DFill.astro";
+import Glyph from "../../new-design/Glyph.astro";
+import DiagramStyles from "../home/DiagramStyles.astro";
+import Marked from "../home/Marked.astro";
+import { FileExt, Mechanism, type Text, ext, joined, tech } from "../home/marks";
+import { STUDIO, pitchOf } from "../apps";
+import { AppKey, Slug, appInfo, sectionHref } from "../catalogue";
+import { PLACES, PlaceKey } from "../diagramNodes";
+
+/** How a stop uses the editors: one editor, a hand-off from the first to the second, or either of them. */
+enum Use { one = "one", handOff = "hand-off", either = "either" }
+interface Stop { title: string; line: string; use: Use; apps: Array<AppKey>; via?: string; out: Text; places: Array<PlaceKey>; href?: string }
+const A2 = AppKey.animator2d, SA = AppKey.svgAnimator, P = PlaceKey;
+const STOPS: Array<Stop> = [
+  { title: "Website hero", line: "plays on mouse over", use: Use.one, apps: [SA], out: [ext(FileExt.svg), " + ", tech(Mechanism.css)], places: [P.web], href: sectionHref(Slug.triggers, SA) },
+  { title: "In the app", line: "the same hero", use: Use.handOff, apps: [SA, A2], via: "Export › Lottie", out: ["Lottie ", ext(FileExt.json)], places: [P.ios, P.android] },
+  { title: "Stock Lottie", line: "opens as it is — recolour it", use: Use.one, apps: [A2], out: [ext(FileExt.lottie)], places: [P.rn] },
+  { title: "Scroll story", line: "now driven by the page's scroll", use: Use.handOff, apps: [A2, SA], via: "Export › Pixodesk JSON/SVG", out: [ext(FileExt.json), " + player"], places: [P.react],
+    href: sectionHref(Slug.scrollAnimation, SA) },
+  { title: "Launch video", line: "for the posts", use: Use.either, apps: [A2, SA], out: joined([FileExt.mp4, FileExt.gif].map(ext)), places: [P.anywhere] },
+];
+const app = (key: AppKey) => ({ key, name: appInfo(key).name, accent: pitchOf(key).accent });
+/** The light's lap; a stop wakes when the light reaches it (the light runs the track in RUN of the lap). */
+const LAP_S = 12, RUN = 0.9;
+const wakeAt = (i: number) => `${((LAP_S * RUN * i) / (STOPS.length - 1)).toFixed(2)}s`;
+---
+<DiagramStyles />
+<section class="dg-section">
+  <div class="dg-head">
+    <h2>One project</h2>
+    <p>The brief grows; the animation goes along.</p>
+  </div>
+  <div class="frame" style={`--studio: ${STUDIO.accent}; --lap: ${LAP_S}s; --stops: ${STOPS.length}`} data-play-in-view>
+    <p class="frame-tab"><span class="dg-mark">✦</span> {STUDIO.name}</p>
+    <div class="track" aria-hidden="true"><span class="light"></span></div>
+    <ol class="stops">
+      {STOPS.map((s, i) => (
+        <li class="stop" style={`--wake: ${wakeAt(i)}`}>
+          <span class="dot" aria-hidden="true"></span>
+          <p class="title">{s.href ? <a href={s.href}>{s.title}</a> : s.title}</p>
+          <p class="line">{s.line}</p>
+          <div class="apps">
+            {s.apps.map((k, j) => { const a = app(k); return (<>
+              {j > 0 && (s.use === Use.handOff ? <span class="via"><span class="arrow">→</span>{s.via}</span> : <span class="or">or</span>)}
+              <span class="app" style={`--accent: ${a.accent}`}>{k === A2 ? <Logo2DFill /> : <LogoSvgaFill />}{a.name}</span>
+            </>); })}
+          </div>
+          <p class="out"><Marked text={s.out} chips /></p>
+          <ul class="places">{s.places.map((k) => <li><Glyph name={PLACES[k].glyph} class="h-4 w-4" />{PLACES[k].label}</li>)}</ul>
+        </li>
+      ))}
+    </ol>
+  </div>
+</section>
+
+<style>
+  /* the Studio frame: everything below happens inside one app */
+  .frame { position: relative; max-width: 1240px; margin: 0 auto; padding: 46px 22px 28px; border-radius: 26px;
+    border: 1px solid color-mix(in srgb, var(--studio) 45%, transparent); background: rgba(9, 12, 28, .6); box-shadow: 0 0 80px -40px var(--studio); }
+  .frame-tab { position: absolute; top: -14px; left: 28px; display: inline-flex; align-items: center; gap: 8px; padding: 4px 14px; border-radius: 999px;
+    font-size: 13px; font-weight: 700; color: #0b1020; background: var(--studio); }
+  .frame-tab .dg-mark { font-size: 14px; }
+  /* the track: through the stops' dots, from the first stop's centre to the last's */
+  .track { position: absolute; top: 58px; left: calc(22px + (100% - 44px) / var(--stops) / 2); right: calc(22px + (100% - 44px) / var(--stops) / 2); height: 2px;
+    background: linear-gradient(90deg, rgba(255, 255, 255, .1), rgba(255, 255, 255, .22), rgba(255, 255, 255, .1)); }
+  .light { position: absolute; top: -5px; left: 0; width: 12px; height: 12px; margin-left: -6px; border-radius: 50%; background: var(--studio);
+    box-shadow: 0 0 14px 4px color-mix(in srgb, var(--studio) 70%, transparent), -26px 0 22px -6px color-mix(in srgb, var(--studio) 45%, transparent); animation: st-run var(--lap) linear infinite; }
+  .stops { position: relative; display: grid; grid-template-columns: repeat(var(--stops), minmax(0, 1fr)); gap: 16px; }
+  .stop { display: flex; flex-direction: column; align-items: center; gap: 6px; text-align: center; }
+  .dot { width: 16px; height: 16px; margin: 4px 0 10px; border-radius: 50%; background: #0b1020; border: 2px solid rgba(255, 255, 255, .35); animation: st-wake var(--lap) linear infinite; animation-delay: var(--wake); }
+  .title { font-size: 19px; font-weight: 800; line-height: 1.15; color: #fff; }
+  .title a { color: inherit; text-decoration: underline; text-decoration-color: rgba(255, 255, 255, .3); text-underline-offset: 4px; }
+  .title a:hover { text-decoration-color: #fff; }
+  .line { font-size: 12.5px; color: #94a3b8; min-height: 2.7em; }
+  .apps { display: flex; flex-direction: column; align-items: center; gap: 4px; margin-top: 4px; }
+  .app { display: inline-flex; align-items: center; gap: 6px; padding: 3px 10px 3px 6px; border-radius: 999px; font-size: 12.5px; font-weight: 700; color: #fff;
+    background: color-mix(in srgb, var(--accent) 20%, rgba(15, 23, 42, .8)); border: 1px solid color-mix(in srgb, var(--accent) 55%, transparent); }
+  .app :global(svg) { width: 16px; height: 16px; fill: var(--accent); }
+  .via { display: inline-flex; flex-direction: column; align-items: center; font-size: 11.5px; color: #cbd5e1; }
+  .via .arrow { display: block; transform: rotate(90deg); font-weight: 800; color: var(--studio); }
+  .or { font-size: 11.5px; color: #94a3b8; }
+  .out { margin-top: 6px; font-size: 13px; }
+  .places { display: flex; flex-wrap: wrap; justify-content: center; gap: 4px 10px; font-size: 12.5px; color: #c7d2fe; }
+  .places li { display: inline-flex; align-items: center; gap: 4px; }
+  @keyframes st-run { 0% { left: 0; opacity: 0; } 3% { opacity: 1; } 90% { left: 100%; opacity: 1; } 100% { left: 100%; opacity: 0; } }
+  /* a stop wakes when the light reaches it, and dims back slowly */
+  @keyframes st-wake {
+    0%, 2% { background: var(--studio); border-color: var(--studio); box-shadow: 0 0 0 6px color-mix(in srgb, var(--studio) 25%, transparent), 0 0 24px 2px var(--studio); }
+    30%, 100% { background: #0b1020; border-color: rgba(255, 255, 255, .35); box-shadow: none; }
+  }
+  @media (max-width: 1023px) {
+    .frame { max-width: 520px; padding: 36px 18px 18px; }
+    .track { top: 46px; bottom: 40px; left: 33px; right: auto; width: 2px; height: auto; }
+    .light { display: none; }
+    .stops { grid-template-columns: minmax(0, 1fr); gap: 22px; }
+    .stop { display: grid; grid-template-columns: 26px minmax(0, 1fr); align-items: start; justify-items: start; column-gap: 12px; row-gap: 4px; text-align: left; }
+    .stop > :not(.dot) { grid-column: 2; }
+    .dot { grid-row: 1; margin: 3px 0 0; }
+    .line { min-height: 0; }
+    .apps { flex-direction: row; flex-wrap: wrap; align-items: center; }
+    .via { flex-direction: row; gap: 4px; }
+    .via .arrow { transform: none; }
+    .places { justify-content: flex-start; }
+  }
+  @media (prefers-reduced-motion: reduce) { .light { display: none; } .dot { animation: none; } }
+</style>

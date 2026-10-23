@@ -1,0 +1,54 @@
+---
+// Prototype 2 of the home page (owner, 2026-10-17): it tells the visitor about the apps and sends them to the page they need (the
+// new-design2 app pages: names and links from layouts/new-design2/catalogue.ts). The opening = home/HomeHero.astro (one card per app with
+// its own hero art, Animator Studio under them, the home's cosmic background); then which app (home/DecisionTree: a dark decision
+// tree), how it fits together (home/FlowGraph: Draw → Save → Play, the same look), start here.
+// Removed from the /new-design/ copy (owner): its opening, the animation under "How it fits together", "The same drawing tools in all three
+// apps", "Edit colours", "Gradients and opacity", "Shape Builder".
+import "../../styles/tailwind.css";
+import "../../styles/global.scss";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Section from "../../layouts/Section.astro";
+import PreviewBanner from "../../layouts/new-design/PreviewBanner.astro";
+import StartBand from "../../layouts/new-design/StartBand.astro";
+import RealUiStyles from "../../layouts/new-design2/RealUiStyles.astro";
+import HomeHero from "../../layouts/new-design2/home/HomeHero.astro";
+import DecisionTree from "../../layouts/new-design2/home/DecisionTree.astro";
+import FlowGraph from "../../layouts/new-design2/home/FlowGraph.astro";
+import { AppKey, Slug, appInfo, sectionHref } from "../../layouts/new-design2/catalogue";
+
+const description = "Pixodesk makes desktop editors for vector graphics and animation — SVG Editor (free), SVG Animator and 2D Animator (Lottie) — and the players that run the result on any web page or in any app.";
+---
+
+<BaseLayout title="SVG & Lottie Animations" description={description} canonical="/" noindex>
+  <RealUiStyles />
+  <div class="w-full bg-black pt-navSingle text-white"><PreviewBanner compare="/" /></div>
+  <HomeHero />
+
+  <DecisionTree />
+
+  <FlowGraph />
+
+  <section>
+    <Section bgColor="bg-custom-gradient-indigo" color="text-base-bright" firstOfType>
+      <p class="text-center"><a class="text-cyan-300 underline" href="/svg-editor/features">All drawing features →</a></p>
+    </Section>
+  </section>
+
+  <section>
+    <Section bgColor="bg-custom-gradient-indigo" color="text-base-bright" standard>
+      <StartBand
+        title="Start here"
+        text="Nothing to sign up for. The free editor installs in a minute; the demos run in the browser; the docs take you from a blank canvas to an animation on your page."
+        links={[
+          { label: "Download SVG Editor — free", href: "/svg-editor/download", primary: true },
+          { label: `Try the ${appInfo(AppKey.svgAnimator).name} demo`, href: sectionHref(Slug.tryIt, AppKey.svgAnimator) },
+          { label: `Try the ${appInfo(AppKey.animator2d).name} demo`, href: sectionHref(Slug.tryIt, AppKey.animator2d) },
+          { label: "Get started — docs", href: "/docs/svga/get-started" },
+          { label: "npm i @pixodesk/svg-animator-react", href: "https://www.npmjs.com/package/@pixodesk/svg-animator-react", mono: true, external: true },
+          { label: "Pricing", href: "/pricing" },
+        ]}
+      />
+    </Section>
+  </section>
+</BaseLayout>

@@ -1,0 +1,65 @@
+{
+  "name": "learn-editor-export",
+  "blocks": [
+    {
+      "kind": "text",
+      "t": 0.27,
+      "text": "This video shows the ways to export an animation from the editor. One document can become a Lottie file, a video, a GIF, or a still image. Let's open the export dialog."
+    },
+    {
+      "kind": "shot",
+      "t": 17.72,
+      "src": "/videos/articles/learn-editor-export/01.webp",
+      "alt": "Every format is a tab here, with a preview of the result."
+    },
+    {
+      "kind": "text",
+      "t": 17.57,
+      "text": "Every format is a tab here, with a preview of the result. First, Lottie. Let's choose the dot Lottie file type."
+    },
+    {
+      "kind": "shot",
+      "t": 29.42,
+      "src": "/videos/articles/learn-editor-export/02.webp",
+      "alt": "Lottie JSON, or the smaller dot Lottie, is for apps that already play Lottie."
+    },
+    {
+      "kind": "text",
+      "t": 29.27,
+      "text": "Lottie JSON, or the smaller dot Lottie, is for apps that already play Lottie. Next, a video."
+    },
+    {
+      "kind": "shot",
+      "t": 40.28,
+      "src": "/videos/articles/learn-editor-export/03.webp",
+      "alt": "A video is for presentations and social posts."
+    },
+    {
+      "kind": "text",
+      "t": 40.13,
+      "text": "A video is for presentations and social posts. Then a GIF."
+    },
+    {
+      "kind": "shot",
+      "t": 48.78,
+      "src": "/videos/articles/learn-editor-export/04.webp",
+      "alt": "A GIF plays in email and chat, where a video would not."
+    },
+    {
+      "kind": "text",
+      "t": 48.63,
+      "text": "A GIF plays in email and chat, where a video would not. And finally, a still image."
+    },
+    {
+      "kind": "shot",
+      "t": 58.52,
+      "src": "/videos/articles/learn-editor-export/05.webp",
+      "alt": "A still image is for a store page, or a thumbnail."
+    },
+    {
+      "kind": "text",
+      "t": 58.37,
+      "text": "A still image is for a store page, or a thumbnail. So, one document becomes every format you need. Change it once, and export again."
+    }
+  ]
+}

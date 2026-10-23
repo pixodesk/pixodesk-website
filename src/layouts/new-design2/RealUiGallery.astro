@@ -1,0 +1,73 @@
+---
+/**
+ * "In real interfaces": one tab per use; the open tab shows the live card (from its learn video) and a panel — the
+ * gallery title and line, the files and their size, the lines that add it, the 1-minute video. Phones: the tabs scroll
+ * sideways, the card scales, the panel goes under it. A tab's players start when it is opened (the card enters the screen).
+ */
+import { Code } from "astro:components";
+import RealUiCard from "./RealUiCard.astro";
+import VideoPlayer from "../new-design/VideoPlayer.astro";
+import { realUiCards } from "./realUi";
+interface Props { docs?: string }
+const { docs = "/docs/svga/player-library/get-started" } = Astro.props;
+const cards = realUiCards.filter((c) => c.tab);
+const kb = (n: number) => (n < 1 ? "< 1 KB" : `${Math.round(n)} KB`);
+---
+<div class="rg" data-rui-tabs>
+  <div class="rg-tabs" role="tablist">
+    {cards.map((c, i) => <button type="button" role="tab" data-tab={c.id} aria-selected={String(i === 0)}>{c.tab}</button>)}
+  </div>
+  {cards.map((c, i) => (
+    <div role="tabpanel" data-panel={c.id} hidden={i !== 0} class="rg-panel">
+      <div class="rui-stage"><RealUiCard id={c.id} /></div>
+      <div class="rg-text">
+        <h3>{c.title}</h3>
+        <p class="rg-line">{c.line}</p>
+        <div class="rg-chips">
+          <span class="rg-chip rg-size">{c.files.length === 1 ? "1 file" : `${c.files.length} files`} · {kb(c.kbGz)} gzipped</span>
+          <span class="rg-chip">plays only while seen</span>
+        </div>
+        <p class="rg-label">The lines that add it, in React:</p>
+        <div class="rg-code"><Code code={c.code} lang="tsx" theme="github-dark" /></div>
+        <div class="rg-video"><VideoPlayer name={c.video} title={`${c.title} — a 1-minute video`} compact expand /></div>
+        <a class="rg-docs" href={docs}>Get started with the player →</a>
+      </div>
+    </div>
+  ))}
+</div>
+<style>
+  .rg-tabs { display: flex; gap: 8px; overflow-x: auto; margin: 0 -16px 24px; padding: 0 16px 8px; }
+  .rg-tabs button { flex: none; border-radius: 999px; border: 1px solid rgba(255, 255, 255, .15); background: rgba(255, 255, 255, .04); padding: 6px 16px; font-size: 14px; color: #cbd5e1; cursor: pointer; transition: border-color .15s, background .15s; }
+  .rg-tabs button:hover { border-color: rgba(103, 232, 249, .6); }
+  .rg-tabs button[aria-selected="true"] { border-color: #67e8f9; background: rgba(103, 232, 249, .15); color: #fff; }
+  /* minmax(0, …): a long code line must not widen the column (on phones the card and the text share it) */
+  .rg-panel { display: grid; grid-template-columns: minmax(0, 1fr); gap: 24px; align-items: start; }
+  .rg-text { min-width: 0; }
+  .rg-panel[hidden] { display: none; }
+  .rg-text { display: flex; flex-direction: column; gap: 14px; }
+  .rg-text h3 { margin: 0; font-size: 24px; font-weight: 600; color: #fff; }
+  .rg-line { margin: 0; color: #e2e8f0; }
+  .rg-chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .rg-chip { border-radius: 999px; border: 1px solid rgba(255, 255, 255, .15); padding: 3px 12px; font-size: 12px; color: #cbd5e1; }
+  .rg-size { border-color: rgba(103, 232, 249, .4); background: rgba(103, 232, 249, .1); color: #cffafe; }
+  .rg-label { margin: 4px 0 -6px; font-size: 13px; color: #94a3b8; }
+  .rg-code { max-height: 260px; overflow: auto; border-radius: 8px; border: 1px solid rgba(255, 255, 255, .1); font-size: 13px; }
+  .rg-code :global(pre) { padding: 14px 16px; margin: 0; }
+  .rg-video { max-width: 320px; }
+  .rg-docs { font-size: 14px; color: #67e8f9; text-decoration: underline; }
+  @media (min-width: 768px) { .rg-tabs { flex-wrap: wrap; justify-content: center; overflow: visible; margin: 0 0 28px; padding: 0; } }
+  @media (min-width: 1024px) { .rg-panel { grid-template-columns: minmax(0, 1fr) 400px; } }
+</style>
+<script>
+  document.querySelectorAll<HTMLElement>("[data-rui-tabs]").forEach((root) => {
+    const tabs = root.querySelectorAll<HTMLButtonElement>("[role=tab]");
+    const panels = root.querySelectorAll<HTMLElement>("[role=tabpanel]");
+    tabs.forEach((btn) => btn.addEventListener("click", () => {
+      tabs.forEach((b) => b.setAttribute("aria-selected", String(b === btn)));
+      panels.forEach((p) => {
+        p.hidden = p.dataset.panel !== btn.dataset.tab;
+        if (p.hidden) p.querySelectorAll("video").forEach((v) => v.pause());
+      });
+    }));
+  });
+</script>

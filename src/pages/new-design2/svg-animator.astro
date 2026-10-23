@@ -1,0 +1,16 @@
+---
+// Prototype 2 of /svg-animator. The sections, their order, titles and cross-links come from the new-design2 catalogue
+// (layouts/new-design2/catalogue.ts; content in features.ts and sections/) — shared with the 2D Animator and SVG Editor pages.
+// /new-design/svg-animator stays as it is, to compare against.
+import "../../styles/tailwind.css";
+import "../../styles/global.scss";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import AppPage from "../../layouts/new-design2/AppPage.astro";
+import { AppKey } from "../../layouts/new-design2/catalogue";
+
+const description = "Pixodesk SVG Animator: animations your users notice, in your React app or website — drawn in a desktop editor, a few KB each, added with one line of code.";
+---
+
+<BaseLayout title="SVG Animator" description={description} canonical="/svg-animator" noindex>
+  <AppPage app={AppKey.svgAnimator} />
+</BaseLayout>

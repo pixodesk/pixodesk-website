@@ -1,47 +1,103 @@
 1
-00:00:00,267 --> 00:00:02,017
-Here's a simple Astro site.
+00:00:00,267 --> 00:00:12,440
+This video shows how to put an animation from Pixodesk SVG Animator into an Astro site, as a single SVG file. There is no library, and nothing to install.
 
 2
-00:00:05,767 --> 00:00:08,666
-It works, but it feels a little static.
+00:00:13,667 --> 00:00:15,730
+Let's start with the site as it is.
 
 3
-00:00:09,200 --> 00:00:12,883
-Let's add an animation. No library, no install.
+00:00:19,867 --> 00:00:22,218
+A heading, and nothing that moves yet.
 
 4
-00:00:13,400 --> 00:00:16,482
-In Pixodesk SVG Animator, draw a circle.
+00:00:23,467 --> 00:00:29,423
+The animation comes first. Let's switch to the editor, where a football is already drawn.
 
 5
-00:00:17,000 --> 00:00:23,531
-Turn on Auto mode, then drag the ball down and back up. The keyframes are created for you.
+00:00:30,967 --> 00:00:33,553
+It's a vector drawing, standing still.
 
 6
-00:00:24,033 --> 00:00:27,481
-Add gravity easing for a natural bounce, and loop it.
+00:00:34,800 --> 00:00:37,464
+To make it move, let's switch on Auto mode.
 
 7
-00:00:32,800 --> 00:00:39,096
-Save it as SVG, into the project's assets. The animation is inside the file.
+00:00:39,967 --> 00:00:43,598
+With Auto mode on, every change becomes a keyframe.
 
 8
-00:00:43,967 --> 00:00:47,415
-Back in the project, the SVG is already there.
+00:00:44,833 --> 00:00:48,020
+Half a second in, let's drag the ball down to the floor.
 
 9
-00:00:48,933 --> 00:00:51,598
-Import the SVG file as text.
+00:00:51,133 --> 00:00:54,869
+A keyframe appears on the timeline, holding the new position.
 
 10
-00:00:54,900 --> 00:00:56,415
-Then drop it into the page.
+00:00:56,100 --> 00:00:58,033
+At one second, let's bring it back up.
 
 11
-00:01:03,733 --> 00:01:05,980
-Reload, and the ball bounces.
+00:01:01,333 --> 00:01:04,677
+Now it falls and rises again, in one second.
 
 12
-00:01:08,500 --> 00:01:12,653
-That's all: one file, inlined when the site is built.
+00:01:05,900 --> 00:01:12,849
+A real ball speeds up as it falls, and slows down as it rises. Let's set that easing.
+
+13
+00:01:19,967 --> 00:01:24,512
+Gravity easing, falling and rising, makes the bounce feel natural.
+
+14
+00:01:25,733 --> 00:01:29,234
+One bounce is not enough, so let's loop the animation.
+
+15
+00:01:32,700 --> 00:01:36,853
+Loop is saved with the file, so the animation repeats forever.
+
+16
+00:01:39,067 --> 00:01:44,918
+The animation is ready. Let's save it as SVG, into the project's assets.
+
+17
+00:01:49,900 --> 00:01:56,091
+The animation is written into the SVG file itself, as CSS.
+
+18
+00:01:57,333 --> 00:01:59,580
+Now, back to our page.
+
+19
+00:02:01,100 --> 00:02:04,600
+The SVG file is already there, in the assets folder.
+
+20
+00:02:05,833 --> 00:02:09,281
+Let's import the SVG file, as text.
+
+21
+00:02:14,800 --> 00:02:18,431
+The raw suffix gives us the file's markup, as a string.
+
+22
+00:02:19,667 --> 00:02:22,357
+Then, let's put that markup into the page.
+
+23
+00:02:28,733 --> 00:02:36,230
+Set HTML inlines the SVG when the site is built, so its animation runs right in the page.
+
+24
+00:02:37,467 --> 00:02:40,131
+Let's reload the page, and watch.
+
+25
+00:02:45,267 --> 00:02:50,361
+There it is. The ball bounces, and the page loads no player at all.
+
+26
+00:02:52,400 --> 00:03:00,393
+So, one SVG file saved from the editor, inlined when the site is built. That's all it takes, with no library at all.

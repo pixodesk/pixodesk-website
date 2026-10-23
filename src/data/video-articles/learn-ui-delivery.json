@@ -1,0 +1,32 @@
+{
+  "name": "learn-ui-delivery",
+  "blocks": [
+    {
+      "kind": "text",
+      "t": 0.27,
+      "text": "This video shows an order tracker with a courier who rides while the order is on the way. One line plays it, and the file itself says how. Our tracker shows the order, its steps, and who is bringing it. Let's add the courier, riding at the top."
+    },
+    {
+      "kind": "shot",
+      "t": 28.35,
+      "src": "/videos/articles/learn-ui-delivery/01.webp",
+      "alt": "Autoplay plays it as the file says. It starts as soon as it is on screen and repeats forever, so the courier keeps riding."
+    },
+    {
+      "kind": "text",
+      "t": 28.2,
+      "text": "Autoplay plays it as the file says. It starts as soon as it is on screen and repeats forever, so the courier keeps riding. The file also says to rest when nobody can see it. Let's scroll down to the order details, and back up."
+    },
+    {
+      "kind": "shot",
+      "t": 51.35,
+      "src": "/videos/articles/learn-ui-delivery/02.webp",
+      "alt": "It pauses while the tracker is off screen, and carries on when it comes back. Nothing in the code handles the scrolling."
+    },
+    {
+      "kind": "text",
+      "t": 51.2,
+      "text": "It pauses while the tracker is off screen, and carries on when it comes back. Nothing in the code handles the scrolling. So, one line plays the courier, and the settings saved in the file decide when it plays and when it rests."
+    }
+  ]
+}

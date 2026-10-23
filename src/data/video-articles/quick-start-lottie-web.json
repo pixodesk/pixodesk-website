@@ -1,0 +1,131 @@
+{
+  "name": "quick-start-lottie-web",
+  "blocks": [
+    {
+      "kind": "text",
+      "t": 0.27,
+      "text": "This video shows how to put an animation from Pixodesk 2D Animator on a plain web page, as a Lottie file. It takes one script and one element. Let's start with the page as it is."
+    },
+    {
+      "kind": "shot",
+      "t": 19.12,
+      "src": "/videos/articles/quick-start-lottie-web/01.webp",
+      "alt": "A heading, and nothing that moves yet. The lottie web player is already in the folder, next to the page."
+    },
+    {
+      "kind": "text",
+      "t": 18.97,
+      "text": "A heading, and nothing that moves yet. The lottie web player is already in the folder, next to the page. Now for the animation itself. Let's switch to the editor, where a football is already drawn."
+    },
+    {
+      "kind": "shot",
+      "t": 34.65,
+      "src": "/videos/articles/quick-start-lottie-web/02.webp",
+      "alt": "It's a vector drawing, standing still."
+    },
+    {
+      "kind": "text",
+      "t": 34.5,
+      "text": "It's a vector drawing, standing still. To make it move, let's switch on Auto mode."
+    },
+    {
+      "kind": "shot",
+      "t": 43.65,
+      "src": "/videos/articles/quick-start-lottie-web/03.webp",
+      "alt": "With Auto mode on, every change becomes a keyframe."
+    },
+    {
+      "kind": "text",
+      "t": 43.5,
+      "text": "With Auto mode on, every change becomes a keyframe. Half a second in, let's drag the ball down to the floor."
+    },
+    {
+      "kind": "shot",
+      "t": 54.65,
+      "src": "/videos/articles/quick-start-lottie-web/04.webp",
+      "alt": "A keyframe appears on the timeline, holding the new position."
+    },
+    {
+      "kind": "text",
+      "t": 54.5,
+      "text": "A keyframe appears on the timeline, holding the new position. At one second, let's bring it back up."
+    },
+    {
+      "kind": "shot",
+      "t": 64.72,
+      "src": "/videos/articles/quick-start-lottie-web/05.webp",
+      "alt": "Now it falls and rises again, in one second."
+    },
+    {
+      "kind": "text",
+      "t": 64.57,
+      "text": "Now it falls and rises again, in one second. A real ball speeds up as it falls, and slows down as it rises. Let's set that easing."
+    },
+    {
+      "kind": "shot",
+      "t": 83.28,
+      "src": "/videos/articles/quick-start-lottie-web/06.webp",
+      "alt": "Gravity easing, falling and rising, makes the bounce feel natural."
+    },
+    {
+      "kind": "text",
+      "t": 83.13,
+      "text": "Gravity easing, falling and rising, makes the bounce feel natural. The animation is ready. Let's save it as Lottie JSON, next to the page."
+    },
+    {
+      "kind": "shot",
+      "t": 99.32,
+      "src": "/videos/articles/quick-start-lottie-web/07.webp",
+      "alt": "Now, back to our page."
+    },
+    {
+      "kind": "text",
+      "t": 99.17,
+      "text": "Now, back to our page."
+    },
+    {
+      "kind": "shot",
+      "t": 103.08,
+      "src": "/videos/articles/quick-start-lottie-web/08.webp",
+      "alt": "The animation file is already there, next to the page."
+    },
+    {
+      "kind": "text",
+      "t": 102.93,
+      "text": "The animation file is already there, next to the page. Let's load the player, and start the animation, at the end of the page."
+    },
+    {
+      "kind": "shot",
+      "t": 126.65,
+      "src": "/videos/articles/quick-start-lottie-web/09.webp",
+      "alt": "Load animation takes the container, the file's path, and loop and autoplay."
+    },
+    {
+      "kind": "text",
+      "t": 126.5,
+      "text": "Load animation takes the container, the file's path, and loop and autoplay. Then, let's add the element it plays in."
+    },
+    {
+      "kind": "shot",
+      "t": 143.55,
+      "src": "/videos/articles/quick-start-lottie-web/10.webp",
+      "alt": "The container is this element, found by its id."
+    },
+    {
+      "kind": "text",
+      "t": 143.4,
+      "text": "The container is this element, found by its id. Let's reload the page, and watch."
+    },
+    {
+      "kind": "shot",
+      "t": 155.98,
+      "src": "/videos/articles/quick-start-lottie-web/11.webp",
+      "alt": "There it is. The ball bounces, on a plain web page."
+    },
+    {
+      "kind": "text",
+      "t": 155.83,
+      "text": "There it is. The ball bounces, on a plain web page. So, one script, one Lottie file saved from the editor, and one element. That's all it takes to bring an animation onto a web page."
+    }
+  ]
+}

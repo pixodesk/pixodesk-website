@@ -1,0 +1,78 @@
+{
+  "type": "svg",
+  "viewBox": "0 0 400 400",
+  "animator": {
+    "timeline": {
+      "outTime": 1000,
+      "trigger": {
+        "start": "load",
+        "offScreen": "pause",
+        "visibilityThreshold": 0.5,
+        "visibilityDebounce": 150
+      },
+      "iterations": "infinite",
+      "direction": "normal"
+    },
+    "version": "1.4.1"
+  },
+  "children": [
+    {
+      "type": "ellipse",
+      "id": "ball",
+      "fill": "#2a7fff",
+      "rx": 40,
+      "ry": 40,
+      "transform": {
+        "translate": [
+          200,
+          60
+        ]
+      },
+      "animate": {
+        "transform": {
+          "keyframes": [
+            {
+              "time": 0,
+              "value": {
+                "translate": [
+                  200,
+                  60
+                ]
+              },
+              "easing": [
+                0.33,
+                0,
+                0.67,
+                0.33
+              ]
+            },
+            {
+              "time": 500,
+              "value": {
+                "translate": [
+                  200,
+                  320
+                ]
+              },
+              "easing": [
+                0.33,
+                0.67,
+                0.67,
+                1
+              ]
+            },
+            {
+              "time": 990,
+              "value": {
+                "translate": [
+                  200,
+                  60
+                ]
+              }
+            }
+          ]
+        }
+      }
+    }
+  ]
+}

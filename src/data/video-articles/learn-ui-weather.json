@@ -1,0 +1,43 @@
+{
+  "name": "learn-ui-weather",
+  "blocks": [
+    {
+      "kind": "text",
+      "t": 0.27,
+      "text": "This video shows a weather card with animated icons. The data picks the icon for each day, and one component plays them all. Our card shows the weather now, and five days ahead. We have three icon files. Let's put them in one object, named by the kind of sky."
+    },
+    {
+      "kind": "shot",
+      "t": 24.85,
+      "src": "/videos/articles/learn-ui-weather/01.webp",
+      "alt": "Sunny, partly, and rain. The forecast data uses the same words."
+    },
+    {
+      "kind": "text",
+      "t": 24.7,
+      "text": "Sunny, partly, and rain. The forecast data uses the same words. Next, the big icon for the weather right now."
+    },
+    {
+      "kind": "shot",
+      "t": 45.68,
+      "src": "/videos/articles/learn-ui-weather/02.webp",
+      "alt": "Autoplay plays it as the file says, repeating forever. These files were saved at a calm, slow pace."
+    },
+    {
+      "kind": "text",
+      "t": 45.53,
+      "text": "Autoplay plays it as the file says, repeating forever. These files were saved at a calm, slow pace. Now one icon for every day of the forecast, picked by its sky."
+    },
+    {
+      "kind": "shot",
+      "t": 68.75,
+      "src": "/videos/articles/learn-ui-weather/03.webp",
+      "alt": "Each day looks up its file by the word in the data. Five players, from one line of code."
+    },
+    {
+      "kind": "text",
+      "t": 68.6,
+      "text": "Each day looks up its file by the word in the data. Five players, from one line of code. So, the data chooses the file, and one component plays any of them. A new kind of sky is just one more file."
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+---
+/**
+ * Inside the files (owner, 2026-10-17): the bouncing ball in every format the SVG Animator saves — one tab each, the file playing in
+ * the site's unified player (/app/player/embed.js: its own sandbox, plays only in view) next to its first lines. Tab names = the
+ * diagrams' nodes (diagramNodes). The files are written by the app and guarded by kf src/specs/website/fileFormatExamples.spec.ts
+ * (they must match what the current format writes) — never edit them by hand.
+ */
+import TabStrip from "../../new-design/TabStrip.astro";
+import SourceExcerpt from "../../new-design/SourceExcerpt.astro";
+import type { GlyphName } from "../../new-design/glyphs";
+import { PX_JSON, SVG_FLAVOURS } from "../diagramNodes";
+
+const DIR = "/assets/svga/file-formats";
+const [css, triggers, js] = SVG_FLAVOURS;
+const examples: Array<{ node: { id: string; label: string }; file: string; glyph: GlyphName }> = [
+  { node: PX_JSON, file: "ball.json", glyph: "code" },
+  { node: css, file: "ball-css.svg", glyph: "file" },
+  { node: triggers, file: "ball-css-js.svg", glyph: "file" },
+  { node: js, file: "ball-js.svg", glyph: "file" },
+];
+const tabs = examples.map((e) => ({ id: e.node.id, label: e.node.label, hint: e.file, glyph: e.glyph }));
+const NAME = "file-examples";
+---
+<script is:inline src="/app/player/embed.js" type="module" defer></script>
+<div data-tabs>
+  <TabStrip tabs={tabs} name={NAME} />
+  {examples.map((e, i) => (
+    <div role="tabpanel" id={`${NAME}-panel-${e.node.id}`} aria-labelledby={`${NAME}-tab-${e.node.id}`} data-panel={e.node.id} hidden={i !== 0}>
+      <div class="grid grid-cols-1 items-start gap-6 md:grid-cols-2">
+        <div class="overflow-hidden rounded-xl border border-white/10 bg-black/30" data-px-player data-px-player-src={`${DIR}/${e.file}`} data-px-player-height="320px"></div>
+        <div><SourceExcerpt file={`${DIR}/${e.file}`} /></div>
+      </div>
+    </div>
+  ))}
+</div>

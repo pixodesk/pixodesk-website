@@ -1,0 +1,25 @@
+---
+/**
+ * A section's header, from the catalogue: the group (small caps), the short title, the subtitle, and — when the section is on
+ * other apps' pages too and the same there (catalogue `showsAppTabs`) — app tabs: this app selected, the others link to the same
+ * section there (same anchor).
+ */
+import { APPS, groupInfo, sectionHref, sectionInfo, showsAppTabs, subtitleOf, type AppKey, type Slug } from "./catalogue";
+interface Props { slug: Slug; app: AppKey; center?: boolean }
+const { slug, app, center = false } = Astro.props;
+const s = sectionInfo(slug);
+const subtitle = subtitleOf(s, app);
+const apps = showsAppTabs(s) ? APPS.filter((a) => s.apps.includes(a.key)) : [];
+---
+<div class:list={["mb-6", center && "text-center"]}>
+  <p class="mb-1 text-xs font-semibold uppercase tracking-[.2em] text-cyan-300/80">{groupInfo(s.group).name}</p>
+  <h2 class="!pb-1">{s.title}</h2>
+  {subtitle && <p class:list={["text-lg text-custom-grey-200", center && "mx-auto max-w-custom-narrow"]}>{subtitle}</p>}
+  {apps.length > 1 && (
+    <nav class:list={["mt-3 flex flex-wrap gap-1.5", center && "justify-center"]} aria-label={`${s.title} in other apps`}>
+      {apps.map((a) => a.key === app
+        ? <span class="rounded-full bg-white px-3 py-1 text-xs font-semibold text-black" aria-current="page">{a.name}</span>
+        : <a class="rounded-full border border-white/20 px-3 py-1 text-xs text-custom-grey-200 no-underline hover:bg-white/10" href={sectionHref(slug, a.key)}>{a.name}</a>)}
+    </nav>
+  )}
+</div>

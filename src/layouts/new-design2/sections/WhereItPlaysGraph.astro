@@ -1,0 +1,78 @@
+---
+/**
+ * Where it plays — the SVG Animator, as a diagram (owner, 2026-10-17: like the Triggers diagram and the home's): the app → Save → Play → Ship.
+ * - ONE source, the app in a circle with no column header — every file on the left comes from it (owner: like the decision tree's "Your graphic");
+ * - Save: the pre-rendered animated SVG — its three flavours in one box, as on the home — and the Pixodesk JSON (diagramNodes.ts — shared with the home's diagram);
+ * - Play: the browser plays the SVG (nothing to install); our player packages play the JSON (players.ts);
+ * - Ship: where each one runs.
+ * Extensions, packages and CSS / JS are marked (home/Marked). Wires and tracing: home/Wires + src/scripts/wired-diagram.ts; the look:
+ * home/DiagramStyles.
+ */
+import Glyph from "../../new-design/Glyph.astro";
+import Wires from "../home/Wires.astro";
+import DiagramStyles from "../home/DiagramStyles.astro";
+import Marked from "../home/Marked.astro";
+import { pkg } from "../home/marks";
+import { ANIMATED_SVG, BROWSER, PLACES, PX_JSON, PlaceKey, SVG_FLAVOURS } from "../diagramNodes";
+import { WireKind } from "../../../scripts/wired-diagram";
+import { pxPackageWays } from "../players";
+import { pitchOf } from "../apps";
+import { AppKey, appInfo } from "../catalogue";
+
+const P = PlaceKey;
+// the pre-rendered SVG's flavours in one box, as on the home's diagram (owner): WireKind.inner links the box to them
+const animated = ANIMATED_SVG;
+const flavours = SVG_FLAVOURS;
+const json = { ...PX_JSON, area: "fj" };
+const browser = { ...BROWSER, area: "pb" };
+// our packages, each with the place it is for (web player → a web page; React → React; Vue → Vue; React Native → React Native)
+const PACKAGE_PLACES = [P.react, P.vue, P.rn, P.web];   // players.ts order (owner: React first)
+const ways = pxPackageWays();
+if (ways.length !== PACKAGE_PLACES.length) throw new Error(`players.ts lists ${ways.length} packages, the diagram places ${PACKAGE_PLACES.length}`);
+const players = ways.map((w, i) => ({ id: `pkg-${i}`, label: w.short, sub: [pkg(w.name), ...(w.status ? [` · ${w.status}`] : [])], href: w.links[0]?.href, area: `p${i + 1}`, place: PACKAGE_PLACES[i] }));
+const places = PACKAGE_PLACES.map((k, i) => ({ ...PLACES[k], area: `d${i + 1}` }));
+const APP_NODE = "app";
+const EDGES: Array<[string, string, WireKind?]> = [
+  [APP_NODE, animated.id], [APP_NODE, json.id],
+  ...flavours.map((f): [string, string, WireKind] => [animated.id, f.id, WireKind.inner]),
+  ...flavours.map((f): [string, string] => [f.id, browser.id]),
+  [browser.id, P.web],
+  ...players.map((p): [string, string] => [json.id, p.id]),
+  ...players.map((p): [string, string] => [p.id, p.place]),
+];
+const steps = [{ word: "Save", sub: "one file", area: "h1" }, { word: "Play", sub: "how it plays", area: "h2" }, { word: "Ship", sub: "where it lives", area: "h3" }];
+const pitch = pitchOf(AppKey.svgAnimator), accent = pitch.accent;
+---
+<DiagramStyles />
+<div class="where" data-diagram data-edges={JSON.stringify(EDGES)}>
+  <Wires id="where-wire" />
+  {steps.map((s) => <p class="dg-step" style={`grid-area: ${s.area}`}><b>{s.word}</b><span>{s.sub}</span></p>)}
+  <div class="dg-node dg-root" data-node={APP_NODE} style="grid-area: ap"><b>{appInfo(AppKey.svgAnimator).name}</b><span>{pitch.tagline}</span></div>
+  <div class="dg-node dg-group" data-node={animated.id} style="grid-area: fa">
+    <a class="dg-group-head" href={animated.href}><b>{animated.label}</b><span><Marked text={animated.sub} /></span></a>
+    {flavours.map((f) => <a class="dg-node dg-fork dg-mini" href={f.href} data-node={f.id}><b>{f.label}</b><span><Marked text={f.sub} /></span></a>)}
+  </div>
+  {[json, browser].map((n) => <a class="dg-node dg-fork" href={n.href} data-node={n.id} style={`grid-area: ${n.area}`}><b>{n.label}</b><span><Marked text={n.sub} /></span></a>)}
+  {players.map((p) => <a class="dg-node dg-fork dg-accent" href={p.href} data-node={p.id} style={`grid-area: ${p.area}; --accent: ${accent}`}><b>{p.label}</b><span><Marked text={p.sub} /></span></a>)}
+  {places.map((p) => (
+    <div class="dg-node dg-place" data-node={p.id} style={`grid-area: ${p.area}`}>
+      <span class="dg-glyph"><Glyph name={p.glyph} class="h-5 w-5" /></span>
+      <span class="dg-text"><span class="dg-pname">{p.label}</span><span class="dg-sub"><Marked text={p.sub} /></span></span>
+    </div>
+  ))}
+</div>
+
+<style>
+  /* the app · Save · Play · Ship, the gutters are columns of their own; the app feeds every file; the web page takes the browser and
+     the web player */
+  .where { position: relative; display: grid; max-width: 1280px; margin: 8px auto 0; row-gap: 12px; align-items: center; color: #fff;
+    grid-template-columns: minmax(0, .85fr) clamp(36px, 4vw, 64px) minmax(0, 1fr) clamp(36px, 4vw, 64px) minmax(0, 1fr) clamp(36px, 4vw, 64px) minmax(0, .8fr);
+    grid-template-areas: ". . h1 . h2 . h3" "ap . fj . p1 . d1" "ap . fj . p2 . d2" "ap . fj . p3 . d3" "ap . fj . p4 . d4" "ap . fa . pb . d4" "ap . fa . pb . d4" "ap . fa . pb . d4"; }
+  /* phones: one column, every wire down the middle */
+  @media (max-width: 1023px) {
+    .where { grid-template-columns: minmax(0, 1fr); row-gap: 14px; max-width: 520px;
+      grid-template-areas: "ap" "h1" "fj" "fa" "h2" "p1" "p2" "p3" "p4" "pb" "h3" "d1" "d2" "d3" "d4"; }
+  }
+  .dg-fork { padding: 10px 16px; }
+  .dg-fork b { font-size: 19px; }
+</style>

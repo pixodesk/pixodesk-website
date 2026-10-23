@@ -1,0 +1,142 @@
+{
+  "name": "quick-start-dotlottie-react",
+  "blocks": [
+    {
+      "kind": "text",
+      "t": 0.27,
+      "text": "This video shows how to put an animation from Pixodesk 2D Animator into a React app, as a dot Lottie file. It takes one package, one file and one component. Let's start with the app as it is."
+    },
+    {
+      "kind": "shot",
+      "t": 19.82,
+      "src": "/videos/articles/quick-start-dotlottie-react/01.webp",
+      "alt": "A heading, and nothing that moves yet."
+    },
+    {
+      "kind": "text",
+      "t": 19.67,
+      "text": "A heading, and nothing that moves yet. To play dot Lottie files, the app needs the dot Lottie player. Let's install it."
+    },
+    {
+      "kind": "shot",
+      "t": 35.95,
+      "src": "/videos/articles/quick-start-dotlottie-react/02.webp",
+      "alt": "The dot Lottie React player is in, one package."
+    },
+    {
+      "kind": "text",
+      "t": 35.8,
+      "text": "The dot Lottie React player is in, one package. Now for the animation itself. Let's switch to the editor, where a football is already drawn."
+    },
+    {
+      "kind": "shot",
+      "t": 47.58,
+      "src": "/videos/articles/quick-start-dotlottie-react/03.webp",
+      "alt": "It's a vector drawing, standing still."
+    },
+    {
+      "kind": "text",
+      "t": 47.43,
+      "text": "It's a vector drawing, standing still. To make it move, let's switch on Auto mode."
+    },
+    {
+      "kind": "shot",
+      "t": 56.78,
+      "src": "/videos/articles/quick-start-dotlottie-react/04.webp",
+      "alt": "With Auto mode on, every change becomes a keyframe."
+    },
+    {
+      "kind": "text",
+      "t": 56.63,
+      "text": "With Auto mode on, every change becomes a keyframe. Half a second in, let's drag the ball down to the floor."
+    },
+    {
+      "kind": "shot",
+      "t": 67.72,
+      "src": "/videos/articles/quick-start-dotlottie-react/05.webp",
+      "alt": "A keyframe appears on the timeline, holding the new position."
+    },
+    {
+      "kind": "text",
+      "t": 67.57,
+      "text": "A keyframe appears on the timeline, holding the new position. At one second, let's bring it back up."
+    },
+    {
+      "kind": "shot",
+      "t": 77.42,
+      "src": "/videos/articles/quick-start-dotlottie-react/06.webp",
+      "alt": "Now it falls and rises again, in one second."
+    },
+    {
+      "kind": "text",
+      "t": 77.27,
+      "text": "Now it falls and rises again, in one second. A real ball speeds up as it falls, and slows down as it rises. Let's set that easing."
+    },
+    {
+      "kind": "shot",
+      "t": 95.95,
+      "src": "/videos/articles/quick-start-dotlottie-react/07.webp",
+      "alt": "Gravity easing, falling and rising, makes the bounce feel natural."
+    },
+    {
+      "kind": "text",
+      "t": 95.8,
+      "text": "Gravity easing, falling and rising, makes the bounce feel natural. The animation is ready. Let's save it as a dot Lottie file, into the public folder."
+    },
+    {
+      "kind": "shot",
+      "t": 112.25,
+      "src": "/videos/articles/quick-start-dotlottie-react/08.webp",
+      "alt": "Dot Lottie is the compact, zipped form of a Lottie file."
+    },
+    {
+      "kind": "text",
+      "t": 112.1,
+      "text": "Dot Lottie is the compact, zipped form of a Lottie file. Now, back to our app."
+    },
+    {
+      "kind": "shot",
+      "t": 120.72,
+      "src": "/videos/articles/quick-start-dotlottie-react/09.webp",
+      "alt": "The animation file is already there, in the public folder."
+    },
+    {
+      "kind": "text",
+      "t": 120.57,
+      "text": "The animation file is already there, in the public folder. Let's import the player component."
+    },
+    {
+      "kind": "shot",
+      "t": 134.08,
+      "src": "/videos/articles/quick-start-dotlottie-react/10.webp",
+      "alt": "It comes from the dot Lottie React package."
+    },
+    {
+      "kind": "text",
+      "t": 133.93,
+      "text": "It comes from the dot Lottie React package. Then, let's place it on the page, pointing at the file."
+    },
+    {
+      "kind": "shot",
+      "t": 149.85,
+      "src": "/videos/articles/quick-start-dotlottie-react/11.webp",
+      "alt": "Its source is the file's address. Loop repeats it, and autoplay starts it when the page loads."
+    },
+    {
+      "kind": "text",
+      "t": 149.7,
+      "text": "Its source is the file's address. Loop repeats it, and autoplay starts it when the page loads. Let's reload the page, and watch."
+    },
+    {
+      "kind": "shot",
+      "t": 164.95,
+      "src": "/videos/articles/quick-start-dotlottie-react/12.webp",
+      "alt": "There it is. The ball bounces, right inside the React app."
+    },
+    {
+      "kind": "text",
+      "t": 164.8,
+      "text": "There it is. The ball bounces, right inside the React app. So, one package, one dot Lottie file saved from the editor, and one component. That's all it takes to bring an animation into a React app."
+    }
+  ]
+}

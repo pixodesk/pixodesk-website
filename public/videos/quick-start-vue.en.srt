@@ -1,51 +1,107 @@
 1
-00:00:00,267 --> 00:00:01,730
-Here's a simple Vue app.
+00:00:00,267 --> 00:00:11,238
+This video shows how to put an animation from Pixodesk SVG Animator into a Vue app. It takes one package, one file and one component.
 
 2
-00:00:05,467 --> 00:00:07,818
-It works, but it feels a little static.
+00:00:12,467 --> 00:00:14,609
+Let's start with the app as it is.
 
 3
-00:00:08,367 --> 00:00:10,613
-First, install the Vue player.
+00:00:18,733 --> 00:00:20,875
+A heading, and nothing that moves yet.
 
 4
-00:00:16,267 --> 00:00:19,401
-Now let's make the animation. It only takes a minute.
+00:00:22,100 --> 00:00:27,246
+To play animations, the app needs the Pixodesk player. Let's install it.
 
 5
-00:00:19,933 --> 00:00:23,486
-In Pixodesk SVG Animator, draw a circle.
+00:00:33,900 --> 00:00:36,564
+The Vue player is in, one package.
 
 6
-00:00:24,000 --> 00:00:30,531
-Turn on Auto mode, then drag the ball down and back up. The keyframes are created for you.
+00:00:37,800 --> 00:00:42,894
+Now for the animation itself. Let's switch to the editor, where a football is already drawn.
 
 7
-00:00:31,033 --> 00:00:34,481
-Add gravity easing for a natural bounce, and loop it.
+00:00:44,433 --> 00:00:46,863
+It's a vector drawing, standing still.
 
 8
-00:00:39,800 --> 00:00:42,830
-Save it as JSON, straight into the project.
+00:00:48,100 --> 00:00:50,843
+To make it move, let's switch on Auto mode.
 
 9
-00:00:47,700 --> 00:00:51,566
-Back in the project, the animation file is already there.
+00:00:53,333 --> 00:00:56,834
+With Auto mode on, every change becomes a keyframe.
 
 10
-00:00:53,100 --> 00:00:55,294
-Import the player and the animation.
+00:00:58,067 --> 00:01:01,201
+Half a second in, let's drag the ball down to the floor.
 
 11
-00:01:02,400 --> 00:01:05,535
-Then add the player component, set to autoplay.
+00:01:04,300 --> 00:01:08,036
+A keyframe appears on the timeline, holding the new position.
 
 12
-00:01:16,100 --> 00:01:19,130
-Reload the page, and the ball bounces.
+00:01:09,267 --> 00:01:11,330
+At one second, let's bring it back up.
 
 13
-00:01:21,667 --> 00:01:24,462
-That's all it takes: one file, one component.
+00:01:14,633 --> 00:01:18,134
+Now it falls and rises again, in one second.
+
+14
+00:01:19,367 --> 00:01:26,315
+A real ball speeds up as it falls, and slows down as it rises. Let's set that easing.
+
+15
+00:01:33,433 --> 00:01:37,613
+Gravity easing, falling and rising, makes the bounce feel natural.
+
+16
+00:01:38,833 --> 00:01:42,125
+One bounce is not enough, so let's loop the animation.
+
+17
+00:01:45,600 --> 00:01:49,283
+Loop is saved with the file, so the animation repeats forever.
+
+18
+00:01:51,467 --> 00:01:56,116
+The animation is ready. Let's save it as JSON, straight into the project.
+
+19
+00:02:01,067 --> 00:02:03,130
+Now, back to our app.
+
+20
+00:02:04,667 --> 00:02:07,958
+The animation file is already there, next to the code.
+
+21
+00:02:09,200 --> 00:02:12,753
+Let's import the player, and the animation file.
+
+22
+00:02:24,000 --> 00:02:27,788
+The component comes from the package, the animation from the JSON file.
+
+23
+00:02:29,033 --> 00:02:32,064
+Then, let's place the player in the template.
+
+24
+00:02:41,433 --> 00:02:50,916
+The doc property takes the animation. Autoplay means it plays as the file says, starting on load and repeating forever.
+
+25
+00:02:52,133 --> 00:02:54,563
+Let's reload the page, and watch.
+
+26
+00:02:59,700 --> 00:03:02,965
+There it is. The ball bounces, right inside the Vue app.
+
+27
+00:03:05,000 --> 00:03:12,837
+So, one package, one file saved from the editor, and one component. That's all it takes to bring an animation into a Vue app.

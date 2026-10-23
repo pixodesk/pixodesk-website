@@ -1,0 +1,32 @@
+---
+/**
+ * Where it plays — 2D Animator: the same Lottie file on every platform, each with its own Lottie player.
+ * SVG Animator: a diagram (WhereItPlaysGraph) — the saved file → what plays it → where it runs.
+ * Then the code to put it there (owner, 2026-10-17: Frameworks merged in) — the SVG Animator's tabs are the diagram's places (codeTabs.ts).
+ */
+import FlowDiagram from "../../new-design/FlowDiagram.astro";
+import CodeTabs from "../../new-design/CodeTabs.astro";
+import PlainSection from "./PlainSection.astro";
+import WhereItPlaysGraph from "./WhereItPlaysGraph.astro";
+import { AppKey, Slug } from "../catalogue";
+import { LOTTIE_PLAYERS } from "../players";
+import { LOTTIE_TABS, SVGA_TABS } from "../codeTabs";
+interface Props { app: AppKey; bg: string }
+const { app, bg } = Astro.props;
+const lead = app === AppKey.animator2d
+  ? undefined
+  : `All open source (MIT): <a class="text-cyan-300 underline" href="https://github.com/pixodesk/pixodesk-svg-animator" target="_blank" rel="noopener">GitHub</a> · <a class="text-cyan-300 underline" href="/docs/svga/player-library">the player docs</a>.`;
+// the code to put it there: one tab per place (SVG Animator), per Lottie player (2D Animator)
+const code = app === AppKey.svgAnimator
+  ? { tabs: SVGA_TABS, lead: "Same editor, same animation. Pick the file by how much control your page needs — none, some, or all of it from code." }
+  : { tabs: LOTTIE_TABS, lead: "You save a standard Lottie file. The player libraries thousands of apps already ship render it — nothing of ours to install." };
+---
+<PlainSection slug={Slug.whereItPlays} app={app} bg={bg} lead={lead}>
+  {app === AppKey.animator2d && <>
+    <FlowDiagram highlight="lottie" />
+    <p class="mt-6 text-center text-sm text-custom-grey-400">Players: {LOTTIE_PLAYERS.map((p, i) => <><a class="text-cyan-300 underline" href={p.href} target="_blank" rel="noopener">{p.label}</a>{i < LOTTIE_PLAYERS.length - 1 ? " · " : ""}</>)}</p>
+  </>}
+  {app === AppKey.svgAnimator && <WhereItPlaysGraph />}
+  <p class="mx-auto mb-6 mt-14 max-w-custom-narrow text-center text-custom-grey-400">{code.lead}</p>
+  <CodeTabs name={Slug.whereItPlays} tabs={code.tabs} />
+</PlainSection>

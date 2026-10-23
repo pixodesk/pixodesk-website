@@ -1,0 +1,74 @@
+---
+// A scripted video as a mini article (owner, 2026-10-18): the video, then its transcript with screenshots where the screen
+// changed, so it can be read on its own. One page per video in layouts/new-design2/videos.ts that has article data
+// (videoArticles.ts). A paragraph's time jumps the video there and plays it.
+import "../../../styles/tailwind.css";
+import "../../../styles/global.scss";
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import PreviewBanner from "../../../layouts/new-design/PreviewBanner.astro";
+import VideoPlayer from "../../../layouts/new-design/VideoPlayer.astro";
+import { videoDuration } from "../../../layouts/new-design/videoDuration";
+import { VIDEO_ARTICLE_INFOS, type VideoArticleInfo } from "../../../layouts/new-design2/videos";
+import { ArticleBlockKind, SHOT_SIZE, clock, hasArticle, videoArticle } from "../../../layouts/new-design2/videoArticles";
+
+export function getStaticPaths() {
+  return VIDEO_ARTICLE_INFOS.filter((v) => hasArticle(v.name)).map((info) => ({ params: { name: info.name }, props: { info } }));
+}
+interface Props { info: VideoArticleInfo }
+const { info } = Astro.props;
+const article = videoArticle(info.name);
+if (!article) throw new Error(`no article data for ${info.name}`);
+const duration = videoDuration(info.name);
+const firstText = article.blocks.find((b) => b.kind === ArticleBlockKind.text);
+const description = `${info.title}: a narrated video with its transcript and screenshots.${firstText && firstText.kind === ArticleBlockKind.text ? ` ${firstText.text.slice(0, 120)}` : ""}`;
+---
+
+<BaseLayout title={`${info.title} — video and transcript`} description={description} canonical={info.listedAt.href} noindex>
+  <section class="relative w-full bg-custom-gradient-violet pt-navDouble text-white">
+    <PreviewBanner compare={info.listedAt.href} />
+    <div class="mx-auto max-w-custom-standard px-pxPage pb-10 pt-8">
+      <p class="text-sm"><a class="text-cyan-300 underline underline-offset-2 hover:text-cyan-200" href={info.listedAt.href}>← {info.listedAt.label}</a></p>
+      <h1 class="mt-3 !pb-0">{info.title}</h1>
+      {info.line && <p class="mt-2 max-w-custom-narrow text-custom-grey-200">{info.line}</p>}
+      <div class="mt-8"><VideoPlayer name={info.name} title={info.title} /></div>
+    </div>
+  </section>
+  <section class="bg-custom-gradient-indigo px-pxPage py-pxPage text-white">
+    <article class="va mx-auto">
+      <h2 class="!pb-2">Transcript</h2>
+      <p class="mb-8 text-sm text-custom-grey-400">What the video says{duration ? ` (${duration})` : ""}, with the screen at each step. A time plays the video from there.</p>
+      {article.blocks.map((b) => b.kind === ArticleBlockKind.text ? (
+        <p class="va-text"><button type="button" class="va-time" data-seek={b.t} aria-label={`Play the video from ${clock(b.t)}`}>{clock(b.t)}</button>{b.text}</p>
+      ) : (
+        <figure class="va-shot"><img src={b.src} alt={b.alt} width={SHOT_SIZE.w} height={SHOT_SIZE.h} loading="lazy" decoding="async" /></figure>
+      ))}
+      {info.docs && <p class="mt-10 text-sm"><a class="text-cyan-300 underline underline-offset-2 hover:text-cyan-200" href={info.docs}>In the docs →</a></p>}
+    </article>
+  </section>
+</BaseLayout>
+
+<style>
+  .va { max-width: 760px; }
+  .va-text { margin: 0 0 18px; font-size: 17px; line-height: 1.65; color: #e2e8f0; }
+  .va-time { margin-right: 10px; padding: 1px 8px; border-radius: 999px; font: 600 12px/1.6 ui-monospace, monospace; color: #a5f3fc; background: rgba(103, 232, 249, .12);
+    vertical-align: 2px; cursor: pointer; transition: background .15s; }
+  .va-time:hover, .va-time:focus-visible { background: rgba(103, 232, 249, .25); outline: none; }
+  .va-shot { margin: 8px 0 26px; }
+  .va-shot img { display: block; width: 100%; height: auto; border-radius: 12px; border: 1px solid rgba(255, 255, 255, .12); box-shadow: 0 18px 50px -24px rgba(0, 0, 0, .7); }
+</style>
+
+<script>
+  // a paragraph's time: the video jumps there and plays (its own script hands over to the native controls on play)
+  const video = document.querySelector<HTMLVideoElement>("[data-video] video");
+  document.querySelectorAll<HTMLButtonElement>("[data-seek]").forEach((button) => {
+    button.addEventListener("click", () => {
+      if (!video) return;
+      const t = Number(button.dataset.seek);
+      // the video loads nothing until asked (preload none): seek once its length is known
+      if (video.readyState >= HTMLMediaElement.HAVE_METADATA) video.currentTime = t;
+      else video.addEventListener("loadedmetadata", () => { video.currentTime = t; }, { once: true });
+      void video.play();
+      video.scrollIntoView({ behavior: "smooth", block: "center" });
+    });
+  });
+</script>

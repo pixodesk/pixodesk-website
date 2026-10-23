@@ -1,0 +1,22 @@
+---
+/**
+ * A feature in a full-width section of its own (AppPage OWN_SECTION): the catalogue header and the line, then the content across the
+ * whole width — the slot (e.g. the Triggers diagram), or else the feature's art — then the facts and the manual link.
+ * Text: features.ts.
+ */
+import Facts from "../../new-design/Facts.astro";
+import PlainSection from "./PlainSection.astro";
+import { featureFor } from "../features";
+import { showsManual, type AppKey, type Slug } from "../catalogue";
+interface Props { slug: Slug; app: AppKey; bg: string }
+const { slug, app, bg } = Astro.props;
+const f = featureFor(slug, app);
+if (!f) throw new Error(`feature ${slug} has no content for ${app}`);
+---
+<PlainSection slug={slug} app={app} bg={bg} lead={f.line}>
+  {Astro.slots.has("default") ? <slot /> : f.art && <div class="w-full"><Fragment set:html={f.art.html} /></div>}
+  <div class="mx-auto mt-10 max-w-custom-narrow">
+    <Facts items={f.facts} />
+    {showsManual(app) && f.docs && <p class="mt-5 text-sm"><a class="text-cyan-300 underline underline-offset-2 hover:text-cyan-200" href={f.docs.href}>{f.docs.label} →</a></p>}
+  </div>
+</PlainSection>

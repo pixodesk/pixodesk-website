@@ -1,0 +1,16 @@
+---
+// Prototype 2 of /animator — the 2D Animator (Lottie). The sections, their order, titles and cross-links come from the new-design2
+// catalogue (layouts/new-design2/catalogue.ts; content in features.ts and sections/) — shared with the SVG Animator and SVG Editor
+// pages. /new-design/animator stays as it is, to compare against.
+import "../../styles/tailwind.css";
+import "../../styles/global.scss";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import AppPage from "../../layouts/new-design2/AppPage.astro";
+import { AppKey } from "../../layouts/new-design2/catalogue";
+
+const description = "Pixodesk 2D Animator (Lottie): draw and animate in a desktop editor, save standard Lottie JSON and play it with the Lottie players on iOS, Android, React Native, Windows and the web.";
+---
+
+<BaseLayout title="2D Animator (Lottie)" description={description} canonical="/animator" noindex>
+  <AppPage app={AppKey.animator2d} />
+</BaseLayout>

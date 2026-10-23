@@ -1,0 +1,87 @@
+{
+  "name": "learn-triggers-practice",
+  "blocks": [
+    {
+      "kind": "text",
+      "t": 0.27,
+      "text": "This video shows which trigger fits which job in a real interface. Each file keeps its own trigger, so the code is the same short line every time. Let's start with an order tracker. The courier should ride whenever the tracker is on screen."
+    },
+    {
+      "kind": "shot",
+      "t": 29.95,
+      "src": "/videos/articles/learn-triggers-practice/01.webp",
+      "alt": "Its file starts on load and pauses off screen. It plays as soon as it is seen, and rests while it is hidden."
+    },
+    {
+      "kind": "text",
+      "t": 29.8,
+      "text": "Its file starts on load and pauses off screen. It plays as soon as it is seen, and rests while it is hidden. Next, a Delete button. Its bin should open only while you point at it."
+    },
+    {
+      "kind": "shot",
+      "t": 54.62,
+      "src": "/videos/articles/learn-triggers-practice/02.webp",
+      "alt": "Its file starts on mouse over, and plays backward when the pointer leaves."
+    },
+    {
+      "kind": "text",
+      "t": 54.47,
+      "text": "Its file starts on mouse over, and plays backward when the pointer leaves. Let's point at it, and move away."
+    },
+    {
+      "kind": "shot",
+      "t": 66.08,
+      "src": "/videos/articles/learn-triggers-practice/03.webp",
+      "alt": "The lid opens on hover, and closes as the pointer leaves."
+    },
+    {
+      "kind": "text",
+      "t": 65.93,
+      "text": "The lid opens on hover, and closes as the pointer leaves. A like button should answer a click."
+    },
+    {
+      "kind": "shot",
+      "t": 84.52,
+      "src": "/videos/articles/learn-triggers-practice/04.webp",
+      "alt": "Its file starts on click and plays once."
+    },
+    {
+      "kind": "text",
+      "t": 84.37,
+      "text": "Its file starts on click and plays once. Let's click it."
+    },
+    {
+      "kind": "shot",
+      "t": 91.48,
+      "src": "/videos/articles/learn-triggers-practice/05.webp",
+      "alt": "One click, one small reward."
+    },
+    {
+      "kind": "text",
+      "t": 91.33,
+      "text": "One click, one small reward. A reminder should catch the eye once, when you reach it, and then stay quiet."
+    },
+    {
+      "kind": "shot",
+      "t": 113.75,
+      "src": "/videos/articles/learn-triggers-practice/06.webp",
+      "alt": "Its file starts on load and plays once. It waits until it is seen, plays, and stays on its last frame."
+    },
+    {
+      "kind": "text",
+      "t": 113.6,
+      "text": "Its file starts on load and plays once. It waits until it is seen, plays, and stays on its last frame. And sometimes the app itself knows the state, like a payment step that is already done."
+    },
+    {
+      "kind": "shot",
+      "t": 141.18,
+      "src": "/videos/articles/learn-triggers-practice/07.webp",
+      "alt": "Its file says none, so it never plays by itself. Progress, set to one, shows the finished stage."
+    },
+    {
+      "kind": "text",
+      "t": 141.03,
+      "text": "Its file says none, so it never plays by itself. Progress, set to one, shows the finished stage. So, pick the trigger by the job. On load for things that live on the page, mouse over for buttons, click for answers, once for a nudge, and none when your code decides."
+    }
+  ]
+}

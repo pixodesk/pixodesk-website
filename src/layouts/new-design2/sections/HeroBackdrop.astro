@@ -1,0 +1,13 @@
+---
+/**
+ * The hero art over its cosmic background (kf scratch hero-bg.mjs: a variant per app): the background spans the page's width, from a
+ * little above the art to its bottom (the next section would cut it), faded out at both edges.
+ */
+interface Props { src: string }
+const { src } = Astro.props;
+const fade = "linear-gradient(to bottom, transparent, #000 12%, #000 78%, transparent)";
+---
+<div style="position: relative">
+  <img src={src} alt="" aria-hidden="true" style={`position: absolute; left: 0; width: 100%; top: -90px; height: calc(100% + 90px); pointer-events: none; -webkit-mask-image: ${fade}; mask-image: ${fade}`} />
+  <slot />
+</div>

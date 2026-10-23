@@ -1,0 +1,16 @@
+---
+/**
+ * Triggers, full width (owner, 2026-10-17): the line, then — on the SVG Animator page — the diagram (TriggerGraph: when → trigger → where
+ * in a UI; each trigger with its mini scene); the facts and the manual link (WideFeature).
+ * A Lottie file carries no trigger, so the 2D Animator page keeps the text only.
+ * Text: features.ts (the triggers feature).
+ */
+import WideFeature from "./WideFeature.astro";
+import TriggerGraph from "./TriggerGraph.astro";
+import { AppKey, Slug } from "../catalogue";
+interface Props { app: AppKey; bg: string }
+const { app, bg } = Astro.props;
+---
+{app === AppKey.svgAnimator
+  ? <WideFeature slug={Slug.triggers} app={app} bg={bg}><TriggerGraph /></WideFeature>
+  : <WideFeature slug={Slug.triggers} app={app} bg={bg} />}

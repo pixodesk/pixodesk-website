@@ -1,0 +1,32 @@
+{
+  "name": "learn-ui-flight",
+  "blocks": [
+    {
+      "kind": "text",
+      "t": 0.27,
+      "text": "This video shows how to keep people company while a search runs. An animation plays for as long as the wait lasts, and the first results appear under it. Our flight search keeps in state whether the search is still running. While it runs, let's show a plane above the results."
+    },
+    {
+      "kind": "shot",
+      "t": 31.45,
+      "src": "/videos/articles/learn-ui-flight/01.webp",
+      "alt": "The plane shows only while searching is true. Its file repeats forever, so it flies for as long as the search takes, however long that is."
+    },
+    {
+      "kind": "text",
+      "t": 31.3,
+      "text": "The plane shows only while searching is true. Its file repeats forever, so it flies for as long as the search takes, however long that is. Now let's wait for the search to finish."
+    },
+    {
+      "kind": "shot",
+      "t": 47.28,
+      "src": "/videos/articles/learn-ui-flight/02.webp",
+      "alt": "Searching turns false, so the plane goes away, and the results stay where they were."
+    },
+    {
+      "kind": "text",
+      "t": 47.13,
+      "text": "Searching turns false, so the plane goes away, and the results stay where they were. So, a looping animation covers a wait of any length. One condition in your code decides how long it stays."
+    }
+  ]
+}

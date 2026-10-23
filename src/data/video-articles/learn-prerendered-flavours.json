@@ -1,0 +1,76 @@
+{
+  "name": "learn-prerendered-flavours",
+  "blocks": [
+    {
+      "kind": "text",
+      "t": 0.27,
+      "text": "This video compares the three kinds of pre-rendered SVG files the editor can save. They hold the same ball, and you pick the smallest file that does what you need. Let's put the first one on the page, the CSS file."
+    },
+    {
+      "kind": "shot",
+      "t": 26.58,
+      "src": "/videos/articles/learn-prerendered-flavours/01.webp",
+      "alt": "It is the smallest, just over one kilobyte, with no script at all. CSS alone can start it on load, or on hover, as here."
+    },
+    {
+      "kind": "text",
+      "t": 26.43,
+      "text": "It is the smallest, just over one kilobyte, with no script at all. CSS alone can start it on load, or on hover, as here. Let's point at it."
+    },
+    {
+      "kind": "shot",
+      "t": 42.32,
+      "src": "/videos/articles/learn-prerendered-flavours/02.webp",
+      "alt": "It plays while the pointer is over it."
+    },
+    {
+      "kind": "text",
+      "t": 42.17,
+      "text": "It plays while the pointer is over it. The second file adds a small script from the editor. Let's add it."
+    },
+    {
+      "kind": "shot",
+      "t": 63.42,
+      "src": "/videos/articles/learn-prerendered-flavours/03.webp",
+      "alt": "With the script, it can also start on click, or when it scrolls into view."
+    },
+    {
+      "kind": "text",
+      "t": 63.27,
+      "text": "With the script, it can also start on click, or when it scrolls into view. Let's click it."
+    },
+    {
+      "kind": "shot",
+      "t": 73.75,
+      "src": "/videos/articles/learn-prerendered-flavours/04.webp",
+      "alt": "One click, and it plays."
+    },
+    {
+      "kind": "text",
+      "t": 73.6,
+      "text": "One click, and it plays. The third file carries the player itself. Let's add it."
+    },
+    {
+      "kind": "shot",
+      "t": 93.68,
+      "src": "/videos/articles/learn-prerendered-flavours/05.webp",
+      "alt": "It is the largest, about sixty kilobytes, because the player is inside. It plays every kind of animation, and gives you the full playback API."
+    },
+    {
+      "kind": "text",
+      "t": 93.53,
+      "text": "It is the largest, about sixty kilobytes, because the player is inside. It plays every kind of animation, and gives you the full playback API. Let's click it too."
+    },
+    {
+      "kind": "shot",
+      "t": 109.75,
+      "src": "/videos/articles/learn-prerendered-flavours/06.webp",
+      "alt": "It plays on click as well, driven by the player inside the file."
+    },
+    {
+      "kind": "text",
+      "t": 109.6,
+      "text": "It plays on click as well, driven by the player inside the file. So, pick the smallest file that does what you need. CSS for load and hover, CSS with the script for click and scroll, and the player inside for everything else."
+    }
+  ]
+}

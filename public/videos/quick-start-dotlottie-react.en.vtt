@@ -1,53 +1,105 @@
 WEBVTT
 
 1
-00:00:00.267 --> 00:00:01.860
-Here's a simple React app.
+00:00:00.267 --> 00:00:12.152
+This video shows how to put an animation from Pixodesk 2D Animator into a React app, as a dot Lottie file. It takes one package, one file and one component.
 
 2
-00:00:05.600 --> 00:00:08.291
-It works, but it feels a little static.
+00:00:13.400 --> 00:00:15.542
+Let's start with the app as it is.
 
 3
-00:00:08.833 --> 00:00:11.837
-First, install the dotLottie React player.
+00:00:19.667 --> 00:00:22.357
+A heading, and nothing that moves yet.
 
 4
-00:00:17.133 --> 00:00:19.824
-Now let's make the animation. It only takes a minute.
+00:00:23.600 --> 00:00:29.504
+To play dot Lottie files, the app needs the dot Lottie player. Let's install it.
 
 5
-00:00:20.367 --> 00:00:23.162
-In Pixodesk Lottie Animator, draw a circle.
+00:00:35.800 --> 00:00:39.300
+The dot Lottie React player is in, one package.
 
 6
-00:00:23.667 --> 00:00:30.197
-Turn on Auto mode, then drag the ball down and back up. The keyframes are created for you.
+00:00:40.533 --> 00:00:45.915
+Now for the animation itself. Let's switch to the editor, where a football is already drawn.
 
 7
-00:00:30.700 --> 00:00:33.129
-Add gravity easing for a natural bounce.
+00:00:47.433 --> 00:00:50.228
+It's a vector drawing, standing still.
 
 8
-00:00:36.567 --> 00:00:39.858
-Save it as a dotLottie file, into the public folder.
+00:00:51.467 --> 00:00:54.131
+To make it move, let's switch on Auto mode.
 
 9
-00:00:44.900 --> 00:00:48.087
-Back in the project, the animation file is already there.
+00:00:56.633 --> 00:01:00.134
+With Auto mode on, every change becomes a keyframe.
 
 10
-00:00:49.633 --> 00:00:50.730
-Import the player.
+00:01:01.367 --> 00:01:04.449
+Half a second in, let's drag the ball down to the floor.
 
 11
-00:00:54.333 --> 00:00:58.879
-Then add it with the animation file, set to loop and play.
+00:01:07.567 --> 00:01:11.067
+A keyframe appears on the timeline, holding the new position.
 
 12
-00:01:10.300 --> 00:01:13.330
-Reload the page, and the ball bounces.
+00:01:12.300 --> 00:01:13.946
+At one second, let's bring it back up.
 
 13
-00:01:15.867 --> 00:01:18.662
-That's all it takes: one file, one component.
+00:01:17.267 --> 00:01:20.610
+Now it falls and rises again, in one second.
+
+14
+00:01:21.833 --> 00:01:28.677
+A real ball speeds up as it falls, and slows down as it rises. Let's set that easing.
+
+15
+00:01:35.800 --> 00:01:40.293
+Gravity easing, falling and rising, makes the bounce feel natural.
+
+16
+00:01:41.533 --> 00:01:46.967
+The animation is ready. Let's save it as a dot Lottie file, into the public folder.
+
+17
+00:01:52.100 --> 00:01:55.992
+Dot Lottie is the compact, zipped form of a Lottie file.
+
+18
+00:01:57.233 --> 00:01:59.036
+Now, back to our app.
+
+19
+00:02:00.567 --> 00:02:04.250
+The animation file is already there, in the public folder.
+
+20
+00:02:05.467 --> 00:02:07.400
+Let's import the player component.
+
+21
+00:02:13.933 --> 00:02:16.676
+It comes from the dot Lottie React package.
+
+22
+00:02:17.900 --> 00:02:21.479
+Then, let's place it on the page, pointing at the file.
+
+23
+00:02:29.700 --> 00:02:35.996
+Its source is the file's address. Loop repeats it, and autoplay starts it when the page loads.
+
+24
+00:02:37.233 --> 00:02:39.663
+Let's reload the page, and watch.
+
+25
+00:02:44.800 --> 00:02:48.353
+There it is. The ball bounces, right inside the React app.
+
+26
+00:02:50.400 --> 00:03:00.353
+So, one package, one dot Lottie file saved from the editor, and one component. That's all it takes to bring an animation into a React app.

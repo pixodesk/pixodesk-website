@@ -1,0 +1,153 @@
+{
+  "name": "quick-start-dotlottie-web",
+  "blocks": [
+    {
+      "kind": "text",
+      "t": 0.27,
+      "text": "This video shows how to put an animation from Pixodesk 2D Animator on a web page, as a dot Lottie file. It takes one package, one canvas and a few lines of script. Let's start with the page as it is."
+    },
+    {
+      "kind": "shot",
+      "t": 18.22,
+      "src": "/videos/articles/quick-start-dotlottie-web/01.webp",
+      "alt": "A heading, and nothing that moves yet."
+    },
+    {
+      "kind": "text",
+      "t": 18.07,
+      "text": "A heading, and nothing that moves yet. To play dot Lottie files, the page needs the dot Lottie player. Let's install it."
+    },
+    {
+      "kind": "shot",
+      "t": 34.58,
+      "src": "/videos/articles/quick-start-dotlottie-web/02.webp",
+      "alt": "The dot Lottie web player is in, one package."
+    },
+    {
+      "kind": "text",
+      "t": 34.43,
+      "text": "The dot Lottie web player is in, one package. Now for the animation itself. Let's switch to the editor, where a football is already drawn."
+    },
+    {
+      "kind": "shot",
+      "t": 46.32,
+      "src": "/videos/articles/quick-start-dotlottie-web/03.webp",
+      "alt": "It's a vector drawing, standing still."
+    },
+    {
+      "kind": "text",
+      "t": 46.17,
+      "text": "It's a vector drawing, standing still. To make it move, let's switch on Auto mode."
+    },
+    {
+      "kind": "shot",
+      "t": 55.98,
+      "src": "/videos/articles/quick-start-dotlottie-web/04.webp",
+      "alt": "With Auto mode on, every change becomes a keyframe."
+    },
+    {
+      "kind": "text",
+      "t": 55.83,
+      "text": "With Auto mode on, every change becomes a keyframe. Half a second in, let's drag the ball down to the floor."
+    },
+    {
+      "kind": "shot",
+      "t": 67.22,
+      "src": "/videos/articles/quick-start-dotlottie-web/05.webp",
+      "alt": "A keyframe appears on the timeline, holding the new position."
+    },
+    {
+      "kind": "text",
+      "t": 67.07,
+      "text": "A keyframe appears on the timeline, holding the new position. At one second, let's bring it back up."
+    },
+    {
+      "kind": "shot",
+      "t": 77.45,
+      "src": "/videos/articles/quick-start-dotlottie-web/06.webp",
+      "alt": "Now it falls and rises again, in one second."
+    },
+    {
+      "kind": "text",
+      "t": 77.3,
+      "text": "Now it falls and rises again, in one second. A real ball speeds up as it falls, and slows down as it rises. Let's set that easing."
+    },
+    {
+      "kind": "shot",
+      "t": 96.25,
+      "src": "/videos/articles/quick-start-dotlottie-web/07.webp",
+      "alt": "Gravity easing, falling and rising, makes the bounce feel natural."
+    },
+    {
+      "kind": "text",
+      "t": 96.1,
+      "text": "Gravity easing, falling and rising, makes the bounce feel natural. The animation is ready. Let's save it as a dot Lottie file, into the public folder."
+    },
+    {
+      "kind": "shot",
+      "t": 112.75,
+      "src": "/videos/articles/quick-start-dotlottie-web/08.webp",
+      "alt": "Dot Lottie is the compact, zipped form of a Lottie file."
+    },
+    {
+      "kind": "text",
+      "t": 112.6,
+      "text": "Dot Lottie is the compact, zipped form of a Lottie file. Now, back to our page."
+    },
+    {
+      "kind": "shot",
+      "t": 121.45,
+      "src": "/videos/articles/quick-start-dotlottie-web/09.webp",
+      "alt": "The animation file is already there, in the public folder."
+    },
+    {
+      "kind": "text",
+      "t": 121.3,
+      "text": "The animation file is already there, in the public folder. Let's add a canvas to the page, for the player to draw on."
+    },
+    {
+      "kind": "shot",
+      "t": 136.12,
+      "src": "/videos/articles/quick-start-dotlottie-web/10.webp",
+      "alt": "This player draws on a canvas, not with SVG."
+    },
+    {
+      "kind": "text",
+      "t": 135.97,
+      "text": "This player draws on a canvas, not with SVG. Then, in the script, let's import the player."
+    },
+    {
+      "kind": "shot",
+      "t": 150.32,
+      "src": "/videos/articles/quick-start-dotlottie-web/11.webp",
+      "alt": "It comes from the dot Lottie web package."
+    },
+    {
+      "kind": "text",
+      "t": 150.17,
+      "text": "It comes from the dot Lottie web package. And start it on the canvas, with the animation file."
+    },
+    {
+      "kind": "shot",
+      "t": 169.68,
+      "src": "/videos/articles/quick-start-dotlottie-web/12.webp",
+      "alt": "It takes the canvas, the file's address, and loop and autoplay."
+    },
+    {
+      "kind": "text",
+      "t": 169.53,
+      "text": "It takes the canvas, the file's address, and loop and autoplay. Let's reload the page, and watch."
+    },
+    {
+      "kind": "shot",
+      "t": 183.05,
+      "src": "/videos/articles/quick-start-dotlottie-web/13.webp",
+      "alt": "There it is. The ball bounces, drawn on the canvas."
+    },
+    {
+      "kind": "text",
+      "t": 182.9,
+      "text": "There it is. The ball bounces, drawn on the canvas. So, one package, one dot Lottie file saved from the editor, a canvas, and a few lines of script. That's all it takes to bring an animation onto a web page."
+    }
+  ]
+}

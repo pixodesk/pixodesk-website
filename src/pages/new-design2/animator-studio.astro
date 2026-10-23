@@ -1,0 +1,79 @@
+---
+// Prototype of an Animator Studio page (owner, 2026-10-17): the hero only so far — a space station: a glass core in the middle, arms
+// out to the two editors as big screens (Lottie Animator left, SVG Animator right; each canvas runs a little space scene), small
+// astronauts in different suits repairing it, stars, a Milky Way band, planets (public/assets/studio/station.json, kf scratch
+// studio-station2.mjs; played by the site's player). The big planet below is a static full-width SVG (planet.svg, studio-planet.mjs);
+// the golden moon rises from behind its horizon there.
+// Animator Studio = the Lottie Animator and the SVG Animator in one app (kf app/docs/product/app-names-and-pricing.md).
+// Below the hero (owner, 2026-10-18: show why both in one app, without repeating the other pages): One toolbox (studio/StudioToolbox:
+// what both editors share, what each adds), One project (studio/StudioStory: one animation through a growing brief), Start here.
+import "../../styles/tailwind.css";
+import "../../styles/global.scss";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import PreviewBanner from "../../layouts/new-design/PreviewBanner.astro";
+import HeroNew from "../../layouts/new-design/HeroNew.astro";
+import StartBand from "../../layouts/new-design/StartBand.astro";
+import Section from "../../layouts/Section.astro";
+import RealUiStyles from "../../layouts/new-design2/RealUiStyles.astro";
+import StudioToolbox from "../../layouts/new-design2/studio/StudioToolbox.astro";
+import StudioStory from "../../layouts/new-design2/studio/StudioStory.astro";
+import { AppKey, Slug, appInfo, sectionHref } from "../../layouts/new-design2/catalogue";
+
+const description = "Pixodesk Animator Studio: the Lottie Animator and the SVG Animator in one app — Lottie for the players apps already ship, SVG with our own player for the web.";
+---
+
+<BaseLayout title="Animator Studio" description={description} canonical="/animator" noindex>
+  <RealUiStyles />
+  <section class="hero-section relative w-full overflow-hidden bg-custom-gradient-violet pb-10 pt-navDouble text-white">
+    {/* the big planet: across the whole section, under the station */}
+    <img class="st-planet" src="/assets/studio/planet.svg" alt="" aria-hidden="true" />
+    <PreviewBanner compare="/new-design2/animator" />
+    <HeroNew
+      title="# Animator Studio: <br/><span class='text-curstom-gradient-orange'>Lottie and SVG</span> in one app"
+      lines={["Both editors, one studio: Lottie for the players apps already ship, SVG with our own player for the web. The same tools, the same timeline — every format."]}
+      buttons={[
+        { title: "Lottie Animator", link: "/new-design2/animator", primary: true },
+        { title: "SVG Animator", link: "/new-design2/svg-animator" },
+      ]}
+    >
+      <div class="st-hero" data-rui-card="station" data-rui-behaviour="{}">
+        <div data-rui-player="station" data-rui-src="/assets/studio/station.json" style="width: 100%; aspect-ratio: 2880 / 1500"></div>
+        {/* the screens' names, under each screen (centres at x 540 and 2340 of 2880, bottoms at y ≈ 910 of 1500) */}
+        <span class="st-tag" style="left: 18.75%">Lottie Animator</span>
+        <span class="st-tag" style="left: 81.25%">SVG Animator</span>
+      </div>
+    </HeroNew>
+  </section>
+
+  <StudioToolbox />
+
+  <StudioStory />
+
+  <section>
+    <Section bgColor="bg-custom-gradient-indigo" color="text-base-bright" standard>
+      <StartBand
+        title="Start here"
+        links={[
+          { label: `Try the ${appInfo(AppKey.animator2d).name} demo`, href: sectionHref(Slug.tryIt, AppKey.animator2d), primary: true },
+          { label: `Try the ${appInfo(AppKey.svgAnimator).name} demo`, href: sectionHref(Slug.tryIt, AppKey.svgAnimator) },
+          { label: "Pricing", href: "/pricing" },
+        ]}
+      />
+    </Section>
+  </section>
+</BaseLayout>
+
+<style>
+  .st-hero { position: relative; width: 100%; max-width: 1600px; margin: 24px auto 0; }
+  /* the ringed giant rises past the animation's top edge: let the station's SVG draw outside its box */
+  .st-hero :global([data-rui-player] > svg) { overflow: visible; }
+  /* the planet's limb sits near the top of the strip (centre) and runs out of it at both sides; the strip's top part is room for
+     the rising moon (planet.svg HEAD: heights are 680 / 480 of what keeps the horizon in place) */
+  .st-planet { position: absolute; left: 0; bottom: 0; width: 100%; height: clamp(184px, 35.4vw, 623px); pointer-events: none; user-select: none; }
+  .st-tag { position: absolute; top: 62%; transform: translateX(-50%); border-radius: 999px; border: 1px solid rgba(255, 255, 255, .14); background: rgba(8, 13, 26, .65); padding: 3px 12px; font: 600 clamp(10px, 1vw, 13px) system-ui, sans-serif; color: #e2e8f0; white-space: nowrap; }
+</style>
+
+<script>
+  // the station's player (starts when it nears the screen)
+  import "../../scripts/real-ui";
+</script>

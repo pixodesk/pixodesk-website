@@ -1,0 +1,298 @@
+{
+  "generatedBy": "kf app/scripts/website/real-ui.mjs",
+  "playerVersion": "1.0.49",
+  "cards": [
+    {
+      "id": "flight",
+      "tab": "Waiting",
+      "video": "learn-ui-flight",
+      "title": "Flight search",
+      "line": "A plane flies for as long as the search runs, and the results stay when it ends.",
+      "intro": "This video shows how to keep people company while a search runs. An animation plays for as long as the wait lasts, and the first results appear under it.",
+      "html": "<div class='rui rui-flight'><div class='rui-main'><header class='route'><div class='code'><b>LIS</b><small>Lisbon</small></div><span class='arrow'>✈</span><div class='code'><b>JFK</b><small>New York</small></div><div class='when'><span>Thu 14 Nov</span><span>1 adult · Economy</span></div></header><div class='sky' data-rui-player='plane' data-rui-src='/assets/real-ui/flight/plane.json'></div><section class='results'><p class='status' id='searching'><b>Searching 612 airlines</b><span>81 flights so far</span></p><p class='status' id='found' hidden><b>143 flights found</b><span>sorted by price</span></p><div class='flight'><span class='airline' style='background:#b91c1c'>IB</span><b>07:40</b><span class='stops'>1 stop · MAD</span><b>13:55</b><b class='price'>€412</b><button>Select</button></div><div class='flight'><span class='airline' style='background:#0f766e'>TP</span><b>10:25</b><span class='stops'>Direct</span><b>13:30</b><b class='price'>€489</b><button>Select</button></div></section></div></div>",
+      "css": ".rui-flight .rui-main { font: 14px/1.45 system-ui, sans-serif; color: #1f2937; }\n.rui-flight .rui-main { width: 560px; margin: 14px auto; background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(15, 23, 42, .14); }\n.rui-flight .route { display: flex; align-items: center; gap: 18px; padding: 14px 20px; background: #0a1428; color: #fff; }\n.rui-flight .code { display: grid; }\n.rui-flight .code b { font: 600 26px/1 ui-monospace, Menlo, monospace; }\n.rui-flight .code small { color: #94a3b8; font-size: 12px; margin-top: 3px; }\n.rui-flight .arrow { flex: 1; text-align: center; color: #64748b; }\n.rui-flight .when { display: grid; text-align: right; font-size: 12px; color: #cbd5e1; }\n.rui-flight .sky { display: block; width: 100%; height: 192px; background: linear-gradient(180deg, #0b1440, #1e3a8a); }\n.rui-flight .results { padding: 4px 20px 12px; }\n.rui-flight .status { display: flex; justify-content: space-between; margin: 10px 0; }\n.rui-flight .status span { color: #6b7280; }\n.rui-flight .flight { display: grid; grid-template-columns: 34px 46px 1fr 46px 52px auto; gap: 10px; align-items: center; border: 1px solid #e5e9f0; border-radius: 6px; padding: 9px 12px; margin-bottom: 8px; }\n.rui-flight .airline { width: 34px; height: 34px; border-radius: 4px; display: grid; place-items: center; color: #fff; font: 700 12px system-ui; }\n.rui-flight .stops { font-size: 12px; color: #6b7280; text-align: center; }\n.rui-flight .price { font-size: 16px; }\n.rui-flight .flight button { border: 0; border-radius: 4px; padding: 7px 12px; background: #0a1428; color: #fff; font: 600 13px system-ui; }",
+      "code": "{searching && (\n  <PixodeskSvgAnimator className=\"sky\" doc={plane} autoplay />\n)}",
+      "files": [
+        {
+          "name": "plane.json",
+          "kbGz": 7.4
+        }
+      ],
+      "kbGz": 7.4,
+      "stills": {},
+      "toggle": null,
+      "hover": false
+    },
+    {
+      "id": "delivery",
+      "tab": "Order status",
+      "video": "learn-ui-delivery",
+      "title": "A delivery tracker",
+      "line": "The courier rides while the order is on the way, and rests when the tracker scrolls away.",
+      "intro": "This video shows an order tracker with a courier who rides while the order is on the way. One line plays it, and the file itself says how.",
+      "html": "<div class='rui rui-delivery'><section class='tracker'><header class='order'><b>Pizzeria Forno</b><small>Order #4821</small></header><div class='ride' data-rui-player='ride' data-rui-src='/assets/real-ui/delivery/courier.json'></div><p class='eta'><b>On the way</b><span>arriving in 12 min</span></p><ol class='track'><li class='done'>Placed</li><li class='done'>Preparing</li><li class='now'>On the way</li><li>Delivered</li></ol><div class='courier'><i></i><span><b>Sofia</b> is bringing your order<small>Scooter · 2 pizzas, 1 lemonade</small></span><button>Call</button></div></section></div>",
+      "css": ".rui-delivery { font: 14px/1.45 system-ui, sans-serif; color: #1f2937; }\n.rui-delivery .tracker { width: 380px; margin: 14px auto; background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(15, 23, 42, .14); }\n.rui-delivery .order { display: flex; justify-content: space-between; padding: 12px 16px; border-bottom: 1px solid #eef0f3; }\n.rui-delivery .order small { color: #6b7280; }\n.rui-delivery .ride { display: block; width: 100%; height: 250px; padding: 6px 24px 0; box-sizing: border-box; background: linear-gradient(180deg, #fff7ed, #fff); }\n.rui-delivery .eta { display: flex; align-items: baseline; gap: 10px; margin: 6px 16px 2px; }\n.rui-delivery .eta b { font-size: 20px; }\n.rui-delivery .eta span { color: #6b7280; }\n.rui-delivery .track { display: grid; grid-template-columns: repeat(4, 1fr); gap: 6px; list-style: none; margin: 8px 16px 4px; padding: 0; font-size: 12px; color: #6b7280; }\n.rui-delivery .track li::before { content: \"\"; display: block; height: 4px; border-radius: 2px; background: #e5e7eb; margin-bottom: 5px; }\n.rui-delivery .track .done::before, .rui-delivery .track .now::before { background: #f97316; }\n.rui-delivery .track .done, .rui-delivery .track .now { color: #111827; font-weight: 600; }\n.rui-delivery .courier { display: grid; grid-template-columns: 38px 1fr auto; gap: 10px; align-items: center; padding: 10px 16px 14px; }\n.rui-delivery .courier i { width: 38px; height: 38px; border-radius: 50%; background: linear-gradient(135deg, #fcd34d, #f97316); }\n.rui-delivery .courier small { display: block; color: #6b7280; font-size: 12px; }\n.rui-delivery .courier button { border: 1px solid #d1d5db; border-radius: 8px; background: #fff; color: #111827; padding: 7px 14px; font: 600 13px system-ui; }\n.rui-delivery .details { width: 380px; margin: 0 auto 1100px; }\n.rui-delivery .details h2 { font-size: 16px; }\n.rui-delivery .details p { margin: 0; padding: 10px 0; border-bottom: 1px solid #e5e7eb; }",
+      "code": "<PixodeskSvgAnimator className=\"ride\" doc={courier} autoplay />",
+      "files": [
+        {
+          "name": "courier.json",
+          "kbGz": 44.4
+        }
+      ],
+      "kbGz": 44.4,
+      "stills": {},
+      "toggle": null,
+      "hover": false
+    },
+    {
+      "id": "payment",
+      "tab": "Steps",
+      "video": "learn-ui-payment",
+      "title": "Payment, stage by stage",
+      "line": "One icon per stage: a still frame when done or waiting, motion while it runs.",
+      "intro": "This video shows the stages of a payment, each with its own animated icon. The state of a stage decides whether its icon moves or stands still.",
+      "html": "<div class='rui rui-payment'><div class='rui-main'><header class='head'><span><small>CHECKOUT</small><b>Kestrel Running Co.</b></span><span class='amount'><small>PAYING</small><b>€113.00</b></span></header><div class='body'><aside class='order'><p class='item'><i class='shoes'></i><span>Trail runners<small>size 42</small></span><b>€89.00</b></p><p class='item'><i class='socks'></i><span>Merino socks<small>× 2</small></span><b>€24.00</b></p><p class='total'><span>Total</span><b>€113.00</b></p><p class='card'><b>VISA</b>•••• 4242<small>Maya Chen · 12/28</small></p></aside><ol class='steps'><li class='done'><div class='icon' data-rui-player='bank' data-rui-src='/assets/real-ui/payment/bank.json' data-rui-timeline='{&quot;trigger&quot;:{&quot;start&quot;:&quot;none&quot;}}'></div><span><b>Contacting your bank</b><small>Done · 0.9 s</small></span></li><li class='running'><div class='icon' data-rui-player='identity' data-rui-src='/assets/real-ui/payment/identity.json'></div><span><b>Confirming it's you</b><small>Check your bank app</small></span></li><li class='next'><div class='icon' data-rui-player='receipt' data-rui-src='/assets/real-ui/payment/receipt.json' data-rui-timeline='{&quot;trigger&quot;:{&quot;start&quot;:&quot;none&quot;}}'></div><span><b>Creating your receipt</b><small>Next</small></span></li></ol></div></div></div>",
+      "css": ".rui-payment .rui-main { font: 14px/1.45 system-ui, sans-serif; color: #1f2937; }\n.rui-payment .rui-main { width: 560px; margin: 14px auto; background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(15, 23, 42, .14); }\n.rui-payment .head { display: flex; justify-content: space-between; align-items: center; padding: 14px 20px; background: #0a1428; color: #fff; }\n.rui-payment .head small { display: block; font: 600 11px system-ui; letter-spacing: .1em; color: #94a3b8; }\n.rui-payment .head b { font-size: 15px; }\n.rui-payment .amount { text-align: right; }\n.rui-payment .amount b { font: 600 24px ui-monospace, Menlo, monospace; }\n.rui-payment .body { display: grid; grid-template-columns: 196px 1fr; }\n.rui-payment .order { background: #f1f4f9; padding: 16px 18px; border-right: 1px solid #e2e7f0; }\n.rui-payment .order p { margin: 0 0 10px; }\n.rui-payment .item { display: grid; grid-template-columns: 28px 1fr auto; gap: 8px; align-items: center; font-size: 13px; }\n.rui-payment .item i { width: 28px; height: 28px; border-radius: 7px; }\n.rui-payment .item small { display: block; color: #6b7280; font-size: 12px; }\n.rui-payment .shoes { background: linear-gradient(135deg, #f97316, #e11d48); }\n.rui-payment .socks { background: linear-gradient(135deg, #22c55e, #0d9488); }\n.rui-payment .total { display: flex; justify-content: space-between; border-top: 1px solid #dfe5ee; padding-top: 8px; font-weight: 700; }\n.rui-payment .card { display: grid; gap: 2px; border-radius: 10px; padding: 10px 12px; background: linear-gradient(135deg, #1e293b, #475569); color: #fff; font: 13px ui-monospace, Menlo, monospace; }\n.rui-payment .card b { color: #facc15; font: 800 12px system-ui; letter-spacing: .08em; }\n.rui-payment .card small { font: 11px system-ui; color: #cbd5e1; }\n.rui-payment .steps { list-style: none; margin: 0; padding: 14px 16px; display: grid; gap: 6px; }\n.rui-payment .steps li { display: grid; grid-template-columns: 60px 1fr; gap: 12px; align-items: center; padding: 7px; border-radius: 12px; }\n.rui-payment .steps li > span { grid-column: 2; }\n.rui-payment .steps li b { display: block; }\n.rui-payment .steps li small { color: #6b7280; }\n.rui-payment .icon { display: block; width: 60px; height: 60px; padding: 4px; box-sizing: border-box; border-radius: 12px; background: #fff; border: 1px solid #e2e8f0; }\n.rui-payment .done .icon { background: #ecfdf5; border-color: #a7f3d0; }\n.rui-payment .steps .done small { color: #15803d; font-weight: 600; }\n.rui-payment .running { background: linear-gradient(135deg, #1e3a8a, #2563eb); color: #fff; }\n.rui-payment .steps .running small { color: #bfdbfe; }\n.rui-payment .next .icon { background: #f1f5f9; }\n.rui-payment .next .icon > * { opacity: .45; filter: grayscale(1); }\n.rui-payment .next b { color: #94a3b8; }",
+      "code": "<PixodeskSvgAnimator className=\"icon\" doc={bank} progress={1} />\n\n<PixodeskSvgAnimator className=\"icon\" doc={identity} autoplay />\n\n<PixodeskSvgAnimator className=\"icon\" doc={receipt} progress={0.5} />",
+      "files": [
+        {
+          "name": "bank.json",
+          "kbGz": 59.8
+        },
+        {
+          "name": "identity.json",
+          "kbGz": 5.1
+        },
+        {
+          "name": "receipt.json",
+          "kbGz": 1.6
+        }
+      ],
+      "kbGz": 66.5,
+      "stills": {
+        "bank": 1,
+        "receipt": 0.5
+      },
+      "toggle": null,
+      "hover": false
+    },
+    {
+      "id": "pipeline",
+      "tab": "Background job",
+      "video": "learn-ui-pipeline",
+      "title": "A pipeline run",
+      "line": "Records flow while the job runs, and stop where they are when it succeeds.",
+      "intro": "This video shows an animation that follows a background job. It moves while the job runs, and stops the moment the job is done.",
+      "html": "<div class='rui rui-pipeline'><div class='rui-main'><header class='head'><b>nightly-sync</b><small>every night at 02:00</small><span class='pill' id='running'>Running</span><span class='pill ok' id='done' hidden>Succeeded</span></header><div class='flow' data-rui-player='flow' data-rui-src='/assets/real-ui/pipeline/pipeline.json'></div><p class='names'><span><b>Postgres</b>orders, customers</span><span><b>dbt</b>31 models</span><span><b>Snowflake</b>analytics</span></p><div class='bar' id='part'><i style='width:58%'></i></div><div class='bar' id='full' hidden><i style='width:100%'></i></div></div></div>",
+      "css": ".rui-pipeline .rui-main { font: 14px/1.45 system-ui, sans-serif; color: #1f2937; }\n.rui-pipeline .rui-main { width: 560px; margin: 14px auto; background: #0b0f17; color: #d1d5db; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(15, 23, 42, .14); }\n.rui-pipeline .head { display: flex; align-items: center; gap: 10px; padding: 13px 18px; border-bottom: 1px solid #1f2937; }\n.rui-pipeline .head b { color: #fff; font-size: 15px; }\n.rui-pipeline .head small { color: #9ca3af; }\n.rui-pipeline .pill { margin-left: auto; font: 600 12px system-ui; border-radius: 999px; padding: 3px 10px; background: #1e3a8a; color: #bfdbfe; }\n.rui-pipeline .ok { background: #14532d; color: #bbf7d0; }\n.rui-pipeline .flow { display: block; width: 520px; height: 160px; margin: 18px auto 4px; }\n.rui-pipeline .names { display: grid; grid-template-columns: repeat(3, 1fr); text-align: center; font-size: 13px; color: #9ca3af; margin: 0 20px 14px; }\n.rui-pipeline .names b { display: block; color: #fff; }\n.rui-pipeline .bar { height: 6px; border-radius: 3px; background: #1f2937; margin: 0 20px 18px; overflow: hidden; }\n.rui-pipeline .bar i { display: block; height: 100%; background: #22c55e; }",
+      "code": "<PixodeskSvgAnimator className=\"flow\" doc={pipeline} play={running} />",
+      "files": [
+        {
+          "name": "pipeline.json",
+          "kbGz": 0.9
+        }
+      ],
+      "kbGz": 0.9,
+      "stills": {},
+      "toggle": null,
+      "hover": false
+    },
+    {
+      "id": "weather",
+      "tab": "Data-driven icons",
+      "video": "learn-ui-weather",
+      "title": "A weather widget",
+      "line": "The forecast data picks each day's icon, and one component plays them all.",
+      "intro": "This video shows a weather card with animated icons. The data picks the icon for each day, and one component plays them all.",
+      "html": "<div class='rui rui-weather'><div class='rui-main'><section class='now'><span><small>Lisbon · now</small><b>20°</b>Partly cloudy</span><div class='big' data-rui-player='now' data-rui-src='/assets/real-ui/weather/partly.json'></div></section><ol class='days'><li><small>Fri</small><div data-rui-player='d0' data-rui-src='/assets/real-ui/weather/partly.json'></div>21°</li><li><small>Sat</small><div data-rui-player='d1' data-rui-src='/assets/real-ui/weather/sunny.json'></div>23°</li><li><small>Sun</small><div data-rui-player='d2' data-rui-src='/assets/real-ui/weather/rain.json'></div>19°</li><li><small>Mon</small><div data-rui-player='d3' data-rui-src='/assets/real-ui/weather/partly.json'></div>17°</li><li><small>Tue</small><div data-rui-player='d4' data-rui-src='/assets/real-ui/weather/sunny.json'></div>20°</li></ol></div></div>",
+      "css": ".rui-weather .rui-main { font: 14px/1.45 system-ui, sans-serif; color: #1f2937; }\n.rui-weather .rui-main { width: 400px; margin: 14px auto; color: #fff; background: radial-gradient(120% 90% at 85% 0%, #1e293b 0%, #0b1220 60%, #070b14 100%); border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(15, 23, 42, .14); }\n.rui-weather .now { display: grid; grid-template-columns: 1fr auto; align-items: center; padding: 18px 20px 4px; }\n.rui-weather .now small { display: block; opacity: .7; }\n.rui-weather .now b { display: block; font: 300 60px/1 system-ui; margin: 6px 0; }\n.rui-weather .now span { color: #cbd5e1; }\n.rui-weather .big { display: block; width: 160px; height: 160px; margin: -12px -10px -12px 0; }\n.rui-weather .days { display: grid; grid-template-columns: repeat(5, 1fr); list-style: none; margin: 0; padding: 6px 10px 16px; text-align: center; font-size: 13px; border-top: 1px solid rgba(255, 255, 255, .08); }\n.rui-weather .days small { display: block; color: #94a3b8; padding-top: 8px; }\n.rui-weather .days li > :nth-child(2) { display: block; width: 56px; height: 56px; margin: 0 auto; }",
+      "code": "const ICONS = { sunny, partly, rain };\n\n<PixodeskSvgAnimator className=\"big\" doc={ICONS.partly} autoplay />\n\n<PixodeskSvgAnimator doc={ICONS[day.sky]} autoplay />",
+      "files": [
+        {
+          "name": "partly.json",
+          "kbGz": 2.6
+        },
+        {
+          "name": "sunny.json",
+          "kbGz": 2.1
+        },
+        {
+          "name": "rain.json",
+          "kbGz": 1.9
+        }
+      ],
+      "kbGz": 6.6,
+      "stills": {},
+      "toggle": null,
+      "hover": false
+    },
+    {
+      "id": "wellness",
+      "tab": "Pause and resume",
+      "video": "learn-ui-wellness",
+      "title": "A wellness app",
+      "line": "The meditation figure breathes while the session runs, and holds still when you pause.",
+      "intro": "This video shows a meditation screen in a wellness app. The figure breathes while the session runs, and holds still when you pause.",
+      "html": "<div class='rui rui-wellness'><div class='rui-main'><header class='session'><span>Day 12 of 30</span><span>Calm</span></header><div class='figure' data-rui-player='figure' data-rui-src='/assets/real-ui/wellness/yoga.json'></div><h2>Morning breathing</h2><p>Breathe in for four, out for six</p><div class='time'>07:42</div><button id='pause'>Pause session</button><button id='resume' hidden>Resume session</button></div></div>",
+      "css": ".rui-wellness .rui-main { font: 14px/1.45 system-ui, sans-serif; color: #1f2937; }\n.rui-wellness .rui-main { width: 360px; margin: 10px auto; padding-bottom: 16px; text-align: center; background: linear-gradient(180deg, #fff7ed, #ffedd5); border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(15, 23, 42, .14); }\n.rui-wellness .session { display: flex; justify-content: space-between; padding: 12px 16px; font-size: 13px; color: #9a3412; }\n.rui-wellness .figure { display: block; width: 250px; height: 250px; margin: 0 auto; }\n.rui-wellness h2 { margin: 6px 0 2px; font-size: 19px; color: #431407; }\n.rui-wellness p { margin: 0; color: #9a3412; }\n.rui-wellness .time { font: 600 28px ui-monospace, Menlo, monospace; color: #431407; margin: 8px 0 10px; }\n.rui-wellness button { border: 0; border-radius: 999px; padding: 10px 20px; background: #ea580c; color: #fff; font: 600 14px system-ui; }",
+      "code": "const [paused, setPaused] = useState(false);\n\n<PixodeskSvgAnimator className=\"figure\" doc={yoga} play={!paused} />\n\n{paused\n  ? <button onClick={() => setPaused(false)}>Resume session</button>\n  : <button onClick={() => setPaused(true)}>Pause session</button>}",
+      "files": [
+        {
+          "name": "yoga.json",
+          "kbGz": 12.6
+        }
+      ],
+      "kbGz": 12.6,
+      "stills": {},
+      "toggle": {
+        "player": "figure",
+        "pause": "#pause",
+        "resume": "#resume"
+      },
+      "hover": false
+    },
+    {
+      "id": "dashboard",
+      "tab": "Seen once",
+      "video": "learn-ui-dashboard",
+      "title": "A dashboard list",
+      "line": "Icons that draw themselves once when the list comes into view, then stay.",
+      "intro": "This video shows icons that play once when a list comes into view, and then stay as they are. It suits things you see once, like a tip or a reminder.",
+      "html": "<div class='rui rui-dashboard'><section class='feed'><header><b>For you</b><a href='#all'>See all</a></header><article class='item'><div class='icon' data-rui-player='bulb' data-rui-src='/assets/real-ui/dashboard/bulb.json'></div><span><small>TIP OF THE DAY</small><b>Drag a file onto a folder to move it</b><p>Hold Alt while you drop to make a copy.</p></span></article><article class='item'><div class='icon' data-rui-player='bell' data-rui-src='/assets/real-ui/dashboard/bell.json'></div><span><small>REMINDER</small><b>Your trial ends in 3 days</b><p>Pick a plan to keep your projects.</p></span></article><article class='item'><div class='icon' data-rui-player='chat' data-rui-src='/assets/real-ui/dashboard/chat.json'></div><span><small>NEW REPLY</small><b>Lena replied to your comment</b><p>Looks great, let us ship it on Friday.</p></span></article></section></div>",
+      "css": ".rui-dashboard { font: 14px/1.45 system-ui, sans-serif; color: #1f2937; }\n.rui-dashboard h1 { font-size: 20px; margin: 4px 0 12px; }\n.rui-dashboard .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin-bottom: 14px; }\n.rui-dashboard .stats div { padding: 16px 14px; border-radius: 12px; background: #eef2ff; }\n.rui-dashboard .stats b { display: block; font-size: 22px; }\n.rui-dashboard .stats span { color: #4b5563; font-size: 13px; }\n.rui-dashboard .recent { margin: 0 0 18px; padding: 0; list-style: none; }\n.rui-dashboard .recent li { padding: 11px 4px; border-bottom: 1px solid #e5e7eb; }\n.rui-dashboard .feed { background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(15, 23, 42, .14); }\n.rui-dashboard .feed header { display: flex; justify-content: space-between; padding: 12px 18px 8px; }\n.rui-dashboard .feed a { color: #2563eb; font-size: 13px; text-decoration: none; }\n.rui-dashboard .item { display: grid; grid-template-columns: 58px 1fr; gap: 14px; align-items: center; padding: 10px 18px; border-top: 1px solid #f1f5f9; }\n.rui-dashboard .icon { display: block; width: 58px; height: 58px; border-radius: 12px; background: #fff7f3; }\n.rui-dashboard .item small { display: block; font: 600 11px system-ui; letter-spacing: .08em; color: #c2410c; }\n.rui-dashboard .item b { display: block; font-size: 15px; }\n.rui-dashboard .item p { margin: 2px 0 0; color: #4b5563; font-size: 13.5px; }",
+      "code": "<PixodeskSvgAnimator className=\"icon\" doc={item.icon} autoplay />",
+      "files": [
+        {
+          "name": "bulb.json",
+          "kbGz": 2
+        },
+        {
+          "name": "bell.json",
+          "kbGz": 2.5
+        },
+        {
+          "name": "chat.json",
+          "kbGz": 1.8
+        }
+      ],
+      "kbGz": 6.3,
+      "stills": {},
+      "toggle": null,
+      "hover": false
+    },
+    {
+      "id": "notfound",
+      "tab": "Error pages",
+      "video": "learn-ui-notfound",
+      "title": "A 404 page",
+      "line": "A boat on a moving sea: two animations layered with a few lines of CSS.",
+      "intro": "This video shows a friendly page for a missing link, with a boat on a moving sea. It is two animations, layered with a few lines of styles.",
+      "html": "<div class='rui rui-notfound'><div class='rui-main'><section class='message'><small>404</small><h1>This page has sailed away</h1><p>The link may be old, or the page has moved.</p><button>Back to the harbour</button></section><div class='scene'><div class='sea' data-rui-player='sea' data-rui-src='/assets/real-ui/notfound/sea.json'></div><div class='boat' data-rui-player='boat' data-rui-src='/assets/real-ui/notfound/boat.json'></div></div></div></div>",
+      "css": ".rui-notfound .rui-main { font: 14px/1.45 system-ui, sans-serif; color: #1f2937; }\n.rui-notfound .rui-main { width: 560px; margin: 14px auto; color: #fff; text-align: center; background: linear-gradient(180deg, #0a1a3a 0%, #13336b 65%, #1c4a8f 100%); border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(15, 23, 42, .14); }\n.rui-notfound .message { display: grid; justify-items: center; gap: 6px; padding: 24px 24px 0; }\n.rui-notfound .message small { font: 600 13px ui-monospace, Menlo, monospace; letter-spacing: .1em; color: #93c5fd; }\n.rui-notfound .message h1 { margin: 0; font-size: 24px; }\n.rui-notfound .message p { margin: 0; color: #bfdbfe; }\n.rui-notfound .message button { margin-top: 8px; border: 0; border-radius: 10px; padding: 9px 16px; background: #fff; color: #13336b; font: 600 14px system-ui; }\n.rui-notfound .scene { position: relative; height: 290px; }\n.rui-notfound .sea { position: absolute; left: 0; right: 0; bottom: 0; display: block; width: 100%; height: 144px; }\n.rui-notfound .boat { position: relative; display: block; width: 440px; height: 220px; margin: 10px auto 0; }",
+      "code": "<PixodeskSvgAnimator className=\"sea\" doc={sea} autoplay />\n\n<PixodeskSvgAnimator className=\"boat\" doc={boat} autoplay />",
+      "files": [
+        {
+          "name": "sea.json",
+          "kbGz": 0.9
+        },
+        {
+          "name": "boat.json",
+          "kbGz": 0.9
+        }
+      ],
+      "kbGz": 1.8,
+      "stills": {},
+      "toggle": null,
+      "hover": false
+    },
+    {
+      "id": "hover",
+      "tab": "Hover icons",
+      "video": "learn-ui-hover",
+      "title": "Icons that move on hover",
+      "line": "Delete, Cancel and OK: each icon plays forward on hover and back on leave.",
+      "intro": "This video shows button icons that react to the pointer. The icon plays forward when you point at the button, and back when you leave.",
+      "html": "<div class='rui rui-hover'><div class='rui-main'><div class='file'><i>PDF</i><span><b>contract-v3.pdf</b><small>212 KB · edited 2 min ago · shared with 3 people</small></span></div><footer class='actions'><button id='delete' class='act danger'><div class='icon' data-rui-player='delete' data-rui-src='/assets/real-ui/hover/delete.json'></div>Delete</button><span class='space'></span><button id='cancel' class='act'><div class='icon' data-rui-player='cancel' data-rui-src='/assets/real-ui/hover/cancel.json'></div>Cancel</button><button id='ok' class='act ok'><div class='icon' data-rui-player='ok' data-rui-src='/assets/real-ui/hover/ok.json'></div>OK</button></footer></div></div>",
+      "css": ".rui-hover .rui-main { font: 14px/1.45 system-ui, sans-serif; color: #1f2937; }\n.rui-hover .rui-main { width: 440px; margin: 40px auto; padding: 16px 18px; background: #fff; border-radius: 12px; overflow: hidden; box-shadow: 0 10px 30px rgba(15, 23, 42, .14); }\n.rui-hover .file { display: grid; grid-template-columns: 44px 1fr; gap: 12px; align-items: center; margin-bottom: 14px; }\n.rui-hover .file i { width: 44px; height: 52px; border-radius: 6px; background: #fee2e2; display: grid; place-items: center; color: #b91c1c; font: 700 11px system-ui; font-style: normal; }\n.rui-hover .file small { display: block; color: #6b7280; font-size: 12.5px; }\n.rui-hover .actions { display: flex; gap: 8px; }\n.rui-hover .space { flex: 1; }\n.rui-hover .act { display: inline-flex; align-items: center; gap: 8px; height: 44px; padding: 0 16px 0 10px; border: 1px solid #e5e7eb; border-radius: 8px; background: #fff; color: #334155; font: 600 14px system-ui; }\n.rui-hover .act:hover { border-color: #c7d2fe; background: #eef2ff; color: #3730a3; }\n.rui-hover .danger:hover { border-color: #fecaca; background: #fef2f2; color: #b91c1c; }\n.rui-hover .ok, .rui-hover .ok:hover { background: #2563eb; border-color: #2563eb; color: #fff; }\n.rui-hover .icon { display: block; width: 30px; height: 30px; }",
+      "code": "type HoverButtonProps = {\n  icon: PxAnimatedSvgDocument;\n  label: string;\n  className: string;\n};\n\nfunction HoverButton({ icon, label, className }: HoverButtonProps) {\n  const api = useRef<ReactAnimatorApi>(null);\n  const play = (rate: number) => {\n    api.current?.setPlaybackRate(rate);\n    api.current?.play();\n  };\n  return (\n    <button className={className}\n      onMouseEnter={() => play(1)} onMouseLeave={() => play(-1)}>\n      <PixodeskSvgAnimator className=\"icon\" doc={icon} apiRef={api} />\n      {label}\n    </button>\n  );\n}\n\n<HoverButton className=\"act danger\" icon={trash} label=\"Delete\" />\n<span className=\"space\" />\n<HoverButton className=\"act\" icon={cancel} label=\"Cancel\" />\n<HoverButton className=\"act ok\" icon={ok} label=\"OK\" />",
+      "files": [
+        {
+          "name": "delete.json",
+          "kbGz": 0.6
+        },
+        {
+          "name": "cancel.json",
+          "kbGz": 0.6
+        },
+        {
+          "name": "ok.json",
+          "kbGz": 0.5
+        }
+      ],
+      "kbGz": 1.7,
+      "stills": {},
+      "toggle": null,
+      "hover": true
+    },
+    {
+      "id": "background",
+      "tab": "Backgrounds",
+      "video": "learn-ui-background",
+      "title": "An animated background",
+      "line": "A glowing dot grid behind a landing page, covering its box like an image.",
+      "intro": "This video shows an animated background behind the text of a landing page. A grid of dots glows under drifting lights, and the text stays on top.",
+      "html": "<div class='rui rui-background'><div class='rui-main'><div class='backdrop' data-rui-player='dots' data-rui-src='/assets/real-ui/background/dots.json'></div><section class='copy'><small>PIXODESK PLAYER</small><h1>Animations that load like images</h1><p>One file, a few kilobytes, played by the browser.</p><button>Get started</button></section></div></div>",
+      "css": ".rui-background .rui-main { position: relative; width: 560px; height: 300px; margin: 40px auto; overflow: hidden; border-radius: 12px; box-shadow: 0 10px 30px #0f172a24; font: 14px/1.45 system-ui, sans-serif; color: #fff; background: #0b1220; }\n.rui-background .backdrop { position: absolute; inset: 0; width: 100%; height: 100%; }\n.rui-background .copy { position: relative; display: grid; gap: 12px; max-width: 380px; padding: 46px 44px; }\n.rui-background .copy small { font: 600 12px monospace; color: #67e8f9; }\n.rui-background .copy h1 { margin: 0; font: 700 32px/1.1 system-ui; }\n.rui-background .copy p { margin: 0; color: #cbd5e1; }\n.rui-background .copy button { justify-self: start; border: 0; border-radius: 10px; padding: 9px 16px; background: #22d3ee; color: #0b1220; font: 600 14px system-ui; }",
+      "code": "<PixodeskSvgAnimator className=\"backdrop\" doc={dots} autoplay />",
+      "files": [
+        {
+          "name": "dots.json",
+          "kbGz": 0.7
+        }
+      ],
+      "kbGz": 0.7,
+      "stills": {},
+      "toggle": null,
+      "hover": false
+    },
+    {
+      "id": "triggers",
+      "tab": null,
+      "video": "learn-triggers-practice",
+      "title": "2. Triggers in practice",
+      "line": "Each trigger where it fits: a courier on load, a Delete lid on hover, a like on click, a reminder once, a payment step left to the code.",
+      "intro": "This video shows which trigger fits which job in a real interface. Each file keeps its own trigger, so the code is the same short line every time.",
+      "html": "<div class='rui rui-triggers'><div class='rui-main'><section class='tile'><h2>Order on the way</h2><div data-rui-player='courier' data-rui-src='/assets/real-ui/triggers/courier.json'></div><p>load · pause off screen</p></section><section class='tile'><h2>Delete</h2><div data-rui-player='delete' data-rui-src='/assets/real-ui/triggers/delete.json'></div><p>mouse over · reverse on leave</p></section><section class='tile'><h2>Like</h2><div data-rui-player='heart' data-rui-src='/assets/real-ui/triggers/heart.json'></div><p>click · once</p></section><section class='tile'><h2>Trial reminder</h2><div data-rui-player='bell' data-rui-src='/assets/real-ui/triggers/bell.json'></div><p>load · once</p></section><section class='tile'><h2>Payment step</h2><div data-rui-player='stage' data-rui-src='/assets/real-ui/triggers/stage.json'></div><p>none · the code decides</p></section></div></div>",
+      "css": ".rui-triggers .rui-main { font: 14px/1.45 system-ui, sans-serif; color: #1f2937; }\n.rui-triggers .rui-main { display: grid; grid-template-columns: repeat(2, 268px); gap: 12px; justify-content: center; }\n.rui-triggers .tile { margin: 0; padding: 10px 12px; text-align: center; background: #fff; border: 1px solid #e5e7eb; border-radius: 14px; box-shadow: 0 2px 10px rgba(0, 0, 0, .06); }\n.rui-triggers .tile h2 { font-size: 14px; margin: 0 0 6px; }\n.rui-triggers .tile > :nth-child(2) { display: block; width: 100%; height: 118px; }\n.rui-triggers .tile p { margin: 6px 0 0; font: 12px ui-monospace, Menlo, monospace; color: #2563eb; }",
+      "code": "<Tile title=\"Order on the way\" note=\"load · pause off screen\">\n  <PixodeskSvgAnimator doc={courier} autoplay />\n</Tile>\n\n<Tile title=\"Delete\" note=\"mouse over · reverse on leave\">\n  <PixodeskSvgAnimator doc={trash} autoplay />\n</Tile>\n\n<Tile title=\"Like\" note=\"click · once\">\n  <PixodeskSvgAnimator doc={heart} autoplay />\n</Tile>\n\n<Tile title=\"Trial reminder\" note=\"load · once\">\n  <PixodeskSvgAnimator doc={bell} autoplay />\n</Tile>\n\n<Tile title=\"Payment step\" note=\"none · the code decides\">\n  <PixodeskSvgAnimator doc={stage} progress={1} />\n</Tile>",
+      "files": [
+        {
+          "name": "courier.json",
+          "kbGz": 44.4
+        },
+        {
+          "name": "delete.json",
+          "kbGz": 0.5
+        },
+        {
+          "name": "heart.json",
+          "kbGz": 0.4
+        },
+        {
+          "name": "bell.json",
+          "kbGz": 2.5
+        },
+        {
+          "name": "stage.json",
+          "kbGz": 59.8
+        }
+      ],
+      "kbGz": 107.6,
+      "stills": {
+        "stage": 1
+      },
+      "toggle": null,
+      "hover": false
+    }
+  ]
+}
