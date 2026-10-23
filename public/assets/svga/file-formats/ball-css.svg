@@ -1,9 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" id="_px_3fo9cihu" class="px-anim-enabled px-anim-playing" data-px-meta="runtime:{useCssAnimation:true},animator:{version:'1.4.1',timeline:{outTime:1000,trigger:{start:'load',offScreen:'pause',visibilityThreshold:0.5,visibilityDebounce:150},iterations:'infinite',direction:'normal'}}">
-  <style>@keyframes _px_3fo9cihv {0% {transform:translate(200px,60px);animation-timing-function:cubic-bezier(0.33,0,0.67,0.33);}
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" id="_px_3g058cfn" class="px-anim-enabled px-anim-playing" data-px-meta="runtime:{useCssAnimation:true},animator:{version:'1.7.1',timeline:{outTime:1000,trigger:{start:'load',outOfView:'pause',inViewThreshold:0.5,inViewDebounce:150},iterations:'infinite',direction:'normal'}}">
+  <style>@keyframes _px_3g058cfo {0% {transform:translate(200px,60px);animation-timing-function:cubic-bezier(0.33,0,0.67,0.33);}
 50% {transform:translate(200px,320px);animation-timing-function:cubic-bezier(0.33,0.67,0.67,1);}
 99%, 100% {transform:translate(200px,60px)}}
-.px-anim-enabled ._px_3fo9cii0 { animation: 1000ms _px_3fo9cihv infinite forwards; }
+.px-anim-enabled ._px_3g058cfp { animation: 1000ms _px_3g058cfo infinite forwards; }
 .px-anim-enabled.px-anim-playing .px-anim-element {animation-play-state: running !important;}
 .px-anim-enabled:not(.px-anim-playing) .px-anim-element {animation-play-state: paused;}</style>
-  <ellipse id="ball" class="px-anim-element _px_3fo9cii0" fill="#2a7fff" transform="translate(200,60)" rx="40" ry="40" data-px-meta="animate:{transform:{keyframes:[{time:0,value:{translate:[200,60]},easing:[0.33,0,0.67,0.33]},{time:500,value:{translate:[200,320]},easing:[0.33,0.67,0.67,1]},{time:990,value:{translate:[200,60]}}]}}"/>
+  <ellipse id="ball" class="px-anim-element _px_3g058cfp" fill="#2a7fff" transform="translate(200,60)" rx="40" ry="40" data-px-meta="animate:{transform:{keyframes:[{time:0,value:{translate:[200,60]},easing:[0.33,0,0.67,0.33]},{time:500,value:{translate:[200,320]},easing:[0.33,0.67,0.67,1]},{time:990,value:{translate:[200,60]}}]}}"/>
 </svg>

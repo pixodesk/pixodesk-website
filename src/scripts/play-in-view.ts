@@ -5,7 +5,7 @@
  *     of it is on screen — `el` gets `data-in-view`, one injected rule pauses everything inside a watched element that lacks it;
  *   • `onceInView(el, play, threshold)`: a one-shot (a SMIL scene, step lights) — `play()` once when `threshold` of `el` is visible;
  *     not under reduced motion (the scene's rest state is its result).
- * Pixodesk players gate themselves (their trigger's `offScreen`); this is for the page's own animations.
+ * Pixodesk players gate themselves (their trigger's `outOfView`); this is for the page's own animations.
  */
 const STYLE_ID = "play-in-view-css";
 // the element, everything inside, and their ::before / ::after (a gradient text effect lives there)

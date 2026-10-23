@@ -3,7 +3,7 @@
   "viewBox": "0 0 360 110",
   "animator": {
     "timeline": {
-      "outTime": 1800,
+      "duration": 1800,
       "iterations": "infinite",
       "trigger": {
         "start": "load",

@@ -21,7 +21,7 @@ import animation from './animation.json';
 export function Hero() {
   return (
     <div style={{ width: 300, height: 300 }}>
-      <SvgAnimationPlayer doc={animation} playAsSaved />
+      <SvgAnimationPlayer doc={animation} playOnTrigger />
     </div>
   );
 }`,
@@ -36,7 +36,7 @@ import animation from './animation.json';
 
 <template>
   <div style="width: 300px; height: 300px">
-    <SvgAnimationPlayer :doc="animation" playAsSaved />
+    <SvgAnimationPlayer :doc="animation" playOnTrigger />
   </div>
 </template>`,
     docs: { label: "Vue component", href: "/docs/svga/player-library/vue" } },
@@ -51,7 +51,7 @@ import animation from './animation.json';
 export function Hero() {
   return (
     <View style={{ width: 300, height: 300 }}>
-      <SvgAnimationPlayer doc={animation} playAsSaved />
+      <SvgAnimationPlayer doc={animation} playOnTrigger />
     </View>
   );
 }`,
