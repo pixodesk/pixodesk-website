@@ -33,7 +33,7 @@ const [svgEditor, svgAnimator, animator2d] = editors.map((e) => e.id);
 const files: Array<Box> = [
   { id: N.staticSvg, label: "Static SVG", sub: [SVG, " — icons, logos, illustrations"], area: "fs" },
   { ...PX_JSON, area: "fj" },
-  { id: N.lottie, label: "Lottie", sub: joined([JSON_FILE, ext(FileExt.lottie)]), area: "fl", href: "/docs/2d-lottie/lottie-features" },
+  { id: N.lottie, label: "Lottie", sub: joined([JSON_FILE, ext(FileExt.lottie)]), area: "fl", href: "/docs/2d-lottie" },
   { id: N.media, label: "Images & video", sub: joined([FileExt.png, FileExt.jpeg, FileExt.webp, FileExt.gif, FileExt.mp4, FileExt.webm].map(ext), " "), area: "fm", href: "/docs/svga/editor/export" },
 ];
 // Animated SVG = a group of its flavours (shared with the SVG Animator's "Where it plays": diagramNodes.ts)

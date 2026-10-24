@@ -14,7 +14,7 @@ export interface LearnCategory { id: string; title: string; line: string; videos
 
 // where each video's topic is written up in the docs (the link under the card)
 const DOCS = {
-  react: "/docs/svga/player-library/react", autoplay: "/docs/svga/player-library/react#autoplay", state: "/docs/svga/player-library/react#declarative-play--pause",
+  react: "/docs/svga/player-library/react", autoplay: "/docs/svga/player-library/react#autoplay", state: "/docs/svga/player-library/react#declarative-playback--play-pause-playmode-completeiteration",
   apiRef: "/docs/svga/player-library/react#imperative-api-apiref", web: "/docs/svga/player-library/web-player#the-playback-api", callbacks: "/docs/svga/player-library/web-player#callbacks",
   triggers: "/docs/svga/player-library/playback-and-triggers", editorTriggers: "/docs/svga/editor/animation#playback-and-triggers",
   prerendered: "/docs/svga/prerendered-svg/on-the-web", exporting: "/docs/svga/editor/export",

@@ -127,8 +127,8 @@ svg.classList.remove('px-anim-enabled', 'px-anim-playing'); // reset to the star
 
 This is exactly what the React and Vue `PixodeskSvgCssAnimator` components do for you — they
 wrap an SVGR / `vite-svg-loader` import in a `<div>` and toggle these classes on hover, click or
-scroll-into-view. See [React → CSS-flavour SVGs](/docs/svga/player-library/react#css-flavor-svgs--pixodesksvgcssanimator)
-and [Vue → CSS-flavour SVGs](/docs/svga/player-library/vue#css-flavor-svgs--pixodesksvgcssanimator).
+scroll-into-view. See [React → CSS-flavour SVGs](/docs/svga/player-library/react#css-flavor-svgs--svgcssanimationplayer)
+and [Vue → CSS-flavour SVGs](/docs/svga/player-library/vue#css-flavor-svgs--svgcssanimationplayer).
 
 ## Flavour 2 — SVG + CSS animation + JS triggers
 
