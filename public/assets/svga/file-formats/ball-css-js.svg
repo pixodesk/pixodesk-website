@@ -1,11 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" id="_px_3g058cg2" data-px-meta="runtime:{useCssAnimation:true,useJsTriggers:true},animator:{version:'1.7.1',timeline:{outTime:1000,trigger:{start:'load',outOfView:'pause',inViewThreshold:0.5,inViewDebounce:150},iterations:'infinite',direction:'normal'}}">
-  <style>@keyframes _px_3g058cg3 {0% {transform:translate(200px,60px);animation-timing-function:cubic-bezier(0.33,0,0.67,0.33);}
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" id="_px_3g09tpke" data-px-meta="runtime:{useCssAnimation:true,useJsTriggers:true},animator:{version:'1.8.1',timeline:{outTime:1000,trigger:{start:'load',outOfView:'pause',inViewThreshold:0.5,inViewDebounce:150},iterations:'infinite',direction:'normal'}}">
+  <style>@keyframes _px_3g09tpkf {0% {transform:translate(200px,60px);animation-timing-function:cubic-bezier(0.33,0,0.67,0.33);}
 50% {transform:translate(200px,320px);animation-timing-function:cubic-bezier(0.33,0.67,0.67,1);}
 99%, 100% {transform:translate(200px,60px)}}
-.px-anim-enabled ._px_3g058cg4 { animation: 1000ms _px_3g058cg3 infinite forwards; }
+.px-anim-enabled ._px_3g09tpkg { animation: 1000ms _px_3g09tpkf infinite forwards; }
 .px-anim-enabled.px-anim-playing .px-anim-element {animation-play-state: running !important;}
 .px-anim-enabled:not(.px-anim-playing) .px-anim-element {animation-play-state: paused;}</style>
-  <ellipse id="ball" class="px-anim-element _px_3g058cg4" fill="#2a7fff" transform="translate(200,60)" rx="40" ry="40" data-px-meta="animate:{transform:{keyframes:[{time:0,value:{translate:[200,60]},easing:[0.33,0,0.67,0.33]},{time:500,value:{translate:[200,320]},easing:[0.33,0.67,0.67,1]},{time:990,value:{translate:[200,60]}}]}}"/>
+  <ellipse id="ball" class="px-anim-element _px_3g09tpkg" fill="#2a7fff" transform="translate(200,60)" rx="40" ry="40" data-px-meta="animate:{transform:{keyframes:[{time:0,value:{translate:[200,60]},easing:[0.33,0,0.67,0.33]},{time:500,value:{translate:[200,320]},easing:[0.33,0.67,0.67,1]},{time:990,value:{translate:[200,60]}}]}}"/>
 <script data-px-script="true">
 //<![CDATA[
 (function() {
@@ -41,7 +41,7 @@
     }); }, { threshold: steps }).observe(el);
   }
   var el = document.currentScript.closest('svg');
-  (el ? [el] : document.querySelectorAll("#_px_3g058cg2")).forEach(init);
+  (el ? [el] : document.querySelectorAll("#_px_3g09tpke")).forEach(init);
 })();
 //]]>
 </script>

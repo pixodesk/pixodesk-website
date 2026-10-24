@@ -28,7 +28,7 @@ save.
 | **Duration** | `timeline.duration` (ms) | the length of **one** iteration; keyframe times are offsets within it |
 | **Delay** | `timeline.delay` (ms) | wait before the first iteration starts |
 | **Iterations** | `timeline.iterations` | a number, or “infinite” |
-| **Direction** | `timeline.direction` | “normal”, “reverse”, “alternate” (ping-pong), “alternate-reverse” |
+| **Direction** | `timeline.direction` | “normal”, “reverse”, “alternate” (ping-pong), “alternateReverse” |
 | **Fill mode** | `timeline.fillMode` | what shows outside the active time — “forwards” holds the last frame, “backwards” shows the first frame during the delay, “both”, or “none” to revert to the static SVG |
 | ***Reset on finish*** | `timeline.trigger.finishAction: "reset"` | snap back to the start after a natural finish |
 | **Frame rate** | `frameRate` | a target rate for the frame-loop engine only; leave it unset to run uncapped |
