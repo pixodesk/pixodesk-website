@@ -20,8 +20,8 @@ const DOCS = {
   prerendered: "/docs/svga/prerendered-svg/on-the-web", exporting: "/docs/svga/editor/export",
 };
 export const LEARN_CATEGORIES: Array<LearnCategory> = [
-  { id: "react", title: "The player in React", line: "Three ways to control the player, from the simplest to full control: autoplay, React state and apiRef.", videos: [
-    { name: "learn-react-autoplay", title: "1. The simplest way: autoplay", line: "One line of code, playing as set up in the editor — and properties that override it: start on hover or click, reset when the pointer leaves, play just once.", docs: DOCS.autoplay },
+  { id: "react", title: "The player in React", line: "Three ways to control the player, from the simplest to full control: play on trigger, React state and apiRef.", videos: [
+    { name: "learn-react-autoplay", title: "1. The simplest way: play on trigger", line: "One line of code, playing as set up in the editor — and properties that override it: start on hover or click, reset when the pointer leaves, play just once.", docs: DOCS.autoplay },
     { name: "learn-react-props", title: "2. Declarative control: React state", line: "Play, restart and progress bound to React state — Play and Pause buttons, a Restart that gives the player a new key, and a slider that picks the moment.", docs: DOCS.state },
     { name: "learn-react-apiref", title: "3. Imperative control: apiRef", line: "Play, pause, restart, a slider for any moment, double speed and reverse — each one a single call on the player.", docs: DOCS.apiRef },
   ] },
