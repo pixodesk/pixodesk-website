@@ -25,13 +25,12 @@ save.
 
 | Control | Writes | Notes |
 |---|---|---|
-| **Duration** | `timeline.duration` (ms) | the length of **one** iteration; keyframe times are offsets within it |
+| **Duration** | `timeline.outTime` (ms) | the end of the content window — one pass plays from 0 to it; keyframe times are absolute |
+| **In Time** / **Play Duration** | `timeline.inTime` / `timeline.playDuration` (ms) | the window's start, and the window remapped to wall time (slower or faster) |
 | **Delay** | `timeline.delay` (ms) | wait before the first iteration starts |
-| **Iterations** | `timeline.iterations` | a number, or “infinite” |
-| **Direction** | `timeline.direction` | “normal”, “reverse”, “alternate” (ping-pong), “alternateReverse” |
-| **Fill mode** | `timeline.fillMode` | what shows outside the active time — “forwards” holds the last frame, “backwards” shows the first frame during the delay, “both”, or “none” to revert to the static SVG |
-| ***Reset on finish*** | `timeline.trigger.finishAction: "reset"` | snap back to the start after a natural finish |
-| **Frame rate** | `frameRate` | a target rate for the frame-loop engine only; leave it unset to run uncapped |
+| **Loop** · **Iterations** | `timeline.iterations` | a number, or “infinite” |
+| **Direction** | `timeline.iterationDirection` | “normal”, “reverse”, “alternate” (ping-pong), “alternateReverse” |
+| **Frame rate** | `timeline.frameRate` | a target rate for the frame-loop engine only; leave it unset to run uncapped |
 
 ## Engine
 
@@ -49,45 +48,60 @@ updated in a browser:
 Leave it on **auto** unless you need a guarantee. React Native ignores it — playback there is
 always native-driven.
 
-## Start trigger
+## Playback triggers
 
-The trigger has **two independent settings**: what *starts* the animation, and whether it may
-*run* at all. An animation nobody can see does not play, whatever started it.
+A trigger lists **which events play, stop, pause and resume** the animation — four lists over
+the same four events. The **Playback Triggers** section writes `timeline.trigger`:
 
-**Start** writes `timeline.trigger.start` — what makes the animation begin:
-
-| Editor label | Writes | Begins when |
+| Control | Writes | Acts while the animation is… |
 |---|---|---|
-| “On load” | `load` | the animation is displayed, and visible enough (default) |
-| “On hover” | `hover` | the pointer enters it |
-| “On click” | `click` | it is clicked; a second click pauses |
-| “Manually” | `manual` | never on its own — code calls `play()` |
+| **Plays on** | `trigger.playOn` | stopped — a play, per *When played* below |
+| **Stops on** | `trigger.playOff` | playing or paused — a stop, per *When stopped* below |
+| **Pauses on** | `trigger.pauseOn` | playing — freezes the current frame |
+| **Resumes on** | `trigger.pauseOff` | paused — continues; left empty, the *Plays on* events resume it |
 
-**To start an animation when it scrolls into view**, choose “On load” and leave **Out of View**
+Each list ticks any of **Load**, **Hover in**, **Hover out** and **Click**. A new document plays on
+load. Ticking *Hover in* under *Plays on* adds *Hover out* under *Pauses on* for you — the usual
+pair, and yours to change. *Click* under both *Plays on* and *Pauses on* makes every click play or
+pause. Untick everything and nothing starts the animation until your code calls `play()`.
+
+**To play an animation when it scrolls into view**, leave *Plays on* at “Load” and **Out of View**
 on “pause” (both are the defaults). The animation then waits until enough of it is on screen,
 plays, pauses when it scrolls away, and carries on when it comes back.
 
-**Out of View** writes `timeline.trigger.outOfView` — what happens while none of it is on screen:
+**Out of View** writes `timeline.outOfViewAction` — what happens while none of it is on screen:
 “pause” (the default; it resumes where it left off), “continue” (keep running, and start without
 waiting to be seen) or “reset” (back to the start, so it replays on the next entry).
 
-**In-View Threshold** writes `inViewThreshold` — how much must be on screen before it may run,
-from `0` (any part) to `1` (all of it), `0.5` by default. **In-View Delay** writes
-`inViewDebounce` — how long that must hold, in milliseconds, so scrolling straight past starts
-nothing.
+**In-View Threshold** writes `timeline.inViewThreshold` — how much must be on screen before it may
+run, from `0` (any part) to `1` (all of it), `0.5` by default. **In-View Delay** writes
+`timeline.inViewDebounce` — how long that must hold, in milliseconds, so scrolling straight past
+starts nothing.
 
-**Hover End** writes `timeline.trigger.hoverEnd` and is read only for “On hover”:
-“pause” (the default), “continue”, “reset” or “reverse”.
+## Playback behaviour
+
+How a play, a stop and the natural end look. The **Playback Behaviour** section writes these
+beside the trigger, and the same words apply whoever asks for the play or the stop — the trigger,
+a component's `play` property, or `play()` / `stop()` from code:
+
+| Control | Writes | Choices |
+|---|---|---|
+| **When played** | `timeline.playOnAction` | **Resume** (default — continues from where it is; at the start or the end, a fresh run) · **Restart** (from the beginning every time) · **Jump to end** (shows the end, no motion) |
+| **When stopped** | `timeline.playOffAction` | **Reset** (default — jumps back to the start state) · **Rewind** (plays back to it) |
+| **Complete iteration on stop** | `timeline.completeIterationOnPlayOff` | a stop waits for the current iteration to finish first — a heartbeat should not die mid-beat |
+| **When it ends** | `timeline.playEndAction` | **Hold** (default — keeps the last frame) · **Reset** · **Rewind** |
 
 **Use JS Triggers** only matters for the pre-rendered *SVG + CSS animation* export, and decides
 how the trigger is implemented in that file:
 
-- With **Use JS Triggers** switched **off**, the file contains no script at all. “On load” works, and
-  “On hover” works through CSS `:hover`. “On click” and waiting until the animation is
-  on screen cannot be done in pure CSS, so the export **starts it as soon as it is shown**.
+- With **Use JS Triggers** switched **off**, the file contains no script at all. “Load” works, and
+  “Hover in” / “Hover out” work through CSS `:hover` (a hover out may pause or stop, not both).
+  “Click” and waiting until the animation is on screen cannot be done in pure CSS, so the export
+  **starts it as soon as it is shown**; the play actions keep their defaults (a class cannot
+  restart keyframes or play them backwards). Every choice in the panel is marked *(CSS)* or
+  *(JS)*, and picking a *(JS)* one switches *Use JS Triggers* on for you.
 - With **Use JS Triggers** switched **on**, the export adds a few lines of inline script (no library),
-  and the file behaves exactly as this panel says: whichever **Start** trigger you chose, the
-  action **when the trigger ends**, and **Reset on finish** all work.
+  and the file behaves exactly as this panel says: every list, every action and the gate.
 
 The JSON format and the *SVG + JS animation* export always honour the full setting, whatever
 *Use JS Triggers* says.
@@ -109,8 +123,8 @@ Not every export can carry every setting from this page. What each one keeps:
 | Export | Kept in the file |
 |---|---|
 | **Pixodesk JSON** | everything |
-| **SVG + CSS animation** | timing; “On load”, and “On mouse over” via CSS `:hover`. “On click” / “When visible” fall back to “On load”; **Reset on finish** is not applied |
-| **SVG + CSS + JS triggers** | timing, every trigger, the out action and **Reset on finish** — through a few inline lines of script (added by the editor app), no library |
+| **SVG + CSS animation** | timing; “Load”, and “Hover in” / “Hover out” via CSS `:hover`. “Click” and the visibility gate fall back to “Load”; the play actions keep their defaults |
+| **SVG + CSS + JS triggers** | timing, every list, every action and the gate — through a few inline lines of script (added by the editor app), no library |
 | **SVG + JS animation** | everything |
 
 [Choosing a format](/docs/svga/editor/choosing-a-format) has the full comparison.

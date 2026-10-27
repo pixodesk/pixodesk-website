@@ -3,13 +3,14 @@
   "viewBox": "0 0 360 110",
   "animator": {
     "timeline": {
-      "duration": 1800,
+      "outTime": 1800,
       "iterations": "infinite",
       "trigger": {
-        "start": "load",
-        "offScreen": "pause"
-      }
-    }
+        "playOn": "load"
+      },
+      "outOfViewAction": "pause"
+    },
+    "version": "1.9.0"
   },
   "children": [
     {

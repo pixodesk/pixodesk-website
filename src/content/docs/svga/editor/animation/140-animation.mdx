@@ -105,16 +105,16 @@ lay out the key states first and refine timing and easing afterwards.
 ## Playback and Triggers
 
 How the saved animation plays on the page is set on the document (select nothing): the
-**Animation** section and the **Timeline & Trigger** section of the Properties panel.
+**Animation**, **Playback Triggers** and **Playback Behaviour** sections of the Properties panel.
 
 {/* e2e-screenshot
 app: svga · viewport: 1440x900 · hideDevUi: true · date: 2026-09-01
-setup: setup(400, 400, {"fill": "#e0533d", "stroke": "#1b3a63"}); click("toolsPicker.ellipse"); move("canvas.bg", "source:60", "source:60", "canvas.bg", "drop:150", "drop:150"); addKeyframes("Ellipse", "Position", {"0":{"x":105,"y":105},"500":{"x":105,"y":300},"1000":{"x":105,"y":105}}); click("elementTree.root.title"); click("attrs.animation.loop.setOn"); click("attrs.animation.start.start.click"); click("attrs.color.collapse")
+setup: setup(400, 400, {"fill": "#e0533d", "stroke": "#1b3a63"}); click("toolsPicker.ellipse"); move("canvas.bg", "source:60", "source:60", "canvas.bg", "drop:150", "drop:150"); addKeyframes("Ellipse", "Position", {"0":{"x":105,"y":105},"500":{"x":105,"y":300},"1000":{"x":105,"y":105}}); click("elementTree.root.title"); click("attrs.animation.loop.setOn"); checkbox("attrs.animation.playOn.playOn.click.setOn", true); click("attrs.color.collapse")
 crop: clip={"x":640,"y":52,"w":800,"h":660}
-annotate: annotate([{"kind":"dim","bounds":{"x":1041,"y":203,"w":383,"h":492},"padding":8,"color":"#fff","fillAlpha":0.8},{"kind":"box","theme":"red","target":"attrs.animation.duration","padding":2,"color":"#08f","stroke":1.5,"fill":"solid","fillAlpha":0.2},{"kind":"box","theme":"red","target":"attrs.animation.loop","padding":2,"color":"#08f","stroke":1.5,"fill":"solid","fillAlpha":0.2},{"kind":"box","theme":"red","target":"attrs.animation.fillMode","padding":2,"color":"#08f","stroke":1.5,"fill":"solid","fillAlpha":0.2},{"kind":"box","theme":"red","target":"attrs.animation.start","padding":2,"color":"#08f","stroke":1.5,"fill":"solid","fillAlpha":0.2},{"kind":"title","theme":"red","halo":"chip","target":"attrs.animation.duration","text":"Duration, delay, frame rate","at":"left","arrow":true,"width":2.5,"arrowFill":"accent"},{"kind":"title","theme":"red","halo":"chip","target":"attrs.animation.loop","text":"Loop","at":"left","arrow":true,"width":2.5,"arrowFill":"accent"},{"kind":"title","theme":"red","halo":"chip","target":"attrs.animation.fillMode","text":"Fill mode","at":"left","arrow":true,"width":2.5,"arrowFill":"accent"},{"kind":"title","theme":"red","halo":"chip","target":"attrs.animation.start","text":"What starts the animation","at":"left","arrow":true,"width":2.5,"arrowFill":"accent"}],{"scale":1.1})
+annotate: annotate([{"kind":"dim","bounds":{"x":1041,"y":203,"w":383,"h":492},"padding":8,"color":"#fff","fillAlpha":0.8},{"kind":"box","theme":"red","target":"attrs.animation.duration","padding":2,"color":"#08f","stroke":1.5,"fill":"solid","fillAlpha":0.2},{"kind":"box","theme":"red","target":"attrs.animation.loop","padding":2,"color":"#08f","stroke":1.5,"fill":"solid","fillAlpha":0.2},{"kind":"box","theme":"red","target":"attrs.animationBehaviour.playEndAction","padding":2,"color":"#08f","stroke":1.5,"fill":"solid","fillAlpha":0.2},{"kind":"box","theme":"red","target":"attrs.animation.playOn","padding":2,"color":"#08f","stroke":1.5,"fill":"solid","fillAlpha":0.2},{"kind":"title","theme":"red","halo":"chip","target":"attrs.animation.duration","text":"Duration, delay, frame rate","at":"left","arrow":true,"width":2.5,"arrowFill":"accent"},{"kind":"title","theme":"red","halo":"chip","target":"attrs.animation.loop","text":"Loop","at":"left","arrow":true,"width":2.5,"arrowFill":"accent"},{"kind":"title","theme":"red","halo":"chip","target":"attrs.animationBehaviour.playEndAction","text":"Fill mode","at":"left","arrow":true,"width":2.5,"arrowFill":"accent"},{"kind":"title","theme":"red","halo":"chip","target":"attrs.animation.playOn","text":"What starts the animation","at":"left","arrow":true,"width":2.5,"arrowFill":"accent"}],{"scale":1.1})
 notes: scale 1.1 (800-px crop). These are DOCUMENT properties — click the tree root (elementTree.root.title) so nothing else is selected. Ticking Loop reveals Iterations and Direction; Fill Mode is always visible (2026-09 feature); choosing a Start other than On Load reveals its own extra rows (On Scroll into View adds Threshold and On Scroll Out).
 */}
-![The Animation and Timeline & Trigger sections of the document properties: duration, delay, frame rate, loop, fill mode and the start trigger](/images/docs/editor/animation/animation-settings.png)
+![The Animation, Playback Triggers and Playback Behaviour sections of the document properties: duration, delay, frame rate, loop, the trigger lists and the play actions](/images/docs/editor/animation/animation-settings.png)
 
 ### Timing
 
@@ -124,28 +124,43 @@ notes: scale 1.1 (800-px crop). These are DOCUMENT properties — click the tree
 | **Delay** (ms) | wait before it starts |
 | **Frame Rate** (fps) | the frame grid; *Max* = as fast as the player can (JS modes) |
 | **Loop** | repeat when finished; with Loop on: **Direction** — Normal · Reverse · Alternate · Alternate Reverse — and **Iterations** (empty = infinite) |
-| **Fill Mode** | what shows *outside* the active time — **Forwards** holds the last frame after the end, **Backwards** shows the first frame during the delay, **Both** does both, **None** reverts to the static artwork |
-| **Reset on Finish** | jump back to the first frame at the end (hidden for *On Load*, and unavailable while looping) |
 
-### Start trigger
+### Playback triggers
 
-**Start** decides what starts the animation:
+A trigger lists which events **play**, **stop**, **pause** and **resume** the animation — four
+lists over the same four events, **Load**, **Hover in**, **Hover out** and **Click**:
 
-| Start | Then… | Out-action (when it ends) |
-| :-- | :-- | :-- |
-| **On Load** | plays as soon as the page shows it | — |
-| **On Mouse Over** | plays while the pointer is over it | *On Mouse Out*: Pause · Reset · Continue |
-| **On Click** | plays after a click | *2nd Click*: Pause · Reset · Continue |
-| **On Scroll into View** | plays when it enters the viewport; **Threshold** (%) sets how much must be visible | *On Scroll Out*: Pause · Reset · Continue |
-| **Programmatic** | nothing — your code starts it through the player API | — |
+| List | Acts while the animation is… |
+| :-- | :-- |
+| **Plays on** | stopped — a play (see *When played*) |
+| **Stops on** | playing or paused — a stop (see *When stopped*) |
+| **Pauses on** | playing — freezes the current frame |
+| **Resumes on** | paused — continues; left empty, the *Plays on* events resume it |
 
-**Pause** resumes later from the same spot, **Reset** returns to the start, **Continue** keeps
-playing.
+A new document plays on load. Ticking *Hover in* under *Plays on* adds *Hover out* under
+*Pauses on* for you; *Click* under both *Plays on* and *Pauses on* makes every click play or
+pause; nothing ticked means your code starts it through the player API. **Out of View** says
+what happens while none of it is on screen — **Pause** (it resumes when it comes back),
+**Continue** or **Reset** — with **In-View Threshold** (%) and **In-View Delay** (ms) deciding
+when it counts as seen.
+
+### Playback behaviour
+
+How a play, a stop and the natural end look — the same words whoever asks, the trigger, a
+component's `play` property or `play()` / `stop()` from code:
+
+| Setting | Choices |
+| :-- | :-- |
+| **When played** | **Resume** (from where it is) · **Restart** (from the beginning) · **Jump to end** |
+| **When stopped** | **Reset** (back to the start state) · **Rewind** (plays back to it) |
+| **Complete iteration on stop** | a stop waits for the current iteration to finish first |
+| **When it ends** | **Hold** (keeps the last frame) · **Reset** · **Rewind** |
 
 ### Triggers and the CSS-only file
 
-A pure-CSS SVG can express **On Load**, **On Mouse Over** (with *Pause* on mouse out) and
-**Programmatic**. Choosing **On Click** or **On Scroll into View** — or Reset / Continue —
+A pure-CSS SVG can express **Load**, **Hover in** and **Hover out** (a pause or a stop, not both)
+with the default actions. Every choice is marked *(CSS)* or *(JS)*; ticking a *(JS)* one —
+**Click**, **Restart**, **Rewind**, a stop that completes the iteration, the visibility gate —
 switches the file to the **SVG + CSS + JS triggers** flavour automatically (a few embedded
 lines). The JSON and SVG + JS formats support everything. See
 [File formats](/docs/svga/editor/save#file-formats-which-one-to-save).

@@ -14,24 +14,24 @@ export interface LearnCategory { id: string; title: string; line: string; videos
 
 // where each video's topic is written up in the docs (the link under the card)
 const DOCS = {
-  react: "/docs/svga/player-library/react", autoplay: "/docs/svga/player-library/react#autoplay", state: "/docs/svga/player-library/react#declarative-playback--play-pause-playmode-completeiteration",
-  apiRef: "/docs/svga/player-library/react#imperative-api-apiref", web: "/docs/svga/player-library/web-player#the-playback-api", callbacks: "/docs/svga/player-library/web-player#callbacks",
+  react: "/docs/svga/player-library/react", autoplay: "/docs/svga/player-library/react#play-on-trigger-playontrigger", state: "/docs/svga/player-library/react#declarative-playback--play-pause",
+  playerRef: "/docs/svga/player-library/react#imperative-api-playerref", web: "/docs/svga/player-library/web-player#the-playback-api", callbacks: "/docs/svga/player-library/web-player#callbacks",
   triggers: "/docs/svga/player-library/playback-and-triggers", editorTriggers: "/docs/svga/editor/animation#playback-and-triggers",
   prerendered: "/docs/svga/prerendered-svg/on-the-web", exporting: "/docs/svga/editor/export",
 };
 export const LEARN_CATEGORIES: Array<LearnCategory> = [
-  { id: "react", title: "The player in React", line: "Three ways to control the player, from the simplest to full control: play on trigger, React state and apiRef.", videos: [
-    { name: "learn-react-autoplay", title: "1. The simplest way: play on trigger", line: "One line of code, playing as set up in the editor — and properties that override it: start on hover or click, reset when the pointer leaves, play just once.", docs: DOCS.autoplay },
+  { id: "react", title: "The player in React", line: "Three ways to control the player, from the simplest to full control: play on trigger, React state and playerRef.", videos: [
+    { name: "learn-react-autoplay", title: "1. The simplest way: play on trigger", line: "One line of code, playing as set up in the editor — and properties that override it: play on hover in or click, stop when the pointer leaves, play just once.", docs: DOCS.autoplay },
     { name: "learn-react-props", title: "2. Declarative control: React state", line: "Play, restart and progress bound to React state — Play and Pause buttons, a Restart that gives the player a new key, and a slider that picks the moment.", docs: DOCS.state },
-    { name: "learn-react-apiref", title: "3. Imperative control: apiRef", line: "Play, pause, restart, a slider for any moment, double speed and reverse — each one a single call on the player.", docs: DOCS.apiRef },
+    { name: "learn-react-apiref", title: "3. Imperative control: playerRef", line: "Play, pause, restart, a slider for any moment, double speed and reverse — each one a single call on the player.", docs: DOCS.playerRef },
   ] },
   { id: "web", title: "The player on the web", line: "No framework: the web player and its calls, in plain JavaScript.", videos: [
     { name: "learn-web-api", title: "1. Control it from your code", line: "One call creates the player; a slider that sets the moment and follows the animation, a jump, and speed buttons — each one call.", docs: DOCS.web },
     { name: "learn-web-events", title: "2. Events and problems", line: "onFinish moves the page on; warnings and errors arrive with a code and a kind, so the console stays quiet.", docs: DOCS.callbacks },
   ] },
-  { id: "triggers", title: "Triggers: when it plays by itself", line: "The trigger saved in the file decides when an animation starts and what it does when you look away. With play, progress or time, your code decides instead.", videos: [
-    { name: "learn-triggers-ball", title: "1. Every trigger on one ball", line: "Load, mouse over, click and none; then pause, reset, reverse or continue when the pointer leaves, and what happens when it scrolls away.", docs: DOCS.triggers },
-    { name: "learn-triggers-practice", title: "2. Triggers in practice", line: "Each trigger where it fits: a courier on load, a Delete lid on hover, a like on click, a reminder once, a payment step left to the code.", docs: DOCS.triggers },
+  { id: "triggers", title: "Triggers: when it plays by itself", line: "The trigger saved in the file lists what plays, pauses and stops an animation, and the timeline what a stop does and what happens when you look away. With play, playCurrentProgress or playCurrentTime, your code decides instead.", videos: [
+    { name: "learn-triggers-ball", title: "1. Every trigger on one ball", line: "Load, hover in, click and an empty trigger; then pause, stop, rewind or continue when the pointer leaves, and what happens when it scrolls away.", docs: DOCS.triggers },
+    { name: "learn-triggers-practice", title: "2. Triggers in practice", line: "Each trigger where it fits: a courier on load, a Delete lid on hover in, a like on click, a reminder once, a payment step left to the code.", docs: DOCS.triggers },
   ] },
   { id: "prerendered", title: "Pre-rendered SVG", line: "The file is the animation — no library at all.", videos: [
     { name: "learn-prerendered-flavours", title: "1. Which file: CSS, CSS + script, or JS?", line: "The same ball saved three ways, embedded with an iframe — pick the smallest file that does what you need.", docs: DOCS.prerendered },
