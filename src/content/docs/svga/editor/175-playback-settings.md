@@ -55,10 +55,10 @@ the same four events. The **Playback Triggers** section writes `timeline.trigger
 
 | Control | Writes | Acts while the animation is… |
 |---|---|---|
-| **Plays on** | `trigger.playOn` | stopped — a play, per *When played* below |
-| **Stops on** | `trigger.playOff` | playing or paused — a stop, per *When stopped* below |
-| **Pauses on** | `trigger.pauseOn` | playing — freezes the current frame |
-| **Resumes on** | `trigger.pauseOff` | paused — continues; left empty, the *Plays on* events resume it |
+| **Plays on** | `trigger.playStart` | stopped — a play, per *When played* below |
+| **Stops on** | `trigger.playStop` | playing or paused — a stop, per *When stopped* below |
+| **Pauses on** | `trigger.pauseStart` | playing — freezes the current frame |
+| **Resumes on** | `trigger.pauseStop` | paused — continues; left empty, the *Plays on* events resume it |
 
 Each list ticks any of **Load**, **Hover in**, **Hover out** and **Click**. A new document plays on
 load. Ticking *Hover in* under *Plays on* adds *Hover out* under *Pauses on* for you — the usual
@@ -86,10 +86,10 @@ a component's `play` property, or `play()` / `stop()` from code:
 
 | Control | Writes | Choices |
 |---|---|---|
-| **When played** | `timeline.playOnAction` | **Resume** (default — continues from where it is; at the start or the end, a fresh run) · **Restart** (from the beginning every time) · **Jump to end** (shows the end, no motion) |
-| **When stopped** | `timeline.playOffAction` | **Reset** (default — jumps back to the start state) · **Rewind** (plays back to it) |
-| **Complete iteration on stop** | `timeline.completeIterationOnPlayOff` | a stop waits for the current iteration to finish first — a heartbeat should not die mid-beat |
-| **When it ends** | `timeline.playEndAction` | **Hold** (default — keeps the last frame) · **Reset** · **Rewind** |
+| **When played** | `timeline.playStartAction` | **Resume** (default — continues from where it is; at the start or the end, a fresh run) · **Restart** (from the beginning every time) · **Jump to end** (shows the end, no motion) |
+| **When stopped** | `timeline.playStopAction` | **Reset** (default — jumps back to the start state) · **Rewind** (plays back to it) |
+| **Complete iteration on stop** | `timeline.completeIterationOnPlayStop` | a stop waits for the current iteration to finish first — a heartbeat should not die mid-beat |
+| **When it ends** | `timeline.playFinishAction` | **Hold** (default — keeps the last frame) · **Reset** · **Rewind** |
 
 **Use JS Triggers** only matters for the pre-rendered *SVG + CSS animation* export, and decides
 how the trigger is implemented in that file:

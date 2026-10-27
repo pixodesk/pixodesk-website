@@ -6,7 +6,7 @@
       "outTime": 1800,
       "iterations": "infinite",
       "trigger": {
-        "playOn": "load"
+        "playStart": "load"
       },
       "outOfViewAction": "pause"
     },

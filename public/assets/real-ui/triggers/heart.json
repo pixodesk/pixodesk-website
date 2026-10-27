@@ -6,7 +6,7 @@
     "timeline": {
       "outTime": 600,
       "iterations": 1,
-      "trigger": {"playOn": "click", "pauseOn": "click"}
+      "trigger": {"playStart": "click", "pauseStart": "click"}
     },
     "version": "1.9.0"
   },
