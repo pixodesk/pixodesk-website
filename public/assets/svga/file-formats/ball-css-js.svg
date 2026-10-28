@@ -1,17 +1,37 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" id="_px_3g09tpke" data-px-meta="runtime:{useCssAnimation:true,useJsTriggers:true},animator:{version:'1.8.1',timeline:{outTime:1000,trigger:{start:'load',outOfView:'pause',inViewThreshold:0.5,inViewDebounce:150},iterations:'infinite',direction:'normal'}}">
-  <style>@keyframes _px_3g09tpkf {0% {transform:translate(200px,60px);animation-timing-function:cubic-bezier(0.33,0,0.67,0.33);}
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" id="_px_3gd3q2c8" data-px-meta="runtime:{useCssAnimation:true,useJsTriggers:true},animator:{version:'1.10.1',timeline:{outTime:1000,triggers:{start:'load'},iterations:'infinite',iterationDirection:'normal',actions:{suspend:{transition:'pause'}},inViewThreshold:0.5,inViewDebounce:150}}">
+  <style>@keyframes _px_3gd3q2c9 {0% {transform:translate(200px,60px);animation-timing-function:cubic-bezier(0.33,0,0.67,0.33);}
 50% {transform:translate(200px,320px);animation-timing-function:cubic-bezier(0.33,0.67,0.67,1);}
 99%, 100% {transform:translate(200px,60px)}}
-.px-anim-enabled ._px_3g09tpkg { animation: 1000ms _px_3g09tpkf infinite forwards; }
+.px-anim-enabled ._px_3gd3q2ca { animation: 1000ms _px_3gd3q2c9 infinite forwards; }
 .px-anim-enabled.px-anim-playing .px-anim-element {animation-play-state: running !important;}
 .px-anim-enabled:not(.px-anim-playing) .px-anim-element {animation-play-state: paused;}</style>
-  <ellipse id="ball" class="px-anim-element _px_3g09tpkg" fill="#2a7fff" transform="translate(200,60)" rx="40" ry="40" data-px-meta="animate:{transform:{keyframes:[{time:0,value:{translate:[200,60]},easing:[0.33,0,0.67,0.33]},{time:500,value:{translate:[200,320]},easing:[0.33,0.67,0.67,1]},{time:990,value:{translate:[200,60]}}]}}"/>
+  <ellipse id="ball" class="px-anim-element _px_3gd3q2ca" fill="#2a7fff" transform="translate(200,60)" rx="40" ry="40" data-px-meta="animate:{transform:{keyframes:[{time:0,value:{translate:[200,60]},easing:[0.33,0,0.67,0.33]},{time:500,value:{translate:[200,320]},easing:[0.33,0.67,0.67,1]},{time:990,value:{translate:[200,60]}}]}}"/>
 <script data-px-script="true">
 //<![CDATA[
 (function() {
   function init(el) {
-    var threshold = 0.5;
-    var debounce = 150;
+    var startOn = ["load"], stopOn = [], pauseOn = [], resumeOn = ["load"];
+    var state = "stopped", finished = false, pendingOff = false, reversed = false;
+    function forward() {}
+    function rest() { forward(); el.classList.remove("px-anim-enabled", "px-anim-playing"); el.getBoundingClientRect(); state = "stopped"; finished = false; }
+    function on() { pendingOff = false; forward(); finished = false; if (finished) { el.classList.remove("px-anim-enabled", "px-anim-playing"); el.getBoundingClientRect(); } el.classList.add("px-anim-enabled", "px-anim-playing"); state = "playing"; }
+    function pause() { pendingOff = false; el.classList.remove("px-anim-playing"); state = "paused"; }
+    function resume() { el.classList.add("px-anim-enabled", "px-anim-playing"); state = "playing"; }
+    function performOff() { pendingOff = false; rest(); }
+    function off() { performOff(); }
+    el.addEventListener("animationend", function() {
+      if (reversed) { rest(); return; }
+      finished = true;
+      if (pendingOff) { performOff(); return; }
+      state = "stopped";
+    });
+    function fire(ev, direct) {
+      if (state === "stopped") { if (startOn.indexOf(ev) >= 0) requestStart(direct); }
+      else if (state === "paused") { if (resumeOn.indexOf(ev) >= 0) requestStart(direct); else if (stopOn.indexOf(ev) >= 0) off(); }
+      else { if (pauseOn.indexOf(ev) >= 0) pause(); else if (stopOn.indexOf(ev) >= 0) off(); }
+    }
+    function start() { if (state === "paused") resume(); else on(); }
+    var threshold = 0.5, debounce = 150;
     var steps = []; for (var s = 0; s <= 20; s++) steps.push(s / 20);
     function pxRatio(i) {
       var t = i.boundingClientRect, v = i.intersectionRect;
@@ -21,27 +41,35 @@
       var d = Math.min(t.height, vp);
       return d > 0 ? v.height / d : i.intersectionRatio;
     }
-    var finished = false;
-    el.addEventListener("animationend", function() { finished = true; });
-    var open = false, timer = 0;
+    var open = false, timer = 0, startPending = false, heldByGate = false;
     function pxOpen() {
       timer = 0; if (open) return; open = true;
-      if (finished) { finished = false; el.classList.remove("px-anim-enabled", "px-anim-playing"); el.getBoundingClientRect(); }
-      el.classList.add("px-anim-enabled", "px-anim-playing");
+      if (startPending) { startPending = false; heldByGate = false; start(); }
+      else if (heldByGate) { heldByGate = false; if (state === "playing") el.classList.add("px-anim-enabled", "px-anim-playing"); }
     }
     function pxClose() {
       if (timer) { clearTimeout(timer); timer = 0; }
-      if (!open) return; open = false; el.classList.remove("px-anim-playing");
+      if (!open) return; open = false;
+      if (state !== "playing") return;
+      el.classList.remove("px-anim-playing"); heldByGate = true;
     }
-    new IntersectionObserver(function(e) { e.forEach(function(i) {
-      var r = i.isIntersecting ? pxRatio(i) : 0;
-      if (r > 0 && r >= threshold) { if (!open && !timer) { timer = debounce > 0 ? setTimeout(pxOpen, debounce) : (pxOpen(), 0); } }
-      else if (r <= 0) { pxClose(); }
-      else if (!open && timer) { clearTimeout(timer); timer = 0; }
-    }); }, { threshold: steps }).observe(el);
+    function requestStart(direct) {
+      if (direct || open) { if (timer) { clearTimeout(timer); timer = 0; } open = true; startPending = false; heldByGate = false; start(); return; }
+      startPending = true;
+    }
+    if (typeof IntersectionObserver === "undefined") { open = true; } else {
+      new IntersectionObserver(function(e) { e.forEach(function(i) {
+        var r = i.isIntersecting ? pxRatio(i) : 0;
+        if (document.visibilityState === "hidden") { pxClose(); return; }
+        if (r > 0 && r >= threshold) { if (!open && !timer) { timer = debounce > 0 ? setTimeout(pxOpen, debounce) : (pxOpen(), 0); } }
+        else if (r <= 0) { pxClose(); }
+        else if (!open && timer) { clearTimeout(timer); timer = 0; }
+      }); }, { threshold: steps }).observe(el);
+    }
+    fire("load", false);
   }
   var el = document.currentScript.closest('svg');
-  (el ? [el] : document.querySelectorAll("#_px_3g09tpke")).forEach(init);
+  (el ? [el] : document.querySelectorAll("#_px_3gd3q2c8")).forEach(init);
 })();
 //]]>
 </script>

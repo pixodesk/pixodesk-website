@@ -51,14 +51,14 @@ always native-driven.
 ## Playback triggers
 
 A trigger lists **which events play, stop, pause and resume** the animation — four lists over
-the same four events. The **Playback Triggers** section writes `timeline.trigger`:
+the same four events. The **Playback Triggers** section writes `timeline.triggers`:
 
 | Control | Writes | Acts while the animation is… |
 |---|---|---|
-| **Plays on** | `trigger.playStart` | stopped — a play, per *When played* below |
-| **Stops on** | `trigger.playStop` | playing or paused — a stop, per *When stopped* below |
-| **Pauses on** | `trigger.pauseStart` | playing — freezes the current frame |
-| **Resumes on** | `trigger.pauseStop` | paused — continues; left empty, the *Plays on* events resume it |
+| **Plays on** | `triggers.start` | stopped — a play, per *When played* below |
+| **Stops on** | `triggers.stop` | playing or paused — a stop, per *When stopped* below |
+| **Pauses on** | `triggers.pause` | playing — freezes the current frame |
+| **Resumes on** | `triggers.resume` | paused — continues; left empty, the *Plays on* events resume it |
 
 Each list ticks any of **Load**, **Hover in**, **Hover out** and **Click**. A new document plays on
 load. Ticking *Hover in* under *Plays on* adds *Hover out* under *Pauses on* for you — the usual
@@ -69,7 +69,7 @@ pause. Untick everything and nothing starts the animation until your code calls 
 on “pause” (both are the defaults). The animation then waits until enough of it is on screen,
 plays, pauses when it scrolls away, and carries on when it comes back.
 
-**Out of View** writes `timeline.outOfViewAction` — what happens while none of it is on screen:
+**Out of View** writes `timeline.actions.suspend.transition` — what happens while none of it is on screen:
 “pause” (the default; it resumes where it left off), “continue” (keep running, and start without
 waiting to be seen) or “reset” (back to the start, so it replays on the next entry).
 
@@ -80,16 +80,16 @@ starts nothing.
 
 ## Playback behaviour
 
-How a play, a stop and the natural end look. The **Playback Behaviour** section writes these
-beside the trigger, and the same words apply whoever asks for the play or the stop — the trigger,
+How a play, a stop and the natural end look. The **Playback Behaviour** section writes them into
+`timeline.actions`, beside the triggers, and the same words apply whoever asks for the play or the stop — the trigger,
 a component's `play` property, or `play()` / `stop()` from code:
 
 | Control | Writes | Choices |
 |---|---|---|
-| **When played** | `timeline.playStartAction` | **Resume** (default — continues from where it is; at the start or the end, a fresh run) · **Restart** (from the beginning every time) · **Jump to end** (shows the end, no motion) |
-| **When stopped** | `timeline.playStopAction` | **Reset** (default — jumps back to the start state) · **Rewind** (plays back to it) |
-| **Complete iteration on stop** | `timeline.completeIterationOnPlayStop` | a stop waits for the current iteration to finish first — a heartbeat should not die mid-beat |
-| **When it ends** | `timeline.playFinishAction` | **Hold** (default — keeps the last frame) · **Reset** · **Rewind** |
+| **When played** | `actions.start.transition` | **Resume** (default — continues from where it is; at the start or the end, a fresh run) · **Restart** (from the beginning every time) · **Jump to end** (shows the end, no motion) |
+| **When stopped** | `actions.stop.transition` | **Reset** (default — jumps back to the start state) · **Rewind** (plays back to it) |
+| **Complete iteration on stop** | `actions.stop.completeIteration` | a stop waits for the current iteration to finish first — a heartbeat should not die mid-beat |
+| **When it ends** | `actions.finish.transition` | **Hold** (default — keeps the last frame) · **Reset** · **Rewind** |
 
 **Use JS Triggers** only matters for the pre-rendered *SVG + CSS animation* export, and decides
 how the trigger is implemented in that file:
