@@ -1,7 +1,8 @@
 /**
  * The "In real interfaces" cards (and the hero, also a `data-rui-card` box) on /new-design2 pages: when a card nears the screen, load the web player once
  * (the published @pixodesk/svg-animator-web, copied by kf `yarn website:real-ui`) and play every box of the card.
- * Each file keeps its own trigger (start, off screen, threshold), so the site rule "play only while seen" holds as is.
+ * Each file keeps its own triggers (`playOnTrigger: true` — without it the player shows only the first frame), so the site
+ * rule "play only while seen" holds as is.
  * The card's behaviour (data-rui-behaviour) adds only what the video's code does:
  *   stills  — a player held at a progress (`progress={n}` in the code)
  *   hover   — a button plays its icon forward on enter, backward on leave (the video's HoverButton)
@@ -15,7 +16,9 @@ interface PlayerApi {
   setPlaybackRate(rate: number): void;
   setCurrentProgress(progress: number): void;
 }
-interface PlayerLibrary { createAnimator(options: { src: string; container: Element; timeline?: string }): PlayerApi }
+interface PlayerLibrary { create(options: { src: string; container: Element; playOnTrigger: boolean }): PlayerApi }
+/** The UMD build's global since 1.0.51: `Pixodesk.SvgAnimator`, its `create` = the module's `createSvgAnimationPlayer`. */
+interface PlayerGlobal { Pixodesk?: { SvgAnimator?: PlayerLibrary } }
 interface Behaviour { stills?: Record<string, number>; hover?: boolean; toggle?: { player: string; pause: string; resume: string } | null }
 
 const PLAYER_URL = "/app/real-ui/pixodesk-svg-animator.umd.min.js";
@@ -26,7 +29,7 @@ function loadPlayer(): Promise<PlayerLibrary> {
     const script = document.createElement("script");
     script.src = PLAYER_URL;
     script.onload = () => {
-      const lib = (window as unknown as { PixodeskAnimator?: PlayerLibrary }).PixodeskAnimator;
+      const lib = (window as unknown as PlayerGlobal).Pixodesk?.SvgAnimator;
       if (lib) resolve(lib); else reject(new Error("the player did not load"));
     };
     script.onerror = () => reject(new Error(`cannot load ${PLAYER_URL}`));
@@ -44,7 +47,7 @@ async function mount(card: HTMLElement): Promise<void> {
   const behaviour: Behaviour = JSON.parse(card.dataset.ruiBehaviour ?? "{}");
   const players = new Map<string, PlayerApi>();
   for (const box of Array.from(card.querySelectorAll<HTMLElement>("[data-rui-src]"))) {
-    const api = lib.createAnimator({ src: box.dataset.ruiSrc ?? "", container: box, timeline: box.dataset.ruiTimeline });
+    const api = lib.create({ src: box.dataset.ruiSrc ?? "", container: box, playOnTrigger: true });
     players.set(box.dataset.ruiPlayer ?? "", api);
   }
   for (const [name, progress] of Object.entries(behaviour.stills ?? {})) {

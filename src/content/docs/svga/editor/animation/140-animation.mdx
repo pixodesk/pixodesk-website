@@ -105,7 +105,9 @@ lay out the key states first and refine timing and easing afterwards.
 ## Playback and Triggers
 
 How the saved animation plays on the page is set on the document (select nothing): the
-**Animation**, **Playback Triggers** and **Playback Behaviour** sections of the Properties panel.
+**Animation**, **Playback Preset**, **Playback Loop**, **Playback Triggers** and **Playback Behaviour**
+sections of the Properties panel. **Playback Preset** sets the triggers, the actions and Loop in one pick
+— see [Playback preset](/docs/svga/editor/playback-settings#playback-preset).
 
 {/* e2e-screenshot
 app: svga · viewport: 1440x900 · hideDevUi: true · date: 2026-09-01
@@ -123,7 +125,7 @@ notes: scale 1.1 (800-px crop). These are DOCUMENT properties — click the tree
 | **Duration** (ms) | the length of the animation — also the timeline range |
 | **Delay** (ms) | wait before it starts |
 | **Frame Rate** (fps) | the frame grid; *Max* = as fast as the player can (JS modes) |
-| **Loop** | repeat when finished; with Loop on: **Direction** — Normal · Reverse · Alternate · Alternate Reverse — and **Iterations** (empty = infinite) |
+| **Loop** | the **Playback Loop** section's checkbox — repeat when finished; with Loop on: **Iterations** (empty = infinite) and **Direction** — Normal · Reverse · Alternate · Alternate Reverse |
 
 ### Playback triggers
 
@@ -132,14 +134,14 @@ lists over the same four events, **Load**, **Hover in**, **Hover out** and **Cli
 
 | List | Acts while the animation is… |
 | :-- | :-- |
-| **Plays on** | stopped — a play (see *When played*) |
-| **Stops on** | playing or paused — a stop (see *When stopped*) |
-| **Pauses on** | playing — freezes the current frame |
-| **Resumes on** | paused — continues; left empty, the *Plays on* events resume it |
+| **Play on** | stopped — a play (see *Play Action*) |
+| **Stop on** | playing or paused — a stop (see *Stop Action*) |
+| **Pause on** | playing — freezes the current frame |
+| **Resume on** | paused — continues; left empty, the *Play on* events resume it |
 
-A new document plays on load. Ticking *Hover in* under *Plays on* adds *Hover out* under
-*Pauses on* for you; *Click* under both *Plays on* and *Pauses on* makes every click play or
-pause; nothing ticked means your code starts it through the player API. **Out of View** says
+A new document plays on load. Ticking *Hover in* under *Play on* adds *Hover out* under
+*Pause on* for you; *Click* under both *Play on* and *Pause on* makes every click play or
+pause; nothing ticked means your code starts it through the player API. **Out-of-View Action** says
 what happens while none of it is on screen — **Pause** (it resumes when it comes back),
 **Continue** or **Reset** — with **In-View Threshold** (%) and **In-View Delay** (ms) deciding
 when it counts as seen.
@@ -151,10 +153,10 @@ component's `play` property or `play()` / `stop()` from code:
 
 | Setting | Choices |
 | :-- | :-- |
-| **When played** | **Resume** (from where it is) · **Restart** (from the beginning) · **Jump to end** |
-| **When stopped** | **Reset** (back to the start state) · **Rewind** (plays back to it) |
-| **Complete iteration on stop** | a stop waits for the current iteration to finish first |
-| **When it ends** | **Hold** (keeps the last frame) · **Reset** · **Rewind** |
+| **Play Action** | **Resume** (from where it is) · **Restart** (from the beginning) · **Jump to end** |
+| **Stop Action** | **Reset** (back to the start state) · **Rewind** (plays back to it) |
+| **Complete Iteration** (under *Stop Action*) | a stop waits for the current iteration to finish first |
+| **End Action** | **Hold** (keeps the last frame) · **Reset** · **Rewind** |
 
 ### Triggers and the CSS-only file
 

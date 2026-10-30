@@ -28,8 +28,8 @@ save.
 | **Duration** | `timeline.outTime` (ms) | the end of the content window — one pass plays from 0 to it; keyframe times are absolute |
 | **In Time** / **Play Duration** | `timeline.inTime` / `timeline.playDuration` (ms) | the window's start, and the window remapped to wall time (slower or faster) |
 | **Delay** | `timeline.delay` (ms) | wait before the first iteration starts |
-| **Loop** · **Iterations** | `timeline.iterations` | a number, or “infinite” |
-| **Direction** | `timeline.iterationDirection` | “normal”, “reverse”, “alternate” (ping-pong), “alternateReverse” |
+| **Loop** · **Iterations** | `timeline.iterations` | a number, or “infinite” — in the **Playback Loop** section |
+| **Direction** | `timeline.iterationDirection` | “normal”, “reverse”, “alternate” (ping-pong), “alternateReverse” — in the **Playback Loop** section |
 | **Frame rate** | `timeline.frameRate` | a target rate for the frame-loop engine only; leave it unset to run uncapped |
 
 ## Engine
@@ -48,28 +48,67 @@ updated in a browser:
 Leave it on **auto** unless you need a guarantee. React Native ignores it — playback there is
 always native-driven.
 
+Where it sits: for a Pixodesk JSON file, **Engine** is a section of its own, the dropdown in its title
+row. For a pre-rendered SVG with embedded JS it is a dropdown in the **Runtime** section, and each
+choice shows the size of the player it embeds in the file.
+
+**Loop**, **Iterations** and **Direction** have their own **Playback Loop** section: the Loop checkbox
+sits in its title row, and the section opens only while Loop is ticked.
+
+## Playback preset
+
+The **Playback Preset** dropdown sets the trigger lists, the four actions and Loop in one pick. Open it
+to see each preset playing in a small example, with what it does and where it is typically used.
+
+| Preset | Sets | Typical use |
+|---|---|---|
+| **Loop when seen** | Play on *Load* · Loop · Out-of-View *Pause* | loaders, spinners, backgrounds |
+| **Play once when seen** | Play on *Load* · one iteration · End *Hold* · Out-of-View *Pause* | intros, counters, charts |
+| **Replay each time seen** | as above, but Out-of-View *Reset* | illustrations down a long page |
+| **Run always** | Play on *Load* · Loop · Out-of-View *Continue* | clocks and tickers |
+| **Hover: play / pause** | Play on *Hover in* · Pause on *Hover out* · Loop · Out-of-View *Continue* | cards and links |
+| **Hover: there and back** | Play on *Hover in* · one iteration · End *Rewind* · Out-of-View *Continue* | icons that move and settle back |
+| **Hover: one nudge** | Play on *Hover in* · Play *Restart* · one iteration · End *Reset* · Out-of-View *Continue* | playful icons |
+| **Click: play / pause** | Play on *Click* · Pause on *Click* · Loop | play / pause toggles |
+| **Manual: loop** | nothing in Play on · Loop | background jobs, the current step of a progress list |
+| **Manual: once** | nothing in Play on · one iteration · End *Hold* | success and error ticks |
+
+A preset is not saved in the file — the dropdown recognises it from those settings, and shows
+**Custom** as soon as one of them no longer matches (a loop count such as 3× is Custom too). Settings a
+preset doesn't name go back to their defaults; Direction, Duration, Delay and the in-view numbers are
+left as they are. In an SVG + CSS file each preset is marked (CSS) or (JS), and picking a (JS) one
+turns **Use JS Triggers** on.
+
 ## Playback triggers
 
-A trigger lists **which events play, stop, pause and resume** the animation — four lists over
-the same four events. The **Playback Triggers** section writes `timeline.triggers`:
+A trigger lists **which events play, stop and pause** the animation, and the editor works out what
+resumes it. The **Playback Triggers** section writes `timeline.triggers`:
 
-| Control | Writes | Acts while the animation is… |
-|---|---|---|
-| **Plays on** | `triggers.start` | stopped — a play, per *When played* below |
-| **Stops on** | `triggers.stop` | playing or paused — a stop, per *When stopped* below |
-| **Pauses on** | `triggers.pause` | playing — freezes the current frame |
-| **Resumes on** | `triggers.resume` | paused — continues; left empty, the *Plays on* events resume it |
+| Control | Writes | Offers | Acts while the animation is… |
+|---|---|---|---|
+| **Play on** | `triggers.start` | Load · Hover in · Click | stopped — a play, per *Play Action* below |
+| **Stop on** | `triggers.stop` | Hover out · Click | playing or paused — a stop, per *Stop Action* below |
+| **Pause on** | `triggers.pause` | Hover in · Hover out · Click | playing — freezes the current frame |
+| **Resume on** | nothing — worked out | shown, not edited | paused — continues |
 
-Each list ticks any of **Load**, **Hover in**, **Hover out** and **Click**. A new document plays on
-load. Ticking *Hover in* under *Plays on* adds *Hover out* under *Pauses on* for you — the usual
-pair, and yours to change. *Click* under both *Plays on* and *Pauses on* makes every click play or
-pause. Untick everything and nothing starts the animation until your code calls `play()`.
+Each list offers only the events that make sense for it — nothing starts on *Hover out* or stops on
+*Load*. **Resume on** follows the other lists: *Hover out* resumes what *Hover in* paused (and the
+other way round), a click resumes what a click paused, and the *Play on* events that do not also
+stop it resume it too. A new document plays on load. Ticking *Hover in* under *Play on* adds
+*Hover out* under *Pause on* for you — the usual pair, and yours to change. *Click* under both
+*Play on* and *Pause on* makes every click play or pause. *Play on* shows every choice; the other
+lists are dropdowns, and the **×** next to one empties it. Choose **None (manual)** under *Play on*
+and nothing starts the animation until your code calls `play()`.
 
-**To play an animation when it scrolls into view**, leave *Plays on* at “Load” and **Out of View**
+Two lists that react to the same event at the same moment are marked in red: *Stop on* and
+*Pause on* both on *Hover out* (the pause wins), or *Stop on* on the event that resumes a pause
+(the resume wins).
+
+**To play an animation when it scrolls into view**, leave *Play on* at “Load” and **Out-of-View Action**
 on “pause” (both are the defaults). The animation then waits until enough of it is on screen,
 plays, pauses when it scrolls away, and carries on when it comes back.
 
-**Out of View** writes `timeline.actions.suspend.transition` — what happens while none of it is on screen:
+**Out-of-View Action** writes `timeline.actions.suspend.transition` — what happens while none of it is on screen:
 “pause” (the default; it resumes where it left off), “continue” (keep running, and start without
 waiting to be seen) or “reset” (back to the start, so it replays on the next entry).
 
@@ -86,10 +125,10 @@ a component's `play` property, or `play()` / `stop()` from code:
 
 | Control | Writes | Choices |
 |---|---|---|
-| **When played** | `actions.start.transition` | **Resume** (default — continues from where it is; at the start or the end, a fresh run) · **Restart** (from the beginning every time) · **Jump to end** (shows the end, no motion) |
-| **When stopped** | `actions.stop.transition` | **Reset** (default — jumps back to the start state) · **Rewind** (plays back to it) |
-| **Complete iteration on stop** | `actions.stop.completeIteration` | a stop waits for the current iteration to finish first — a heartbeat should not die mid-beat |
-| **When it ends** | `actions.finish.transition` | **Hold** (default — keeps the last frame) · **Reset** · **Rewind** |
+| **Play Action** | `actions.start.transition` | **Resume** (default — continues from where it is; at the start or the end, a fresh run) · **Restart** (from the beginning every time) · **Jump to end** (shows the end, no motion) |
+| **Stop Action** | `actions.stop.transition` | **Reset** (default — jumps back to the start state) · **Rewind** (plays back to it) |
+| **Complete Iteration** (under *Stop Action*) | `actions.stop.completeIteration` | a stop waits for the current iteration to finish first — a heartbeat should not die mid-beat |
+| **End Action** | `actions.finish.transition` | **Hold** (default — keeps the last frame) · **Reset** · **Rewind** |
 
 **Use JS Triggers** only matters for the pre-rendered *SVG + CSS animation* export, and decides
 how the trigger is implemented in that file:
