@@ -82,13 +82,13 @@ turns **Use JS Triggers** on.
 ## Playback triggers
 
 A trigger lists **which events play, stop and pause** the animation, and the editor works out what
-resumes it. The **Playback Triggers** section writes `timeline.triggers`:
+resumes it. The **Playback Triggers** section writes `timeline.actionTriggers`:
 
 | Control | Writes | Offers | Acts while the animation is… |
 |---|---|---|---|
-| **Play on** | `triggers.start` | Load · Hover in · Click | stopped — a play, per *Play Action* below |
-| **Stop on** | `triggers.stop` | Hover out · Click | playing or paused — a stop, per *Stop Action* below |
-| **Pause on** | `triggers.pause` | Hover in · Hover out · Click | playing — freezes the current frame |
+| **Play on** | `actionTriggers.start` | Load · Hover in · Click | stopped — a play, per *Play Action* below |
+| **Stop on** | `actionTriggers.stop` | Hover out · Click | playing or paused — a stop, per *Stop Action* below |
+| **Pause on** | `actionTriggers.pause` | Hover in · Hover out · Click | playing — freezes the current frame |
 | **Resume on** | nothing — worked out | shown, not edited | paused — continues |
 
 Each list offers only the events that make sense for it — nothing starts on *Hover out* or stops on
@@ -108,7 +108,7 @@ Two lists that react to the same event at the same moment are marked in red: *St
 on “pause” (both are the defaults). The animation then waits until enough of it is on screen,
 plays, pauses when it scrolls away, and carries on when it comes back.
 
-**Out-of-View Action** writes `timeline.actions.suspend.transition` — what happens while none of it is on screen:
+**Out-of-View Action** writes `timeline.actions.suspend` — what happens while none of it is on screen:
 “pause” (the default; it resumes where it left off), “continue” (keep running, and start without
 waiting to be seen) or “reset” (back to the start, so it replays on the next entry).
 
@@ -120,15 +120,16 @@ starts nothing.
 ## Playback behaviour
 
 How a play, a stop and the natural end look. The **Playback Behaviour** section writes them into
-`timeline.actions`, beside the triggers, and the same words apply whoever asks for the play or the stop — the trigger,
+`timeline.actions`, beside the triggers — each action the word of its preset (`"stop": "rewind"`), or an object when it has more to say
+(`"stop": { "do": "rewind", "completeIteration": true }`) — and the same words apply whoever asks for the play or the stop — the trigger,
 a component's `play` property, or `play()` / `stop()` from code:
 
 | Control | Writes | Choices |
 |---|---|---|
-| **Play Action** | `actions.start.transition` | **Resume** (default — continues from where it is; at the start or the end, a fresh run) · **Restart** (from the beginning every time) · **Jump to end** (shows the end, no motion) |
-| **Stop Action** | `actions.stop.transition` | **Reset** (default — jumps back to the start state) · **Rewind** (plays back to it) |
+| **Play Action** | `actions.start` | **Resume** (default — continues from where it is; at the start or the end, a fresh run) · **Restart** (from the beginning every time) · **Jump to end** (shows the end, no motion) |
+| **Stop Action** | `actions.stop` | **Reset** (default — jumps back to the start state) · **Rewind** (plays back to it) |
 | **Complete Iteration** (under *Stop Action*) | `actions.stop.completeIteration` | a stop waits for the current iteration to finish first — a heartbeat should not die mid-beat |
-| **End Action** | `actions.finish.transition` | **Hold** (default — keeps the last frame) · **Reset** · **Rewind** |
+| **End Action** | `actions.finish` | **Hold** (default — keeps the last frame) · **Reset** · **Rewind** |
 
 **Use JS Triggers** only matters for the pre-rendered *SVG + CSS animation* export, and decides
 how the trigger is implemented in that file:

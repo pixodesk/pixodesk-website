@@ -15,7 +15,7 @@ import { SvgAnimationPlayer } from '@pixodesk/svg-animator-react';
 import animation from './animation.json';
 
 export default function Hero() {
-  return <SvgAnimationPlayer doc={animation} playOnTrigger />;
+  return <SvgAnimationPlayer doc={animation} playUsingActionTriggers />;
 }
 ```
 
