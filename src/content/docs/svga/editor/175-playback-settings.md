@@ -76,8 +76,8 @@ to see each preset playing in a small example, with what it does and where it is
 A preset is not saved in the file — the dropdown recognises it from those settings, and shows
 **Custom** as soon as one of them no longer matches (a loop count such as 3× is Custom too). Settings a
 preset doesn't name go back to their defaults; Direction, Duration, Delay and the in-view numbers are
-left as they are. In an SVG + CSS file each preset is marked (CSS) or (JS), and picking a (JS) one
-turns **Use JS Triggers** on.
+left as they are. In a **CSS keyframes (no JS)** file each preset is marked (CSS) or (JS), and picking a (JS) one
+switches the file type to **CSS keyframes (JS-triggers)**.
 
 ## Playback triggers
 
@@ -108,7 +108,7 @@ Two lists that react to the same event at the same moment are marked in red: *St
 on “pause” (both are the defaults). The animation then waits until enough of it is on screen,
 plays, pauses when it scrolls away, and carries on when it comes back.
 
-**Out-of-View Action** writes `timeline.actions.suspend` — what happens while none of it is on screen:
+**Out-of-View Action** writes `timeline.actions.outOfView` — what happens while none of it is on screen:
 “pause” (the default; it resumes where it left off), “continue” (keep running, and start without
 waiting to be seen) or “reset” (back to the start, so it replays on the next entry).
 
@@ -131,20 +131,23 @@ a component's `play` property, or `play()` / `stop()` from code:
 | **Complete Iteration** (under *Stop Action*) | `actions.stop.completeIteration` | a stop waits for the current iteration to finish first — a heartbeat should not die mid-beat |
 | **End Action** | `actions.finish` | **Hold** (default — keeps the last frame) · **Reset** · **Rewind** |
 
-**Use JS Triggers** only matters for the pre-rendered *SVG + CSS animation* export, and decides
-how the trigger is implemented in that file:
+The *SVG + CSS animation* export comes in two flavours — the **File Type** choice in the **Runtime** section (and on
+the welcome screen and in the Export dialog): **CSS keyframes (no JS)** or **CSS keyframes (JS-triggers)**. It decides
+how the trigger is implemented in the file:
 
-- With **Use JS Triggers** switched **off**, the file contains no script at all. “Load” works, and
-  “Hover in” / “Hover out” work through CSS `:hover` (a hover out may pause or stop, not both).
-  “Click” and waiting until the animation is on screen cannot be done in pure CSS, so the export
-  **starts it as soon as it is shown**; the play actions keep their defaults (a class cannot
-  restart keyframes or play them backwards). Every choice in the panel is marked *(CSS)* or
-  *(JS)*, and picking a *(JS)* one switches *Use JS Triggers* on for you.
-- With **Use JS Triggers** switched **on**, the export adds a few lines of inline script (no library),
+- With **CSS keyframes (no JS)**, the file contains no script at all — *pure CSS*. “Load” works, and
+  “Hover in” / “Hover out” work through CSS `:hover` (a hover out may pause or stop, not both, and only
+  when “Hover in” plays it). “Click” and waiting until the animation is on screen cannot be done in pure
+  CSS; a class cannot restart keyframes or play them backwards. In this mode the playback sections show
+  **what the file will actually do**: every choice is marked *(CSS)* or *(JS)*, and a setting pure CSS
+  cannot honour is shown at the value the file falls back to. Picking a *(JS)* choice switches the file
+  type to *CSS keyframes (JS-triggers)* for you — a message says so and the panel scrolls to the flashing
+  choice — and the marks go away, everything works.
+- With **CSS keyframes (JS-triggers)**, the export adds a few lines of inline script (no library),
   and the file behaves exactly as this panel says: every list, every action and the gate.
 
-The JSON format and the *SVG + JS animation* export always honour the full setting, whatever
-*Use JS Triggers* says.
+The JSON format and the *SVG + JS animation* export always honour the full setting. The **Export** dialog
+offers the same three *File Type* flavours, with the same marks and the same rule.
 
 ## Timeline — clock or scroll
 
