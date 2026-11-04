@@ -10,12 +10,12 @@
       "iterations": "infinite",
       "iterationDirection": "normal",
       "actions": {
-        "suspend": "pause"
+        "outOfView": "pause"
       },
       "inViewThreshold": 0.5,
       "inViewDebounce": 150
     },
-    "version": "1.11.1"
+    "version": "1.21.1"
   },
   "children": [
     {

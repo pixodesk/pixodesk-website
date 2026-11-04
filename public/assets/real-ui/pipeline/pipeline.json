@@ -5,12 +5,14 @@
     "timeline": {
       "outTime": 1800,
       "iterations": "infinite",
-      "trigger": {
-        "playStart": "load"
+      "actionTriggers": {
+        "start": "load"
       },
-      "outOfViewAction": "pause"
+      "actions": {
+        "outOfView": "pause"
+      }
     },
-    "version": "1.9.0"
+    "version": "1.15.0"
   },
   "children": [
     {

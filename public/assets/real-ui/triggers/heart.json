@@ -6,9 +6,9 @@
     "timeline": {
       "outTime": 600,
       "iterations": 1,
-      "trigger": {"playStart": "click", "pauseStart": "click"}
+      "actionTriggers": {"start": "click", "pause": "click"}
     },
-    "version": "1.9.0"
+    "version": "1.15.0"
   },
   "children": [
     {
