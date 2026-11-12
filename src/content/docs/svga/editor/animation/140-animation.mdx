@@ -129,18 +129,19 @@ notes: scale 1.1 (800-px crop). These are DOCUMENT properties — click the tree
 
 ### Playback triggers
 
-A trigger lists which events **play**, **stop**, **pause** and **resume** the animation — four
-lists over the same four events, **Load**, **Hover in**, **Hover out** and **Click**:
+A trigger lists which events **start**, **stop**, **pause** and **resume** a playback of the animation (a playback is one
+go of it, from a start until it is stopped or has ended) — four lists over the same four events, **Load**,
+**Hover in**, **Hover out** and **Click**:
 
 | List | Acts while the animation is… |
 | :-- | :-- |
-| **Play on** | stopped — a play (see *Play Action*) |
-| **Stop on** | playing or paused — a stop (see *Stop Action*) |
-| **Pause on** | playing — freezes the current frame |
-| **Resume on** | paused — continues; left empty, the *Play on* events resume it |
+| **Start playback on** | off or finished — starts a playback (see *Start playback*) |
+| **Stop playback on** | playing, paused or finished — stops the playback (see *Stop playback*) |
+| **Pause playback on** | playing — freezes the current frame |
+| **Resume playback on** | paused — continues; left empty, worked out from the other lists |
 
-A new document plays on load. Ticking *Hover in* under *Play on* adds *Hover out* under
-*Pause on* for you; *Click* under both *Play on* and *Pause on* makes every click play or
+A new document plays on load. Ticking *Hover in* under *Start playback on* adds *Hover out* under
+*Pause playback on* for you; *Click* under both *Start playback on* and *Pause playback on* makes every click play or
 pause; nothing ticked means your code starts it through the player API. **Out-of-View Action** says
 what happens while none of it is on screen — **Pause** (it resumes when it comes back),
 **Continue** or **Reset** — with **In-View Threshold** (%) and **In-View Delay** (ms) deciding
@@ -148,15 +149,15 @@ when it counts as seen.
 
 ### Playback behaviour
 
-How a play, a stop and the natural end look — the same words whoever asks, the trigger, a
-component's `play` property or `play()` / `stop()` from code:
+How a start, a stop and the end look — the same words whoever asks, the trigger, a
+component's `playback` property or `playback.start()` / `playback.stop()` from code. Each choice names where it goes (the start or the end)
+and how (*jump* at once, or *animate* there); arriving at the end runs **At end**:
 
 | Setting | Choices |
 | :-- | :-- |
-| **Play Action** | **Resume** (from where it is) · **Restart** (from the beginning) · **Jump to end** |
-| **Stop Action** | **Reset** (back to the start state) · **Rewind** (plays back to it) |
-| **Complete Iteration** (under *Stop Action*) | a stop waits for the current iteration to finish first |
-| **End Action** | **Hold** (keeps the last frame) · **Reset** · **Rewind** |
+| **Start playback** | **Continue** (from where it is) · **Jump to start** (from the beginning) · **Jump to end** |
+| **Stop playback** | **Jump to start** (straight back) · **Animate to start** (plays back to it) · **Jump to end** · **Animate to end** (finishes the current pass first) |
+| **At end** | **Hold** (keeps the last frame) · **Jump to start** · **Animate to start** |
 
 ### Triggers and the CSS-only file
 

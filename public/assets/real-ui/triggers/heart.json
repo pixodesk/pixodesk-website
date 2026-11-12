@@ -6,9 +6,9 @@
     "timeline": {
       "outTime": 600,
       "iterations": 1,
-      "actionTriggers": {"start": "click", "pause": "click"}
+      "actionTriggers": {"playback.start": "click", "playback.pause": "click"}
     },
-    "version": "1.15.0"
+    "version": "1.25.0"
   },
   "children": [
     {

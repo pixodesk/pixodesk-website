@@ -6,13 +6,13 @@
       "outTime": 1800,
       "iterations": "infinite",
       "actionTriggers": {
-        "start": "load"
+        "playback.start": "load"
       },
       "actions": {
         "outOfView": "pause"
       }
     },
-    "version": "1.15.0"
+    "version": "1.25.0"
   },
   "children": [
     {

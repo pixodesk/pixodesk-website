@@ -274,18 +274,18 @@ Defines how the animation timeline progresses.
 
 #### Playback Triggers
 
-Four lists say which events play, stop, pause and resume the animation — **Play on**, **Stop on**,
-**Pause on** and **Resume on**, each ticking any of **Load**, **Hover in**, **Hover out** and **Click**.
+Four lists say which events start, stop, pause and resume a playback of the animation — **Start playback on**, **Stop playback on**,
+**Pause playback on** and **Resume playback on**, each ticking any of **Load**, **Hover in**, **Hover out** and **Click**.
 
 - **Load** — plays as soon as the animation is on screen, so one further down the page waits until it scrolls into view
 - **Hover in** / **Hover out** — the pointer moving over the animation, and leaving it
-- **Click** — a click; in both *Play on* and *Pause on*, every click plays or pauses
+- **Click** — a click; in both *Start playback on* and *Pause playback on*, every click plays or pauses
 - nothing ticked — playback is controlled through JavaScript APIs
 
 #### Playback Behaviour
 
-**Play Action**, **Stop Action** and **End Action** say how those transitions look — resume or restart,
-reset or rewind, hold the last frame or go back to the start.
+**Start playback**, **Stop playback** and **At end** say how those moves look — continue or jump to the start, jump or
+animate back, hold the last frame or go back to the start.
 
 
 ### File Type

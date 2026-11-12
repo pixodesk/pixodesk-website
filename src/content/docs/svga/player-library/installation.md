@@ -116,11 +116,12 @@ Other types you may want by name:
 - `PxAnimationPlayerHandle` — the handle the components give you through `playerRef` (every framework
   package exports this one name).
 - `PxPlaybackOverride` — the playback override every player accepts.
-- `PxPlayStateRequest` — what the components' `playState` prop accepts: `'idle' | 'playing' | 'paused'`,
-  the `PxPlayState` values a host can ask for (`finished` and `destroyed` are reached by the player alone).
+- `PxPlayback` — what the components' `playback` prop accepts: `'off' | 'on' | 'paused'`, the positions a
+  host can ask for; `PxPlaybackState` is what the player reports back through `playback.getState()` (`finished`,
+  `returning` and `destroyed` are reached by the player alone).
 
 Hearing back from it: `PxAnimationPlayerCallbacks` is the single callback shape — the playback lifecycle
-plus `onWarn` / `onError` — and `PxDiagnosticsConfig` is the diagnostics half of it on its own. A
+plus `onWarning` / `onError` — and `PxDiagnosticsConfig` is the diagnostics half of it on its own. A
 handler receives a `PxDiagnostic`, whose `kind` is a `PxDiagnosticKind` saying who can act on it,
 and `PxDiagnostics` is the channel object a player reports through.
 

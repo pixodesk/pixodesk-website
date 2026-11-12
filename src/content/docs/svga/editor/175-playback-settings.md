@@ -27,7 +27,7 @@ save.
 |---|---|---|
 | **Duration** | `timeline.outTime` − `timeline.inTime` (ms) | the length of the content window — one pass plays from In to Out; keyframe times are absolute |
 | **In/Out Time** | `timeline.inTime` / `timeline.outTime` (ms) | the window's start and end; each moves only its own end and Duration follows (typing Duration moves Out); the window is never shorter than 1 ms |
-| **Play Duration** | `timeline.playSpeed` (a factor, 1 = normal) | one pass in real ms, with the speed beside it (2 = twice as fast); typing a duration writes the speed as `duration / ms` |
+| **Playback Duration** | `timeline.playbackSpeed` (a factor, 1 = normal) | how long one pass plays, with the speed beside it (2 = twice as fast); typing a duration writes the speed as `duration / ms` — the keyframe times stay as authored |
 | **Delay** | `timeline.delay` (ms) | wait before the first iteration starts |
 | **Loop** · **Iterations** | `timeline.iterations` | a number, or “infinite” — in the **Playback Loop** section |
 | **Direction** | `timeline.iterationDirection` | “normal”, “reverse”, “alternate” (ping-pong), “alternateReverse” — in the **Playback Loop** section |
@@ -58,21 +58,21 @@ sits in its title row, and the section opens only while Loop is ticked.
 
 ## Playback preset
 
-The **Playback Preset** dropdown sets the trigger lists, the four actions and Loop in one pick. Open it
+The **Playback Preset** dropdown sets the trigger lists, the actions, At end and Loop in one pick. Open it
 to see each preset playing in a small example, with what it does and where it is typically used.
 
 | Preset | Sets | Typical use |
 |---|---|---|
-| **Loop when seen** | Start on *Load* · Loop · Out-of-View *Pause* | loaders, spinners, backgrounds |
-| **Play once when seen** | Start on *Load* · one iteration · Finish *Hold* · Out-of-View *Pause* | intros, counters, charts |
-| **Replay each time seen** | as above, but Out-of-View *Reset* | illustrations down a long page |
-| **Run always** | Start on *Load* · Loop · Out-of-View *Continue* | clocks and tickers |
-| **Hover: play / pause** | Start on *Hover in* · Pause on *Hover out* · Loop · Out-of-View *Continue* | cards and links |
-| **Hover: there and back** | Start on *Hover in* · one iteration · Finish *Rewind* · Out-of-View *Continue* | icons that move and settle back |
-| **Hover: one nudge** | Start on *Hover in* · Start *Restart* · one iteration · Finish *Reset* · Out-of-View *Continue* | playful icons |
-| **Click: play / pause** | Start on *Click* · Pause on *Click* · Loop | play / pause toggles |
-| **Manual: loop** | nothing in Start on · Loop | background jobs, the current step of a progress list |
-| **Manual: once** | nothing in Start on · one iteration · Finish *Hold* | success and error ticks |
+| **Loop when seen** | Start playback on *Load* · Loop · Out-of-View *Pause* | loaders, spinners, backgrounds |
+| **Play once when seen** | Start playback on *Load* · one iteration · At end *Hold* · Out-of-View *Pause* | intros, counters, charts |
+| **Replay each time seen** | as above, but Out-of-View *Jump to start* | illustrations down a long page |
+| **Run always** | Start playback on *Load* · Loop · Out-of-View *Continue* | clocks and tickers |
+| **Hover: play / pause** | Start playback on *Hover in* · Pause playback on *Hover out* · Loop · Out-of-View *Continue* | cards and links |
+| **Hover: there and back** | Start playback on *Hover in* · one iteration · At end *Animate to start* · Out-of-View *Continue* | icons that move and settle back |
+| **Hover: one nudge** | Start playback on *Hover in* · Start playback *Jump to start* · one iteration · At end *Jump to start* · Out-of-View *Continue* | playful icons |
+| **Click: play / pause** | Start playback on *Click* · Pause playback on *Click* · Loop | play / pause toggles |
+| **Manual: loop** | nothing in Start playback on · Loop | background jobs, the current step of a progress list |
+| **Manual: once** | nothing in Start playback on · one iteration · At end *Hold* | success and error ticks |
 
 A preset is not saved in the file — the dropdown recognises it from those settings, and shows
 **Custom** as soon as one of them no longer matches (a loop count such as 3× is Custom too). Settings a
@@ -82,36 +82,37 @@ switches the file type to **CSS keyframes (JS-triggers)**.
 
 ## Action triggers
 
-A trigger lists **which events play, stop and pause** the animation, and the editor works out what
-resumes it. The **Action Triggers** section writes `timeline.actionTriggers`:
+A trigger lists **which events start, stop and pause a playback** of the animation (a playback is one go of it, from a
+start until it is stopped or has ended), and the editor works out what resumes it. The **Action Triggers** section
+writes `timeline.actionTriggers`:
 
 | Control | Writes | Offers | Acts while the animation is… |
 |---|---|---|---|
-| **Start on** | `actionTriggers.start` | Load · Hover in · Click | stopped — a start, per *Start Action* below |
-| **Stop on** | `actionTriggers.stop` | Hover out · Click | playing or paused — a stop, per *Stop Action* below |
-| **Pause on** | `actionTriggers.pause` | Hover in · Hover out · Click | playing — freezes the current frame |
-| **Resume on** | nothing — worked out | shown, not edited | paused — continues |
+| **Start playback on** | `actionTriggers["playback.start"]` | Load · Hover in · Click | off or finished — starts a playback, per *Start playback* below |
+| **Stop playback on** | `actionTriggers["playback.stop"]` | Hover out · Click | playing, paused or finished — stops the playback, per *Stop playback* below |
+| **Pause playback on** | `actionTriggers["playback.pause"]` | Hover in · Hover out · Click | playing — freezes the current frame |
+| **Resume playback on** | nothing — worked out (`actionTriggers["playback.resume"]` when a file names it) | shown, not edited | paused — continues |
 
 Each list offers only the events that make sense for it — nothing starts on *Hover out* or stops on
-*Load*. **Resume on** follows the other lists: *Hover out* resumes what *Hover in* paused (and the
-other way round), a click resumes what a click paused, and the *Start on* events that do not also
-stop it resume it too. A new document plays on load. Ticking *Hover in* under *Start on* adds
-*Hover out* under *Pause on* for you — the usual pair, and yours to change. *Click* under both
-*Start on* and *Pause on* makes every click play or pause. *Start on* shows every choice; the other
-lists are dropdowns, and the **×** next to one empties it. Choose **None (manual)** under *Start on*
-and nothing starts the animation until your code calls `play()`.
+*Load*. **Resume playback on** follows the other lists: *Hover out* resumes what *Hover in* paused (and the
+other way round), a click resumes what a click paused, and the *Start playback on* events that do not also
+stop it resume it too. A new document plays on load. Ticking *Hover in* under *Start playback on* adds
+*Hover out* under *Pause playback on* for you — the usual pair, and yours to change. *Click* under both
+*Start playback on* and *Pause playback on* makes every click play or pause. *Start playback on* shows every choice; the other
+lists are dropdowns, and the **×** next to one empties it. Choose **None (manual)** under *Start playback on*
+and nothing starts the animation until your code calls `playback.start()`.
 
-Two lists that react to the same event at the same moment are marked in red: *Stop on* and
-*Pause on* both on *Hover out* (the pause wins), or *Stop on* on the event that resumes a pause
+Two lists that react to the same event at the same moment are marked in red: *Stop playback on* and
+*Pause playback on* both on *Hover out* (the pause wins), or *Stop playback on* on the event that resumes a pause
 (the resume wins).
 
-**To play an animation when it scrolls into view**, leave *Start on* at “Load” and **Out-of-View Action**
+**To play an animation when it scrolls into view**, leave *Start playback on* at “Load” and **Out-of-View Action**
 on “pause” (both are the defaults). The animation then waits until enough of it is on screen,
 plays, pauses when it scrolls away, and carries on when it comes back.
 
 **Out-of-View Action** writes `timeline.actions.outOfView` — what happens while none of it is on screen:
 “pause” (the default; it resumes where it left off), “continue” (keep running, and start without
-waiting to be seen) or “reset” (back to the start, so it replays on the next entry).
+waiting to be seen) or “jump to start” (back to the start, so it replays on the next entry).
 
 **In-View Threshold** writes `timeline.inViewThreshold` — how much must be on screen before it may
 run, from `0` (any part) to `1` (all of it), `0.5` by default. **In-View Delay** writes
@@ -120,17 +121,21 @@ starts nothing.
 
 ## Actions
 
-How a start, a stop and the natural end look. The **Actions** section writes them into
-`timeline.actions`, beside the triggers — each action the word of its preset (`"stop": "rewind"`), or an object when it has more to say
-(`"stop": { "behavior": "rewind", "completeIteration": true }`) — and the same words apply whoever asks for the play or the stop — the trigger,
-a component's `play` property, or `play()` / `stop()` from code:
+How a start, a stop and the end look. The **Actions** section writes the two playback actions into `timeline.actions`,
+beside the triggers — each the word of its choice (`"playback.stop": "animateToStart"`) — and **At end** as the timeline
+key `atEnd`. The same words apply whoever asks for the start or the stop: the trigger, a component's `playback`
+property, or `playback.start()` / `playback.stop()` from code.
+
+Every choice names **where** it goes — the start or the end — and **how**: *jump* (at once) or *animate* (playing
+there). Arriving at the end, by itself or by a stop that goes there, runs **At end**. "The end" is the end of
+the current pass, so on a looping animation **Stop playback** *Animate to end* means "stop after this pass" — and the
+At end choice then shows for it too.
 
 | Control | Writes | Choices |
 |---|---|---|
-| **Start Action** | `actions.start` | **Resume** (default — continues from where it is; at the start or the end, a fresh run) · **Restart** (from the beginning every time) · **Jump to end** (shows the end, no motion) |
-| **Stop Action** | `actions.stop` | **Reset** (default — jumps back to the start state) · **Rewind** (plays back to it) |
-| **Complete Iteration** (under *Stop Action*) | `actions.stop.completeIteration` | a stop waits for the current iteration to finish first — a heartbeat should not die mid-beat |
-| **Finish Action** | `actions.finish` | **Hold** (default — keeps the last frame) · **Reset** · **Rewind** |
+| **Start playback** | `actions["playback.start"]` | **Continue** (default — plays on from where it is; at the start or the end, a fresh playback) · **Jump to start** (from the beginning every time) · **Jump to end** (shows the end, no motion, then At end) |
+| **Stop playback** | `actions["playback.stop"]` | **Jump to start** (default — straight back) · **Animate to start** (plays back to it) · **Jump to end** (straight to the end of the pass) · **Animate to end** (plays on to the end of the pass — a heartbeat does not die mid-beat) |
+| **At end** | `timeline.atEnd` | **Hold** (default — keeps the last frame) · **Jump to start** · **Animate to start** |
 
 The *SVG + CSS animation* export comes in two flavours — the **File Type** choice in the **Runtime** section (and on
 the welcome screen and in the Export dialog): **CSS keyframes (no JS)** or **CSS keyframes (JS-triggers)**. It decides
